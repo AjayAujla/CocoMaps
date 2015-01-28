@@ -1,0 +1,5 @@
+2015-01-28 16:49:05.931 MobileCRM[2181:69233] MonoTouch: Socket error while connecting to MonoDevelop on 127.0.0.1:10000: Connection refused
+2015-01-28 16:49:20.690 MobileCRM[2181:69195] 
+2015-01-28 16:49:20.691 MobileCRM[2181:69195] 
+2015-01-28 16:50:14.234 MobileCRM[2181:69195] Could not determine current country code: Error Domain=NSURLErrorDomain Code=-1001 "The request timed out." UserInfo=0x7d38d110 {NSErrorFailingURLStringKey=http://gsp1.apple.com/pep/gcc, NSErrorFailingURLKey=http://gsp1.apple.com/pep/gcc, NSLocalizedDescription=The request timed out., NSUnderlyingError=0x7d031270 "The request timed out."}
+2015-01-28 16:50:52.893 MobileCRM[2181:70083] Terminating since there is no system app.
