@@ -161,6 +161,7 @@
     <Compile Include="Renderers\BlueNavigationRenderer.cs" />
     <Compile Include="Renderers\DarkTextCellRenderer.cs" />
     <Compile Include="GeoService.cs" />
+    <Compile Include="DrawFaculty_iOS.cs" />
   </ItemGroup>
   <Import Project="..\MobileCRM.Shared\MobileCRM.Shared.projitems" Label="Shared" Condition="Exists('..\MobileCRM.Shared\MobileCRM.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

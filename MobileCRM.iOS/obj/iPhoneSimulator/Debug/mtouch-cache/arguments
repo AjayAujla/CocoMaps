@@ -1,10 +1,10 @@
 # Version: 8.6.0.51 (dfb682f)
-# [first argument, ignore] # /Users/markmassoud/Downloads/xamarin-forms-samples-master/MobileCRM/MobileCRM.iOS/mtouch.exe
+# [first argument, ignore] # /Users/markmassoud/Desktop/CocoMaps/CocoMaps/MobileCRM.iOS/mtouch.exe
 /Library/Frameworks/Xamarin.iOS.framework/Versions/8.6.0.51/bin/mtouch-64 \
 	--cache \
-	/Users/markmassoud/Downloads/xamarin-forms-samples-master/MobileCRM/MobileCRM.iOS/obj/iPhoneSimulator/Debug/mtouch-cache \
+	/Users/markmassoud/Desktop/CocoMaps/CocoMaps/MobileCRM.iOS/obj/iPhoneSimulator/Debug/mtouch-cache \
 	--sim \
-	/Users/markmassoud/Downloads/xamarin-forms-samples-master/MobileCRM/MobileCRM.iOS/bin/iPhoneSimulator/Debug/MobileCRM.app \
+	/Users/markmassoud/Desktop/CocoMaps/CocoMaps/MobileCRM.iOS/bin/iPhoneSimulator/Debug/MobileCRM.app \
 	--executable \
 	MobileCRM \
 	--debug \
@@ -37,7 +37,7 @@
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Core.dll \
 	-r \
-	/Users/markmassoud/Downloads/xamarin-forms-samples-master/MobileCRM/MobileCRM.Services/bin/Debug//MobileCRM.Services.dll \
+	/Users/markmassoud/Desktop/CocoMaps/CocoMaps/MobileCRM.Services/bin/Debug//MobileCRM.Services.dll \
 	-r \
 	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/mscorlib.dll \
 	-r \
@@ -139,5 +139,5 @@
 	-r \
 	../packages/Newtonsoft.Json.6.0.8/lib/portable-net40+sl5+wp80+win8+wpa81/Newtonsoft.Json.dll \
 	-r \
-	/Users/markmassoud/Downloads/xamarin-forms-samples-master/MobileCRM/MobileCRM.Services/bin/Debug//MobileCRM.Services.dll \
-	/Users/markmassoud/Downloads/xamarin-forms-samples-master/MobileCRM/MobileCRM.iOS/bin/iPhoneSimulator/Debug//MobileCRM.exe \
+	/Users/markmassoud/Desktop/CocoMaps/CocoMaps/MobileCRM.Services/bin/Debug//MobileCRM.Services.dll \
+	/Users/markmassoud/Desktop/CocoMaps/CocoMaps/MobileCRM.iOS/bin/iPhoneSimulator/Debug//MobileCRM.exe \

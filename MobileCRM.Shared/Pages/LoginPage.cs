@@ -15,25 +15,20 @@ namespace MobileCRM.Shared.Pages
 			BackgroundColor = Color.FromHex ("#932439");
             var layout = new StackLayout { Padding = 10 };
 
+			// TODO: Make the logo appear... this does not work :(
 			Image concordia_logo = new Image
 			{
 				Source = ImageSource.FromFile("concordia_logo.png"),
 				VerticalOptions = LayoutOptions.CenterAndExpand
 			};
-
 			layout.Children.Add(concordia_logo);
-
-//            var username = new Entry { Placeholder = "Username" };
-//            username.SetBinding(Entry.TextProperty, LoginViewModel.UsernamePropertyName);
-//            layout.Children.Add(username);
-//
-//            var password = new Entry { Placeholder = "Password", IsPassword = true };
-//            password.SetBinding(Entry.TextProperty, LoginViewModel.PasswordPropertyName);
-//            layout.Children.Add(password);
             
-			var directionsButton = new Button { Text = "Continue", BackgroundColor = Color.White, TextColor = Color.Black };
-			directionsButton.SetBinding(Button.CommandProperty, LoginViewModel.LoginCommandPropertyName);
-			layout.Children.Add(directionsButton);
+			var continueButton = new Button { Text = "Continue", BackgroundColor = Color.White, TextColor = Color.Black };
+
+			DependencyService.Get<IDrawFaculty>().Draw();
+
+			continueButton.SetBinding(Button.CommandProperty, LoginViewModel.LoginCommandPropertyName);
+			layout.Children.Add(continueButton);
 
             Content = new ScrollView { Content = layout };
         }
