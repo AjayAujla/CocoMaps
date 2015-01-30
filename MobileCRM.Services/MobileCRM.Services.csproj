@@ -35,6 +35,7 @@
     <Compile Include="IAuthenticationResponse.cs" />
     <Compile Include="IAuthenticationService.cs" />
     <Compile Include="IContactRepository.cs" />
+    <Compile Include="IGeoService.cs" />
     <Compile Include="IRepository.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Address.cs" />
@@ -52,7 +53,6 @@
     <Compile Include="Repositories\InMemoryRepository.cs" />
     <Compile Include="Attributes\DisplayAttribute.cs" />
     <Compile Include="Attributes\CurrencyAttribute.cs" />
-    <Compile Include="IGeoService.cs" />
     <Compile Include="Models\IUser.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Repositories\UserRepository.cs" />

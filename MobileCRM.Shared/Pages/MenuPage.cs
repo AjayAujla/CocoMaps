@@ -21,10 +21,11 @@ namespace MobileCRM.Shared.Pages
 
         public MenuPage ()
         {
-            OptionItems.Add(new LeadsOptionItem());
-            OptionItems.Add(new ContactsOptionItem());
-            OptionItems.Add(new AccountsOptionItem());
-            OptionItems.Add(new OpportunitiesOptionItem());
+            OptionItems.Add(new CurrentLocationOptionItem());
+            OptionItems.Add(new DirectionsOptionItem());
+            OptionItems.Add(new PointsOfInterestOptionItem());
+			OptionItems.Add(new PreferencesOptionItem());
+			OptionItems.Add(new OpportunitiesOptionItem());
 
             BackgroundColor = Color.FromHex("333333");
 

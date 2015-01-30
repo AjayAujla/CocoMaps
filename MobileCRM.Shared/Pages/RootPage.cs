@@ -59,10 +59,14 @@ namespace MobileCRM.Shared.Pages
         Page PageForOption (OptionItem option)
         {
             // TODO: Refactor this to the Builder pattern (see ICellFactory).
-            if (option.Title == "Contacts")
+            if (option.Title == "CurrentLocation")
                 return new MasterPage<Contact>(option);
-            if (option.Title == "Leads")
+            if (option.Title == "Directions")
                 return new MasterPage<Lead>(option);
+			if (option.Title == "PointsOfInterest")
+				return new MasterPage<Lead>(option);
+			if (option.Title == "Preferences")
+				return new MasterPage<Lead>(option);
             if (option.Title == "Accounts") {
                 var page = new MasterPage<Account>(option);
                 var cell = page.List.Cell;

@@ -4,6 +4,7 @@ using MobileCRM.Shared.CustomViews;
 using MobileCRM.Shared.ViewModels;
 using MobileCRM.Helpers;
 
+
 namespace MobileCRM.Shared.Pages
 {
     public class ListPageBase<T> : ContentPage where T: class, IContact, new()
@@ -21,6 +22,7 @@ namespace MobileCRM.Shared.Pages
         {
             get { return BindingContext as MasterViewModel<T>; }
         }
+
 
         public ListPage(MasterViewModel<T> viewModel) : base(viewModel)
         {
@@ -57,6 +59,7 @@ namespace MobileCRM.Shared.Pages
             stack.Children.Add(list);
             Content = stack;
         }
+        
 
         protected override void OnAppearing()
         {

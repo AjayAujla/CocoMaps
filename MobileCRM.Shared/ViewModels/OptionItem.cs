@@ -13,17 +13,21 @@ namespace MobileCRM.Models
         public override string Icon { get { return "opportunity.png"; } }
     }
 
-    public class ContactsOptionItem : OptionItem
+    public class CurrentLocationOptionItem : OptionItem
     {
     }
 
-    public class LeadsOptionItem : OptionItem
+    public class DirectionsOptionItem : OptionItem
     {
     }
 
-    public class AccountsOptionItem : OptionItem
+    public class PointsOfInterestOptionItem : OptionItem
     {
     }
+
+	public class PreferencesOptionItem : OptionItem
+	{
+	}
 
     public  abstract class OptionItem
     {

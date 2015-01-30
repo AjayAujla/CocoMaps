@@ -107,7 +107,7 @@ namespace MobileCRM.Shared.Pages
             ToolbarItems.Add(new ToolbarItem("Filter", "filter.png", async () =>
             {
                 var page = new ContentPage();
-                var result = await page.DisplayAlert("Points of Interest", "Services Coffees", "Done", "Cancel");
+                var result = await page.DisplayAlert("Choose campus", "SGW", "Done", "Cancel");
                 Debug.WriteLine("success: {0}", result);
             }));
 
