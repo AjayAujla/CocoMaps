@@ -31,7 +31,7 @@ namespace MobileCRM.Shared.Pages
         {
             var page = new LoginPage();
 
-            await Navigation.PushModalAsync(page);
+            //await Navigation.PushModalAsync(page);
         }
 
         void NavigateTo(OptionItem option)

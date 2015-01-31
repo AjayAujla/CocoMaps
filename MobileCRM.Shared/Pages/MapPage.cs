@@ -8,6 +8,8 @@ using MobileCRM.Models;
 using MobileCRM.Shared.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using MobileCRM.Shared;
+
 /*
 
 Xamarin.Forms uses the native MAP control on each platform.
@@ -43,7 +45,7 @@ namespace MobileCRM.Shared.Pages
             this.SetBinding(Page.TitleProperty, "Title");
             this.SetBinding(Page.IconProperty, "Icon");
 
-			var map = new Map {
+			var map = new ShapesMap {
 				IsShowingUser = true,
 				HeightRequest = 100,
 				WidthRequest = 960,

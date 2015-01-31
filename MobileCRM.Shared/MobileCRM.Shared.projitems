@@ -38,5 +38,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MasterViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IDrawFaculty.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ShapesMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ITextToSpeech.cs" />
   </ItemGroup>
 </Project>

@@ -87,6 +87,8 @@
     <Compile Include="Renderers\DarkTextCellRenderer.cs" />
     <Compile Include="GeoService.cs" />
     <Compile Include="DrawFaculty_Android.cs" />
+    <Compile Include="Renderers\ShapesMapRenderer.cs" />
+    <Compile Include="TextToSpeech_Android.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Data\Poi.json" />

@@ -34,12 +34,13 @@ namespace MobileCRMAndroid
         protected override void OnCreate (Bundle bundle)
         {
             base.OnCreate (bundle);
-
             MobileCRMApp.Init(typeof(MobileCRMApp).Assembly);
             Forms.Init(this, bundle);
             FormsMaps.Init(this, bundle);
 
 			LoadApplication (new App ());
+
+			DependencyService.Get<ITextToSpeech>().Speak("Nigga Nigga Welcome to CocoMaps Nigga Nigga Nigga");
         }
     }
 }

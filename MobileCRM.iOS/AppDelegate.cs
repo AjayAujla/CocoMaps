@@ -26,7 +26,7 @@ namespace MobileCRM.iOS
 
 
             UINavigationBar.Appearance.BackgroundColor = UIColor.FromRGBA(0, 0, 0, 0);
-            UINavigationBar.Appearance.TintColor = MobileCRM.Shared.Helpers.Color.Blue.ToUIColor();
+			UINavigationBar.Appearance.TintColor = MobileCRM.Shared.Helpers.Color.Purple.ToUIColor();
             UINavigationBar.Appearance.BarTintColor = UIColor.White;
             UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes()
             {
