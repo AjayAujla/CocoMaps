@@ -1,15 +1,12 @@
-﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.dca08503" />
-  <MonoDevelop.Ide.Workbench>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="CocoMaps.Services" expanded="True">
-            <Node name="packages.config" selected="True" />
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
+﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.GoogleSer" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android\Resources\drawable\SplashScreen.xml">
+    <Files>
+      <File FileName="CocoMaps.Shared\Helpers\ITextToSpeech.cs" Line="14" Column="14" />
+      <File FileName="CocoMaps.Android\MainActivity.cs" Line="27" Column="27" />
+      <File FileName="CocoMaps.Android\Resources\values\Styles.xml" Line="28" Column="28" />
+      <File FileName="CocoMaps.Android\Resources\drawable\SplashScreen.xml" Line="32" Column="32" />
+    </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
