@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{7A33CB8D-03F3-4368-BA23-04C33F65F9BE}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>CocoMaps.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Root.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Menu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\MenuItems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Maps.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Colors.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\DarkTextCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ListTextCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\StripedListView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\StripedViewCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Master.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\MapViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\MasterViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
+    <Folder Include="$(MSBuildThisFileDirectory)ViewsModel\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\" />
+  </ItemGroup>
+</Project>
