@@ -1,6 +1,12 @@
-﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.dca08503" />
-  <MonoDevelop.Ide.Workbench />
+﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.GoogleSer" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android\Resources\drawable\SplashScreen.xml">
+    <Files>
+      <File FileName="CocoMaps.Android\Resources\values\Colors.xml" Line="13" Column="13" />
+      <File FileName="CocoMaps.Android\Resources\values\Styles.xml" Line="11" Column="11" />
+      <File FileName="CocoMaps.Android\Resources\drawable\SplashScreen.xml" Line="14" Column="14" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
