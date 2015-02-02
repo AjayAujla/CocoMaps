@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CocoMaps.Models;
 using CocoMaps.Shared.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
@@ -46,8 +42,8 @@ namespace CocoMaps.Shared.Pages
 			{
 				Type = PinType.Place,
 				Position = position,
-				Label = "custom pin",
-				Address = "custom detail info"
+				Label = "Custom pin",
+				Address = "I'm in love with the Coco"
 			};
 
 			map.Pins.Add(pin);

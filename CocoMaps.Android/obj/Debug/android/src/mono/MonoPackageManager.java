@@ -72,7 +72,6 @@ class MonoPackageManager_Resources {
 		"Xamarin.Forms.Core.dll",
 		"Xamarin.Forms.Platform.Android.dll",
 		"Xamarin.Forms.Xaml.dll",
-		"Newtonsoft.Json.dll",
 		"Xamarin.Forms.Maps.Android.dll",
 		"Xamarin.Forms.Maps.dll",
 		"Xamarin.Android.Support.v4.dll",
