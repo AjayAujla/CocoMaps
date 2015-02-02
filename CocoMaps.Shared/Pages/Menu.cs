@@ -33,14 +33,10 @@ namespace CocoMaps.Shared.Pages
 				Padding = new Thickness(10, 36, 0, 5),
 				Content = new Xamarin.Forms.Label {
 					TextColor = Color.FromHex("AAAAAA"),
-					Text = "MENU", 
+					Text = "MENU",
 				}
 			};
 
-			Device.OnPlatform (
-				iOS: () => ((Xamarin.Forms.Label)label.Content).Font = Font.SystemFontOfSize (NamedSize.Micro),
-				Android: () => ((Xamarin.Forms.Label)label.Content).Font = Font.SystemFontOfSize (NamedSize.Medium)
-			);
 
 			layout.Children.Add(label);
 
