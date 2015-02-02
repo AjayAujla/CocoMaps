@@ -1,4 +1,0 @@
-2015-01-28 19:03:00.190 MobileCRM[1005:23887] MonoTouch: Socket error while connecting to MonoDevelop on 127.0.0.1:10000: Connection refused
-2015-01-28 19:03:09.579 MobileCRM[1005:23780] 
-2015-01-28 19:03:09.579 MobileCRM[1005:23780] 
-2015-01-28 19:03:10.765 MobileCRM[1005:23780] Trying to start MapKit location updates without prompting for location authorization. Must call -[CLLocationManager requestWhenInUseAuthorization] or -[CLLocationManager requestAlwaysAuthorization] first.

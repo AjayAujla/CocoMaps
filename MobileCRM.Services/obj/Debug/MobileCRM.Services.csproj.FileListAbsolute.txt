@@ -1,9 +1,0 @@
-C:\Users\David\Desktop\CocoMaps\MobileCRM.Services\bin\Debug\MobileCRM.Services.dll
-C:\Users\David\Desktop\CocoMaps\MobileCRM.Services\bin\Debug\MobileCRM.Services.pdb
-C:\Users\David\Desktop\CocoMaps\MobileCRM.Services\bin\Debug\Xamarin.Forms.Core.dll
-C:\Users\David\Desktop\CocoMaps\MobileCRM.Services\bin\Debug\Xamarin.Forms.Xaml.dll
-C:\Users\David\Desktop\CocoMaps\MobileCRM.Services\bin\Debug\Xamarin.Forms.Core.xml
-C:\Users\David\Desktop\CocoMaps\MobileCRM.Services\bin\Debug\Xamarin.Forms.Xaml.xml
-C:\Users\David\Desktop\CocoMaps\MobileCRM.Services\obj\Debug\MobileCRM.Services.csprojResolveAssemblyReference.cache
-C:\Users\David\Desktop\CocoMaps\MobileCRM.Services\obj\Debug\MobileCRM.Services.dll
-C:\Users\David\Desktop\CocoMaps\MobileCRM.Services\obj\Debug\MobileCRM.Services.pdb
