@@ -40,7 +40,7 @@ namespace CocoMaps.Shared.Pages
 			#endif
 			Detail = new NavigationPage(displayPage)
 			{
-				Tint = Helpers.Color.Blue.ToFormsColor(),
+				Tint = Helpers.Color.Maroon.ToFormsColor(),
 			};
 
 

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="CocoMaps.CocoMaps" android:installLocation="auto">
+  <uses-sdk android:minSdkVersion="15" />
+  <application android:theme="@style/MyTheme" android:icon="@drawable/icon" android:label="Coco Maps" android:name="mono.android.app.Application" android:debuggable="true">
+    <!--
+		For the MAP to work, you *must* create your own API key. See instructions here:
+			http://developer.xamarin.com/guides/cross-platform/xamarin-forms/working-with/maps/
+		which will require you to visit the Google Developer Console here:
+			https://console.developers.google.com/
+		note the package name (listed above) is com.xamarin.mobilecrm - this value must be appended to the generated SHA1 hash that you enter into the console
+		-->
+    <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyD7Xf_sig5YzrPmfUchPzYnjHJG98_7ctk" />
+    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
+    <activity android:configChanges="orientation|screenSize" android:label="CocoMaps" android:name="cocomaps.MainActivity">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+    <provider android:name="mono.MonoRuntimeProvider" android:exported="false" android:initOrder="2147483647" android:authorities="CocoMaps.CocoMaps.mono.MonoRuntimeProvider.__mono_init__" />
+    <receiver android:name="mono.android.Seppuku">
+      <intent-filter>
+        <action android:name="mono.android.intent.action.SEPPUKU" />
+        <category android:name="mono.android.intent.category.SEPPUKU.CocoMaps.CocoMaps" />
+      </intent-filter>
+    </receiver>
+  </application>
+  <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+  <!-- Google Maps for Android v2 will cache map tiles on external storage -->
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+  <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+</manifest>

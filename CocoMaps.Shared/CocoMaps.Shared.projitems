@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Master.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\MapViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\MasterViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ITextToSpeech.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
