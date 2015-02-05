@@ -24,4 +24,3 @@ namespace CocoMaps.Shared.Pages
 	}
 
 }
-

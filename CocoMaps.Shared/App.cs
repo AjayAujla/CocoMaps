@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using CocoMaps.Shared.Pages;
 using CocoMaps.Shared;
+using System.Drawing;
 
 namespace CocoMaps
 {
@@ -11,7 +12,12 @@ namespace CocoMaps
 		{
 			MainPage = new RootPage();
 
+<<<<<<< HEAD
 			DependencyService.Get<ITextToSpeech>().Speak("Welcome to CocoMaps");
+=======
+			DependencyService.Get<ITextToSpeech>().Speak("Welcome to CocoMaps, Charlie!");
+
+>>>>>>> origin/master
 		}
 	}
 }

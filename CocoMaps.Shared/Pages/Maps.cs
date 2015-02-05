@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using CocoMaps.Shared.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-
+using CocoMaps.Shared;
 
 namespace CocoMaps.Shared.Pages
 {
@@ -24,7 +24,8 @@ namespace CocoMaps.Shared.Pages
 			this.SetBinding(Page.TitleProperty, "Title");
 			this.SetBinding(Page.IconProperty, "Icon");
 
-			var map = new Map(MapSpan.FromCenterAndRadius(new Position(45.495774,-73.578252), Distance.FromMiles(0.3))) 
+
+			var map = new ConcordiaMap()
 			{
 				IsShowingUser = true,
 				HeightRequest = 100,
@@ -36,7 +37,9 @@ namespace CocoMaps.Shared.Pages
 			stack.Children.Add(map);
 			Content = stack;
 
-			var position = new Position(45.495774,-73.578252); // Latitude, Longitude
+			var position = new Position(45.495774, -73.578252); // Latitude, Longitude
+			map.MoveToRegion(MapSpan.FromCenterAndRadius(position,
+				Distance.FromMiles(0.1)));
 
 			var pin = new Pin 
 			{

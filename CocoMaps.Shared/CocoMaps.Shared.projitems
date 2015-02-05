@@ -23,7 +23,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\MapViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\MasterViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ITextToSpeech.cs" />
+<<<<<<< HEAD
     <Compile Include="$(MSBuildThisFileDirectory)GoogleCalendar.cs" />
+=======
+    <Compile Include="$(MSBuildThisFileDirectory)CocoMaps.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ConcordiaMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Building.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Campus.cs" />
+>>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
