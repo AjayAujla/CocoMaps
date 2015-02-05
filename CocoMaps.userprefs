@@ -1,13 +1,10 @@
 ﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (Jelly Bean)" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android\GoogleCalendarAPI.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.GoogleSer" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android\MainActivity.cs">
     <Files>
-      <File FileName="CocoMaps.Shared\App.cs" Line="4" Column="4" />
-      <File FileName="CocoMaps.Shared\CocoMaps.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\Pages\Menu.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.iOS\Main.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.iOS\Files\TextToSpeech_iOS.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Android\GoogleCalendarAPI.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Pages\Master.cs" Line="4" Column="4" />
+      <File FileName="CocoMaps.Shared\Pages\Maps.cs" Line="22" Column="22" />
+      <File FileName="CocoMaps.Android\MainActivity.cs" Line="28" Column="28" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
