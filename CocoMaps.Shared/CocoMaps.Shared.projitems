@@ -13,14 +13,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Root.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Menu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\MenuItems.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\Maps.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Colors.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\DarkTextCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ListTextCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\StripedListView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\StripedViewCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Master.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\MapViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\MasterViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ITextToSpeech.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CocoMaps.cs" />

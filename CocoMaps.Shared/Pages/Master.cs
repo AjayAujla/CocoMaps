@@ -10,11 +10,10 @@ namespace CocoMaps.Shared.Pages
 {
 	public class MasterPage : ContentPage
 	{
-		public MapPage Map { get; private set; }
 
 		public MasterPage(MenuOptions menuItem)
 		{
-			var viewModel = new MapViewModel();
+			var viewModel = new MasterViewModel();
 			BindingContext = viewModel;
 
 			this.SetValue(Page.TitleProperty, menuItem.Title);
