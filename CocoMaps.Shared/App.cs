@@ -12,12 +12,10 @@ namespace CocoMaps
 		{
 			MainPage = new RootPage();
 
-<<<<<<< HEAD
-			DependencyService.Get<ITextToSpeech>().Speak("Welcome to CocoMaps");
-=======
+
+
 			DependencyService.Get<ITextToSpeech>().Speak("Welcome to CocoMaps, Charlie!");
 
->>>>>>> origin/master
 		}
 	}
 }

@@ -55,10 +55,9 @@
     <Reference Include="GooglePlayServicesLib">
       <HintPath>..\packages\Xamarin.GooglePlayServices.22.0.0.0\lib\MonoAndroid41\GooglePlayServicesLib.dll</HintPath>
     </Reference>
-<<<<<<< HEAD
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
-=======
+	  </Reference>
     <Reference Include="Xamarin.Forms.Platform.Android">
       <HintPath>..\packages\Xamarin.Forms.1.3.2.6316\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
     </Reference>
@@ -76,7 +75,6 @@
     </Reference>
     <Reference Include="Xamarin.Forms.Maps">
       <HintPath>..\packages\Xamarin.Forms.Maps.1.3.2.6316\lib\MonoAndroid10\Xamarin.Forms.Maps.dll</HintPath>
->>>>>>> origin/master
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -86,11 +84,8 @@
     <Compile Include="Renderers\DarkTextCellRenderer.cs" />
     <Compile Include="Renderers\ListTextCellRenderer.cs" />
     <Compile Include="Files\TextToSpeech_Android.cs" />
-<<<<<<< HEAD
     <Compile Include="GoogleCalendarAPI.cs" />
-=======
     <Compile Include="Files\ConcordiaMap_Android.cs" />
->>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
