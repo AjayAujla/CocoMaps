@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\MapViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\MasterViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ITextToSpeech.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)GoogleCalendar.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
