@@ -132,9 +132,6 @@
         <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.Id">
             <summary>Gets the service account ID (typically an e-mail address).</summary>
         </member>
-        <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.TokenServerUrl">
-            <summary>Gets the token server URL.</summary>
-        </member>
         <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.User">
             <summary>
             Gets the email address of the user the application is trying to impersonate in the service account flow 
@@ -144,25 +141,11 @@
         <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.Scopes">
             <summary>Gets the service account scopes.</summary>
         </member>
-        <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.Clock">
-            <summary>
-            Gets the clock. The clock is used to determine if the token has expired, if so we will try to refresh it. 
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.AccessMethod">
-            <summary>Gets the method for presenting the access token to the resource server.</summary>
-        </member>
-        <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.HttpClient">
-            <summary>Gets the HTTP client used to make authentication requests to the server.</summary>
-        </member>
         <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.Key">
             <summary>
             Gets the key which is used to sign the request, as specified in
             https://developers.google.com/accounts/docs/OAuth2ServiceAccount#computingsignature.
             </summary>
-        </member>
-        <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.Token">
-            <summary>Gets the token response which contains the access token.</summary>
         </member>
         <member name="T:Google.Apis.Auth.OAuth2.ServiceAccountCredential.Initializer">
             <summary>An initializer class for the service account credential. </summary>
@@ -179,9 +162,6 @@
         <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.Initializer.Id">
             <summary>Gets the service account ID (typically an e-mail address).</summary>
         </member>
-        <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.Initializer.TokenServerUrl">
-            <summary>Gets the token server URL.</summary>
-        </member>
         <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.Initializer.User">
             <summary>
             Gets or sets the email address of the user the application is trying to impersonate in the service 
@@ -191,37 +171,10 @@
         <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.Initializer.Scopes">
             <summary>Gets the scopes which indicate API access your application is requesting.</summary>
         </member>
-        <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.Initializer.Clock">
-            <summary>
-            Gets or sets the clock. The clock is used to determine if the token has expired, if so we will try to
-            refresh it. The default value is <see cref="F:Google.Apis.Util.SystemClock.Default"/>.
-            </summary>
-        </member>
         <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.Initializer.Key">
             <summary>
             Gets or sets the key which is used to sign the request, as specified in
             https://developers.google.com/accounts/docs/OAuth2ServiceAccount#computingsignature.
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.Initializer.AccessMethod">
-            <summary>
-            Gets or sets the method for presenting the access token to the resource server.
-            The default value is <see cref="T:Google.Apis.Auth.OAuth2.BearerToken.AuthorizationHeaderAccessMethod"/>.
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.Initializer.HttpClientFactory">
-            <summary>
-            Gets or sets the factory for creating a <see cref="T:System.Net.Http.HttpClient"/> instance.
-            </summary>
-        </member>
-        <member name="P:Google.Apis.Auth.OAuth2.ServiceAccountCredential.Initializer.DefaultExponentialBackOffPolicy">
-            <summary>
-            Get or sets the exponential back-off policy. Default value is  <c>UnsuccessfulResponse503</c>, which 
-            means that exponential back-off is used on 503 abnormal HTTP responses.
-            If the value is set to <c>None</c>, no exponential back-off policy is used, and it's up to the user to
-            configure the <see cref="T:Google.Apis.Http.ConfigurableMessageHandler"/> in an
-            <see cref="T:Google.Apis.Http.IConfigurableHttpClientInitializer"/> to set a specific back-off
-            implementation (using <see cref="T:Google.Apis.Http.BackOffHandler"/>).
             </summary>
         </member>
     </members>

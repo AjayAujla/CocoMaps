@@ -149,6 +149,110 @@
         <member name="T:Google.Apis.Auth.JsonWebSignature.Payload">
             <summary>JWS Payload.</summary>
         </member>
+        <member name="T:Google.Apis.Auth.OAuth2.ComputeCredential">
+            <summary>
+            Google OAuth 2.0 credential for accessing protected resources using an access token. The Google OAuth 2.0 
+            Authorization Server supports server-to-server interactions such as those between a web application and Google
+            Cloud Storage. The requesting application has to prove its own identity to gain access to an API, and an 
+            end-user doesn't have to be involved. 
+            <para>
+            More details about Compute Engine authentication is available at:
+            https://cloud.google.com/compute/docs/authentication.
+            </para>
+            </summary>
+        </member>
+        <member name="T:Google.Apis.Auth.OAuth2.ServiceCredential">
+            <summary>
+            This type of Google OAuth 2.0 credential enables access to protected resources using an access token when
+            interacting server to server. For example, a service account credential could be used to access Google Cloud
+            Storage from a web application without a user's involvement.
+            <para>
+            See also: <see cref="!:Google.Apis.Auth.OAuth2.ServiceAccountCredential"/>.
+            <code>ServiceAccountCredential</code> inherits from this class in order to support Service Account. More
+            details available at: https://developers.google.com/accounts/docs/OAuth2ServiceAccount.
+            <see cref="T:Google.Apis.Auth.OAuth2.ComputeCredential"/> is another example for a class that inherits from this
+            class in order to support Compute credentials. For more information about Compute authentication, see:
+            https://cloud.google.com/compute/docs/authentication.
+            </para>
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Auth.OAuth2.ServiceCredential.#ctor(Google.Apis.Auth.OAuth2.ServiceCredential.Initializer)">
+            <summary>Constructs a new service account credential using the given initializer.</summary>
+        </member>
+        <member name="M:Google.Apis.Auth.OAuth2.ServiceCredential.RequestAccessTokenAsync(System.Threading.CancellationToken)">
+            <summary>Requests a new token.</summary>
+            <param name="taskCancellationToken">Cancellation token to cancel operation.</param>
+            <returns><c>true</c> if a new token was received successfully.</returns>
+        </member>
+        <member name="P:Google.Apis.Auth.OAuth2.ServiceCredential.TokenServerUrl">
+            <summary>Gets the token server URL.</summary>
+        </member>
+        <member name="P:Google.Apis.Auth.OAuth2.ServiceCredential.Clock">
+            <summary>Gets the clock used to refresh the token if it expires.</summary>
+        </member>
+        <member name="P:Google.Apis.Auth.OAuth2.ServiceCredential.AccessMethod">
+            <summary>Gets the method for presenting the access token to the resource server.</summary>
+        </member>
+        <member name="P:Google.Apis.Auth.OAuth2.ServiceCredential.HttpClient">
+            <summary>Gets the HTTP client used to make authentication requests to the server.</summary>
+        </member>
+        <member name="P:Google.Apis.Auth.OAuth2.ServiceCredential.Token">
+            <summary>Gets the token response which contains the access token.</summary>
+        </member>
+        <member name="T:Google.Apis.Auth.OAuth2.ServiceCredential.Initializer">
+            <summary>An initializer class for the service credential. </summary>
+        </member>
+        <member name="M:Google.Apis.Auth.OAuth2.ServiceCredential.Initializer.#ctor(System.String)">
+            <summary>Constructs a new initializer using the given token server URL.</summary>
+        </member>
+        <member name="P:Google.Apis.Auth.OAuth2.ServiceCredential.Initializer.TokenServerUrl">
+            <summary>Gets the token server URL.</summary>
+        </member>
+        <member name="P:Google.Apis.Auth.OAuth2.ServiceCredential.Initializer.Clock">
+            <summary>
+            Gets or sets the clock used to refresh the token when it expires. The default value is
+            <see cref="F:Google.Apis.Util.SystemClock.Default"/>.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Auth.OAuth2.ServiceCredential.Initializer.AccessMethod">
+            <summary>
+            Gets or sets the method for presenting the access token to the resource server.
+            The default value is <see cref="T:Google.Apis.Auth.OAuth2.BearerToken.AuthorizationHeaderAccessMethod"/>.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Auth.OAuth2.ServiceCredential.Initializer.HttpClientFactory">
+            <summary>
+            Gets or sets the factory for creating a <see cref="T:System.Net.Http.HttpClient"/> instance.
+            </summary>
+        </member>
+        <member name="P:Google.Apis.Auth.OAuth2.ServiceCredential.Initializer.DefaultExponentialBackOffPolicy">
+            <summary>
+            Get or sets the exponential back-off policy. Default value is  <c>UnsuccessfulResponse503</c>, which 
+            means that exponential back-off is used on 503 abnormal HTTP responses.
+            If the value is set to <c>None</c>, no exponential back-off policy is used, and it's up to the user to
+            configure the <see cref="T:Google.Apis.Http.ConfigurableMessageHandler"/> in an
+            <see cref="T:Google.Apis.Http.IConfigurableHttpClientInitializer"/> to set a specific back-off
+            implementation (using <see cref="T:Google.Apis.Http.BackOffHandler"/>).
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Auth.OAuth2.ComputeCredential.#ctor">
+            <summary>Constructs a new Compute credential instance.</summary>
+        </member>
+        <member name="M:Google.Apis.Auth.OAuth2.ComputeCredential.#ctor(Google.Apis.Auth.OAuth2.ComputeCredential.Initializer)">
+            <summary>Constructs a new Compute credential instance.</summary>
+        </member>
+        <member name="T:Google.Apis.Auth.OAuth2.ComputeCredential.Initializer">
+            <summary>
+            An initializer class for the Compute credential. It uses <see cref="F:Google.Apis.Auth.OAuth2.GoogleAuthConsts.ComputeTokenUrl"/>
+            as the token server URL.
+            </summary>
+        </member>
+        <member name="M:Google.Apis.Auth.OAuth2.ComputeCredential.Initializer.#ctor">
+            <summary>Constructs a new initializer using the default compute token URL.</summary>
+        </member>
+        <member name="M:Google.Apis.Auth.OAuth2.ComputeCredential.Initializer.#ctor(System.String)">
+            <summary>Constructs a new initializer using the given token URL.</summary>
+        </member>
         <member name="T:Google.Apis.Auth.OAuth2.Requests.GoogleRevokeTokenRequest">
             <summary>
             Google OAuth 2.0 request to revoke an access token as specified in 
@@ -448,7 +552,7 @@
         <member name="P:Google.Apis.Auth.OAuth2.UserCredential.Flow">
             <summary>Gets the authorization code flow.</summary>
         </member>
-        <member name="P:Google.Apis.Auth.OAuth2.UserCredential.UderId">
+        <member name="P:Google.Apis.Auth.OAuth2.UserCredential.UserId">
             <summary>Gets the user identity.</summary>
         </member>
         <member name="T:Google.Apis.Auth.OAuth2.Flows.AuthorizationCodeFlow">
@@ -819,7 +923,10 @@
             <summary>The approval URL (used in the Windows solution as a callback).</summary>
         </member>
         <member name="F:Google.Apis.Auth.OAuth2.GoogleAuthConsts.TokenUrl">
-            <summary>The authorization token server URL</summary>
+            <summary>The authorization token server URL.</summary>
+        </member>
+        <member name="F:Google.Apis.Auth.OAuth2.GoogleAuthConsts.ComputeTokenUrl">
+            <summary>The Compute Engine authorization token server URL</summary>
         </member>
         <member name="F:Google.Apis.Auth.OAuth2.GoogleAuthConsts.RevokeTokenUrl">
             <summary>The path to the Google revocation endpoint.</summary>

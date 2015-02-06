@@ -42,7 +42,7 @@
         <member name="M:Google.Apis.Auth.OAuth2.GoogleWebAuthorizationBroker.AuthorizeAsync(System.Uri,System.Collections.Generic.IEnumerable{System.String},System.String,System.Threading.CancellationToken)">
             <summary>Asynchronously authorizes the specified user.</summary>
             <remarks>
-            It uses <see cref="T:Google.Apis.Util.Store.StroageDataStore"/> as the flow's data store by default.
+            It uses <see cref="T:Google.Apis.Util.Store.StorageDataStore"/> as the flow's data store by default.
             </remarks>
             <param name="clientSecretsUri">The client secrets URI.</param>
             <param name="scopes">
@@ -55,7 +55,7 @@
         <member name="M:Google.Apis.Auth.OAuth2.GoogleWebAuthorizationBroker.AuthorizeAsync(Google.Apis.Auth.OAuth2.ClientSecrets,System.Collections.Generic.IEnumerable{System.String},System.String,System.Threading.CancellationToken)">
             <summary>Asynchronously authorizes the specified user.</summary>
             <remarks>
-            It uses <see cref="T:Google.Apis.Util.Store.StroageDataStore"/> as the flow's data store by default.
+            It uses <see cref="T:Google.Apis.Util.Store.StorageDataStore"/> as the flow's data store by default.
             </remarks>
             <param name="clientSecrets">The client secrets URI.</param>
             <param name="scopes">
