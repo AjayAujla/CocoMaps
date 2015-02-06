@@ -1,18 +1,14 @@
-﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.GoogleSer" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Pages\Master.cs">
+﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus6V" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android/Files/ConcordiaMap_Android.cs">
     <Files>
-      <File FileName="CocoMaps.Shared\Pages\Master.cs" Line="2" Column="2" />
-      <File FileName="CocoMaps.Android\MainActivity.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\App.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Android/Files/ConcordiaMap_Android.cs" Line="6" Column="6" />
+      <File FileName="CocoMaps.Shared/App.cs" Line="29" Column="29" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <DisabledProjects>
-    <String>CocoMaps.iOS/CocoMaps.iOS.csproj</String>
-  </DisabledProjects>
   <MonoDevelop.Ide.ItemProperties.CocoMaps.Android MonoForAntroid.PreferredDevice="Nexus 4" />
 </Properties>

@@ -30,6 +30,8 @@ namespace CocoMaps.Shared.Pages
 			};
 
 			var position = new Position(45.495774,-73.578252); // Latitude, Longitude
+			map.MoveToRegion(MapSpan.FromCenterAndRadius(position,
+				Distance.FromMiles(0.1)));
 
 			var pin = new Pin 
 			{
