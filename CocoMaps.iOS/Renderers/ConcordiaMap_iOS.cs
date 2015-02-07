@@ -65,6 +65,34 @@ namespace CocoMaps.iOS
 
 			iOSMapView.ShowsUserLocation = true;
 
+			Campus SGW = new Campus () {
+				Code = "SGW",
+				Name = "Sir George Williams",
+				SGWBuildingsList = new List<Building>()
+
+			};
+
+			Campus LOY = new Campus () {
+				Code = "LOY",
+				Name = "Loyola",
+				LOYBuildingsList = new List<Building>()
+
+			};
+
+			Building B = new Building () {
+				Code = "B",
+				Name = "B",
+				Address = "2160 Bishop",
+				ShapeCoords = new PointF[] {
+					new PointF { X = 45.49792300709727f, Y = -73.57949629426003f },
+					new PointF { X = 45.49775004181796f, Y = -73.57966259121895f },
+					new PointF { X = 45.497714790676845f, Y = -73.57958950102329f },
+					new PointF { X = 45.49788634602265f, Y = -73.57942119240761f },
+					new PointF { X = 45.49792300709727f, Y = -73.57949629426003f }
+				}
+			};
+			SGW.SGWBuildingsList.Add(B);
+
 			MKPolygon HBldgShape = MKPolygon.FromCoordinates(
 				new CLLocationCoordinate2D[]{
 					new CLLocationCoordinate2D(45.49770304029157, -73.57904434204102),

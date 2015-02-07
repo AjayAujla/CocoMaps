@@ -25,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\ConcordiaMap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Building.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Campus.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Polygons.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />

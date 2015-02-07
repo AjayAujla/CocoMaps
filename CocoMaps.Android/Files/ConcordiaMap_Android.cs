@@ -17,6 +17,13 @@ namespace CocoMapsAndroid
 	public class ConcordiaMapRenderer : MapRenderer
 	{
 		bool _isDrawnDone;
+		Button bt;
+
+
+		public void WriteConsole() {
+			Console.WriteLine("EVENT TRIGGERED!!!");
+		}
+
 
 		protected override void OnElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
@@ -33,6 +40,7 @@ namespace CocoMapsAndroid
 				androidMapView.Map.UiSettings.CompassEnabled = true;
 				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
 				androidMapView.Map.UiSettings.ZoomControlsEnabled = false;
+
 
 				Campus SGW = new Campus () {
 					Code = "SGW",
@@ -270,7 +278,6 @@ namespace CocoMapsAndroid
 					}
 				};
 				SGW.SGWBuildingsList.Add(S);
-
 				// Hall Building Shape
 				PolygonOptions shape = new PolygonOptions ();
 
@@ -289,11 +296,12 @@ namespace CocoMapsAndroid
 					androidMapView.Map.AddPolygon (shape);
 
 				};
+					
+
 
 				_isDrawnDone = true;
 
 			}
-
 
 		}
 
