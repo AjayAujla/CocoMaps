@@ -1,17 +1,11 @@
 ﻿using System.Drawing;
+using System;
 
 namespace CocoMaps.Shared
 {
 	public class Building
 	{
-
-		private readonly string code;
-		private readonly string name;
-		private readonly string address;
-		private readonly PointF pos;
-		private readonly PointF[] shapeCoords;
-
-
+	
 		public Building ()
 		{
 		}
@@ -31,12 +25,12 @@ namespace CocoMaps.Shared
 			set;
 		}
 
-		public PointF Pos {
+		public Tuple<double, double> Pos {
 			get;
 			set;
 		}
 
-		public PointF[] ShapeCoords {
+		public Tuple<double, double>[] ShapeCoords {
 			get;
 			set;
 		}

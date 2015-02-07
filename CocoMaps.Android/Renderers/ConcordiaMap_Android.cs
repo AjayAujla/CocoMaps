@@ -17,13 +17,6 @@ namespace CocoMapsAndroid
 	public class ConcordiaMapRenderer : MapRenderer
 	{
 		bool _isDrawnDone;
-		Button bt;
-
-
-		public void WriteConsole() {
-			Console.WriteLine("EVENT TRIGGERED!!!");
-		}
-
 
 		protected override void OnElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
@@ -43,30 +36,30 @@ namespace CocoMapsAndroid
 
 
 
-				// Hall Building Shape
-				PolygonOptions shape = new PolygonOptions ();
+				PolygonOptions pol = new PolygonOptions ();
 
-				BuildingPolygons bp = new BuildingPolygons ();
+				BuildingRepository br = new BuildingRepository ();
 
-				Campus cSGW = bp.getSGWcampus ();
+				foreach (Campus c in br.getCampusList()) {
+				
+					Console.WriteLine ("Shaping Campus " + c.Code);
 
-				foreach (Building b in cSGW.SGWBuildingsList){
+					foreach (Building b in c.Buildings) {
 
-					shape = new PolygonOptions ();
-					// 3F -> transparency to ~25%  // 932439 -> Concordia's red color
-					shape.InvokeFillColor(0x3F932439);
-					shape.InvokeStrokeColor (0x00932439);
+						Console.WriteLine ("Shaping Building " + b.Name);
 
-					foreach (System.Drawing.PointF p in b.ShapeCoords) {
-						shape.Add (new LatLng(p.X, p.Y));
-					}
+						pol = new PolygonOptions ();
+						pol.InvokeFillColor (0x3F932439); // 3F -> transparency to ~25%
+						pol.InvokeStrokeColor (0x00932439); // 932439 -> Concordia's red color
 
-					Console.WriteLine ("Shaping " + b.Name);
-					androidMapView.Map.AddPolygon (shape);
+						foreach (Tuple<double, double> p in b.ShapeCoords) {
+							pol.Add (new LatLng (p.Item1, p.Item2));
+						}
 
-				};
+						androidMapView.Map.AddPolygon (pol);
 					
-
+					}
+				}
 
 				_isDrawnDone = true;
 
