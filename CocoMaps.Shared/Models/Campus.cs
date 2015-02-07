@@ -5,11 +5,6 @@ namespace CocoMaps.Shared
 {
 	public class Campus
 	{
-		private string code;
-		private string name;
-		private List<Building> SGWBuildings;
-		private List<Building> LOYBuildings;
-		public static List<Campus> CampusList;
 
 		public Campus () {}
 
@@ -23,15 +18,10 @@ namespace CocoMaps.Shared
 			set;
 		}
 
-		public List<Building> SGWBuildingsList {
+		public List<Building> Buildings {
 			get;
 			set;
 		}
 
-		public List<Building> LOYBuildingsList {
-			get;
-			set;
-		}
 	}
 }
-

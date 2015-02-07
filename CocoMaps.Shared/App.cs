@@ -11,7 +11,7 @@ namespace CocoMaps
 		{
 			MainPage = new RootPage();
 
-			DependencyService.Get<ITextToSpeech>().Speak("Welcome to CocoMaps, ABHISHEK!");
+			DependencyService.Get<ITextToSpeech>().Speak("Welcome to CocoMaps!");
 		}
 	}
 }
