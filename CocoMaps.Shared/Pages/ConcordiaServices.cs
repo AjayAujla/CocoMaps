@@ -12,17 +12,12 @@ namespace CocoMaps.Shared.Pages
 	public class ConcordiaServices : ContentPage
 	{
 		SearchBar searchBar;
-		//Label header;
 		Label resultsLabel;
 
 		public ConcordiaServices (IMenuOptions menuItem)
 		{
 			this.SetValue (Page.TitleProperty, menuItem.Title);
 			this.SetValue (Page.IconProperty, menuItem.Icon);
-
-			/*this.header = new Label {
-				HorizontalOptions = LayoutOptions.CenterAndExpand
-			};*/
 
 			this.searchBar = new SearchBar {
 				Placeholder = "Search for a Concordia Service",
@@ -38,7 +33,6 @@ namespace CocoMaps.Shared.Pages
 
 			this.Content = new StackLayout { 
 				Children = {
-					//this.header,
 					this.searchBar,
 					new ScrollView { Content = resultsLabel,
 						VerticalOptions = LayoutOptions.FillAndExpand
@@ -47,17 +41,27 @@ namespace CocoMaps.Shared.Pages
 			};
 		}
 
-		void HandleUnfocused (object sender, FocusEventArgs e)
+		void HandleSearchButtonPressed (object sender, EventArgs e)
 		{
-			
+			SearchQuery (sender, e);
 		}
 
 		void HandleTextChanged (object sender, TextChangedEventArgs e)
 		{
-			
+			SearchQuery (sender, e);
 		}
 
-		void HandleSearchButtonPressed (object sender, EventArgs e)
+		void HandleUnfocused (object sender, FocusEventArgs e)
+		{
+			SearchQuery (sender, e);
+		}
+
+		/**
+		 * Extracts query from search box
+		 * Searches against Concordia Services
+		 * Returns a list of matches, if any.
+		 */
+		void SearchQuery (object sender, EventArgs e)
 		{
 			SearchBar searchBar = (SearchBar)sender;
 			string searchText = searchBar.Text;
@@ -65,11 +69,14 @@ namespace CocoMaps.Shared.Pages
 			var list = new List<Tuple<string, string>> ();
 			this.resultsLabel.Text = "";
 
+			/******************************************************
+			BuildingRepository code is simply for testing purposes.
+			******************************************************/
 			BuildingRepository br = new BuildingRepository ();
 			List<Campus> c = br.getCampusList ();
 
 			foreach (Building building in c.ElementAt (0).Buildings) {
-				if (building.Name.Contains (searchText)) {
+				if (building.Name.IndexOf (searchText, StringComparison.OrdinalIgnoreCase) >= 0) {
 					list.Add (Tuple.Create<string, string> (building.Name, building.Code));
 				}
 			}
@@ -77,7 +84,7 @@ namespace CocoMaps.Shared.Pages
 			if (list.Count == 0) {
 				this.resultsLabel.Text = String.Format ("\"" + searchText + "\" was not found as a Concordia Service.");
 			} else {
-				this.resultsLabel.Text = String.Format ("Found the Services");
+				this.resultsLabel.Text = String.Format ("Found the Services\n");
 
 				foreach (Tuple<string, string> tuple in list) {
 					this.resultsLabel.Text += String.Format ("\n" + tuple.Item2 + ": " + tuple.Item1);
