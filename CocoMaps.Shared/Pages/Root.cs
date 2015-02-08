@@ -54,7 +54,7 @@ namespace CocoMaps.Shared.Pages
 			{
 				return new MasterPage(option);
 			}
-			if (option.Title == "Points Of Interest")
+			if (option.Title == "Points of Interest")
 			{
 				return new MasterPage(option);
 			}
