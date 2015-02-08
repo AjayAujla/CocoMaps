@@ -36,7 +36,7 @@ namespace CocoMaps.Shared.Pages
 			LOYPosition = new Position (45.4585649, -73.6400639);
 
 			map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition,
-				Distance.FromMiles (0.01)));
+				Distance.FromMiles (0.1)));
 
 			var pin = new Pin {
 				Type = PinType.Place,
@@ -85,7 +85,7 @@ namespace CocoMaps.Shared.Pages
 				break;
 			case "LOY":
 				map.MoveToRegion (MapSpan.FromCenterAndRadius (LOYPosition,
-					Distance.FromMiles (0.1)));
+					Distance.FromMiles (0.2)));
 				break;
 			}
 		}

@@ -25,15 +25,15 @@ namespace CocoMaps.Shared.Pages
 
 		}
 
-		void NavigateTo (IMenuOptions option)
+		void NavigateTo (IMenuOptions menuOption)
 		{
 			if (previousItem != null)
 				previousItem.Selected = false;
 
-			option.Selected = true;
-			previousItem = option;
+			menuOption.Selected = true;
+			previousItem = menuOption;
 
-			var displayPage = PageForOption (option);
+			var displayPage = PageForOption (menuOption);
 
 			#if WINDOWS_PHONE
 			Detail = new ContentPage();//work around to clear current page.
@@ -46,34 +46,34 @@ namespace CocoMaps.Shared.Pages
 			IsPresented = false;
 		}
 
-		Page PageForOption (IMenuOptions option)
+		Page PageForOption (IMenuOptions menuOption)
 		{
 			// TODO: Refactor this to the Builder pattern (see ICellFactory).
-			if (option.Title == "Current Location") {
-				return new MasterPage (option);
+			if (menuOption.Title == "Current Location") {
+				return new MasterPage (menuOption);
 			}
-			if (option.Title == "Campus Maps") {
-				return new MasterPage (option);
+			if (menuOption.Title == "Campus Maps") {
+				return new MasterPage (menuOption);
 			}
-			if (option.Title == "Points of Interest") {
-				return new MasterPage (option);
+			if (menuOption.Title == "Points of Interest") {
+				return new MasterPage (menuOption);
 			}
-			if (option.Title == "Concordia Services") {
-				return new MasterPage (option);
+			if (menuOption.Title == "Concordia Services") {
+				return new ConcordiaServices (menuOption);
 			}
-			if (option.Title == "Building Directions") {
-				return new MasterPage (option);
+			if (menuOption.Title == "Building Directions") {
+				return new MasterPage (menuOption);
 			}
-			if (option.Title == "Indoor Directions") {
-				return new MasterPage (option);
+			if (menuOption.Title == "Indoor Directions") {
+				return new MasterPage (menuOption);
 			}
-			if (option.Title == "Calendar") {
-				return new MasterPage (option);
+			if (menuOption.Title == "Calendar") {
+				return new MasterPage (menuOption);
 			}
-			if (option.Title == "Settings") {
-				return new MasterPage (option);
+			if (menuOption.Title == "Settings") {
+				return new MasterPage (menuOption);
 			}
-			throw new NotImplementedException ("Unknown menu option: " + option.Title);
+			throw new NotImplementedException ("Unknown menu option: " + menuOption.Title);
 		}
 	}
 }
