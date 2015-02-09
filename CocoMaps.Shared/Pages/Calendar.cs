@@ -31,7 +31,6 @@ namespace CocoMaps.Shared
 				CalendarContract.Calendars.InterfaceConsts.AccountName
 			};
 
-			//var cursor = ManagedQuery (calendarsUri, calendarsProjection, null, null, null);
 
 			Label header = new Label
 			{
