@@ -85,7 +85,7 @@ namespace CocoMaps.Shared.Pages
 			SearchBar searchBar = (SearchBar)sender;
 			string searchText = searchBar.Text;
 
-			var resultsList = new List<Building> ();
+			var resultsList = new List<Service> ();
 			this.resultsLabel.Text = "";
 			this.serviceLabel.Text = "";
 			this.indoorAddressLabel.Text = "";
@@ -94,29 +94,34 @@ namespace CocoMaps.Shared.Pages
 			/******************************************************
 			BuildingRepository code is simply for testing purposes.
 			******************************************************/
-			BuildingRepository br = BuildingRepository.Repository;
-			List<Campus> campuses = br.getCampusList ();
+			BuildingRepository repository = BuildingRepository.Repository;
+			List<Campus> campuses = repository.getCampusList ();
+
+
 
 			// Check for a matching query to the search criteria
-			foreach (Campus campus in campuses) {
-				foreach (Building building in campus.Buildings) {
-					if (!resultsList.Contains (building) && building.Name.IndexOf (searchText, StringComparison.OrdinalIgnoreCase) >= 0) {
-						resultsList.Add (building);
+			//foreach (Campus campus in campuses) {
+			foreach (Building building in campuses.ElementAt(0).Buildings) {
+				if (building.Services != null) {
+					foreach (Service service in building.Services) {
+						if (!resultsList.Contains (service) && service.Name.IndexOf (searchText, StringComparison.OrdinalIgnoreCase) >= 0) {
+							resultsList.Add (service);
+						}
 					}
 				}
 			}
+			//}
 		
 
 			// Displaying the results, if any
 			if (resultsList.Count == 0) {
 				this.resultsLabel.Text = String.Format ("\"" + searchText + "\" was not found at Concordia University.");
 			} else {
-				int i = 1;
-				foreach (Building building in resultsList) {
-					this.resultsLabel.Text += String.Format (i++ + " Service Name\n");
-					this.resultsLabel.Text += String.Format (building.Campus.Code + " " + building.Name);
+				foreach (Service service in resultsList) {
+					this.resultsLabel.Text += String.Format (service.Name + "\n");
+					this.resultsLabel.Text += String.Format (service.RoomNumber);
 
-					if (building != resultsList.Last ()) {
+					if (service != resultsList.Last ()) {
 						this.resultsLabel.Text += "\n\n";
 					}
 				}

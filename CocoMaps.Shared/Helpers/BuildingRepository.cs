@@ -209,10 +209,6 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "DB Clark Theatre",
-						RoomNumber = ""
-					},
-					new Service {
 						Name = "Dean of Students",
 						RoomNumber = "H-637"
 					},
@@ -237,7 +233,7 @@ namespace CocoMaps.Shared
 						RoomNumber = "H-440"
 					},
 					new Service {
-						Name = "Access Centre for Students with Disabilityies",
+						Name = "Access Centre for Students with Disabilities",
 						RoomNumber = "H-580"
 					}
 				}
