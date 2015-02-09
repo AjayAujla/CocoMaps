@@ -1,5 +1,6 @@
-﻿using System.Drawing;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Drawing;
 
 namespace CocoMaps.Shared
 {
@@ -20,6 +21,11 @@ namespace CocoMaps.Shared
 			set;
 		}
 
+		public Campus Campus {
+			get;
+			set;
+		}
+
 		public string Address {
 			get;
 			set;
@@ -35,6 +41,9 @@ namespace CocoMaps.Shared
 			set;
 		}
 
+		public List<Service> Services {
+			get;
+			set;
+		}
 	}
 }
-

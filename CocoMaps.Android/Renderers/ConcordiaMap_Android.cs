@@ -64,12 +64,11 @@ namespace CocoMapsAndroid
 				androidMapView.Map.UiSettings.CompassEnabled = true;
 				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
 				androidMapView.Map.UiSettings.ZoomControlsEnabled = false;
-
-
+			
 
 				PolygonOptions polygon = new PolygonOptions ();
 
-				BuildingRepository br = new BuildingRepository ();
+				BuildingRepository br = BuildingRepository.Repository;
 
 				foreach (Campus c in br.getCampusList()) {
 				
@@ -98,7 +97,7 @@ namespace CocoMapsAndroid
 				List<LatLng> points = new List<LatLng> ();
 
 				PolylineOptions polyline = new PolylineOptions ();
-				polyline.InvokeColor (0x7F932439);
+				polyline.InvokeColor (0x7F00768e);
 
 				foreach (DirectionSteps direction in directions) {
 					foreach (LatLng point in direction.DecodedPolyline) {
@@ -107,7 +106,7 @@ namespace CocoMapsAndroid
 					foreach (DirectionStep step in direction.Steps) {
 						DependencyService.Get<ITextToSpeech> ().Speak (step.Description);
 						Console.WriteLine (step.Description);
-						Thread.Sleep (3500); // TODO: remove this line
+
 					}
 				}
 

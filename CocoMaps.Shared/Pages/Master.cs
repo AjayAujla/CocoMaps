@@ -14,12 +14,12 @@ namespace CocoMaps.Shared.Pages
 		Position SGWPosition;
 		Position LOYPosition;
 
-		public MasterPage (MenuOptions menuItem)
+		public MasterPage (IMenuOptions menuItem)
 		{
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
 
-			this.SetValue (Page.TitleProperty, menuItem.Title);
+			this.SetValue (Page.TitleProperty, "CocoMaps");
 			this.SetValue (Page.IconProperty, menuItem.Icon);
 
 			map = new ConcordiaMap () {
@@ -28,20 +28,20 @@ namespace CocoMaps.Shared.Pages
 				WidthRequest = 960,
 				VerticalOptions = LayoutOptions.FillAndExpand
 			};
-				
+
 			// Those are the exact coordinates given by Google Maps
 			// When searching for those campuses - DO NOT CHANGE!!!
 			SGWPosition = new Position (45.4971711, -73.5790942);
 			LOYPosition = new Position (45.4585649, -73.6400639);
 
-			map.MoveToRegion (MapSpan.FromCenterAndRadius (LOYPosition,
+			map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition,
 				Distance.FromMiles (0.1)));
 
 			var pin = new Pin {
 				Type = PinType.Place,
 				Position = LOYPosition,
 				Label = "Loyola Campus",
-				Address = "I'm in love with the Coco"
+				Address = "7141 Rue Sherbrooke Ouest"
 			};
 
 			map.Pins.Add (pin);
@@ -84,7 +84,7 @@ namespace CocoMaps.Shared.Pages
 				break;
 			case "LOY":
 				map.MoveToRegion (MapSpan.FromCenterAndRadius (LOYPosition,
-					Distance.FromMiles (0.1)));
+					Distance.FromMiles (0.2)));
 				break;
 			}
 		}
@@ -105,5 +105,4 @@ namespace CocoMaps.Shared.Pages
 			}
 		}
 	}
-
 }
