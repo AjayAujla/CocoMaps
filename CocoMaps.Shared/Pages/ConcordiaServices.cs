@@ -32,8 +32,8 @@ namespace CocoMaps.Shared.Pages
 			this.searchBar = new SearchBar {
 				Placeholder = "Search for a Concordia Service",
 			};
-			this.searchBar.SearchButtonPressed += HandleSearchButtonPressed;
-			//this.searchBar.TextChanged += HandleTextChanged;
+			//this.searchBar.SearchButtonPressed += HandleSearchButtonPressed;
+			this.searchBar.TextChanged += HandleTextChanged;
 			//this.searchBar.Unfocused += HandleUnfocused;
 
 			// Service information labels

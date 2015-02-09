@@ -16,4 +16,4 @@ SOEN 390 Team Project
 
 Winter 2015
 
-Indoor/Outdoor Campus Direction Mobile Application
+Indoor/Outdoor Campus Direction Mobile Application (Xamarin)

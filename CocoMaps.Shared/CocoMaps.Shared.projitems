@@ -32,6 +32,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\GooglePointsDecoder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\ConcordiaServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Service.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\CalendarModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\Calendar.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
