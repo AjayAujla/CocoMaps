@@ -107,7 +107,7 @@ namespace CocoMaps.Shared
 				Code = "CL",
 				Name = "CL",
 				Campus = SGW,
-				Address = "1665 St. St-Catherine W.",
+				Address = "1665 St. St. Catherine W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.4944781718791, -73.57927232980728),
 					new Tuple<double, double> (45.4941707633251, -73.57964850962162),
@@ -137,65 +137,135 @@ namespace CocoMaps.Shared
 			};
 			SGW.Buildings.Add (D);
 
-			Building K = new Building () {
-				Code = "K",
-				Name = "K",
+			Building EN = new Building () {
+				Code = "EN",
+				Name = "EN",
 				Campus = SGW,
-				Address = "2150 Bishop",
+				Address = "2070 Mackay",
 				ShapeCoords = new Tuple<double, double>[] {
-					new Tuple<double, double> (45.497884935980856, -73.5794198513031),
-					new Tuple<double, double> (45.49763159789631, -73.57966527342796),
-					new Tuple<double, double> (45.4975925865501, -73.57958480715752),
-					new Tuple<double, double> (45.49784733485295, -73.57933804392815),
-					new Tuple<double, double> (45.497884935980856, -73.5794198513031)
+					new Tuple<double, double> (45.49693737990155, -73.57957743108273),
+					new Tuple<double, double> (45.496918109002365, -73.57953786849976),
+					new Tuple<double, double> (45.496906828472945, -73.5795445740223),
+					new Tuple<double, double> (45.49689178776354, -73.57951641082764),
+					new Tuple<double, double> (45.4967954331236, -73.5796096175909),
+					new Tuple<double, double> (45.49680295349169, -73.57963241636753),
+					new Tuple<double, double> (45.49667181692945, -73.57976652681828),
+					new Tuple<double, double> (45.496699078318784, -73.57981882989407),
+					new Tuple<double, double> (45.49693737990155, -73.57957743108273)
 				}
 			};
-			SGW.Buildings.Add (K);
+			SGW.Buildings.Add (EN);
 
-			Building M = new Building () {
-				Code = "M",
-				Name = "M",
+			Building EV = new Building () {
+				Code = "EV",
+				Name = "Computer Science, Engineering and Visual Arts Integrated Complex",
 				Campus = SGW,
-				Address = "2135 Mackay",
+				Address = "1515 St. Catherine W.",
 				ShapeCoords = new Tuple<double, double>[] {
-					new Tuple<double, double> (45.49743278075342, -73.57976384460926),
-					new Tuple<double, double> (45.497325146593596, -73.57987113296986),
-					new Tuple<double, double> (45.497288015110826, -73.57979737222195),
-					new Tuple<double, double> (45.497397059395695, -73.57968874275684),
-					new Tuple<double, double> (45.49743278075342, -73.57976384460926)
+					new Tuple<double, double> (45.49518840143307, -73.57789903879166),
+					new Tuple<double, double> (45.49526266714314, -73.57805728912354),
+					new Tuple<double, double> (45.495279588430456, -73.57813641428947),
+					new Tuple<double, double> (45.49536137458087, -73.57844084501266),
+					new Tuple<double, double> (45.49556348927069, -73.57885926961899),
+					new Tuple<double, double> (45.49565185546529, -73.57885658740997),
+					new Tuple<double, double> (45.49592447370251, -73.57858031988144),
+					new Tuple<double, double> (45.49559169126274, -73.57787892222404),
+					new Tuple<double, double> (45.495592631328904, -73.57780382037163),
+					new Tuple<double, double> (45.495522126323436, -73.57765629887581),
+					new Tuple<double, double> (45.495429059581035, -73.5776549577713),
+					new Tuple<double, double> (45.49518840143307, -73.57789903879166)
 				}
 			};
-			SGW.Buildings.Add (M);
+			SGW.Buildings.Add (EV);
 
-			Building MI = new Building () {
-				Code = "MI",
-				Name = "MI",
+			Building FA = new Building () {
+				Code = "FA",
+				Name = "FA",
 				Campus = SGW,
-				Address = "2130 Bishop",
+				Address = "2060 Mackay",
 				ShapeCoords = new Tuple<double, double>[] {
-					new Tuple<double, double> (45.49781302380185, -73.5792676359415),
-					new Tuple<double, double> (45.497646638408106, -73.5794285684824),
-					new Tuple<double, double> (45.49760198687696, -73.57933536171913),
-					new Tuple<double, double> (45.497769312432425, -73.57917308807373),
-					new Tuple<double, double> (45.49781302380185, -73.5792676359415)
+					new Tuple<double, double> (45.496864056445034, -73.57952110469341),
+					new Tuple<double, double> (45.49682739468098, -73.57944399118423),
+					new Tuple<double, double> (45.496742790518965, -73.57953317463398),
+					new Tuple<double, double> (45.49678039238446, -73.57960693538189),
+					new Tuple<double, double> (45.496864056445034, -73.57952110469341)
 				}
 			};
-			SGW.Buildings.Add (MI);
+			SGW.Buildings.Add (FA);
 
-			Building MU = new Building () {
-				Code = "MU",
-				Name = "MU",
+
+			Building FB = new Building () {
+				Code = "FB",
+				Name = "Faubourg Tower",
 				Campus = SGW,
-				Address = "2170 Bishop",
+				Address = "1250 Guy",
 				ShapeCoords = new Tuple<double, double>[] {
-					new Tuple<double, double> (45.497963428254415, -73.57957072556019),
-					new Tuple<double, double> (45.497789053055065, -73.57973903417587),
-					new Tuple<double, double> (45.49775380193838, -73.57966527342796),
-					new Tuple<double, double> (45.49792911727405, -73.57949763536453),
-					new Tuple<double, double> (45.497963428254415, -73.57957072556019)
+					new Tuple<double, double> (45.494912019322506, -73.57778571546078),
+					new Tuple<double, double> (45.49487065589675, -73.57771262526512),
+					new Tuple<double, double> (45.494876296365675, -73.57770457863808),
+					new Tuple<double, double> (45.49483681307125, -73.57763350009918),
+					new Tuple<double, double> (45.49484104342554, -73.57762679457664),
+					new Tuple<double, double> (45.49480014998734, -73.57755102217197),
+					new Tuple<double, double> (45.49480626050299, -73.57754096388817),
+					new Tuple<double, double> (45.49476395691957, -73.57746586203575),
+					new Tuple<double, double> (45.49477335771863, -73.57745379209518),
+					new Tuple<double, double> (45.494692040754835, -73.57730962336063),
+					new Tuple<double, double> (45.49469956140383, -73.57729889452457),
+					new Tuple<double, double> (45.49465443749489, -73.57721976935863),
+					new Tuple<double, double> (45.49439779457518, -73.5775201767683),
+					new Tuple<double, double> (45.494696741160546, -73.57803918421268),
+					new Tuple<double, double> (45.494912019322506, -73.57778571546078)
 				}
 			};
-			SGW.Buildings.Add (MU);
+			SGW.Buildings.Add (FB);
+
+			Building FG = new Building () {
+				Code = "FG",
+				Name = "Faubourg Tower",
+				Campus = SGW,
+				Address = "1616 St. Catherine W.",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.494694390957754, -73.57803918421268),
+					new Tuple<double, double> (45.494451849499804, -73.57761606574059),
+					new Tuple<double, double> (45.49438933379967, -73.57769183814526),
+					new Tuple<double, double> (45.49442693723663, -73.57776291668415),
+					new Tuple<double, double> (45.494391684015206, -73.57780314981937),
+					new Tuple<double, double> (45.49437194220157, -73.57776828110218),
+					new Tuple<double, double> (45.49418721489572, -73.57798755168915),
+					new Tuple<double, double> (45.494203666461544, -73.57801638543606),
+					new Tuple<double, double> (45.49411153763108, -73.57812702655792),
+					new Tuple<double, double> (45.49410495699457, -73.57811562716961),
+					new Tuple<double, double> (45.493911767965706, -73.57834227383137),
+					new Tuple<double, double> (45.493922579048075, -73.57836373150349),
+					new Tuple<double, double> (45.4938924960311, -73.57839927077293),
+					new Tuple<double, double> (45.493883095084975, -73.57838585972786),
+					new Tuple<double, double> (45.49383656037867, -73.57844151556492),
+					new Tuple<double, double> (45.49384925166602, -73.57846297323704),
+					new Tuple<double, double> (45.493625978600626, -73.57873052358627),
+					new Tuple<double, double> (45.4938224589449, -73.57906647026539),
+					new Tuple<double, double> (45.49429579514127, -73.5785112529993),
+					new Tuple<double, double> (45.49430190571165, -73.57852131128311),
+					new Tuple<double, double> (45.49436818185533, -73.57844218611717),
+					new Tuple<double, double> (45.49436348142216, -73.57842944562435),
+					new Tuple<double, double> (45.494694390957754, -73.57803918421268)
+				}
+			};
+			SGW.Buildings.Add (FG);
+
+			Building GM = new Building () {
+				Code = "GM",
+				Name = "Guy-Metro",
+				Campus = SGW,
+				Address = "1550 De Maisonneuve W.",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.49579286506311, -73.5791952162981),
+					new Tuple<double, double> (45.49611483565458, -73.57887402176857),
+					new Tuple<double, double> (45.49594703515268, -73.5785186290741),
+					new Tuple<double, double> (45.495619893240686, -73.57884116470814),
+					new Tuple<double, double> (45.49579286506311, -73.5791952162981)
+				}
+			};
+			SGW.Buildings.Add (GM);
 
 			Building H = new Building () {
 				Code = "H",
@@ -241,6 +311,21 @@ namespace CocoMaps.Shared
 				}
 			};
 			SGW.Buildings.Add (H);
+
+			Building K = new Building () {
+				Code = "K",
+				Name = "K",
+				Campus = SGW,
+				Address = "2150 Bishop",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.497884935980856, -73.5794198513031),
+					new Tuple<double, double> (45.49763159789631, -73.57966527342796),
+					new Tuple<double, double> (45.4975925865501, -73.57958480715752),
+					new Tuple<double, double> (45.49784733485295, -73.57933804392815),
+					new Tuple<double, double> (45.497884935980856, -73.5794198513031)
+				}
+			};
+			SGW.Buildings.Add (K);
 
 			Building LB = new Building () {
 				Code = "LB",
@@ -326,6 +411,152 @@ namespace CocoMaps.Shared
 			};
 			SGW.Buildings.Add (LB);
 
+			Building M = new Building () {
+				Code = "M",
+				Name = "M",
+				Campus = SGW,
+				Address = "2135 Mackay",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.49743278075342, -73.57976384460926),
+					new Tuple<double, double> (45.497325146593596, -73.57987113296986),
+					new Tuple<double, double> (45.497288015110826, -73.57979737222195),
+					new Tuple<double, double> (45.497397059395695, -73.57968874275684),
+					new Tuple<double, double> (45.49743278075342, -73.57976384460926)
+				}
+			};
+			SGW.Buildings.Add (M);
+
+			Building MB = new Building () {
+				Code = "MB",
+				Name = "John Molson School of Business",
+				Campus = SGW,
+				Address = "1450 Guy",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.49781302380185, -73.5792676359415),
+					new Tuple<double, double> (45.497646638408106, -73.5794285684824),
+					new Tuple<double, double> (45.49760198687696, -73.57933536171913),
+					new Tuple<double, double> (45.497769312432425, -73.57917308807373),
+					new Tuple<double, double> (45.49781302380185, -73.5792676359415)
+				}
+			};
+			SGW.Buildings.Add (MB);
+
+			Building MI = new Building () {
+				Code = "MI",
+				Name = "MI",
+				Campus = SGW,
+				Address = "2130 Bishop",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.495200152343095, -73.57926495373249),
+					new Tuple<double, double> (45.49513857754739, -73.57933603227139),
+					new Tuple<double, double> (45.495276298180556, -73.57959017157555),
+					new Tuple<double, double> (45.49531484109607, -73.57958883047104),
+					new Tuple<double, double> (45.495384876326256, -73.57951506972313),
+					new Tuple<double, double> (45.49539662719529, -73.57953518629074),
+					new Tuple<double, double> (45.4956288238641, -73.57927702367306),
+					new Tuple<double, double> (45.49525843682053, -73.57851393520832),
+					new Tuple<double, double> (45.49522130397495, -73.57851259410381),
+					new Tuple<double, double> (45.49506384163618, -73.57868760824203),
+					new Tuple<double, double> (45.495092983952986, -73.5787446051836),
+					new Tuple<double, double> (45.49507136223551, -73.57876606285572),
+					new Tuple<double, double> (45.495066191823575, -73.57875868678093),
+					new Tuple<double, double> (45.49502670866229, -73.57875600457191),
+					new Tuple<double, double> (45.494963723561966, -73.57882641255856),
+					new Tuple<double, double> (45.495200152343095, -73.57926495373249)
+				}
+			};
+			SGW.Buildings.Add (MI);
+
+			Building MU = new Building () {
+				Code = "MU",
+				Name = "MU",
+				Campus = SGW,
+				Address = "2170 Bishop",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.497963428254415, -73.57957072556019),
+					new Tuple<double, double> (45.497789053055065, -73.57973903417587),
+					new Tuple<double, double> (45.49775380193838, -73.57966527342796),
+					new Tuple<double, double> (45.49792911727405, -73.57949763536453),
+					new Tuple<double, double> (45.497963428254415, -73.57957072556019)
+				}
+			};
+			SGW.Buildings.Add (MU);
+
+			Building P = new Building () {
+				Code = "P",
+				Name = "P",
+				Campus = SGW,
+				Address = "2020 Mackay",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.49671787926927, -73.57919186353683),
+					new Tuple<double, double> (45.496680747386044, -73.57911810278893),
+					new Tuple<double, double> (45.49658204226096, -73.57921734452248),
+					new Tuple<double, double> (45.49661823416025, -73.57929177582264),
+					new Tuple<double, double> (45.49671787926927, -73.57919186353683)
+				}
+			};
+			SGW.Buildings.Add (P);
+
+			Building PR = new Building () {
+				Code = "PR",
+				Name = "PR",
+				Campus = SGW,
+				Address = "2100 Mackay",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.497031384193306, -73.5798691213131),
+					new Tuple<double, double> (45.496987672217166, -73.57978396117687),
+					new Tuple<double, double> (45.49679778323874, -73.57997439801693),
+					new Tuple<double, double> (45.4968386752263, -73.58006224036217),
+					new Tuple<double, double> (45.497031384193306, -73.5798691213131)
+				}
+			};
+			SGW.Buildings.Add (PR);
+
+			Building Q = new Building () {
+				Code = "Q",
+				Name = "Q",
+				Campus = SGW,
+				Address = "2010 Mackay",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.496680277362046, -73.57911005616188),
+					new Tuple<double, double> (45.496651135866685, -73.57905372977257),
+					new Tuple<double, double> (45.49654961053924, -73.5791576653719),
+					new Tuple<double, double> (45.496576871987735, -73.57921533286572),
+					new Tuple<double, double> (45.496680277362046, -73.57911005616188)
+				}
+			};
+			SGW.Buildings.Add (Q);
+
+			Building R = new Building () {
+				Code = "R",
+				Name = "R",
+				Campus = SGW,
+				Address = "2050 Mackay",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.496825514589865, -73.57944063842297),
+					new Tuple<double, double> (45.49678462259274, -73.57935816049576),
+					new Tuple<double, double> (45.496699078318784, -73.5794473439455),
+					new Tuple<double, double> (45.49673668021346, -73.57952781021595),
+					new Tuple<double, double> (45.496825514589865, -73.57944063842297)
+				}
+			};
+			SGW.Buildings.Add (R);
+
+			Building RR = new Building () {
+				Code = "RR",
+				Name = "RR",
+				Campus = SGW,
+				Address = "2040 Mackay",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.49678227247707, -73.5793574899435),
+					new Tuple<double, double> (45.49674044040154, -73.57927367091179),
+					new Tuple<double, double> (45.49661212384121, -73.57940509915352),
+					new Tuple<double, double> (45.496651135866685, -73.57948824763298),
+					new Tuple<double, double> (45.49678227247707, -73.5793574899435)
+				}
+			};
+			SGW.Buildings.Add (RR);
+
 			Building S = new Building () {
 				Code = "S",
 				Name = "S",
@@ -342,6 +573,70 @@ namespace CocoMaps.Shared
 				}
 			};
 			SGW.Buildings.Add (S);
+
+			Building T = new Building () {
+				Code = "T",
+				Name = "T",
+				Campus = SGW,
+				Address = "2030 Mackay",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.49673056990727, -73.57928305864334),
+					new Tuple<double, double> (45.49669672819955, -73.57921868562698),
+					new Tuple<double, double> (45.496621054307276, -73.57929311692715),
+					new Tuple<double, double> (45.49665348598783, -73.57935816049576),
+					new Tuple<double, double> (45.49673056990727, -73.57928305864334)
+				}
+			};
+			SGW.Buildings.Add (T);
+
+			Building V = new Building () {
+				Code = "V",
+				Name = "V",
+				Campus = SGW,
+				Address = "2110 Mackay",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.497088726734205, -73.57994019985199),
+					new Tuple<double, double> (45.49704877497009, -73.5798604041338),
+					new Tuple<double, double> (45.4970337342986, -73.57987314462662),
+					new Tuple<double, double> (45.497030444151186, -73.57986845076084),
+					new Tuple<double, double> (45.496941140076245, -73.5799589753151),
+					new Tuple<double, double> (45.49698532210997, -73.58004480600357),
+					new Tuple<double, double> (45.497088726734205, -73.57994019985199)
+				}
+			};
+			SGW.Buildings.Add (V);
+
+			Building X = new Building () {
+				Code = "X",
+				Name = "X",
+				Campus = SGW,
+				Address = "2080 Mackay",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.496943020163485, -73.57969343662262),
+					new Tuple<double, double> (45.496904948384476, -73.57961632311344),
+					new Tuple<double, double> (45.49682175440746, -73.5796994715929),
+					new Tuple<double, double> (45.49685794615269, -73.57977390289307),
+					new Tuple<double, double> (45.496943020163485, -73.57969343662262)
+				}
+			};
+			SGW.Buildings.Add (X);
+
+			Building Z = new Building () {
+				Code = "Z",
+				Name = "Z",
+				Campus = SGW,
+				Address = "2090 Mackay",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.49699049234569, -73.57977591454983),
+					new Tuple<double, double> (45.49694725035956, -73.57969142496586),
+					new Tuple<double, double> (45.49685841617521, -73.57977993786335),
+					new Tuple<double, double> (45.496899778140914, -73.57986576855183),
+					new Tuple<double, double> (45.49699049234569, -73.57977591454983)
+				}
+			};
+			SGW.Buildings.Add (Z);
+
+
 
 
 
@@ -425,11 +720,15 @@ namespace CocoMaps.Shared
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
-					new Tuple<double, double> (45.45822295130977, -73.63934576511383),
-					new Tuple<double, double> (45.458186264396225, -73.63920494914055),
-					new Tuple<double, double> (45.45808749181809, -73.63925591111183),
-					new Tuple<double, double> (45.45810818703926, -73.63940611481667),
-					new Tuple<double, double> (45.45822295130977, -73.63934576511383)
+					new Tuple<double, double> (45.45844871640609, -73.64071905612946),
+					new Tuple<double, double> (45.45829444368806, -73.64083774387836),
+					new Tuple<double, double> (45.45808843251011, -73.64030197262764),
+					new Tuple<double, double> (45.45809125458613, -73.64029727876186),
+					new Tuple<double, double> (45.45800000739008, -73.64005520939827),
+					new Tuple<double, double> (45.458142522275836, -73.63994389772415),
+					new Tuple<double, double> (45.45823659130999, -73.64018328487873),
+					new Tuple<double, double> (45.45824223544704, -73.64017590880394),
+					new Tuple<double, double> (45.45844871640609, -73.64071905612946)
 				}
 			};
 			LOY.Buildings.Add (CC);

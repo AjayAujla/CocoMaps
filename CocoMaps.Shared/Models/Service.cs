@@ -17,5 +17,10 @@ namespace CocoMaps.Shared
 			get;
 			set;
 		}
+
+		public String URI {
+			get;
+			set;
+		}
 	}
 }
