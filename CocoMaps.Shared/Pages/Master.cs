@@ -6,7 +6,6 @@ using CocoMaps.Models;
 using Xamarin.Forms.Maps;
 using System.Diagnostics;
 
-
 namespace CocoMaps.Shared.Pages
 {
 	public class MasterPage : ContentPage

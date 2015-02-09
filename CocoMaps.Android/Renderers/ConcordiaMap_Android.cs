@@ -8,6 +8,11 @@ using CocoMaps.Shared;
 using System.Drawing;
 using System.Collections.Generic;
 using CocoMaps.Models;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using Android.Gms.Common.Data;
+using Java.Lang;
 
 [assembly: ExportRenderer (typeof(CocoMaps.ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]
 
@@ -18,11 +23,37 @@ namespace CocoMapsAndroid
 	{
 		bool _isDrawnDone;
 
+		static async Task<string> RunAsync ()
+		{
+			Console.WriteLine ("CHECKPOINT 1");
+			using (var client = new HttpClient ()) {
+				client.BaseAddress = new Uri ("http://maps.google.com/maps/api/directions/json?");
+				//client.DefaultRequestHeaders.Accept.Clear ();
+				//client.DefaultRequestHeaders.Accept.Add (new MediaTypeWithQualityHeaderValue ("application/json"));
+				Console.WriteLine ("CHECKPOINT 2");
+				HttpResponseMessage response = await client.GetAsync ("origin=45.4971711,-73.5790942&destination=45.4585649,-73.6400639");
+				Console.WriteLine ("CHECKPOINT 3");
+
+				if (response.IsSuccessStatusCode) {
+
+					var responseObject = await response.Content.ReadAsAsync<object> ();
+					Console.WriteLine ("RESPONSE IS: " + responseObject.ToString ());
+					return responseObject.ToString ();
+					
+				}
+				return "Not Succeed";
+			}
+		}
+
 		protected override void OnElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
+
 			base.OnElementPropertyChanged (sender, e);
 			var androidMapView = (MapView)Control;
 			var formsMap = (CocoMaps.ConcordiaMap)sender;
+
+			//var result = RunAsync ();
+			//Console.WriteLine (result.Result);
 
 			if (e.PropertyName.Equals ("VisibleRegion") && !_isDrawnDone) {
 
@@ -33,8 +64,9 @@ namespace CocoMapsAndroid
 				androidMapView.Map.UiSettings.CompassEnabled = true;
 				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
 				androidMapView.Map.UiSettings.ZoomControlsEnabled = false;
+			
 
-				PolygonOptions pol = new PolygonOptions ();
+				PolygonOptions polygon = new PolygonOptions ();
 
 				BuildingRepository br = BuildingRepository.Repository;
 
@@ -46,18 +78,50 @@ namespace CocoMapsAndroid
 
 						Console.WriteLine ("Shaping Building " + b.Name);
 
-						pol = new PolygonOptions ();
-						pol.InvokeFillColor (0x3F932439); // 3F -> transparency to ~25%
-						pol.InvokeStrokeColor (0x00932439); // 932439 -> Concordia's red color
+						polygon = new PolygonOptions ();
+						polygon.InvokeFillColor (0x3F932439); // 3F -> opacity to ~25%
+						polygon.InvokeStrokeColor (0x00932439); // 932439 -> Concordia's red color
 
 						foreach (Tuple<double, double> p in b.ShapeCoords) {
-							pol.Add (new LatLng (p.Item1, p.Item2));
+							polygon.Add (new LatLng (p.Item1, p.Item2));
 						}
 
-						androidMapView.Map.AddPolygon (pol);
+						androidMapView.Map.AddPolygon (polygon);
 					
 					}
 				}
+
+				Console.WriteLine ();
+				List<DirectionSteps> directions = GMapUtil.GetDirections (br.GetCampusByCode ("SGW").Address, br.GetCampusByCode ("LOY").Address);
+
+				List<LatLng> points = new List<LatLng> ();
+
+				PolylineOptions polyline = new PolylineOptions ();
+				polyline.InvokeColor (0x7F00768e);
+
+				foreach (DirectionSteps direction in directions) {
+					foreach (LatLng point in direction.DecodedPolyline) {
+						polyline.Add (point);
+					}
+					foreach (DirectionStep step in direction.Steps) {
+						DependencyService.Get<ITextToSpeech> ().Speak (step.Description);
+						Console.WriteLine (step.Description);
+
+					}
+				}
+
+				androidMapView.Map.AddPolyline (polyline);
+
+
+//				var address = "http://maps.google.com/maps/api/directions/json?origin=45.4971711,-73.5790942&destination=45.4585649,-73.6400639&mode=walking&sensor=true";
+//				try {
+//					var response = new System.Net.WebClient ().DownloadString (address);
+//					Console.WriteLine ("JSON RESPONSE: " + response);
+//				} catch (Exception excep) {
+//					Console.WriteLine (excep.Message);
+//				}
+
+				//Console.WriteLine ("JSON RESPONSE: " + response);
 
 				_isDrawnDone = true;
 

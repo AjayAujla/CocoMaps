@@ -26,6 +26,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Building.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Campus.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\BuildingRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DirectionSteps.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DirectionStep.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GMapUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GooglePointsDecoder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\ConcordiaServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Service.cs" />
   </ItemGroup>
