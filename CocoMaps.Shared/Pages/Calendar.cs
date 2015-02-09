@@ -49,7 +49,7 @@ namespace CocoMaps.Shared
 				new CalendarItems("COMP-232","Lecture","Friday","H-420","08:15","10:30", Color.Maroon),
 				new CalendarItems("COMP-232","Tutorial","Friday","H-420","10:45","12:30", Color.Maroon),
 				// ...etc.,...
-				//new Person(CalendarContract.Calendars.ContentUri.ToString(), new DateTime(1988, 2, 5), Color.Red)
+				
 			};
 
 			// Create the ListView.
