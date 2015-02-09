@@ -44,7 +44,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.497714790676845, -73.57958950102329),
 					new Tuple<double, double> (45.49788634602265, -73.57942119240761),
 					new Tuple<double, double> (45.49792300709727, -73.57949629426003)
-				}
+				},
 			};
 			SGW.Buildings.Add (B);
 
@@ -80,7 +80,7 @@ namespace CocoMaps.Shared
 			Building CI = new Building () {
 				Code = "CI",
 				Name = "CI",
-				Campus = LOY,
+				Campus = SGW,
 				Address = "2149 Mackay",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49752255406562, -73.57993818819523),
@@ -197,6 +197,40 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49683162488575, -73.57884854078293),
 					new Tuple<double, double> (45.497373088471846, -73.57834294438362),
 					new Tuple<double, double> (45.497705860384244, -73.57903495430946)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "DB Clark Theatre",
+						RoomNumber = ""
+					},
+					new Service {
+						Name = "Dean of Students",
+						RoomNumber = "H-637"
+					},
+					new Service {
+						Name = "Aboriginal Student Resource Center",
+						RoomNumber = "H-641"
+					},
+					new Service {
+						Name = "International Students Office",
+						RoomNumber = "H-653"
+					},
+					new Service {
+						Name = "IT Services",
+						RoomNumber = "H-925"
+					},
+					new Service {
+						Name = "Security Department",
+						RoomNumber = "H-118"
+					},
+					new Service {
+						Name = "Counselling and Development",
+						RoomNumber = "H-440"
+					},
+					new Service {
+						Name = "Access Centre for Students with Disabilityies",
+						RoomNumber = "H-580"
+					}
 				}
 			};
 			SGW.Buildings.Add (H);
@@ -247,6 +281,38 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49711410784025, -73.57785813510418),
 					new Tuple<double, double> (45.49713948893482, -73.57783399522305),
 					new Tuple<double, double> (45.49725511377648, -73.5780693590641)
+				},
+				new Service {
+					Name = "J.A. DeSève Cinema",
+					RoomNumber = "LB-125"
+				},
+				new Service {
+					Name = "Birks Student Service Centre",
+					RoomNumber = "LB-185"
+				},
+				new Service {
+					Name = "Bookstore",
+					RoomNumber = "LB-103"
+				},
+				new Service {
+					Name = "Computer Store",
+					RoomNumber = "LB-103"
+				},
+				new Service {
+					Name = "Campus Corner",
+					RoomNumber = "LB-119"
+				},
+				new Service {
+					Name = "Print Store",
+					RoomNumber = "LB-115"
+				},
+				new Service {
+					Name = "DPrint Administration",
+					RoomNumber = "LB-018"
+				},
+				new Service {
+					Name = "Welcome Centre",
+					RoomNumber = "LB-187"
 				}
 			};
 			SGW.Buildings.Add (LB);

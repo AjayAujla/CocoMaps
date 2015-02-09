@@ -40,6 +40,9 @@ namespace CocoMaps.Shared
 			set;
 		}
 
+		public List<Service> Services {
+			get;
+			set;
+		}
 	}
 }
-

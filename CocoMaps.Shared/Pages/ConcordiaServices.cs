@@ -113,7 +113,7 @@ namespace CocoMaps.Shared.Pages
 				int i = 1;
 				foreach (Building building in resultsList) {
 					this.resultsLabel.Text += String.Format (i++ + " Service Name\n");
-					this.resultsLabel.Text += String.Format ("Campus " + building.Address + " " + building.Name);
+					this.resultsLabel.Text += String.Format (building.Campus.Code + " " + building.Name);
 
 					if (building != resultsList.Last ()) {
 						this.resultsLabel.Text += "\n\n";
