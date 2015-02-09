@@ -1,6 +1,5 @@
 ﻿using System;
 using CocoMaps.Shared;
-using System.Drawing;
 using System.Collections.Generic;
 
 namespace CocoMaps.Shared
@@ -967,5 +966,4 @@ namespace CocoMaps.Shared
 			return null;
 		}
 	}
-
 }

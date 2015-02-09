@@ -34,8 +34,6 @@ namespace CocoMapsAndroid
 				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
 				androidMapView.Map.UiSettings.ZoomControlsEnabled = false;
 
-
-
 				PolygonOptions pol = new PolygonOptions ();
 
 				BuildingRepository br = new BuildingRepository ();
@@ -66,6 +64,5 @@ namespace CocoMapsAndroid
 			}
 
 		}
-
 	}
 }
