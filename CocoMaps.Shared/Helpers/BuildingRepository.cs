@@ -1,16 +1,24 @@
 ﻿using System;
 using CocoMaps.Shared;
-using System.Drawing;
 using System.Collections.Generic;
 
 namespace CocoMaps.Shared
 {
 	public class BuildingRepository
 	{
-
+		private static BuildingRepository repository;
 		List<Campus> CampusList = new List<Campus> ();
 
-		public BuildingRepository ()
+		public static BuildingRepository Repository {
+			get {
+				if (repository == null) {
+					repository = new BuildingRepository ();
+				}
+				return repository;
+			}
+		}
+
+		private BuildingRepository ()
 		{
 			Campus SGW = new Campus () {
 				Code = "SGW",
@@ -37,6 +45,7 @@ namespace CocoMaps.Shared
 			Building B = new Building () {
 				Code = "B",
 				Name = "B",
+				Campus = SGW,
 				Address = "2160 Bishop",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49792300709727, -73.57949629426003),
@@ -44,13 +53,14 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.497714790676845, -73.57958950102329),
 					new Tuple<double, double> (45.49788634602265, -73.57942119240761),
 					new Tuple<double, double> (45.49792300709727, -73.57949629426003)
-				}
+				},
 			};
 			SGW.Buildings.Add (B);
 
 			Building CB = new Building () {
 				Code = "CB",
 				Name = "CB",
+				Campus = SGW,
 				Address = "1425 René Lévesque W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.495461491948106, -73.57426129281521),
@@ -79,6 +89,7 @@ namespace CocoMaps.Shared
 			Building CI = new Building () {
 				Code = "CI",
 				Name = "CI",
+				Campus = SGW,
 				Address = "2149 Mackay",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49752255406562, -73.57993818819523),
@@ -93,6 +104,7 @@ namespace CocoMaps.Shared
 			Building CL = new Building () {
 				Code = "CL",
 				Name = "CL",
+				Campus = SGW,
 				Address = "1665 St. St-Catherine W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.4944781718791, -73.57927232980728),
@@ -111,6 +123,7 @@ namespace CocoMaps.Shared
 			Building D = new Building () {
 				Code = "D",
 				Name = "D",
+				Campus = SGW,
 				Address = "2140 Bishop",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49784545479588, -73.57933402061462),
@@ -125,6 +138,7 @@ namespace CocoMaps.Shared
 			Building K = new Building () {
 				Code = "K",
 				Name = "K",
+				Campus = SGW,
 				Address = "2150 Bishop",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.497884935980856, -73.5794198513031),
@@ -139,6 +153,7 @@ namespace CocoMaps.Shared
 			Building M = new Building () {
 				Code = "M",
 				Name = "M",
+				Campus = SGW,
 				Address = "2135 Mackay",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49743278075342, -73.57976384460926),
@@ -153,6 +168,7 @@ namespace CocoMaps.Shared
 			Building MI = new Building () {
 				Code = "MI",
 				Name = "MI",
+				Campus = SGW,
 				Address = "2130 Bishop",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49781302380185, -73.5792676359415),
@@ -167,6 +183,7 @@ namespace CocoMaps.Shared
 			Building MU = new Building () {
 				Code = "MU",
 				Name = "MU",
+				Campus = SGW,
 				Address = "2170 Bishop",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.497963428254415, -73.57957072556019),
@@ -181,6 +198,7 @@ namespace CocoMaps.Shared
 			Building H = new Building () {
 				Code = "H",
 				Name = "Henry F. Hall",
+				Campus = SGW,
 				Address = "1455 De Maisonneuve W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.497705860384244, -73.57903495430946),
@@ -188,6 +206,36 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49683162488575, -73.57884854078293),
 					new Tuple<double, double> (45.497373088471846, -73.57834294438362),
 					new Tuple<double, double> (45.497705860384244, -73.57903495430946)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "Dean of Students",
+						RoomNumber = "H-637"
+					},
+					new Service {
+						Name = "Aboriginal Student Resource Center",
+						RoomNumber = "H-641"
+					},
+					new Service {
+						Name = "International Students Office",
+						RoomNumber = "H-653"
+					},
+					new Service {
+						Name = "IT Services",
+						RoomNumber = "H-925"
+					},
+					new Service {
+						Name = "Security Department",
+						RoomNumber = "H-118"
+					},
+					new Service {
+						Name = "Counselling and Development",
+						RoomNumber = "H-440"
+					},
+					new Service {
+						Name = "Access Centre for Students with Disabilities",
+						RoomNumber = "H-580"
+					}
 				}
 			};
 			SGW.Buildings.Add (H);
@@ -195,6 +243,7 @@ namespace CocoMaps.Shared
 			Building LB = new Building () {
 				Code = "LB",
 				Name = "McConnel Library",
+				Campus = SGW,
 				Address = "1400 De Maisonneuve W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49725511377648, -73.5780693590641),
@@ -237,6 +286,40 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49711410784025, -73.57785813510418),
 					new Tuple<double, double> (45.49713948893482, -73.57783399522305),
 					new Tuple<double, double> (45.49725511377648, -73.5780693590641)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "J.A. DeSève Cinema",
+						RoomNumber = "LB-125"
+					},
+					new Service {
+						Name = "Birks Student Service Centre",
+						RoomNumber = "LB-185"
+					},
+					new Service {
+						Name = "Bookstore",
+						RoomNumber = "LB-103"
+					},
+					new Service {
+						Name = "Computer Store",
+						RoomNumber = "LB-103"
+					},
+					new Service {
+						Name = "Campus Corner",
+						RoomNumber = "LB-119"
+					},
+					new Service {
+						Name = "Print Store",
+						RoomNumber = "LB-115"
+					},
+					new Service {
+						Name = "DPrint Administration",
+						RoomNumber = "LB-018"
+					},
+					new Service {
+						Name = "Welcome Centre",
+						RoomNumber = "LB-187"
+					}
 				}
 			};
 			SGW.Buildings.Add (LB);
@@ -244,6 +327,7 @@ namespace CocoMaps.Shared
 			Building S = new Building () {
 				Code = "S",
 				Name = "S",
+				Campus = SGW,
 				Address = "2145 Mackay",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49748636274756, -73.57983492314816),
@@ -268,6 +352,7 @@ namespace CocoMaps.Shared
 			Building AD = new Building () {
 				Code = "AD",
 				Name = "Administration",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.45828033335741, -73.63981448113918),
@@ -303,6 +388,7 @@ namespace CocoMaps.Shared
 			Building BB = new Building () {
 				Code = "BB",
 				Name = "BB",
+				Campus = LOY,
 				Address = "3502 Belmore",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.45985549479686, -73.63937325775623),
@@ -318,6 +404,7 @@ namespace CocoMaps.Shared
 			Building BH = new Building () {
 				Code = "BH",
 				Name = "BH",
+				Campus = LOY,
 				Address = "3500 Belmore",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.459817397950786, -73.63918080925941),
@@ -333,6 +420,7 @@ namespace CocoMaps.Shared
 			Building CC = new Building () {
 				Code = "CC",
 				Name = "Central",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.45822295130977, -73.63934576511383),
@@ -347,6 +435,7 @@ namespace CocoMaps.Shared
 			Building CJ = new Building () {
 				Code = "CJ",
 				Name = "Communication and Journalism",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.457333051751476, -73.64075526595116),
@@ -392,6 +481,7 @@ namespace CocoMaps.Shared
 			Building DO = new Building () {
 				Code = "DO",
 				Name = "Stinger Dome",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.4579407436682, -73.6347833275795),
@@ -406,6 +496,7 @@ namespace CocoMaps.Shared
 			Building FC = new Building () {
 				Code = "FC",
 				Name = "F.C. Smith",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.45865801865666, 73.63962337374687),
@@ -461,6 +552,7 @@ namespace CocoMaps.Shared
 			Building GE = new Building () {
 				Code = "GE",
 				Name = "Centre for Structural and Functional Genomics",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.456970879305665, -73.6404401063919),
@@ -475,6 +567,7 @@ namespace CocoMaps.Shared
 			Building HA = new Building () {
 				Code = "HA",
 				Name = "Hingston Wing A",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.45967018397027, -73.6413835734129),
@@ -503,6 +596,7 @@ namespace CocoMaps.Shared
 			Building HB = new Building () {
 				Code = "HB",
 				Name = "Hingston Wing B",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.459342831377185, -73.64217348396778),
@@ -542,6 +636,7 @@ namespace CocoMaps.Shared
 			Building HC = new Building () {
 				Code = "HC",
 				Name = "Hingston Wing C",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.45978776705269, -73.64214397966862),
@@ -563,6 +658,7 @@ namespace CocoMaps.Shared
 			Building JR = new Building () {
 				Code = "JR",
 				Name = "Jesuit Residence",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.458539022191516, -73.64337980747223),
@@ -591,6 +687,7 @@ namespace CocoMaps.Shared
 			Building PC = new Building () {
 				Code = "PC",
 				Name = "PERFORM Center",
+				Campus = LOY,
 				Address = "7200 Sherbrooke St. W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.457082823764566, -73.63702297210693),
@@ -607,6 +704,7 @@ namespace CocoMaps.Shared
 			Building PS = new Building () {
 				Code = "PS",
 				Name = "Physical Services",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.45994250601546, -73.6400619149208),
@@ -631,6 +729,7 @@ namespace CocoMaps.Shared
 			Building PT = new Building () {
 				Code = "PT",
 				Name = "Oscar Peterson Concert Hall",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.45948957587806, -73.6391332000494),
@@ -657,6 +756,7 @@ namespace CocoMaps.Shared
 			Building PY = new Building () {
 				Code = "PY",
 				Name = "Psychology",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.45901453620701, -73.64049308001995),
@@ -677,6 +777,7 @@ namespace CocoMaps.Shared
 			Building RA = new Building () {
 				Code = "RA",
 				Name = "Recreational and Athletic Complex",
+				Campus = LOY,
 				Address = "7200 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.45672064971158, -73.6371074616909),
@@ -709,6 +810,7 @@ namespace CocoMaps.Shared
 			Building RF = new Building () {
 				Code = "RF",
 				Name = "Loyola Jesuit Hall and Conference Centre",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.458657548315394, -73.64098593592644),
@@ -748,6 +850,7 @@ namespace CocoMaps.Shared
 			Building SC = new Building () {
 				Code = "SC",
 				Name = "Student Center",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.459295797802504, -73.63932028412819),
@@ -770,6 +873,7 @@ namespace CocoMaps.Shared
 			Building SH = new Building () {
 				Code = "SH",
 				Name = "Solar House",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.45961515500344, -73.64266633987427),
@@ -784,6 +888,7 @@ namespace CocoMaps.Shared
 			Building SI = new Building () {
 				Code = "SI",
 				Name = "Saint-Ignatius of Loyola Church",
+				Campus = LOY,
 				Address = "4455 BroadWay",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.45815239953178, -73.6425456404686),
@@ -826,6 +931,7 @@ namespace CocoMaps.Shared
 			Building SP = new Building () {
 				Code = "SP",
 				Name = "Richard J. Renaud Science Complex",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.4582060188911, -73.64157870411873),
@@ -876,6 +982,7 @@ namespace CocoMaps.Shared
 			Building TA = new Building () {
 				Code = "TA",
 				Name = "Terrebonne",
+				Campus = LOY,
 				Address = "7079 Terrebonne",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.45989735426473, -73.64107847213745),
@@ -890,6 +997,7 @@ namespace CocoMaps.Shared
 			Building VE = new Building () {
 				Code = "VE",
 				Name = "Vanier Extension",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.45907473947591, -73.63879054784775),
@@ -920,6 +1028,7 @@ namespace CocoMaps.Shared
 			Building VL = new Building () {
 				Code = "VL",
 				Name = "Vanier Library",
+				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.45931272989392, -73.63867320120335),
@@ -967,5 +1076,4 @@ namespace CocoMaps.Shared
 			return null;
 		}
 	}
-
 }
