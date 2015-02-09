@@ -1,9 +1,14 @@
-﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.GoogleSer" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android\Files\ConcordiaMap_Android.cs">
+﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.dca08503" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android/Renderers/ConcordiaMap_Android.cs">
     <Files>
-      <File FileName="CocoMaps.Android\Files\ConcordiaMap_Android.cs" Line="38" Column="38" />
-      <File FileName="CocoMaps.Shared\Helpers\BuildingPolygons.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/Models/Building.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/Models/Campus.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Android/Renderers/ConcordiaMap_Android.cs" Line="2" Column="2" />
+      <File FileName="CocoMaps.Shared/Helpers/BuildingRepository.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/Helpers/GMapUtil.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/Helpers/DirectionSteps.cs" Line="2" Column="2" />
+      <File FileName="CocoMaps.Shared/Helpers/DirectionStep.cs" Line="2" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
