@@ -14,9 +14,18 @@ using Android.Gms.Common.Data;
 public class GMapUtil
 {
 
-	public static List<DirectionSteps> GetDirections (string origin, string destination)
+	public enum Mode
 	{
-		var requestUrl = string.Format ("http://maps.google.com/maps/api/directions/xml?origin={0}&destination={1}&mode=walking&sensor=false", origin, destination);
+		Walking,
+		Driving,
+		Transit,
+		Bicycling}
+
+	;
+
+	public static List<DirectionSteps> GetDirections (string origin, string destination, Mode mode)
+	{
+		var requestUrl = string.Format ("http://maps.google.com/maps/api/directions/xml?origin={0}&destination={1}&mode={2}&sensor=true", origin, destination, mode);
  		
 		var client = new WebClient ();
 		var result = client.DownloadString (requestUrl);

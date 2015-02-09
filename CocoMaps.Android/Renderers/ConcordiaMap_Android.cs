@@ -92,24 +92,25 @@ namespace CocoMapsAndroid
 				}
 
 				Console.WriteLine ();
-				List<DirectionSteps> directions = GMapUtil.GetDirections (br.GetCampusByCode ("SGW").Address, br.GetCampusByCode ("LOY").Address);
+				List<DirectionSteps> directions = GMapUtil.GetDirections (br.GetCampusByCode ("SGW").Address, br.GetCampusByCode ("LOY").Address, GMapUtil.Mode.Driving);
 
 				List<LatLng> points = new List<LatLng> ();
 
 				PolylineOptions polyline = new PolylineOptions ();
 				polyline.InvokeColor (0x7F00768e);
-
+				var directionsString = "";
 				foreach (DirectionSteps direction in directions) {
+
 					foreach (LatLng point in direction.DecodedPolyline) {
 						polyline.Add (point);
 					}
-					foreach (DirectionStep step in direction.Steps) {
-						DependencyService.Get<ITextToSpeech> ().Speak (step.Description);
-						Console.WriteLine (step.Description);
 
+					foreach (DirectionStep step in direction.Steps) {
+						directionsString += step.Description + ".";
 					}
 				}
 
+				DependencyService.Get<ITextToSpeech> ().Speak (directionsString);
 				androidMapView.Map.AddPolyline (polyline);
 
 
