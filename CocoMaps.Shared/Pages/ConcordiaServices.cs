@@ -94,7 +94,8 @@ namespace CocoMaps.Shared.Pages
 			/******************************************************
 			BuildingRepository code is simply for testing purposes.
 			******************************************************/
-			List<Campus> campuses = new BuildingRepository ().getCampusList ();
+			BuildingRepository br = BuildingRepository.Repository;
+			List<Campus> campuses = br.getCampusList ();
 
 			// Check for a matching query to the search criteria
 			foreach (Campus campus in campuses) {

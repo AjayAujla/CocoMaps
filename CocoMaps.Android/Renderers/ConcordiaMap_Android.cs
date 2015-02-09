@@ -36,7 +36,7 @@ namespace CocoMapsAndroid
 
 				PolygonOptions pol = new PolygonOptions ();
 
-				BuildingRepository br = new BuildingRepository ();
+				BuildingRepository br = BuildingRepository.Repository;
 
 				foreach (Campus c in br.getCampusList()) {
 				

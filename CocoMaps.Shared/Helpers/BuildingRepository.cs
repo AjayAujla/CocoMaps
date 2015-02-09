@@ -6,10 +6,19 @@ namespace CocoMaps.Shared
 {
 	public class BuildingRepository
 	{
-
+		private static BuildingRepository repository;
 		List<Campus> CampusList = new List<Campus> ();
 
-		public BuildingRepository ()
+		public static BuildingRepository Repository {
+			get {
+				if (repository == null) {
+					repository = new BuildingRepository ();
+				}
+				return repository;
+			}
+		}
+
+		private BuildingRepository ()
 		{
 			Campus SGW = new Campus () {
 				Code = "SGW",
@@ -282,37 +291,39 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49713948893482, -73.57783399522305),
 					new Tuple<double, double> (45.49725511377648, -73.5780693590641)
 				},
-				new Service {
-					Name = "J.A. DeSève Cinema",
-					RoomNumber = "LB-125"
-				},
-				new Service {
-					Name = "Birks Student Service Centre",
-					RoomNumber = "LB-185"
-				},
-				new Service {
-					Name = "Bookstore",
-					RoomNumber = "LB-103"
-				},
-				new Service {
-					Name = "Computer Store",
-					RoomNumber = "LB-103"
-				},
-				new Service {
-					Name = "Campus Corner",
-					RoomNumber = "LB-119"
-				},
-				new Service {
-					Name = "Print Store",
-					RoomNumber = "LB-115"
-				},
-				new Service {
-					Name = "DPrint Administration",
-					RoomNumber = "LB-018"
-				},
-				new Service {
-					Name = "Welcome Centre",
-					RoomNumber = "LB-187"
+				Services = new List<Service> {
+					new Service {
+						Name = "J.A. DeSève Cinema",
+						RoomNumber = "LB-125"
+					},
+					new Service {
+						Name = "Birks Student Service Centre",
+						RoomNumber = "LB-185"
+					},
+					new Service {
+						Name = "Bookstore",
+						RoomNumber = "LB-103"
+					},
+					new Service {
+						Name = "Computer Store",
+						RoomNumber = "LB-103"
+					},
+					new Service {
+						Name = "Campus Corner",
+						RoomNumber = "LB-119"
+					},
+					new Service {
+						Name = "Print Store",
+						RoomNumber = "LB-115"
+					},
+					new Service {
+						Name = "DPrint Administration",
+						RoomNumber = "LB-018"
+					},
+					new Service {
+						Name = "Welcome Centre",
+						RoomNumber = "LB-187"
+					}
 				}
 			};
 			SGW.Buildings.Add (LB);
