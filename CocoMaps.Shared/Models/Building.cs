@@ -20,6 +20,11 @@ namespace CocoMaps.Shared
 			set;
 		}
 
+		public Campus Campus {
+			get;
+			set;
+		}
+
 		public string Address {
 			get;
 			set;

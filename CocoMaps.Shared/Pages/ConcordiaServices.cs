@@ -8,6 +8,8 @@ using Xamarin.Forms;
 using CocoMaps.Shared.Helpers;
 using CocoMaps.Models;
 
+//using Android.Net;
+
 
 namespace CocoMaps.Shared.Pages
 {
@@ -42,10 +44,11 @@ namespace CocoMaps.Shared.Pages
 			this.indoorAddressLabel = new Label ();
 
 
-			/*// Buttons
+			// Buttons
 			this.directionsButton = new Button {
 				Text = "Directions",
 				BorderWidth = 0,
+				WidthRequest = 50,
 				//HorizontalOptions = LayoutOptions.Start,
 			};
 			this.directionsButton.Clicked += HandleDirectionsClicked;
@@ -53,9 +56,10 @@ namespace CocoMaps.Shared.Pages
 			this.toServiceWebsiteButton = new Button {
 				Text = "Website",
 				BorderWidth = 0,
+				WidthRequest = 50,
 				//HorizontalOptions = LayoutOptions.End,
 			};
-			this.toServiceWebsiteButton.Clicked += HandleServiceWebsiteClicked;*/
+			this.toServiceWebsiteButton.Clicked += HandleServiceWebsiteClicked;
 
 
 			// Building the interface
@@ -63,14 +67,10 @@ namespace CocoMaps.Shared.Pages
 		
 			this.Content = new StackLayout { 
 				Children = {
-					this.searchBar,
+					this.searchBar, 
 					new ScrollView { Content = this.resultsLabel,
 						VerticalOptions = LayoutOptions.FillAndExpand,
 					},
-					//this.serviceLabel,
-					//this.indoorAddressLabel,
-					//this.directionsButton,
-					//this.toServiceWebsiteButton
 				}
 			};
 		}
@@ -94,36 +94,30 @@ namespace CocoMaps.Shared.Pages
 			/******************************************************
 			BuildingRepository code is simply for testing purposes.
 			******************************************************/
-			BuildingRepository br = new BuildingRepository ();
-			List<Campus> c = br.getCampusList ();
-
+			List<Campus> campuses = new BuildingRepository ().getCampusList ();
 
 			// Check for a matching query to the search criteria
-			foreach (Building building in c.ElementAt (0).Buildings) {
-				if (building.Name.IndexOf (searchText, StringComparison.OrdinalIgnoreCase) >= 0) {
-					resultsList.Add (building);
+			foreach (Campus campus in campuses) {
+				foreach (Building building in campus.Buildings) {
+					if (!resultsList.Contains (building) && building.Name.IndexOf (searchText, StringComparison.OrdinalIgnoreCase) >= 0) {
+						resultsList.Add (building);
+					}
 				}
 			}
-			foreach (Building building in c.ElementAt (1).Buildings) {
-				if (building.Name.IndexOf (searchText, StringComparison.OrdinalIgnoreCase) >= 0) {
-					resultsList.Add (building);
-				}
-			}
-
+		
 
 			// Displaying the results, if any
 			if (resultsList.Count == 0) {
-				this.serviceLabel.Text = String.Format ("\"" + searchText + "\" was not found at Concordia University.");
+				this.resultsLabel.Text = String.Format ("\"" + searchText + "\" was not found at Concordia University.");
 			} else {
+				int i = 1;
 				foreach (Building building in resultsList) {
-					this.serviceLabel.Text += String.Format ("Service Name\n");
-					this.indoorAddressLabel.Text += String.Format ("Campus " + building.Code + building.Address);
+					this.resultsLabel.Text += String.Format (i++ + " Service Name\n");
+					this.resultsLabel.Text += String.Format ("Campus " + building.Address + " " + building.Name);
 
 					if (building != resultsList.Last ()) {
-						this.serviceLabel.Text += "\n";
+						this.resultsLabel.Text += "\n\n";
 					}
-
-					this.serviceLabel.Text += ".";
 				}
 			}
 		}
