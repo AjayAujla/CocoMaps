@@ -36,21 +36,13 @@ namespace CocoMaps.Shared.Pages
 
 			this.map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition, Distance.FromMiles (0.1)));
 
-			/*var pin = new Pin {
-				Type = PinType.Place,
-				Position = LOYPosition,
-				Label = "Loyola Campus",
-				Address = "7141 Rue Sherbrooke Ouest"
-			};
-
-			map.Pins.Add (pin);*/
 
 			var SGWButton = new Button { Text = "SGW" };
 			var LOYButton = new Button { Text = "LOY" };
 
 
 			SGWButton.Clicked += HandleCampusRegionButton;
-			LOYButton.Clicked += ;
+			LOYButton.Clicked += HandleCampusRegionButton;
 
 
 			var segments = new StackLayout { 
@@ -72,12 +64,10 @@ namespace CocoMaps.Shared.Pages
 			var b = sender as Button;
 			switch (b.Text) {
 			case "SGW":
-				map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition,
-					Distance.FromMiles (0.1)));
+				map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition, Distance.FromMiles (0.1)));
 				break;
 			case "LOY":
-				map.MoveToRegion (MapSpan.FromCenterAndRadius (LOYPosition,
-					Distance.FromMiles (0.2)));
+				map.MoveToRegion (MapSpan.FromCenterAndRadius (LOYPosition,	Distance.FromMiles (0.2)));
 				break;
 			}
 		}
