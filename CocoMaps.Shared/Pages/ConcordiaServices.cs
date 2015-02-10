@@ -10,7 +10,6 @@ using CocoMaps.Models;
 
 //using Android.Net;
 
-
 namespace CocoMaps.Shared.Pages
 {
 	public class ConcordiaServices : ContentPage
