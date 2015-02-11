@@ -14,12 +14,12 @@ namespace CocoMaps.Shared
 	public class Calendar : ContentPage
 	{
 
-		public Calendar (IMenuOptions menuItem)
+		public Calendar (IMenuOptions menuItem, String pageName , List<CalendarItems> CalItems)
 		{
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
 
-			this.SetValue (Page.TitleProperty, "CocoMaps");
+			this.SetValue (Page.TitleProperty, pageName);
 			this.SetValue (Page.IconProperty, menuItem.Icon);
 
 			// content://com.android.calendar/calendars
@@ -34,21 +34,9 @@ namespace CocoMaps.Shared
 
 			Label header = new Label
 			{
-				Text = "Calendar Events",
-				Font = Font.BoldSystemFontOfSize(40),
+				Text = "Classes",
+				Font = Font.BoldSystemFontOfSize(30),
 				HorizontalOptions = LayoutOptions.Center
-			};
-
-			// Define some data.
-			List<CalendarItems> CalItems = new List<CalendarItems>
-			{
-				new CalendarItems("SOEN-341","Lecture","Monday","H-431","13:15","14:30", Color.Maroon),
-				new CalendarItems("COMP-345","Laboratory","Wednesday","H-807","08:15","10:30", Color.Maroon),
-				new CalendarItems("ENCS-282","Tutorial","Thursday","FG-B050","18:15","20:30", Color.Maroon),
-				new CalendarItems("COMP-232","Lecture","Friday","H-420","08:15","10:30", Color.Maroon),
-				new CalendarItems("COMP-232","Tutorial","Friday","H-420","10:45","12:30", Color.Maroon),
-				// ...etc.,...
-				
 			};
 
 			// Create the ListView.

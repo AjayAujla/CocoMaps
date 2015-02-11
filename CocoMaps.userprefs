@@ -1,29 +1,12 @@
-﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus6V" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared/Helpers/BuildingRepository.cs">
+﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.GoogleSer" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Pages\BaseCalendar.cs">
     <Files>
-      <File FileName="CocoMaps.Shared/Models/Building.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Models/Campus.cs" Line="24" Column="24" />
-      <File FileName="CocoMaps.Android/Renderers/ConcordiaMap_Android.cs" Line="7" Column="7" />
-      <File FileName="CocoMaps.Shared/Helpers/BuildingRepository.cs" Line="5" Column="5" />
-      <File FileName="CocoMaps.Shared/Helpers/GMapUtil.cs" Line="8" Column="8" />
-      <File FileName="CocoMaps.Shared/Helpers/DirectionSteps.cs" Line="2" Column="2" />
-      <File FileName="CocoMaps.Shared/Helpers/DirectionStep.cs" Line="2" Column="2" />
-      <File FileName="CocoMaps.Shared/Helpers/GooglePointsDecoder.cs" Line="32" Column="32" />
-      <File FileName="CocoMaps.Shared/Models/Service.cs" Line="20" Column="20" />
+      <File FileName="CocoMaps.Shared\Pages\Calendar.cs" Line="20" Column="20" />
+      <File FileName="CocoMaps.Shared\Models\CalendarModel.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Pages\Root.cs" Line="41" Column="41" />
+      <File FileName="CocoMaps.Shared\Pages\BaseCalendar.cs" Line="3" Column="3" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="CocoMaps.Android" expanded="True" selected="True">
-            <Node name="Renderers" expanded="True" />
-          </Node>
-          <Node name="CocoMaps.Shared" expanded="True">
-            <Node name="Models" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

@@ -68,10 +68,10 @@ namespace CocoMaps.Shared.Pages
 				return new MasterPage (menuOption);
 			}
 			if (menuOption.Title == "Calendar") {
-				return new Calendar (menuOption);
+				return new BaseCalendar (menuOption);
 			}
 			if (menuOption.Title == "Settings") {
-				return new MasterPage (menuOption);
+				return new BaseCalendar (menuOption);
 			}
 			throw new NotImplementedException ("Unknown menu option: " + menuOption.Title);
 		}
