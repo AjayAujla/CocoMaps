@@ -37,14 +37,23 @@ namespace CocoMaps.Shared.Pages
 			map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition,
 				Distance.FromMiles (0.1)));
 
-			var pin = new Pin {
+
+			var SGWPin = new Pin {
+				Type = PinType.Place,
+				Position = LOYPosition,
+				Label = "Sir George Williams Campus",
+				Address = "1455 De Maisonneuve W."
+			};
+
+			var LOYPin = new Pin {
 				Type = PinType.Place,
 				Position = LOYPosition,
 				Label = "Loyola Campus",
 				Address = "7141 Rue Sherbrooke Ouest"
 			};
 
-			map.Pins.Add (pin);
+			map.Pins.Add (SGWPin);
+			map.Pins.Add (LOYPin);
 
 			var streetButton = new Button { Text = "Street" };
 			var hybridButton = new Button { Text = "Hybrid" };

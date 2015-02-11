@@ -60,10 +60,10 @@ namespace CocoMapsAndroid
 				//androidMapView.Map.Clear ();
 				androidMapView.Map.MyLocationEnabled = formsMap.IsShowingUser;
 				androidMapView.Map.UiSettings.CompassEnabled = true;
-				androidMapView.Map.UiSettings.MyLocationButtonEnabled = false;
+				androidMapView.Map.UiSettings.MyLocationButtonEnabled = true;
 				androidMapView.Map.UiSettings.CompassEnabled = true;
 				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
-				androidMapView.Map.UiSettings.ZoomControlsEnabled = false;
+				androidMapView.Map.UiSettings.ZoomControlsEnabled = true;
 			
 
 				PolygonOptions polygon = new PolygonOptions ();
@@ -91,7 +91,7 @@ namespace CocoMapsAndroid
 					}
 				}
 
-				Console.WriteLine ();
+
 				List<DirectionSteps> directions = GMapUtil.GetDirections (br.GetCampusByCode ("SGW").Address, br.GetCampusByCode ("LOY").Address, GMapUtil.Mode.Driving);
 
 				List<LatLng> points = new List<LatLng> ();
@@ -110,7 +110,7 @@ namespace CocoMapsAndroid
 					}
 				}
 
-				DependencyService.Get<ITextToSpeech> ().Speak (directionsString);
+				//DependencyService.Get<ITextToSpeech> ().Speak (directionsString);
 				androidMapView.Map.AddPolyline (polyline);
 
 
