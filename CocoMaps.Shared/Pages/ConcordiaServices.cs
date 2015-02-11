@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -9,7 +9,6 @@ using CocoMaps.Shared.Helpers;
 using CocoMaps.Models;
 
 //using Android.Net;
-
 
 namespace CocoMaps.Shared.Pages
 {
@@ -64,7 +63,7 @@ namespace CocoMaps.Shared.Pages
 
 			// Building the interface
 			this.Padding = new Thickness (10, Device.OnPlatform (20, 20, 0), 10, 5);
-		
+
 			this.Content = new StackLayout { 
 				Children = {
 					this.searchBar, 
@@ -111,7 +110,7 @@ namespace CocoMaps.Shared.Pages
 				}
 			}
 			//}
-		
+
 
 			// Displaying the results, if any
 			if (resultsList.Count == 0) {
