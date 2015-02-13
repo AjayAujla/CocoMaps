@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using SQLite;
 
 namespace CocoMaps.Shared
 {
@@ -11,7 +10,6 @@ namespace CocoMaps.Shared
 		{
 		}
 
-		[PrimaryKey, AutoIncrement]
 		public int ID {
 			get;
 			set;

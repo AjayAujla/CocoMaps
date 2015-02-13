@@ -14,11 +14,9 @@ using Android.Gms.Common.Data;
 using Android.Graphics;
 using Android.Gms.Common;
 using Android.App;
-using SQLite;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
-using BuildingDB;
 using Android.Views;
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]

@@ -2,7 +2,6 @@
 using Xamarin.Forms;
 using CocoMaps.Shared.Pages;
 using CocoMaps.Shared;
-using BuildingDB;
 
 namespace CocoMaps
 {

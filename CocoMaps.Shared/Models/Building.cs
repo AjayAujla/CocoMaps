@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using SQLite;
 
 namespace CocoMaps.Shared
 {
@@ -13,7 +12,6 @@ namespace CocoMaps.Shared
 		{
 		}
 
-		[PrimaryKey, AutoIncrement]
 		public int ID {
 			get;
 			set;
@@ -29,7 +27,6 @@ namespace CocoMaps.Shared
 			set;
 		}
 
-		[Ignore]
 		public Campus Campus {
 			get;
 			set;
@@ -40,25 +37,21 @@ namespace CocoMaps.Shared
 			set;
 		}
 
-		[Ignore]
 		public Tuple<double, double> Pos {
 			get;
 			set;
 		}
 
-		[Ignore]
 		public Tuple<double, double>[] ShapeCoords {
 			get;
 			set;
 		}
 
-		[Ignore]
 		public Tuple<double, double>[] HoleShapeCoords {
 			get;
 			set;
 		}
 
-		[Ignore]
 		public List<Service> Services {
 			get;
 			set;
