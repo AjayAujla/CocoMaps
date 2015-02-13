@@ -29,6 +29,10 @@ namespace CocoMaps.Shared.Pages
 				VerticalOptions = LayoutOptions.FillAndExpand
 			};
 
+			var tapGestureRecognizer = new TapGestureRecognizer ();
+			tapGestureRecognizer.Tapped += (sender, e) => Console.WriteLine ("Tapped");
+			map.GestureRecognizers.Add (tapGestureRecognizer);
+
 			// Those are the exact coordinates given by Google Maps
 			// When searching for those campuses - DO NOT CHANGE!!!
 			SGWPosition = new Position (45.4971711, -73.5790942);
@@ -36,18 +40,35 @@ namespace CocoMaps.Shared.Pages
 
 			this.map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition, Distance.FromMiles (0.1)));
 
+			var SGWPin = new Pin {
+				Type = PinType.Place,
+				Position = SGWPosition,
+				Label = "Sir George Williams Campus",
+				Address = "1455 De Maisonneuve W."
+			};
+
+			var LOYPin = new Pin {
+				Type = PinType.Place,
+				Position = LOYPosition,
+				Label = "Loyola Campus",
+				Address = "7141 Rue Sherbrooke Ouest"
+			};
+
+			//map.Pins.Add (SGWPin);
+			//map.Pins.Add (LOYPin);
+
 
 			var SGWButton = new Button { Text = "SGW" };
 			var LOYButton = new Button { Text = "LOY" };
-
 
 			SGWButton.Clicked += HandleCampusRegionButton;
 			LOYButton.Clicked += HandleCampusRegionButton;
 
 
-			var segments = new StackLayout { 
+			var segments = new StackLayout {
 				Spacing = 10,
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				Opacity = 0.5,
+				HorizontalOptions = LayoutOptions.End,
 				Orientation = StackOrientation.Horizontal, 
 				Children = { SGWButton, LOYButton }
 			};

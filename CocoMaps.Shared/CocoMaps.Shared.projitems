@@ -34,6 +34,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Service.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CalendarModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\Calendar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\CustomPin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\SQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\BaseCalendar.cs" />
   </ItemGroup>
   <ItemGroup>

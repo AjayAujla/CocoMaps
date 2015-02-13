@@ -51,10 +51,10 @@ namespace CocoMaps.Shared
 				Address = "2160 Bishop",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49792300709727, -73.57949629426003),
+					new Tuple<double, double> (45.49788775606442, -73.57942052185535),
+					new Tuple<double, double> (45.497714790676845, -73.57958815991879),
 					new Tuple<double, double> (45.49775004181796, -73.57966259121895),
-					new Tuple<double, double> (45.497714790676845, -73.57958950102329),
-					new Tuple<double, double> (45.49788634602265, -73.57942119240761),
-					new Tuple<double, double> (45.49792300709727, -73.57949629426003)
+					//new Tuple<double, double> (45.49792300709727, -73.57949629426003)
 				},
 			};
 			SGW.Buildings.Add (B);
@@ -83,7 +83,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49536419479084, -73.5740339756012),
 					new Tuple<double, double> (45.49538440629147, -73.57407823204994),
 					new Tuple<double, double> (45.495376885733954, -73.5740802437067),
-					new Tuple<double, double> (45.495461491948106, -73.57426129281521)
+					//new Tuple<double, double> (45.495461491948106, -73.57426129281521)
 				}
 			};
 			SGW.Buildings.Add (CB);
@@ -98,7 +98,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.497410689916435, -73.58004614710808),
 					new Tuple<double, double> (45.497367918271266, -73.57995696365833),
 					new Tuple<double, double> (45.49747884247076, -73.57984632253647),
-					new Tuple<double, double> (45.49752255406562, -73.57993818819523)
+					//new Tuple<double, double> (45.49752255406562, -73.57993818819523)
 				}
 			};
 			SGW.Buildings.Add (CI);
@@ -117,7 +117,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49401470818766, -73.57924215495586),
 					new Tuple<double, double> (45.49404103077127, -73.57920661568642),
 					new Tuple<double, double> (45.49426900263261, -73.57892297208309),
-					new Tuple<double, double> (45.4944781718791, -73.57927232980728)
+					//new Tuple<double, double> (45.4944781718791, -73.57927232980728)
 				}
 			};
 			SGW.Buildings.Add (CL);
@@ -128,11 +128,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2140 Bishop",
 				ShapeCoords = new Tuple<double, double>[] {
-					new Tuple<double, double> (45.49784545479588, -73.57933402061462),
-					new Tuple<double, double> (45.49767859948234, -73.57949495315552),
-					new Tuple<double, double> (45.49764945850363, -73.57943192124367),
-					new Tuple<double, double> (45.497814903859954, -73.57927031815052),
-					new Tuple<double, double> (45.49784545479588, -73.57933402061462)
+					new Tuple<double, double> (45.4978449847816, -73.57933469116688),
+					new Tuple<double, double> (45.49781584388899, -73.57927098870277),
+					new Tuple<double, double> (45.497649928519515, -73.57943125069141),
+					new Tuple<double, double> (45.497680009529304, -73.57949495315552),
+					//new Tuple<double, double> (45.49784545479588, -73.57933402061462)
 				}
 			};
 			SGW.Buildings.Add (D);
@@ -151,7 +151,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49680295349169, -73.57963241636753),
 					new Tuple<double, double> (45.49667181692945, -73.57976652681828),
 					new Tuple<double, double> (45.496699078318784, -73.57981882989407),
-					new Tuple<double, double> (45.49693737990155, -73.57957743108273)
+					//new Tuple<double, double> (45.49693737990155, -73.57957743108273)
 				}
 			};
 			SGW.Buildings.Add (EN);
@@ -173,7 +173,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.495592631328904, -73.57780382037163),
 					new Tuple<double, double> (45.495522126323436, -73.57765629887581),
 					new Tuple<double, double> (45.495429059581035, -73.5776549577713),
-					new Tuple<double, double> (45.49518840143307, -73.57789903879166)
+					//new Tuple<double, double> (45.49518840143307, -73.57789903879166)
 				}
 			};
 			SGW.Buildings.Add (EV);
@@ -188,7 +188,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49682739468098, -73.57944399118423),
 					new Tuple<double, double> (45.496742790518965, -73.57953317463398),
 					new Tuple<double, double> (45.49678039238446, -73.57960693538189),
-					new Tuple<double, double> (45.496864056445034, -73.57952110469341)
+					//new Tuple<double, double> (45.496864056445034, -73.57952110469341)
 				}
 			};
 			SGW.Buildings.Add (FA);
@@ -214,14 +214,14 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49465443749489, -73.57721976935863),
 					new Tuple<double, double> (45.49439779457518, -73.5775201767683),
 					new Tuple<double, double> (45.494696741160546, -73.57803918421268),
-					new Tuple<double, double> (45.494912019322506, -73.57778571546078)
+					//new Tuple<double, double> (45.494912019322506, -73.57778571546078)
 				}
 			};
 			SGW.Buildings.Add (FB);
 
 			Building FG = new Building () {
 				Code = "FG",
-				Name = "Faubourg Tower",
+				Name = "FG",
 				Campus = SGW,
 				Address = "1616 St. Catherine W.",
 				ShapeCoords = new Tuple<double, double>[] {
@@ -247,7 +247,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49430190571165, -73.57852131128311),
 					new Tuple<double, double> (45.49436818185533, -73.57844218611717),
 					new Tuple<double, double> (45.49436348142216, -73.57842944562435),
-					new Tuple<double, double> (45.494694390957754, -73.57803918421268)
+					//new Tuple<double, double> (45.494694390957754, -73.57803918421268)
 				}
 			};
 			SGW.Buildings.Add (FG);
@@ -258,11 +258,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "1550 De Maisonneuve W.",
 				ShapeCoords = new Tuple<double, double>[] {
-					new Tuple<double, double> (45.49579286506311, -73.5791952162981),
-					new Tuple<double, double> (45.49611483565458, -73.57887402176857),
-					new Tuple<double, double> (45.49594703515268, -73.5785186290741),
-					new Tuple<double, double> (45.495619893240686, -73.57884116470814),
-					new Tuple<double, double> (45.49579286506311, -73.5791952162981)
+					new Tuple<double, double> (45.49611248551097, -73.57887402176857),
+					new Tuple<double, double> (45.49594797521289, -73.57851728796959),
+					new Tuple<double, double> (45.4956208333064, -73.57884049415588),
+					new Tuple<double, double> (45.49579380512591, -73.57919186353683),
+					//new Tuple<double, double> (45.49611248551097, -73.57887402176857)
 				}
 			};
 			SGW.Buildings.Add (GM);
@@ -277,7 +277,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49716628007782, -73.57953920960426),
 					new Tuple<double, double> (45.49683162488575, -73.57884854078293),
 					new Tuple<double, double> (45.497373088471846, -73.57834294438362),
-					new Tuple<double, double> (45.497705860384244, -73.57903495430946)
+					//new Tuple<double, double> (45.497705860384244, -73.57903495430946)
 				},
 				Services = new List<Service> {
 					new Service {
@@ -322,7 +322,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49763159789631, -73.57966527342796),
 					new Tuple<double, double> (45.4975925865501, -73.57958480715752),
 					new Tuple<double, double> (45.49784733485295, -73.57933804392815),
-					new Tuple<double, double> (45.497884935980856, -73.5794198513031)
+					//new Tuple<double, double> (45.497884935980856, -73.5794198513031)
 				}
 			};
 			SGW.Buildings.Add (K);
@@ -372,7 +372,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.497090136795975, -73.57781052589417),
 					new Tuple<double, double> (45.49711410784025, -73.57785813510418),
 					new Tuple<double, double> (45.49713948893482, -73.57783399522305),
-					new Tuple<double, double> (45.49725511377648, -73.5780693590641)
+					//new Tuple<double, double> (45.49725511377648, -73.5780693590641)
 				},
 				Services = new List<Service> {
 					new Service {
@@ -421,7 +421,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.497325146593596, -73.57987113296986),
 					new Tuple<double, double> (45.497288015110826, -73.57979737222195),
 					new Tuple<double, double> (45.497397059395695, -73.57968874275684),
-					new Tuple<double, double> (45.49743278075342, -73.57976384460926)
+					//new Tuple<double, double> (45.49743278075342, -73.57976384460926)
 				}
 			};
 			SGW.Buildings.Add (M);
@@ -431,21 +431,6 @@ namespace CocoMaps.Shared
 				Name = "John Molson School of Business",
 				Campus = SGW,
 				Address = "1450 Guy",
-				ShapeCoords = new Tuple<double, double>[] {
-					new Tuple<double, double> (45.49781302380185, -73.5792676359415),
-					new Tuple<double, double> (45.497646638408106, -73.5794285684824),
-					new Tuple<double, double> (45.49760198687696, -73.57933536171913),
-					new Tuple<double, double> (45.497769312432425, -73.57917308807373),
-					new Tuple<double, double> (45.49781302380185, -73.5792676359415)
-				}
-			};
-			SGW.Buildings.Add (MB);
-
-			Building MI = new Building () {
-				Code = "MI",
-				Name = "MI",
-				Campus = SGW,
-				Address = "2130 Bishop",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.495200152343095, -73.57926495373249),
 					new Tuple<double, double> (45.49513857754739, -73.57933603227139),
@@ -462,7 +447,22 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.495066191823575, -73.57875868678093),
 					new Tuple<double, double> (45.49502670866229, -73.57875600457191),
 					new Tuple<double, double> (45.494963723561966, -73.57882641255856),
-					new Tuple<double, double> (45.495200152343095, -73.57926495373249)
+					//new Tuple<double, double> (45.495200152343095, -73.57926495373249)
+				}
+			};
+			SGW.Buildings.Add (MB);
+
+			Building MI = new Building () {
+				Code = "MI",
+				Name = "MI",
+				Campus = SGW,
+				Address = "2130 Bishop",
+				ShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.49781302380185, -73.5792676359415),
+					new Tuple<double, double> (45.497646638408106, -73.5794285684824),
+					new Tuple<double, double> (45.49760198687696, -73.57933536171913),
+					new Tuple<double, double> (45.497769312432425, -73.57917308807373),
+					//new Tuple<double, double> (45.49781302380185, -73.5792676359415)
 				}
 			};
 			SGW.Buildings.Add (MI);
@@ -477,7 +477,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.497789053055065, -73.57973903417587),
 					new Tuple<double, double> (45.49775380193838, -73.57966527342796),
 					new Tuple<double, double> (45.49792911727405, -73.57949763536453),
-					new Tuple<double, double> (45.497963428254415, -73.57957072556019)
+					//new Tuple<double, double> (45.497963428254415, -73.57957072556019)
 				}
 			};
 			SGW.Buildings.Add (MU);
@@ -492,7 +492,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.496680747386044, -73.57911810278893),
 					new Tuple<double, double> (45.49658204226096, -73.57921734452248),
 					new Tuple<double, double> (45.49661823416025, -73.57929177582264),
-					new Tuple<double, double> (45.49671787926927, -73.57919186353683)
+					//new Tuple<double, double> (45.49671787926927, -73.57919186353683)
 				}
 			};
 			SGW.Buildings.Add (P);
@@ -507,7 +507,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.496987672217166, -73.57978396117687),
 					new Tuple<double, double> (45.49679778323874, -73.57997439801693),
 					new Tuple<double, double> (45.4968386752263, -73.58006224036217),
-					new Tuple<double, double> (45.497031384193306, -73.5798691213131)
+					//new Tuple<double, double> (45.497031384193306, -73.5798691213131)
 				}
 			};
 			SGW.Buildings.Add (PR);
@@ -522,7 +522,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.496651135866685, -73.57905372977257),
 					new Tuple<double, double> (45.49654961053924, -73.5791576653719),
 					new Tuple<double, double> (45.496576871987735, -73.57921533286572),
-					new Tuple<double, double> (45.496680277362046, -73.57911005616188)
+					//new Tuple<double, double> (45.496680277362046, -73.57911005616188)
 				}
 			};
 			SGW.Buildings.Add (Q);
@@ -537,7 +537,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49678462259274, -73.57935816049576),
 					new Tuple<double, double> (45.496699078318784, -73.5794473439455),
 					new Tuple<double, double> (45.49673668021346, -73.57952781021595),
-					new Tuple<double, double> (45.496825514589865, -73.57944063842297)
+					//new Tuple<double, double> (45.496825514589865, -73.57944063842297)
 				}
 			};
 			SGW.Buildings.Add (R);
@@ -552,7 +552,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49674044040154, -73.57927367091179),
 					new Tuple<double, double> (45.49661212384121, -73.57940509915352),
 					new Tuple<double, double> (45.496651135866685, -73.57948824763298),
-					new Tuple<double, double> (45.49678227247707, -73.5793574899435)
+					//new Tuple<double, double> (45.49678227247707, -73.5793574899435)
 				}
 			};
 			SGW.Buildings.Add (RR);
@@ -569,7 +569,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49742620050501, -73.57977792620659),
 					new Tuple<double, double> (45.497434660824254, -73.57979267835617),
 					new Tuple<double, double> (45.49745722166936, -73.57977122068405),
-					new Tuple<double, double> (45.49748636274756, -73.57983492314816)
+					//new Tuple<double, double> (45.49748636274756, -73.57983492314816)
 				}
 			};
 			SGW.Buildings.Add (S);
@@ -584,7 +584,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49669672819955, -73.57921868562698),
 					new Tuple<double, double> (45.496621054307276, -73.57929311692715),
 					new Tuple<double, double> (45.49665348598783, -73.57935816049576),
-					new Tuple<double, double> (45.49673056990727, -73.57928305864334)
+					//new Tuple<double, double> (45.49673056990727, -73.57928305864334)
 				}
 			};
 			SGW.Buildings.Add (T);
@@ -595,13 +595,13 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2110 Mackay",
 				ShapeCoords = new Tuple<double, double>[] {
-					new Tuple<double, double> (45.497088726734205, -73.57994019985199),
-					new Tuple<double, double> (45.49704877497009, -73.5798604041338),
-					new Tuple<double, double> (45.4970337342986, -73.57987314462662),
-					new Tuple<double, double> (45.497030444151186, -73.57986845076084),
-					new Tuple<double, double> (45.496941140076245, -73.5799589753151),
-					new Tuple<double, double> (45.49698532210997, -73.58004480600357),
-					new Tuple<double, double> (45.497088726734205, -73.57994019985199)
+					new Tuple<double, double> (45.49708825671362, -73.57994019985199),
+					new Tuple<double, double> (45.49698485208852, -73.58004547655582),
+					new Tuple<double, double> (45.49694443022887, -73.57996232807636),
+					new Tuple<double, double> (45.497031384193306, -73.5798704624176),
+					new Tuple<double, double> (45.4970337342986, -73.57987381517887),
+					new Tuple<double, double> (45.49705018503282, -73.5798617452383),
+					//new Tuple<double, double> (45.497088726734205, -73.57994019985199)
 				}
 			};
 			SGW.Buildings.Add (V);
@@ -616,7 +616,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.496904948384476, -73.57961632311344),
 					new Tuple<double, double> (45.49682175440746, -73.5796994715929),
 					new Tuple<double, double> (45.49685794615269, -73.57977390289307),
-					new Tuple<double, double> (45.496943020163485, -73.57969343662262)
+					//new Tuple<double, double> (45.496943020163485, -73.57969343662262)
 				}
 			};
 			SGW.Buildings.Add (X);
@@ -631,7 +631,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.49694725035956, -73.57969142496586),
 					new Tuple<double, double> (45.49685841617521, -73.57977993786335),
 					new Tuple<double, double> (45.496899778140914, -73.57986576855183),
-					new Tuple<double, double> (45.49699049234569, -73.57977591454983)
+					//new Tuple<double, double> (45.49699049234569, -73.57977591454983)
 				}
 			};
 			SGW.Buildings.Add (Z);
@@ -677,7 +677,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.458114771880766, -73.63956771790981),
 					new Tuple<double, double> (45.45816792093052, -73.63952614367008),
 					new Tuple<double, double> (45.45828033335741, -73.63981179893017),
-					new Tuple<double, double> (45.45828033335741, -73.63981448113918)
+					//new Tuple<double, double> (45.45828033335741, -73.63981448113918)
 				}
 			};
 			LOY.Buildings.Add (AD);
@@ -693,7 +693,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.45983197822826, -73.63934844732285),
 					new Tuple<double, double> (45.459838562868455, -73.63937795162201),
 					new Tuple<double, double> (45.459838562868455, -73.63937795162201),
-					new Tuple<double, double> (45.45985549479686, -73.63937325775623)
+					//new Tuple<double, double> (45.45985549479686, -73.63937325775623)
 				}
 			};
 			LOY.Buildings.Add (BB);
@@ -709,7 +709,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.45966124764598, -73.63911174237728),
 					new Tuple<double, double> (45.459720509559546, -73.63926060497761),
 					new Tuple<double, double> (45.45981833861395, -73.63918013870716),
-					new Tuple<double, double> (45.459817397950786, -73.63918080925941)
+					//new Tuple<double, double> (45.459817397950786, -73.63918080925941)
 				}
 			};
 			LOY.Buildings.Add (BH);
@@ -728,7 +728,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.458142522275836, -73.63994389772415),
 					new Tuple<double, double> (45.45823659130999, -73.64018328487873),
 					new Tuple<double, double> (45.45824223544704, -73.64017590880394),
-					new Tuple<double, double> (45.45844871640609, -73.64071905612946)
+					//new Tuple<double, double> (45.45844871640609, -73.64071905612946)
 				}
 			};
 			LOY.Buildings.Add (CC);
@@ -774,7 +774,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.457335873865276, -73.64074990153313),
 					new Tuple<double, double> (45.457335873865276, -73.64075258374214),
 					new Tuple<double, double> (45.45733399245609, -73.64075124263763),
-					new Tuple<double, double> (45.457333051751476, -73.64075526595116)
+					//new Tuple<double, double> (45.457333051751476, -73.64075526595116)
 				}
 			};
 			LOY.Buildings.Add (CJ);
@@ -789,7 +789,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.45791252282638, -73.63459825515747),
 					new Tuple<double, double> (45.457850436924595, -73.63460898399353),
 					new Tuple<double, double> (45.4578579624921, -73.63478064537048),
-					new Tuple<double, double> (45.4579407436682, -73.6347833275795)
+					//new Tuple<double, double> (45.4579407436682, -73.6347833275795)
 				}
 			};
 			LOY.Buildings.Add (DO);
@@ -800,52 +800,37 @@ namespace CocoMaps.Shared
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
-					new Tuple<double, double> (45.45865801865666, 73.63962337374687),
-					new Tuple<double, double> (45.45865942968043, 73.6395824700594),
-					new Tuple<double, double> (45.45863591261296, 73.63951876759529),
-					new Tuple<double, double> (45.458646260123835, 73.63950870931149),
-					new Tuple<double, double> (45.45861333621894, 73.63943293690681),
-					new Tuple<double, double> (45.458620861684615, 73.63942556083202),
-					new Tuple<double, double> (45.45851221267656, 73.63915733993053),
-					new Tuple<double, double> (45.45852067884054, 73.63914124667645),
-					new Tuple<double, double> (45.45852538226445, 73.63913387060165),
-					new Tuple<double, double> (45.458526793291526, 73.6391231417656),
-					new Tuple<double, double> (45.458526793291526, 73.6391144245863),
-					new Tuple<double, double> (45.45852538226445, 73.63910503685474),
-					new Tuple<double, double> (45.45852303055254, 73.63909363746643),
-					new Tuple<double, double> (45.458519738155715, 73.6390869319439),
-					new Tuple<double, double> (45.45851456438889, 73.6390782147646),
-					new Tuple<double, double> (45.45850844993658, 73.63907486200333),
-					new Tuple<double, double> (45.458501865141045, 73.6390694975853),
-					new Tuple<double, double> (45.45849575068736, 73.6390694975853),
-					new Tuple<double, double> (45.458491987946324, 73.63907150924206),
-					new Tuple<double, double> (45.458488695547686, 73.63907285034657),
-					new Tuple<double, double> (45.458483992120726, 73.63907486200333),
-					new Tuple<double, double> (45.4584802293789, 73.63907754421234),
-					new Tuple<double, double> (45.45847693697958, 73.6390795558691),
-					new Tuple<double, double> (45.45847458526564, 73.63908223807812),
-					new Tuple<double, double> (45.458470352180356, 73.63908559083939),
-					new Tuple<double, double> (45.458459063951324, 73.63909162580967),
-					new Tuple<double, double> (45.45845247915003, 73.63909967243671),
-					new Tuple<double, double> (45.45844354263275, 73.63910235464573),
-					new Tuple<double, double> (45.458333952595076, 73.63918215036392),
-					new Tuple<double, double> (45.45834947394385, 73.63922238349915),
-					new Tuple<double, double> (45.458338656034556, 73.6392317712307),
-					new Tuple<double, double> (45.458348062912314, 73.63926127552986),
-					new Tuple<double, double> (45.458348062912314, 73.63926127552986),
-					new Tuple<double, double> (45.458361702882286, 73.63925389945507),
-					new Tuple<double, double> (45.458425669593936, 73.63942354917526),
-					new Tuple<double, double> (45.45839133452977, 73.63945037126541),
-					new Tuple<double, double> (45.45841955513198, 73.63952279090881),
-					new Tuple<double, double> (45.458450597778075, 73.63949865102768),
-					new Tuple<double, double> (45.45849951342818, 73.6396186798811),
-					new Tuple<double, double> (45.458513623703965, 73.63960795104504),
-					new Tuple<double, double> (45.458539492533774, 73.63968171179295),
-					new Tuple<double, double> (45.4585719461398, 73.63969579339027),
-					new Tuple<double, double> (45.45865801865666, 73.63962538540363),
-					new Tuple<double, double> (45.45865990002167, 73.63962471485138),
-					new Tuple<double, double> (45.45865895933916, 73.63962471485138),
-					new Tuple<double, double> (45.45865801865666, 73.63962337374687)
+					new Tuple<double, double> (45.45865660763283, -73.63962672650814),
+					new Tuple<double, double> (45.45865990002167, -73.6395824700594),
+					new Tuple<double, double> (45.45863685329585, -73.63951809704304),
+					new Tuple<double, double> (45.458644378758365, -73.63950937986374),
+					new Tuple<double, double> (45.45861333621894, -73.63943092525005),
+					new Tuple<double, double> (45.458619450659874, -73.63942623138428),
+					new Tuple<double, double> (45.45851174233407, -73.63915398716927),
+					new Tuple<double, double> (45.45852208986775, -73.63914392888546),
+					new Tuple<double, double> (45.45852538226442, -73.63913655281067),
+					new Tuple<double, double> (45.45852773397625, -73.6391231417656),
+					new Tuple<double, double> (45.45852773397625, -73.63911308348179),
+					new Tuple<double, double> (45.45852303055254, -73.63909631967545),
+					new Tuple<double, double> (45.45852067884054, -73.63909028470516),
+					new Tuple<double, double> (45.45851550507381, -73.63908156752586),
+					new Tuple<double, double> (45.458507509251554, -73.63907352089882),
+					new Tuple<double, double> (45.45849716171521, -73.63907150924206),
+					new Tuple<double, double> (45.458489165890356, -73.63907352089882),
+					new Tuple<double, double> (45.458333952595076, -73.63918483257294),
+					new Tuple<double, double> (45.458349003599984, -73.63922372460365),
+					new Tuple<double, double> (45.4583395967224, -73.63923110067844),
+					new Tuple<double, double> (45.45834947394385, -73.63926060497761),
+					new Tuple<double, double> (45.45835699944471, -73.63925591111183),
+					new Tuple<double, double> (45.458424258564314, -73.63942623138428),
+					new Tuple<double, double> (45.45839321590369, -73.63945171236992),
+					new Tuple<double, double> (45.458421436504956, -73.63952413201332),
+					new Tuple<double, double> (45.45845106812107, -73.63949932157993),
+					new Tuple<double, double> (45.45850139479848, -73.6396186798811),
+					new Tuple<double, double> (45.45851174233407, -73.63961063325405),
+					new Tuple<double, double> (45.4585409035605, -73.63968171179295),
+					new Tuple<double, double> (45.458574297849665, -73.63969512283802),
+					//new Tuple<double, double> (45.45865660763283, -73.63962672650814)
 				}
 			};
 			LOY.Buildings.Add (FC);
@@ -860,7 +845,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.45696053148731, -73.64037171006203),
 					new Tuple<double, double> (45.45693607300003, -73.64037975668907),
 					new Tuple<double, double> (45.45694359868957, -73.64043742418289),
-					new Tuple<double, double> (45.456970879305665, -73.6404401063919)
+					//new Tuple<double, double> (45.456970879305665, -73.6404401063919)
 				}
 			};
 			LOY.Buildings.Add (GE);
@@ -888,7 +873,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.45940256396051, -73.64151902496815),
 					new Tuple<double, double> (45.45942749171276, -73.6415746808052),
 					new Tuple<double, double> (45.4596715949687, -73.64138290286064),
-					new Tuple<double, double> (45.45967018397027, -73.6413835734129)
+					//new Tuple<double, double> (45.45967018397027, -73.6413835734129)
 				}
 			};
 			LOY.Buildings.Add (HA);
@@ -929,7 +914,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.45934236104165, -73.64217482507229),
 					new Tuple<double, double> (45.459341420370514, -73.64217147231102),
 					new Tuple<double, double> (45.45934330171276, -73.64217549562454),
-					new Tuple<double, double> (45.459342831377185, -73.64217348396778)
+					//new Tuple<double, double> (45.459342831377185, -73.64217348396778)
 				}
 			};
 			LOY.Buildings.Add (HB);
@@ -940,18 +925,15 @@ namespace CocoMaps.Shared
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
-					new Tuple<double, double> (45.45978776705269, -73.64214397966862),
-					new Tuple<double, double> (45.4597750680916, -73.64210911095142),
 					new Tuple<double, double> (45.45988606632139, -73.64201992750168),
-					new Tuple<double, double> (45.45981692761919, -73.64184089004993),
-					new Tuple<double, double> (45.459705929253246, -73.64193007349968),
-					new Tuple<double, double> (45.4596904082779, -73.64189453423023),
-					new Tuple<double, double> (45.459517795930594, -73.64203467965126),
-					new Tuple<double, double> (45.45961609566999, -73.64228144288063),
-					new Tuple<double, double> (45.45978729672083, -73.64214465022087),
-					new Tuple<double, double> (45.459788237384515, -73.64214263856411),
-					new Tuple<double, double> (45.45978729672083, -73.64214465022087),
-					new Tuple<double, double> (45.45978776705269, -73.64214397966862)
+					new Tuple<double, double> (45.45981786828236, -73.64184357225895),
+					new Tuple<double, double> (45.45970639958576, -73.64193007349968),
+					new Tuple<double, double> (45.45969228960846, -73.64189520478249),
+					new Tuple<double, double> (45.45951920693287, -73.642034009099),
+					new Tuple<double, double> (45.459617036336525, -73.64228144288063),
+					new Tuple<double, double> (45.45978729672083, -73.64214397966862),
+					new Tuple<double, double> (45.45977647908741, -73.64211179316044),
+					//new Tuple<double, double> (45.45988606632139, -73.64201992750168)
 				}
 			};
 			LOY.Buildings.Add (HC);
@@ -980,7 +962,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.458398860025085, -73.64346966147423),
 					new Tuple<double, double> (45.4584628266946, -73.6434193700552),
 					new Tuple<double, double> (45.458470352180356, -73.64343479275703),
-					new Tuple<double, double> (45.458539022191516, -73.64337980747223)
+					//new Tuple<double, double> (45.458539022191516, -73.64337980747223)
 				}
 			};
 			LOY.Buildings.Add (JR);
@@ -997,7 +979,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.45698122712211, -73.637033700943),
 					new Tuple<double, double> (45.45698122712211, -73.637033700943),
 					new Tuple<double, double> (45.45698122712211, -73.637033700943),
-					new Tuple<double, double> (45.457082823764566, -73.63702297210693)
+					//new Tuple<double, double> (45.457082823764566, -73.63702297210693)
 				}
 			};
 			LOY.Buildings.Add (PC);
@@ -1022,7 +1004,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.4597026369255, -73.64032745361328),
 					new Tuple<double, double> (45.4598503211526, -73.64021614193916),
 					new Tuple<double, double> (45.45982868590784, -73.64015713334084),
-					new Tuple<double, double> (45.45994250601546, -73.6400619149208)
+					//new Tuple<double, double> (45.45994250601546, -73.6400619149208)
 				}
 			};
 			LOY.Buildings.Add (PS);
@@ -1049,7 +1031,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.459305674856424, -73.63923847675323),
 					new Tuple<double, double> (45.459351767751954, -73.63920293748379),
 					new Tuple<double, double> (45.45936352613763, -73.63923110067844),
-					new Tuple<double, double> (45.45948957587806, -73.6391332000494)
+					//new Tuple<double, double> (45.45948957587806, -73.6391332000494)
 				}
 			};
 			LOY.Buildings.Add (PT);
@@ -1060,21 +1042,41 @@ namespace CocoMaps.Shared
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
 				ShapeCoords = new Tuple<double, double>[] {
-					new Tuple<double, double> (45.45901453620701, -73.64049308001995),
-					new Tuple<double, double> (45.4589938413185, -73.64043205976486),
-					new Tuple<double, double> (45.45900795147058, -73.64039786159992),
-					new Tuple<double, double> (45.45899007861069, -73.64035628736019),
-					new Tuple<double, double> (45.45873233252727, -73.64055544137955),
-					new Tuple<double, double> (45.45875349785223, -73.6406097561121),
-					new Tuple<double, double> (45.45877090044683, -73.64059768617153),
-					new Tuple<double, double> (45.458767608064456, -73.64058561623096),
-					new Tuple<double, double> (45.458826400577436, -73.6405386775732),
-					new Tuple<double, double> (45.45885744299957, -73.64061646163464),
-					new Tuple<double, double> (45.45901453620701, -73.64049308001995)
+					new Tuple<double, double> (45.45916880695485, -73.64045888185501),
+					new Tuple<double, double> (45.45914576043701, -73.64039584994316),
+					new Tuple<double, double> (45.45913635369235, -73.64040121436119),
+					new Tuple<double, double> (45.45904369717341, -73.64016383886337),
+					new Tuple<double, double> (45.45895292185747, -73.64023357629776),
+					new Tuple<double, double> (45.458956684567774, -73.64024631679058),
+					new Tuple<double, double> (45.45892140914885, -73.64027515053749),
+					new Tuple<double, double> (45.458913413384145, -73.64025503396988),
+					new Tuple<double, double> (45.458696586627035, -73.64042401313782),
+					new Tuple<double, double> (45.458697997649836, -73.64043205976486),
+					new Tuple<double, double> (45.45865190421989, -73.64046961069107),
+					new Tuple<double, double> (45.45879488779811, -73.6408444494009),
+					new Tuple<double, double> (45.45910060804824, -73.6406110972166),
+					new Tuple<double, double> (45.459121302897586, -73.64066138863564),
+					new Tuple<double, double> (45.45921066693252, -73.6405923217535),
+					new Tuple<double, double> (45.45916316291055, -73.64046223461628),
+					//new Tuple<double, double> (45.45916880695485, -73.64045888185501)
+				},
+				HoleShapeCoords = new Tuple<double, double>[] {
+					new Tuple<double, double> (45.45899195996461, -73.6403576284647),
+					new Tuple<double, double> (45.45873327320852, -73.64055745303631),
+					new Tuple<double, double> (45.4587539681927, -73.64061243832111),
+					new Tuple<double, double> (45.45877278180807, -73.64059835672379),
+					new Tuple<double, double> (45.4587680784048, -73.64058695733547),
+					new Tuple<double, double> (45.45882734125715, -73.64054068922997),
+					new Tuple<double, double> (45.45885697265996, -73.64061579108238),
+					new Tuple<double, double> (45.45901453620701, -73.64049442112446),
+					new Tuple<double, double> (45.45899290064157, -73.64043273031712),
+					new Tuple<double, double> (45.45900842180892, -73.64039987325668),
+					//new Tuple<double, double> (45.45899195996461, -73.6403576284647)
+
 				}
+				
 			};
 			LOY.Buildings.Add (PY);
-
 			Building RA = new Building () {
 				Code = "RA",
 				Name = "Recreational and Athletic Complex",
@@ -1103,7 +1105,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.45696805717357, -73.63796576857567),
 					new Tuple<double, double> (45.45695394651102, -73.63793089985847),
 					new Tuple<double, double> (45.457023088723815, -73.63787725567818),
-					new Tuple<double, double> (45.45672064971158, -73.6371074616909)
+					//new Tuple<double, double> (45.45672064971158, -73.6371074616909)
 				}
 			};
 			LOY.Buildings.Add (RA);
@@ -1143,7 +1145,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.45865613729157, -73.64098459482193),
 					new Tuple<double, double> (45.45865613729157, -73.64098459482193),
 					new Tuple<double, double> (45.45865613729157, -73.64098459482193),
-					new Tuple<double, double> (45.458657548315394, -73.64098593592644)
+					//new Tuple<double, double> (45.458657548315394, -73.64098593592644)
 				}
 			};
 			LOY.Buildings.Add (RF);
@@ -1166,7 +1168,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.4591043707487, -73.63940745592117),
 					new Tuple<double, double> (45.45921866265506, -73.63931961357594),
 					new Tuple<double, double> (45.459237005778974, -73.63936588168144),
-					new Tuple<double, double> (45.459295797802504, -73.63932028412819)
+					//new Tuple<double, double> (45.459295797802504, -73.63932028412819)
 				}
 			};
 			LOY.Buildings.Add (SC);
@@ -1181,7 +1183,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.4595737656597, -73.64253222942352),
 					new Tuple<double, double> (45.459509800250494, -73.64258050918579),
 					new Tuple<double, double> (45.4595436642997, -73.64267706871033),
-					new Tuple<double, double> (45.45961515500344, -73.64266633987427)
+					//new Tuple<double, double> (45.45961515500344, -73.64266633987427)
 				}
 			};
 			LOY.Buildings.Add (SH);
@@ -1224,7 +1226,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.457923811164804, -73.64255905151367),
 					new Tuple<double, double> (45.45790593796126, -73.6425818502903),
 					new Tuple<double, double> (45.45794826922365, -73.6427092552185),
-					new Tuple<double, double> (45.45815239953178, -73.6425456404686)
+					//new Tuple<double, double> (45.45815239953178, -73.6425456404686)
 				}
 			};
 			LOY.Buildings.Add (SI);
@@ -1275,7 +1277,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.45766794160546, -73.64195823669434),
 					new Tuple<double, double> (45.45799624461596, -73.64170342683792),
 					new Tuple<double, double> (45.458011295711025, -73.6417356133461),
-					new Tuple<double, double> (45.4582060188911, -73.64157870411873)
+					//new Tuple<double, double> (45.4582060188911, -73.64157870411873)
 				}
 			};
 			LOY.Buildings.Add (SP);
@@ -1286,11 +1288,11 @@ namespace CocoMaps.Shared
 				Campus = LOY,
 				Address = "7079 Terrebonne",
 				ShapeCoords = new Tuple<double, double>[] {
-					new Tuple<double, double> (45.45989735426473, -73.64107847213745),
-					new Tuple<double, double> (45.45986537175274, -73.64095240831375),
-					new Tuple<double, double> (45.45979952534742, -73.64097118377686),
-					new Tuple<double, double> (45.45980705065481, -73.64107310771942),
-					new Tuple<double, double> (45.45989735426473, -73.64107847213745)
+					new Tuple<double, double> (45.46007984236839, -73.64090614020824),
+					new Tuple<double, double> (45.46004174567388, -73.64080622792244),
+					new Tuple<double, double> (45.45993498072619, -73.64089272916317),
+					new Tuple<double, double> (45.459971666501936, -73.64099264144897),
+					//new Tuple<double, double> (45.46007984236839, -73.64090614020824)
 				}
 			};
 			LOY.Buildings.Add (TA);
@@ -1321,7 +1323,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.45900654045553, -73.6388897895813),
 					new Tuple<double, double> (45.459025824324826, -73.63887503743172),
 					new Tuple<double, double> (45.45901500654529, -73.63884083926678),
-					new Tuple<double, double> (45.45907473947591, -73.63879054784775)
+					//new Tuple<double, double> (45.45907473947591, -73.63879054784775)
 				}
 			};
 			LOY.Buildings.Add (VE);
@@ -1356,7 +1358,7 @@ namespace CocoMaps.Shared
 					new Tuple<double, double> (45.45925581923316, -73.63854646682739),
 					new Tuple<double, double> (45.459275103017205, -73.63859139382839),
 					new Tuple<double, double> (45.45927933604209, -73.63858871161938),
-					new Tuple<double, double> (45.45931272989392, -73.63867320120335)
+					//new Tuple<double, double> (45.45931272989392, -73.63867320120335)
 				}
 			};
 			LOY.Buildings.Add (VL);

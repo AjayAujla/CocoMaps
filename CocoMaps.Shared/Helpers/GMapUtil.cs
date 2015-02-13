@@ -10,7 +10,6 @@ using Org.Apache.Http.Cookies;
 using Android.Gms.Maps;
 using Android.Gms.Common.Data;
 
-
 public class GMapUtil
 {
 
@@ -25,7 +24,7 @@ public class GMapUtil
 
 	public static List<DirectionSteps> GetDirections (string origin, string destination, Mode mode)
 	{
-		var requestUrl = string.Format ("http://maps.google.com/maps/api/directions/xml?origin={0}&destination={1}&mode={2}&sensor=true", origin, destination, mode);
+		var requestUrl = string.Format ("http://maps.google.com/maps/api/directions/xml?origin={0}+Montreal&destination={1}+Montreal&mode=walking&sensor=true", origin, destination);
  		
 		var client = new WebClient ();
 		var result = client.DownloadString (requestUrl);
