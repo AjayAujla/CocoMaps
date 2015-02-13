@@ -7,7 +7,8 @@ public class EntryCellView
 		mono.android.IGCUserPeer,
 		android.text.TextWatcher,
 		android.text.NoCopySpan,
-		android.view.View.OnFocusChangeListener
+		android.view.View.OnFocusChangeListener,
+		android.widget.TextView.OnEditorActionListener
 {
 	static final String __md_methods;
 	static {
@@ -16,8 +17,9 @@ public class EntryCellView
 			"n_beforeTextChanged:(Ljava/lang/CharSequence;III)V:GetBeforeTextChanged_Ljava_lang_CharSequence_IIIHandler:Android.Text.ITextWatcherInvoker, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\n" +
 			"n_onTextChanged:(Ljava/lang/CharSequence;III)V:GetOnTextChanged_Ljava_lang_CharSequence_IIIHandler:Android.Text.ITextWatcherInvoker, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\n" +
 			"n_onFocusChange:(Landroid/view/View;Z)V:GetOnFocusChange_Landroid_view_View_ZHandler:Android.Views.View/IOnFocusChangeListenerInvoker, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\n" +
+			"n_onEditorAction:(Landroid/widget/TextView;ILandroid/view/KeyEvent;)Z:GetOnEditorAction_Landroid_widget_TextView_ILandroid_view_KeyEvent_Handler:Android.Widget.TextView/IOnEditorActionListenerInvoker, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\n" +
 			"";
-		mono.android.Runtime.register ("Xamarin.Forms.Platform.Android.EntryCellView, Xamarin.Forms.Platform.Android, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null", EntryCellView.class, __md_methods);
+		mono.android.Runtime.register ("Xamarin.Forms.Platform.Android.EntryCellView, Xamarin.Forms.Platform.Android, Version=1.3.3.0, Culture=neutral, PublicKeyToken=null", EntryCellView.class, __md_methods);
 	}
 
 
@@ -25,7 +27,7 @@ public class EntryCellView
 	{
 		super (p0);
 		if (getClass () == EntryCellView.class)
-			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.EntryCellView, Xamarin.Forms.Platform.Android, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", this, new java.lang.Object[] { p0 });
+			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.EntryCellView, Xamarin.Forms.Platform.Android, Version=1.3.3.0, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", this, new java.lang.Object[] { p0 });
 	}
 
 
@@ -33,7 +35,7 @@ public class EntryCellView
 	{
 		super (p0, p1);
 		if (getClass () == EntryCellView.class)
-			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.EntryCellView, Xamarin.Forms.Platform.Android, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:Android.Util.IAttributeSet, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", this, new java.lang.Object[] { p0, p1 });
+			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.EntryCellView, Xamarin.Forms.Platform.Android, Version=1.3.3.0, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:Android.Util.IAttributeSet, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", this, new java.lang.Object[] { p0, p1 });
 	}
 
 
@@ -41,7 +43,7 @@ public class EntryCellView
 	{
 		super (p0, p1, p2);
 		if (getClass () == EntryCellView.class)
-			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.EntryCellView, Xamarin.Forms.Platform.Android, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:Android.Util.IAttributeSet, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:System.Int32, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", this, new java.lang.Object[] { p0, p1, p2 });
+			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.EntryCellView, Xamarin.Forms.Platform.Android, Version=1.3.3.0, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:Android.Util.IAttributeSet, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:System.Int32, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", this, new java.lang.Object[] { p0, p1, p2 });
 	}
 
 
@@ -49,7 +51,7 @@ public class EntryCellView
 	{
 		super (p0, p1, p2, p3);
 		if (getClass () == EntryCellView.class)
-			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.EntryCellView, Xamarin.Forms.Platform.Android, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:Android.Util.IAttributeSet, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:System.Int32, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e:System.Int32, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", this, new java.lang.Object[] { p0, p1, p2, p3 });
+			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.EntryCellView, Xamarin.Forms.Platform.Android, Version=1.3.3.0, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:Android.Util.IAttributeSet, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065:System.Int32, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e:System.Int32, mscorlib, Version=2.0.5.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e", this, new java.lang.Object[] { p0, p1, p2, p3 });
 	}
 
 
@@ -83,6 +85,14 @@ public class EntryCellView
 	}
 
 	private native void n_onFocusChange (android.view.View p0, boolean p1);
+
+
+	public boolean onEditorAction (android.widget.TextView p0, int p1, android.view.KeyEvent p2)
+	{
+		return n_onEditorAction (p0, p1, p2);
+	}
+
+	private native boolean n_onEditorAction (android.widget.TextView p0, int p1, android.view.KeyEvent p2);
 
 	java.util.ArrayList refList;
 	public void monodroidAddReference (java.lang.Object obj)

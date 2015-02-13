@@ -1,4 +1,7 @@
+CocoMaps.SplashScreen;cocomaps.SplashScreen
 CocoMaps.MainActivity;cocomaps.MainActivity
+CocoMaps.Android.TextToSpeech_Android;cocomaps.android.TextToSpeech_Android
+CocoMapsAndroid.ConcordiaMapRenderer;cocomapsandroid.ConcordiaMapRenderer
 Android.Gms.Ads.DoubleClick.IAppEventListenerImplementor;mono.com.google.android.gms.ads.doubleclick.AppEventListenerImplementor
 Android.Gms.Ads.Mediation.CustomEvent.ICustomEventListenerImplementor;mono.com.google.android.gms.ads.mediation.customevent.CustomEventListenerImplementor
 Android.Gms.Ads.Mediation.IMediationBannerListenerImplementor;mono.com.google.android.gms.ads.mediation.MediationBannerListenerImplementor
@@ -142,6 +145,8 @@ Xamarin.Forms.Platform.Android.TableViewRenderer;xamarin.forms.platform.android.
 Xamarin.Forms.Platform.Android.TimePickerRenderer;xamarin.forms.platform.android.TimePickerRenderer
 Xamarin.Forms.Platform.Android.TimePickerRenderer.TimePickerListener;xamarin.forms.platform.android.TimePickerRenderer_TimePickerListener
 Xamarin.Forms.Platform.Android.ToolbarRenderer;xamarin.forms.platform.android.ToolbarRenderer
+Xamarin.Forms.Platform.Android.ToolbarButton;xamarin.forms.platform.android.ToolbarButton
+Xamarin.Forms.Platform.Android.ToolbarImageButton;xamarin.forms.platform.android.ToolbarImageButton
 Xamarin.Forms.Platform.Android.WebViewRenderer;xamarin.forms.platform.android.WebViewRenderer
 Xamarin.Forms.Platform.Android.WebViewRenderer.WebClient;xamarin.forms.platform.android.WebViewRenderer_WebClient
 Xamarin.Forms.Platform.Android.VisualElementTracker.AttachTracker;xamarin.forms.platform.android.VisualElementTracker_AttachTracker

@@ -1,4 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
   <color name="xamarinblue">#3498db</color>
+  <color name="white">#FFFFFF</color>
+  <color name="maroon">#932439</color>
+  <color name="navy">#00768e</color>
 </resources>

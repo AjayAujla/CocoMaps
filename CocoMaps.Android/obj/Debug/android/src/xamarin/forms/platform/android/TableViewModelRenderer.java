@@ -10,6 +10,7 @@ public class TableViewModelRenderer
 	static final String __md_methods;
 	static {
 		__md_methods = 
+			"n_isEnabled:(I)Z:GetIsEnabled_IHandler\n" +
 			"n_areAllItemsEnabled:()Z:GetAreAllItemsEnabledHandler\n" +
 			"n_getCount:()I:GetGetCountHandler\n" +
 			"n_getViewTypeCount:()I:GetGetViewTypeCountHandler\n" +
@@ -18,7 +19,7 @@ public class TableViewModelRenderer
 			"n_getItem:(I)Ljava/lang/Object;:GetGetItem_IHandler\n" +
 			"n_onItemClick:(Landroid/widget/AdapterView;Landroid/view/View;IJ)V:GetOnItemClick_Landroid_widget_AdapterView_Landroid_view_View_IJHandler:Android.Widget.AdapterView/IOnItemClickListenerInvoker, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\n" +
 			"";
-		mono.android.Runtime.register ("Xamarin.Forms.Platform.Android.TableViewModelRenderer, Xamarin.Forms.Platform.Android, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null", TableViewModelRenderer.class, __md_methods);
+		mono.android.Runtime.register ("Xamarin.Forms.Platform.Android.TableViewModelRenderer, Xamarin.Forms.Platform.Android, Version=1.3.3.0, Culture=neutral, PublicKeyToken=null", TableViewModelRenderer.class, __md_methods);
 	}
 
 
@@ -26,15 +27,23 @@ public class TableViewModelRenderer
 	{
 		super ();
 		if (getClass () == TableViewModelRenderer.class)
-			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.TableViewModelRenderer, Xamarin.Forms.Platform.Android, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
+			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.TableViewModelRenderer, Xamarin.Forms.Platform.Android, Version=1.3.3.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
 	public TableViewModelRenderer (android.content.Context p0) throws java.lang.Throwable
 	{
 		super ();
 		if (getClass () == TableViewModelRenderer.class)
-			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.TableViewModelRenderer, Xamarin.Forms.Platform.Android, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", this, new java.lang.Object[] { p0 });
+			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.TableViewModelRenderer, Xamarin.Forms.Platform.Android, Version=1.3.3.0, Culture=neutral, PublicKeyToken=null", "Android.Content.Context, Mono.Android, Version=0.0.0.0, Culture=neutral, PublicKeyToken=84e04ff9cfb79065", this, new java.lang.Object[] { p0 });
 	}
+
+
+	public boolean isEnabled (int p0)
+	{
+		return n_isEnabled (p0);
+	}
+
+	private native boolean n_isEnabled (int p0);
 
 
 	public boolean areAllItemsEnabled ()

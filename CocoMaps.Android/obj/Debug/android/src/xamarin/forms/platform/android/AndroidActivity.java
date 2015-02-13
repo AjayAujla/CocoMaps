@@ -10,7 +10,7 @@ public class AndroidActivity
 	static {
 		__md_methods = 
 			"";
-		mono.android.Runtime.register ("Xamarin.Forms.Platform.Android.AndroidActivity, Xamarin.Forms.Platform.Android, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null", AndroidActivity.class, __md_methods);
+		mono.android.Runtime.register ("Xamarin.Forms.Platform.Android.AndroidActivity, Xamarin.Forms.Platform.Android, Version=1.3.3.0, Culture=neutral, PublicKeyToken=null", AndroidActivity.class, __md_methods);
 	}
 
 
@@ -18,7 +18,7 @@ public class AndroidActivity
 	{
 		super ();
 		if (getClass () == AndroidActivity.class)
-			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.AndroidActivity, Xamarin.Forms.Platform.Android, Version=1.3.1.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
+			mono.android.TypeManager.Activate ("Xamarin.Forms.Platform.Android.AndroidActivity, Xamarin.Forms.Platform.Android, Version=1.3.3.0, Culture=neutral, PublicKeyToken=null", "", this, new java.lang.Object[] {  });
 	}
 
 	java.util.ArrayList refList;

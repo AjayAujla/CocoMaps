@@ -18,6 +18,11 @@ namespace CocoMaps.Shared.Helpers
 		public static readonly Color DarkGray = 0x333333;
 		public static readonly Color Tint = 0x5AA09B;
 
+		// Concordia's colors
+		public static readonly Color Maroon = 0x932439;
+		public static readonly Color Navy = 0x00768e;
+
+
 
 		public double R, G, B;
 

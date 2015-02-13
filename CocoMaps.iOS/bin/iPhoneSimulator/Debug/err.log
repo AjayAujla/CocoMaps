@@ -1,0 +1,80 @@
+2015-02-07 15:02:50.978 CocoMaps[11713:376340] MonoTouch: Socket error while connecting to MonoDevelop on 127.0.0.1:10000: Connection refused
+2015-02-07 15:02:56.108 CocoMaps[11713:376401] Speech initialization error: 2147483665
+2015-02-07 15:02:56.225 CocoMaps[11713:376275] Number of buildings in SGW is 12
+2015-02-07 15:02:56.225 CocoMaps[11713:376275] Number of coordinates in B is 5
+2015-02-07 15:02:56.226 CocoMaps[11713:376275] SHAPED B
+2015-02-07 15:02:56.227 CocoMaps[11713:376275] Number of coordinates in CB is 19
+2015-02-07 15:02:56.227 CocoMaps[11713:376275] SHAPED CB
+2015-02-07 15:02:56.227 CocoMaps[11713:376275] Number of coordinates in CI is 5
+2015-02-07 15:02:56.227 CocoMaps[11713:376275] SHAPED CI
+2015-02-07 15:02:56.228 CocoMaps[11713:376275] Number of coordinates in CL is 9
+2015-02-07 15:02:56.228 CocoMaps[11713:376275] SHAPED CL
+2015-02-07 15:02:56.228 CocoMaps[11713:376275] Number of coordinates in D is 5
+2015-02-07 15:02:56.228 CocoMaps[11713:376275] SHAPED D
+2015-02-07 15:02:56.228 CocoMaps[11713:376275] Number of coordinates in K is 5
+2015-02-07 15:02:56.228 CocoMaps[11713:376275] SHAPED K
+2015-02-07 15:02:56.228 CocoMaps[11713:376275] Number of coordinates in M is 5
+2015-02-07 15:02:56.229 CocoMaps[11713:376275] SHAPED M
+2015-02-07 15:02:56.229 CocoMaps[11713:376275] Number of coordinates in MI is 5
+2015-02-07 15:02:56.229 CocoMaps[11713:376275] SHAPED MI
+2015-02-07 15:02:56.229 CocoMaps[11713:376275] Number of coordinates in MU is 5
+2015-02-07 15:02:56.229 CocoMaps[11713:376275] SHAPED MU
+2015-02-07 15:02:56.229 CocoMaps[11713:376275] Number of coordinates in H is 5
+2015-02-07 15:02:56.229 CocoMaps[11713:376275] SHAPED Henry F. Hall
+2015-02-07 15:02:56.229 CocoMaps[11713:376275] Number of coordinates in LB is 40
+2015-02-07 15:02:56.230 CocoMaps[11713:376275] SHAPED McConnel Library
+2015-02-07 15:02:56.230 CocoMaps[11713:376275] Number of coordinates in S is 7
+2015-02-07 15:02:56.230 CocoMaps[11713:376275] SHAPED S
+2015-02-07 15:02:56.230 CocoMaps[11713:376275] Number of buildings in LOY is 25
+2015-02-07 15:02:56.230 CocoMaps[11713:376275] Number of coordinates in AD is 26
+2015-02-07 15:02:56.230 CocoMaps[11713:376275] SHAPED Administration
+2015-02-07 15:02:56.230 CocoMaps[11713:376275] Number of coordinates in BB is 6
+2015-02-07 15:02:56.230 CocoMaps[11713:376275] SHAPED BB
+2015-02-07 15:02:56.231 CocoMaps[11713:376275] Number of coordinates in BH is 6
+2015-02-07 15:02:56.231 CocoMaps[11713:376275] SHAPED BH
+2015-02-07 15:02:56.231 CocoMaps[11713:376275] Number of coordinates in CC is 5
+2015-02-07 15:02:56.231 CocoMaps[11713:376275] SHAPED Central
+2015-02-07 15:02:56.231 CocoMaps[11713:376275] Number of coordinates in CJ is 36
+2015-02-07 15:02:56.231 CocoMaps[11713:376275] SHAPED Communication and Journalism
+2015-02-07 15:02:56.231 CocoMaps[11713:376275] Number of coordinates in DO is 5
+2015-02-07 15:02:56.231 CocoMaps[11713:376275] SHAPED Stinger Dome
+2015-02-07 15:02:56.231 CocoMaps[11713:376275] Number of coordinates in FC is 46
+2015-02-07 15:02:56.232 CocoMaps[11713:376275] SHAPED F.C. Smith
+2015-02-07 15:02:56.232 CocoMaps[11713:376275] Number of coordinates in GE is 5
+2015-02-07 15:02:56.232 CocoMaps[11713:376275] SHAPED Centre for Structural and Functional Genomics
+2015-02-07 15:02:56.232 CocoMaps[11713:376275] Number of coordinates in HA is 18
+2015-02-07 15:02:56.232 CocoMaps[11713:376275] SHAPED Hingston Wing A
+2015-02-07 15:02:56.232 CocoMaps[11713:376275] Number of coordinates in HB is 30
+2015-02-07 15:02:56.232 CocoMaps[11713:376275] SHAPED Hingston Wing B
+2015-02-07 15:02:56.232 CocoMaps[11713:376275] Number of coordinates in HC is 12
+2015-02-07 15:02:56.233 CocoMaps[11713:376275] SHAPED Hingston Wing C
+2015-02-07 15:02:56.233 CocoMaps[11713:376275] Number of coordinates in JR is 19
+2015-02-07 15:02:56.233 CocoMaps[11713:376275] SHAPED Jesuit Residence
+2015-02-07 15:02:56.233 CocoMaps[11713:376275] Number of coordinates in PC is 7
+2015-02-07 15:02:56.233 CocoMaps[11713:376275] SHAPED PERFORM Center
+2015-02-07 15:02:56.233 CocoMaps[11713:376275] Number of coordinates in PS is 15
+2015-02-07 15:02:56.233 CocoMaps[11713:376275] SHAPED Physical Services
+2015-02-07 15:02:56.233 CocoMaps[11713:376275] Number of coordinates in PT is 17
+2015-02-07 15:02:56.233 CocoMaps[11713:376275] SHAPED Oscar Peterson Concert Hall
+2015-02-07 15:02:56.234 CocoMaps[11713:376275] Number of coordinates in PY is 11
+2015-02-07 15:02:56.234 CocoMaps[11713:376275] SHAPED Psychology
+2015-02-07 15:02:56.234 CocoMaps[11713:376275] Number of coordinates in RA is 23
+2015-02-07 15:02:56.234 CocoMaps[11713:376275] SHAPED Recreational and Athletic Complex
+2015-02-07 15:02:56.234 CocoMaps[11713:376275] Number of coordinates in RF is 30
+2015-02-07 15:02:56.234 CocoMaps[11713:376275] SHAPED Loyola Jesuit Hall and Conference Centre
+2015-02-07 15:02:56.234 CocoMaps[11713:376275] Number of coordinates in SC is 13
+2015-02-07 15:02:56.234 CocoMaps[11713:376275] SHAPED Student Center
+2015-02-07 15:02:56.234 CocoMaps[11713:376275] Number of coordinates in SH is 5
+2015-02-07 15:02:56.235 CocoMaps[11713:376275] SHAPED Solar House
+2015-02-07 15:02:56.235 CocoMaps[11713:376275] Number of coordinates in SI is 33
+2015-02-07 15:02:56.235 CocoMaps[11713:376275] SHAPED Saint-Ignatius of Loyola Church
+2015-02-07 15:02:56.235 CocoMaps[11713:376275] Number of coordinates in SP is 41
+2015-02-07 15:02:56.235 CocoMaps[11713:376275] SHAPED Richard J. Renaud Science Complex
+2015-02-07 15:02:56.235 CocoMaps[11713:376275] Number of coordinates in TA is 5
+2015-02-07 15:02:56.235 CocoMaps[11713:376275] SHAPED Terrebonne
+2015-02-07 15:02:56.235 CocoMaps[11713:376275] Number of coordinates in VE is 21
+2015-02-07 15:02:56.236 CocoMaps[11713:376275] SHAPED Vanier Extension
+2015-02-07 15:02:56.236 CocoMaps[11713:376275] Number of coordinates in VL is 25
+2015-02-07 15:02:56.236 CocoMaps[11713:376275] SHAPED Vanier Library
+2015-02-07 15:02:56.236 CocoMaps[11713:376275] ADDED OVERLAYS
+2015-02-07 15:02:59.006 CocoMaps[11713:376275] Trying to start MapKit location updates without prompting for location authorization. Must call -[CLLocationManager requestWhenInUseAuthorization] or -[CLLocationManager requestAlwaysAuthorization] first.
