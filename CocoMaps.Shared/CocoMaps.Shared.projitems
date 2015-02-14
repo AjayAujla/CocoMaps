@@ -10,38 +10,43 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\Root.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\Menu.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\MenuItems.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\Colors.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\DarkTextCell.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\ListTextCell.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\StripedListView.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\StripedViewCell.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\Master.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ViewsModel\MasterViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ITextToSpeech.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CocoMaps.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ConcordiaMap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Building.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Campus.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\BuildingRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DirectionSteps.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\DirectionStep.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GMapUtil.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\GooglePointsDecoder.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\ConcordiaServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Service.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CalendarModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\Calendar.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Helpers\CustomPin.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Pages\BaseCalendar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\MasterViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\MenuItems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomViews\DarkTextCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomViews\ListTextCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomViews\StripedListView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\CustomViews\StripedViewCell.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\Colors.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ITextToSpeech.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Directions\DirectionStep.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Directions\DirectionSteps.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Maps\ConcordiaMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Maps\CustomPin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Buildings\BuildingRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Directions\GMapUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GooglePointsDecoder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Database\SQLite.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\BaseCalendar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ConcordiaServices.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Master.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Menu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Root.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
-    <Folder Include="$(MSBuildThisFileDirectory)ViewsModel\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\CustomViews\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\Helpers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\Directions\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\Maps\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\Buildings\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\Database\" />
   </ItemGroup>
 </Project>
