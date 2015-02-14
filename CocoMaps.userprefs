@@ -1,9 +1,12 @@
 ﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.GoogleSer" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="c:\Users\Abhi\Documents\GitHub\CocoMaps\CocoMaps.Shared\App.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SH456WM07905" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Views\Pages\Root.cs">
     <Files>
-      <File FileName="CocoMaps.Android\Renderers\ConcordiaMap_Android.cs" Line="26" Column="26" />
-      <File FileName="c:\Users\Abhi\Documents\GitHub\CocoMaps\CocoMaps.Shared\App.cs" Line="23" Column="23" />
+      <File FileName="CocoMaps.Android\Renderers\ConcordiaMap_Android.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\PlacesPage.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Controllers\Places\getFoodPlaces.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Controllers\Places\FoodPlaces.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Root.cs" Line="49" Column="49" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

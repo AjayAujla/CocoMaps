@@ -55,7 +55,7 @@ namespace CocoMaps.Shared.Pages
 				return new MasterPage (menuOption);
 			}
 			if (menuOption.Title == "Points of Interest") {
-				return new MasterPage (menuOption);
+				return new PlacesPage (menuOption);
 			}
 			if (menuOption.Title == "Concordia Services") {
 				return new ConcordiaServices (menuOption);

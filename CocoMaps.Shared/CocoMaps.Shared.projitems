@@ -37,6 +37,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Master.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Menu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Root.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\PlacesPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Places\BookStorePlaces.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Places\CafePlaces.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Places\FoodPlaces.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Places\LibraryPlaces.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Places\Places.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Places\RestaurantPlaces.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -48,5 +55,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Maps\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Buildings\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Database\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\Places\" />
   </ItemGroup>
 </Project>
