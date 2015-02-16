@@ -57,11 +57,10 @@ namespace CocoMaps.Shared.Pages
 			var cafeButton = new Button { Text = "Cafe" };
 			var libraryButton = new Button { Text = "Library" };
 
-			foodButton.Clicked += handlePlacesButton;
-			restaurantButton.Clicked+= handlePlacesButton;
-			cafeButton.Clicked += handlePlacesButton;
-			libraryButton.Clicked += handlePlacesButton;
-
+			foodButton.Clicked += HandlePlacesButton;
+			restaurantButton.Clicked += HandlePlacesButton;
+			cafeButton.Clicked += HandlePlacesButton;
+			libraryButton.Clicked += HandlePlacesButton;
 
 			var placesButtons = new StackLayout {
 				Spacing = 5,
@@ -73,8 +72,9 @@ namespace CocoMaps.Shared.Pages
 
 			var stack = new StackLayout { Spacing = 0 };
 			stack.Children.Add (map);
-			stack.Children.Add (segments);
-			stack.Children.Add (placesButtons);
+			stack.Children.Add (foodButton);
+			//stack.Children.Add (segments);
+			//stack.Children.Add (placesButtons);
 			this.Content = stack;
 
 		}
@@ -92,144 +92,32 @@ namespace CocoMaps.Shared.Pages
 			}
 		}
 
-		void handlePlacesButton (object sender, EventArgs e)
+		void HandlePlacesButton (object sender, EventArgs e)
 		{
+			map.Pins.Clear ();
 			var b = sender as Button;
-			switch (b.Text) {
-			case "Food":
-				map.Pins.Clear ();
-				var foodSGW = new FoodPlaces ();
-				var foodSGWJSONObject = foodSGW.getSGWFoodPlaces ();
-				foreach (Result r in foodSGWJSONObject.results) {
-					var lat = r.geometry.location.lat;
-					var lng = r.geometry.location.lng;
-					var position = new Position (lat, lng);
-					var name = r.name;
-					var pin = new Pin {
-						Type = PinType.Place,
-						Position = position,
-						Label = name,
-						Address = "Food"
-					};
-					map.Pins.Add (pin);
-				}
-				var foodLoyola = new FoodPlaces ();
-				var foodLoyolaJSONObject = foodLoyola.getLoyolaFoodPlaces ();
-				foreach (Result r in foodLoyolaJSONObject.results) {
-					var lat = r.geometry.location.lat;
-					var lng = r.geometry.location.lng;
-					var position = new Position (lat, lng);
-					var name = r.name;
-					var pin = new Pin {
-						Type = PinType.Place,
-						Position = position,
-						Label = name,
-						Address = "Food"
-					};
-					map.Pins.Add (pin);
-				}
-				break;
-			case "Restaurant":
-				map.Pins.Clear ();
-				var restaurantSGW = new RestaurantPlaces ();
-				var restaurantSGWJSONObject = restaurantSGW.getSGWRestaurantPlaces ();
-				foreach (Result r in restaurantSGWJSONObject.results) {
-					var lat = r.geometry.location.lat;
-					var lng = r.geometry.location.lng;
-					var position = new Position (lat, lng);
-					var name = r.name;
-					var pin = new Pin {
-						Type = PinType.Place,
-						Position = position,
-						Label = name,
-						Address = "Restaurant"
-					};
-					map.Pins.Add (pin);
-				}
-				var restaurantLoyola = new RestaurantPlaces ();
-				var restaurantLoyolaJSONObject = restaurantLoyola.getLoyolaRestaurantPlaces ();
-				foreach (Result r in restaurantLoyolaJSONObject.results) {
-					var lat = r.geometry.location.lat;
-					var lng = r.geometry.location.lng;
-					var position = new Position (lat, lng);
-					var name = r.name;
-					var pin = new Pin {
-						Type = PinType.Place,
-						Position = position,
-						Label = name,
-						Address = "Restaurant"
-					};
-					map.Pins.Add (pin);
-				}
-				break;
-			case "Cafe":
-				map.Pins.Clear ();
-				var cafeSGW = new CafePlaces ();
-				var cafeSGWJSONObject = cafeSGW.getSGWCafePlaces ();
-				foreach (Result r in cafeSGWJSONObject.results) {
-					var lat = r.geometry.location.lat;
-					var lng = r.geometry.location.lng;
-					var position = new Position (lat, lng);
-					var name = r.name;
-					var pin = new Pin {
-						Type = PinType.Place,
-						Position = position,
-						Label = name,
-						Address = "Cafe"
-					};
-					map.Pins.Add (pin);
-				}
-				var cafeLoyola = new CafePlaces ();
-				var cafeLoyolaJSONObject = cafeLoyola.getLoyolaCafePlaces ();
-				foreach (Result r in cafeLoyolaJSONObject.results) {
-					var lat = r.geometry.location.lat;
-					var lng = r.geometry.location.lng;
-					var position = new Position (lat, lng);
-					var name = r.name;
-					var pin = new Pin {
-						Type = PinType.Place,
-						Position = position,
-						Label = name,
-						Address = "Cafe"
-					};
-					map.Pins.Add (pin);
-				}
-				break;
-			case "Library":
-				map.Pins.Clear ();
-				var librarySGW = new LibraryPlaces ();
-				var librarySGWJSONObject = librarySGW.getSGWLibraryPlaces ();
-				foreach (Result r in librarySGWJSONObject.results) {
-					var lat = r.geometry.location.lat;
-					var lng = r.geometry.location.lng;
-					var position = new Position (lat, lng);
-					var name = r.name;
-					var pin = new Pin {
-						Type = PinType.Place,
-						Position = position,
-						Label = name,
-						Address = "Library"
-					};
-					map.Pins.Add (pin);
-				}
-				var libraryLoyola = new LibraryPlaces ();
-				var libraryLoyolaJSONObject = libraryLoyola.getLoyolaLibraryPlaces ();
-				foreach (Result r in libraryLoyolaJSONObject.results) {
-					var lat = r.geometry.location.lat;
-					var lng = r.geometry.location.lng;
-					var position = new Position (lat, lng);
-					var name = r.name;
-					var pin = new Pin {
-						Type = PinType.Place,
-						Position = position,
-						Label = name,
-						Address = "Library"
-					};
-					map.Pins.Add (pin);
-				}
-				break;
+			var placesRequest = new RequestPlaces ();
+			var placesJSONObject = placesRequest.getPlaces (b.Text.ToLower (), SGWPosition);
+			foreach (Result r in placesJSONObject.results) {
+				var pin = new Pin {
+					Type = PinType.Place,
+					Position = new Position (r.geometry.location.lat, r.geometry.location.lng),
+					Label = r.name,
+					Address = r.vicinity
+				};
+				map.Pins.Add (pin);
+			}
+			placesJSONObject = placesRequest.getPlaces (b.Text.ToLower (), LOYPosition);
+			foreach (Result r in placesJSONObject.results) {
+				var pin = new Pin {
+					Type = PinType.Place,
+					Position = new Position (r.geometry.location.lat, r.geometry.location.lng),
+					Label = r.name,
+					Address = r.vicinity
+				};
+				map.Pins.Add (pin);
 			}
 		}
+
 	}
 }
-
