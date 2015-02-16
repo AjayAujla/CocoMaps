@@ -25,7 +25,7 @@ namespace CocoMaps.Shared
 		public Directions getDirections (string origin, string destination, CocoMaps.Shared.GoogleDirections.Mode mode)
 		{
 			// Create a request for the URL.
-			var requestUrl = string.Format ("http://maps.google.com/maps/api/directions/json?origin={0}+Montreal&destination={1}+Montreal&mode={2}&sensor=true", origin, destination, mode);
+			var requestUrl = string.Format ("https://maps.google.com/maps/api/directions/json?origin={0}+Montreal&destination={1}+Montreal&mode={2}&sensor=true", origin, destination, mode);
 			WebRequest request = WebRequest.Create (requestUrl);
 			// Get the response.
 			WebResponse response = request.GetResponse ();
