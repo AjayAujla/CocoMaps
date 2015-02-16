@@ -93,8 +93,8 @@ namespace CocoMaps.Shared.Pages
 			/******************************************************
 			BuildingRepository code is simply for testing purposes.
 			******************************************************/
-			BuildingRepository repository = BuildingRepository.Repository;
-			List<Campus> campuses = repository.getCampusList ();
+			BuildingRepository buildingRepo = BuildingRepository.getInstance;
+			List<Campus> campuses = buildingRepo.getCampusList ();
 
 
 

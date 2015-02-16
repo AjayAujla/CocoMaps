@@ -18,6 +18,8 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using Android.Views;
+using Android.Views.Animations;
+using Android.Media;
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]
 
@@ -91,7 +93,7 @@ namespace CocoMapsAndroid
 			base.OnElementPropertyChanged (sender, e);
 			var androidMapView = (MapView)Control;
 			var formsMap = (ConcordiaMap)sender;
-			BuildingRepository br = BuildingRepository.Repository;
+			BuildingRepository buildingRepo = BuildingRepository.getInstance;
 
 			if (e.PropertyName.Equals ("VisibleRegion") && !_isDrawnDone) {
 
@@ -103,7 +105,7 @@ namespace CocoMapsAndroid
 				androidMapView.Map.UiSettings.ZoomControlsEnabled = true;
 
 				androidMapView.Map.MapClick += (object senderr, GoogleMap.MapClickEventArgs ee) => {
-					foreach (Campus c in br.getCampusList()) {
+					foreach (Campus c in buildingRepo.getCampusList()) {
 						foreach (Building b in c.Buildings) {
 							if (InPolygon (b, ee.Point.Latitude, ee.Point.Longitude)) {
 
@@ -124,7 +126,7 @@ namespace CocoMapsAndroid
 
 				androidMapView.Map.MapLongClick += (object senderr, GoogleMap.MapLongClickEventArgs ee) => {
 
-					foreach (Campus c in br.getCampusList()) {
+					foreach (Campus c in buildingRepo.getCampusList()) {
 						foreach (Building b in c.Buildings) {
 							if (InPolygon (b, ee.Point.Latitude, ee.Point.Longitude)) {
 							
@@ -141,26 +143,33 @@ namespace CocoMapsAndroid
 										.SetSnippet (b.Address)
 										.SetPosition (new LatLng (b.ShapeCoords [0].Item1, b.ShapeCoords [0].Item2)));
 
-									List<DirectionSteps> directions = GMapUtil.GetDirections (_from, _to, GMapUtil.Mode.Walking);
+									RequestDirections directionsRequest = RequestDirections.getInstance;
 
-									PolylineOptions polyline = new PolylineOptions ();
-									polyline.InvokeColor (0x7F00768e);
+									var directions = directionsRequest.getDirections (_from, _to, CocoMaps.Shared.GoogleDirections.Mode.Walking);
 
+									if (directions.status.Equals ("OK")) {
 
-									var directionsString = "";
-									foreach (DirectionSteps direction in directions) {
+										PolylineOptions polyline = new PolylineOptions ();
+										polyline.InvokeColor (0x7F00768e);
+										var directionsString = "";
 
-										foreach (LatLng point in direction.DecodedPolyline) {
-											polyline.Add (point);
-										}
+										foreach (CocoMaps.Shared.GoogleDirections.Route route in directions.routes) {
+											route.overview_polyline.decodedPoints = GooglePoints.Decode (route.overview_polyline.points);
+											foreach (LatLng point in route.overview_polyline.decodedPoints) {
+												polyline.Add (point);
+											}
+											foreach (CocoMaps.Shared.GoogleDirections.Leg leg in route.legs) {
+												foreach (CocoMaps.Shared.GoogleDirections.Step step in leg.steps) {
+													directionsString += step.html_instructions;
+												}
+											}
 
-										foreach (DirectionStep step in direction.Steps) {
-											directionsString += step.Description + ".";
+											androidMapView.Map.AddPolyline (polyline);
+
 										}
 									}
 
 									//DependencyService.Get<ITextToSpeech> ().Speak (directionsString);
-									androidMapView.Map.AddPolyline (polyline);
 									_from = "";
 									_to = "";
 								}
@@ -172,7 +181,7 @@ namespace CocoMapsAndroid
 					}
 				};
 
-				foreach (Campus c in br.getCampusList()) {
+				foreach (Campus c in buildingRepo.getCampusList()) {
 
 					foreach (Building b in c.Buildings) {
 
@@ -200,10 +209,6 @@ namespace CocoMapsAndroid
 						}
 					}
 				}
-
-
-		
-
 
 				_isDrawnDone = true;
 
