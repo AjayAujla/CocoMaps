@@ -2,24 +2,10 @@
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
 using CocoMaps.Shared;
-using CocoMaps.Android;
-using System.Drawing;
 using System.Collections.Generic;
-using CocoMaps.Models;
-using System.Threading.Tasks;
-using Android.Gms.Common.Data;
 using Android.Graphics;
-using Android.Gms.Common;
-using Android.App;
-using System.Linq;
-using System.Text;
-using System.Diagnostics;
-using Android.Views;
-using Android.Views.Animations;
-using Android.Media;
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]
 
@@ -38,10 +24,10 @@ namespace CocoMapsAndroid
 			Console.WriteLine (e.Marker.Title + " CLICKED!!!");
 		}
 
-		private Paint paint = new Paint (PaintFlags.AntiAlias);
-		private Rect bounds = new Rect ();
+		Paint paint = new Paint (PaintFlags.AntiAlias);
+		Rect bounds = new Rect ();
 
-		private BitmapDescriptor GetCustomBitmapDescriptor (string text)
+		BitmapDescriptor GetCustomBitmapDescriptor (string text)
 		{
 			using (Paint paint = new Paint (PaintFlags.LinearText)) {
 				paint.Color = Android.Graphics.Color.White;
