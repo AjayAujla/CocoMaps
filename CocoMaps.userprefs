@@ -1,14 +1,6 @@
 ﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus6V" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared/Controllers/Directions/GMapUtil.cs">
-    <Files>
-      <File FileName="CocoMaps.Shared/Controllers/Places/BookStorePlaces.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Controllers/Places/Places.cs" Line="2" Column="2" />
-      <File FileName="CocoMaps.Shared/Controllers/Directions/GMapUtil.cs" Line="3" Column="3" />
-      <File FileName="CocoMaps.Shared/Views/Pages/Master.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Views/Pages/PlacesPage.cs" Line="34" Column="34" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.dca08503" />
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
