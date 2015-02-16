@@ -51,11 +51,16 @@ namespace CocoMaps.Shared.Pages
 				Orientation = StackOrientation.Horizontal, 
 				Children = { SGWButton, LOYButton }
 			};
+			segments.BackgroundColor = Color.Transparent;
 
 			var foodButton = new Button { Text = "Food" };
 			var restaurantButton = new Button { Text = "Restaurant" };
 			var cafeButton = new Button { Text = "Cafe" };
 			var libraryButton = new Button { Text = "Library" };
+			foodButton.BackgroundColor = Color.Transparent;
+			restaurantButton.BackgroundColor = Color.Transparent;
+			cafeButton.BackgroundColor = Color.Transparent;
+			libraryButton.BackgroundColor = Color.Transparent;
 
 			foodButton.Clicked += HandlePlacesButton;
 			restaurantButton.Clicked += HandlePlacesButton;
@@ -68,13 +73,12 @@ namespace CocoMaps.Shared.Pages
 				Orientation = StackOrientation.Horizontal, 
 				Children = { foodButton, restaurantButton, cafeButton, libraryButton }
 			};
-
+			placesButtons.BackgroundColor = Color.Transparent;
 
 			var stack = new StackLayout { Spacing = 0 };
 			stack.Children.Add (map);
-			stack.Children.Add (foodButton);
 			//stack.Children.Add (segments);
-			//stack.Children.Add (placesButtons);
+			stack.Children.Add (placesButtons);
 			this.Content = stack;
 
 		}
@@ -96,7 +100,8 @@ namespace CocoMaps.Shared.Pages
 		{
 			map.Pins.Clear ();
 			var b = sender as Button;
-			var placesRequest = new RequestPlaces ();
+			var placesRequest = RequestPlaces.getInstance;
+
 			var placesJSONObject = placesRequest.getPlaces (b.Text.ToLower (), SGWPosition);
 			foreach (Result r in placesJSONObject.results) {
 				var pin = new Pin {

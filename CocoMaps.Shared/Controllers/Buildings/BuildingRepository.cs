@@ -9,11 +9,10 @@ namespace CocoMaps.Shared
 		private static BuildingRepository repository;
 		List<Campus> CampusList = new List<Campus> ();
 
-		public static BuildingRepository Repository {
+		public static BuildingRepository getInstance {
 			get {
-				if (repository == null) {
+				if (repository == null)
 					repository = new BuildingRepository ();
-				}
 				return repository;
 			}
 		}

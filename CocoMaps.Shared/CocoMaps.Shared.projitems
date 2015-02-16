@@ -23,12 +23,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\CustomViews\StripedViewCell.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\Colors.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ITextToSpeech.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Directions\DirectionStep.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Directions\DirectionSteps.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Maps\ConcordiaMap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Maps\CustomPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Buildings\BuildingRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Directions\GMapUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GooglePointsDecoder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Database\SQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\BaseCalendar.cs" />
@@ -40,6 +37,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\PlacesPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Places\Places.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Places\RequestPlaces.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Directions\Directions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Directions\RequestDirections.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />

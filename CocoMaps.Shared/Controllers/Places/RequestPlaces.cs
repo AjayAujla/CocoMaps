@@ -8,6 +8,20 @@ namespace CocoMaps.Shared
 {
 	public class RequestPlaces
 	{
+		private static RequestPlaces requestPlaces;
+
+		private RequestPlaces ()
+		{
+		}
+
+		public static RequestPlaces getInstance {
+			get {
+				if (requestPlaces == null)
+					requestPlaces = new RequestPlaces ();
+				return requestPlaces;
+			}
+		}
+
 		public Places getPlaces (string type, Position position)
 		{
 			// Create a request for the URL.
