@@ -136,4 +136,5 @@ namespace CocoMaps.Shared.GoogleDirections
 
 		public string status { get; set; }
 	}
+
 }

@@ -1,11 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Net;
-using Newtonsoft.Json;
-using CocoMaps.Shared.GoogleDirections;
 using System.Threading.Tasks;
-using System.Net.Http;
-using Newtonsoft.Json.Linq;
 using System.Json;
 
 public static class JsonUtil
@@ -25,11 +21,12 @@ public static class JsonUtil
 			using (Stream stream = response.GetResponseStream ()) {
 				// Use this stream to build a JSON document object:
 				JsonValue jsonDoc = await Task.Run (() => JsonObject.Load (stream));
-				Console.Out.WriteLine ("Response: {0}", jsonDoc);
+				Console.Out.WriteLine ("Json Response: {0}", jsonDoc);
 
 				// Return the JSON document:
 				return jsonDoc;
 			}
 		}
 	}
+
 }

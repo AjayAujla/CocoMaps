@@ -6,10 +6,7 @@ using Xamarin.Forms.Maps.Android;
 using CocoMaps.Shared;
 using System.Collections.Generic;
 using Android.Graphics;
-using System.Threading;
-using System.Threading.Tasks;
 using CocoMaps.Shared.GoogleDirections;
-using Android.Views.Animations;
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]
 
@@ -91,7 +88,7 @@ namespace CocoMapsAndroid
 				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
 				androidMapView.Map.UiSettings.ZoomControlsEnabled = true;
 
-				androidMapView.Map.MapClick += (object senderr, GoogleMap.MapClickEventArgs ee) => {
+				androidMapView.Map.MapClick += (senderr, ee) => {
 					foreach (Campus c in buildingRepo.getCampusList()) {
 						foreach (Building b in c.Buildings) {
 							if (InPolygon (b, ee.Point.Latitude, ee.Point.Longitude)) {

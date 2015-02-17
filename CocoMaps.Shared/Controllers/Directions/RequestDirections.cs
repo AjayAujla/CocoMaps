@@ -1,11 +1,7 @@
 ﻿using System;
-using System.IO;
-using System.Net;
 using Newtonsoft.Json;
 using CocoMaps.Shared.GoogleDirections;
 using System.Threading.Tasks;
-using System.Net.Http;
-using Newtonsoft.Json.Linq;
 using System.Json;
 
 namespace CocoMaps.Shared

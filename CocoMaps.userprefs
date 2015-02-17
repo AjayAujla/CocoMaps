@@ -1,13 +1,11 @@
 ﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.dca08503" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android/Renderers/ConcordiaMap_Android.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared/Controllers/Directions/RequestDirections.cs">
     <Files>
-      <File FileName="CocoMaps.Android/Renderers/ConcordiaMap_Android.cs" Line="11" Column="11" />
-      <File FileName="CocoMaps.Shared/Controllers/Directions/RequestDirections.cs" Line="2" Column="2" />
-      <File FileName="CocoMaps.Shared/Views/Pages/Master.cs" Line="96" Column="96" />
-      <File FileName="CocoMaps.Shared/Controllers/Helpers/GooglePointsDecoder.cs" Line="31" Column="31" />
-      <File FileName="CocoMaps.Shared/Controllers/Helpers/FetchJsonAsync.cs" Line="19" Column="19" />
+      <File FileName="CocoMaps.Android/Renderers/ConcordiaMap_Android.cs" Line="58" Column="58" />
+      <File FileName="CocoMaps.Shared/Controllers/Helpers/FetchJsonAsync.cs" Line="2" Column="2" />
       <File FileName="CocoMaps.Shared/Controllers/Directions/Directions.cs" Line="2" Column="2" />
+      <File FileName="CocoMaps.Shared/Controllers/Directions/RequestDirections.cs" Line="32" Column="32" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
