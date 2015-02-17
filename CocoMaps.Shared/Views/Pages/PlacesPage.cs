@@ -96,14 +96,14 @@ namespace CocoMaps.Shared.Pages
 			}
 		}
 
-		void HandlePlacesButton (object sender, EventArgs e)
+		async void HandlePlacesButton (object sender, EventArgs e)
 		{
 			map.Pins.Clear ();
 			var b = sender as Button;
 			var placesRequest = RequestPlaces.getInstance;
 
-			var placesJSONObject = placesRequest.getPlaces (b.Text.ToLower (), SGWPosition);
-			foreach (Result r in placesJSONObject.results) {
+			Places places = await placesRequest.getPlaces (b.Text.ToLower (), SGWPosition);
+			foreach (Result r in places.results) {
 				var pin = new Pin {
 					Type = PinType.Place,
 					Position = new Position (r.geometry.location.lat, r.geometry.location.lng),
@@ -112,8 +112,8 @@ namespace CocoMaps.Shared.Pages
 				};
 				map.Pins.Add (pin);
 			}
-			placesJSONObject = placesRequest.getPlaces (b.Text.ToLower (), LOYPosition);
-			foreach (Result r in placesJSONObject.results) {
+			places = await placesRequest.getPlaces (b.Text.ToLower (), LOYPosition);
+			foreach (Result r in places.results) {
 				var pin = new Pin {
 					Type = PinType.Place,
 					Position = new Position (r.geometry.location.lat, r.geometry.location.lng),

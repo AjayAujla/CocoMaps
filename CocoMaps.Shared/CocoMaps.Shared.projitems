@@ -39,6 +39,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Places\RequestPlaces.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Directions\Directions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Directions\RequestDirections.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\FetchJsonAsync.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
