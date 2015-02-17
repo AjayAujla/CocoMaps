@@ -10,7 +10,7 @@ namespace CocoMaps
 		public App ()
 		{
 			MainPage = new RootPage ();
-		
+
 			//DependencyService.Get<ITextToSpeech>().Speak("Welcome to CocoMaps!");
 		}
 

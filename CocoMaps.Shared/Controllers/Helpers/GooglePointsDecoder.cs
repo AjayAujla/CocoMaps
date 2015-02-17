@@ -1,14 +1,12 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.Text;
-
-//using System.Math;
 using Android.Gms.Maps.Model;
 
 /// <summary>
 /// See https://developers.google.com/maps/documentation/utilities/polylinealgorithm
 /// </summary>
-public static class GooglePoints
+public static class GoogleUtil
 {
 	/// <summary>
 	/// Decode google style polyline coordinates.

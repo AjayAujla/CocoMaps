@@ -3,14 +3,18 @@ using System.IO;
 using System.Net;
 using Newtonsoft.Json;
 using CocoMaps.Shared.GoogleDirections;
+using System.Threading.Tasks;
+using System.Net.Http;
+using Newtonsoft.Json.Linq;
+using System.Json;
 
 namespace CocoMaps.Shared
 {
 	public class RequestDirections
 	{
-		private static RequestDirections requestDirections;
+		static RequestDirections requestDirections;
 
-		private RequestDirections ()
+		RequestDirections ()
 		{
 		}
 
@@ -22,26 +26,13 @@ namespace CocoMaps.Shared
 			}
 		}
 
-		public Directions getDirections (string origin, string destination, CocoMaps.Shared.GoogleDirections.Mode mode)
+		public async Task<Directions> getDirections (string origin, string destination, CocoMaps.Shared.GoogleDirections.Mode mode)
 		{
 			// Create a request for the URL.
-			var requestUrl = string.Format ("https://maps.google.com/maps/api/directions/json?origin={0}+Montreal&destination={1}+Montreal&mode={2}&sensor=true", origin, destination, mode);
-			WebRequest request = WebRequest.Create (requestUrl);
-			// Get the response.
-			WebResponse response = request.GetResponse ();
-			// Display the status.
-			Console.WriteLine (((HttpWebResponse)response).StatusDescription);
-			// Get the stream containing content returned by the server.
-			Stream dataStream = response.GetResponseStream ();
-			// Open the stream using a StreamReader for easy access.
-			StreamReader reader = new StreamReader (dataStream);
-			// Read the content.
-			string json = reader.ReadToEnd ();
-			// Clean up the streams and the response.
-			reader.Close ();
-			response.Close ();
+			var requestUrl = string.Format ("https://maps.google.com/maps/api/directions/json?origin={0}+Montreal&destination={1}+Montreal&mode={2}&sensor=true", origin, destination, mode.ToString ().ToLower ());
+			JsonValue json = await JsonUtil.FetchJsonAsync (requestUrl);
 
-			return JsonConvert.DeserializeObject<Directions> (json);
+			return JsonConvert.DeserializeObject<Directions> (json.ToString ());
 		}
 	}
 }

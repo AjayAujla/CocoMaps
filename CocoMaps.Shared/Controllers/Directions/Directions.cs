@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Android.Gms.Maps.Model;
+using Newtonsoft.Json;
 
 namespace CocoMaps.Shared.GoogleDirections
 {
@@ -11,7 +12,6 @@ namespace CocoMaps.Shared.GoogleDirections
 		Driving,
 		Transit,
 		Bicycling
-
 	}
 
 	public class Northeast

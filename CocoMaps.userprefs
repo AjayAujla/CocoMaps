@@ -1,6 +1,36 @@
 ﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.dca08503" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android/Renderers/ConcordiaMap_Android.cs">
+    <Files>
+      <File FileName="CocoMaps.Android/Renderers/ConcordiaMap_Android.cs" Line="11" Column="11" />
+      <File FileName="CocoMaps.Shared/Controllers/Directions/RequestDirections.cs" Line="2" Column="2" />
+      <File FileName="CocoMaps.Shared/Views/Pages/Master.cs" Line="96" Column="96" />
+      <File FileName="CocoMaps.Shared/Controllers/Helpers/GooglePointsDecoder.cs" Line="31" Column="31" />
+      <File FileName="CocoMaps.Shared/Controllers/Helpers/FetchJsonAsync.cs" Line="19" Column="19" />
+      <File FileName="CocoMaps.Shared/Controllers/Directions/Directions.cs" Line="2" Column="2" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="CocoMaps.Android" expanded="True">
+            <Node name="Packages" expanded="True" />
+            <Node name="Renderers" expanded="True">
+              <Node name="ConcordiaMap_Android.cs" selected="True" />
+            </Node>
+          </Node>
+          <Node name="CocoMaps.Shared" expanded="True">
+            <Node name="Controllers" expanded="True">
+              <Node name="Directions" expanded="True" />
+              <Node name="Helpers" expanded="True" />
+            </Node>
+            <Node name="Views" expanded="True">
+              <Node name="Pages" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -8,5 +38,5 @@
   <DisabledProjects>
     <String>CocoMaps.iOS/CocoMaps.iOS.csproj</String>
   </DisabledProjects>
-  <MonoDevelop.Ide.ItemProperties.CocoMaps.Android MonoForAntroid.PreferredDevice="Nexus 4" />
+  <MonoDevelop.Ide.ItemProperties.CocoMaps.Android MonoForAntroid.PreferredDevice="Nexus 5" MonoForAntroid.PreferredTheme="Theme.DeviceDefault" />
 </Properties>

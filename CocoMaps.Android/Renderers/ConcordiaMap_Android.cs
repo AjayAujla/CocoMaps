@@ -6,6 +6,10 @@ using Xamarin.Forms.Maps.Android;
 using CocoMaps.Shared;
 using System.Collections.Generic;
 using Android.Graphics;
+using System.Threading;
+using System.Threading.Tasks;
+using CocoMaps.Shared.GoogleDirections;
+using Android.Views.Animations;
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]
 
@@ -23,9 +27,6 @@ namespace CocoMapsAndroid
 		{
 			Console.WriteLine (e.Marker.Title + " CLICKED!!!");
 		}
-
-		Paint paint = new Paint (PaintFlags.AntiAlias);
-		Rect bounds = new Rect ();
 
 		BitmapDescriptor GetCustomBitmapDescriptor (string text)
 		{
@@ -110,7 +111,7 @@ namespace CocoMapsAndroid
 					}
 				};
 
-				androidMapView.Map.MapLongClick += (object senderr, GoogleMap.MapLongClickEventArgs ee) => {
+				androidMapView.Map.MapLongClick += async (senderr, ee) => {
 
 					foreach (Campus c in buildingRepo.getCampusList()) {
 						foreach (Building b in c.Buildings) {
@@ -131,7 +132,7 @@ namespace CocoMapsAndroid
 
 									RequestDirections directionsRequest = RequestDirections.getInstance;
 
-									var directions = directionsRequest.getDirections (_from, _to, CocoMaps.Shared.GoogleDirections.Mode.Walking);
+									Directions directions = await directionsRequest.getDirections (_from, _to, CocoMaps.Shared.GoogleDirections.Mode.Walking);
 
 									if (directions.status.Equals ("OK")) {
 
@@ -140,7 +141,7 @@ namespace CocoMapsAndroid
 										var directionsString = "";
 
 										foreach (CocoMaps.Shared.GoogleDirections.Route route in directions.routes) {
-											route.overview_polyline.decodedPoints = GooglePoints.Decode (route.overview_polyline.points);
+											route.overview_polyline.decodedPoints = GoogleUtil.Decode (route.overview_polyline.points);
 											foreach (LatLng point in route.overview_polyline.decodedPoints) {
 												polyline.Add (point);
 											}
@@ -153,13 +154,12 @@ namespace CocoMapsAndroid
 											androidMapView.Map.AddPolyline (polyline);
 
 										}
+										Console.WriteLine (directionsString);
 									}
-
 									//DependencyService.Get<ITextToSpeech> ().Speak (directionsString);
 									_from = "";
 									_to = "";
 								}
-
 
 								break;
 							}
