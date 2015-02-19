@@ -1,33 +1,12 @@
-﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.dca08503" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared/Controllers/Directions/RequestDirections.cs">
+﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.GoogleSer" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Controllers\Directions\RequestDirections.cs">
     <Files>
-      <File FileName="CocoMaps.Android/Renderers/ConcordiaMap_Android.cs" Line="58" Column="58" />
-      <File FileName="CocoMaps.Shared/Controllers/Helpers/FetchJsonAsync.cs" Line="2" Column="2" />
-      <File FileName="CocoMaps.Shared/Controllers/Directions/Directions.cs" Line="2" Column="2" />
-      <File FileName="CocoMaps.Shared/Controllers/Directions/RequestDirections.cs" Line="32" Column="32" />
+      <File FileName="CocoMaps.Android\Renderers\ConcordiaMap_Android.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Controllers\Helpers\FetchJsonAsync.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Controllers\Directions\Directions.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Controllers\Directions\RequestDirections.cs" Line="4" Column="4" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="CocoMaps.Android" expanded="True">
-            <Node name="Packages" expanded="True" />
-            <Node name="Renderers" expanded="True">
-              <Node name="ConcordiaMap_Android.cs" selected="True" />
-            </Node>
-          </Node>
-          <Node name="CocoMaps.Shared" expanded="True">
-            <Node name="Controllers" expanded="True">
-              <Node name="Directions" expanded="True" />
-              <Node name="Helpers" expanded="True" />
-            </Node>
-            <Node name="Views" expanded="True">
-              <Node name="Pages" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
