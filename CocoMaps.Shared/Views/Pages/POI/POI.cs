@@ -4,7 +4,6 @@ using CocoMaps.Shared.Pages;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Models;
 using Xamarin.Forms.Maps;
-using System.Diagnostics;
 
 namespace CocoMaps.Shared
 {
@@ -24,6 +23,7 @@ namespace CocoMaps.Shared
 			this.SetValue (Page.TitleProperty, pageName);
 			this.SetValue (Page.IconProperty, menuItem.Icon);
 
+			// too many common codes from current location - will refactor
 			this.map = new ConcordiaMap () {
 				IsShowingUser = true,
 				HeightRequest = 100,
