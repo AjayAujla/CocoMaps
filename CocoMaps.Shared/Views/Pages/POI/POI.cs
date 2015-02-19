@@ -45,6 +45,8 @@ namespace CocoMaps.Shared
 			SGWButton.Clicked += HandleCampusRegionButton;
 			LOYButton.Clicked += HandleCampusRegionButton;
 
+			showPOI(pageName);
+
 			var POIButtons = new StackLayout {
 				Spacing = 5,
 				HorizontalOptions = LayoutOptions.CenterAndExpand,
@@ -72,13 +74,17 @@ namespace CocoMaps.Shared
 			}
 		}
 
-		async void HandlePlacesButton (object sender, EventArgs e)
+		async void showPOI(String POItype)
 		{
 			map.Pins.Clear ();
-			var b = sender as Button;
 			var placesRequest = RequestPlaces.getInstance;
 
-			Places places = await placesRequest.getPlaces (b.Text.ToLower (), SGWPosition);
+			if (POItype.ToLower() == "coffee")
+			{
+				POItype = "cafe";
+			}
+
+			Places places = await placesRequest.getPlaces (POItype.ToLower(), SGWPosition);
 			foreach (Result r in places.results) {
 				var pin = new Pin {
 					Type = PinType.Place,
@@ -88,7 +94,7 @@ namespace CocoMaps.Shared
 				};
 				map.Pins.Add (pin);
 			}
-			places = await placesRequest.getPlaces (b.Text.ToLower (), LOYPosition);
+			places = await placesRequest.getPlaces (POItype.ToLower(), LOYPosition);
 			foreach (Result r in places.results) {
 				var pin = new Pin {
 					Type = PinType.Place,

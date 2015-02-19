@@ -14,7 +14,7 @@ namespace CocoMaps.Shared.Pages
 		Position SGWPosition;
 		Position LOYPosition;
 
-		public PlacesPage (IMenuOptions menuItem)
+		public PlacesPage (IMenuOptions menuItem , String pName)
 		{
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
@@ -63,10 +63,7 @@ namespace CocoMaps.Shared.Pages
 			cafeButton.BackgroundColor = Color.Transparent;
 			libraryButton.BackgroundColor = Color.Transparent;
 
-			foodButton.Clicked += HandlePlacesButton;
-			restaurantButton.Clicked += HandlePlacesButton;
-			cafeButton.Clicked += HandlePlacesButton;
-			libraryButton.Clicked += HandlePlacesButton;
+			showw (pName);
 
 			var placesButtons = new StackLayout {
 				Spacing = 5,
@@ -97,13 +94,12 @@ namespace CocoMaps.Shared.Pages
 			}
 		}
 
-		async void HandlePlacesButton (object sender, EventArgs e)
+		async void showw (string b)
 		{
 			map.Pins.Clear ();
-			var b = sender as Button;
 			var placesRequest = RequestPlaces.getInstance;
 
-			Places places = await placesRequest.getPlaces (b.Text.ToLower (), SGWPosition);
+			Places places = await placesRequest.getPlaces (b.ToLower (), SGWPosition);
 			foreach (Result r in places.results) {
 				var pin = new Pin {
 					Type = PinType.Place,
@@ -113,7 +109,7 @@ namespace CocoMaps.Shared.Pages
 				};
 				map.Pins.Add (pin);
 			}
-			places = await placesRequest.getPlaces (b.Text.ToLower (), LOYPosition);
+			places = await placesRequest.getPlaces (b.ToLower (), LOYPosition);
 			foreach (Result r in places.results) {
 				var pin = new Pin {
 					Type = PinType.Place,

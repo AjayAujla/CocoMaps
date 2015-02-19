@@ -70,7 +70,7 @@ namespace CocoMaps.Shared.Pages
 				return new BaseCalendar (menuOption);
 			}
 			if (menuOption.Title == "Settings") {
-				return new BaseCalendar (menuOption);
+				return new PlacesPage (menuOption,"Food");
 			}
 			throw new NotImplementedException ("Unknown menu option: " + menuOption.Title);
 		}
