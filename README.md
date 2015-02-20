@@ -20,6 +20,6 @@ Winter 2015
 
 Indoor/Outdoor Campus Direction Mobile Application
 
-Xamarin
+Xamarin Platform
 
 Xamarin Studio
