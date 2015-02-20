@@ -26,7 +26,7 @@ namespace CocoMaps.Shared.Pages
 			OptionItems.Add (new Calendar_MenuOption ());
 			OptionItems.Add (new Settings_MenuOption ());
 
-			BackgroundColor = Color.FromHex ("333333");
+			BackgroundColor = Helpers.Color.DarkGray.ToFormsColor ();
 
 			var layout = new StackLayout { Spacing = 0, VerticalOptions = LayoutOptions.FillAndExpand };
 

@@ -55,7 +55,7 @@ namespace CocoMaps.Shared.Pages
 				return new MasterPage (menuOption);
 			}
 			if (menuOption.Title == "Points of Interest") {
-				return new PlacesPage (menuOption);
+				return new BasePOI (menuOption);
 			}
 			if (menuOption.Title == "Concordia Services") {
 				return new ConcordiaServices (menuOption);
@@ -70,7 +70,7 @@ namespace CocoMaps.Shared.Pages
 				return new BaseCalendar (menuOption);
 			}
 			if (menuOption.Title == "Settings") {
-				return new BaseCalendar (menuOption);
+				return new PlacesPage (menuOption,"Food");
 			}
 			throw new NotImplementedException ("Unknown menu option: " + menuOption.Title);
 		}

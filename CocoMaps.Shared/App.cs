@@ -1,12 +1,14 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using CocoMaps.Shared.Pages;
-using CocoMaps.Shared;
 
-namespace CocoMaps
+namespace CocoMaps.Shared
 {
 	public class App : Application
 	{
+		public static Size ScreenSize;
+		public static Size ScreenPixels;
+		public static int StatusBarHeight = 25;
+
 		public App ()
 		{
 			MainPage = new RootPage ();

@@ -1,65 +1,150 @@
 ﻿using System;
 using Xamarin.Forms;
-using CocoMaps.Shared.Pages;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Models;
 using Xamarin.Forms.Maps;
-using System.Diagnostics;
+using Xamarin.Forms.Platform.Android;
 
-namespace CocoMaps.Shared.Pages
+namespace CocoMaps.Shared
 {
 	public class MasterPage : ContentPage
 	{
-		ConcordiaMap map;
-		Position SGWPosition;
-		Position LOYPosition;
+		readonly ConcordiaMap map;
+		SearchBar searchBar;
+		RelativeLayout mainLayout;
+		RelativeLayout directionsLayout;
+		bool isDirections;
 
 		public MasterPage (IMenuOptions menuItem)
 		{
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
 
-			this.SetValue (Page.TitleProperty, "CocoMaps");
-			this.SetValue (Page.IconProperty, menuItem.Icon);
+			SetValue (Page.TitleProperty, "CocoMaps");
+			SetValue (Page.IconProperty, menuItem.Icon);
 
-			this.map = new ConcordiaMap () {
+
+			map = new ConcordiaMap {
 				IsShowingUser = true,
-				HeightRequest = 100,
-				WidthRequest = 960,
-				VerticalOptions = LayoutOptions.FillAndExpand
+				HeightRequest = App.ScreenSize.Height - App.StatusBarHeight,
+				WidthRequest = App.ScreenSize.Width
 			};
 
-			var tapGestureRecognizer = new TapGestureRecognizer ();
-			tapGestureRecognizer.Tapped += (sender, e) => Console.WriteLine ("Tapped");
-			map.GestureRecognizers.Add (tapGestureRecognizer);
 
-			// Those are the exact coordinates given by Google Maps
-			// When searching for those campuses - DO NOT CHANGE!!!
-			SGWPosition = new Position (45.4971711, -73.5790942);
-			LOYPosition = new Position (45.4585649, -73.6400639);
 
-			this.map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition, Distance.FromMiles (0.1)));
+			var SGWButton = new Button {
+				Text = "SGW",
+				HeightRequest = 40,
+				BackgroundColor = Color.White,
+				Opacity = 0.7,
+				BorderRadius = 0
+			};
+			var LOYButton = new Button { Text = "LOY", 
+				HeightRequest = 40,
+				BackgroundColor = Color.White,
+				Opacity = 0.7,
+				BorderRadius = 0
+			};
+			var testButton = new Button { Text = "Directions", HeightRequest = 50, BackgroundColor = Color.Maroon };
 
-			var SGWButton = new Button { Text = "SGW" };
-			var LOYButton = new Button { Text = "LOY" };
+			searchBar = new SearchBar {
+				WidthRequest = App.ScreenSize.Width - 64,
+				HeightRequest = 50
+			};
 
 			SGWButton.Clicked += HandleCampusRegionButton;
 			LOYButton.Clicked += HandleCampusRegionButton;
+			searchBar.PropertyChanged += HandleFocusChange;
+			searchBar.TextChanged += HandleTextChanged;
+			;
 
-
-			var segments = new StackLayout {
-				Spacing = 10,
-				Opacity = 0.5,
-				HorizontalOptions = LayoutOptions.End,
-				Orientation = StackOrientation.Horizontal, 
-				Children = { SGWButton, LOYButton }
+			mainLayout = new RelativeLayout {
+				BackgroundColor = Color.Transparent
 			};
 
+			Content = mainLayout;
 
-			var stack = new StackLayout { Spacing = 0 };
-			stack.Children.Add (map);
-			stack.Children.Add (segments);
-			this.Content = stack;
+			directionsLayout = new RelativeLayout {
+				BackgroundColor = Helpers.Color.DarkGray.ToFormsColor (),
+				WidthRequest = App.ScreenSize.Width - 64,
+				HeightRequest = 200,
+				TranslationY = -200,
+				HorizontalOptions = LayoutOptions.Center
+			};
+
+			Content.SizeChanged += (sender, e) => {
+				// Orientation in Portrait Mode
+				if (mainLayout.Width < mainLayout.Height) {
+					searchBar.WidthRequest = App.ScreenSize.Width - 64;
+					directionsLayout.WidthRequest = App.ScreenSize.Width - 64;
+					map.HeightRequest = App.ScreenSize.Height - App.StatusBarHeight;
+					map.WidthRequest = App.ScreenSize.Width;
+				}
+				// Orientation in Landscape Mode
+				if (mainLayout.Width > mainLayout.Height) {
+					searchBar.WidthRequest = App.ScreenSize.Height - 64;
+					directionsLayout.WidthRequest = App.ScreenSize.Height - 64;
+					map.HeightRequest = App.ScreenSize.Width - App.StatusBarHeight;
+					map.WidthRequest = App.ScreenSize.Height;
+				}
+			};
+
+			searchBar.PropertyChanged += (sender, e) => {
+				if (e.PropertyName.Equals ("IsFocused") && !IsFocused && isDirections)
+					directionsLayout.TranslateTo (0, -this.Height, 100);
+			};
+
+			testButton.Clicked += (sender, e) => {
+				var h = directionsLayout.HeightRequest;
+				if (isDirections) {
+					directionsLayout.TranslateTo (0, -h, 100);
+					searchBar.Focus ();
+					isDirections = false;
+				} else {
+					directionsLayout.TranslateTo (0, searchBar.Height, 500);
+					searchBar.Focus ();
+					isDirections = true;
+				}
+			};
+
+			mainLayout.PropertyChanged += (sender, e) => {
+
+			};
+
+			mainLayout.Children.Add (map, Constraint.Constant (0));
+			mainLayout.Children.Add (directionsLayout, Constraint.Constant (0));
+			mainLayout.Children.Add (searchBar, Constraint.Constant (0));
+			mainLayout.Children.Add (SGWButton, Constraint.Constant (14), Constraint.RelativeToParent ((parent) => Height - 54));
+			mainLayout.Children.Add (LOYButton, Constraint.Constant (84), Constraint.RelativeToParent ((parent) => Height - 54));
+
+			mainLayout.Children.Add (testButton, Constraint.Constant (100), Constraint.Constant (100));
+
+			map.MoveToRegion (MapSpan.FromCenterAndRadius (Campus.SGWPosition, Xamarin.Forms.Maps.Distance.FromKilometers (0.2)));
+
+
+		}
+
+		void HandleTextChanged (object sender, TextChangedEventArgs e)
+		{
+			var s = sender as SearchBar;
+			Console.WriteLine (s.Text);
+		}
+
+		void HandleFocusChange (object sender, System.ComponentModel.PropertyChangedEventArgs e)
+		{
+			var s = sender as SearchBar;
+			if (s.IsFocused) {
+				s.Opacity = 1;
+				s.BackgroundColor = Helpers.Color.DarkGray.ToFormsColor ();
+			} else {
+				s.Opacity = 0.5;
+				s.BackgroundColor = Color.White;
+			}
+		}
+
+		void TestStuff (object sender, EventArgs e)
+		{
+
 		}
 
 		void HandleCampusRegionButton (object sender, EventArgs e)
@@ -67,12 +152,13 @@ namespace CocoMaps.Shared.Pages
 			var b = sender as Button;
 			switch (b.Text) {
 			case "SGW":
-				map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition, Distance.FromMiles (0.1)));
+				map.MoveToRegion (MapSpan.FromCenterAndRadius (Campus.SGWPosition, Xamarin.Forms.Maps.Distance.FromKilometers (0.1)));
 				break;
 			case "LOY":
-				map.MoveToRegion (MapSpan.FromCenterAndRadius (LOYPosition,	Distance.FromMiles (0.2)));
+				map.MoveToRegion (MapSpan.FromCenterAndRadius (Campus.LOYPosition,	Xamarin.Forms.Maps.Distance.FromKilometers (0.1)));
 				break;
 			}
 		}
+
 	}
 }

@@ -6,8 +6,8 @@ namespace CocoMaps.Shared
 {
 	public class BuildingRepository
 	{
-		private static BuildingRepository repository;
-		List<Campus> CampusList = new List<Campus> ();
+		static BuildingRepository repository;
+		readonly List<Campus> CampusList = new List<Campus> ();
 
 		public static BuildingRepository getInstance {
 			get {
@@ -106,7 +106,7 @@ namespace CocoMaps.Shared
 				Code = "CL",
 				Name = "CL",
 				Campus = SGW,
-				Address = "1665 St. St. Catherine W.",
+				Address = "1665 St. Catherine W.",
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.4944781718791, -73.57927232980728),
 					new Tuple<double, double> (45.4941707633251, -73.57964850962162),
@@ -1073,7 +1073,7 @@ namespace CocoMaps.Shared
 					//new Tuple<double, double> (45.45899195996461, -73.6403576284647)
 
 				}
-				
+
 			};
 			LOY.Buildings.Add (PY);
 			Building RA = new Building () {

@@ -28,18 +28,20 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Buildings\BuildingRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GooglePointsDecoder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Database\SQLite.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\BaseCalendar.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ConcordiaServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Master.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Menu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Root.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\PlacesPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Places\Places.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Places\RequestPlaces.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Directions\Directions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Directions\RequestDirections.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\FetchJsonAsync.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\BaseCalendar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\Calendar.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\POI\PlacesPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\POI\BasePOI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\POI\POI.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -52,5 +54,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Buildings\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Database\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Places\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\POI\" />
   </ItemGroup>
 </Project>

@@ -1501,7 +1501,7 @@ namespace CocoMaps.Android
 			public const int splash = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int SplashScreen = 2130837617;
+			public const int splashscreen = 2130837617;
 			
 			// aapt resource value: 0x7f020072
 			public const int zoom_in = 2130837618;
