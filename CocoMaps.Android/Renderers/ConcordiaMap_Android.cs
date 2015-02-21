@@ -6,7 +6,8 @@ using Xamarin.Forms.Maps.Android;
 using CocoMaps.Shared;
 using System.Collections.Generic;
 using Android.Graphics;
-using CocoMaps.Shared.GoogleDirections;
+using System.Threading;
+using Android.App;
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]
 
@@ -20,20 +21,23 @@ namespace CocoMapsAndroid
 		string _to = "";
 		MarkerOptions testMarker;
 
-		void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
+		static void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
 		{
-			Console.WriteLine (e.Marker.Title + " CLICKED!!!");
+			var m = sender as Marker;
+			if (m != null)
+				Console.WriteLine (m.Title + " CLICKED!!!");
+
 		}
 
 		BitmapDescriptor GetCustomBitmapDescriptor (string text)
 		{
-			using (Paint paint = new Paint (PaintFlags.LinearText)) {
+			using (var paint = new Paint (PaintFlags.LinearText)) {
 				paint.Color = Android.Graphics.Color.White;
 				paint.TextSize = 45;
 				paint.SetTypeface (Typeface.DefaultBold);
 
-				using (Rect bounds = new Rect ()) {
-					using (Bitmap baseBitmap = BitmapFactory.DecodeResource (Resources, CocoMaps.Android.Resource.Drawable.buildingCodeIcon)) {
+				using (var bounds = new Rect ()) {
+					using (var baseBitmap = BitmapFactory.DecodeResource (Resources, CocoMaps.Android.Resource.Drawable.buildingCodeIcon)) {
 						Bitmap bitmap = baseBitmap.Copy (Bitmap.Config.Argb8888, true);
 
 						paint.GetTextBounds (text, 0, text.Length, bounds);
@@ -53,10 +57,10 @@ namespace CocoMapsAndroid
 			}
 		}
 
-		bool InPolygon (Building building, double testX, double testY)
+		static bool InPolygon (Building building, double testX, double testY)
 		{
 			int i, j;
-			List<LatLng> latlnglist = new List<LatLng> ();
+			var latlnglist = new List<LatLng> ();
 			bool c = false;
 
 			foreach (Tuple<double, double> point in building.ShapeCoords)
@@ -71,24 +75,24 @@ namespace CocoMapsAndroid
 		}
 
 
+
 		protected override void OnElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 
 			base.OnElementPropertyChanged (sender, e);
 			var androidMapView = (MapView)Control;
-			var formsMap = (ConcordiaMap)sender;
+			//var formsMap = (ConcordiaMap)sender;
 			BuildingRepository buildingRepo = BuildingRepository.getInstance;
 
 			if (e.PropertyName.Equals ("VisibleRegion") && !_isDrawnDone) {
 
-				//androidMapView.Map.Clear ();
-				androidMapView.Map.MyLocationEnabled = true;
 				androidMapView.Map.UiSettings.MyLocationButtonEnabled = true;
-				androidMapView.Map.UiSettings.CompassEnabled = true;
-				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
+				androidMapView.Map.UiSettings.CompassEnabled = false;
+				androidMapView.Map.UiSettings.MapToolbarEnabled = false;
 				androidMapView.Map.UiSettings.ZoomControlsEnabled = true;
 
 				androidMapView.Map.MapClick += (senderr, ee) => {
+
 					foreach (Campus c in buildingRepo.getCampusList()) {
 						foreach (Building b in c.Buildings) {
 							if (InPolygon (b, ee.Point.Latitude, ee.Point.Longitude)) {
@@ -101,7 +105,7 @@ namespace CocoMapsAndroid
 
 								androidMapView.Map.AddMarker (testMarker);
 
-								Console.WriteLine ("COORDINATES ARE IN BUILDING " + b.Campus + ", " + b.Code + " - " + b.Name);
+								Console.WriteLine ("COORDINATES ARE IN " + b);
 								break;
 							}
 						}
@@ -129,7 +133,7 @@ namespace CocoMapsAndroid
 
 									RequestDirections directionsRequest = RequestDirections.getInstance;
 
-									Directions directions = await directionsRequest.getDirections (_from, _to, CocoMaps.Shared.GoogleDirections.Mode.Walking);
+									Directions directions = await directionsRequest.getDirections (_from, _to, TravelMode.Walking);
 
 									if (directions.status.Equals ("OK")) {
 
@@ -137,21 +141,21 @@ namespace CocoMapsAndroid
 										polyline.InvokeColor (0x7F00768e);
 										var directionsString = "";
 
-										foreach (CocoMaps.Shared.GoogleDirections.Route route in directions.routes) {
+										foreach (Route route in directions.routes) {
 											route.overview_polyline.decodedPoints = GoogleUtil.Decode (route.overview_polyline.points);
 											foreach (LatLng point in route.overview_polyline.decodedPoints) {
 												polyline.Add (point);
 											}
-											foreach (CocoMaps.Shared.GoogleDirections.Leg leg in route.legs) {
-												foreach (CocoMaps.Shared.GoogleDirections.Step step in leg.steps) {
+											foreach (Leg leg in route.legs) {
+												foreach (Step step in leg.steps) {
 													directionsString += step.html_instructions;
 												}
 											}
-
-											androidMapView.Map.AddPolyline (polyline);
-
 										}
-										Console.WriteLine (directionsString);
+
+										androidMapView.Map.AddPolyline (polyline);
+
+
 									}
 									//DependencyService.Get<ITextToSpeech> ().Speak (directionsString);
 									_from = "";
@@ -169,17 +173,17 @@ namespace CocoMapsAndroid
 					foreach (Building b in c.Buildings) {
 
 						using (PolygonOptions polygon = new PolygonOptions ()) {
-							var markerWithIcon = new MarkerOptions ();
+							using (MarkerOptions buildingCodeMarker = new MarkerOptions ()) {
 
-							markerWithIcon.SetPosition (new LatLng (b.ShapeCoords [0].Item1, b.ShapeCoords [0].Item2))
-						.SetTitle (b.Code)
-						.SetSnippet (b.Name)
-							.InvokeIcon (GetCustomBitmapDescriptor (b.Code)); //BitmapDescriptorFactory.FromAsset ("CarWashMapIcon.png")
+								buildingCodeMarker.SetPosition (new LatLng (b.ShapeCoords [0].Item1, b.ShapeCoords [0].Item2))
+									.SetTitle (b.Code)
+									.SetSnippet (b.Name)
+									.InvokeIcon (GetCustomBitmapDescriptor (b.Code)); //BitmapDescriptorFactory.FromAsset ("CarWashMapIcon.png")
+							
+								androidMapView.Map.MarkerClick += HandleMarkerClick;
 
-							//androidMapView.Map.MarkerClick += this.HandleMarkerClick;
-
-							//androidMapView.Map.AddMarker (markerWithIcon);
-
+								androidMapView.Map.AddMarker (buildingCodeMarker);
+							}
 							polygon.InvokeFillColor (0x3F932439).InvokeStrokeColor (0x00932439).Geodesic (true);
 
 							foreach (Tuple<double, double> p in b.ShapeCoords)
@@ -188,7 +192,6 @@ namespace CocoMapsAndroid
 
 							androidMapView.Map.AddPolygon (polygon);
 
-							//polygon = new PolygonOptions ();
 						}
 					}
 				}

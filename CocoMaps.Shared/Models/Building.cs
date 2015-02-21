@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
 
 namespace CocoMaps.Shared
 {
@@ -8,15 +7,6 @@ namespace CocoMaps.Shared
 	public class Building
 	{
 	
-		public Building ()
-		{
-		}
-
-		public int ID {
-			get;
-			set;
-		}
-
 		public string Code {
 			get;
 			set;
@@ -37,7 +27,7 @@ namespace CocoMaps.Shared
 			set;
 		}
 
-		public Tuple<double, double> Pos {
+		public Tuple<double, double> Position {
 			get;
 			set;
 		}
@@ -59,7 +49,7 @@ namespace CocoMaps.Shared
 
 		public override string ToString ()
 		{
-			return string.Format ("[Building: Code={0}, Name={1}, Address={2}]", Code, Name, Address);
+			return string.Format ("[Building: Code = {0}, Name = {1}, Address = {2}]", Code, Name, Address);
 		}
 	}
 }

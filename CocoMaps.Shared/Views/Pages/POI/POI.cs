@@ -36,7 +36,7 @@ namespace CocoMaps.Shared
 			SGWPosition = new Position (45.4971711, -73.5790942);
 			LOYPosition = new Position (45.4585649, -73.6400639);
 
-			this.map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition, Distance.FromMiles (0.1)));
+			this.map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition, Xamarin.Forms.Maps.Distance.FromMiles (0.1)));
 
 
 			var SGWButton = new Button { Text = "SGW" };
@@ -45,7 +45,7 @@ namespace CocoMaps.Shared
 			SGWButton.Clicked += HandleCampusRegionButton;
 			LOYButton.Clicked += HandleCampusRegionButton;
 
-			showPOI(pageName);
+			showPOI (pageName);
 
 			var POIButtons = new StackLayout {
 				Spacing = 5,
@@ -66,25 +66,24 @@ namespace CocoMaps.Shared
 			var b = sender as Button;
 			switch (b.Text) {
 			case "SGW":
-				map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition, Distance.FromMiles (0.1)));
+				map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition, Xamarin.Forms.Maps.Distance.FromMiles (0.1)));
 				break;
 			case "LOY":
-				map.MoveToRegion (MapSpan.FromCenterAndRadius (LOYPosition,	Distance.FromMiles (0.2)));
+				map.MoveToRegion (MapSpan.FromCenterAndRadius (LOYPosition,	Xamarin.Forms.Maps.Distance.FromMiles (0.1)));
 				break;
 			}
 		}
 
-		async void showPOI(String POItype)
+		async void showPOI (String POItype)
 		{
 			map.Pins.Clear ();
 			var placesRequest = RequestPlaces.getInstance;
 
-			if (POItype.ToLower() == "coffee")
-			{
+			if (POItype.ToLower () == "coffee") {
 				POItype = "cafe";
 			}
 
-			Places places = await placesRequest.getPlaces (POItype.ToLower(), SGWPosition);
+			Places places = await placesRequest.getPlaces (POItype.ToLower (), SGWPosition);
 			foreach (Result r in places.results) {
 				var pin = new Pin {
 					Type = PinType.Place,
@@ -94,7 +93,7 @@ namespace CocoMaps.Shared
 				};
 				map.Pins.Add (pin);
 			}
-			places = await placesRequest.getPlaces (POItype.ToLower(), LOYPosition);
+			places = await placesRequest.getPlaces (POItype.ToLower (), LOYPosition);
 			foreach (Result r in places.results) {
 				var pin = new Pin {
 					Type = PinType.Place,
@@ -107,4 +106,3 @@ namespace CocoMaps.Shared
 		}
 	}
 }
-

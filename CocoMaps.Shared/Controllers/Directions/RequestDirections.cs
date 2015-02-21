@@ -1,6 +1,5 @@
 ﻿using System;
 using Newtonsoft.Json;
-using CocoMaps.Shared.GoogleDirections;
 using System.Threading.Tasks;
 using System.Json;
 
@@ -22,7 +21,7 @@ namespace CocoMaps.Shared
 			}
 		}
 
-		public async Task<Directions> getDirections (string origin, string destination, CocoMaps.Shared.GoogleDirections.Mode mode)
+		public async Task<Directions> getDirections (string origin, string destination, TravelMode mode)
 		{
 			// Create a request for the URL.
 			var requestUrl = string.Format ("https://maps.google.com/maps/api/directions/json?origin={0}+Montreal&destination={1}+Montreal&mode={2}&sensor=true", origin, destination, mode.ToString ().ToLower ());

@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Android.Gms.Maps.Model;
-using Newtonsoft.Json;
 
-namespace CocoMaps.Shared.GoogleDirections
+namespace CocoMaps.Shared
 {
 
-	public enum Mode
+	public enum TravelMode
 	{
 		Walking,
 		Driving,

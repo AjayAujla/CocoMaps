@@ -34,7 +34,7 @@ namespace CocoMaps.Shared
 
 			Label header = new Label {
 				Text = "Classes",
-				Font = Font.BoldSystemFontOfSize (30),
+				FontSize = 30,
 				HorizontalOptions = LayoutOptions.Center
 			};
 

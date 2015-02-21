@@ -1,20 +1,18 @@
 ﻿using System;
 using Xamarin.Forms;
-using CocoMaps.Shared.Pages;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Models;
 using Xamarin.Forms.Maps;
-using System.Diagnostics;
 
-namespace CocoMaps.Shared.Pages
+namespace CocoMaps.Shared
 {
 	public class PlacesPage : ContentPage
 	{
-		ConcordiaMap map;
+		readonly ConcordiaMap map;
 		Position SGWPosition;
 		Position LOYPosition;
 
-		public PlacesPage (IMenuOptions menuItem , String pName)
+		public PlacesPage (IMenuOptions menuItem, String pName)
 		{
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
@@ -34,7 +32,7 @@ namespace CocoMaps.Shared.Pages
 			SGWPosition = new Position (45.4971711, -73.5790942);
 			LOYPosition = new Position (45.4585649, -73.6400639);
 
-			this.map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition, Distance.FromMiles (0.1)));
+			this.map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition, Xamarin.Forms.Maps.Distance.FromMiles (0.1)));
 
 
 			var SGWButton = new Button { Text = "SGW" };
@@ -86,10 +84,10 @@ namespace CocoMaps.Shared.Pages
 			var b = sender as Button;
 			switch (b.Text) {
 			case "SGW":
-				map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition, Distance.FromMiles (0.1)));
+				map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition, Xamarin.Forms.Maps.Distance.FromMiles (0.1)));
 				break;
 			case "LOY":
-				map.MoveToRegion (MapSpan.FromCenterAndRadius (LOYPosition,	Distance.FromMiles (0.2)));
+				map.MoveToRegion (MapSpan.FromCenterAndRadius (LOYPosition,	Xamarin.Forms.Maps.Distance.FromMiles (0.2)));
 				break;
 			}
 		}
@@ -108,6 +106,7 @@ namespace CocoMaps.Shared.Pages
 					Address = r.vicinity
 				};
 				map.Pins.Add (pin);
+			
 			}
 			places = await placesRequest.getPlaces (b.ToLower (), LOYPosition);
 			foreach (Result r in places.results) {

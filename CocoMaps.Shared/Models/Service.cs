@@ -4,9 +4,6 @@ namespace CocoMaps.Shared
 {
 	public class Service
 	{
-		public Service ()
-		{
-		}
 
 		public String Name {
 			get;
@@ -22,5 +19,6 @@ namespace CocoMaps.Shared
 			get;
 			set;
 		}
+
 	}
 }
