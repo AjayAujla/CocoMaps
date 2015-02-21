@@ -48,6 +48,7 @@ namespace CocoMaps.Shared
 				Name = "B",
 				Campus = SGW,
 				Address = "2160 Bishop",
+				Position = new Tuple<double, double> (5, 6),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49792300709727, -73.57949629426003),
 					new Tuple<double, double> (45.49788775606442, -73.57942052185535),

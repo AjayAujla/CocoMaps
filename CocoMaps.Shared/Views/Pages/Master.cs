@@ -97,7 +97,8 @@ namespace CocoMaps.Shared
 			testButton.Clicked += (sender, e) => {
 				var h = directionsLayout.HeightRequest;
 				if (isDirections) {
-					directionsLayout.TranslateTo (0, -h, 100);
+
+					directionsLayout.TranslateTo (0, -h, 0);
 					searchBar.Focus ();
 					isDirections = false;
 				} else {

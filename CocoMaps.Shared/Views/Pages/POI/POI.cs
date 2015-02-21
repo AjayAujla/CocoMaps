@@ -69,7 +69,7 @@ namespace CocoMaps.Shared
 				map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition, Xamarin.Forms.Maps.Distance.FromMiles (0.1)));
 				break;
 			case "LOY":
-				map.MoveToRegion (MapSpan.FromCenterAndRadius (LOYPosition,	Xamarin.Forms.Maps.Distance.FromMiles (0.2)));
+				map.MoveToRegion (MapSpan.FromCenterAndRadius (LOYPosition,	Xamarin.Forms.Maps.Distance.FromMiles (0.1)));
 				break;
 			}
 		}
@@ -106,4 +106,3 @@ namespace CocoMaps.Shared
 		}
 	}
 }
-

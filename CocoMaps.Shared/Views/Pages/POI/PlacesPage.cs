@@ -3,7 +3,6 @@ using Xamarin.Forms;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Models;
 using Xamarin.Forms.Maps;
-using System.Threading.Tasks;
 
 namespace CocoMaps.Shared
 {
