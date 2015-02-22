@@ -114,55 +114,59 @@ namespace CocoMapsAndroid
 
 				androidMapView.Map.MapLongClick += async (senderr, ee) => {
 
-					foreach (Campus c in buildingRepo.getCampusList()) {
-						foreach (Building b in c.Buildings) {
-							if (InPolygon (b, ee.Point.Latitude, ee.Point.Longitude)) {
+					if (App.isConnected ()) {
+						foreach (Campus c in buildingRepo.getCampusList()) {
+							foreach (Building b in c.Buildings) {
+								if (InPolygon (b, ee.Point.Latitude, ee.Point.Longitude)) {
 							
-								if (_from.Equals ("")) {
-									_from = b.Address;
-									androidMapView.Map.AddMarker (new MarkerOptions ()
+									if (_from.Equals ("")) {
+										_from = b.Address;
+										androidMapView.Map.AddMarker (new MarkerOptions ()
 										.SetTitle (b.Code)
 										.SetSnippet (b.Address)
 										.SetPosition (new LatLng (b.ShapeCoords [0].Item1, b.ShapeCoords [0].Item2)));
-								} else {
-									_to = b.Address;
-									androidMapView.Map.AddMarker (new MarkerOptions ()
+									} else {
+										_to = b.Address;
+										androidMapView.Map.AddMarker (new MarkerOptions ()
 										.SetTitle (b.Code)
 										.SetSnippet (b.Address)
 										.SetPosition (new LatLng (b.ShapeCoords [0].Item1, b.ShapeCoords [0].Item2)));
 
-									RequestDirections directionsRequest = RequestDirections.getInstance;
+										RequestDirections directionsRequest = RequestDirections.getInstance;
 
-									Directions directions = await directionsRequest.getDirections (_from, _to, TravelMode.Walking);
+										Directions directions = await directionsRequest.getDirections (_from, _to, TravelMode.Walking);
 
-									if (directions.status.Equals ("OK")) {
+										if (directions.status.Equals ("OK")) {
 
-										PolylineOptions polyline = new PolylineOptions ();
-										polyline.InvokeColor (0x7F00768e);
-										var directionsString = "";
+											var loader = ActivityLoading.getInstance ();
+											ActivityLoading.Show (loader);
 
-										foreach (Route route in directions.routes) {
-											route.overview_polyline.decodedPoints = GoogleUtil.Decode (route.overview_polyline.points);
-											foreach (LatLng point in route.overview_polyline.decodedPoints) {
-												polyline.Add (point);
-											}
-											foreach (Leg leg in route.legs) {
-												foreach (Step step in leg.steps) {
-													directionsString += step.html_instructions;
+											PolylineOptions polyline = new PolylineOptions ();
+											polyline.InvokeColor (0x7F00768e);
+											var directionsString = "";
+
+											foreach (Route route in directions.routes) {
+												route.overview_polyline.decodedPoints = GoogleUtil.Decode (route.overview_polyline.points);
+												foreach (LatLng point in route.overview_polyline.decodedPoints) {
+													polyline.Add (point);
+												}
+												foreach (Leg leg in route.legs) {
+													foreach (Step step in leg.steps) {
+														directionsString += step.html_instructions;
+													}
 												}
 											}
+											androidMapView.Map.AddPolyline (polyline);
+
+											//ActivityLoading.Hide (loader);
 										}
-
-										androidMapView.Map.AddPolyline (polyline);
-
-
+										//DependencyService.Get<ITextToSpeech> ().Speak (directionsString);
+										_from = "";
+										_to = "";
 									}
-									//DependencyService.Get<ITextToSpeech> ().Speak (directionsString);
-									_from = "";
-									_to = "";
-								}
 
-								break;
+									break;
+								}
 							}
 						}
 					}
