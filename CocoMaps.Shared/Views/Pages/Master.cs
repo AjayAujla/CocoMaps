@@ -16,6 +16,9 @@ namespace CocoMaps.Shared
 		RelativeLayout mainLayout;
 		RelativeLayout directionsLayout;
 		bool isDirections;
+		Label networkStatus = new Label {
+			TextColor = Color.White
+		};
 
 		Dictionary<string, TravelMode> travelMode = new Dictionary<string, TravelMode> {
 			{ "Walking", TravelMode.Walking },
@@ -129,6 +132,15 @@ namespace CocoMaps.Shared
 				if (e.PropertyName.Equals ("IsFocused") && !IsFocused && isDirections)
 					directionsLayout.TranslateTo (0, -this.Height, 100);
 			};
+			DependencyService.Get<INetwork> ().ReachabilityChanged += async (NetworkStatus obj) => {
+				if (obj == NetworkStatus.NotReachable) {
+					networkStatus.BackgroundColor = Color.Red;
+					networkStatus.Text = "Offline";
+				} else {
+					networkStatus.BackgroundColor = Color.Green;
+					networkStatus.Text = "Online";
+				}
+			};
 
 			testButton.Clicked += (sender, e) => {
 				var h = directionsLayout.HeightRequest;
@@ -156,7 +168,7 @@ namespace CocoMaps.Shared
 			mainLayout.Children.Add (loader, Constraint.RelativeToParent ((parent) => Width / 2 - loader.Width / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loader.Height / 2));
 			mainLayout.Children.Add (SGWButton, Constraint.Constant (14), Constraint.RelativeToParent ((parent) => Height - 54));
 			mainLayout.Children.Add (LOYButton, Constraint.Constant (84), Constraint.RelativeToParent ((parent) => Height - 54));
-			mainLayout.Children.Add (checkNetworkButton, Constraint.Constant (154), Constraint.RelativeToParent ((parent) => Height - 54));
+			mainLayout.Children.Add (networkStatus, Constraint.Constant (154), Constraint.RelativeToParent ((parent) => Height - 44));
 
 			mainLayout.Children.Add (picker, Constraint.Constant (100), Constraint.Constant (100));
 	
