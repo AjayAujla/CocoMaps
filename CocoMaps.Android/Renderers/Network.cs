@@ -30,7 +30,7 @@ namespace CocoMaps.Android
 
 			using (var cm = (ConnectivityManager)Application.Context.GetSystemService (Context.ConnectivityService))
 			using (var ni = cm.ActiveNetworkInfo) {
-				if (ni != null && ni.IsConnectedOrConnecting) {
+				if (ni != null && ni.IsConnected) {
 					var name = ni.TypeName.ToUpper ();
 					if (name.Contains ("WIFI")) {
 						status = NetworkStatus.ReachableViaWiFiNetwork;
