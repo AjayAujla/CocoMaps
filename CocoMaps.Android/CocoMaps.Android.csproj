@@ -90,6 +90,8 @@
     <Compile Include="Renderers\ListTextCellRenderer.cs" />
     <Compile Include="Files\TextToSpeech_Android.cs" />
     <Compile Include="Renderers\ConcordiaMap_Android.cs" />
+    <Compile Include="Renderers\Network.cs" />
+    <Compile Include="Renderers\BroadcastMonitor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

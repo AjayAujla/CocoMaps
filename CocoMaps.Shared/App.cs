@@ -13,7 +13,18 @@ namespace CocoMaps.Shared
 		{
 			MainPage = new RootPage ();
 
-			//DependencyService.Get<ITextToSpeech>().Speak("Welcome to CocoMaps!");
+			var reach = DependencyService.Get<INetwork> ().InternetConnectionStatus ();
+
+			//DependencyService.Get<ITextToSpeech> ().Speak (reach.ToString());
+				
+
+		}
+
+		public static bool isConnected ()
+		{
+			if (DependencyService.Get<INetwork> ().InternetConnectionStatus () == NetworkStatus.NotReachable)
+				return false;
+			return true;
 		}
 
 	}

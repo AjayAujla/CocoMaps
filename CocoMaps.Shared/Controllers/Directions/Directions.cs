@@ -9,7 +9,8 @@ namespace CocoMaps.Shared
 		Walking,
 		Driving,
 		Transit,
-		Bicycling
+		Bicycling,
+		Shuttle
 	}
 
 	public class Northeast
