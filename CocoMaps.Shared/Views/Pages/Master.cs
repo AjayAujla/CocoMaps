@@ -4,8 +4,6 @@ using Xamarin.Forms.Maps;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Models;
 using System.Collections.Generic;
-using Android.Media;
-using CocoMaps.Android;
 
 namespace CocoMaps.Shared
 {
@@ -15,6 +13,9 @@ namespace CocoMaps.Shared
 		SearchBar searchBar;
 		RelativeLayout mainLayout;
 		RelativeLayout directionsLayout;
+		public static RelativeLayout buildingDetailLayout;
+		public static Label buildingNameLabel;
+		public static Label buildingAddressLabel;
 		bool isDirections;
 		Label networkStatus = new Label {
 			TextColor = Color.White
@@ -92,15 +93,12 @@ namespace CocoMaps.Shared
 
 			searchBar.PropertyChanged += HandleFocusChange;
 			searchBar.TextChanged += HandleTextChanged;
-			;
-
 
 
 			mainLayout = new RelativeLayout {
 				BackgroundColor = Color.Transparent
 			};
 
-			Content = mainLayout;
 
 			directionsLayout = new RelativeLayout {
 				BackgroundColor = Helpers.Color.DarkGray.ToFormsColor (),
@@ -110,33 +108,45 @@ namespace CocoMaps.Shared
 				HorizontalOptions = LayoutOptions.Center
 			};
 
-
-			Content.SizeChanged += (sender, e) => {
-				// Orientation in Portrait Mode
-				if (mainLayout.Width < mainLayout.Height) {
-					searchBar.WidthRequest = App.ScreenSize.Width - 64;
-					directionsLayout.WidthRequest = App.ScreenSize.Width - 64;
-					map.HeightRequest = App.ScreenSize.Height - App.StatusBarHeight;
-					map.WidthRequest = App.ScreenSize.Width;
-				}
-				// Orientation in Landscape Mode
-				if (mainLayout.Width > mainLayout.Height) {
-					searchBar.WidthRequest = App.ScreenSize.Height - 64;
-					directionsLayout.WidthRequest = App.ScreenSize.Height - 64;
-					map.HeightRequest = App.ScreenSize.Width - App.StatusBarHeight;
-					map.WidthRequest = App.ScreenSize.Height;
-				}
+			buildingDetailLayout = new RelativeLayout {
+				BackgroundColor = Helpers.Color.LightGray.ToFormsColor (),
+				WidthRequest = App.ScreenSize.Width,
+				HeightRequest = 100,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				Padding = 14
 			};
+			buildingNameLabel = new Label {
+				Text = "Code - Name",
+				TextColor = Helpers.Color.Maroon.ToFormsColor (),
+				FontSize = 20,
+			};
+			buildingAddressLabel = new Label {
+				Text = "Building Address",
+				TextColor = Helpers.Color.Gray.ToFormsColor (),
+				FontSize = 10
+			};
+			var closeLayoutButton = new Button {
+				Text = "X",
+				TextColor = Color.Gray,
+				BackgroundColor = Color.Transparent
+			};
+			closeLayoutButton.Clicked += HideLayout;
+
+			buildingDetailLayout.Children.Add (buildingNameLabel, Constraint.Constant (14));
+			buildingDetailLayout.Children.Add (buildingAddressLabel, Constraint.Constant (14), Constraint.Constant (25));
+			buildingDetailLayout.Children.Add (closeLayoutButton, Constraint.RelativeToParent (Parent => Width - 50), Constraint.Constant (-10));
 
 			searchBar.PropertyChanged += (sender, e) => {
 				if (e.PropertyName.Equals ("IsFocused") && !IsFocused && isDirections)
-					directionsLayout.TranslateTo (0, -this.Height, 100);
+					directionsLayout.TranslateTo (0, -Height, 100);
 			};
-			DependencyService.Get<INetwork> ().ReachabilityChanged += async (NetworkStatus obj) => {
+
+			DependencyService.Get<INetwork> ().ReachabilityChanged += obj => {
 				if (obj == NetworkStatus.NotReachable) {
 					networkStatus.BackgroundColor = Color.Red;
 					networkStatus.Text = "Offline";
 				} else {
+					// Network is connected
 					networkStatus.BackgroundColor = Color.Green;
 					networkStatus.Text = "Online";
 				}
@@ -156,27 +166,45 @@ namespace CocoMaps.Shared
 				}
 			};
 
-			mainLayout.PropertyChanged += (sender, e) => {
-
-			};
-
 			ActivityIndicator loader = ActivityLoading.getInstance ();
+
+			DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
 
 			mainLayout.Children.Add (map, Constraint.Constant (0));
 			mainLayout.Children.Add (directionsLayout, Constraint.Constant (0));
 			mainLayout.Children.Add (searchBar, Constraint.Constant (0));
 			mainLayout.Children.Add (loader, Constraint.RelativeToParent ((parent) => Width / 2 - loader.Width / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loader.Height / 2));
-			mainLayout.Children.Add (SGWButton, Constraint.Constant (14), Constraint.RelativeToParent ((parent) => Height - 54));
-			mainLayout.Children.Add (LOYButton, Constraint.Constant (84), Constraint.RelativeToParent ((parent) => Height - 54));
-			mainLayout.Children.Add (networkStatus, Constraint.Constant (154), Constraint.RelativeToParent ((parent) => Height - 44));
+			mainLayout.Children.Add (SGWButton, Constraint.Constant (14), Constraint.RelativeToParent (parent => Height - 54));
+			mainLayout.Children.Add (LOYButton, Constraint.Constant (84), Constraint.RelativeToParent (parent => Height - 54));
+			mainLayout.Children.Add (networkStatus, Constraint.Constant (154), Constraint.RelativeToParent (parent => Height - 44));
+			mainLayout.Children.Add (buildingDetailLayout, Constraint.Constant (0), Constraint.RelativeToParent (parent => Height));
+			mainLayout.Children.Add (detailsLayout, Constraint.Constant (0), Constraint.RelativeToParent (parent => Height));
 
-			mainLayout.Children.Add (picker, Constraint.Constant (100), Constraint.Constant (100));
-	
+			//mainLayout.Children.Add (picker, Constraint.Constant (100), Constraint.Constant (100));
+
 			map.MoveToRegion (MapSpan.FromCenterAndRadius (Campus.SGWPosition, Xamarin.Forms.Maps.Distance.FromKilometers (0.2)));
 
+			Content = mainLayout;
 
+			Content.SizeChanged += (sender, e) => {
+				// Orientation in Portrait Mode
+				if (mainLayout.Width < mainLayout.Height) {
+					searchBar.WidthRequest = App.ScreenSize.Width - 64;
+					directionsLayout.WidthRequest = App.ScreenSize.Width - 64;
+					map.HeightRequest = App.ScreenSize.Height - App.StatusBarHeight;
+					map.WidthRequest = App.ScreenSize.Width;
+					buildingDetailLayout.WidthRequest = App.ScreenSize.Width;
+				}
+				// Orientation in Landscape Mode
+				if (mainLayout.Width > mainLayout.Height) {
+					searchBar.WidthRequest = App.ScreenSize.Height - 64;
+					directionsLayout.WidthRequest = App.ScreenSize.Height - 64;
+					map.HeightRequest = App.ScreenSize.Width - App.StatusBarHeight;
+					map.WidthRequest = App.ScreenSize.Height;
+					buildingDetailLayout.WidthRequest = App.ScreenSize.Height;
+				}
+			};
 		}
-		//DependencyService.Get<INetwork>();
 
 
 		void HandleTextChanged (object sender, TextChangedEventArgs e)
@@ -214,6 +242,23 @@ namespace CocoMaps.Shared
 				break;
 			}
 		}
+
+		public static Building UpdateBuildingDetailsLayout (Building building)
+		{
+
+			return building;
+		}
+
+		public static void ShowBuildingDetailsLayout ()
+		{
+			buildingDetailLayout.TranslateTo (0, -buildingDetailLayout.HeightRequest, 500);
+		}
+
+		void HideLayout (object sender, EventArgs e)
+		{
+			buildingDetailLayout.TranslateTo (0, App.ScreenSize.Height, 500);
+		}
+
 
 	}
 }

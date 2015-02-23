@@ -1,11 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Net;
-using System.Threading.Tasks;
-using System.Json;
-using Android.Views.InputMethods;
-using System.Runtime.InteropServices;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace CocoMaps.Shared
 {

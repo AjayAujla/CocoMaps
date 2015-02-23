@@ -12,10 +12,6 @@ namespace CocoMaps.Shared
 		public static Position SGWPosition = new Position (45.4971711, -73.5790942);
 		public static Position LOYPosition = new Position (45.4585649, -73.6400639);
 
-		public Campus ()
-		{
-		}
-
 		public int ID {
 			get;
 			set;
