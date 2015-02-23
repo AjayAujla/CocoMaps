@@ -174,14 +174,14 @@ namespace CocoMapsAndroid
 					}
 				};
 
-				foreach (Campus c in buildingRepo.getCampusList()) {
+				//foreach (Campus c in buildingRepo.getCampusList()) {
 
-					foreach (Building b in c.Buildings) {
+				foreach (Building b in buildingRepo.GetCampusByCode("SGW").Buildings) {
 
 						using (PolygonOptions polygon = new PolygonOptions ()) {
 							using (MarkerOptions buildingCodeMarker = new MarkerOptions ()) {
 
-								buildingCodeMarker.SetPosition (new LatLng (b.ShapeCoords [0].Item1, b.ShapeCoords [0].Item2))
+								buildingCodeMarker.SetPosition (new LatLng (b.Position.Item1, b.Position.Item2))
 									.SetTitle (b.Code)
 									.SetSnippet (b.Name)
 									.InvokeIcon (GetCustomBitmapDescriptor (b.Code)); //BitmapDescriptorFactory.FromAsset ("CarWashMapIcon.png")
@@ -199,7 +199,7 @@ namespace CocoMapsAndroid
 							androidMapView.Map.AddPolygon (polygon);
 
 						}
-					}
+					//}
 				}
 
 				_isDrawnDone = true;
