@@ -167,33 +167,32 @@ namespace CocoMapsAndroid
 					}
 				};
 
-				foreach (Campus c in buildingRepo.getCampusList()) {
+				//foreach (Campus c in buildingRepo.getCampusList()) {
 
-					foreach (Building b in c.Buildings) {
+					foreach (Building b in buildingRepo.GetCampusByCode("SGW").Buildings) {
 
 						using (PolygonOptions polygon = new PolygonOptions ()) {
 							var markerWithIcon = new MarkerOptions ();
 
-							markerWithIcon.SetPosition (new LatLng (b.ShapeCoords [0].Item1, b.ShapeCoords [0].Item2))
-						.SetTitle (b.Code)
-						.SetSnippet (b.Name)
-							.InvokeIcon (GetCustomBitmapDescriptor (b.Code)); //BitmapDescriptorFactory.FromAsset ("CarWashMapIcon.png")
 
 							//androidMapView.Map.MarkerClick += this.HandleMarkerClick;
 
-							//androidMapView.Map.AddMarker (markerWithIcon);
-
+							
 							polygon.InvokeFillColor (0x3F932439).InvokeStrokeColor (0x00932439).Geodesic (true);
 
 							foreach (Tuple<double, double> p in b.ShapeCoords)
 								polygon.Add (new LatLng (p.Item1, p.Item2));
-
-
 							androidMapView.Map.AddPolygon (polygon);
+
+						markerWithIcon.SetPosition (new LatLng (b.Position.Item1, b.Position.Item2))
+							.SetTitle (b.Code)
+							.SetSnippet (b.Name)
+							.InvokeIcon (GetCustomBitmapDescriptor (b.Code)); //BitmapDescriptorFactory.FromAsset ("CarWashMapIcon.png")
+						androidMapView.Map.AddMarker (markerWithIcon);
 
 							//polygon = new PolygonOptions ();
 						}
-					}
+					//}
 				}
 
 				_isDrawnDone = true;

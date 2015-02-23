@@ -37,7 +37,7 @@ namespace CocoMaps.Shared
 			set;
 		}
 
-		public Tuple<double, double> Pos {
+		public Tuple<double, double> Position {
 			get;
 			set;
 		}
