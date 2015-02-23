@@ -48,7 +48,7 @@ namespace CocoMaps.Shared
 				Name = "B",
 				Campus = SGW,
 				Address = "2160 Bishop",
-				Position = new Tuple<double, double> (5, 6),
+				Position = new Tuple<double, double> (45.49661118,-73.57913285),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49792300709727, -73.57949629426003),
 					new Tuple<double, double> (45.49788775606442, -73.57942052185535),
@@ -64,6 +64,7 @@ namespace CocoMaps.Shared
 				Name = "CB",
 				Campus = SGW,
 				Address = "1425 René Lévesque W.",
+				Position = new Tuple<double, double> (45.49519498,-73.57429147),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.495461491948106, -73.57426129281521),
 					new Tuple<double, double> (45.495081703057934, -73.57463613152504),
@@ -93,6 +94,7 @@ namespace CocoMaps.Shared
 				Name = "CI",
 				Campus = SGW,
 				Address = "2149 Mackay",
+				Position = new Tuple<double, double> (45.49744312,-73.57994959),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49752255406562, -73.57993818819523),
 					new Tuple<double, double> (45.497410689916435, -73.58004614710808),
@@ -108,6 +110,7 @@ namespace CocoMaps.Shared
 				Name = "CL",
 				Campus = SGW,
 				Address = "1665 St. Catherine W.",
+				Position = new Tuple<double, double> (45.4942173,-73.57929111),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.4944781718791, -73.57927232980728),
 					new Tuple<double, double> (45.4941707633251, -73.57964850962162),
@@ -127,6 +130,7 @@ namespace CocoMaps.Shared
 				Name = "D",
 				Campus = SGW,
 				Address = "2140 Bishop",
+				Position = new Tuple<double, double> (45.49773641,-73.57939035),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.4978449847816, -73.57933469116688),
 					new Tuple<double, double> (45.49781584388899, -73.57927098870277),
@@ -142,6 +146,7 @@ namespace CocoMaps.Shared
 				Name = "EN",
 				Campus = SGW,
 				Address = "2070 Mackay",
+				Position = new Tuple<double, double> (45.49684385,-73.57963711),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49693737990155, -73.57957743108273),
 					new Tuple<double, double> (45.496918109002365, -73.57953786849976),
@@ -161,6 +166,7 @@ namespace CocoMaps.Shared
 				Name = "Computer Science, Engineering and Visual Arts Integrated Complex",
 				Campus = SGW,
 				Address = "1515 St. Catherine W.",
+				Position = new Tuple<double, double> (45.49561989,-73.5783577),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49518840143307, -73.57789903879166),
 					new Tuple<double, double> (45.49526266714314, -73.57805728912354),
@@ -183,6 +189,7 @@ namespace CocoMaps.Shared
 				Name = "FA",
 				Campus = SGW,
 				Address = "2060 Mackay",
+				Position = new Tuple<double, double> (45.49679496,-73.57951775),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.496864056445034, -73.57952110469341),
 					new Tuple<double, double> (45.49682739468098, -73.57944399118423),
@@ -199,6 +206,7 @@ namespace CocoMaps.Shared
 				Name = "Faubourg Tower",
 				Campus = SGW,
 				Address = "1250 Guy",
+				Position = new Tuple<double, double> (45.49458957,-73.57759595),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.494912019322506, -73.57778571546078),
 					new Tuple<double, double> (45.49487065589675, -73.57771262526512),
@@ -224,6 +232,7 @@ namespace CocoMaps.Shared
 				Name = "FG",
 				Campus = SGW,
 				Address = "1616 St. Catherine W.",
+				Position = new Tuple<double, double> (45.49381494,-73.57917309),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.494694390957754, -73.57803918421268),
 					new Tuple<double, double> (45.494451849499804, -73.57761606574059),
@@ -257,6 +266,7 @@ namespace CocoMaps.Shared
 				Name = "Guy-Metro",
 				Campus = SGW,
 				Address = "1550 De Maisonneuve W.",
+				Position = new Tuple<double, double> (45.49586619,-73.57887805),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49611248551097, -73.57887402176857),
 					new Tuple<double, double> (45.49594797521289, -73.57851728796959),
@@ -272,6 +282,7 @@ namespace CocoMaps.Shared
 				Name = "Henry F. Hall",
 				Campus = SGW,
 				Address = "1455 De Maisonneuve W.",
+				Position = new Tuple<double, double> (45.4972443,-73.57890487),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.497705860384244, -73.57903495430946),
 					new Tuple<double, double> (45.49716628007782, -73.57953920960426),
@@ -317,6 +328,7 @@ namespace CocoMaps.Shared
 				Name = "K",
 				Campus = SGW,
 				Address = "2150 Bishop",
+				Position = new Tuple<double, double> (45.49776837,-73.57947282),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.497884935980856, -73.5794198513031),
 					new Tuple<double, double> (45.49763159789631, -73.57966527342796),
@@ -332,6 +344,7 @@ namespace CocoMaps.Shared
 				Name = "McConnel Library",
 				Campus = SGW,
 				Address = "1400 De Maisonneuve W.",
+				Position = new Tuple<double, double> (45.49674232,-73.57807606),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49725511377648, -73.5780693590641),
 					new Tuple<double, double> (45.49701869362308, -73.5782953351736),
@@ -416,6 +429,7 @@ namespace CocoMaps.Shared
 				Name = "M",
 				Campus = SGW,
 				Address = "2135 Mackay",
+				Position = new Tuple<double, double> (45.49735382,-73.57977659),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49743278075342, -73.57976384460926),
 					new Tuple<double, double> (45.497325146593596, -73.57987113296986),
@@ -431,6 +445,7 @@ namespace CocoMaps.Shared
 				Name = "John Molson School of Business",
 				Campus = SGW,
 				Address = "1450 Guy",
+				Position = new Tuple<double, double> (45.49527019,-73.57901216),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.495200152343095, -73.57926495373249),
 					new Tuple<double, double> (45.49513857754739, -73.57933603227139),
@@ -457,6 +472,7 @@ namespace CocoMaps.Shared
 				Name = "MI",
 				Campus = SGW,
 				Address = "2130 Bishop",
+				Position = new Tuple<double, double> (45.49769458,-73.57930586),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49781302380185, -73.5792676359415),
 					new Tuple<double, double> (45.497646638408106, -73.5794285684824),
@@ -472,6 +488,7 @@ namespace CocoMaps.Shared
 				Name = "MU",
 				Campus = SGW,
 				Address = "2170 Bishop",
+				Position = new Tuple<double, double> (45.49786379,-73.57961833),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.497963428254415, -73.57957072556019),
 					new Tuple<double, double> (45.497789053055065, -73.57973903417587),
@@ -487,6 +504,7 @@ namespace CocoMaps.Shared
 				Name = "P",
 				Campus = SGW,
 				Address = "2020 Mackay",
+				Position = new Tuple<double, double> (45.49664738,-73.57920662),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49671787926927, -73.57919186353683),
 					new Tuple<double, double> (45.496680747386044, -73.57911810278893),
@@ -502,6 +520,7 @@ namespace CocoMaps.Shared
 				Name = "PR",
 				Campus = SGW,
 				Address = "2100 Mackay",
+				Position = new Tuple<double, double> (45.49690025,-73.57993349),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.497031384193306, -73.5798691213131),
 					new Tuple<double, double> (45.496987672217166, -73.57978396117687),
@@ -517,6 +536,7 @@ namespace CocoMaps.Shared
 				Name = "Q",
 				Campus = SGW,
 				Address = "2010 Mackay",
+				Position = new Tuple<double, double> (45.49661118,-73.57913285),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.496680277362046, -73.57911005616188),
 					new Tuple<double, double> (45.496651135866685, -73.57905372977257),
@@ -532,6 +552,7 @@ namespace CocoMaps.Shared
 				Name = "R",
 				Campus = SGW,
 				Address = "2050 Mackay",
+				Position = new Tuple<double, double> (45.49675877,-73.57944332),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.496825514589865, -73.57944063842297),
 					new Tuple<double, double> (45.49678462259274, -73.57935816049576),
@@ -547,6 +568,7 @@ namespace CocoMaps.Shared
 				Name = "RR",
 				Campus = SGW,
 				Address = "2040 Mackay",
+				Position = new Tuple<double, double> (45.49670284,-73.57937157),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49678227247707, -73.5793574899435),
 					new Tuple<double, double> (45.49674044040154, -73.57927367091179),
@@ -562,6 +584,7 @@ namespace CocoMaps.Shared
 				Name = "S",
 				Campus = SGW,
 				Address = "2145 Mackay",
+				Position = new Tuple<double, double> (45.49740176,-73.57986242),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49748636274756, -73.57983492314816),
 					new Tuple<double, double> (45.497366038198194, -73.57995428144932),
@@ -579,6 +602,7 @@ namespace CocoMaps.Shared
 				Name = "T",
 				Campus = SGW,
 				Address = "2030 Mackay",
+				Position = new Tuple<double, double> (45.4966784,-73.57928306),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49673056990727, -73.57928305864334),
 					new Tuple<double, double> (45.49669672819955, -73.57921868562698),
@@ -594,6 +618,7 @@ namespace CocoMaps.Shared
 				Name = "V",
 				Campus = SGW,
 				Address = "2110 Mackay",
+				Position = new Tuple<double, double> (45.49701681,-73.57928306),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49708825671362, -73.57994019985199),
 					new Tuple<double, double> (45.49698485208852, -73.58004547655582),
@@ -611,6 +636,7 @@ namespace CocoMaps.Shared
 				Name = "X",
 				Campus = SGW,
 				Address = "2080 Mackay",
+				Position = new Tuple<double, double> (45.49687957,-73.57969075),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.496943020163485, -73.57969343662262),
 					new Tuple<double, double> (45.496904948384476, -73.57961632311344),
@@ -626,6 +652,7 @@ namespace CocoMaps.Shared
 				Name = "Z",
 				Campus = SGW,
 				Address = "2090 Mackay",
+				Position = new Tuple<double, double> (45.49691717,-73.57978061),
 				ShapeCoords = new Tuple<double, double>[] {
 					new Tuple<double, double> (45.49699049234569, -73.57977591454983),
 					new Tuple<double, double> (45.49694725035956, -73.57969142496586),
