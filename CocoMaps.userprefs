@@ -1,16 +1,22 @@
 ﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus6V" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared/Views/Pages/Master.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android/Renderers/Network.cs">
     <Files>
-      <File FileName="CocoMaps.Android/Renderers/ConcordiaMap_Android.cs" Line="9" Column="9" />
-      <File FileName="CocoMaps.Shared/Views/Pages/Master.cs" Line="89" Column="89" />
+      <File FileName="CocoMaps.Android/Renderers/ConcordiaMap_Android.cs" Line="12" Column="12" />
+      <File FileName="CocoMaps.Shared/Views/Pages/Master.cs" Line="122" Column="122" />
       <File FileName="CocoMaps.Shared/Controllers/Maps/ConcordiaMap.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Controllers/Buildings/BuildingRepository.cs" Line="26" Column="26" />
+      <File FileName="CocoMaps.Shared/Controllers/Buildings/BuildingRepository.cs" Line="1" Column="1" />
       <File FileName="CocoMaps.Shared/Models/Campus.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Views/Pages/POI/POI.cs" Line="107" Column="107" />
+      <File FileName="CocoMaps.Shared/Views/Pages/POI/POI.cs" Line="3" Column="3" />
       <File FileName="CocoMaps.Shared/Views/Pages/POI/PlacesPage.cs" Line="1" Column="1" />
       <File FileName="CocoMaps.Shared/Controllers/Helpers/Colors.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Views/Pages/Calendar/Calendar.cs" Line="19" Column="19" />
+      <File FileName="CocoMaps.Shared/Views/Pages/Calendar/Calendar.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/App.cs" Line="42" Column="42" />
+      <File FileName="CocoMaps.Shared/Controllers/Helpers/INetwork.cs" Line="15" Column="15" />
+      <File FileName="CocoMaps.Shared/Controllers/Helpers/ActivityLoading.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/Controllers/Helpers/FetchJsonAsync.cs" Line="26" Column="26" />
+      <File FileName="CocoMaps.Shared/Views/Pages/POI/BasePOI.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Android/Renderers/Network.cs" Line="6" Column="6" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
