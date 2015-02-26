@@ -24,6 +24,6 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <DisabledProjects>
-    <String>CocoMaps.iOS/CocoMaps.iOS.csproj</String>
+    <String>CocoMaps.Services/CocoMaps.Services.csproj</String>
   </DisabledProjects>
 </Properties>

@@ -22,11 +22,11 @@ namespace CocoMaps.Shared
 		};
 
 		Dictionary<string, TravelMode> travelMode = new Dictionary<string, TravelMode> {
-			{ "Walking", TravelMode.Walking },
-			{ "Bicycling", TravelMode.Bicycling },
-			{ "Shuttle", TravelMode.Shuttle },
-			{ "Transit", TravelMode.Transit },
-			{ "Driving", TravelMode.Driving }
+			{ "Walking", TravelMode.walking },
+			{ "Bicycling", TravelMode.bicycling },
+			{ "Shuttle", TravelMode.shuttle },
+			{ "Transit", TravelMode.transit },
+			{ "Driving", TravelMode.driving }
 		};
 
 

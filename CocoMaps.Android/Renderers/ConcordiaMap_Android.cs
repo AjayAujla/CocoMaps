@@ -6,6 +6,7 @@ using Xamarin.Forms.Maps.Android;
 using CocoMaps.Shared;
 using System.Collections.Generic;
 using Android.Graphics;
+using Xamarin.Forms.Maps;
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]
 
@@ -133,7 +134,7 @@ namespace CocoMapsAndroid
 
 										RequestDirections directionsRequest = RequestDirections.getInstance;
 
-										Directions directions = await directionsRequest.getDirections (_from, _to, TravelMode.Walking);
+										Directions directions = await directionsRequest.getDirections (_from, _to, TravelMode.walking);
 
 										if (directions.status.Equals ("OK")) {
 
@@ -150,8 +151,8 @@ namespace CocoMapsAndroid
 												detailsLayout.ShowSummary ();
 
 												route.overview_polyline.decodedPoints = GoogleUtil.Decode (route.overview_polyline.points);
-												foreach (LatLng point in route.overview_polyline.decodedPoints) {
-													polyline.Add (point);
+												foreach (Position point in route.overview_polyline.decodedPoints) {
+													polyline.Add (new LatLng (point.Latitude, point.Longitude));
 												}
 												foreach (Leg leg in route.legs) {
 													foreach (Step step in leg.steps) {

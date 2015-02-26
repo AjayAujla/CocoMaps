@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.Text;
-using Android.Gms.Maps.Model;
+using Xamarin.Forms.Maps;
 
 /// <summary>
 /// See https://developers.google.com/maps/documentation/utilities/polylinealgorithm
@@ -13,7 +13,7 @@ public static class GoogleUtil
 	/// </summary>
 	/// <param name="encodedPoints"></param>
 	/// <returns></returns>
-	public static IEnumerable<LatLng> Decode (string encodedPoints)
+	public static IEnumerable<Position> Decode (string encodedPoints)
 	{
 		if (string.IsNullOrEmpty (encodedPoints)) {
 			Console.WriteLine ("ENCODED POINTS NULL OR EMPTY");
@@ -57,7 +57,7 @@ public static class GoogleUtil
 
 			currentLng += (sum & 1) == 1 ? ~(sum >> 1) : (sum >> 1);
 
-			yield return new LatLng ((Convert.ToDouble (currentLat) / 1E5), (Convert.ToDouble (currentLng) / 1E5));
+			yield return new Position ((Convert.ToDouble (currentLat) / 1E5), (Convert.ToDouble (currentLng) / 1E5));
 
 		}
 	}
@@ -67,7 +67,7 @@ public static class GoogleUtil
 	/// </summary>
 	/// <param name="points"></param>
 	/// <returns></returns>
-	public static string Encode (IEnumerable<LatLng> points)
+	public static string Encode (IEnumerable<Position> points)
 	{
 		var str = new StringBuilder ();
 

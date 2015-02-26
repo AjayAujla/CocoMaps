@@ -1,17 +1,13 @@
 using System;
-using CoreGraphics;
-using CoreLocation;
-using Foundation;
 using MapKit;
-using UIKit;
 
-namespace Protocols_Delegates_Events
+namespace CocoMaps.iOS
 {
-	class SampleMapDelegate : MKMapViewDelegate
+	class MapDelegate : MKMapViewDelegate
 	{
-		public override void DidSelectAnnotationView (MKMapView mapView, MKAnnotationView annotationView)
+		public override void DidSelectAnnotationView (MKMapView mapView, MKAnnotationView view)
 		{
-			var sampleAnnotation = annotationView.Annotation as SampleMapAnnotation;
+			var sampleAnnotation = view.Annotation as SampleMapAnnotation;
 
 			if (sampleAnnotation != null) {
 

@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
-using Android.Gms.Maps.Model;
+using Xamarin.Forms.Maps;
 
 namespace CocoMaps.Shared
 {
 
 	public enum TravelMode
 	{
-		Walking,
-		Driving,
-		Transit,
-		Bicycling,
-		Shuttle
+		walking,
+		driving,
+		transit,
+		bicycling,
+		shuttle
 	}
 
 	public class Northeast
@@ -109,7 +109,7 @@ namespace CocoMaps.Shared
 	{
 		public string points { get; set; }
 
-		public IEnumerable<LatLng> decodedPoints { get; set; }
+		public IEnumerable<Position> decodedPoints { get; set; }
 	}
 
 	public class Route

@@ -1,21 +1,13 @@
 ﻿using System;
-using Xamarin.Forms.Maps.iOS;
-using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Platform.iOS;
 using MapKit;
-using UIKit;
 using CoreLocation;
-using Protocols_Delegates_Events;
-using CocoMaps.Shared.Pages;
 using Xamarin.Forms;
 using CocoMaps.Shared;
-using System.Drawing;
-using System.Collections.Generic;
-using CocoMaps.Models;
-using System.Runtime.InteropServices;
+using Xamarin.Forms.Maps.iOS;
 
-[assembly: ExportRenderer (typeof(CocoMaps.ConcordiaMap), typeof(CocoMaps.iOS.ConcordiaMap_iOS))]
+[assembly: ExportRenderer (typeof(CocoMaps.Shared.ConcordiaMap), typeof(CocoMaps.iOS.ConcordiaMap_iOS))]
 
 namespace CocoMaps.iOS
 {
@@ -53,16 +45,16 @@ namespace CocoMaps.iOS
 				var iOSMapView = (MKMapView)Control;
 
 				#region Private Variables
-				SampleMapDelegate _mapDelegate;
+				MapDelegate _mapDelegate;
 				#endregion
-				_mapDelegate = new SampleMapDelegate ();
+				_mapDelegate = new MapDelegate ();
 				iOSMapView.Delegate = _mapDelegate;
 
 
 				iOSMapView.ShowsUserLocation = true;
 				iOSMapView.ZoomEnabled = true;
 
-				BuildingRepository br = new BuildingRepository ();
+				BuildingRepository br = BuildingRepository.getInstance;
 				MKPolygon pol;
 				CLLocationCoordinate2D[] coordinates;
 
@@ -74,9 +66,9 @@ namespace CocoMaps.iOS
 						Console.WriteLine ("Number of coordinates in " + b.Code + " is " + b.ShapeCoords.Length);
 						coordinates = new CLLocationCoordinate2D[b.ShapeCoords.Length];
 
-						foreach (Tuple<double, double> p in b.ShapeCoords) {
+						foreach (Position p in b.ShapeCoords) {
 							for (int i = 0; i < b.ShapeCoords.Length; i++)
-								coordinates [i++] = new CLLocationCoordinate2D (p.Item1, p.Item2);
+								coordinates [i++] = new CLLocationCoordinate2D (p.Latitude, p.Longitude);
 						}
 						Console.WriteLine ("SHAPED " + b.Name);
 
