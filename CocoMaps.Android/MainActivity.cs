@@ -37,7 +37,7 @@ namespace CocoMaps.Android
 			Forms.Init (this, savedInstanceState);
 			FormsMaps.Init (this, savedInstanceState);
 
-			Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Never);
+			//Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Never);
 
 			LoadApplication (new App ());
 		}
