@@ -15,7 +15,6 @@ namespace CocoMaps.Shared
 			MainPage = new RootPage ();
 
 			//DependencyService.Get<ITextToSpeech> ().Speak ("Welcome to CocoMaps");
-				
 
 		}
 

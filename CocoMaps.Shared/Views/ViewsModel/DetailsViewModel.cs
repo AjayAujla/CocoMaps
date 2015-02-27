@@ -9,9 +9,9 @@ namespace CocoMaps.Shared
 		private enum ContentState
 		{
 			ShowingBuildingDetails,
-			ShowingDirectionDetails}
+			ShowingDirectionDetails
+		}
 
-		;
 
 		private static DetailsViewModel directionsViewModel;
 		private static ContentState contentState;
@@ -53,7 +53,7 @@ namespace CocoMaps.Shared
 						Padding = 14,
 						BackgroundColor = Helpers.Color.LightGray.ToFormsColor (),
 						WidthRequest = App.ScreenSize.Width,
-						HeightRequest = App.ScreenSize.Height
+						HeightRequest = App.ScreenSize.Height - 48
 					};
 					directionsViewModel.Init ();
 				
@@ -133,7 +133,7 @@ namespace CocoMaps.Shared
 		public void ShowSummary ()
 		{
 			int currentPos = (int)directionsViewModel.Y;
-			int desiredPos = (int)(App.ScreenSize.Height - 100);
+			int desiredPos = (int)(App.ScreenSize.Height - 100 - 48);
 			showDetailsButton.Opacity = 1;
 			directionsViewModel.TranslateTo (0, desiredPos - currentPos);
 		}
