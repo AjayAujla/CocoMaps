@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using Xamarin;
 using CocoMaps.Shared.Pages;
 
 namespace CocoMaps.Shared

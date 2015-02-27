@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Maps;
 
 namespace CocoMaps.Shared
 {
@@ -27,17 +28,17 @@ namespace CocoMaps.Shared
 			set;
 		}
 
-		public Tuple<double, double> Position {
+		public Position Position {
 			get;
 			set;
 		}
 
-		public Tuple<double, double>[] ShapeCoords {
+		public List<Position> ShapeCoords {
 			get;
 			set;
 		}
 
-		public Tuple<double, double>[] HoleShapeCoords {
+		public List<Position> HoleShapeCoords {
 			get;
 			set;
 		}

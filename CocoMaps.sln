@@ -5,8 +5,6 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CocoMaps.Shared", "CocoMaps
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoMaps.Android", "CocoMaps.Android\CocoMaps.Android.csproj", "{C188D2AB-5317-4B5F-A391-17686A12BDAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoMaps.Services", "CocoMaps.Services\CocoMaps.Services.csproj", "{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoMaps.iOS", "CocoMaps.iOS\CocoMaps.iOS.csproj", "{6A02ABA0-EE87-4C04-A065-BEF98D7F4E53}"
 EndProject
 Global
@@ -21,22 +19,6 @@ Global
 		AppStore|iPhone = AppStore|iPhone
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}.Ad-Hoc|iPhone.ActiveCfg = Debug|Any CPU
-		{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}.Ad-Hoc|iPhone.Build.0 = Debug|Any CPU
-		{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}.AppStore|iPhone.ActiveCfg = Debug|Any CPU
-		{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}.AppStore|iPhone.Build.0 = Debug|Any CPU
-		{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}.Release|iPhone.Build.0 = Release|Any CPU
-		{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{4471F75F-70D4-4180-9CF4-E3D4AE2EF90F}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{6A02ABA0-EE87-4C04-A065-BEF98D7F4E53}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
 		{6A02ABA0-EE87-4C04-A065-BEF98D7F4E53}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
 		{6A02ABA0-EE87-4C04-A065-BEF98D7F4E53}.AppStore|iPhone.ActiveCfg = AppStore|iPhone

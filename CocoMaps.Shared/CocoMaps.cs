@@ -8,7 +8,7 @@ using CocoMaps.Models;
 using Xamarin.Forms;
 using System.Linq;
 
-namespace CocoMaps
+namespace CocoMaps.Shared
 {
 	/// <summary>
 	/// CocoMaps placeholder.

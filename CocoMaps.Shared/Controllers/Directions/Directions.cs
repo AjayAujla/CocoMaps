@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
-using Android.Gms.Maps.Model;
+using Xamarin.Forms.Maps;
+using System.Text.RegularExpressions;
+using System;
 
 namespace CocoMaps.Shared
 {
 
 	public enum TravelMode
 	{
-		Walking,
-		Driving,
-		Transit,
-		Bicycling,
-		Shuttle
+		walking,
+		driving,
+		transit,
+		bicycling,
+		shuttle
 	}
 
 	public class Northeast
@@ -77,6 +79,12 @@ namespace CocoMaps.Shared
 
 		public string html_instructions { get; set; }
 
+		public string html_instructions_nohtml {
+			get {
+				return Regex.Replace (html_instructions, "<[^>]*>", string.Empty);
+			}
+		}
+
 		public Polyline polyline { get; set; }
 
 		public StartLocation start_location { get; set; }
@@ -84,6 +92,7 @@ namespace CocoMaps.Shared
 		public string travel_mode { get; set; }
 
 		public string maneuver { get; set; }
+
 	}
 
 	public class Leg
@@ -109,7 +118,7 @@ namespace CocoMaps.Shared
 	{
 		public string points { get; set; }
 
-		public IEnumerable<LatLng> decodedPoints { get; set; }
+		public IEnumerable<Position> decodedPoints { get; set; }
 	}
 
 	public class Route
