@@ -29,34 +29,24 @@ namespace CocoMaps.Shared
 			{ "Driving", TravelMode.driving }
 		};
 
-
+		public MasterPage ()
+		{ 
+			NavigationPage.SetHasNavigationBar (this, false);
+		}
 
 		public MasterPage (IMenuOptions menuItem)
 		{
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
 
-			Picker picker = new Picker {
-				Title = "Travel Mode",
-				VerticalOptions = LayoutOptions.CenterAndExpand
-			};
-
-			foreach (string t in travelMode.Keys) {
-				picker.Items.Add (t);
-			}
-
-
 			SetValue (Page.TitleProperty, "CocoMaps");
 			SetValue (Page.IconProperty, menuItem.Icon);
-
 
 			map = new ConcordiaMap {
 				IsShowingUser = true,
 				HeightRequest = App.ScreenSize.Height - App.StatusBarHeight,
 				WidthRequest = App.ScreenSize.Width
 			};
-
-
 
 			var SGWButton = new Button {
 				Text = "SGW",

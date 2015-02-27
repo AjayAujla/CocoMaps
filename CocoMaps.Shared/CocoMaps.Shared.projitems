@@ -25,8 +25,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ITextToSpeech.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Maps\ConcordiaMap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Maps\CustomPin.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Buildings\BuildingRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GooglePointsDecoder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Database\SQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ConcordiaServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Master.cs" />
@@ -45,6 +43,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ActivityLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\INetwork.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\DetailsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\BuildingRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GooglePointsDecoder.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -54,10 +54,10 @@
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Helpers\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Directions\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Maps\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Controllers\Buildings\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Database\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Places\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\POI\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\Repositories\" />
   </ItemGroup>
 </Project>

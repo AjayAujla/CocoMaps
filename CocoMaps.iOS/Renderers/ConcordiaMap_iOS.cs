@@ -56,23 +56,20 @@ namespace CocoMaps.iOS
 
 				BuildingRepository br = BuildingRepository.getInstance;
 				MKPolygon pol;
-				CLLocationCoordinate2D[] coordinates;
+				//CLLocationCoordinate2D[] coordinates;
 
 				foreach (Campus c in br.getCampusList()) {
 
 					Console.WriteLine ("Number of buildings in " + c.Code + " is " + c.Buildings.Count);
 
 					foreach (Building b in c.Buildings) {
-						Console.WriteLine ("Number of coordinates in " + b.Code + " is " + b.ShapeCoords.Length);
-						coordinates = new CLLocationCoordinate2D[b.ShapeCoords.Length];
 
 						foreach (Position p in b.ShapeCoords) {
-							for (int i = 0; i < b.ShapeCoords.Length; i++)
-								coordinates [i++] = new CLLocationCoordinate2D (p.Latitude, p.Longitude);
+
 						}
 						Console.WriteLine ("SHAPED " + b.Name);
 
-						pol = MKPolygon.FromCoordinates (coordinates);
+						//pol = MKPolygon.FromCoordinates (coordinates);
 
 						iOSMapView.OverlayRenderer = (m, o) => {
 							polygonRenderer = new MKPolygonRenderer (o as MKPolygon);
@@ -82,7 +79,7 @@ namespace CocoMaps.iOS
 							return polygonRenderer;
 						};
 
-						iOSMapView.AddOverlay (pol);
+						//iOSMapView.AddOverlay (pol);
 
 					}
 

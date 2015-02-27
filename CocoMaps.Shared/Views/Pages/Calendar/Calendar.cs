@@ -7,6 +7,7 @@ using Xamarin.Forms.Maps;
 using System.Diagnostics;
 using System.Collections.Generic;
 
+#if __ANDROID__
 using Android.Provider;
 
 namespace CocoMaps.Shared
@@ -96,5 +97,4 @@ namespace CocoMaps.Shared
 	}
 }
 
-
-
+#endif

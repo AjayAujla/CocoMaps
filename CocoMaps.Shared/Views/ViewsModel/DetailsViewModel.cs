@@ -1,12 +1,5 @@
 ﻿using System;
 using Xamarin.Forms;
-using Android.Views;
-using Android.Gms.Common.Apis;
-using Android.Views.InputMethods;
-using Android.Gms.Identity.Intents;
-using System.Runtime.Remoting.Messaging;
-using Android.Gms.Drive;
-using Android.Views.Animations;
 
 namespace CocoMaps.Shared
 {
@@ -99,7 +92,7 @@ namespace CocoMaps.Shared
 				foreach (Step step in leg.steps) {
 					directionSteps.Root.Add (new TableSection {
 						new TextCell {
-							Text = step.html_instructions,
+							Text = step.html_instructions_nohtml,
 							Detail = step.distance.text + " (" + step.duration.text + ")"
 						}
 					});
@@ -117,7 +110,7 @@ namespace CocoMaps.Shared
 			DetailsViewModel.details.Text = building.Address;
 
 			directionSteps.Root.Clear ();
-			if (building.Services != null && building.Services.Count > 0) {
+			if (building.Services != null) {
 				foreach (Service service in building.Services) {
 
 					directionSteps.Root.Add (new TableSection {

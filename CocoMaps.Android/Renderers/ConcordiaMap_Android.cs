@@ -66,8 +66,8 @@ namespace CocoMapsAndroid
 			var latlnglist = new List<LatLng> ();
 			bool c = false;
 
-			foreach (Tuple<double, double> point in building.ShapeCoords)
-				latlnglist.Add (new LatLng (point.Item1, point.Item2));
+			foreach (Position point in building.ShapeCoords)
+				latlnglist.Add (new LatLng (point.Latitude, point.Longitude));
 
 			for (i = 0, j = latlnglist.Count - 1; i < latlnglist.Count - 1; j = i++) {
 				if ((latlnglist [i].Longitude > testY) != (latlnglist [j].Longitude > testY) &&
@@ -124,13 +124,13 @@ namespace CocoMapsAndroid
 										androidMapView.Map.AddMarker (new MarkerOptions ()
 											.SetTitle (building.Code)
 											.SetSnippet (building.Address)
-											.SetPosition (new LatLng (building.ShapeCoords [0].Item1, building.ShapeCoords [0].Item2)));
+											.SetPosition (new LatLng (ee.Point.Latitude, ee.Point.Longitude)));
 									} else {
 										_to = building.Address;
 										androidMapView.Map.AddMarker (new MarkerOptions ()
 											.SetTitle (building.Code)
 											.SetSnippet (building.Address)
-											.SetPosition (new LatLng (building.ShapeCoords [0].Item1, building.ShapeCoords [0].Item2)));
+											.SetPosition (new LatLng (ee.Point.Latitude, ee.Point.Longitude)));
 
 										RequestDirections directionsRequest = RequestDirections.getInstance;
 
@@ -143,7 +143,6 @@ namespace CocoMapsAndroid
 
 											PolylineOptions polyline = new PolylineOptions ();
 											polyline.InvokeColor (0x7F00768e);
-											var directionsString = "";
 
 											foreach (Route route in directions.routes) {
 
@@ -154,18 +153,14 @@ namespace CocoMapsAndroid
 												foreach (Position point in route.overview_polyline.decodedPoints) {
 													polyline.Add (new LatLng (point.Latitude, point.Longitude));
 												}
-												foreach (Leg leg in route.legs) {
-													foreach (Step step in leg.steps) {
-														directionsString += step.html_instructions;
-													}
-												}
+
 											}
 											androidMapView.Map.AddPolyline (polyline);
 
 
 											ActivityLoading.Hide (loader);
 										}
-										//DependencyService.Get<ITextToSpeech> ().Speak (directionsString);
+
 										_from = "";
 										_to = "";
 									}
@@ -184,7 +179,7 @@ namespace CocoMapsAndroid
 						using (PolygonOptions polygon = new PolygonOptions ()) {
 							using (MarkerOptions buildingCodeMarker = new MarkerOptions ()) {
 
-								buildingCodeMarker.SetPosition (new LatLng (b.Position.Item1, b.Position.Item2))
+								buildingCodeMarker.SetPosition (new LatLng (b.Position.Latitude, b.Position.Longitude))
 									.SetTitle (b.Code)
 									.SetSnippet (b.Name)
 									.InvokeIcon (GetCustomBitmapDescriptor (b.Code)); //BitmapDescriptorFactory.FromAsset ("CarWashMapIcon.png")
@@ -193,8 +188,8 @@ namespace CocoMapsAndroid
 							}
 							polygon.InvokeFillColor (0x3F932439).InvokeStrokeColor (0x00932439).Geodesic (true);
 
-							foreach (Tuple<double, double> p in b.ShapeCoords)
-								polygon.Add (new LatLng (p.Item1, p.Item2));
+							foreach (Position p in b.ShapeCoords)
+								polygon.Add (new LatLng (p.Latitude, p.Longitude));
 
 
 							androidMapView.Map.AddPolygon (polygon);

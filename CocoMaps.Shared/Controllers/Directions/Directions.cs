@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using Xamarin.Forms.Maps;
+using System.Text.RegularExpressions;
+using System;
 
 namespace CocoMaps.Shared
 {
@@ -77,6 +79,12 @@ namespace CocoMaps.Shared
 
 		public string html_instructions { get; set; }
 
+		public string html_instructions_nohtml {
+			get {
+				return Regex.Replace (html_instructions, "<[^>]*>", string.Empty);
+			}
+		}
+
 		public Polyline polyline { get; set; }
 
 		public StartLocation start_location { get; set; }
@@ -84,6 +92,7 @@ namespace CocoMaps.Shared
 		public string travel_mode { get; set; }
 
 		public string maneuver { get; set; }
+
 	}
 
 	public class Leg

@@ -150,7 +150,6 @@
     <BundleResource Include="Resources\item.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Data\Poi.json" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />

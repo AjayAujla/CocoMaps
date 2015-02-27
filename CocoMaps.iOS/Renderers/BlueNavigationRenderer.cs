@@ -1,32 +1,23 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Foundation;
 using UIKit;
-using CocoMaps.iOS.Renderers;
+using CocoMaps.iOS;
 using Xamarin.Forms.Platform.iOS;
 using Xamarin.Forms;
 
 
-//[assembly: ExportRenderer(typeof(NavigationRenderer), typeof(BlueNavigationRenderer))]
-namespace CocoMaps.iOS.Renderers
+[assembly: ExportRenderer (typeof(NavigationRenderer), typeof(BlueNavigationRenderer))]
+
+namespace CocoMaps.iOS
 {
-  public class BlueNavigationRenderer : NavigationRenderer
-  {
-    public BlueNavigationRenderer()
-    {
-      
+	public class BlueNavigationRenderer : NavigationRenderer
+	{
 
 
-    }
-    public override void ViewDidLoad()
-    {
-      base.ViewDidLoad();
-      this.NavigationBar.TintColor = UIColor.White;
-      this.NavigationBar.BarTintColor = CocoMaps.Shared.Helpers.Color.Blue.ToUIColor();
-      this.NavigationBar.BarStyle = UIBarStyle.Black;
-    }
-  }
+		public override void ViewDidLoad ()
+		{
+			base.ViewDidLoad ();
+			NavigationBar.TintColor = UIColor.White;
+			NavigationBar.BarTintColor = CocoMaps.Shared.Helpers.Color.Blue.ToUIColor ();
+			NavigationBar.BarStyle = UIBarStyle.Black;
+		}
+	}
 }
