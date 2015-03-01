@@ -31,14 +31,16 @@ namespace CocoMaps.Shared
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
 
+
 			SetValue (Page.TitleProperty, "CocoMaps");
 			SetValue (Page.IconProperty, menuItem.Icon);
 
 			map = new ConcordiaMap {
 				IsShowingUser = true,
-				HeightRequest = App.ScreenSize.Height - App.StatusBarHeight - 48,  // 48 is top bar's height
+				HeightRequest = App.ScreenSize.Height - App.StatusBarHeight - 48,  // 48 is maroon top bar's height
 				WidthRequest = App.ScreenSize.Width
 			};
+
 
 			var SGWButton = new Button {
 				Text = "SGW",
@@ -146,6 +148,7 @@ namespace CocoMaps.Shared
 				if (mainLayout.Width < mainLayout.Height) {
 					searchBar.WidthRequest = App.ScreenSize.Width - 64;
 					directionsLayout.WidthRequest = App.ScreenSize.Width - 64;
+					DetailsViewModel.getInstance.WidthRequest = App.ScreenSize.Width;
 					map.HeightRequest = App.ScreenSize.Height - App.StatusBarHeight - 48;
 					map.WidthRequest = App.ScreenSize.Width;
 				}
@@ -153,7 +156,8 @@ namespace CocoMaps.Shared
 				if (mainLayout.Width > mainLayout.Height) {
 					searchBar.WidthRequest = App.ScreenSize.Height - 64;
 					directionsLayout.WidthRequest = App.ScreenSize.Height - 64;
-					map.HeightRequest = App.ScreenSize.Width - App.StatusBarHeight - 48;
+					DetailsViewModel.getInstance.WidthRequest = App.ScreenSize.Height;
+					map.HeightRequest = App.ScreenSize.Width - App.StatusBarHeight - 40;
 					map.WidthRequest = App.ScreenSize.Height;
 				}
 			};

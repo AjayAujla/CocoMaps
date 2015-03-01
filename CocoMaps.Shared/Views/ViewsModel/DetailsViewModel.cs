@@ -98,6 +98,7 @@ namespace CocoMaps.Shared
 					});
 				}
 			}
+			ShowSummary ();
 		}
 
 		public void UpdateView (Building building)
@@ -128,6 +129,21 @@ namespace CocoMaps.Shared
 					}
 				});
 			}
+			ShowSummary ();
+		}
+
+		public void UpdateView (string buildingCode)
+		{
+			contentState = ContentState.ShowingBuildingDetails;
+			Building building;
+			foreach (Campus campus in BuildingRepository.getInstance.getCampusList()) {
+				building = campus.GetBuildingByCode (buildingCode);
+				if (building != null) {
+					UpdateView (building);
+					break;
+				}
+			}
+
 		}
 
 		public void ShowSummary ()

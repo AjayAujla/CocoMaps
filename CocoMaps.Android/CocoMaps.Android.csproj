@@ -121,8 +121,8 @@
     <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\drawable\icon2x.png" />
     <AndroidResource Include="Resources\drawable\buildingCodeIcon.png" />
-    <AndroidResource Include="Resources\drawable\splash.png" />
     <AndroidResource Include="Resources\drawable\splashscreen.xml" />
+    <AndroidResource Include="Resources\drawable\splash.png" />
   </ItemGroup>
   <Import Project="..\CocoMaps.Shared\CocoMaps.Shared.projitems" Label="Shared" Condition="Exists('..\CocoMaps.Shared\CocoMaps.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

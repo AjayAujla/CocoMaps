@@ -126,6 +126,9 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Json" />
+    <Reference Include="GoogleMaps">
+      <HintPath>..\Components\googlemapsios-1.9.1\lib\ios-unified\GoogleMaps.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Default-568h%402x.png" />
@@ -182,5 +185,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Files\" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="googlemapsios">
+      <Version>1.9.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
 </Project>

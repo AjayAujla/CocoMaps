@@ -19,18 +19,12 @@ namespace CocoMapsAndroid
 		string _from = "";
 		string _to = "";
 
-		//		static void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
-		//		{
-		//			var m = sender as Marker;
-		//			Console.WriteLine ("Marker Clicked!");
-		//			//DetailsViewModel.getInstance.UpdateView (directions);
-		//			DetailsViewModel.getInstance.ShowSummary ();
-		//
-		//
-		////			if (m != null)
-		////				Console.WriteLine (m.Title + " CLICKED!!!");
-		//
-		//		}
+		void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
+		{
+			var myMap = this.Element as ConcordiaMap;
+			DetailsViewModel.getInstance.UpdateView (e.Marker.Title);
+		
+		}
 
 		BitmapDescriptor GetCustomBitmapDescriptor (string text)
 		{
@@ -76,14 +70,12 @@ namespace CocoMapsAndroid
 				androidMapView.Map.UiSettings.MapToolbarEnabled = false;
 				androidMapView.Map.UiSettings.ZoomControlsEnabled = true;
 
-
 				androidMapView.Map.MapClick += (senderr, ee) => {
 
 					Building building = GoogleUtil.PointInBuilding (ee.Point.Latitude, ee.Point.Longitude);
 					if (building != null) {
 
 						detailsLayout.UpdateView (building);
-						detailsLayout.ShowSummary ();
 
 						Console.WriteLine ("COORDINATES ARE IN " + building);
 
@@ -126,7 +118,6 @@ namespace CocoMapsAndroid
 									foreach (Route route in directions.routes) {
 
 										detailsLayout.UpdateView (directions);
-										detailsLayout.ShowSummary ();
 
 										route.overview_polyline.decodedPoints = GoogleUtil.Decode (route.overview_polyline.points);
 										foreach (Position point in route.overview_polyline.decodedPoints) {
@@ -174,7 +165,7 @@ namespace CocoMapsAndroid
 					}
 				}
 
-				//androidMapView.Map.MarkerClick += HandleMarkerClick;
+				androidMapView.Map.MarkerClick += HandleMarkerClick;
 
 				_isDrawnDone = true;
 
