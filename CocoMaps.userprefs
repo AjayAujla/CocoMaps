@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
+﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.dca08503" />
   <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared/Views/Pages/Master.cs">
     <Files>
@@ -46,5 +46,6 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <DisabledProjects>
     <String>CocoMaps.Services/CocoMaps.Services.csproj</String>
+    <String>CocoMaps.iOS\CocoMaps.iOS.csproj</String>
   </DisabledProjects>
 </Properties>

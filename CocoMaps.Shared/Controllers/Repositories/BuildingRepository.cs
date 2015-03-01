@@ -679,6 +679,7 @@ namespace CocoMaps.Shared
 				Name = "Administration",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.4580762,-73.63981247),
 				ShapeCoords = new List<Position> {
 					new Position (45.45828033335741, -73.63981448113918),
 					new Position (45.45821495544604, -73.63986544311047),
@@ -715,6 +716,7 @@ namespace CocoMaps.Shared
 				Name = "BB",
 				Campus = LOY,
 				Address = "3502 Belmore",
+				Position = new Position (45.45984844,-73.63939941),
 				ShapeCoords = new List<Position> {
 					new Position (45.45985549479686, -73.63937325775623),
 					new Position (45.45984608817059, -73.6393390595913),
@@ -731,6 +733,7 @@ namespace CocoMaps.Shared
 				Name = "BH",
 				Campus = LOY,
 				Address = "3500 Belmore",
+				Position = new Position (45.45971675,-73.63914192),
 				ShapeCoords = new List<Position> {
 					new Position (45.459817397950786, -73.63918080925941),
 					new Position (45.45975672514275, -73.63903127610683),
@@ -747,6 +750,7 @@ namespace CocoMaps.Shared
 				Name = "Central",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45824177,-73.63936186),
 				ShapeCoords = new List<Position> {
 					new Position (45.45844871640609, -73.64071905612946),
 					new Position (45.45829444368806, -73.64083774387836),
@@ -766,6 +770,7 @@ namespace CocoMaps.Shared
 				Name = "Communication and Journalism",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45745911,-73.64041328),
 				ShapeCoords = new List<Position> {
 					new Position (45.457333051751476, -73.64075526595116),
 					new Position (45.457305771310594, -73.6406908929348),
@@ -812,6 +817,7 @@ namespace CocoMaps.Shared
 				Name = "Stinger Dome",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45792569,-73.63487184),
 				ShapeCoords = new List<Position> {
 					new Position (45.4579407436682, -73.6347833275795),
 					new Position (45.45791252282638, -73.63459825515747),
@@ -827,6 +833,7 @@ namespace CocoMaps.Shared
 				Name = "F.C. Smith",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45847506,-73.63938332),
 				ShapeCoords = new List<Position> {
 					new Position (45.45865660763283, -73.63962672650814),
 					new Position (45.45865990002167, -73.6395824700594),
@@ -868,6 +875,7 @@ namespace CocoMaps.Shared
 				Name = "Centre for Structural and Functional Genomics",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45690973,-73.64037037),
 				ShapeCoords = new List<Position> {
 					new Position (45.456970879305665, -73.6404401063919),
 					new Position (45.45696053148731, -73.64037171006203),
@@ -883,6 +891,7 @@ namespace CocoMaps.Shared
 				Name = "Hingston Wing A",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45944395,-73.64125818),
 				ShapeCoords = new List<Position> {
 					new Position (45.45967018397027, -73.6413835734129),
 					new Position (45.459646667324336, -73.64132322371006),
@@ -912,6 +921,7 @@ namespace CocoMaps.Shared
 				Name = "Hingston Wing B",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45915987,-73.64200652),
 				ShapeCoords = new List<Position> {
 					new Position (45.459342831377185, -73.64217348396778),
 					new Position (45.45932166627344, -73.64211715757847),
@@ -952,6 +962,7 @@ namespace CocoMaps.Shared
 				Name = "Hingston Wing C",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45965278,-73.64208162),
 				ShapeCoords = new List<Position> {
 					new Position (45.45988606632139, -73.64201992750168),
 					new Position (45.45981786828236, -73.64184357225895),
@@ -971,6 +982,7 @@ namespace CocoMaps.Shared
 				Name = "Jesuit Residence",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45846,-73.64318132),
 				ShapeCoords = new List<Position> {
 					new Position (45.458539022191516, -73.64337980747223),
 					new Position (45.45850844993658, -73.64330671727657),
@@ -1000,6 +1012,7 @@ namespace CocoMaps.Shared
 				Name = "PERFORM Center",
 				Campus = LOY,
 				Address = "7200 Sherbrooke St. W.",
+				Position = new Position (45.45706025,-73.63715708),
 				ShapeCoords = new List<Position> {
 					new Position (45.457082823764566, -73.63702297210693),
 					new Position (45.45703014404687, -73.63684058189392),
@@ -1017,6 +1030,7 @@ namespace CocoMaps.Shared
 				Name = "Physical Services",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45962644,-73.63981247),
 				ShapeCoords = new List<Position> {
 					new Position (45.45994250601546, -73.6400619149208),
 					new Position (45.45966030698017, -73.63932967185974),
@@ -1042,6 +1056,7 @@ namespace CocoMaps.Shared
 				Name = "Oscar Peterson Concert Hall",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45933295,-73.63897026),
 				ShapeCoords = new List<Position> {
 					new Position (45.45948957587806, -73.6391332000494),
 					new Position (45.459457593134786, -73.63905608654022),
@@ -1069,6 +1084,7 @@ namespace CocoMaps.Shared
 				Name = "Psychology",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45886638,-73.64049911),
 				ShapeCoords = new List<Position> {
 					new Position (45.45916880695485, -73.64045888185501),
 					new Position (45.45914576043701, -73.64039584994316),
@@ -1110,6 +1126,7 @@ namespace CocoMaps.Shared
 				Name = "Recreational and Athletic Complex",
 				Campus = LOY,
 				Address = "7200 Sherbrooke W.",
+				Position = new Position (45.45670278,-73.63763452),
 				ShapeCoords = new List<Position> {
 					new Position (45.45672064971158, -73.6371074616909),
 					new Position (45.45638575423165, -73.63737165927887),
@@ -1143,6 +1160,7 @@ namespace CocoMaps.Shared
 				Name = "Loyola Jesuit Hall and Conference Centre",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45846753,-73.64106774),
 				ShapeCoords = new List<Position> {
 					new Position (45.458657548315394, -73.64098593592644),
 					new Position (45.45861098451073, -73.64086791872978),
@@ -1183,6 +1201,7 @@ namespace CocoMaps.Shared
 				Name = "Student Center",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45910719,-73.63915265),
 				ShapeCoords = new List<Position> {
 					new Position (45.459295797802504, -73.63932028412819),
 					new Position (45.45925675990571, -73.63921903073788),
@@ -1206,6 +1225,7 @@ namespace CocoMaps.Shared
 				Name = "Solar House",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45955871,-73.6425671),
 				ShapeCoords = new List<Position> {
 					new Position (45.45961515500344, -73.64266633987427),
 					new Position (45.4595737656597, -73.64253222942352),
@@ -1221,6 +1241,7 @@ namespace CocoMaps.Shared
 				Name = "Saint-Ignatius of Loyola Church",
 				Campus = LOY,
 				Address = "4455 BroadWay",
+				Position = new Position (45.45779776,-73.64239812),
 				ShapeCoords = new List<Position> {
 					new Position (45.45815239953178, -73.6425456404686),
 					new Position (45.4581025428888, -73.64241823554039),
@@ -1264,6 +1285,7 @@ namespace CocoMaps.Shared
 				Name = "Richard J. Renaud Science Complex",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45776013,-73.64160419),
 				ShapeCoords = new List<Position> {
 					new Position (45.4582060188911, -73.64157870411873),
 					new Position (45.458193789918894, -73.64154785871506),
@@ -1315,6 +1337,7 @@ namespace CocoMaps.Shared
 				Name = "Terrebonne",
 				Campus = LOY,
 				Address = "7079 Terrebonne",
+				Position = new Position (45.45999895,-73.64088535),
 				ShapeCoords = new List<Position> {
 					new Position (45.46007984236839, -73.64090614020824),
 					new Position (45.46004174567388, -73.64080622792244),
@@ -1330,6 +1353,7 @@ namespace CocoMaps.Shared
 				Name = "Vanier Extension",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45880618,-73.63862693),
 				ShapeCoords = new List<Position> {
 					new Position (45.45907473947591, -73.63879054784775),
 					new Position (45.458865438772186, -73.63825008273125),
@@ -1361,6 +1385,7 @@ namespace CocoMaps.Shared
 				Name = "Vanier Library",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45904699,-73.6383909),
 				ShapeCoords = new List<Position> {
 					new Position (45.45931272989392, -73.63867320120335),
 					new Position (45.45916363324759, -73.63878920674324),
