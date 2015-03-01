@@ -13,9 +13,6 @@ namespace CocoMaps.Shared
 		SearchBar searchBar;
 		RelativeLayout mainLayout;
 		RelativeLayout directionsLayout;
-		public static RelativeLayout buildingDetailLayout;
-		public static Label buildingNameLabel;
-		public static Label buildingAddressLabel;
 		bool isDirections;
 		Label networkStatus = new Label {
 			TextColor = Color.White
@@ -29,24 +26,21 @@ namespace CocoMaps.Shared
 			{ "Driving", TravelMode.driving }
 		};
 
-		public MasterPage ()
-		{ 
-			NavigationPage.SetHasNavigationBar (this, false);
-		}
-
 		public MasterPage (IMenuOptions menuItem)
 		{
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
+
 
 			SetValue (Page.TitleProperty, "CocoMaps");
 			SetValue (Page.IconProperty, menuItem.Icon);
 
 			map = new ConcordiaMap {
 				IsShowingUser = true,
-				HeightRequest = App.ScreenSize.Height - App.StatusBarHeight,
+				HeightRequest = App.ScreenSize.Height - App.StatusBarHeight - 48,  // 48 is maroon top bar's height
 				WidthRequest = App.ScreenSize.Width
 			};
+
 
 			var SGWButton = new Button {
 				Text = "SGW",
@@ -84,11 +78,11 @@ namespace CocoMaps.Shared
 			searchBar.PropertyChanged += HandleFocusChange;
 			searchBar.TextChanged += HandleTextChanged;
 
-
 			mainLayout = new RelativeLayout {
-				BackgroundColor = Color.Transparent
+				BackgroundColor = Color.Transparent,
+				WidthRequest = App.ScreenSize.Width,
+				HeightRequest = App.ScreenSize.Height - 48
 			};
-
 
 			directionsLayout = new RelativeLayout {
 				BackgroundColor = Helpers.Color.DarkGray.ToFormsColor (),
@@ -97,34 +91,6 @@ namespace CocoMaps.Shared
 				TranslationY = -200,
 				HorizontalOptions = LayoutOptions.Center
 			};
-
-			buildingDetailLayout = new RelativeLayout {
-				BackgroundColor = Helpers.Color.LightGray.ToFormsColor (),
-				WidthRequest = App.ScreenSize.Width,
-				HeightRequest = 100,
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				Padding = 14
-			};
-			buildingNameLabel = new Label {
-				Text = "Code - Name",
-				TextColor = Helpers.Color.Maroon.ToFormsColor (),
-				FontSize = 20,
-			};
-			buildingAddressLabel = new Label {
-				Text = "Building Address",
-				TextColor = Helpers.Color.Gray.ToFormsColor (),
-				FontSize = 10
-			};
-			var closeLayoutButton = new Button {
-				Text = "X",
-				TextColor = Color.Gray,
-				BackgroundColor = Color.Transparent
-			};
-			closeLayoutButton.Clicked += HideLayout;
-
-			buildingDetailLayout.Children.Add (buildingNameLabel, Constraint.Constant (14));
-			buildingDetailLayout.Children.Add (buildingAddressLabel, Constraint.Constant (14), Constraint.Constant (25));
-			buildingDetailLayout.Children.Add (closeLayoutButton, Constraint.RelativeToParent (Parent => Width - 50), Constraint.Constant (-10));
 
 			searchBar.PropertyChanged += (sender, e) => {
 				if (e.PropertyName.Equals ("IsFocused") && !IsFocused && isDirections)
@@ -160,14 +126,15 @@ namespace CocoMaps.Shared
 
 			DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
 
+			Console.WriteLine (mainLayout.Width + " x " + mainLayout.Height + ", " + mainLayout.WidthRequest + " x " + mainLayout.HeightRequest);
+
 			mainLayout.Children.Add (map, Constraint.Constant (0));
 			mainLayout.Children.Add (directionsLayout, Constraint.Constant (0));
 			mainLayout.Children.Add (searchBar, Constraint.Constant (0));
 			mainLayout.Children.Add (loader, Constraint.RelativeToParent ((parent) => Width / 2 - loader.Width / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loader.Height / 2));
-			mainLayout.Children.Add (SGWButton, Constraint.Constant (14), Constraint.RelativeToParent (parent => Height - 54));
-			mainLayout.Children.Add (LOYButton, Constraint.Constant (84), Constraint.RelativeToParent (parent => Height - 54));
+			mainLayout.Children.Add (SGWButton, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 54));
+			mainLayout.Children.Add (LOYButton, Constraint.Constant (80), Constraint.RelativeToParent (parent => Height - 54));
 			mainLayout.Children.Add (networkStatus, Constraint.Constant (154), Constraint.RelativeToParent (parent => Height - 44));
-			mainLayout.Children.Add (buildingDetailLayout, Constraint.Constant (0), Constraint.RelativeToParent (parent => Height));
 			mainLayout.Children.Add (detailsLayout, Constraint.Constant (0), Constraint.RelativeToParent (parent => Height));
 
 			//mainLayout.Children.Add (picker, Constraint.Constant (100), Constraint.Constant (100));
@@ -181,17 +148,17 @@ namespace CocoMaps.Shared
 				if (mainLayout.Width < mainLayout.Height) {
 					searchBar.WidthRequest = App.ScreenSize.Width - 64;
 					directionsLayout.WidthRequest = App.ScreenSize.Width - 64;
-					map.HeightRequest = App.ScreenSize.Height - App.StatusBarHeight;
+					DetailsViewModel.getInstance.WidthRequest = App.ScreenSize.Width;
+					map.HeightRequest = App.ScreenSize.Height - App.StatusBarHeight - 48;
 					map.WidthRequest = App.ScreenSize.Width;
-					buildingDetailLayout.WidthRequest = App.ScreenSize.Width;
 				}
 				// Orientation in Landscape Mode
 				if (mainLayout.Width > mainLayout.Height) {
 					searchBar.WidthRequest = App.ScreenSize.Height - 64;
 					directionsLayout.WidthRequest = App.ScreenSize.Height - 64;
-					map.HeightRequest = App.ScreenSize.Width - App.StatusBarHeight;
+					DetailsViewModel.getInstance.WidthRequest = App.ScreenSize.Height;
+					map.HeightRequest = App.ScreenSize.Width - App.StatusBarHeight - 40;
 					map.WidthRequest = App.ScreenSize.Height;
-					buildingDetailLayout.WidthRequest = App.ScreenSize.Height;
 				}
 			};
 		}
@@ -235,20 +202,8 @@ namespace CocoMaps.Shared
 
 		public static Building UpdateBuildingDetailsLayout (Building building)
 		{
-
 			return building;
 		}
-
-		public static void ShowBuildingDetailsLayout ()
-		{
-			buildingDetailLayout.TranslateTo (0, -buildingDetailLayout.HeightRequest, 500);
-		}
-
-		void HideLayout (object sender, EventArgs e)
-		{
-			buildingDetailLayout.TranslateTo (0, App.ScreenSize.Height, 500);
-		}
-
 
 	}
 }

@@ -1,10 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Foundation;
 using UIKit;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.iOS;
 
 namespace CocoMaps.iOS
 {
@@ -16,7 +10,6 @@ namespace CocoMaps.iOS
 			// if you want to use a different Application Delegate class from "AppDelegate"
 			// you can specify it here.
 			UIApplication.Main (args, null, "AppDelegate");
-
 		}
 	}
 }

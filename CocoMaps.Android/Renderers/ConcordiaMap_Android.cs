@@ -19,17 +19,11 @@ namespace CocoMapsAndroid
 		string _from = "";
 		string _to = "";
 
-		static void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
+		void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
 		{
-			var m = sender as Marker;
-			Console.WriteLine ("Marker Clicked!");
-			//DetailsViewModel.getInstance.UpdateView (directions);
-			DetailsViewModel.getInstance.ShowSummary ();
-
-
-//			if (m != null)
-//				Console.WriteLine (m.Title + " CLICKED!!!");
-
+			var myMap = this.Element as ConcordiaMap;
+			DetailsViewModel.getInstance.UpdateView (e.Marker.Title);
+		
 		}
 
 		BitmapDescriptor GetCustomBitmapDescriptor (string text)
@@ -60,25 +54,6 @@ namespace CocoMapsAndroid
 			}
 		}
 
-		static bool InPolygon (Building building, double testX, double testY)
-		{
-			int i, j;
-			var latlnglist = new List<LatLng> ();
-			bool c = false;
-
-			foreach (Position point in building.ShapeCoords)
-				latlnglist.Add (new LatLng (point.Latitude, point.Longitude));
-
-			for (i = 0, j = latlnglist.Count - 1; i < latlnglist.Count - 1; j = i++) {
-				if ((latlnglist [i].Longitude > testY) != (latlnglist [j].Longitude > testY) &&
-				    (testX < (latlnglist [j].Latitude - latlnglist [i].Latitude) * (testY - latlnglist [i].Longitude) / (latlnglist [j].Longitude - latlnglist [i].Longitude) + latlnglist [i].Latitude))
-					c = !c;
-			}
-			return c;
-		}
-
-
-
 		protected override void OnElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 
@@ -97,77 +72,69 @@ namespace CocoMapsAndroid
 
 				androidMapView.Map.MapClick += (senderr, ee) => {
 
-					foreach (Campus campus in buildingRepo.getCampusList()) {
-						foreach (Building building in campus.Buildings) {
-							if (InPolygon (building, ee.Point.Latitude, ee.Point.Longitude)) {
+					Building building = GoogleUtil.PointInBuilding (ee.Point.Latitude, ee.Point.Longitude);
+					if (building != null) {
 
+						detailsLayout.UpdateView (building);
 
-								detailsLayout.UpdateView (building);
-								detailsLayout.ShowSummary ();
+						Console.WriteLine ("COORDINATES ARE IN " + building);
 
-								Console.WriteLine ("COORDINATES ARE IN " + building);
-								return;
-							}
-						}
 					}
+					
 				};
 
 				androidMapView.Map.MapLongClick += async (senderr, ee) => {
 
 					if (App.isConnected ()) {
-						foreach (Campus campus in buildingRepo.getCampusList()) {
-							foreach (Building building in campus.Buildings) {
-								if (InPolygon (building, ee.Point.Latitude, ee.Point.Longitude)) {
-							
-									if (_from.Equals ("")) {
-										_from = building.Address;
-										androidMapView.Map.AddMarker (new MarkerOptions ()
+
+						Building building = GoogleUtil.PointInBuilding (ee.Point.Latitude, ee.Point.Longitude);
+						if (building != null) {
+
+							if (_from.Equals ("")) {
+								_from = building.Address;
+								androidMapView.Map.AddMarker (new MarkerOptions ()
 											.SetTitle (building.Code)
 											.SetSnippet (building.Address)
-											.SetPosition (new LatLng (ee.Point.Latitude, ee.Point.Longitude)));
-									} else {
-										_to = building.Address;
-										androidMapView.Map.AddMarker (new MarkerOptions ()
+									.SetPosition (new LatLng (building.ShapeCoords [0].Latitude, building.ShapeCoords [0].Longitude)));
+							} else {
+								_to = building.Address;
+								androidMapView.Map.AddMarker (new MarkerOptions ()
 											.SetTitle (building.Code)
 											.SetSnippet (building.Address)
-											.SetPosition (new LatLng (ee.Point.Latitude, ee.Point.Longitude)));
+									.SetPosition (new LatLng (building.ShapeCoords [0].Latitude, building.ShapeCoords [0].Longitude)));
 
-										RequestDirections directionsRequest = RequestDirections.getInstance;
+								RequestDirections directionsRequest = RequestDirections.getInstance;
 
-										Directions directions = await directionsRequest.getDirections (_from, _to, TravelMode.walking);
+								Directions directions = await directionsRequest.getDirections (_from, _to, TravelMode.walking);
 
-										if (directions.status.Equals ("OK")) {
+								if (directions.status.Equals ("OK")) {
 
-											var loader = ActivityLoading.getInstance ();
-											ActivityLoading.Show (loader);
+									var loader = ActivityLoading.getInstance ();
+									ActivityLoading.Show (loader);
 
-											PolylineOptions polyline = new PolylineOptions ();
-											polyline.InvokeColor (0x7F00768e);
+									PolylineOptions polyline = new PolylineOptions ();
+									polyline.InvokeColor (0x7F00768e);
 
-											foreach (Route route in directions.routes) {
+									foreach (Route route in directions.routes) {
 
-												detailsLayout.UpdateView (directions);
-												detailsLayout.ShowSummary ();
+										detailsLayout.UpdateView (directions);
 
-												route.overview_polyline.decodedPoints = GoogleUtil.Decode (route.overview_polyline.points);
-												foreach (Position point in route.overview_polyline.decodedPoints) {
-													polyline.Add (new LatLng (point.Latitude, point.Longitude));
-												}
-
-											}
-											androidMapView.Map.AddPolyline (polyline);
-
-
-											ActivityLoading.Hide (loader);
+										route.overview_polyline.decodedPoints = GoogleUtil.Decode (route.overview_polyline.points);
+										foreach (Position point in route.overview_polyline.decodedPoints) {
+											polyline.Add (new LatLng (point.Latitude, point.Longitude));
 										}
 
-										_from = "";
-										_to = "";
 									}
+									androidMapView.Map.AddPolyline (polyline);
 
-									break;
+
+									ActivityLoading.Hide (loader);
 								}
+
+								_from = "";
+								_to = "";
 							}
+
 						}
 					}
 				};
