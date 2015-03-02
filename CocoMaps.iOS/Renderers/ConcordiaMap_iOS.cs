@@ -1,108 +1,132 @@
 ﻿using System;
-using Xamarin.Forms.Maps.iOS;
-using Xamarin.Forms;
 using Xamarin.Forms.Maps;
-using Xamarin.Forms.Platform.iOS;
 using MapKit;
-using UIKit;
 using CoreLocation;
-using Protocols_Delegates_Events;
-using CocoMaps.Shared.Pages;
 using Xamarin.Forms;
 using CocoMaps.Shared;
+using UIKit;
+using CoreGraphics;
+using Xamarin.Forms.Maps.iOS;
+using Google.Maps;
 using System.Drawing;
-using System.Collections.Generic;
-using CocoMaps.Models;
-using System.Runtime.InteropServices;
 
-[assembly: ExportRenderer (typeof(CocoMaps.ConcordiaMap), typeof(CocoMaps.iOS.ConcordiaMap_iOS))]
+[assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMaps.iOS.ConcordiaMap_iOS))]
 
 namespace CocoMaps.iOS
 {
 
-	public class ConcordiaMap_iOS : ViewRenderer
+	public class ConcordiaMap_iOS : MapRenderer
 	{
 
 		bool _isDrawnDone;
 		MKPolygon polygonpOverlay;
 		MKPolygonRenderer polygonRenderer;
+		MKMapView iOSMapView;
 
 		protected override void OnElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 			base.OnElementPropertyChanged (sender, e);
 
+			MapServices.ProvideAPIKey ("AIzaSyD7Xf_sig5YzrPmfUchPzYnjHJG98_7ctk");
+
 			double lat = 45.49770304029157;
 			double lon = -73.57904434204102;
 
 			if (!_isDrawnDone) {
+				//iOSMapView.AutoresizingMask = UIViewAutoresizing.FlexibleDimensions;
 
 				CLLocationCoordinate2D mapCenter = new CLLocationCoordinate2D (lat, lon);
 				MKCoordinateRegion mapRegion = MKCoordinateRegion.FromDistance (mapCenter, 200, 200);
-				SetNativeControl (
-					new MKMapView () {
-						// change map type, show user location and allow zooming and panning
-						MapType = MKMapType.Standard,
-						ShowsUserLocation = true,
-						ZoomEnabled = true,
-						ScrollEnabled = true,
-						CenterCoordinate = mapCenter,
-						Region = mapRegion
-					}
-				);
+//				SetNativeControl (
+//					new MKMapView () {
+//						// change map type, show user location and allow zooming and panning
+//						MapType = MKMapType.Standard,
+//						ShowsUserLocation = true,
+//						PitchEnabled = true,
+//						ZoomEnabled = true,
+//						ShowsPointsOfInterest = false,
+//						ScrollEnabled = true,
+//						CenterCoordinate = mapCenter,
+//						Region = mapRegion
+//					}
+//				);
 
-				var iOSMapView = (MKMapView)Control;
-
-				#region Private Variables
-				SampleMapDelegate _mapDelegate;
-				#endregion
-				_mapDelegate = new SampleMapDelegate ();
-				iOSMapView.Delegate = _mapDelegate;
+				MapView s;
+				Console.WriteLine (e.PropertyName);
 
 
-				iOSMapView.ShowsUserLocation = true;
-				iOSMapView.ZoomEnabled = true;
+				s = new MapView ();
 
-				BuildingRepository br = new BuildingRepository ();
+
+
+				MKMapViewDelegate _mapDelegate = new MKMapViewDelegate ();
+				//iOSMapView.Delegate = _mapDelegate;
+
+				//var mapClickGesture = new UITapGestureRecognizer (MapClick);
+				//iOSMapView.AddGestureRecognizer (mapClickGesture);
+
+				var mapLongClickGesture = new UILongPressGestureRecognizer (tap => {
+
+					CGPoint point = tap.LocationInView (this);
+					var mapPoint = ConvertPointToView (point, this);
+					Console.WriteLine (mapPoint.X + "x" + point.Y);
+				});
+				//iOSMapView.AddGestureRecognizer (mapLongClickGesture);
+
+
+				BuildingRepository br = BuildingRepository.getInstance;
 				MKPolygon pol;
-				CLLocationCoordinate2D[] coordinates;
 
-				foreach (Campus c in br.getCampusList()) {
+				foreach (Campus campus in br.getCampusList()) {
 
-					Console.WriteLine ("Number of buildings in " + c.Code + " is " + c.Buildings.Count);
+					foreach (Building building in campus.Buildings) {
 
-					foreach (Building b in c.Buildings) {
-						Console.WriteLine ("Number of coordinates in " + b.Code + " is " + b.ShapeCoords.Length);
-						coordinates = new CLLocationCoordinate2D[b.ShapeCoords.Length];
+						CLLocationCoordinate2D[] coordinates = new CLLocationCoordinate2D[building.ShapeCoords.Count];
 
-						foreach (Tuple<double, double> p in b.ShapeCoords) {
-							for (int i = 0; i < b.ShapeCoords.Length; i++)
-								coordinates [i++] = new CLLocationCoordinate2D (p.Item1, p.Item2);
-						}
-						Console.WriteLine ("SHAPED " + b.Name);
+						int i = 0;
+						foreach (Position coordinate in building.ShapeCoords)
+							coordinates [i++] = new CLLocationCoordinate2D (coordinate.Latitude, coordinate.Longitude);
 
 						pol = MKPolygon.FromCoordinates (coordinates);
-
-						iOSMapView.OverlayRenderer = (m, o) => {
-							polygonRenderer = new MKPolygonRenderer (o as MKPolygon);
-							polygonRenderer.FillColor = CocoMaps.Shared.Helpers.Color.Maroon;
-							polygonRenderer.Alpha = 0.5f;
-
-							return polygonRenderer;
-						};
-
-						iOSMapView.AddOverlay (pol);
-
+						//iOSMapView.AddOverlay (pol);
 					}
-
 				}
 
-				Console.WriteLine ("ADDED OVERLAYS");
+//				iOSMapView.OverlayRenderer = (m, o) => {
+//					polygonRenderer = new MKPolygonRenderer (o as MKPolygon);
+//					polygonRenderer.FillColor = CocoMaps.Shared.Helpers.Color.Maroon;
+//					polygonRenderer.Alpha = 0.5f;
+//
+//					return polygonRenderer;
+//				};
+
+				Console.WriteLine ("ADDED POLYGONS");
 				_isDrawnDone = true;
 
 			}
 
-
 		}
+		//
+		//		void MapClick (UITapGestureRecognizer tapBuilding)
+		//		{
+		//			CGPoint point = tapBuilding.LocationInView (this);
+		//			Console.WriteLine (point.X + ", " + point.Y);
+		//
+		//			foreach (IMKOverlay overlay in iOSMapView.Overlays) {
+		//				if (overlay is MKPolygon) {
+		//
+		//					Building building = GoogleUtil.PointInBuilding (point.X, point.Y);
+		//					if (building != null)
+		//						Console.WriteLine (building);
+		//				}
+		//			}
+		//		}
+		//
+		//		void MapLongClick (UILongPressGestureRecognizer gestureRecognizer)
+		//		{
+		//			Console.WriteLine ("FIRING EVENT!!!");
+		//		}
+
 
 	}
 }

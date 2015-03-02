@@ -1,19 +1,48 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.Text;
-using Android.Gms.Maps.Model;
+using Xamarin.Forms.Maps;
+using CocoMaps.Shared;
 
 /// <summary>
 /// See https://developers.google.com/maps/documentation/utilities/polylinealgorithm
 /// </summary>
 public static class GoogleUtil
 {
+
+	public static Building PointInBuilding (double testX, double testY)
+	{
+		int i, j;
+
+		foreach (Campus campus in BuildingRepository.getInstance.getCampusList()) {
+			foreach (Building building in campus.Buildings) {
+
+				var latlnglist = new List<Position> ();
+				bool c = false;
+
+				foreach (Position point in building.ShapeCoords)
+					latlnglist.Add (new Position (point.Latitude, point.Longitude));
+
+				for (i = 0, j = latlnglist.Count - 1; i < latlnglist.Count - 1; j = i++) {
+					if ((latlnglist [i].Longitude > testY) != (latlnglist [j].Longitude > testY) &&
+					    (testX < (latlnglist [j].Latitude - latlnglist [i].Latitude) * (testY - latlnglist [i].Longitude) / (latlnglist [j].Longitude - latlnglist [i].Longitude) + latlnglist [i].Latitude))
+						c = !c;
+				}
+				if (c)
+					return building;
+
+			}
+		}
+		return null;
+
+	}
+
 	/// <summary>
 	/// Decode google style polyline coordinates.
 	/// </summary>
 	/// <param name="encodedPoints"></param>
 	/// <returns></returns>
-	public static IEnumerable<LatLng> Decode (string encodedPoints)
+	public static IEnumerable<Position> Decode (string encodedPoints)
 	{
 		if (string.IsNullOrEmpty (encodedPoints)) {
 			Console.WriteLine ("ENCODED POINTS NULL OR EMPTY");
@@ -57,7 +86,7 @@ public static class GoogleUtil
 
 			currentLng += (sum & 1) == 1 ? ~(sum >> 1) : (sum >> 1);
 
-			yield return new LatLng ((Convert.ToDouble (currentLat) / 1E5), (Convert.ToDouble (currentLng) / 1E5));
+			yield return new Position ((Convert.ToDouble (currentLat) / 1E5), (Convert.ToDouble (currentLng) / 1E5));
 
 		}
 	}
@@ -67,7 +96,7 @@ public static class GoogleUtil
 	/// </summary>
 	/// <param name="points"></param>
 	/// <returns></returns>
-	public static string Encode (IEnumerable<LatLng> points)
+	public static string Encode (IEnumerable<Position> points)
 	{
 		var str = new StringBuilder ();
 

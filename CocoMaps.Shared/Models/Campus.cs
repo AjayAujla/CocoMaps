@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using Xamarin.Forms.Maps;
 
 namespace CocoMaps.Shared
 {
 	public class Campus
 	{
 
-		public Campus ()
-		{
-		}
+		// Those are the exact coordinates given by Google Maps
+		// When searching for those campuses - DO NOT CHANGE!!!
+		public static Position SGWPosition = new Position (45.4971711, -73.5790942);
+		public static Position LOYPosition = new Position (45.4585649, -73.6400639);
 
 		public int ID {
 			get;

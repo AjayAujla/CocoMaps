@@ -7,6 +7,7 @@ using Xamarin.Forms.Maps;
 using System.Diagnostics;
 using System.Collections.Generic;
 
+#if __ANDROID__
 using Android.Provider;
 
 namespace CocoMaps.Shared
@@ -34,7 +35,7 @@ namespace CocoMaps.Shared
 
 			Label header = new Label {
 				Text = "Classes",
-				Font = Font.BoldSystemFontOfSize (30),
+				FontSize = 30,
 				HorizontalOptions = LayoutOptions.Center
 			};
 
@@ -96,5 +97,4 @@ namespace CocoMaps.Shared
 	}
 }
 
-
-
+#endif

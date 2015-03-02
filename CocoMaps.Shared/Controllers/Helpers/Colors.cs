@@ -1,4 +1,5 @@
 ﻿using System;
+
 #if __IOS__
 using UIKit;
 using CoreGraphics;
@@ -13,33 +14,31 @@ namespace CocoMaps.Shared.Helpers
 		public static readonly Color DarkBlue = 0x2C3E50;
 		public static readonly Color Green = 0x77D065;
 		public static readonly Color Gray = 0x738182;
-		public static readonly Color LightGray = 0xB4BCBC;
 		public static readonly Color Tan = 0xDAD0C8;
-		public static readonly Color DarkGray = 0x333333;
+		public static readonly Color DarkGray = 0x1E1E1E;
 		public static readonly Color Tint = 0x5AA09B;
 
 		// Concordia's colors
 		public static readonly Color Maroon = 0x932439;
-		public static readonly Color Navy = 0x00768e;
-
+		public static readonly Color Navy = 0x00768E;
+		public static readonly Color LightGray = 0xF2F2F2;
 
 
 		public double R, G, B;
 
-		public static Color FromHex(int hex)
+		public static Color FromHex (int hex)
 		{
 			Func<int, int> at = offset => (hex >> offset) & 0xFF;
-			return new Color
-			{
-				R = at(16) / 255.0,
-				G = at(8) / 255.0,
-				B = at(0) / 255.0
+			return new Color {
+				R = at (16) / 255.0,
+				G = at (8) / 255.0,
+				B = at (0) / 255.0
 			};
 		}
 
-		public static implicit operator Color(int hex)
+		public static implicit operator Color (int hex)
 		{
-			return FromHex(hex);
+			return FromHex (hex);
 		}
 
 		#if __IOS__
@@ -59,23 +58,21 @@ namespace CocoMaps.Shared.Helpers
 		}
 		#endif
 
-		public Xamarin.Forms.Color ToFormsColor()
+		public Xamarin.Forms.Color ToFormsColor ()
 		{
-			return Xamarin.Forms.Color.FromRgb((int)(255 * R), (int)(255 * G), (int)(255 * B));
+			return Xamarin.Forms.Color.FromRgb ((int)(255 * R), (int)(255 * G), (int)(255 * B));
 		}
 
 		#if __ANDROID__
-		public global::Android.Graphics.Color ToAndroidColor()
+		public global::Android.Graphics.Color ToAndroidColor ()
 		{
-			return global::Android.Graphics.Color.Rgb((int)(255 * R), (int)(255 * G), (int)(255 * B));
+			return global::Android.Graphics.Color.Rgb ((int)(255 * R), (int)(255 * G), (int)(255 * B));
 		}
 
-		public static implicit operator global::Android.Graphics.Color(Color color)
+		public static implicit operator global::Android.Graphics.Color (Color color)
 		{
-			return color.ToAndroidColor();
+			return color.ToAndroidColor ();
 		}
 		#endif
 	}
 }
-
-

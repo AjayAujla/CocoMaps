@@ -2,7 +2,7 @@ using System;
 using CoreLocation;
 using MapKit;
 
-namespace Protocols_Delegates_Events
+namespace CocoMaps.iOS
 {
 	/// <summary>
 	/// Annotation class that subclasses MKAnnotation abstract class
@@ -37,4 +37,3 @@ namespace Protocols_Delegates_Events
 		}
 	}
 }
-

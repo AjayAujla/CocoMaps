@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing;
+using Xamarin.Forms.Maps;
 
 namespace CocoMaps.Shared
 {
@@ -8,15 +8,6 @@ namespace CocoMaps.Shared
 	public class Building
 	{
 	
-		public Building ()
-		{
-		}
-
-		public int ID {
-			get;
-			set;
-		}
-
 		public string Code {
 			get;
 			set;
@@ -37,17 +28,17 @@ namespace CocoMaps.Shared
 			set;
 		}
 
-		public Tuple<double, double> Pos {
+		public Position Position {
 			get;
 			set;
 		}
 
-		public Tuple<double, double>[] ShapeCoords {
+		public List<Position> ShapeCoords {
 			get;
 			set;
 		}
 
-		public Tuple<double, double>[] HoleShapeCoords {
+		public List<Position> HoleShapeCoords {
 			get;
 			set;
 		}
@@ -59,7 +50,7 @@ namespace CocoMaps.Shared
 
 		public override string ToString ()
 		{
-			return string.Format ("[Building: Code={0}, Name={1}, Address={2}]", Code, Name, Address);
+			return string.Format ("[Building: Code = {0}, Name = {1}, Address = {2}]", Code, Name, Address);
 		}
 	}
 }
