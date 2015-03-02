@@ -60,6 +60,9 @@ namespace CocoMaps.Shared.Pages
 			if (menuOption.Title == "Concordia Services") {
 				return new ConcordiaServices (menuOption);
 			}
+			if (menuOption.Title == "Next Class") {
+				return new NextClass (menuOption);
+			}
 			if (menuOption.Title == "Building Directions") {
 				return new MasterPage (menuOption);
 			}
