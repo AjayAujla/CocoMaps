@@ -3,9 +3,7 @@ using Xamarin.Forms;
 using CocoMaps.Shared.Pages;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Models;
-using Xamarin.Forms.Maps;
-using System.Diagnostics;
-using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CocoMaps.Shared
 {
@@ -13,6 +11,12 @@ namespace CocoMaps.Shared
 	{
 		public NextClass (IMenuOptions menuItem)
 		{
+			var viewModel = new MasterViewModel ();
+			BindingContext = viewModel;
+
+			this.SetValue (Page.TitleProperty, "Next Class");
+			this.SetValue (Page.IconProperty, menuItem.Icon);
+
 
 			string startLocation;
 			string destination;
@@ -66,10 +70,31 @@ namespace CocoMaps.Shared
 
 			Label label5 = new Label
 			{
-				Text = startLocation ,
+				Text = startLocation + "\r\n \r\n",
 
 				Font = Font.SystemFontOfSize(NamedSize.Large)
 			};
+
+			/*var NextClassButton = new Button {
+				Text = "Get Directions to Next Class",
+				HeightRequest = 50,
+				WidthRequest = 100,
+				BackgroundColor = Color.Black,
+				TextColor = Color.White,
+				Opacity = 0.7,
+				BorderRadius = 0
+			};*/
+
+			var NextClassButton = new Button { Text = "Get Directions to Next Class" };
+
+			var pushClass = new StackLayout {
+				Spacing = 5,
+				HorizontalOptions = LayoutOptions.CenterAndExpand,
+				Orientation = StackOrientation.Horizontal, 
+				Children = { NextClassButton }
+			};
+
+			//NextClassButton.Clicked += HandleNextClassButton(startLocation , destination);
 
 			this.Content = new StackLayout
 			{
@@ -80,7 +105,8 @@ namespace CocoMaps.Shared
 					label2,
 					label3,
 					label4,
-					label5
+					label5,
+					pushClass
 				}
 				};
 
@@ -108,6 +134,14 @@ namespace CocoMaps.Shared
 
 
 			return building.Address;
+
+		}
+
+		void HandleNextClassButton (string start , string end)
+		{
+			RequestDirections RD ;
+
+			//Task<Directions> GDirections = RD.getDirections(start , end , TravelMode.walking);
 
 		}
 
