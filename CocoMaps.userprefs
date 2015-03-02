@@ -1,47 +1,18 @@
-﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.dca08503" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared/Views/Pages/Master.cs">
+﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.GoogleSer" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Views\Pages\Master.cs">
     <Files>
-      <File FileName="CocoMaps.iOS/Renderers/ConcordiaMap_iOS.cs" Line="7" Column="7" />
-      <File FileName="CocoMaps.Shared/Views/Pages/Master.cs" Line="4" Column="4" />
-      <File FileName="CocoMaps.Android/Renderers/ConcordiaMap_Android.cs" Line="10" Column="10" />
-      <File FileName="CocoMaps.Shared/Controllers/Repositories/BuildingRepository.cs" Line="5" Column="5" />
-      <File FileName="CocoMaps.Shared/Models/Campus.cs" Line="3" Column="3" />
-      <File FileName="CocoMaps.Shared/Views/ViewsModel/DetailsViewModel.cs" Line="3" Column="3" />
-      <File FileName="CocoMaps.Shared/Views/Pages/POI/POI.cs" Line="3" Column="3" />
+      <File FileName="CocoMaps.iOS\Renderers\ConcordiaMap_iOS.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Master.cs" Line="4" Column="4" />
+      <File FileName="CocoMaps.Android\Renderers\ConcordiaMap_Android.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Controllers\Repositories\BuildingRepository.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Models\Campus.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\ViewsModel\DetailsViewModel.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\POI\POI.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State expanded="True">
-          <Node name="CocoMaps.Android" expanded="True">
-            <Node name="Properties" expanded="True" />
-            <Node name="Renderers" expanded="True" />
-          </Node>
-          <Node name="CocoMaps.iOS" expanded="True">
-            <Node name="Renderers" expanded="True" />
-          </Node>
-          <Node name="CocoMaps.Shared" expanded="True">
-            <Node name="Controllers" expanded="True">
-              <Node name="Helpers" expanded="True" />
-            </Node>
-            <Node name="Views" expanded="True">
-              <Node name="Pages" expanded="True">
-                <Node name="POI" expanded="True">
-                  <Node name="POI.cs" selected="True" />
-                </Node>
-              </Node>
-              <Node name="ViewsModel" expanded="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <RunToCursorBreakpoint file="/Users/markmassoud/Desktop/CocoMaps/CocoMaps/CocoMaps.iOS/Renderers/ConcordiaMap_iOS.cs" line="60" column="29" />
-      <RunToCursorBreakpoint file="/Users/markmassoud/Desktop/CocoMaps/CocoMaps/CocoMaps.iOS/Renderers/ConcordiaMap_iOS.cs" line="59" column="43" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <DisabledProjects>
