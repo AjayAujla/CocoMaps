@@ -18,7 +18,7 @@ namespace CocoMaps.Shared
 			}
 		}
 
-		private BuildingRepository ()
+		public BuildingRepository ()
 		{
 			Campus SGW = new Campus () {
 				Code = "SGW",

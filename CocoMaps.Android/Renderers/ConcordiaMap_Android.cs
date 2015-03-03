@@ -54,6 +54,37 @@ namespace CocoMapsAndroid
 			}
 		}
 
+		public void getDirectionsToClass (Directions directions)
+		{
+			var androidMapView = (MapView)Control;
+			DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
+
+
+			if (directions.status.Equals ("OK")) {
+
+				var loader = LoaderViewModel.getInstance;
+				loader.Show ();
+
+				PolylineOptions polyline = new PolylineOptions ();
+				polyline.InvokeColor (0x7F00768e);
+
+				foreach (Route route in directions.routes) {
+
+					detailsLayout.UpdateView (directions);
+
+					route.overview_polyline.decodedPoints = GoogleUtil.Decode (route.overview_polyline.points);
+					foreach (Position point in route.overview_polyline.decodedPoints) {
+						polyline.Add (new LatLng (point.Latitude, point.Longitude));
+					}
+
+				}
+				androidMapView.Map.AddPolyline (polyline);
+
+
+				loader.Hide ();
+			}
+		}
+
 		protected override void OnElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 

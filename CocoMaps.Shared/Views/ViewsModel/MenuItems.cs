@@ -36,6 +36,13 @@ namespace CocoMaps.Models
 		public override string Icon { get { return "poiIcon.png"; } }
 	}
 
+	public class NextClass_MenuOption : IMenuOptions
+	{
+		public override string Title { get { return "Next Class"; } }
+
+		public override string Icon { get { return "classIcon.png"; } }
+	}
+
 	public class bDirections_MenuOption : IMenuOptions
 	{
 		public override string Title { get { return "Building Directions"; } }

@@ -45,6 +45,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\BuildingRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GooglePointsDecoder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\LoaderViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\NextClass\NextClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -59,5 +60,6 @@
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\POI\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Repositories\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\NextClass\" />
   </ItemGroup>
 </Project>
