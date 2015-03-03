@@ -7,7 +7,6 @@ using CocoMaps.Shared;
 using UIKit;
 using CoreGraphics;
 using Xamarin.Forms.Maps.iOS;
-using Google.Maps;
 using System.Drawing;
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMaps.iOS.ConcordiaMap_iOS))]
@@ -26,8 +25,6 @@ namespace CocoMaps.iOS
 		protected override void OnElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 			base.OnElementPropertyChanged (sender, e);
-
-			MapServices.ProvideAPIKey ("AIzaSyD7Xf_sig5YzrPmfUchPzYnjHJG98_7ctk");
 
 			double lat = 45.49770304029157;
 			double lon = -73.57904434204102;
@@ -51,13 +48,7 @@ namespace CocoMaps.iOS
 //					}
 //				);
 
-				MapView s;
 				Console.WriteLine (e.PropertyName);
-
-
-				s = new MapView ();
-
-
 
 				MKMapViewDelegate _mapDelegate = new MKMapViewDelegate ();
 				//iOSMapView.Delegate = _mapDelegate;

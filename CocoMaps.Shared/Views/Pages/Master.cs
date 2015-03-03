@@ -5,9 +5,6 @@ using CocoMaps.Shared.ViewModels;
 using CocoMaps.Models;
 using System.Collections.Generic;
 
-using CocoMapsAndroid;
-
-
 namespace CocoMaps.Shared
 {
 	public class MasterPage : ContentPage
@@ -84,8 +81,7 @@ namespace CocoMaps.Shared
 			LOYButton.Clicked += HandleCampusRegionButton;
 			checkNetworkButton.Clicked += TestStuff;
 
-			NextButton.Clicked += async (sender, e) => 
-			{
+			NextButton.Clicked += async (sender, e) => {
 				string start = "7141 Sherbrooke Street W. Montreal QC";
 				string dest = "1455 De Maisonneuve Blvd. W. Montreal QC";
 
@@ -143,7 +139,8 @@ namespace CocoMaps.Shared
 				}
 			};
 
-			ActivityIndicator loader = ActivityLoading.getInstance ();
+			LoaderViewModel loader = LoaderViewModel.getInstance;
+			//loader.Show ();
 
 			DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
 
