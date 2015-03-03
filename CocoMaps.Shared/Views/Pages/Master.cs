@@ -122,7 +122,8 @@ namespace CocoMaps.Shared
 				}
 			};
 
-			ActivityIndicator loader = ActivityLoading.getInstance ();
+			LoaderViewModel loader = LoaderViewModel.getInstance;
+			//loader.Show ();
 
 			DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
 
