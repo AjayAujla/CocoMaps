@@ -62,8 +62,8 @@ namespace CocoMapsAndroid
 
 			if (directions.status.Equals ("OK")) {
 
-				var loader = ActivityLoading.getInstance ();
-				ActivityLoading.Show (loader);
+				var loader = LoaderViewModel.getInstance;
+				loader.Show ();
 
 				PolylineOptions polyline = new PolylineOptions ();
 				polyline.InvokeColor (0x7F00768e);
@@ -81,7 +81,7 @@ namespace CocoMapsAndroid
 				androidMapView.Map.AddPolyline (polyline);
 
 
-				ActivityLoading.Hide (loader);
+				loader.Hide ();
 			}
 		}
 
@@ -134,14 +134,14 @@ namespace CocoMapsAndroid
 											.SetSnippet (building.Address)
 									.SetPosition (new LatLng (building.ShapeCoords [0].Latitude, building.ShapeCoords [0].Longitude)));
 
+								var loaderViewModel = LoaderViewModel.getInstance;
+								loaderViewModel.Show ();
+
 								RequestDirections directionsRequest = RequestDirections.getInstance;
 
 								Directions directions = await directionsRequest.getDirections (_from, _to, TravelMode.walking);
 
 								if (directions.status.Equals ("OK")) {
-
-									var loader = ActivityLoading.getInstance ();
-									ActivityLoading.Show (loader);
 
 									PolylineOptions polyline = new PolylineOptions ();
 									polyline.InvokeColor (0x7F00768e);
@@ -159,8 +159,9 @@ namespace CocoMapsAndroid
 									androidMapView.Map.AddPolyline (polyline);
 
 
-									ActivityLoading.Hide (loader);
 								}
+
+								loaderViewModel.Hide ();
 
 								_from = "";
 								_to = "";

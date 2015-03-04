@@ -40,11 +40,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\POI\PlacesPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\POI\BasePOI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\POI\POI.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ActivityLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\INetwork.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\DetailsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\BuildingRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GooglePointsDecoder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\LoaderViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\NextClass\NextClass.cs" />
   </ItemGroup>
   <ItemGroup>
