@@ -14,6 +14,7 @@ namespace CocoMaps.Shared.Pages
 
 		public RootPage ()
 		{
+
 			var optionsPage = new MenuPage { Icon = "settings.png", Title = "menu" };
 
 			optionsPage.Menu.ItemSelected += (sender, e) => NavigateTo (e.SelectedItem as IMenuOptions);
