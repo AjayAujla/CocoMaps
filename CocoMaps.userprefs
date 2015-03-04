@@ -1,6 +1,16 @@
 ﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.GoogleSer" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.13c7772e" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Views\Pages\AuthPages\Testpage.cs">
+    <Files>
+      <File FileName="c:\Users\Abhi\Documents\GitHub\CocoMaps\CocoMaps.Android\MainActivity.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\App.cs" Line="8" Column="8" />
+      <File FileName="CocoMaps.Shared\Views\Pages\AuthPages\Testpage.cs" Line="2" Column="2" />
+      <File FileName="CocoMaps.Shared\Views\Pages\AuthPages\gBasePage.cs" Line="24" Column="24" />
+      <File FileName="CocoMaps.Shared\Views\Pages\AuthPages\gLoginPage.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Master.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Root.cs" Line="21" Column="21" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

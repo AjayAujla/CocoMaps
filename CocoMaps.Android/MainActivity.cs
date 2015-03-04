@@ -39,7 +39,12 @@ namespace CocoMaps.Android
 
 			//Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Never);
 
+			//SetPage (App.Instance.GetRootPage ());
+
 			LoadApplication (new App ());
+
+			SetPage (App.Instance.GetRootPage ());
+
 		}
 
 	}
