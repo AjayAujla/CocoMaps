@@ -50,7 +50,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)OAuthSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\gLoginPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\gBasePage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\Testpage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\GoogleEnabledPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\GoogleDisabledPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />

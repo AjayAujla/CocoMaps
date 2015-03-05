@@ -18,6 +18,8 @@ namespace CocoMaps.Shared
 		NavigationPage NavPage;
 		string _Token;
 
+		Boolean GoogleEnabled = false;
+
 		public static App Instance
 		{
 			get 
@@ -28,12 +30,16 @@ namespace CocoMaps.Shared
 					{
 						if (appInstance == null) {
 							appInstance = new App ();
-							appInstance.OAuthSettings = 
-								new OAuthSettings (
-									clientId: "189708382965-8e2o6rtnvihkd40fn54elflfdrmrpemf.apps.googleusercontent.com", 
-									scope: "https://www.googleapis.com/auth/calendar",  		
-									authorizeUrl: "https://accounts.google.com/o/oauth2/auth",  	
-									redirectUrl: "https://www.google.com/oauth2callback");   
+
+							//if (GoogleEnabled) 
+							//{
+								appInstance.OAuthSettings = 
+									new OAuthSettings (
+										clientId: "189708382965-8e2o6rtnvihkd40fn54elflfdrmrpemf.apps.googleusercontent.com", 
+										scope: "https://www.googleapis.com/auth/calendar",  		
+										authorizeUrl: "https://accounts.google.com/o/oauth2/auth",  	
+										redirectUrl: "https://www.google.com/oauth2callback");
+							//}   
 						}
 					}
 				}
@@ -44,13 +50,34 @@ namespace CocoMaps.Shared
 
 		public OAuthSettings OAuthSettings { get; private set; }
 
-		public Page GetRootPage ()
+		public Page GetGoogleEnabledPage ()
 		{
-			var RootPage = new ProfilePage();
 
-			NavPage = new NavigationPage(RootPage);
+			GoogleEnabled = true;
+
+
+
+			var GoogleEnabledPage = new GoogleDisabledPage(true);
+
+			NavPage = new NavigationPage(GoogleEnabledPage);
 
 			return NavPage;
+		}
+
+		public Page GetGoogleDisabledPage ()
+		{
+
+			//MessagingCenter.Send<App> (this, "GoogleDisabled");
+
+			var GoogleDisabledPage = new GoogleDisabledPage(false);
+
+			NavPage = new NavigationPage(GoogleDisabledPage);
+
+			return NavPage;
+		}
+
+		public bool IsGoogleEnabled {
+			get { return GoogleEnabled; }
 		}
 
 		public bool IsAuthenticated {

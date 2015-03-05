@@ -3,9 +3,30 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
-    <Button
-        android:id="@+id/myButton"
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello" />
+        android:id="@+id/textView2"
+        android:layout_marginBottom="14.8dp" />
+    <Button
+        android:text="Proceed to App"
+        android:layout_width="match_parent"
+        android:layout_height="66.5dp"
+        android:id="@+id/button2"
+        android:layout_marginBottom="20.9dp" />
+    <Button
+        android:text="Login To Google"
+        android:layout_width="match_parent"
+        android:layout_height="64.0dp"
+        android:id="@+id/button1" />
+    <TextView
+        android:text="Login to Google to access your calendar and have more functionality within the app."
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="334.7dp"
+        android:layout_height="75.0dp"
+        android:id="@+id/textView1"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="11.1dp"
+        android:layout_marginLeft="20.9dp" />
 </LinearLayout>

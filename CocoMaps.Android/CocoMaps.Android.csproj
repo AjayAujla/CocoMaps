@@ -123,6 +123,7 @@
     <Compile Include="Renderers\Network.cs" />
     <Compile Include="Renderers\BroadcastMonitor.cs" />
     <Compile Include="Renderers\LoginPageRenderer.cs" />
+    <Compile Include="FormsActivities.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

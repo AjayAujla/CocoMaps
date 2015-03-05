@@ -5,9 +5,9 @@ using CocoMaps.Shared.Pages;
 
 namespace CocoMaps.Shared
 {
-	public class ProfilePage : gBasePage
+	public class GoogleEnabledPage : gBasePage
 	{
-		public ProfilePage ()
+		public GoogleEnabledPage ()
 		{
 			// Using messaging center to ensure that content only gets loaded once authentication is successful.
 			// Once Xamarin.Forms adds more support for view life cycle events, this kind of thing won't be as necessary.

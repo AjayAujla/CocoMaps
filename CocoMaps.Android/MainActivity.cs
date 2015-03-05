@@ -1,9 +1,16 @@
-﻿using Android.App;
-using Android.OS;
-using Xamarin.Forms;
-using Xamarin;
+﻿
 using Android.Content.PM;
 using CocoMaps.Shared;
+using System;
+
+
+using Android.App;
+using Android.Content;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
+using Android.OS;
+
 
 namespace CocoMaps.Android
 {
@@ -14,38 +21,38 @@ namespace CocoMaps.Android
 		{
 			base.OnCreate (savedInstanceState);
 
-			StartActivity (typeof(MainActivity));
+			StartActivity (typeof(ChooseApp));
 		}
 	}
 
 	[Activity (Label = "CocoMaps", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-	public class MainActivity : Xamarin.Forms.Platform.Android.FormsApplicationActivity
+	public class ChooseApp : Activity
 	{
-
 		protected override void OnCreate (Bundle savedInstanceState)
 		{
-
-			App.ScreenSize = new Size (
-				Resources.DisplayMetrics.WidthPixels / Resources.DisplayMetrics.Density,
-				Resources.DisplayMetrics.HeightPixels / Resources.DisplayMetrics.Density);
-
-			App.ScreenPixels = new Size (
-				Resources.DisplayMetrics.WidthPixels,
-				Resources.DisplayMetrics.HeightPixels);
-
 			base.OnCreate (savedInstanceState);
-			Forms.Init (this, savedInstanceState);
-			FormsMaps.Init (this, savedInstanceState);
 
-			//Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Never);
+			SetContentView(Resource.Layout.Main);
 
-			//SetPage (App.Instance.GetRootPage ());
+			Button GoogleApp = FindViewById<Button>(Resource.Id.button1);
 
-			LoadApplication (new App ());
+			Button NormalApp = FindViewById<Button>(Resource.Id.button2);
 
-			SetPage (App.Instance.GetRootPage ());
+			GoogleApp.Click += delegate {
+				var GoogleAppIntent = new Intent (this, typeof(AppActivity));
+				GoogleAppIntent.PutExtra ("AppType", "GoogleEnabled");
+				StartActivity (GoogleAppIntent);
+			};
+
+			NormalApp.Click += delegate {
+				var NormalAppIntent = new Intent (this, typeof(AppActivity));
+				NormalAppIntent.PutExtra ("AppType", "GoogleDisabled");
+				StartActivity (NormalAppIntent);
+			};
+
 
 		}
-
 	}
+
+
 }
