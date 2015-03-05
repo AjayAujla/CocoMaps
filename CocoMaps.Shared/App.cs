@@ -50,28 +50,17 @@ namespace CocoMaps.Shared
 
 		public OAuthSettings OAuthSettings { get; private set; }
 
-		public Page GetGoogleEnabledPage ()
+		public void setGoogleEnabled(bool value)
 		{
-
-			GoogleEnabled = true;
-
-
-
-			var GoogleEnabledPage = new GoogleDisabledPage(true);
-
-			NavPage = new NavigationPage(GoogleEnabledPage);
-
-			return NavPage;
+			GoogleEnabled = value;
 		}
 
-		public Page GetGoogleDisabledPage ()
+		public Page GetMainPage ()
 		{
 
-			//MessagingCenter.Send<App> (this, "GoogleDisabled");
+			var MainPage = new AuthMainPage();
 
-			var GoogleDisabledPage = new GoogleDisabledPage(false);
-
-			NavPage = new NavigationPage(GoogleDisabledPage);
+			NavPage = new NavigationPage(MainPage);
 
 			return NavPage;
 		}

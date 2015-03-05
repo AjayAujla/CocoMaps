@@ -7,7 +7,7 @@ using Xamarin.Forms.Platform.Android;
 using CocoMaps.Android;
 using CocoMaps.Shared;
 
-[assembly: ExportRenderer (typeof (gLoginPage), typeof (LoginPageRenderer))]
+[assembly: ExportRenderer (typeof (AuthLoginPage), typeof (LoginPageRenderer))]
 
 namespace CocoMaps.Android
 {

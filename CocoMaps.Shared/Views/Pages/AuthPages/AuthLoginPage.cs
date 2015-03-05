@@ -4,9 +4,9 @@ using CocoMaps.Shared.ViewModels;
 
 namespace CocoMaps.Shared
 {
-	public class gLoginPage : ContentPage
+	public class AuthLoginPage : ContentPage
 	{
-		public gLoginPage()
+		public AuthLoginPage()
 		{
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;

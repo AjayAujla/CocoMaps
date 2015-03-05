@@ -6,7 +6,7 @@ using CocoMaps.Shared.Pages;
 
 namespace CocoMaps.Shared
 {
-	public class gBasePage : ContentPage
+	public class AuthBasePage : ContentPage
 	{
 		protected override void OnAppearing ()
 		{
@@ -14,11 +14,7 @@ namespace CocoMaps.Shared
 
 			if (!App.Instance.IsAuthenticated && App.Instance.IsGoogleEnabled)
 			{
-				Navigation.PushModalAsync (new gLoginPage ());
-			} 
-			else
-			{
-				Navigation.PushModalAsync (new RootPage ());
+				Navigation.PushModalAsync (new AuthLoginPage ());
 			}
 
 			

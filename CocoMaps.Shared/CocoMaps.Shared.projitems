@@ -48,10 +48,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\NextClass\NextClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\CalendarConnect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OAuthSettings.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\gLoginPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\gBasePage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\GoogleEnabledPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\GoogleDisabledPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\AuthBasePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\AuthLoginPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\AuthMainPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
