@@ -29,11 +29,13 @@ namespace CocoMaps.Android
 
 			if (AppType == "GoogleDisabled") 
 			{
-				SetPage (App.Instance.GetGoogleDisabledPage());
+				App.Instance.setGoogleEnabled (false);
+				SetPage (App.Instance.GetMainPage());
 			} 
 			else if (AppType == "GoogleEnabled") 
 			{
-				SetPage (App.Instance.GetGoogleEnabledPage());
+				App.Instance.setGoogleEnabled (true);
+				SetPage (App.Instance.GetMainPage());
 			}
 				
 
