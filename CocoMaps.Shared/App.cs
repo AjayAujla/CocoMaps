@@ -18,8 +18,6 @@ namespace CocoMaps.Shared
 		NavigationPage NavPage;
 		string _Token;
 
-		Boolean GoogleEnabled = false;
-
 		public static App Instance
 		{
 			get 
@@ -28,18 +26,16 @@ namespace CocoMaps.Shared
 				{
 					lock (syncApp) 
 					{
-						if (appInstance == null) {
+						if (appInstance == null) 
+						{
 							appInstance = new App ();
 
-							//if (GoogleEnabled) 
-							//{
-								appInstance.OAuthSettings = 
-									new OAuthSettings (
-										clientId: "189708382965-8e2o6rtnvihkd40fn54elflfdrmrpemf.apps.googleusercontent.com", 
-										scope: "https://www.googleapis.com/auth/calendar",  		
-										authorizeUrl: "https://accounts.google.com/o/oauth2/auth",  	
-										redirectUrl: "https://www.google.com/oauth2callback");
-							//}   
+							appInstance.OAuthSettings = 
+								new OAuthSettings (
+									clientId: "189708382965-8e2o6rtnvihkd40fn54elflfdrmrpemf.apps.googleusercontent.com", 
+									scope: "https://www.googleapis.com/auth/calendar",  		
+									authorizeUrl: "https://accounts.google.com/o/oauth2/auth",  	
+									redirectUrl: "https://www.google.com/oauth2callback");   
 						}
 					}
 				}
@@ -50,23 +46,15 @@ namespace CocoMaps.Shared
 
 		public OAuthSettings OAuthSettings { get; private set; }
 
-		public void setGoogleEnabled(bool value)
-		{
-			GoogleEnabled = value;
-		}
 
 		public Page GetMainPage ()
 		{
 
-			var MainPage = new AuthMainPage();
+			var MainPage = new NavRootPage();
 
 			NavPage = new NavigationPage(MainPage);
 
 			return NavPage;
-		}
-
-		public bool IsGoogleEnabled {
-			get { return GoogleEnabled; }
 		}
 
 		public bool IsAuthenticated {

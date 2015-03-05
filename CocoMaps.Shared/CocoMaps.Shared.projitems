@@ -50,7 +50,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)OAuthSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\AuthBasePage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\AuthLoginPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\AuthMainPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\NavRootBasePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\NavRootPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
