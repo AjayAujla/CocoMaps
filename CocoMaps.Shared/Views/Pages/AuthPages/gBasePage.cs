@@ -12,11 +12,16 @@ namespace CocoMaps.Shared
 		{
 			base.OnAppearing ();
 
-			if (!App.Instance.IsAuthenticated) {
+			if (!App.Instance.IsAuthenticated && App.Instance.IsGoogleEnabled)
+			{
 				Navigation.PushModalAsync (new gLoginPage ());
-			} else {
+			} 
+			else
+			{
 				Navigation.PushModalAsync (new RootPage ());
 			}
+
+			
 		}
 	}
 }
