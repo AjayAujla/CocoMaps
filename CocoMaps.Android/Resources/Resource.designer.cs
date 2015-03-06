@@ -1795,6 +1795,12 @@ namespace CocoMaps.Android
 			// aapt resource value: 0x7f0c0019
 			public const int book_now = 2131492889;
 			
+			// aapt resource value: 0x7f0c0055
+			public const int button1 = 2131492949;
+			
+			// aapt resource value: 0x7f0c0054
+			public const int button2 = 2131492948;
+			
 			// aapt resource value: 0x7f0c0015
 			public const int buyButton = 2131492885;
 			
@@ -1879,29 +1885,26 @@ namespace CocoMaps.Android
 			// aapt resource value: 0x7f0c0017
 			public const int match_parent = 2131492887;
 			
+			// aapt resource value: 0x7f0c005a
+			public const int media_route_control_frame = 2131492954;
+			
+			// aapt resource value: 0x7f0c005b
+			public const int media_route_disconnect_button = 2131492955;
+			
 			// aapt resource value: 0x7f0c0057
-			public const int media_route_control_frame = 2131492951;
+			public const int media_route_list = 2131492951;
 			
 			// aapt resource value: 0x7f0c0058
-			public const int media_route_disconnect_button = 2131492952;
+			public const int media_route_volume_layout = 2131492952;
 			
-			// aapt resource value: 0x7f0c0054
-			public const int media_route_list = 2131492948;
-			
-			// aapt resource value: 0x7f0c0055
-			public const int media_route_volume_layout = 2131492949;
-			
-			// aapt resource value: 0x7f0c0056
-			public const int media_route_volume_slider = 2131492950;
+			// aapt resource value: 0x7f0c0059
+			public const int media_route_volume_slider = 2131492953;
 			
 			// aapt resource value: 0x7f0c002a
 			public const int middle = 2131492906;
 			
 			// aapt resource value: 0x7f0c001f
 			public const int monochrome = 2131492895;
-			
-			// aapt resource value: 0x7f0c0053
-			public const int myButton = 2131492947;
 			
 			// aapt resource value: 0x7f0c002e
 			public const int never = 2131492910;
@@ -1989,6 +1992,12 @@ namespace CocoMaps.Android
 			
 			// aapt resource value: 0x7f0c000f
 			public const int terrain = 2131492879;
+			
+			// aapt resource value: 0x7f0c0056
+			public const int textView1 = 2131492950;
+			
+			// aapt resource value: 0x7f0c0053
+			public const int textView2 = 2131492947;
 			
 			// aapt resource value: 0x7f0c003b
 			public const int title = 2131492923;

@@ -20,4 +20,5 @@
   <DisabledProjects>
     <String>CocoMaps.Services/CocoMaps.Services.csproj</String>
   </DisabledProjects>
+  <MonoDevelop.Ide.ItemProperties.CocoMaps.Android AndroidDesignerPreferredDevice="Nexus 4" />
 </Properties>
