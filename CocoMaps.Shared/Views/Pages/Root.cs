@@ -12,9 +12,17 @@ namespace CocoMaps.Shared.Pages
 	{
 		IMenuOptions previousItem;
 
+		// Initialize Pages
+		MasterPage pMaster = null;
+		BasePOI pPOI = null;
+		ConcordiaServices pServices = null;
+		NextClass pNextClass = null;
+		BaseCalendar pCalendar = null;
+
+
+
 		public RootPage ()
 		{
-
 			var optionsPage = new MenuPage { Icon = "settings.png", Title = "menu" };
 
 			optionsPage.Menu.ItemSelected += (sender, e) => NavigateTo (e.SelectedItem as IMenuOptions);
@@ -30,51 +38,125 @@ namespace CocoMaps.Shared.Pages
 			if (previousItem != null)
 				previousItem.Selected = false;
 
+			setPage (menuOption);
+
 			menuOption.Selected = true;
 			previousItem = menuOption;
 
-			var displayPage = PageForOption (menuOption);
-
-			#if WINDOWS_PHONE
-			Detail = new ContentPage();//work around to clear current page.
-			#endif
-			Detail = new NavigationPage (displayPage) {
-				BarBackgroundColor = Helpers.Color.Maroon.ToFormsColor (),
-			};
+			Detail = PageForOption (menuOption);
 
 
 			IsPresented = false;
 		}
 
+		public void setPage(IMenuOptions menuOption)
+		{
+
+			int MenuNumber = menuOption.MenuNum;
+
+			switch (MenuNumber)
+			{
+				case 1:
+					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
+					break;
+				case 2:
+					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
+					break;
+				case 3:
+					if ((pPOI == null)){pPOI = new BasePOI (menuOption);}
+					break;
+				case 4:
+					if ((pServices == null)){pServices = new ConcordiaServices (menuOption);}
+					break;
+				case 5:
+					if ((pNextClass == null)){pNextClass = new NextClass (menuOption);}
+					break;
+				case 6:
+					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
+					break;
+				case 7:
+					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
+					break;
+				case 8:
+					if ((pCalendar == null)){pCalendar = new BaseCalendar (menuOption);}
+					break;
+				case 9:
+					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
+					break;
+				default:
+
+					break;
+			}
+
+
+			if (menuOption.Title == "Current Location" && (pMaster == null))
+			{
+				pMaster = new MasterPage (menuOption);
+			}
+			if (menuOption.Title == "Campus Maps" && (pMaster == null)) 
+			{
+				pMaster = new MasterPage (menuOption);
+			}
+			if (menuOption.Title == "Points of Interest" && (pPOI == null)) 
+			{
+				pPOI = new BasePOI (menuOption);
+			}
+			if (menuOption.Title == "Concordia Services" && (pServices == null)) 
+			{
+				pServices = new ConcordiaServices (menuOption);
+			}
+			if (menuOption.Title == "Next Class" && (pNextClass == null)) 
+			{
+				pNextClass = new NextClass (menuOption);
+			}
+			if (menuOption.Title == "Building Directions" && (pMaster == null)) 
+			{
+				pMaster = new MasterPage (menuOption);
+			}
+			if (menuOption.Title == "Indoor Directions" && (pMaster == null)) 
+			{
+				pMaster = new MasterPage (menuOption);
+			}
+			if (menuOption.Title == "Calendar" && (pCalendar == null)) 
+			{
+				pCalendar = new BaseCalendar (menuOption);
+			}
+			if (menuOption.Title == "Settings" && (pMaster == null)) 
+			{
+				pMaster = new MasterPage (menuOption);
+			}
+
+		}
+
 		Page PageForOption (IMenuOptions menuOption)
 		{
-			// TODO: Refactor this to the Builder pattern (see ICellFactory).
-			if (menuOption.Title == "Current Location") {
-				return new MasterPage (menuOption);
+
+			if ((menuOption.Title == "Current Location") && (pMaster != null)) {
+				return pMaster;
 			}
-			if (menuOption.Title == "Campus Maps") {
-				return new MasterPage (menuOption);
+			if ((menuOption.Title == "Campus Maps") && (pMaster != null)) {
+				return pMaster;
 			}
-			if (menuOption.Title == "Points of Interest") {
-				return new BasePOI (menuOption);
+			if ((menuOption.Title == "Points of Interest") && (pPOI != null)) {
+				return pPOI;
 			}
-			if (menuOption.Title == "Concordia Services") {
-				return new ConcordiaServices (menuOption);
+			if ((menuOption.Title == "Concordia Services") && (pServices != null)) {
+				return pServices;
 			}
-			if (menuOption.Title == "Next Class") {
-				return new NextClass (menuOption);
+			if ((menuOption.Title == "Next Class") && (pNextClass != null)) {
+				return pNextClass;
 			}
-			if (menuOption.Title == "Building Directions") {
-				return new MasterPage (menuOption);
+			if ((menuOption.Title == "Building Directions") && (pMaster != null)) {
+				return pMaster;
 			}
-			if (menuOption.Title == "Indoor Directions") {
-				return new MasterPage (menuOption);
+			if ((menuOption.Title == "Indoor Directions") && (pMaster != null)) {
+				return pMaster;
 			}
-			if (menuOption.Title == "Calendar") {
-				return new BaseCalendar (menuOption);
+			if ((menuOption.Title == "Calendar") && (pCalendar != null)) {
+				return pCalendar;
 			}
-			if (menuOption.Title == "Settings") {
-				return new PlacesPage (menuOption,"Food");
+			if ((menuOption.Title == "Settings") && (pMaster != null)) {
+				return pMaster;
 			}
 			throw new NotImplementedException ("Unknown menu option: " + menuOption.Title);
 		}
