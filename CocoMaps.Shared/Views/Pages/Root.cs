@@ -88,44 +88,6 @@ namespace CocoMaps.Shared.Pages
 					break;
 			}
 
-
-			if (menuOption.Title == "Current Location" && (pMaster == null))
-			{
-				pMaster = new MasterPage (menuOption);
-			}
-			if (menuOption.Title == "Campus Maps" && (pMaster == null)) 
-			{
-				pMaster = new MasterPage (menuOption);
-			}
-			if (menuOption.Title == "Points of Interest" && (pPOI == null)) 
-			{
-				pPOI = new BasePOI (menuOption);
-			}
-			if (menuOption.Title == "Concordia Services" && (pServices == null)) 
-			{
-				pServices = new ConcordiaServices (menuOption);
-			}
-			if (menuOption.Title == "Next Class" && (pNextClass == null)) 
-			{
-				pNextClass = new NextClass (menuOption);
-			}
-			if (menuOption.Title == "Building Directions" && (pMaster == null)) 
-			{
-				pMaster = new MasterPage (menuOption);
-			}
-			if (menuOption.Title == "Indoor Directions" && (pMaster == null)) 
-			{
-				pMaster = new MasterPage (menuOption);
-			}
-			if (menuOption.Title == "Calendar" && (pCalendar == null)) 
-			{
-				pCalendar = new BaseCalendar (menuOption);
-			}
-			if (menuOption.Title == "Settings" && (pMaster == null)) 
-			{
-				pMaster = new MasterPage (menuOption);
-			}
-
 		}
 
 		Page PageForOption (IMenuOptions menuOption)
