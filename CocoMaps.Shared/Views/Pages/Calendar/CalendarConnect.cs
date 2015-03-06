@@ -24,6 +24,8 @@ namespace CocoMaps.Shared
 
 		OAuthSettings tok = App.Instance.OAuthSettings;
 
+		//Google.Apis.Calendar.v3.CalendarService = new CalendarService();
+
 		public CalendarConnect (IMenuOptions menuItem)
 		{
 			var viewModel = new MasterViewModel ();
