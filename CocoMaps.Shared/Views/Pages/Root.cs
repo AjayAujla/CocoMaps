@@ -38,89 +38,65 @@ namespace CocoMaps.Shared.Pages
 			if (previousItem != null)
 				previousItem.Selected = false;
 
-			setPage (menuOption);
-
 			menuOption.Selected = true;
 			previousItem = menuOption;
 
-			Detail = PageForOption (menuOption);
+			Detail = setPage (menuOption);
 
 
 			IsPresented = false;
 		}
 
-		public void setPage(IMenuOptions menuOption)
+		public Page setPage(IMenuOptions menuOption)
 		{
 
 			int MenuNumber = menuOption.MenuNum;
 
 			switch (MenuNumber)
 			{
-				case 1:
-					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
+			case 1:
+					if ((pMaster == null)) {pMaster = new MasterPage (menuOption);}
+					return pMaster;
 					break;
 				case 2:
 					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
+					return pMaster;
 					break;
 				case 3:
 					if ((pPOI == null)){pPOI = new BasePOI (menuOption);}
+					return pPOI;
 					break;
 				case 4:
 					if ((pServices == null)){pServices = new ConcordiaServices (menuOption);}
+					return pServices;	
 					break;
 				case 5:
 					if ((pNextClass == null)){pNextClass = new NextClass (menuOption);}
+					return pNextClass;
 					break;
 				case 6:
 					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
+					return pMaster;
 					break;
 				case 7:
 					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
+					return pMaster;
 					break;
 				case 8:
 					if ((pCalendar == null)){pCalendar = new BaseCalendar (menuOption);}
+					return  pCalendar;
 					break;
 				case 9:
 					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
+					return pMaster;
 					break;
 				default:
-
+					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
+					return pMaster;
 					break;
 			}
 
 		}
-
-		Page PageForOption (IMenuOptions menuOption)
-		{
-
-			if ((menuOption.Title == "Current Location") && (pMaster != null)) {
-				return pMaster;
-			}
-			if ((menuOption.Title == "Campus Maps") && (pMaster != null)) {
-				return pMaster;
-			}
-			if ((menuOption.Title == "Points of Interest") && (pPOI != null)) {
-				return pPOI;
-			}
-			if ((menuOption.Title == "Concordia Services") && (pServices != null)) {
-				return pServices;
-			}
-			if ((menuOption.Title == "Next Class") && (pNextClass != null)) {
-				return pNextClass;
-			}
-			if ((menuOption.Title == "Building Directions") && (pMaster != null)) {
-				return pMaster;
-			}
-			if ((menuOption.Title == "Indoor Directions") && (pMaster != null)) {
-				return pMaster;
-			}
-			if ((menuOption.Title == "Calendar") && (pCalendar != null)) {
-				return pCalendar;
-			}
-			if ((menuOption.Title == "Settings") && (pMaster != null)) {
-				return pMaster;
-			}
-			throw new NotImplementedException ("Unknown menu option: " + menuOption.Title);
-		}
+			
 	}
 }
