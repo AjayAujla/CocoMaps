@@ -43,7 +43,6 @@ namespace CocoMaps.Shared.Pages
 
 			Detail = setPage (menuOption);
 
-
 			IsPresented = false;
 		}
 
@@ -54,46 +53,36 @@ namespace CocoMaps.Shared.Pages
 
 			switch (MenuNumber)
 			{
-			case 1:
+				case 1:
 					if ((pMaster == null)) {pMaster = new MasterPage (menuOption);}
 					return pMaster;
-					break;
 				case 2:
 					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
 					return pMaster;
-					break;
 				case 3:
 					if ((pPOI == null)){pPOI = new BasePOI (menuOption);}
 					return pPOI;
-					break;
 				case 4:
 					if ((pServices == null)){pServices = new ConcordiaServices (menuOption);}
-					return pServices;	
-					break;
+					return pServices;
 				case 5:
 					if ((pNextClass == null)){pNextClass = new NextClass (menuOption);}
 					return pNextClass;
-					break;
 				case 6:
 					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
 					return pMaster;
-					break;
 				case 7:
 					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
 					return pMaster;
-					break;
 				case 8:
 					if ((pCalendar == null)){pCalendar = new BaseCalendar (menuOption);}
 					return  pCalendar;
-					break;
 				case 9:
 					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
 					return pMaster;
-					break;
 				default:
 					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
 					return pMaster;
-					break;
 			}
 
 		}
