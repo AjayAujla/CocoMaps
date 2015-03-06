@@ -32,47 +32,41 @@ namespace CocoMaps.Shared
 			destination = destination + " Montreal QC";
 
 
-			Label label0 = new Label
-			{
+			Label label0 = new Label {
 				FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
 				FontAttributes = FontAttributes.Bold,
 				Text = "Next Class : "
 			};
 
 
-			Label label1 = new Label
-			{
-				Text = testClass ,
+			Label label1 = new Label {
+				Text = testClass,
 
-				Font = Font.SystemFontOfSize(NamedSize.Large) 
+				Font = Font.SystemFontOfSize (NamedSize.Large) 
 			};
 
-			Label label2 = new Label
-			{
+			Label label2 = new Label {
 				FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
 				FontAttributes = FontAttributes.Bold,
 				Text = "Destination : "
 			};
 
-			Label label3 = new Label
-			{
-				Text = destination ,
+			Label label3 = new Label {
+				Text = destination,
 
-				Font = Font.SystemFontOfSize(NamedSize.Large)
+				Font = Font.SystemFontOfSize (NamedSize.Large)
 			};
 
-			Label label4 = new Label
-			{
+			Label label4 = new Label {
 				FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
 				FontAttributes = FontAttributes.Bold,
 				Text = "Current Location : "
 			};
 
-			Label label5 = new Label
-			{
+			Label label5 = new Label {
 				Text = startLocation + "\r\n \r\n",
 
-				Font = Font.SystemFontOfSize(NamedSize.Large)
+				Font = Font.SystemFontOfSize (NamedSize.Large)
 			};
 
 			/*var NextClassButton = new Button {
@@ -96,10 +90,8 @@ namespace CocoMaps.Shared
 
 			//NextClassButton.Clicked += HandleNextClassButton(startLocation , destination);
 
-			this.Content = new StackLayout
-			{
-				Children =
-				{
+			this.Content = new StackLayout {
+				Children = {
 					label0,
 					label1,
 					label2,
@@ -108,38 +100,38 @@ namespace CocoMaps.Shared
 					label5,
 					pushClass
 				}
-				};
+			};
 
 
 
 		}
 
 
-		public string getClassLocation(string dest)
+		public string getClassLocation (string dest)
 		{
-			string destination = dest.Trim().ToUpper();
+			string destination = dest.Trim ().ToUpper ();
 
-			string[] destination_array = destination.Split('-');
+			string[] destination_array = destination.Split ('-');
 
 			string campusLoc = destination_array [0];
 
 			string roomLoc = destination_array [1];
 
 
-			BuildingRepository BR = new BuildingRepository();
+			BuildingRepository BR = BuildingRepository.getInstance;
 
-			Campus campus = BR.GetCampusByCode(campusLoc);
+			Campus campus = BR.GetCampusByCode (campusLoc);
 
-			Building building = campus.GetBuildingByCode(roomLoc);
+			Building building = campus.GetBuildingByCode (roomLoc);
 
 
 			return building.Address;
 
 		}
 
-		void HandleNextClassButton (string start , string end)
+		void HandleNextClassButton (string start, string end)
 		{
-			RequestDirections RD ;
+			RequestDirections RD;
 
 			//Task<Directions> GDirections = RD.getDirections(start , end , TravelMode.walking);
 
