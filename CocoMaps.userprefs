@@ -2,11 +2,12 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.13c7772e" />
   <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Views\Pages\Root.cs">
     <Files>
-      <File FileName="c:\Users\Abhi\Documents\GitHub\CocoMaps\CocoMaps.Android\MainActivity.cs" Line="33" Column="33" />
-      <File FileName="CocoMaps.Android\FormsActivities.cs" Line="1" Column="1" />
+      <File FileName="c:\Users\Abhi\Documents\GitHub\CocoMaps\CocoMaps.Android\MainActivity.cs" Line="1" Column="1" />
       <File FileName="CocoMaps.Shared\App.cs" Line="1" Column="1" />
       <File FileName="CocoMaps.Shared\Views\Pages\Master.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\Views\Pages\Root.cs" Line="5" Column="5" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Root.cs" Line="29" Column="29" />
+      <File FileName="CocoMaps.Android\Resources\values\Colors.xml" Line="1" Column="1" />
+      <File FileName="CocoMaps.Android\Resources\values\Styles.xml" Line="71" Column="71" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
