@@ -18,7 +18,7 @@ namespace CocoMaps.Shared
 			}
 		}
 
-		public BuildingRepository ()
+		private BuildingRepository ()
 		{
 			Campus SGW = new Campus () {
 				Code = "SGW",
@@ -50,6 +50,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2160 Bishop",
 				Position = new Position (45.49661118, -73.57913285),
+				HasAtm = true,
+				HasBikeRack = true,
+				HasInfoKiosk = true,
+				HasParkingLot = true,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.49792300709727, -73.57949629426003),
 					new Position (45.49788775606442, -73.57942052185535),
@@ -57,6 +62,19 @@ namespace CocoMaps.Shared
 					new Position (45.49775004181796, -73.57966259121895),
 					new Position (45.49792300709727, -73.57949629426003)
 				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
+				}
 			};
 			SGW.Buildings.Add (B);
 
@@ -66,6 +84,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "1425 René Lévesque W.",
 				Position = new Position (45.49519498, -73.57429147),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.495461491948106, -73.57426129281521),
 					new Position (45.495081703057934, -73.57463613152504),
@@ -86,6 +109,19 @@ namespace CocoMaps.Shared
 					new Position (45.49538440629147, -73.57407823204994),
 					new Position (45.495376885733954, -73.5740802437067),
 					new Position (45.495461491948106, -73.57426129281521)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (CB);
@@ -96,12 +132,30 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2149 Mackay",
 				Position = new Position (45.49744312, -73.57994959),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.49752255406562, -73.57993818819523),
 					new Position (45.497410689916435, -73.58004614710808),
 					new Position (45.497367918271266, -73.57995696365833),
 					new Position (45.49747884247076, -73.57984632253647),
 					new Position (45.49752255406562, -73.57993818819523)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (CI);
@@ -112,6 +166,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "1665 St. Catherine W.",
 				Position = new Position (45.4942173, -73.57929111),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.4944781718791, -73.57927232980728),
 					new Position (45.4941707633251, -73.57964850962162),
@@ -122,6 +181,19 @@ namespace CocoMaps.Shared
 					new Position (45.49404103077127, -73.57920661568642),
 					new Position (45.49426900263261, -73.57892297208309),
 					new Position (45.4944781718791, -73.57927232980728)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (CL);
@@ -132,12 +204,30 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2140 Bishop",
 				Position = new Position (45.49773641, -73.57939035),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.4978449847816, -73.57933469116688),
 					new Position (45.49781584388899, -73.57927098870277),
 					new Position (45.497649928519515, -73.57943125069141),
 					new Position (45.497680009529304, -73.57949495315552),
 					new Position (45.49784545479588, -73.57933402061462)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (D);
@@ -148,6 +238,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2070 Mackay",
 				Position = new Position (45.49684385, -73.57963711),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.49693737990155, -73.57957743108273),
 					new Position (45.496918109002365, -73.57953786849976),
@@ -158,6 +253,19 @@ namespace CocoMaps.Shared
 					new Position (45.49667181692945, -73.57976652681828),
 					new Position (45.496699078318784, -73.57981882989407),
 					new Position (45.49693737990155, -73.57957743108273)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (EN);
@@ -168,6 +276,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "1515 St. Catherine W.",
 				Position = new Position (45.49561989, -73.5783577),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.49518840143307, -73.57789903879166),
 					new Position (45.49526266714314, -73.57805728912354),
@@ -181,6 +294,19 @@ namespace CocoMaps.Shared
 					new Position (45.495522126323436, -73.57765629887581),
 					new Position (45.495429059581035, -73.5776549577713),
 					new Position (45.49518840143307, -73.57789903879166)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (EV);
@@ -191,12 +317,30 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2060 Mackay",
 				Position = new Position (45.49679496, -73.57951775),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.496864056445034, -73.57952110469341),
 					new Position (45.49682739468098, -73.57944399118423),
 					new Position (45.496742790518965, -73.57953317463398),
 					new Position (45.49678039238446, -73.57960693538189),
 					new Position (45.496864056445034, -73.57952110469341)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (FA);
@@ -208,6 +352,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "1250 Guy",
 				Position = new Position (45.49458957, -73.57759595),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.494912019322506, -73.57778571546078),
 					new Position (45.49487065589675, -73.57771262526512),
@@ -224,6 +373,19 @@ namespace CocoMaps.Shared
 					new Position (45.49439779457518, -73.5775201767683),
 					new Position (45.494696741160546, -73.57803918421268),
 					new Position (45.494912019322506, -73.57778571546078)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (FB);
@@ -234,6 +396,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "1616 St. Catherine W.",
 				Position = new Position (45.49381494, -73.57917309),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.494694390957754, -73.57803918421268),
 					new Position (45.494451849499804, -73.57761606574059),
@@ -258,6 +425,19 @@ namespace CocoMaps.Shared
 					new Position (45.49436818185533, -73.57844218611717),
 					new Position (45.49436348142216, -73.57842944562435),
 					new Position (45.494694390957754, -73.57803918421268)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (FG);
@@ -268,12 +448,30 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "1550 De Maisonneuve W.",
 				Position = new Position (45.49586619, -73.57887805),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.49611248551097, -73.57887402176857),
 					new Position (45.49594797521289, -73.57851728796959),
 					new Position (45.4956208333064, -73.57884049415588),
 					new Position (45.49579380512591, -73.57919186353683),
 					new Position (45.49611248551097, -73.57887402176857)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (GM);
@@ -284,6 +482,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "1455 De Maisonneuve W.",
 				Position = new Position (45.4972443, -73.57890487),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.497705860384244, -73.57903495430946),
 					new Position (45.49716628007782, -73.57953920960426),
@@ -330,12 +533,30 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2150 Bishop",
 				Position = new Position (45.49776837, -73.57947282),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.497884935980856, -73.5794198513031),
 					new Position (45.49763159789631, -73.57966527342796),
 					new Position (45.4975925865501, -73.57958480715752),
 					new Position (45.49784733485295, -73.57933804392815),
 					new Position (45.497884935980856, -73.5794198513031)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (K);
@@ -346,6 +567,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "1400 De Maisonneuve W.",
 				Position = new Position (45.49674232, -73.57807606),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.49725511377648, -73.5780693590641),
 					new Position (45.49701869362308, -73.5782953351736),
@@ -431,12 +657,30 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2135 Mackay",
 				Position = new Position (45.49735382, -73.57977659),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.49743278075342, -73.57976384460926),
 					new Position (45.497325146593596, -73.57987113296986),
 					new Position (45.497288015110826, -73.57979737222195),
 					new Position (45.497397059395695, -73.57968874275684),
 					new Position (45.49743278075342, -73.57976384460926)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (M);
@@ -447,6 +691,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "1450 Guy",
 				Position = new Position (45.49527019, -73.57901216),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.495200152343095, -73.57926495373249),
 					new Position (45.49513857754739, -73.57933603227139),
@@ -464,6 +713,19 @@ namespace CocoMaps.Shared
 					new Position (45.49502670866229, -73.57875600457191),
 					new Position (45.494963723561966, -73.57882641255856),
 					new Position (45.495200152343095, -73.57926495373249)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (MB);
@@ -474,12 +736,30 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2130 Bishop",
 				Position = new Position (45.49769458, -73.57930586),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.49781302380185, -73.5792676359415),
 					new Position (45.497646638408106, -73.5794285684824),
 					new Position (45.49760198687696, -73.57933536171913),
 					new Position (45.497769312432425, -73.57917308807373),
 					new Position (45.49781302380185, -73.5792676359415)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (MI);
@@ -490,12 +770,30 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2170 Bishop",
 				Position = new Position (45.49786379, -73.57961833),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.497963428254415, -73.57957072556019),
 					new Position (45.497789053055065, -73.57973903417587),
 					new Position (45.49775380193838, -73.57966527342796),
 					new Position (45.49792911727405, -73.57949763536453),
 					new Position (45.497963428254415, -73.57957072556019)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (MU);
@@ -506,12 +804,30 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2020 Mackay",
 				Position = new Position (45.49664738, -73.57920662),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.49671787926927, -73.57919186353683),
 					new Position (45.496680747386044, -73.57911810278893),
 					new Position (45.49658204226096, -73.57921734452248),
 					new Position (45.49661823416025, -73.57929177582264),
 					new Position (45.49671787926927, -73.57919186353683)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (P);
@@ -522,12 +838,30 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2100 Mackay",
 				Position = new Position (45.49690025, -73.57993349),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.497031384193306, -73.5798691213131),
 					new Position (45.496987672217166, -73.57978396117687),
 					new Position (45.49679778323874, -73.57997439801693),
 					new Position (45.4968386752263, -73.58006224036217),
 					new Position (45.497031384193306, -73.5798691213131)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (PR);
@@ -538,12 +872,30 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2010 Mackay",
 				Position = new Position (45.49661118, -73.57913285),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.496680277362046, -73.57911005616188),
 					new Position (45.496651135866685, -73.57905372977257),
 					new Position (45.49654961053924, -73.5791576653719),
 					new Position (45.496576871987735, -73.57921533286572),
 					new Position (45.496680277362046, -73.57911005616188)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (Q);
@@ -554,12 +906,30 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2050 Mackay",
 				Position = new Position (45.49675877, -73.57944332),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.496825514589865, -73.57944063842297),
 					new Position (45.49678462259274, -73.57935816049576),
 					new Position (45.496699078318784, -73.5794473439455),
 					new Position (45.49673668021346, -73.57952781021595),
 					new Position (45.496825514589865, -73.57944063842297)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (R);
@@ -570,12 +940,30 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2040 Mackay",
 				Position = new Position (45.49670284, -73.57937157),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.49678227247707, -73.5793574899435),
 					new Position (45.49674044040154, -73.57927367091179),
 					new Position (45.49661212384121, -73.57940509915352),
 					new Position (45.496651135866685, -73.57948824763298),
 					new Position (45.49678227247707, -73.5793574899435)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (RR);
@@ -586,6 +974,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2145 Mackay",
 				Position = new Position (45.49740176, -73.57986242),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.49748636274756, -73.57983492314816),
 					new Position (45.497366038198194, -73.57995428144932),
@@ -594,6 +987,19 @@ namespace CocoMaps.Shared
 					new Position (45.497434660824254, -73.57979267835617),
 					new Position (45.49745722166936, -73.57977122068405),
 					new Position (45.49748636274756, -73.57983492314816)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (S);
@@ -604,12 +1010,30 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2030 Mackay",
 				Position = new Position (45.4966784, -73.57928306),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.49673056990727, -73.57928305864334),
 					new Position (45.49669672819955, -73.57921868562698),
 					new Position (45.496621054307276, -73.57929311692715),
 					new Position (45.49665348598783, -73.57935816049576),
 					new Position (45.49673056990727, -73.57928305864334)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (T);
@@ -620,6 +1044,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2110 Mackay",
 				Position = new Position (45.49701681, -73.57928306),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.49708825671362, -73.57994019985199),
 					new Position (45.49698485208852, -73.58004547655582),
@@ -628,6 +1057,19 @@ namespace CocoMaps.Shared
 					new Position (45.4970337342986, -73.57987381517887),
 					new Position (45.49705018503282, -73.5798617452383),
 					new Position (45.497088726734205, -73.57994019985199)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (V);
@@ -638,12 +1080,30 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2080 Mackay",
 				Position = new Position (45.49687957, -73.57969075),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.496943020163485, -73.57969343662262),
 					new Position (45.496904948384476, -73.57961632311344),
 					new Position (45.49682175440746, -73.5796994715929),
 					new Position (45.49685794615269, -73.57977390289307),
 					new Position (45.496943020163485, -73.57969343662262)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (X);
@@ -654,12 +1114,30 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2090 Mackay",
 				Position = new Position (45.49691717, -73.57978061),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.49699049234569, -73.57977591454983),
 					new Position (45.49694725035956, -73.57969142496586),
 					new Position (45.49685841617521, -73.57977993786335),
 					new Position (45.496899778140914, -73.57986576855183),
 					new Position (45.49699049234569, -73.57977591454983)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			SGW.Buildings.Add (Z);
@@ -679,6 +1157,12 @@ namespace CocoMaps.Shared
 				Name = "Administration",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.4580762, -73.63981247),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45828033335741, -73.63981448113918),
 					new Position (45.45821495544604, -73.63986544311047),
@@ -706,6 +1190,19 @@ namespace CocoMaps.Shared
 					new Position (45.45816792093052, -73.63952614367008),
 					new Position (45.45828033335741, -73.63981179893017),
 					new Position (45.45828033335741, -73.63981448113918)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (AD);
@@ -715,6 +1212,12 @@ namespace CocoMaps.Shared
 				Name = "BB",
 				Campus = LOY,
 				Address = "3502 Belmore",
+				Position = new Position (45.45984844, -73.63939941),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45985549479686, -73.63937325775623),
 					new Position (45.45984608817059, -73.6393390595913),
@@ -722,6 +1225,19 @@ namespace CocoMaps.Shared
 					new Position (45.459838562868455, -73.63937795162201),
 					new Position (45.459838562868455, -73.63937795162201),
 					new Position (45.45985549479686, -73.63937325775623)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (BB);
@@ -731,6 +1247,12 @@ namespace CocoMaps.Shared
 				Name = "BH",
 				Campus = LOY,
 				Address = "3500 Belmore",
+				Position = new Position (45.45971675, -73.63914192),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.459817397950786, -73.63918080925941),
 					new Position (45.45975672514275, -73.63903127610683),
@@ -738,6 +1260,19 @@ namespace CocoMaps.Shared
 					new Position (45.459720509559546, -73.63926060497761),
 					new Position (45.45981833861395, -73.63918013870716),
 					new Position (45.459817397950786, -73.63918080925941)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (BH);
@@ -747,6 +1282,12 @@ namespace CocoMaps.Shared
 				Name = "Central",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45824177, -73.63936186),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45844871640609, -73.64071905612946),
 					new Position (45.45829444368806, -73.64083774387836),
@@ -757,6 +1298,19 @@ namespace CocoMaps.Shared
 					new Position (45.45823659130999, -73.64018328487873),
 					new Position (45.45824223544704, -73.64017590880394),
 					new Position (45.45844871640609, -73.64071905612946)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (CC);
@@ -766,6 +1320,12 @@ namespace CocoMaps.Shared
 				Name = "Communication and Journalism",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45745911, -73.64041328),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.457333051751476, -73.64075526595116),
 					new Position (45.457305771310594, -73.6406908929348),
@@ -803,6 +1363,19 @@ namespace CocoMaps.Shared
 					new Position (45.457335873865276, -73.64075258374214),
 					new Position (45.45733399245609, -73.64075124263763),
 					new Position (45.457333051751476, -73.64075526595116)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (CJ);
@@ -812,12 +1385,31 @@ namespace CocoMaps.Shared
 				Name = "Stinger Dome",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45792569, -73.63487184),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.4579407436682, -73.6347833275795),
 					new Position (45.45791252282638, -73.63459825515747),
 					new Position (45.457850436924595, -73.63460898399353),
 					new Position (45.4578579624921, -73.63478064537048),
 					new Position (45.4579407436682, -73.6347833275795)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (DO);
@@ -827,6 +1419,12 @@ namespace CocoMaps.Shared
 				Name = "F.C. Smith",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45847506, -73.63938332),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45865660763283, -73.63962672650814),
 					new Position (45.45865990002167, -73.6395824700594),
@@ -859,6 +1457,19 @@ namespace CocoMaps.Shared
 					new Position (45.4585409035605, -73.63968171179295),
 					new Position (45.458574297849665, -73.63969512283802),
 					new Position (45.45865660763283, -73.63962672650814)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (FC);
@@ -868,12 +1479,31 @@ namespace CocoMaps.Shared
 				Name = "Centre for Structural and Functional Genomics",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45690973, -73.64037037),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.456970879305665, -73.6404401063919),
 					new Position (45.45696053148731, -73.64037171006203),
 					new Position (45.45693607300003, -73.64037975668907),
 					new Position (45.45694359868957, -73.64043742418289),
 					new Position (45.456970879305665, -73.6404401063919)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (GE);
@@ -883,6 +1513,12 @@ namespace CocoMaps.Shared
 				Name = "Hingston Wing A",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45944395, -73.64125818),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45967018397027, -73.6413835734129),
 					new Position (45.459646667324336, -73.64132322371006),
@@ -902,6 +1538,19 @@ namespace CocoMaps.Shared
 					new Position (45.45942749171276, -73.6415746808052),
 					new Position (45.4596715949687, -73.64138290286064),
 					new Position (45.45967018397027, -73.6413835734129)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (HA);
@@ -912,6 +1561,12 @@ namespace CocoMaps.Shared
 				Name = "Hingston Wing B",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45915987, -73.64200652),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.459342831377185, -73.64217348396778),
 					new Position (45.45932166627344, -73.64211715757847),
@@ -943,6 +1598,19 @@ namespace CocoMaps.Shared
 					new Position (45.459341420370514, -73.64217147231102),
 					new Position (45.45934330171276, -73.64217549562454),
 					new Position (45.459342831377185, -73.64217348396778)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (HB);
@@ -952,6 +1620,12 @@ namespace CocoMaps.Shared
 				Name = "Hingston Wing C",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45965278, -73.64208162),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45988606632139, -73.64201992750168),
 					new Position (45.45981786828236, -73.64184357225895),
@@ -962,6 +1636,19 @@ namespace CocoMaps.Shared
 					new Position (45.45978729672083, -73.64214397966862),
 					new Position (45.45977647908741, -73.64211179316044),
 					new Position (45.45988606632139, -73.64201992750168)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (HC);
@@ -971,6 +1658,12 @@ namespace CocoMaps.Shared
 				Name = "Jesuit Residence",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45846, -73.64318132),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.458539022191516, -73.64337980747223),
 					new Position (45.45850844993658, -73.64330671727657),
@@ -991,6 +1684,19 @@ namespace CocoMaps.Shared
 					new Position (45.4584628266946, -73.6434193700552),
 					new Position (45.458470352180356, -73.64343479275703),
 					new Position (45.458539022191516, -73.64337980747223)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (JR);
@@ -1000,6 +1706,12 @@ namespace CocoMaps.Shared
 				Name = "PERFORM Center",
 				Campus = LOY,
 				Address = "7200 Sherbrooke St. W.",
+				Position = new Position (45.45706025, -73.63715708),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.457082823764566, -73.63702297210693),
 					new Position (45.45703014404687, -73.63684058189392),
@@ -1008,6 +1720,19 @@ namespace CocoMaps.Shared
 					new Position (45.45698122712211, -73.637033700943),
 					new Position (45.45698122712211, -73.637033700943),
 					new Position (45.457082823764566, -73.63702297210693)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (PC);
@@ -1017,6 +1742,12 @@ namespace CocoMaps.Shared
 				Name = "Physical Services",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45962644, -73.63981247),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45994250601546, -73.6400619149208),
 					new Position (45.45966030698017, -73.63932967185974),
@@ -1033,6 +1764,19 @@ namespace CocoMaps.Shared
 					new Position (45.4598503211526, -73.64021614193916),
 					new Position (45.45982868590784, -73.64015713334084),
 					new Position (45.45994250601546, -73.6400619149208)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (PS);
@@ -1042,6 +1786,12 @@ namespace CocoMaps.Shared
 				Name = "Oscar Peterson Concert Hall",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45933295, -73.63897026),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45948957587806, -73.6391332000494),
 					new Position (45.459457593134786, -73.63905608654022),
@@ -1060,6 +1810,19 @@ namespace CocoMaps.Shared
 					new Position (45.459351767751954, -73.63920293748379),
 					new Position (45.45936352613763, -73.63923110067844),
 					new Position (45.45948957587806, -73.6391332000494)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (PT);
@@ -1069,6 +1832,12 @@ namespace CocoMaps.Shared
 				Name = "Psychology",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45886638, -73.64049911),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45916880695485, -73.64045888185501),
 					new Position (45.45914576043701, -73.64039584994316),
@@ -1110,6 +1879,12 @@ namespace CocoMaps.Shared
 				Name = "Recreational and Athletic Complex",
 				Campus = LOY,
 				Address = "7200 Sherbrooke W.",
+				Position = new Position (45.45670278, -73.63763452),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45672064971158, -73.6371074616909),
 					new Position (45.45638575423165, -73.63737165927887),
@@ -1134,6 +1909,19 @@ namespace CocoMaps.Shared
 					new Position (45.45695394651102, -73.63793089985847),
 					new Position (45.457023088723815, -73.63787725567818),
 					new Position (45.45672064971158, -73.6371074616909)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (RA);
@@ -1143,6 +1931,12 @@ namespace CocoMaps.Shared
 				Name = "Loyola Jesuit Hall and Conference Centre",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45846753, -73.64106774),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.458657548315394, -73.64098593592644),
 					new Position (45.45861098451073, -73.64086791872978),
@@ -1174,6 +1968,19 @@ namespace CocoMaps.Shared
 					new Position (45.45865613729157, -73.64098459482193),
 					new Position (45.45865613729157, -73.64098459482193),
 					new Position (45.458657548315394, -73.64098593592644)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (RF);
@@ -1183,6 +1990,12 @@ namespace CocoMaps.Shared
 				Name = "Student Center",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45910719, -73.63915265),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.459295797802504, -73.63932028412819),
 					new Position (45.45925675990571, -73.63921903073788),
@@ -1197,6 +2010,19 @@ namespace CocoMaps.Shared
 					new Position (45.45921866265506, -73.63931961357594),
 					new Position (45.459237005778974, -73.63936588168144),
 					new Position (45.459295797802504, -73.63932028412819)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (SC);
@@ -1206,12 +2032,31 @@ namespace CocoMaps.Shared
 				Name = "Solar House",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45955871, -73.6425671),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45961515500344, -73.64266633987427),
 					new Position (45.4595737656597, -73.64253222942352),
 					new Position (45.459509800250494, -73.64258050918579),
 					new Position (45.4595436642997, -73.64267706871033),
 					new Position (45.45961515500344, -73.64266633987427)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (SH);
@@ -1221,6 +2066,12 @@ namespace CocoMaps.Shared
 				Name = "Saint-Ignatius of Loyola Church",
 				Campus = LOY,
 				Address = "4455 BroadWay",
+				Position = new Position (45.45779776, -73.64239812),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45815239953178, -73.6425456404686),
 					new Position (45.4581025428888, -73.64241823554039),
@@ -1255,6 +2106,19 @@ namespace CocoMaps.Shared
 					new Position (45.45790593796126, -73.6425818502903),
 					new Position (45.45794826922365, -73.6427092552185),
 					new Position (45.45815239953178, -73.6425456404686)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (SI);
@@ -1264,6 +2128,12 @@ namespace CocoMaps.Shared
 				Name = "Richard J. Renaud Science Complex",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45776013, -73.64160419),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.4582060188911, -73.64157870411873),
 					new Position (45.458193789918894, -73.64154785871506),
@@ -1306,6 +2176,19 @@ namespace CocoMaps.Shared
 					new Position (45.45799624461596, -73.64170342683792),
 					new Position (45.458011295711025, -73.6417356133461),
 					new Position (45.4582060188911, -73.64157870411873)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (SP);
@@ -1315,12 +2198,31 @@ namespace CocoMaps.Shared
 				Name = "Terrebonne",
 				Campus = LOY,
 				Address = "7079 Terrebonne",
+				Position = new Position (45.45999895, -73.64088535),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.46007984236839, -73.64090614020824),
 					new Position (45.46004174567388, -73.64080622792244),
 					new Position (45.45993498072619, -73.64089272916317),
 					new Position (45.459971666501936, -73.64099264144897),
 					new Position (45.46007984236839, -73.64090614020824)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (TA);
@@ -1330,6 +2232,12 @@ namespace CocoMaps.Shared
 				Name = "Vanier Extension",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45880618, -73.63862693),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45907473947591, -73.63879054784775),
 					new Position (45.458865438772186, -73.63825008273125),
@@ -1352,6 +2260,19 @@ namespace CocoMaps.Shared
 					new Position (45.459025824324826, -73.63887503743172),
 					new Position (45.45901500654529, -73.63884083926678),
 					new Position (45.45907473947591, -73.63879054784775)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (VE);
@@ -1361,6 +2282,12 @@ namespace CocoMaps.Shared
 				Name = "Vanier Library",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
+				Position = new Position (45.45904699, -73.6383909),
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45931272989392, -73.63867320120335),
 					new Position (45.45916363324759, -73.63878920674324),
@@ -1387,6 +2314,19 @@ namespace CocoMaps.Shared
 					new Position (45.459275103017205, -73.63859139382839),
 					new Position (45.45927933604209, -73.63858871161938),
 					new Position (45.45931272989392, -73.63867320120335)
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "name",
+						URI = "uri"
+					}
 				}
 			};
 			LOY.Buildings.Add (VL);

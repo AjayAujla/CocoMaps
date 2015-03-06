@@ -1,80 +1,156 @@
 ﻿using System;
 using Xamarin.Forms;
+using CocoMaps.Shared;
+using System.Runtime.InteropServices;
+using Android.Content.Res;
+using Android.Gms.Identity.Intents;
+
+
+using System.ComponentModel.Design.Serialization;
+
+
+using Android.Gms.Drive;
 
 namespace CocoMaps.Shared
 {
 	public class DetailsViewModel : RelativeLayout
 	{
 
-		private enum ContentState
+		enum ContentState
 		{
 			ShowingBuildingDetails,
 			ShowingDirectionDetails
 		}
 
 
-		private static DetailsViewModel directionsViewModel;
-		private static ContentState contentState;
+		static DetailsViewModel instance;
+		static ContentState contentState;
 
+		double _pageHeight;
+		const double minimizedFooterHeight = 100;
+		const double expandedFooterHeight = 400;
 
-		private static Label title = new Label {
+		double _minimizedFooterY;
+		double _expandedFooterY;
+
+		Label title = new Label {
 			Text = "Title",
 			TextColor = Helpers.Color.Navy.ToFormsColor (),
-			FontSize = 20
+			FontSize = 20,
+			WidthRequest = App.ScreenSize.Width - 110,
+			HorizontalOptions = LayoutOptions.Start
 		};
-		private static Label details = new Label {
+		Label details = new Label {
 			Text = "Details",
 			TextColor = Helpers.Color.Gray.ToFormsColor (),
 			FontSize = 10
 		};
-		private static Button closeLayoutButton = new Button {
+
+		Image image = new Image {
+			Source = ImageSource.FromFile ("sgw.jpg"),
+			WidthRequest = 100,
+			HeightRequest = 100
+		};
+		Image atm = new Image {
+			Source = ImageSource.FromFile ("hasatm.jpg"),
+			WidthRequest = 16,
+			HeightRequest = 16
+		};
+		Image bikerack = new Image {
+			Source = ImageSource.FromFile ("hasbikerack.jpg"),
+			WidthRequest = 16,
+			HeightRequest = 16
+		};
+		Image infokiosk = new Image {
+			Source = ImageSource.FromFile ("hasinfokiosk.jpg"),
+			WidthRequest = 16,
+			HeightRequest = 16
+		};
+		Image parkinglot = new Image {
+			Source = ImageSource.FromFile ("hasparkinglot.jpg"),
+			WidthRequest = 16,
+			HeightRequest = 16
+		};
+		Image accessibility = new Image {
+			Source = ImageSource.FromFile ("hasaccessibility.jpg"),
+			WidthRequest = 16,
+			HeightRequest = 16
+		};
+
+		Button closeLayoutButton = new Button {
 			Text = "X",
 			TextColor = Color.Gray,
 			BackgroundColor = Color.Transparent
 		};
-		private static Button showDetailsButton = new Button {
+		Button showDetailsButton = new Button {
 			Text = "Show More",
 			FontSize = 8,
 			TextColor = Helpers.Color.Navy.ToFormsColor (),
 			BackgroundColor = Color.Transparent
 		};
-		private static TableView directionSteps = new TableView {
+		TableView list = new TableView {
 			Intent = TableIntent.Form,
 			HasUnevenRows = true,
 			Root = new TableRoot {
-			
+
 			}
 		};
 
 		public static DetailsViewModel getInstance {
 			get {
-				if (directionsViewModel == null) {
-					directionsViewModel = new DetailsViewModel {
-						Padding = 14,
-						BackgroundColor = Helpers.Color.LightGray.ToFormsColor (),
-						WidthRequest = App.ScreenSize.Width,
-						HeightRequest = App.ScreenSize.Height - 48
+				if (instance == null) {
+					instance = new DetailsViewModel {
+						BackgroundColor = Helpers.Color.LightGray.ToFormsColor ()
 					};
-					directionsViewModel.Init ();
-				
+					instance.Init ();
+
 				}
-				return directionsViewModel;
+				return instance;
 			}
 		}
 
-		private DetailsViewModel ()
+		DetailsViewModel ()
 		{
 		}
 
 		public void Init ()
 		{
-			directionsViewModel.Children.Add (DetailsViewModel.title, Constraint.Constant (14));
-			directionsViewModel.Children.Add (DetailsViewModel.details, Constraint.Constant (14), Constraint.Constant (25));
-			directionsViewModel.Children.Add (DetailsViewModel.closeLayoutButton, Constraint.Constant (App.ScreenSize.Width - 50), Constraint.Constant (-10));
-			directionsViewModel.Children.Add (DetailsViewModel.showDetailsButton, Constraint.Constant (App.ScreenSize.Width - 100), Constraint.Constant (-10));
-			directionsViewModel.Children.Add (DetailsViewModel.directionSteps, Constraint.Constant (14), Constraint.Constant (50));
-			closeLayoutButton.Clicked += DetailsViewModel.Hide;
-			showDetailsButton.Clicked += DetailsViewModel.ShowDetails;
+			_pageHeight = App.ScreenSize.Height;
+			_minimizedFooterY = _pageHeight - minimizedFooterHeight;
+			_expandedFooterY = _pageHeight - expandedFooterHeight;
+
+			instance.Children.Add (title, 
+				Constraint.Constant (14),
+				Constraint.Constant (0),
+				Constraint.RelativeToParent (parent => Width - 114),
+				null
+			);
+
+			instance.Children.Add (details, 
+				Constraint.Constant (14),
+				Constraint.RelativeToView (title, (parent, sibling) => sibling.Y + sibling.Height - 5));
+
+			instance.Children.Add (image, 
+				Constraint.RelativeToParent (Parent => Width - image.Width),
+				Constraint.Constant (0)
+			);
+
+			StackLayout featuresImages = new StackLayout {
+				Orientation = StackOrientation.Horizontal,
+				BackgroundColor = Helpers.Color.LightGray.ToFormsColor (),
+				Spacing = 5,
+				Children = { atm, accessibility, bikerack, parkinglot, infokiosk }
+			};
+
+			instance.Children.Add (featuresImages, 
+				Constraint.Constant (14),
+				Constraint.RelativeToView (details, (parent, sibling) => sibling.Y + sibling.Height + 5));
+
+			//instance.Children.Add (closeLayoutButton, Constraint.RelativeToParent (parent => Width - 54), Constraint.Constant (-10));
+			//instance.Children.Add (showDetailsButton, Constraint.Constant (App.ScreenSize.Width - 100), Constraint.Constant (-10));
+			instance.Children.Add (list, Constraint.Constant (14), Constraint.Constant (100));
+			closeLayoutButton.Clicked += (sender, e) => Minimize ();
+			showDetailsButton.Clicked += (sender, e) => Expand ();
 		}
 
 		public void UpdateView (Directions direction)
@@ -82,15 +158,15 @@ namespace CocoMaps.Shared
 
 			contentState = ContentState.ShowingDirectionDetails;
 
-			DetailsViewModel.title.Text = direction.routes [0].summary;
-			DetailsViewModel.title.TextColor = Helpers.Color.Navy.ToFormsColor ();
+			title.Text = direction.routes [0].summary;
+			title.TextColor = Helpers.Color.Navy.ToFormsColor ();
 
-			DetailsViewModel.details.Text = direction.routes [0].legs [0].distance.text + " (" + direction.routes [0].legs [0].duration.text + ")";
+			details.Text = direction.routes [0].legs [0].distance.text + " (" + direction.routes [0].legs [0].duration.text + ")";
 
-			directionSteps.Root.Clear ();
+			list.Root.Clear ();
 			foreach (Leg leg in direction.routes[0].legs) {
 				foreach (Step step in leg.steps) {
-					directionSteps.Root.Add (new TableSection {
+					list.Root.Add (new TableSection {
 						new TextCell {
 							Text = step.html_instructions_nohtml,
 							Detail = step.distance.text + " (" + step.duration.text + ")"
@@ -98,43 +174,50 @@ namespace CocoMaps.Shared
 					});
 				}
 			}
-			ShowSummary ();
+			Minimize ();
 		}
 
 		public void UpdateView (Building building)
 		{
 			contentState = ContentState.ShowingBuildingDetails;
 
-			DetailsViewModel.title.Text = building.Code + " - " + building.Name;
-			DetailsViewModel.title.TextColor = Helpers.Color.Maroon.ToFormsColor ();
+			title.Text = building.Code + " Building";
+			title.TextColor = Helpers.Color.Maroon.ToFormsColor ();
 
-			DetailsViewModel.details.Text = building.Address;
+			details.Text = building.Address;
 
-			directionSteps.Root.Clear ();
+			atm.IsVisible = building.HasAtm;
+			atm.IsVisible = building.HasAccessibility;
+			atm.IsVisible = building.HasBikeRack;
+			atm.IsVisible = building.HasParkingLot;
+			atm.IsVisible = building.HasInfoKiosk;
+
+			image.Source = ImageSource.FromFile ("building_" + building.Code.ToLower () + ".jpg");
+
+			list.Root.Clear ();
 			if (building.Services != null) {
 				foreach (Service service in building.Services) {
 
-					directionSteps.Root.Add (new TableSection {
+					list.Root.Add (new TableSection {
 						new TextCell {
 							Text = service.Name,
 							Detail = service.RoomNumber
 						}
 					});
-				
+
 				}
 			} else {
-				directionSteps.Root.Add (new TableSection {
+				list.Root.Add (new TableSection {
 					new TextCell {
 						Text = building.Code + " Building has no services"
 					}
 				});
 			}
-			ShowSummary ();
+			Minimize ();
 		}
 
 		public void UpdateView (string buildingCode)
 		{
-			contentState = ContentState.ShowingBuildingDetails;
 			Building building;
 			foreach (Campus campus in BuildingRepository.getInstance.getCampusList()) {
 				building = campus.GetBuildingByCode (buildingCode);
@@ -146,40 +229,34 @@ namespace CocoMaps.Shared
 
 		}
 
-		public void ShowSummary ()
+		public void Minimize ()
 		{
-			int currentPos = (int)directionsViewModel.Y;
-			int desiredPos = (int)(App.ScreenSize.Height - 100 - 48);
+			double currentPos = instance.Y;
+			double desiredPos = App.ScreenSize.Height - 172;
 			showDetailsButton.Opacity = 1;
-			directionsViewModel.TranslateTo (0, desiredPos - currentPos);
+			instance.TranslateTo (0, desiredPos - currentPos);
 		}
 
-		static void ShowDetails (object sender, EventArgs e)
+		static void Expand ()
 		{
-			int currentPos = (int)directionsViewModel.Y;
-			int desiredPos = (int)(App.ScreenSize.Height - 100 - directionSteps.Height);
-			Console.WriteLine ("HEIGHT: " + directionSteps.Height);
-			directionsViewModel.TranslateTo (0, desiredPos - currentPos);
-			if (DetailsViewModel.contentState == ContentState.ShowingBuildingDetails)
-				showDetailsButton.Opacity = 0;
-			else {
-				showDetailsButton.Text = "Show Less";
-				showDetailsButton.Clicked += HideDetails;
-			}
+			double currentPos = instance.Y;
+			double desiredPos = App.ScreenSize.Height - 400;
+			Console.WriteLine ("HEIGHT: " + instance.list.Height);
+			instance.TranslateTo (0, desiredPos - currentPos);
 		}
 
-		static void Hide (object sender, EventArgs e)
+		static void Hide ()
 		{
-			int currentPos = (int)directionsViewModel.Y;
-			int desiredPos = (int)(App.ScreenSize.Height);
-			directionsViewModel.TranslateTo (0, desiredPos - currentPos);
+			double currentPos = instance.Y;
+			double desiredPos = App.ScreenSize.Height;
+			instance.TranslateTo (0, desiredPos - currentPos);
 		}
 
 		static void HideDetails (object sender, EventArgs e)
 		{
-			directionsViewModel.ShowSummary ();
-			showDetailsButton.Text = "Show More";
-			showDetailsButton.Clicked += ShowDetails;
+			double currentPos = instance.Y;
+			double desiredPos = App.ScreenSize.Height;
+			instance.TranslateTo (0, desiredPos - currentPos);
 		}
 
 	}
