@@ -98,21 +98,23 @@ namespace CocoMapsAndroid
 
 				androidMapView.Map.UiSettings.MyLocationButtonEnabled = true;
 				androidMapView.Map.UiSettings.CompassEnabled = false;
-				androidMapView.Map.UiSettings.MapToolbarEnabled = false;
+				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
 				androidMapView.Map.UiSettings.ZoomControlsEnabled = true;
 
-				androidMapView.Map.MapClick += (senderr, ee) => {
+				androidMapView.Map.MapClick += (senderr, ee) => detailsLayout.Hide ();
 
-					Building building = GoogleUtil.PointInBuilding (ee.Point.Latitude, ee.Point.Longitude);
-					if (building != null) {
 
-						detailsLayout.UpdateView (building);
 
-						Console.WriteLine ("COORDINATES ARE IN " + building);
-
-					}
-					
-				};
+//					Building building = GoogleUtil.PointInBuilding (ee.Point.Latitude, ee.Point.Longitude);
+//					if (building != null) {
+//
+//						detailsLayout.UpdateView (building);
+//
+//						Console.WriteLine ("COORDINATES ARE IN " + building);
+//
+//					}
+//					
+//				};
 
 				androidMapView.Map.MapLongClick += async (senderr, ee) => {
 
@@ -173,7 +175,7 @@ namespace CocoMapsAndroid
 
 				foreach (Campus c in buildingRepo.getCampusList()) {
 
-					foreach (Building b in buildingRepo.GetCampusByCode("SGW").Buildings) {
+					foreach (Building b in c.Buildings) {
 
 						using (PolygonOptions polygon = new PolygonOptions ()) {
 							using (MarkerOptions buildingCodeMarker = new MarkerOptions ()) {

@@ -1,16 +1,15 @@
 ﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus6V" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared/Views/Pages/Master.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.dca08503" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared/Views/ViewsModel/DetailsViewModel.cs">
     <Files>
-      <File FileName="CocoMaps.Shared/Views/Pages/Master.cs" Line="6" Column="6" />
+      <File FileName="CocoMaps.Shared/Views/Pages/Master.cs" Line="35" Column="35" />
       <File FileName="CocoMaps.Shared/Models/Campus.cs" Line="1" Column="1" />
       <File FileName="CocoMaps.Shared/Views/Pages/POI/POI.cs" Line="1" Column="1" />
       <File FileName="CocoMaps.Shared/Views/ViewsModel/LoaderViewModel.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Views/ViewsModel/DetailsViewModel.cs" Line="74" Column="74" />
-      <File FileName="CocoMaps.Shared/App.cs" Line="2" Column="2" />
-      <File FileName="CocoMaps.Android/MainActivity.cs" Line="20" Column="20" />
-      <File FileName="CocoMaps.Shared/Views/ViewsModel/MenuItems.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Views/Pages/Root.cs" Line="2" Column="2" />
+      <File FileName="CocoMaps.Shared/Views/ViewsModel/DetailsViewModel.cs" Line="36" Column="36" />
+      <File FileName="CocoMaps.Shared/App.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/Models/Building.cs" Line="8" Column="8" />
+      <File FileName="CocoMaps.Shared/Views/Pages/NextClass/NextClass.cs" Line="4" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -20,5 +19,4 @@
   <DisabledProjects>
     <String>CocoMaps.Services/CocoMaps.Services.csproj</String>
   </DisabledProjects>
-  <MonoDevelop.Ide.ItemProperties.CocoMaps.Android AndroidDesignerPreferredDevice="Nexus 4" />
 </Properties>
