@@ -4,6 +4,7 @@ using Xamarin.Forms.Maps;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CocoMaps.Shared
 {
@@ -40,7 +41,6 @@ namespace CocoMaps.Shared
 				HeightRequest = App.ScreenSize.Height - App.StatusBarHeight - 48,  // 48 is maroon top bar's height
 				WidthRequest = App.ScreenSize.Width
 			};
-
 
 			var SGWButton = new Button {
 				Text = "SGW",
@@ -222,11 +222,6 @@ namespace CocoMaps.Shared
 				map.MoveToRegion (MapSpan.FromCenterAndRadius (Campus.LOYPosition,	Xamarin.Forms.Maps.Distance.FromKilometers (0.1)));
 				break;
 			}
-		}
-
-		public static Building UpdateBuildingDetailsLayout (Building building)
-		{
-			return building;
 		}
 
 	}

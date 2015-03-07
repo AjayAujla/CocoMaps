@@ -229,12 +229,12 @@
     <Compile Include="Renderers\DarkTextCellRenderer.cs" />
     <Compile Include="GeoService.cs" />
     <Compile Include="Files\TextToSpeech_iOS.cs" />
-    <Compile Include="Renderers\ConcordiaMap_iOS.cs" />
     <Compile Include="Renderers\SampleMapAnnotation.cs" />
     <Compile Include="Files\SQLite_iOS.cs" />
     <Compile Include="Files\Network_iOS.cs" />
     <Compile Include="Files\Reachability.cs" />
     <Compile Include="Renderers\MapDelegate.cs" />
+    <Compile Include="Renderers\ConcordiaMapRenderer.cs" />
   </ItemGroup>
   <Import Project="..\CocoMaps.Shared\CocoMaps.Shared.projitems" Label="Shared" Condition="Exists('..\CocoMaps.Shared\CocoMaps.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

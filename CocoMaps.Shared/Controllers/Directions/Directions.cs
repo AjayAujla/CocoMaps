@@ -6,15 +6,6 @@ using System;
 namespace CocoMaps.Shared
 {
 
-	public enum TravelMode
-	{
-		walking,
-		driving,
-		transit,
-		bicycling,
-		shuttle
-	}
-
 	public class Northeast
 	{
 		public double lat { get; set; }
