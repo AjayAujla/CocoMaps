@@ -224,12 +224,5 @@ namespace CocoMaps.Shared
 			}
 		}
 
-		async public Task<TravelMode> PromptForTravelMode ()
-		{
-			await DisplayActionSheet ("ActionSheet: Send to?", "Cancel", null, "Email", "Twitter", "Facebook");
-			Console.WriteLine ("Action: ");
-			return TravelMode.driving;
-		}
-
 	}
 }
