@@ -119,10 +119,10 @@
     <Compile Include="Renderers\DarkTextCellRenderer.cs" />
     <Compile Include="Renderers\ListTextCellRenderer.cs" />
     <Compile Include="Files\TextToSpeech_Android.cs" />
-    <Compile Include="Renderers\ConcordiaMap_Android.cs" />
     <Compile Include="Renderers\Network.cs" />
     <Compile Include="Renderers\BroadcastMonitor.cs" />
     <Compile Include="Renderers\LoginPageRenderer.cs" />
+    <Compile Include="Renderers\ConcordiaMapRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -225,6 +225,8 @@
     <AndroidResource Include="Resources\drawable\building_x.jpeg" />
     <AndroidResource Include="Resources\drawable\building_z.jpeg" />
     <AndroidResource Include="Resources\drawable\building_h.jpeg" />
+    <AndroidResource Include="Resources\drawable\button_buildings_toggle.png" />
+    <AndroidResource Include="Resources\drawable\button_directions_toggle.png" />
   </ItemGroup>
   <Import Project="..\CocoMaps.Shared\CocoMaps.Shared.projitems" Label="Shared" Condition="Exists('..\CocoMaps.Shared\CocoMaps.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

@@ -10,21 +10,23 @@ using System.ComponentModel.Design.Serialization;
 
 
 using Android.Gms.Drive;
+using Android.Views;
 
 namespace CocoMaps.Shared
 {
 	public class DetailsViewModel : RelativeLayout
 	{
 
-		enum ContentState
+		enum ViewState
 		{
-			ShowingBuildingDetails,
-			ShowingDirectionDetails
+			Expanded,
+			Minimized,
+			Hidden
 		}
 
 
 		static DetailsViewModel instance;
-		static ContentState contentState;
+		static ViewState viewState;
 
 		double _pageHeight;
 		const double minimizedFooterHeight = 100;
@@ -77,11 +79,18 @@ namespace CocoMaps.Shared
 			HeightRequest = 16
 		};
 
-		Button closeLayoutButton = new Button {
-			Text = "X",
-			TextColor = Color.Gray,
-			BackgroundColor = Color.Transparent
+		StackLayout featuresImages = new StackLayout {
+			Orientation = StackOrientation.Horizontal,
+			Spacing = 5
 		};
+
+		Image toggleButton = new Image {
+			BackgroundColor = Color.Transparent,
+			Source = ImageSource.FromFile ("button_details_toggle.png"),
+			WidthRequest = 50,
+			HeightRequest = 50
+		};
+
 		Button showDetailsButton = new Button {
 			Text = "Show More",
 			FontSize = 8,
@@ -118,50 +127,61 @@ namespace CocoMaps.Shared
 			_pageHeight = App.ScreenSize.Height;
 			_minimizedFooterY = _pageHeight - minimizedFooterHeight;
 			_expandedFooterY = _pageHeight - expandedFooterHeight;
+			viewState = ViewState.Hidden;
 
 			instance.Children.Add (title, 
 				Constraint.Constant (14),
 				Constraint.Constant (0),
-				Constraint.RelativeToParent (parent => Width - 114),
+				Constraint.RelativeToParent (parent => Width - image.Width),
 				null
 			);
 
 			instance.Children.Add (details, 
 				Constraint.Constant (14),
-				Constraint.RelativeToView (title, (parent, sibling) => sibling.Y + sibling.Height - 5));
+				Constraint.RelativeToView (title, (parent, sibling) => sibling.Y + sibling.Height - 5),
+				Constraint.RelativeToParent (parent => Width - image.Width),
+				null
+			);
 
 			instance.Children.Add (image, 
 				Constraint.RelativeToParent (Parent => Width - image.Width),
 				Constraint.Constant (0)
 			);
 
-			StackLayout featuresImages = new StackLayout {
-				Orientation = StackOrientation.Horizontal,
-				BackgroundColor = Helpers.Color.LightGray.ToFormsColor (),
-				Spacing = 5,
-				Children = { atm, accessibility, bikerack, parkinglot, infokiosk }
-			};
+			featuresImages.Children.Add (atm);
+			featuresImages.Children.Add (accessibility);
+			featuresImages.Children.Add (bikerack);
+			featuresImages.Children.Add (parkinglot);
+			featuresImages.Children.Add (infokiosk);
 
 			instance.Children.Add (featuresImages, 
 				Constraint.Constant (14),
 				Constraint.RelativeToView (details, (parent, sibling) => sibling.Y + sibling.Height + 5));
 
-			//instance.Children.Add (closeLayoutButton, Constraint.RelativeToParent (parent => Width - 54), Constraint.Constant (-10));
-			//instance.Children.Add (showDetailsButton, Constraint.Constant (App.ScreenSize.Width - 100), Constraint.Constant (-10));
+			instance.Children.Add (toggleButton,
+				Constraint.RelativeToParent (Parent => Width / 2 - toggleButton.Width / 2),
+				Constraint.RelativeToParent (Parent => -toggleButton.Height / 2)
+			);
+			var toggleButtonTap = new TapGestureRecognizer ();
+			toggleButtonTap.Tapped += (sender, e) => Toggle ();
+
+			toggleButton.GestureRecognizers.Add (toggleButtonTap);
+
 			instance.Children.Add (list, Constraint.Constant (14), Constraint.Constant (100));
-			closeLayoutButton.Clicked += (sender, e) => Minimize ();
-			showDetailsButton.Clicked += (sender, e) => Expand ();
+		
 		}
 
 		public void UpdateView (Directions direction)
 		{
-
-			contentState = ContentState.ShowingDirectionDetails;
-
-			title.Text = direction.routes [0].summary;
+		
+			title.Text = direction.routes [0].legs [0].distance.text + " (" + direction.routes [0].legs [0].duration.text + ")";
 			title.TextColor = Helpers.Color.Navy.ToFormsColor ();
 
-			details.Text = direction.routes [0].legs [0].distance.text + " (" + direction.routes [0].legs [0].duration.text + ")";
+			details.Text = "To " + direction.routes [0].legs [0].end_address;
+
+			featuresImages.IsVisible = false;
+
+			toggleButton.Source = ImageSource.FromFile ("button_directions_toggle.png");
 
 			list.Root.Clear ();
 			foreach (Leg leg in direction.routes[0].legs) {
@@ -179,12 +199,13 @@ namespace CocoMaps.Shared
 
 		public void UpdateView (Building building)
 		{
-			contentState = ContentState.ShowingBuildingDetails;
 
 			title.Text = building.Code + " Building";
 			title.TextColor = Helpers.Color.Maroon.ToFormsColor ();
 
 			details.Text = building.Address;
+
+			featuresImages.IsVisible = true;
 
 			atm.IsVisible = building.HasAtm;
 			atm.IsVisible = building.HasAccessibility;
@@ -193,6 +214,8 @@ namespace CocoMaps.Shared
 			atm.IsVisible = building.HasInfoKiosk;
 
 			image.Source = ImageSource.FromFile ("building_" + building.Code.ToLower () + ".jpg");
+
+			toggleButton.Source = ImageSource.FromFile ("button_buildings_toggle.png");
 
 			list.Root.Clear ();
 			if (building.Services != null) {
@@ -232,31 +255,37 @@ namespace CocoMaps.Shared
 		public void Minimize ()
 		{
 			double currentPos = instance.Y;
-			double desiredPos = App.ScreenSize.Height - 172;
-			showDetailsButton.Opacity = 1;
+			double desiredPos = ParentView.Bounds.Height - image.Height;
 			instance.TranslateTo (0, desiredPos - currentPos);
+			toggleButton.RotateTo (0);
+			viewState = ViewState.Minimized;
 		}
 
-		static void Expand ()
+		public void Expand ()
 		{
 			double currentPos = instance.Y;
-			double desiredPos = App.ScreenSize.Height - 400;
-			Console.WriteLine ("HEIGHT: " + instance.list.Height);
+			double desiredPos = ParentView.Bounds.Height / 3;
 			instance.TranslateTo (0, desiredPos - currentPos);
+			toggleButton.RotateTo (180);
+			viewState = ViewState.Expanded;
 		}
 
-		static void Hide ()
+		public void Hide ()
 		{
 			double currentPos = instance.Y;
-			double desiredPos = App.ScreenSize.Height;
+			double desiredPos = ParentView.Bounds.Height + toggleButton.Height / 2;
 			instance.TranslateTo (0, desiredPos - currentPos);
+			toggleButton.RotateTo (0);
+			viewState = ViewState.Hidden;
 		}
 
-		static void HideDetails (object sender, EventArgs e)
+		public void Toggle ()
 		{
-			double currentPos = instance.Y;
-			double desiredPos = App.ScreenSize.Height;
-			instance.TranslateTo (0, desiredPos - currentPos);
+			if (viewState == ViewState.Minimized) {
+				Expand ();
+			} else if (viewState == ViewState.Expanded) {
+				Minimize ();
+			}
 		}
 
 	}

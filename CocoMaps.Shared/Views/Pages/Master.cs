@@ -4,6 +4,7 @@ using Xamarin.Forms.Maps;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CocoMaps.Shared
 {
@@ -40,7 +41,6 @@ namespace CocoMaps.Shared
 				HeightRequest = App.ScreenSize.Height - App.StatusBarHeight - 48,  // 48 is maroon top bar's height
 				WidthRequest = App.ScreenSize.Width
 			};
-
 
 			var SGWButton = new Button {
 				Text = "SGW",
@@ -224,9 +224,11 @@ namespace CocoMaps.Shared
 			}
 		}
 
-		public static Building UpdateBuildingDetailsLayout (Building building)
+		async public Task<TravelMode> PromptForTravelMode ()
 		{
-			return building;
+			await DisplayActionSheet ("ActionSheet: Send to?", "Cancel", null, "Email", "Twitter", "Facebook");
+			Console.WriteLine ("Action: ");
+			return TravelMode.driving;
 		}
 
 	}
