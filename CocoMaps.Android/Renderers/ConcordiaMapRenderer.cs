@@ -141,8 +141,6 @@ namespace CocoMapsAndroid
 
 								RequestDirections directionsRequest = RequestDirections.getInstance;
 
-								this.Element.PromptForTravelMode ();
-
 								Directions directions = await directionsRequest.getDirections (_from, _to, TravelMode.walking);
 
 								if (directions.status.Equals ("OK")) {

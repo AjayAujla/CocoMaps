@@ -19,6 +19,7 @@ namespace CocoMaps.Shared.Pages
 		NextClass pNextClass = null;
 		BaseCalendar pCalendar = null;
 
+		CalendarConnect pConnect = null;
 
 
 		public RootPage ()
@@ -78,8 +79,8 @@ namespace CocoMaps.Shared.Pages
 					if ((pCalendar == null)){pCalendar = new BaseCalendar (menuOption);}
 					return  pCalendar;
 				case 9:
-					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
-					return pMaster;
+					if ((pConnect == null)){pConnect = new CalendarConnect (menuOption);}
+					return pConnect;
 				default:
 					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
 					return pMaster;

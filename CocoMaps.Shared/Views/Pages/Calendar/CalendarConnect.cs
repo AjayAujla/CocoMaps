@@ -1,4 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using Xamarin.Forms;
+using CocoMaps.Shared.Pages;
+using CocoMaps.Shared.ViewModels;
+using CocoMaps.Models;
+using System.Threading.Tasks;
+using System.IO;
 using System.Threading;
 
 using Google.Apis.Calendar.v3;
@@ -11,34 +17,49 @@ using Google.Apis.Util.Store;
 
 namespace CocoMaps.Shared
 {
-	public class CalendarConnect
+	public class CalendarConnect : ContentPage
 	{
 
+		//CalendarService Cal;
 
-		public CalendarConnect ()
+		OAuthSettings tok = App.Instance.OAuthSettings;
+
+		//Google.Apis.Calendar.v3.CalendarService = new CalendarService();
+
+		public CalendarConnect (IMenuOptions menuItem)
 		{
+			var viewModel = new MasterViewModel ();
+			BindingContext = viewModel;
 
-			/*
-			UserCredential credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-				new ClientSecrets
+			this.SetValue (Page.TitleProperty, "Next Class");
+			this.SetValue (Page.IconProperty, menuItem.Icon);
+
+			//var Cal = new Google.Apis.Calendar.v3.CalendarService (tok);
+
+			string tok = App.Instance.Token;
+
+			Label label1 = new Label
+			{
+				FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
+				FontAttributes = FontAttributes.Bold,
+				Text = "Token : "
+			};
+
+			Label label2 = new Label
+			{
+				Text = tok + "\r\n \r\n",
+
+				Font = Font.SystemFontOfSize(NamedSize.Large)
+			};
+
+			this.Content = new StackLayout
+			{
+				Children =
 				{
-					ClientId = "The id of my public website",
-					ClientSecret = "The secret of my public website",
-				},
-				new[] { CalendarService.Scope.Calendar },
-				"user",
-				CancellationToken.None).Result;
-
-			// Create the service.
-			var service = new CalendarService(new BaseClientService.Initializer()
-				{
-					HttpClientInitializer = credential
-				});
-
-			return service.Events.List("primary").Execute().Items;
-			*/
-
-
+					label1,
+					label2,
+				}
+				};
 
 		}
 	}
