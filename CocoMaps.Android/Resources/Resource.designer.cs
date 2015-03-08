@@ -1432,84 +1432,6 @@ namespace CocoMaps.Android
 			public const int building_pt = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-<<<<<<< HEAD
-			public const int mr_ic_audio_vol = 2130837594;
-			
-			// aapt resource value: 0x7f02005b
-			public const int mr_ic_media_route_connecting_holo_dark = 2130837595;
-			
-			// aapt resource value: 0x7f02005c
-			public const int mr_ic_media_route_connecting_holo_light = 2130837596;
-			
-			// aapt resource value: 0x7f02005d
-			public const int mr_ic_media_route_disabled_holo_dark = 2130837597;
-			
-			// aapt resource value: 0x7f02005e
-			public const int mr_ic_media_route_disabled_holo_light = 2130837598;
-			
-			// aapt resource value: 0x7f02005f
-			public const int mr_ic_media_route_holo_dark = 2130837599;
-			
-			// aapt resource value: 0x7f020060
-			public const int mr_ic_media_route_holo_light = 2130837600;
-			
-			// aapt resource value: 0x7f020061
-			public const int mr_ic_media_route_off_holo_dark = 2130837601;
-			
-			// aapt resource value: 0x7f020062
-			public const int mr_ic_media_route_off_holo_light = 2130837602;
-			
-			// aapt resource value: 0x7f020063
-			public const int mr_ic_media_route_on_0_holo_dark = 2130837603;
-			
-			// aapt resource value: 0x7f020064
-			public const int mr_ic_media_route_on_0_holo_light = 2130837604;
-			
-			// aapt resource value: 0x7f020065
-			public const int mr_ic_media_route_on_1_holo_dark = 2130837605;
-			
-			// aapt resource value: 0x7f020066
-			public const int mr_ic_media_route_on_1_holo_light = 2130837606;
-			
-			// aapt resource value: 0x7f020067
-			public const int mr_ic_media_route_on_2_holo_dark = 2130837607;
-			
-			// aapt resource value: 0x7f020068
-			public const int mr_ic_media_route_on_2_holo_light = 2130837608;
-			
-			// aapt resource value: 0x7f020069
-			public const int mr_ic_media_route_on_holo_dark = 2130837609;
-			
-			// aapt resource value: 0x7f02006a
-			public const int mr_ic_media_route_on_holo_light = 2130837610;
-			
-			// aapt resource value: 0x7f02006b
-			public const int poiIcon = 2130837611;
-			
-			// aapt resource value: 0x7f02006c
-			public const int powered_by_google_dark = 2130837612;
-			
-			// aapt resource value: 0x7f02006d
-			public const int powered_by_google_light = 2130837613;
-			
-			// aapt resource value: 0x7f02006e
-			public const int settings = 2130837614;
-			
-			// aapt resource value: 0x7f02006f
-			public const int settingsIcon = 2130837615;
-			
-			// aapt resource value: 0x7f020070
-			public const int splash = 2130837616;
-			
-			// aapt resource value: 0x7f020071
-			public const int splashscreen = 2130837617;
-			
-			// aapt resource value: 0x7f020072
-			public const int zoom_in = 2130837618;
-			
-			// aapt resource value: 0x7f020073
-			public const int zoom_out = 2130837619;
-=======
 			public const int building_py = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
@@ -1720,95 +1642,91 @@ namespace CocoMaps.Android
 			public const int locationIcon = 2130837663;
 			
 			// aapt resource value: 0x7f0200a0
-			public const int monoandroidsplash = 2130837664;
+			public const int mr_ic_audio_vol = 2130837664;
 			
 			// aapt resource value: 0x7f0200a1
-			public const int mr_ic_audio_vol = 2130837665;
+			public const int mr_ic_media_route_connecting_holo_dark = 2130837665;
 			
 			// aapt resource value: 0x7f0200a2
-			public const int mr_ic_media_route_connecting_holo_dark = 2130837666;
+			public const int mr_ic_media_route_connecting_holo_light = 2130837666;
 			
 			// aapt resource value: 0x7f0200a3
-			public const int mr_ic_media_route_connecting_holo_light = 2130837667;
+			public const int mr_ic_media_route_disabled_holo_dark = 2130837667;
 			
 			// aapt resource value: 0x7f0200a4
-			public const int mr_ic_media_route_disabled_holo_dark = 2130837668;
+			public const int mr_ic_media_route_disabled_holo_light = 2130837668;
 			
 			// aapt resource value: 0x7f0200a5
-			public const int mr_ic_media_route_disabled_holo_light = 2130837669;
+			public const int mr_ic_media_route_holo_dark = 2130837669;
 			
 			// aapt resource value: 0x7f0200a6
-			public const int mr_ic_media_route_holo_dark = 2130837670;
+			public const int mr_ic_media_route_holo_light = 2130837670;
 			
 			// aapt resource value: 0x7f0200a7
-			public const int mr_ic_media_route_holo_light = 2130837671;
+			public const int mr_ic_media_route_off_holo_dark = 2130837671;
 			
 			// aapt resource value: 0x7f0200a8
-			public const int mr_ic_media_route_off_holo_dark = 2130837672;
+			public const int mr_ic_media_route_off_holo_light = 2130837672;
 			
 			// aapt resource value: 0x7f0200a9
-			public const int mr_ic_media_route_off_holo_light = 2130837673;
+			public const int mr_ic_media_route_on_0_holo_dark = 2130837673;
 			
 			// aapt resource value: 0x7f0200aa
-			public const int mr_ic_media_route_on_0_holo_dark = 2130837674;
+			public const int mr_ic_media_route_on_0_holo_light = 2130837674;
 			
 			// aapt resource value: 0x7f0200ab
-			public const int mr_ic_media_route_on_0_holo_light = 2130837675;
+			public const int mr_ic_media_route_on_1_holo_dark = 2130837675;
 			
 			// aapt resource value: 0x7f0200ac
-			public const int mr_ic_media_route_on_1_holo_dark = 2130837676;
+			public const int mr_ic_media_route_on_1_holo_light = 2130837676;
 			
 			// aapt resource value: 0x7f0200ad
-			public const int mr_ic_media_route_on_1_holo_light = 2130837677;
+			public const int mr_ic_media_route_on_2_holo_dark = 2130837677;
 			
 			// aapt resource value: 0x7f0200ae
-			public const int mr_ic_media_route_on_2_holo_dark = 2130837678;
+			public const int mr_ic_media_route_on_2_holo_light = 2130837678;
 			
 			// aapt resource value: 0x7f0200af
-			public const int mr_ic_media_route_on_2_holo_light = 2130837679;
+			public const int mr_ic_media_route_on_holo_dark = 2130837679;
 			
 			// aapt resource value: 0x7f0200b0
-			public const int mr_ic_media_route_on_holo_dark = 2130837680;
+			public const int mr_ic_media_route_on_holo_light = 2130837680;
 			
 			// aapt resource value: 0x7f0200b1
-			public const int mr_ic_media_route_on_holo_light = 2130837681;
+			public const int poiIcon = 2130837681;
 			
 			// aapt resource value: 0x7f0200b2
-			public const int poiIcon = 2130837682;
+			public const int powered_by_google_dark = 2130837682;
 			
 			// aapt resource value: 0x7f0200b3
-			public const int powered_by_google_dark = 2130837683;
+			public const int powered_by_google_light = 2130837683;
 			
 			// aapt resource value: 0x7f0200b4
-			public const int powered_by_google_light = 2130837684;
+			public const int settings = 2130837684;
 			
 			// aapt resource value: 0x7f0200b5
-			public const int settings = 2130837685;
+			public const int settingsIcon = 2130837685;
 			
 			// aapt resource value: 0x7f0200b6
-			public const int settingsIcon = 2130837686;
+			public const int splash = 2130837686;
 			
 			// aapt resource value: 0x7f0200b7
-			public const int splash = 2130837687;
+			public const int splash2 = 2130837687;
 			
 			// aapt resource value: 0x7f0200b8
-			public const int splash2 = 2130837688;
+			public const int splashscreen = 2130837688;
 			
 			// aapt resource value: 0x7f0200b9
-			public const int splashscreen = 2130837689;
+			public const int transit = 2130837689;
 			
 			// aapt resource value: 0x7f0200ba
-			public const int transit = 2130837690;
+			public const int walking = 2130837690;
 			
 			// aapt resource value: 0x7f0200bb
-			public const int walking = 2130837691;
+			public const int zoom_in = 2130837691;
 			
 			// aapt resource value: 0x7f0200bc
-			public const int zoom_in = 2130837692;
-			
-			// aapt resource value: 0x7f0200bd
-			public const int zoom_out = 2130837693;
->>>>>>> 5884834a700e148147d5ea560bf72c82c4a50044
+			public const int zoom_out = 2130837692;
 			
 			static Drawable()
 			{
@@ -1880,19 +1798,14 @@ namespace CocoMaps.Android
 			// aapt resource value: 0x7f0b002b
 			public const int book_now = 2131427371;
 			
-<<<<<<< HEAD
+			// aapt resource value: 0x7f0b0055
+			public const int button1 = 2131427413;
+			
+			// aapt resource value: 0x7f0b0054
+			public const int button2 = 2131427412;
+			
 			// aapt resource value: 0x7f0b0028
 			public const int buyButton = 2131427368;
-=======
-			// aapt resource value: 0x7f0c0055
-			public const int button1 = 2131492949;
-			
-			// aapt resource value: 0x7f0c0054
-			public const int button2 = 2131492948;
-			
-			// aapt resource value: 0x7f0c0015
-			public const int buyButton = 2131492885;
->>>>>>> 5884834a700e148147d5ea560bf72c82c4a50044
 			
 			// aapt resource value: 0x7f0b002c
 			public const int buy_now = 2131427372;
@@ -1975,37 +1888,20 @@ namespace CocoMaps.Android
 			// aapt resource value: 0x7f0b002a
 			public const int match_parent = 2131427370;
 			
-<<<<<<< HEAD
+			// aapt resource value: 0x7f0b005a
+			public const int media_route_control_frame = 2131427418;
+			
+			// aapt resource value: 0x7f0b005b
+			public const int media_route_disconnect_button = 2131427419;
+			
 			// aapt resource value: 0x7f0b0057
-			public const int media_route_control_frame = 2131427415;
+			public const int media_route_list = 2131427415;
 			
 			// aapt resource value: 0x7f0b0058
-			public const int media_route_disconnect_button = 2131427416;
+			public const int media_route_volume_layout = 2131427416;
 			
-			// aapt resource value: 0x7f0b0054
-			public const int media_route_list = 2131427412;
-			
-			// aapt resource value: 0x7f0b0055
-			public const int media_route_volume_layout = 2131427413;
-			
-			// aapt resource value: 0x7f0b0056
-			public const int media_route_volume_slider = 2131427414;
-=======
-			// aapt resource value: 0x7f0c005a
-			public const int media_route_control_frame = 2131492954;
-			
-			// aapt resource value: 0x7f0c005b
-			public const int media_route_disconnect_button = 2131492955;
-			
-			// aapt resource value: 0x7f0c0057
-			public const int media_route_list = 2131492951;
-			
-			// aapt resource value: 0x7f0c0058
-			public const int media_route_volume_layout = 2131492952;
-			
-			// aapt resource value: 0x7f0c0059
-			public const int media_route_volume_slider = 2131492953;
->>>>>>> 5884834a700e148147d5ea560bf72c82c4a50044
+			// aapt resource value: 0x7f0b0059
+			public const int media_route_volume_slider = 2131427417;
 			
 			// aapt resource value: 0x7f0b0015
 			public const int middle = 2131427349;
@@ -2013,16 +1909,8 @@ namespace CocoMaps.Android
 			// aapt resource value: 0x7f0b0031
 			public const int monochrome = 2131427377;
 			
-<<<<<<< HEAD
-			// aapt resource value: 0x7f0b0053
-			public const int myButton = 2131427411;
-			
 			// aapt resource value: 0x7f0b0019
 			public const int never = 2131427353;
-=======
-			// aapt resource value: 0x7f0c002e
-			public const int never = 2131492910;
->>>>>>> 5884834a700e148147d5ea560bf72c82c4a50044
 			
 			// aapt resource value: 0x7f0b000e
 			public const int none = 2131427342;
@@ -2108,19 +1996,14 @@ namespace CocoMaps.Android
 			// aapt resource value: 0x7f0b0022
 			public const int terrain = 2131427362;
 			
-<<<<<<< HEAD
+			// aapt resource value: 0x7f0b0056
+			public const int textView1 = 2131427414;
+			
+			// aapt resource value: 0x7f0b0053
+			public const int textView2 = 2131427411;
+			
 			// aapt resource value: 0x7f0b003b
 			public const int title = 2131427387;
-=======
-			// aapt resource value: 0x7f0c0056
-			public const int textView1 = 2131492950;
-			
-			// aapt resource value: 0x7f0c0053
-			public const int textView2 = 2131492947;
-			
-			// aapt resource value: 0x7f0c003b
-			public const int title = 2131492923;
->>>>>>> 5884834a700e148147d5ea560bf72c82c4a50044
 			
 			// aapt resource value: 0x7f0b0008
 			public const int up = 2131427336;

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<InfoWarnings>
+  <Info>Begin full analysis with NDepend v5.4.1.8430</Info>
+  <Info>No Baseline for Comparison loaded.</Info>
+  <Warning>Can't load the assembly {CocoMaps}:
+Can't find the .NET assembly {CocoMaps} in specified folders. 
+Has it been compiled properly? 
+Is the NDepend project missing the containing folder of the .NET assembly?</Warning>
+  <Warning>Can't load the assembly {Mono.Android}:
+Can't find the .NET assembly {Mono.Android} in specified folders. 
+Has it been compiled properly? 
+Is the NDepend project missing the containing folder of the .NET assembly?</Warning>
+  <Warning>Can't load the assembly {System.Core}:
+Can't find the .NET assembly {System.Core} in specified folders. 
+Has it been compiled properly? 
+Is the NDepend project missing the containing folder of the .NET assembly?</Warning>
+  <Warning>Can't load the assembly {System.Json}:
+Can't find the .NET assembly {System.Json} in specified folders. 
+Has it been compiled properly? 
+Is the NDepend project missing the containing folder of the .NET assembly?</Warning>
+  <Info>Concurrent mode</Info>
+  <Info>.NET Assemblies loaded from {C:\Users\Mridula\Desktop\CocoMaps\COCO-MAPS\cocomaps\CocoMaps.Android\bin\Debug} 
+   CocoMaps.Android.dll   v1.0.0.0
+   Xamarin.Forms.Platform.Android.dll   v1.3.4.0
+   Xamarin.Forms.Maps.Android.dll   v1.3.4.0
+   Xamarin.Forms.Core.dll   v1.3.4.0
+   Xamarin.Forms.Maps.dll   v1.3.4.0
+   GooglePlayServicesLib.dll   v1.0.0.0
+   Xamarin.Auth.Android.dll   v1.2.2.0
+   Newtonsoft.Json.dll   v6.0.0.0</Info>
+  <Info>.NET Assemblies loaded from {C:\windows\Microsoft.NET\Framework\v2.0.50727} 
+   mscorlib.dll   v2.0.0.0
+   System.dll   v2.0.0.0</Info>
+  <Warning>Assembly {Mono.Android} is referenced by {CocoMaps.Android} but is not found.</Warning>
+  <Warning>Assembly {System.Core} is referenced by {CocoMaps.Android} but is not found.</Warning>
+  <Warning>Assembly {System.Json} is referenced by {CocoMaps.Android} but is not found.</Warning>
+  <Info>44 source files parsed ; all source files found ; all source files in-sync with PDB</Info>
+  <Info>0 code rule has been extracted from code.</Info>
+  <Info>No dependency cycle detected in assemblies referencement graph.</Info>
+  <Info>03/08/2015 15:22:02 Analyse dependencies of your application.</Info>
+  <Info>03/08/2015 15:22:02 Execute queries and rules</Info>
+  <Warning>5 critical rules are violated.
+  - Avoid namespaces mutually dependent
+  - Potentially dead Types
+  - Potentially dead Methods
+  - Don't assign a field from many methods
+  - Avoid having different types with same name</Warning>
+  <Info>03/08/2015 15:22:03 NDepend analysis done. Duration: 00:02</Info>
+  <Info>03/08/2015 15:22:03 Building the report (standard).</Info>
+</InfoWarnings>
