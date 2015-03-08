@@ -5,6 +5,7 @@ using Xamarin;
 using Android.Content.PM;
 using CocoMaps.Shared;
 
+
 namespace CocoMaps.Android
 {
 	[Activity (Label = "CocoMaps", MainLauncher = true, NoHistory = true, Theme = "@style/Theme.Splash", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -18,10 +19,10 @@ namespace CocoMaps.Android
 		}
 	}
 
+
 	[Activity (Label = "CocoMaps", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : Xamarin.Forms.Platform.Android.FormsApplicationActivity
 	{
-
 		protected override void OnCreate (Bundle savedInstanceState)
 		{
 
@@ -37,10 +38,11 @@ namespace CocoMaps.Android
 			Forms.Init (this, savedInstanceState);
 			FormsMaps.Init (this, savedInstanceState);
 
-			//Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Never);
+			SetPage(App.Instance.GetMainPage ());
 
-			LoadApplication (new App ());
 		}
 
 	}
+
+
 }

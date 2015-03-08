@@ -4,6 +4,7 @@ using Xamarin.Forms.Maps;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CocoMaps.Shared
 {
@@ -41,7 +42,6 @@ namespace CocoMaps.Shared
 				WidthRequest = App.ScreenSize.Width
 			};
 
-
 			var SGWButton = new Button {
 				Text = "SGW",
 				HeightRequest = 40,
@@ -50,6 +50,12 @@ namespace CocoMaps.Shared
 				BorderRadius = 0
 			};
 			var LOYButton = new Button { Text = "LOY", 
+				HeightRequest = 40,
+				BackgroundColor = Color.White,
+				Opacity = 0.7,
+				BorderRadius = 0
+			};
+			var NextButton = new Button { Text = "Next Class", 
 				HeightRequest = 40,
 				BackgroundColor = Color.White,
 				Opacity = 0.7,
@@ -74,6 +80,17 @@ namespace CocoMaps.Shared
 			SGWButton.Clicked += HandleCampusRegionButton;
 			LOYButton.Clicked += HandleCampusRegionButton;
 			checkNetworkButton.Clicked += TestStuff;
+
+			NextButton.Clicked += async (sender, e) => {
+				string start = "7141 Sherbrooke Street W. Montreal QC";
+				string dest = "1455 De Maisonneuve Blvd. W. Montreal QC";
+
+				RequestDirections directionsRequest = RequestDirections.getInstance;
+
+				Directions directions = await directionsRequest.getDirections (start, dest, TravelMode.walking);
+
+
+			};
 
 			searchBar.PropertyChanged += HandleFocusChange;
 			searchBar.TextChanged += HandleTextChanged;
@@ -122,7 +139,8 @@ namespace CocoMaps.Shared
 				}
 			};
 
-			ActivityIndicator loader = ActivityLoading.getInstance ();
+			LoaderViewModel loader = LoaderViewModel.getInstance;
+			//loader.Show ();
 
 			DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
 
@@ -134,7 +152,8 @@ namespace CocoMaps.Shared
 			mainLayout.Children.Add (loader, Constraint.RelativeToParent ((parent) => Width / 2 - loader.Width / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loader.Height / 2));
 			mainLayout.Children.Add (SGWButton, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 54));
 			mainLayout.Children.Add (LOYButton, Constraint.Constant (80), Constraint.RelativeToParent (parent => Height - 54));
-			mainLayout.Children.Add (networkStatus, Constraint.Constant (154), Constraint.RelativeToParent (parent => Height - 44));
+			mainLayout.Children.Add (NextButton, Constraint.Constant (145), Constraint.RelativeToParent (parent => Height - 54));
+			mainLayout.Children.Add (networkStatus, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 80));
 			mainLayout.Children.Add (detailsLayout, Constraint.Constant (0), Constraint.RelativeToParent (parent => Height));
 
 			//mainLayout.Children.Add (picker, Constraint.Constant (100), Constraint.Constant (100));
@@ -170,6 +189,11 @@ namespace CocoMaps.Shared
 			Console.WriteLine (s.Text);
 		}
 
+		void HandleNextButton (object sender, TextChangedEventArgs e)
+		{
+
+		}
+
 		void HandleFocusChange (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
 			var s = sender as SearchBar;
@@ -198,11 +222,6 @@ namespace CocoMaps.Shared
 				map.MoveToRegion (MapSpan.FromCenterAndRadius (Campus.LOYPosition,	Xamarin.Forms.Maps.Distance.FromKilometers (0.1)));
 				break;
 			}
-		}
-
-		public static Building UpdateBuildingDetailsLayout (Building building)
-		{
-			return building;
 		}
 
 	}

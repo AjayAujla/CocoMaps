@@ -12,6 +12,16 @@ namespace CocoMaps.Shared.Pages
 	{
 		IMenuOptions previousItem;
 
+		// Initialize Pages
+		MasterPage pMaster = null;
+		BasePOI pPOI = null;
+		ConcordiaServices pServices = null;
+		NextClass pNextClass = null;
+		BaseCalendar pCalendar = null;
+
+		CalendarConnect pConnect = null;
+
+
 		public RootPage ()
 		{
 			var optionsPage = new MenuPage { Icon = "settings.png", Title = "menu" };
@@ -32,47 +42,51 @@ namespace CocoMaps.Shared.Pages
 			menuOption.Selected = true;
 			previousItem = menuOption;
 
-			var displayPage = PageForOption (menuOption);
-
-			#if WINDOWS_PHONE
-			Detail = new ContentPage();//work around to clear current page.
-			#endif
-			Detail = new NavigationPage (displayPage) {
-				BarBackgroundColor = Helpers.Color.Maroon.ToFormsColor (),
-			};
-
+			Detail = setPage (menuOption);
 
 			IsPresented = false;
 		}
 
-		Page PageForOption (IMenuOptions menuOption)
+		public Page setPage(IMenuOptions menuOption)
 		{
-			// TODO: Refactor this to the Builder pattern (see ICellFactory).
-			if (menuOption.Title == "Current Location") {
-				return new MasterPage (menuOption);
+
+			int MenuNumber = menuOption.MenuNum;
+
+			switch (MenuNumber)
+			{
+				case 1:
+					if ((pMaster == null)) {pMaster = new MasterPage (menuOption);}
+					return pMaster;
+				case 2:
+					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
+					return pMaster;
+				case 3:
+					if ((pPOI == null)){pPOI = new BasePOI (menuOption);}
+					return pPOI;
+				case 4:
+					if ((pServices == null)){pServices = new ConcordiaServices (menuOption);}
+					return pServices;
+				case 5:
+					if ((pNextClass == null)){pNextClass = new NextClass (menuOption);}
+					return pNextClass;
+				case 6:
+					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
+					return pMaster;
+				case 7:
+					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
+					return pMaster;
+				case 8:
+					if ((pCalendar == null)){pCalendar = new BaseCalendar (menuOption);}
+					return  pCalendar;
+				case 9:
+					if ((pConnect == null)){pConnect = new CalendarConnect (menuOption);}
+					return pConnect;
+				default:
+					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
+					return pMaster;
 			}
-			if (menuOption.Title == "Campus Maps") {
-				return new MasterPage (menuOption);
-			}
-			if (menuOption.Title == "Points of Interest") {
-				return new BasePOI (menuOption);
-			}
-			if (menuOption.Title == "Concordia Services") {
-				return new ConcordiaServices (menuOption);
-			}
-			if (menuOption.Title == "Building Directions") {
-				return new MasterPage (menuOption);
-			}
-			if (menuOption.Title == "Indoor Directions") {
-				return new MasterPage (menuOption);
-			}
-			if (menuOption.Title == "Calendar") {
-				return new BaseCalendar (menuOption);
-			}
-			if (menuOption.Title == "Settings") {
-				return new PlacesPage (menuOption,"Food");
-			}
-			throw new NotImplementedException ("Unknown menu option: " + menuOption.Title);
+
 		}
+			
 	}
 }

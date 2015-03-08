@@ -81,6 +81,36 @@
     <Reference Include="Xamarin.Forms.Maps">
       <HintPath>..\packages\Xamarin.Forms.Maps.1.3.4.6332\lib\MonoAndroid10\Xamarin.Forms.Maps.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Threading.Tasks">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net45+win8+wpa81\Microsoft.Threading.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Threading.Tasks.Extensions">
+      <HintPath>..\packages\Microsoft.Bcl.Async.1.0.168\lib\portable-net45+win8+wpa81\Microsoft.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\monoandroid\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.28\lib\monoandroid\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core">
+      <HintPath>..\packages\Google.Apis.Core.1.9.1\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth">
+      <HintPath>..\packages\Google.Apis.Auth.1.9.1\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Zlib.Portable">
+      <HintPath>..\packages\Zlib.Portable.1.10.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis">
+      <HintPath>..\packages\Google.Apis.1.9.0\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Calendar.v3">
+      <HintPath>..\packages\Google.Apis.Calendar.v3.1.9.0.1180\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Calendar.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Auth.Android">
+      <HintPath>..\Components\xamarin.auth-1.2.3.1\lib\android\Xamarin.Auth.Android.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -89,9 +119,10 @@
     <Compile Include="Renderers\DarkTextCellRenderer.cs" />
     <Compile Include="Renderers\ListTextCellRenderer.cs" />
     <Compile Include="Files\TextToSpeech_Android.cs" />
-    <Compile Include="Renderers\ConcordiaMap_Android.cs" />
     <Compile Include="Renderers\Network.cs" />
     <Compile Include="Renderers\BroadcastMonitor.cs" />
+    <Compile Include="Renderers\LoginPageRenderer.cs" />
+    <Compile Include="Renderers\ConcordiaMapRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -123,10 +154,85 @@
     <AndroidResource Include="Resources\drawable\buildingCodeIcon.png" />
     <AndroidResource Include="Resources\drawable\splashscreen.xml" />
     <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\drawable\CarWashMapIcon.png" />
+    <AndroidResource Include="Resources\drawable\concordia_logo.png" />
+    <AndroidResource Include="Resources\drawable\driving.png" />
+    <AndroidResource Include="Resources\drawable\hasaccessibility.png" />
+    <AndroidResource Include="Resources\drawable\hasatm.png" />
+    <AndroidResource Include="Resources\drawable\hasbikerack.png" />
+    <AndroidResource Include="Resources\drawable\hasinfokiosk.png" />
+    <AndroidResource Include="Resources\drawable\hasparkinglot.png" />
+    <AndroidResource Include="Resources\drawable\splash2.png" />
+    <AndroidResource Include="Resources\drawable\transit.png" />
+    <AndroidResource Include="Resources\drawable\walking.png" />
+    <AndroidResource Include="Resources\drawable\building_ad.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_b.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_bb.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_bh.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_cb.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_cc.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_ci.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_cj.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_cl.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_d.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_do.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_en.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_ev.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_fa.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_fb.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_fc.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_fg.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_ge.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_gm.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_gn.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_ha.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_hb.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_hc.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_jr.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_k.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_lb.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_m.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_mb.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_mi.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_mt.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_mu.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_os.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_p.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_pavillondessoeursgrises.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_pc.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_pr.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_ps.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_pt.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_py.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_q.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_r.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_ra.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_rf.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_rr.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_s.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_sb.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_sc.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_sh.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_si.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_sp.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_t.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_ta.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_td.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_v.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_va.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_ve.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_vl.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_x.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_z.jpeg" />
+    <AndroidResource Include="Resources\drawable\building_h.jpeg" />
+    <AndroidResource Include="Resources\drawable\button_buildings_toggle.png" />
+    <AndroidResource Include="Resources\drawable\button_directions_toggle.png" />
   </ItemGroup>
   <Import Project="..\CocoMaps.Shared\CocoMaps.Shared.projitems" Label="Shared" Condition="Exists('..\CocoMaps.Shared\CocoMaps.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.1.3.4.6332\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.1.3.4.6332\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
+  <Import Project="..\packages\xamstore-xamarin.auth.1.2.2\build\monoandroid\xamstore-xamarin.auth.props" Condition="Exists('..\packages\xamstore-xamarin.auth.1.2.2\build\monoandroid\xamstore-xamarin.auth.props')" />
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
     <Folder Include="Renderers\" />
@@ -135,5 +241,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\CarWashMapIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="xamarin.auth">
+      <Version>1.2.3.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
 </Project>

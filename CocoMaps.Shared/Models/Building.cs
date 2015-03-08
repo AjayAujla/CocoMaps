@@ -7,7 +7,7 @@ namespace CocoMaps.Shared
 
 	public class Building
 	{
-	
+
 		public string Code {
 			get;
 			set;
@@ -33,6 +33,31 @@ namespace CocoMaps.Shared
 			set;
 		}
 
+		public bool HasAtm {
+			get;
+			set;
+		}
+
+		public bool HasParkingLot {
+			get;
+			set;
+		}
+
+		public bool HasBikeRack {
+			get;
+			set;
+		}
+
+		public bool HasInfoKiosk {
+			get;
+			set;
+		}
+
+		public bool HasAccessibility {
+			get;
+			set;
+		}
+
 		public List<Position> ShapeCoords {
 			get;
 			set;
@@ -44,6 +69,11 @@ namespace CocoMaps.Shared
 		}
 
 		public List<Service> Services {
+			get;
+			set;
+		}
+
+		public List<Department> Departments {
 			get;
 			set;
 		}

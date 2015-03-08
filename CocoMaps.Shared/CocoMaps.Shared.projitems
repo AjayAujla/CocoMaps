@@ -37,14 +37,23 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\FetchJsonAsync.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\BaseCalendar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\Calendar.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\POI\PlacesPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\POI\BasePOI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\POI\POI.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ActivityLoading.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\INetwork.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\DetailsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\BuildingRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GooglePointsDecoder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\LoaderViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\NextClass\NextClass.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Department.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\CalendarConnect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OAuthSettings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\AuthBasePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\AuthLoginPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\NavRootBasePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\NavRootPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\Enums.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\PlacesRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -59,5 +68,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\POI\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Repositories\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\NextClass\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\" />
   </ItemGroup>
 </Project>
