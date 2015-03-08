@@ -61,4 +61,12 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\CocoMaps.Android\CocoMaps.Android.csproj">
+      <Project>{C188D2AB-5317-4B5F-A391-17686A12BDAD}</Project>
+      <Name>CocoMaps.Android</Name>
+      <IsAppExtension>True</IsAppExtension>
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
+    </ProjectReference>
+  </ItemGroup>
 </Project>
