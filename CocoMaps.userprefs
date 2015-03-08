@@ -1,15 +1,16 @@
-﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.dca08503" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared/Views/ViewsModel/DetailsViewModel.cs">
+﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Controllers\Repositories\BuildingRepository.cs">
     <Files>
-      <File FileName="CocoMaps.Shared/Views/Pages/Master.cs" Line="35" Column="35" />
-      <File FileName="CocoMaps.Shared/Models/Campus.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Views/Pages/POI/POI.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Views/ViewsModel/LoaderViewModel.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Views/ViewsModel/DetailsViewModel.cs" Line="36" Column="36" />
-      <File FileName="CocoMaps.Shared/App.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Models/Building.cs" Line="8" Column="8" />
-      <File FileName="CocoMaps.Shared/Views/Pages/NextClass/NextClass.cs" Line="4" Column="4" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Master.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Models\Campus.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\POI\POI.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\ViewsModel\LoaderViewModel.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\ViewsModel\DetailsViewModel.cs" Line="27" Column="27" />
+      <File FileName="CocoMaps.Shared\App.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Models\Building.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\NextClass\NextClass.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Controllers\Repositories\BuildingRepository.cs" Line="2" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -18,5 +19,6 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <DisabledProjects>
     <String>CocoMaps.Services/CocoMaps.Services.csproj</String>
+    <String>CocoMaps.iOS\CocoMaps.iOS.csproj</String>
   </DisabledProjects>
 </Properties>

@@ -50,11 +50,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "2160 Bishop",
 				Position = new Position (45.49661118, -73.57913285),
-				HasAtm = true,
-				HasBikeRack = true,
-				HasInfoKiosk = true,
-				HasParkingLot = true,
-				HasAccessibility = true,
+				HasAtm = false,
+				HasBikeRack = false,
+				HasInfoKiosk = false,
+				HasParkingLot = false,
+				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.49792300709727, -73.57949629426003),
 					new Position (45.49788775606442, -73.57942052185535),
@@ -64,9 +64,9 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "CPE Les P'tits Profs Daycare",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://lesptitsprofs.wordpress.com",
 					},
 				},
 				Departments = new List<Department> {
@@ -88,7 +88,7 @@ namespace CocoMaps.Shared
 				HasBikeRack = false,
 				HasInfoKiosk = false,
 				HasParkingLot = false,
-				HasAccessibility = false,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.495461491948106, -73.57426129281521),
 					new Position (45.495081703057934, -73.57463613152504),
@@ -153,8 +153,8 @@ namespace CocoMaps.Shared
 				},
 				Departments = new List<Department> {
 					new Department {
-						Name = "name",
-						URI = "uri"
+						Name = "School of Community and Public Affairs",
+						URI = "http://scpa-eapc.concordia.ca/en"
 					}
 				}
 			};
@@ -166,11 +166,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "1665 St. Catherine W.",
 				Position = new Position (45.4942173, -73.57929111),
-				HasAtm = false,
+				HasAtm = true,
 				HasBikeRack = false,
 				HasInfoKiosk = false,
 				HasParkingLot = false,
-				HasAccessibility = false,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.4944781718791, -73.57927232980728),
 					new Position (45.4941707633251, -73.57964850962162),
@@ -184,9 +184,9 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "The Centre for Continuing Education",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://cce.concordia.ca",
 					},
 				},
 				Departments = new List<Department> {
@@ -225,8 +225,8 @@ namespace CocoMaps.Shared
 				},
 				Departments = new List<Department> {
 					new Department {
-						Name = "name",
-						URI = "uri"
+						Name = "Theological Studies",
+						URI = "http://concordia.ca/content/concordia/en/artsci/theology.html"
 					}
 				}
 			};
@@ -256,15 +256,21 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Translation Services",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://web2.concordia.ca/translation",
 					},
+					new Service {
+						Name = "Career and Planning Services",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/students/careers/planning.html",
+					},
+
 				},
 				Departments = new List<Department> {
 					new Department {
-						Name = "name",
-						URI = "uri"
+						Name = "Education",
+						URI = "http://doe.concordia.ca"
 					}
 				}
 			};
@@ -276,11 +282,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "1515 St. Catherine W.",
 				Position = new Position (45.49561989, -73.5783577),
-				HasAtm = false,
+				HasAtm = true,
 				HasBikeRack = false,
 				HasInfoKiosk = false,
 				HasParkingLot = false,
-				HasAccessibility = false,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.49518840143307, -73.57789903879166),
 					new Position (45.49526266714314, -73.57805728912354),
@@ -297,16 +303,71 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "LeGym",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/campus-life/recreation/facilities/le-gym.html",
+					},
+					new Service {
+						Name = "FOFA Gallery",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/finearts/facilities/fofa-gallery.html",
 					},
 				},
 				Departments = new List<Department> {
 					new Department {
-						Name = "name",
-						URI = "uri"
-					}
+						Name = "Engineering and Computer Science",
+						URI = "http://concordia.ca/content/concordia/en/encs.html"
+					},
+					new Department {
+						Name = "Building, Civil and Environmental Engineering",
+						URI = "http://www.bcee.concordia.ca"
+					},
+					new Department {
+						Name = "Electrical and Computer Engineering",
+						URI = "http://www.ece.concordia.ca"
+					},
+					new Department {
+						Name = "Computer Science and Software Engineering",
+						URI = "http://www.cs.concordia.ca"
+					},
+					new Department {
+						Name = "Mechanical and Industrial Engineering",
+						URI = "http://www.me.concordia.ca"
+					},
+					new Department {
+						Name = "Design and Computation Arts",
+						URI = "http://design.concordia.ca"
+					},
+					new Department {
+						Name = "Faculty of Fine Arts",
+						URI = "http://concordia.ca/content/concordia/en/finearts.html"
+					},
+					new Department {
+						Name = "Studio Arts",
+						URI = "http://concordia.ca/content/concordia/en/finearts/studio-arts.html"
+					},
+					new Department {
+						Name = "Art Education",
+						URI = "http://art-education.concordia.ca"
+					},
+					new Department {
+						Name = "Art History",
+						URI = "http://concordia.ca/content/concordia/en/finearts/art-history"
+					},
+					new Department {
+						Name = "Comtemporary Dance",
+						URI = "http://dance.concordia.ca/en"
+					},
+					new Department {
+						Name = "Recreation and Athletics",
+						URI = "http://athletics.concordia.ca/"
+					},
+					new Department {
+						Name = "Zero Energy Building Studies",
+						URI = "http://concordia.ca/content/concordia/en/research/zero-energy-building"
+					},
+
+
 				}
 			};
 			SGW.Buildings.Add (EV);
@@ -338,8 +399,8 @@ namespace CocoMaps.Shared
 				},
 				Departments = new List<Department> {
 					new Department {
-						Name = "name",
-						URI = "uri"
+						Name = "Religion",
+						URI = "http://religion.concordia.ca"
 					}
 				}
 			};
@@ -356,7 +417,7 @@ namespace CocoMaps.Shared
 				HasBikeRack = false,
 				HasInfoKiosk = false,
 				HasParkingLot = false,
-				HasAccessibility = false,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.494912019322506, -73.57778571546078),
 					new Position (45.49487065589675, -73.57771262526512),
@@ -376,15 +437,25 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "School of Extended Learning",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://www.concordia.ca/extended-learning",
+					},
+					new Service {
+						Name = "Student Transition Centre",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/extended-learning/advising.html",
+					},
+					new Service {
+						Name = "Human Resources",
+						RoomNumber = "room",
+						URI = "http://www.concordia.ca/hr",
 					},
 				},
 				Departments = new List<Department> {
 					new Department {
-						Name = "name",
-						URI = "uri"
+						Name = "Cinema",
+						URI = "http://cinema.concordia.ca"
 					}
 				}
 			};
@@ -396,11 +467,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "1616 St. Catherine W.",
 				Position = new Position (45.49381494, -73.57917309),
-				HasAtm = false,
+				HasAtm = true,
 				HasBikeRack = false,
 				HasInfoKiosk = false,
 				HasParkingLot = false,
-				HasAccessibility = false,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.494694390957754, -73.57803918421268),
 					new Position (45.494451849499804, -73.57761606574059),
@@ -428,7 +499,7 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Classrooms",
 						RoomNumber = "room",
 						URI = "uri",
 					},
@@ -449,10 +520,10 @@ namespace CocoMaps.Shared
 				Address = "1550 De Maisonneuve W.",
 				Position = new Position (45.49586619, -73.57887805),
 				HasAtm = false,
-				HasBikeRack = false,
+				HasBikeRack = true,
 				HasInfoKiosk = false,
 				HasParkingLot = false,
-				HasAccessibility = false,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.49611248551097, -73.57887402176857),
 					new Position (45.49594797521289, -73.57851728796959),
@@ -462,10 +533,91 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Office of the President",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/about/administration-governance/president.html",
 					},
+					new Service {
+						Name = "Office of the VP, Institutional Relations and Secretary General",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/about/administration-governance/office-vp-development-external-relations-secretary-general.html",
+					},
+					new Service {
+						Name = "Office of the Provost",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/about/administration-governance/office-provost-vp-academic-affairs.html",
+					},
+					new Service {
+						Name = "Office of Rights and Responsibilities",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/students/rights.html",
+					},
+					new Service {
+						Name = "Ombuds Office",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/campus-life/ombuds.html",
+					},
+					new Service {
+						Name = "Institute for Co-operative Education",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/academics/co-op.html",
+					},
+					new Service {
+						Name = "Office of the VP, Research & Graduate Studies",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/about/administration-governance/office-vp-research-graduate-studies.html",
+					},
+					new Service {
+						Name = "Office of the Chief Communications Officer",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/about/administration-governance/office-vp-research-graduate-studies.html",
+					},
+					new Service {
+						Name = "Financial Aid & Awards Office",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/offices/faao.html",
+					},
+					new Service {
+						Name = "Health Services",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/students/health.html",
+					},
+					new Service {
+						Name = "Environmental Health and Safety",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/campus-life/safety",
+					},
+					new Service {
+						Name = "Facilities Management",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/offices/facilities",
+					},
+
+					new Service {
+						Name = "Music",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/finearts/music",
+					},
+
+					new Service {
+						Name = "Theatre",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/finearts/theatre",
+					},
+
+					new Service {
+						Name = "Contemporary Dance",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/finearts/dance",
+					},
+
+					new Service {
+						Name = "Graduate Studies",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/offices/sgs.html",
+					},
+
+
 				},
 				Departments = new List<Department> {
 					new Department {
@@ -482,11 +634,11 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "1455 De Maisonneuve W.",
 				Position = new Position (45.4972443, -73.57890487),
-				HasAtm = false,
-				HasBikeRack = false,
+				HasAtm = true,
+				HasBikeRack = true,
 				HasInfoKiosk = false,
 				HasParkingLot = false,
-				HasAccessibility = false,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.497705860384244, -73.57903495430946),
 					new Position (45.49716628007782, -73.57953920960426),
@@ -497,33 +649,81 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Dean of Students",
-						RoomNumber = "H-637"
+						RoomNumber = "H-637",
+						URI = "http://concordia.ca/content/concordia/en/offices/dean-students",
 					},
 					new Service {
 						Name = "Aboriginal Student Resource Center",
-						RoomNumber = "H-641"
+						RoomNumber = "H-641",
+						URI = "http://concordia.ca/content/concordia/en/offices/asrc",
 					},
 					new Service {
 						Name = "International Students Office",
-						RoomNumber = "H-653"
+						RoomNumber = "H-653",
+						URI = "http://concordia.ca/content/concordia/en/offices/iso",
 					},
 					new Service {
 						Name = "IT Services",
-						RoomNumber = "H-925"
+						RoomNumber = "H-925",
+						URI = "http://concordia.ca/content/concordia/en/it",
 					},
 					new Service {
 						Name = "Security Department",
-						RoomNumber = "H-118"
+						RoomNumber = "H-118",
+						URI = "http://concordia.ca/content/concordia/en/campus-life/security",
 					},
 					new Service {
 						Name = "Counselling and Development",
-						RoomNumber = "H-440"
+						RoomNumber = "H-440",
+						URI = "http://concordia.ca/content/concordia/en/offices/cdev.html",
+					},
+					new Service {
+						Name = "Mail Services",
+						RoomNumber = "ROOM",
+						URI = "http://concordia.ca/content/concordia/en/offices/facilities.html",
+					},
+					new Service {
+						Name = "Archives",
+						RoomNumber = "ROOM",
+						URI = "http://archives.concordia.ca/",
 					},
 					new Service {
 						Name = "Access Centre for Students with Disabilities",
-						RoomNumber = "H-580"
-					}
+						RoomNumber = "H-580",
+						URI = "http://concordia.ca/content/concordia/en/offices/acsd",
+					},
+					new Service {
+						Name = "Concordia Student Union",
+						RoomNumber = "room",
+						URI = "http://csu.concordia.ca",
+					},
+					new Service {
+						Name = "Computer Store",
+						RoomNumber = "room",
+						URI = "http://retail.concordia.ca/ccs/",
+					},
+					new Service {
+						Name = "D. B. Clarke Theatre\\",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/arts/venues/db-clarke-theatre",
+					},
+				},
+
+				Departments = new List<Department> {
+					new Department {
+						Name = "Classics, Modern Languages and Linguistics",
+						URI = "http://concordia.ca/content/concordia/en/artsci/cmll"
+					},
+					new Department {
+						Name = "Geography, Planning and Environment",
+						URI = "uri"
+					},
+					new Department {
+						Name = "Political Science, Sociology and Anthropology, Economics",
+						URI = "http://concordia.ca/content/concordia/en/artsci/academics/departments.html"
+					},
 				}
+
 			};
 			SGW.Buildings.Add (H);
 
@@ -547,16 +747,18 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Theological Studies",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/artsci/theology.html",
 					},
 				},
+
 				Departments = new List<Department> {
 					new Department {
 						Name = "name",
 						URI = "uri"
 					}
+
 				}
 			};
 			SGW.Buildings.Add (K);
@@ -567,10 +769,10 @@ namespace CocoMaps.Shared
 				Campus = SGW,
 				Address = "1400 De Maisonneuve W.",
 				Position = new Position (45.49674232, -73.57807606),
-				HasAtm = false,
-				HasBikeRack = false,
-				HasInfoKiosk = false,
-				HasParkingLot = false,
+				HasAtm = true,
+				HasBikeRack = true,
+				HasInfoKiosk = true,
+				HasParkingLot = true,
 				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.49725511377648, -73.5780693590641),
@@ -617,36 +819,92 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "J.A. DeSève Cinema",
-						RoomNumber = "LB-125"
+						RoomNumber = "LB-125",
+						URI = "http://concordia.ca/content/concordia/en/it/services/cinemas",
 					},
 					new Service {
 						Name = "Birks Student Service Centre",
-						RoomNumber = "LB-185"
+						RoomNumber = "LB-185",
+						URI = "http://concordia.ca/content/concordia/en/students/birks",
 					},
 					new Service {
 						Name = "Bookstore",
-						RoomNumber = "LB-103"
+						RoomNumber = "LB-103",
+						URI = "http://retail.concordia.ca/",
 					},
 					new Service {
 						Name = "Computer Store",
-						RoomNumber = "LB-103"
+						RoomNumber = "LB-103",
+						URI = "uri",
 					},
 					new Service {
 						Name = "Campus Corner",
-						RoomNumber = "LB-119"
+						RoomNumber = "LB-119",
+						URI = "uri",
 					},
 					new Service {
-						Name = "Print Store",
-						RoomNumber = "LB-115"
+						Name = "Digital Store",
+						RoomNumber = "LB-115",
+						URI = "http://retail.concordia.ca",
 					},
 					new Service {
 						Name = "DPrint Administration",
-						RoomNumber = "LB-018"
+						RoomNumber = "LB-018",
+						URI = "uri",
 					},
 					new Service {
 						Name = "Welcome Centre",
-						RoomNumber = "LB-187"
-					}
+						RoomNumber = "LB-187",
+						URI = "http://concordia.ca/content/concordia/en/students/birks/welcome-centre",
+					},
+					new Service {
+						Name = "R. Howard Webster Library",
+						RoomNumber = "ROOM",
+						URI = "http://concordia.ca/content/concordia/en/library",
+					},
+					new Service {
+						Name = "Leonard and Bina Ellen Art Gallery",
+						RoomNumber = "ROOM",
+						URI = "http://ellengallery.concordia.ca",
+					},
+					new Service {
+						Name = "Birks Student Service Centre",
+						RoomNumber = "ROOM",
+						URI = "http://concordia.ca/content/concordia/en/library",
+					},
+					new Service {
+						Name = "Office of the Registrar",
+						RoomNumber = "ROOM",
+						URI = "http://concordia.ca/content/concordia/en/offices/registrar",
+					},
+				},
+
+				Departments = new List<Department> {
+					new Department {
+						Name = "English",
+						URI = "http://english.concordia.ca"
+					},
+					new Department {
+						Name = "History",
+						URI = "http://history.concordia.ca"
+					},
+					new Department {
+						Name = "Etudes francaises",
+						URI = "http://concordia.ca/content/concordia/en/artsci/francais"
+					},
+					new Department {
+						Name = "Mathematics and Statistics",
+						URI = "http://www.mathstat.concordia.ca"
+					},
+					new Department {
+						Name = "Education",
+						URI = "http://doe.concordia.ca/"
+					},
+					new Department {
+						Name = "Centre for Interdisciplinary Studies in Society and Culture (CISSC)",
+						URI = "http://concordia.ca/content/concordia/en/artsci/cissc.html"
+					},
+
 				}
 			};
 			SGW.Buildings.Add (LB);
@@ -716,16 +974,54 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Career Management Services",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/jmsb/services/career",
+					},
+					new Service {
+						Name = "John Molson Executive Centre",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/jmsb/programs/executive-centre",
+					},
+					new Service {
+						Name = "Performing Arts Facilities",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/finearts/facilities/performing-arts",
 					},
 				},
 				Departments = new List<Department> {
 					new Department {
-						Name = "name",
-						URI = "uri"
-					}
+						Name = "Supply Chain & Business Technology Management",
+						URI = "http://concordia.ca/content/concordia/en/jmsb/about/departments/supply-chain-business-technology-management"
+					},
+					new Department {
+						Name = "Finance",
+						URI = "http://concordia.ca/content/concordia/en/jmsb/about/departments/finance"
+					},
+					new Department {
+						Name = "Management",
+						URI = "http://concordia.ca/content/concordia/en/jmsb/about/departments/management"
+					},
+					new Department {
+						Name = "Marketing",
+						URI = "http://concordia.ca/content/concordia/en/jmsb/about/departments/marketing"
+					},
+					new Department {
+						Name = "Goodman Institute of Investment Management",
+						URI = "http://concordia.ca/content/concordia/en/jmsb/programs/graduate/mba-cfa"
+					},
+					new Department {
+						Name = "Executive MBA Program",
+						URI = "http://concordia.ca/content/concordia/en/jmsb/programs/graduate/emba"
+					},
+					new Department {
+						Name = "Music",
+						URI = "http://music.concordia.ca"
+					},
+					new Department {
+						Name = "Theatre",
+						URI = "http://theatre.concordia.ca"
+					},
 				}
 			};
 			SGW.Buildings.Add (MB);
@@ -750,7 +1046,37 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "ACUMAE",
+						RoomNumber = "room",
+						URI = "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#acumae",
+					},
+					new Service {
+						Name = "SCOMM",
+						RoomNumber = "room",
+						URI = "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#scomm-sgw",
+					},
+					new Service {
+						Name = "CUSSU",
+						RoomNumber = "room",
+						URI = "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#cussu",
+					},
+					new Service {
+						Name = "CUUSS-TS",
+						RoomNumber = "room",
+						URI = "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#cuuss-ts",
+					},
+					new Service {
+						Name = "CULEU",
+						RoomNumber = "room",
+						URI = "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#culeu",
+					},
+					new Service {
+						Name = "CUPEU",
+						RoomNumber = "room",
+						URI = "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#cupeu",
+					},
+					new Service {
+						Name = "CUCEPTFU",
 						RoomNumber = "room",
 						URI = "uri",
 					},
@@ -784,9 +1110,9 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Simone de Beauvoir Institute",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/artsci/sdbi",
 					},
 				},
 				Departments = new List<Department> {
@@ -859,9 +1185,13 @@ namespace CocoMaps.Shared
 				},
 				Departments = new List<Department> {
 					new Department {
-						Name = "name",
-						URI = "uri"
-					}
+						Name = "Philosophy",
+						URI = "http://concordia.ca/content/concordia/en/artsci/philosophy"
+					},
+					new Department {
+						Name = "Liberal Arts College",
+						URI = "http://liberalartscollege.concordia.ca"
+					},
 				}
 			};
 			SGW.Buildings.Add (PR);
@@ -886,9 +1216,9 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Ethnic Students' Association",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://www.ieacconcordia.ca/about-us.html",
 					},
 				},
 				Departments = new List<Department> {
@@ -927,8 +1257,8 @@ namespace CocoMaps.Shared
 				},
 				Departments = new List<Department> {
 					new Department {
-						Name = "name",
-						URI = "uri"
+						Name = "Religion",
+						URI = "http://religion.concordia.ca"
 					}
 				}
 			};
@@ -961,8 +1291,8 @@ namespace CocoMaps.Shared
 				},
 				Departments = new List<Department> {
 					new Department {
-						Name = "name",
-						URI = "uri"
+						Name = "Liberal Arts College",
+						URI = "http://concordia.ca/content/concordia/en/artsci/liberal-arts-college"
 					}
 				}
 			};
@@ -1024,9 +1354,9 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "raduate Students Association",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://gsaconcordia.ca",
 					},
 				},
 				Departments = new List<Department> {
@@ -1094,9 +1424,9 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Concordia International",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/offices/ci.html",
 					},
 				},
 				Departments = new List<Department> {
@@ -1128,9 +1458,14 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Multi-Faith Chaplaincy",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/offices/chaplaincy.html",
+					},
+					new Service {
+						Name = "Sustainable Concordia",
+						RoomNumber = "room",
+						URI = "http://sustainableconcordia.ca",
 					},
 				},
 				Departments = new List<Department> {
@@ -1161,7 +1496,7 @@ namespace CocoMaps.Shared
 				HasAtm = false,
 				HasBikeRack = false,
 				HasInfoKiosk = false,
-				HasParkingLot = false,
+				HasParkingLot = true,
 				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45828033335741, -73.63981448113918),
@@ -1193,15 +1528,55 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Loyola International College",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://loyc.concordia.ca",
+					},
+					new Service {
+						Name = "Centre for Teaching & Learning",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/offices/ctl.html",
+					},
+					new Service {
+						Name = "Provost and Vice-President",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/about/administration-governance/office-provost-vp-academic-affairs.html",
+					},
+					new Service {
+						Name = "Dean of Students",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/offices/dean-students.html",
+					},
+					new Service {
+						Name = "Concordia Multi-Faith Chaplaincy",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/offices/chaplaincy.html",
+					},
+					new Service {
+						Name = "Advocacy & Support Services",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/offices/advocacy.html",
+					},
+					new Service {
+						Name = "Access Centre for Students with Disabilities",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/offices/acsd.html",
+					},
+					new Service {
+						Name = "Counselling and Development",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/offices/cdev.html",
+					},
+					new Service {
+						Name = "Health Services",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/students/health.html",
 					},
 				},
 				Departments = new List<Department> {
 					new Department {
-						Name = "name",
-						URI = "uri"
+						Name = "Faculty of Arts & Science",
+						URI = "http://concordia.ca/content/concordia/en/artsci.html"
 					}
 				}
 			};
@@ -1263,9 +1638,9 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "CPE Les P'tits Profs Daycare",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://lesptitsprofs.wordpress.com",
 					},
 				},
 				Departments = new List<Department> {
@@ -1287,7 +1662,7 @@ namespace CocoMaps.Shared
 				HasBikeRack = false,
 				HasInfoKiosk = false,
 				HasParkingLot = false,
-				HasAccessibility = false,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.45844871640609, -73.64071905612946),
 					new Position (45.45829444368806, -73.64083774387836),
@@ -1301,9 +1676,9 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Concordia Student Union",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://csu.concordia.ca",
 					},
 				},
 				Departments = new List<Department> {
@@ -1325,7 +1700,7 @@ namespace CocoMaps.Shared
 				HasBikeRack = false,
 				HasInfoKiosk = false,
 				HasParkingLot = false,
-				HasAccessibility = false,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.457333051751476, -73.64075526595116),
 					new Position (45.457305771310594, -73.6406908929348),
@@ -1366,16 +1741,21 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Campus Retail Stores",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://retail.concordia.ca",
 					},
 				},
 				Departments = new List<Department> {
 					new Department {
-						Name = "name",
-						URI = "uri"
-					}
+						Name = "Communication Studies",
+						URI = "http://coms.concordia.ca"
+					},
+					new Department {
+						Name = "Journalism",
+						URI = "http://journalism.concordia.ca"
+					},
+
 				}
 			};
 			LOY.Buildings.Add (CJ);
@@ -1424,7 +1804,7 @@ namespace CocoMaps.Shared
 				HasBikeRack = false,
 				HasInfoKiosk = false,
 				HasParkingLot = false,
-				HasAccessibility = false,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.45865660763283, -73.63962672650814),
 					new Position (45.45865990002167, -73.6395824700594),
@@ -1460,9 +1840,20 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "F.C. Smith Auditorium",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/arts/venues/fc-smith-auditorium",
+					},
+
+					new Service {
+						Name = "Concordia Multi-Faith Chaplaincy",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/students/multifaith",
+					},
+					new Service {
+						Name = "Cazalet Theater",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/arts/venues/cazalet",
 					},
 				},
 				Departments = new List<Department> {
@@ -1494,9 +1885,9 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Genomic Centre",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/research/genomics",
 					},
 				},
 				Departments = new List<Department> {
@@ -1517,8 +1908,8 @@ namespace CocoMaps.Shared
 				HasAtm = false,
 				HasBikeRack = false,
 				HasInfoKiosk = false,
-				HasParkingLot = false,
-				HasAccessibility = false,
+				HasParkingLot = true,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.45967018397027, -73.6413835734129),
 					new Position (45.459646667324336, -73.64132322371006),
@@ -1541,9 +1932,9 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Student Residence",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/campus-life/residences/hingston-hall.html",
 					},
 				},
 				Departments = new List<Department> {
@@ -1565,8 +1956,8 @@ namespace CocoMaps.Shared
 				HasAtm = false,
 				HasBikeRack = false,
 				HasInfoKiosk = false,
-				HasParkingLot = false,
-				HasAccessibility = false,
+				HasParkingLot = true,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.459342831377185, -73.64217348396778),
 					new Position (45.45932166627344, -73.64211715757847),
@@ -1601,10 +1992,16 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Student Residence",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/campus-life/residences/hingston-hall.html",
 					},
+					new Service {
+						Name = "CUFA",
+						RoomNumber = "room",
+						URI = "http://www.cufa.net",
+					},
+
 				},
 				Departments = new List<Department> {
 					new Department {
@@ -1624,7 +2021,7 @@ namespace CocoMaps.Shared
 				HasAtm = false,
 				HasBikeRack = false,
 				HasInfoKiosk = false,
-				HasParkingLot = false,
+				HasParkingLot = true,
 				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45988606632139, -73.64201992750168),
@@ -1639,9 +2036,9 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Student Residence",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/campus-life/residences/hingston-hall.html",
 					},
 				},
 				Departments = new List<Department> {
@@ -1662,7 +2059,7 @@ namespace CocoMaps.Shared
 				HasAtm = false,
 				HasBikeRack = false,
 				HasInfoKiosk = false,
-				HasParkingLot = false,
+				HasParkingLot = true,
 				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.458539022191516, -73.64337980747223),
@@ -1687,9 +2084,9 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Student Residence",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/campus-life/residences/hingston-hall.html",
 					},
 				},
 				Departments = new List<Department> {
@@ -1711,7 +2108,7 @@ namespace CocoMaps.Shared
 				HasBikeRack = false,
 				HasInfoKiosk = false,
 				HasParkingLot = false,
-				HasAccessibility = false,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.457082823764566, -73.63702297210693),
 					new Position (45.45703014404687, -73.63684058189392),
@@ -1723,9 +2120,9 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "PERFORM Centre",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/research/perform.html",
 					},
 				},
 				Departments = new List<Department> {
@@ -1767,9 +2164,14 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Environmental Health and Safety",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/campus-life/safety",
+					},
+					new Service {
+						Name = "Facilities Management",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/offices/facilities",
 					},
 				},
 				Departments = new List<Department> {
@@ -1791,7 +2193,7 @@ namespace CocoMaps.Shared
 				HasBikeRack = false,
 				HasInfoKiosk = false,
 				HasParkingLot = false,
-				HasAccessibility = false,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.45948957587806, -73.6391332000494),
 					new Position (45.459457593134786, -73.63905608654022),
@@ -1813,15 +2215,15 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Concert Hall",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/arts/venues/oscar-peterson.html",
 					},
 				},
 				Departments = new List<Department> {
 					new Department {
-						Name = "name",
-						URI = "uri"
+						Name = "Oscar Peterson Concert Hall",
+						URI = "http://concordia.ca/content/concordia/en/arts/venues/oscar-peterson.html"
 					}
 				}
 			};
@@ -1837,7 +2239,7 @@ namespace CocoMaps.Shared
 				HasBikeRack = false,
 				HasInfoKiosk = false,
 				HasParkingLot = false,
-				HasAccessibility = false,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.45916880695485, -73.64045888185501),
 					new Position (45.45914576043701, -73.64039584994316),
@@ -1870,6 +2272,19 @@ namespace CocoMaps.Shared
 					new Position (45.45900842180892, -73.64039987325668),
 					new Position (45.45899195996461, -73.6403576284647)
 
+				},
+				Services = new List<Service> {
+					new Service {
+						Name = "name",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+				},
+				Departments = new List<Department> {
+					new Department {
+						Name = "Psychology",
+						URI = "http://psychology.concordia.ca"
+					}
 				}
 
 			};
@@ -1883,7 +2298,7 @@ namespace CocoMaps.Shared
 				HasAtm = false,
 				HasBikeRack = false,
 				HasInfoKiosk = false,
-				HasParkingLot = false,
+				HasParkingLot = true,
 				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.45672064971158, -73.6371074616909),
@@ -1912,7 +2327,22 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Ed Meagher Arena",
+						RoomNumber = "room",
+						URI = "http://athletics.concordia.ca/campus/facilities.shtml",
+					},
+					new Service {
+						Name = "Gymnasium",
+						RoomNumber = "room",
+						URI = "http://athletics.concordia.ca/campus/facilities.shtml",
+					},
+					new Service {
+						Name = "Indoor running track",
+						RoomNumber = "room",
+						URI = "http://athletics.concordia.ca/campus/facilities.shtml",
+					},
+					new Service {
+						Name = "CafÃ©",
 						RoomNumber = "room",
 						URI = "uri",
 					},
@@ -1971,9 +2401,14 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Loyola Jesuit Hall and Conference Centre",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/hospitality/hospitality-venues/loyola-jesuit-hall-conference-centre.html",
+					},
+					new Service {
+						Name = "Conference services",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/hospitality.html",
 					},
 				},
 				Departments = new List<Department> {
@@ -1995,7 +2430,7 @@ namespace CocoMaps.Shared
 				HasBikeRack = false,
 				HasInfoKiosk = false,
 				HasParkingLot = false,
-				HasAccessibility = false,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.459295797802504, -73.63932028412819),
 					new Position (45.45925675990571, -73.63921903073788),
@@ -2013,7 +2448,22 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "campus Centre",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+					new Service {
+						Name = "Food Services",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/campus-life/residences/admissions/meal-plan.html",
+					},
+					new Service {
+						Name = "Cafeteria",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+					new Service {
+						Name = "CafÃ©",
 						RoomNumber = "room",
 						URI = "uri",
 					},
@@ -2133,7 +2583,7 @@ namespace CocoMaps.Shared
 				HasBikeRack = false,
 				HasInfoKiosk = false,
 				HasParkingLot = false,
-				HasAccessibility = false,
+				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
 					new Position (45.4582060188911, -73.64157870411873),
 					new Position (45.458193789918894, -73.64154785871506),
@@ -2179,16 +2629,65 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Science College",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/artsci/science-college",
+					},
+					new Service {
+						Name = "science Technical Centre",
+						RoomNumber = "room",
+						URI = "http://concordia.ca/content/concordia/en/artsci/services/technical-centre.html",
+					},
+					new Service {
+						Name = "Animal Care Facilities",
 						RoomNumber = "room",
 						URI = "uri",
 					},
+					new Service {
+						Name = "Security Office",
+						RoomNumber = "room",
+						URI = "uri",
+					},
+					new Service {
+						Name = "CafÃ©",
+						RoomNumber = "room",
+						URI = "uri",
+					}
+
 				},
 				Departments = new List<Department> {
 					new Department {
-						Name = "name",
-						URI = "uri"
-					}
+						Name = "Psychology",
+						URI = "http://psychology.concordia.ca"
+					},
+					new Department {
+						Name = "Physics",
+						URI = "http://concordia.ca/content/concordia/en/artsci/physics"
+					},
+					new Department {
+						Name = "Biology",
+						URI = "http://concordia.ca/content/concordia/en/artsci/biology"
+					},
+					new Department {
+						Name = "Chemistry and Biochemistry",
+						URI = "http://concordia.ca/content/concordia/en/artsci/chemistry"
+					},
+					new Department {
+						Name = "Exercise Science",
+						URI = "http://concordia.ca/content/concordia/en/artsci/exercise-science"
+					},
+					new Department {
+						Name = "Centre for Biological Applications of Mass Spectrometry",
+						URI = "http://concordia.ca/content/concordia/en/research/mass-spec"
+					},
+					new Department {
+						Name = "Centre for NanoScience Research",
+						URI = "http://concordia.ca/content/concordia/en/research/nanoscience"
+					},
+					new Department {
+						Name = "Center for Studies in Behavioral Neurobiology",
+						URI = "http://concordia.ca/content/concordia/en/research/neuroscience"
+					},
 				}
 			};
 			LOY.Buildings.Add (SP);
@@ -2202,7 +2701,7 @@ namespace CocoMaps.Shared
 				HasAtm = false,
 				HasBikeRack = false,
 				HasInfoKiosk = false,
-				HasParkingLot = false,
+				HasParkingLot = true,
 				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
 					new Position (45.46007984236839, -73.64090614020824),
@@ -2234,7 +2733,7 @@ namespace CocoMaps.Shared
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45880618, -73.63862693),
 				HasAtm = false,
-				HasBikeRack = false,
+				HasBikeRack = true,
 				HasInfoKiosk = false,
 				HasParkingLot = false,
 				HasAccessibility = false,
@@ -2263,15 +2762,15 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Library",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://library.concordia.ca/index.php",
 					},
 				},
 				Departments = new List<Department> {
 					new Department {
-						Name = "name",
-						URI = "uri"
+						Name = "Applied Human Sciences",
+						URI = "http://ahsc.concordia.ca"
 					}
 				}
 			};
@@ -2317,9 +2816,9 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "name",
+						Name = "Library",
 						RoomNumber = "room",
-						URI = "uri",
+						URI = "http://concordia.ca/content/concordia/en/library",
 					},
 				},
 				Departments = new List<Department> {
