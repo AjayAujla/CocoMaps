@@ -29,6 +29,14 @@ namespace CocoMaps.Shared
 			this.Children.Add (ThursdayShuttle);
 			this.Children.Add (FridayShuttle);
 
+			InitializeTabOnCurrentWeekday ();
+		}
+
+		/*
+		 * 	Initialize the shuttle bus schedule page on the tab corresponding to the current (or upcoming) week day
+		 */
+		public void InitializeTabOnCurrentWeekday ()
+		{
 			int dayOfWeek = (int)DateTime.Now.DayOfWeek - 1;
 			// Checks if the current day falls on the weekend and changes it to Monday.
 			if (dayOfWeek == 6 || dayOfWeek == 7)

@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using Xamarin.Forms;
 
 using CocoMaps.Models;
 using CocoMaps.Shared.ViewModels;
-using System.Collections.Generic;
 
 namespace CocoMaps.Shared
 {
@@ -13,7 +13,7 @@ namespace CocoMaps.Shared
 		private Grid headers;
 		private Grid schedule;
 
-		public ShuttleBus (IMenuOptions menuItem, string pageName)
+		public ShuttleBus (IMenuOptions menuItem, String pageName)
 		{
 			var viewModel = new MasterViewModel ();
 			this.BindingContext = viewModel;
@@ -79,8 +79,7 @@ namespace CocoMaps.Shared
 				},
 			};
 
-			RetrieveSchedule ();
-			PopulateScheduleWithTimes ("SGW");
+			PopulateDepartures (pageName);
 
 			// Building the interface
 			this.Padding = new Thickness (10, Device.OnPlatform (20, 20, 0), 10, 5);
@@ -96,27 +95,39 @@ namespace CocoMaps.Shared
 			};
 		}
 
-		public /*async*/ void RetrieveSchedule ()
+		/*	
+		 * 	Populate list of departures the currently selected tab
+		 */
+		public void PopulateDepartures (String pageName)
 		{
-			Console.WriteLine ("Before getSchedule");
-			//List<String> LOYSchedule = /*await*/ RequestShuttleBusSchedule.getInstance.getLOYSchedule ();
-			Console.WriteLine ("After getSchedule");
+			RequestShuttleBusSchedule shuttleBusSchedule = RequestShuttleBusSchedule.getInstance;
+
+			if (pageName != "Friday") {
+				PopulateDayDepartures (pageName, shuttleBusSchedule.NonFridayLOYDepartures, shuttleBusSchedule.NonFridaySGWDepartures);
+			}
+			if (pageName == "Friday") {
+				PopulateDayDepartures (pageName, shuttleBusSchedule.FridayLOYDepartures, shuttleBusSchedule.FridaySGWDepartures);
+			}
 		}
 
-		public void PopulateFridayLOYDepartures ()
+		/*
+		 * 	Populate list of departures for both campuses
+		 */
+		public void PopulateDayDepartures (String pageName, List<String> LOYdepartures, List<String> SGWdepartures)
 		{
-			PopulateScheduleWithTimes ("LOY", RequestShuttleBusSchedule.getInstance.FridayLOYDepartures);
-		}
+			int maximumRows = LOYdepartures.Count > SGWdepartures.Count ? LOYdepartures.Count : SGWdepartures.Count;
+			int row = 0;
 
-		public void PopulateScheduleWithTimes (string campus, List<String> departures)
-		{
-			//RequestShuttleBusSchedule.getInstance.NonFridayLOYDepartures;
-			//RequestShuttleBusSchedule.getInstance.NonFridaySGWDepartures;
-			//RequestShuttleBusSchedule.getInstance.FridaySGWDepartures;
+			for (int i = 0; i < maximumRows; ++i) {
 
-			DateTime times = DateTime.Now;
+				DateTime LOYtime = Convert.ToDateTime (LOYdepartures [i]);
+				DateTime SGWtime = Convert.ToDateTime (LOYdepartures [i]);
+				TimeSpan now = DateTime.Now.TimeOfDay;
 
-			for (int i = 2; i < 50; ++i) {
+				// Skipping this iteration to display the departure time if departure time has already passed current time
+				if (LOYtime.TimeOfDay < now && SGWtime.TimeOfDay < now) {
+					continue;
+				}
 
 				this.schedule.RowDefinitions.Add (
 					new RowDefinition { 
@@ -124,39 +135,42 @@ namespace CocoMaps.Shared
 					}
 				);
 
-				Label time = new Label {
-					Text = times.ToShortTimeString (),
+				Label LOYTimeLabel = new Label {
+					Text = LOYdepartures [i],
 					FontAttributes = FontAttributes.Bold,
 					HorizontalOptions = LayoutOptions.Center,
 					VerticalOptions = LayoutOptions.Center,
 				};
 
-				TimeSpan now = DateTime.Now.TimeOfDay;
+				Label SGWTimeLabel = new Label {
+					Text = SGWdepartures [i],
+					FontAttributes = FontAttributes.Bold,
+					HorizontalOptions = LayoutOptions.Center,
+					VerticalOptions = LayoutOptions.Center,
+				};
+
 				TimeSpan end = new TimeSpan (now.Hours + 1, now.Minutes, 0);
 
-				if (times.TimeOfDay >= now && times.TimeOfDay < end) {
-					time.TextColor = Color.Blue;
+				// Highlighting next upcoming departures within the hour
+				if (pageName == DateTime.Now.DayOfWeek.ToString ()) {
+					if (LOYtime.TimeOfDay >= now && LOYtime.TimeOfDay < end) {
+						LOYTimeLabel.TextColor = Color.Blue;
+					}
+					if (SGWtime.TimeOfDay >= now && SGWtime.TimeOfDay < end) {
+						SGWTimeLabel.TextColor = Color.Blue;
+					}
 				}
 
-				times = times.AddMinutes (15);
+				LOYTimeLabel.SetValue (Grid.RowProperty, row);
+				LOYTimeLabel.SetValue (Grid.ColumnProperty, 0);
+				this.schedule.Children.Add (LOYTimeLabel);
 
-				time.SetValue (Grid.RowProperty, i);
-				switch (campus) {
-				case "LOY":
-					time.SetValue (Grid.ColumnProperty, 0);
-					break;
-				case "SGW":
-					time.SetValue (Grid.ColumnProperty, 1);
-					break;
-				}
+				SGWTimeLabel.SetValue (Grid.RowProperty, row);
+				SGWTimeLabel.SetValue (Grid.ColumnProperty, 1);
+				this.schedule.Children.Add (SGWTimeLabel);
 
-				this.schedule.Children.Add (time);
+				++row;
 			}
-		}
-
-		public void HighlightNextDepartures ()
-		{
-			//time.BackgroundColor = Color.FromRgb (220, 220, 220);
 		}
 	}
 }

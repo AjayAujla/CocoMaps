@@ -57,8 +57,8 @@ namespace CocoMaps.Shared
 			"21:10",
 			"21:35",
 			"22:00",
-			"22:30",
-			"23:00"
+			"22:00",
+			"23:30"
 		};
 		public List<String> NonFridaySGWDepartures = new List <String> {
 			"7:45",
@@ -169,107 +169,6 @@ namespace CocoMaps.Shared
 			"19:15",
 			"19:45"
 		};
-
-		public /*async Task*/List<String> getLOYSchedule ()
-		{
-			//String uri = "https://www.concordia.ca/maps/shuttle-bus.html";
-			//HtmlDocument doc = await (new HtmlWeb ()).LoadFromWebAsync (uri);
-
-			HtmlDocument doc = new HtmlDocument ();
-			string filePath = "C:\\Users\\Ajayveer Singh Aujla\\Desktop\\SB.html";
-			doc.Load (new MemoryStream (Encoding.UTF8.GetBytes (filePath)));
-
-			StreamWriter sw = new StreamWriter ("C:\\a.html");
-			doc.Save (sw);
-			sw.Close ();
-
-			/*
-			HtmlDocument doc = new HtmlDocument ();
-			HttpClient client = new HttpClient ();
-			HttpResponseMessage response = client.GetAsync (uri).Result;
-			response.EnsureSuccessStatusCode ();
-			string responseBody = response.Content.ReadAsStringAsync ().Result;
-			doc.LoadHtml (responseBody);
-			*/
-
-			//HtmlWeb web = new HtmlWeb ();
-			//HtmlDocument doc = async web.LoadFromWebAsync (uri);
-
-			var node = doc.DocumentNode.Descendants ("div").Where (d => d.Attributes.Contains ("class") && d.Attributes ["class"].Value.Contains ("concordia-table   horizontalLines verticalLines table-striped"));
-
-
-			var table1 = doc.DocumentNode.DescendantsAndSelf ();
-			var tableDiv = doc.DocumentNode.DescendantsAndSelf ("table");
-			var tableConu = doc.DocumentNode.DescendantsAndSelf ("div").Where (d => d.Attributes ["class"] != null && d.Attributes ["class"].Value == "concordia-table   horizontalLines verticalLines table-striped");
-			var tableDivConu = doc.DocumentNode.DescendantsAndSelf ("div").Where (d => d.Attributes ["class"] != null);
-
-
-			Console.WriteLine ("node.Count () " + node.Count ());
-			Console.WriteLine ("table1.Count () " + table1.Count ());
-			Console.WriteLine ("tableDiv.Count () " + tableDiv.Count ());
-			Console.WriteLine ("tableConu.Count () " + tableConu.Count ());
-			Console.WriteLine ("tableDivConu.Count () " + tableDivConu.Count ());
-
-			foreach (HtmlNode n in table1) {
-				//Console.WriteLine ("n.InnerText " + n.Attributes ["class"].Value);
-			}
-			foreach (var m in tableDiv) {
-				//Console.WriteLine ("m.InnerText " + m.Attributes ["value"].Value);
-			}
-
-
-
-
-
-
-
-
-
-
-
-			var mondayToThursdayTable1 = doc.DocumentNode.Descendants ("div").Where (d => d.Attributes ["class"] != null && d.Attributes ["class"].Value == "concordia-table   horizontalLines verticalLines table-striped");
-			var mondayToThursdayTable2 = doc.DocumentNode.Descendants ("div").Where (d => d.Attributes ["class"] != null && d.Attributes ["class"].Value == "concordia-table   horizontalLines verticalLines table-striped");
-			//var fridayTable = doc.DocumentNode.Descendants ("div");//.Where (d => d.Attributes ["class"].Value == "concordia-table   horizontalLines verticalLines table-striped");
-
-			var fridayTable = from div in doc.DocumentNode.Descendants ("div").Where (div => div.Attributes ["class"].Value == "concordia-table   horizontalLines verticalLines table-striped")
-			                  select div;
-
-			var table = doc.DocumentNode.Descendants ();//.Where (o => o.Attributes ["class"] != null && o.Attributes ["class"].Value.Contains ("concordia-table"));
-			//HtmlNodeCollection rows = doc.DocumentNode.Descendants ("tr");
-			//HtmlNodeCollection headers = rows [0].Descendants ("th");
-
-			Console.WriteLine ("fridayTable.ElementAt(0) " + fridayTable.Count ());
-
-			List<String> LOYtimes = new List<String> (0);
-			List<String> SGWtimes = new List<String> (0);
-			Console.WriteLine ("LOYtimes.Count " + LOYtimes.Count);
-			Console.WriteLine ("SGWtimes.Count " + SGWtimes.Count);
-
-
-			if (table != null) {
-				foreach (var cell in table) {
-					LOYtimes.Add (cell.InnerText);
-					SGWtimes.Add (cell.InnerText);
-
-					Console.WriteLine ("LOYtimes.Count " + LOYtimes.Count);
-					Console.WriteLine ("SGWtimes.Count " + SGWtimes.Count);
-				}
-			}
-
-			/*
-			for (int i = 0; i < rows.Count; ++i) {
-				HtmlNodeCollection columns = rows [i].Descendants ("td");
-
-				LOYtimes.Add (columns [0].InnerHtml);
-				SGWtimes.Add (columns [1].InnerText);
-
-				Console.WriteLine (LOYtimes [i]);
-				Console.WriteLine (SGWtimes [i]);
-			}
-			*/
-
-			return new List<String> { "11:45" };
-		}
 
 		RequestShuttleBusSchedule ()
 		{
