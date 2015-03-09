@@ -2,15 +2,24 @@
 using CocoMaps.Models;
 using CocoMaps.Shared.ViewModels;
 using Xamarin.Forms;
+using Android.Gms.Maps.Model;
 
 namespace CocoMaps.Shared
 {
 	public class Settings : ContentPage
 	{
 
+		// TIP: Use this page for DIY: http://iosapi.xamarin.com/?link=T%3aXamarin.Forms.Cell
+		// TO-DO: Save user's preferences in a file on his device
+
 		static public TravelMode TravelMode = TravelMode.walking;
+
 		static public bool useDeviceMap = false;
+
 		static public int poiRadius = 800;
+
+		// as set by Google's API
+		int poiRadiusLimit = 50000;
 
 		public Settings (IMenuOptions menuItem)
 		{
@@ -42,8 +51,14 @@ namespace CocoMaps.Shared
 
 			poiRadiusCell.Completed += (sender, e) => {
 				int radius;
-				if (Int32.TryParse (poiRadiusCell.Text, out radius))
-					poiRadius = radius;
+				if (Int32.TryParse (poiRadiusCell.Text, out radius)) {
+					if (radius > 0 && radius < poiRadiusLimit)
+						poiRadius = radius;
+					else {
+						DisplayAlert ("Heads Up!", "Maximum radius is 50,000 meters", "OK");
+					}
+				}
+				poiRadiusCell.Text = poiRadius.ToString ();
 				Console.WriteLine ("Points of Interest Radius: " + poiRadius);
 			};
 
