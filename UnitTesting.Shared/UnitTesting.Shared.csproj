@@ -34,7 +34,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Test.cs" />
+    <Compile Include="BuildingTest.cs" />
+    <Compile Include="CalendarModelTest.cs" />
+    <Compile Include="CampusTest.cs" />
+    <Compile Include="DepartmentTest.cs" />
+    <Compile Include="ServiceTest.cs" />
   </ItemGroup>
   <Import Project="..\CocoMaps.Shared\CocoMaps.Shared.projitems" Label="Shared" Condition="Exists('..\CocoMaps.Shared\CocoMaps.Shared.projitems')" />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
