@@ -25,6 +25,7 @@ namespace CocoMaps.Shared
 				Code = "SGW",
 				Name = "Sir George Williams",
 				Address = "1455 De Maisonneuve Blvd. W.",
+				Position = Campus.SGWPosition,
 				Buildings = new List<Building> ()
 			};
 			CampusList.Add (SGW);
@@ -33,6 +34,7 @@ namespace CocoMaps.Shared
 				Code = "LOY",
 				Name = "Loyola",
 				Address = "7141 Sherbrooke Street W.",
+				Position = Campus.LOYPosition,
 				Buildings = new List<Building> ()
 
 			};

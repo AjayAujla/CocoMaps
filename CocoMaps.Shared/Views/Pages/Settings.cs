@@ -9,17 +9,18 @@ namespace CocoMaps.Shared
 	public class Settings : ContentPage
 	{
 
-		// TIP: Use this page for DIY: http://iosapi.xamarin.com/?link=T%3aXamarin.Forms.Cell
+		// TIP: Use this page for DIY -> http://iosapi.xamarin.com/?link=T%3aXamarin.Forms.Cell
 		// TO-DO: Save user's preferences in a file on his device
 
 		static public TravelMode TravelMode = TravelMode.walking;
 
-		static public bool useDeviceMap = false;
+		static public bool useDeviceMap;
 
 		static public int poiRadius = 800;
 
-		// as set by Google's API
-		int poiRadiusLimit = 50000;
+		// Google's API Radius Limit is 50,000 meters
+		// We restrict our app to 5,000 meters
+		const int POI_RADIUS_LIMIT = 5000;
 
 		public Settings (IMenuOptions menuItem)
 		{
@@ -31,7 +32,7 @@ namespace CocoMaps.Shared
 			SetValue (Page.IconProperty, menuItem.Icon);
 
 
-			SwitchCell useGoogleMapsCell = new SwitchCell {
+			var useGoogleMapsCell = new SwitchCell {
 				Text = "Use Google Maps App"
 			};
 
@@ -42,7 +43,7 @@ namespace CocoMaps.Shared
 			};
 
 
-			EntryCell poiRadiusCell = new EntryCell {
+			var poiRadiusCell = new EntryCell {
 				Label = "Points of Interest Radius:",
 				Placeholder = "meters",
 				Text = poiRadius.ToString (),
@@ -52,11 +53,12 @@ namespace CocoMaps.Shared
 			poiRadiusCell.Completed += (sender, e) => {
 				int radius;
 				if (Int32.TryParse (poiRadiusCell.Text, out radius)) {
-					if (radius > 0 && radius < poiRadiusLimit)
+					if (radius <= 0) // negative value
+						DisplayAlert ("Heads Up!", "Radius can't be negative or zero...", "OK");
+					else if (radius > 0 && radius < POI_RADIUS_LIMIT) // valid range
 						poiRadius = radius;
-					else {
-						DisplayAlert ("Heads Up!", "Maximum radius is 50,000 meters", "OK");
-					}
+					else // greater than 50,000 meters
+						DisplayAlert ("Heads Up!", "Maximum radius is " + POI_RADIUS_LIMIT + " meters", "OK");
 				}
 				poiRadiusCell.Text = poiRadius.ToString ();
 				Console.WriteLine ("Points of Interest Radius: " + poiRadius);
@@ -73,48 +75,9 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-		}
-	}
-}
 
-//						new TextCell {
-//							Text = "TextCell Text",
-//							Detail = "TextCell Detail"
-//						},
-//						new ImageCell {
-//							Text = "ImageCell Text",
-//							Detail = "ImageCell Detail",
-//							ImageSource = "http://xamarin.com/images/index/ide-xamarin-studio.png"
-//						},
-//						new EntryCell {
-//							Label = "EntryCell:",
-//							Placeholder = "default keyboard",
-//							Keyboard = Keyboard.Default
-//						}
-//					},
-//					new TableSection ("Section 2 Title") {
-//						new EntryCell {
-//							Label = "Another EntryCell:",
-//							Placeholder = "phone keyboard",
-//							Keyboard = Keyboard.Telephone
-//						},
-//						new SwitchCell {
-//							Text = "SwitchCell:"
-//						},
-//						new ViewCell {
-//							View = new StackLayout {
-//								Orientation = StackOrientation.Horizontal,
-//								Children = {
-//									new Label {
-//										Text = "Custom Slider View:"
-//									},
-//									new Slider {
-//										Minimum = 0,
-//										Maximum = 100
-//									}
-//								}
-//							}
-//						}
-//					}
-//				}
-//			};
+		}
+
+	}
+
+}

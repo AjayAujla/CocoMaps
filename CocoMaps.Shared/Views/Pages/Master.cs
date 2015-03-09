@@ -22,8 +22,6 @@ namespace CocoMaps.Shared
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
 
-			PlacesRepository placesRepo = PlacesRepository.getInstance;
-
 			SetValue (Page.TitleProperty, "CocoMaps");
 			SetValue (Page.IconProperty, menuItem.Icon);
 
@@ -69,23 +67,21 @@ namespace CocoMaps.Shared
 			LOYButton.Clicked += HandleCampusRegionButton;
 			checkNetworkButton.Clicked += TestStuff;
 
-			NextButton.Clicked += async (sender, e) => {
-				string start = "7141 Sherbrooke Street W. Montreal QC";
-				string dest = "1455 De Maisonneuve Blvd. W. Montreal QC";
-
-				RequestDirections directionsRequest = RequestDirections.getInstance;
-
-				Directions directions = await directionsRequest.getDirections (start, dest, TravelMode.walking);
-
-			};
+//			NextButton.Clicked += async (sender, e) => {
+//				string start = "7141 Sherbrooke Street W. Montreal QC";
+//				string dest = "1455 De Maisonneuve Blvd. W. Montreal QC";
+//
+//				RequestDirections directionsRequest = RequestDirections.getInstance;
+//
+//				Directions directions = await directionsRequest.getDirections (start, dest, TravelMode.walking);
+//
+//			};
 
 			searchBar.PropertyChanged += HandleFocusChange;
 			searchBar.TextChanged += HandleTextChanged;
 
 			mainLayout = new RelativeLayout {
-				BackgroundColor = Color.Transparent,
-				WidthRequest = App.ScreenSize.Width,
-				HeightRequest = App.ScreenSize.Height - 48
+				BackgroundColor = Color.Transparent
 			};
 
 			DependencyService.Get<INetwork> ().ReachabilityChanged += obj => {
@@ -99,15 +95,18 @@ namespace CocoMaps.Shared
 				}
 			};
 
-			testButton.Clicked += (sender, e) => {
-				DependencyService.Get<IPhoneService> ().LaunchNavigationAsync (
-					new NavigationModel () { 
-						Latitude = Campus.SGWPosition.Latitude,
-						Longitude = Campus.SGWPosition.Longitude,
-						DestinationAddress = "1455 De Maisonneuve Blvd. W.",
-						DestinationName = "SGW Campus"
-					});
-			};
+//			testButton.Clicked += (sender, e) => {
+//				DependencyService.Get<IPhoneService> ().LaunchNavigationAsync (
+//					new NavigationModel () { 
+//						Latitude = Campus.SGWPosition.Latitude,
+//						Longitude = Campus.SGWPosition.Longitude,
+//						DestinationAddress = "1455 De Maisonneuve Blvd. W.",
+//						DestinationName = "SGW Campus"
+//					});
+//			};
+
+			testButton.Clicked += TestStuff;
+
 
 			LoaderViewModel loader = LoaderViewModel.getInstance;
 			//loader.Show ();
@@ -131,6 +130,10 @@ namespace CocoMaps.Shared
 			mainLayout.Children.Add (detailsLayout, Constraint.Constant (0), Constraint.RelativeToParent (parent => Height));
 
 			mainLayout.Children.Add (testButton, Constraint.Constant (50), Constraint.Constant (50));
+
+			Console.WriteLine ("ID IS: " + NextButton.Id);
+
+		
 
 			//mainLayout.Children.Add (picker, Constraint.Constant (100), Constraint.Constant (100));
 
@@ -166,7 +169,27 @@ namespace CocoMaps.Shared
 
 		async void TestStuff (object sender, EventArgs e)
 		{
-			await DisplayAlert ("Network Status:", App.isConnected ().ToString (), "Whatever");
+//			PlacesRepository placesRepo = PlacesRepository.getInstance;
+//
+//			foreach (List<Result> list in placesRepo.POIsHolder.Values) {
+//				foreach (Result res in list) {
+//
+//					Console.WriteLine (res.name);
+//					Console.WriteLine (res.id);
+//					Console.WriteLine (res.icon);
+//					Console.WriteLine (res.geometry.location.lat + "x" + res.geometry.location.lng);
+//				}
+//			}
+			//await DisplayAlert ("Network Status:", App.isConnected ().ToString (), "Whatever");
+
+			const string start = "7141 Sherbrooke Street W. Montreal QC";
+			const string dest = "1455 De Maisonneuve Blvd. W. Montreal QC";
+			RequestDirections directionsRequest = RequestDirections.getInstance;
+
+			Directions directions = await directionsRequest.getDirections (start, dest, TravelMode.walking);
+
+			DependencyService.Get<IMapManager> ().getDirectionsToClass (map, directions);
+
 		}
 
 		void HandleCampusRegionButton (object sender, EventArgs e)

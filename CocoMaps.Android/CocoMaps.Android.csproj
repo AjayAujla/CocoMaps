@@ -126,6 +126,7 @@
     <Compile Include="Files\PhoneService.cs" />
     <Compile Include="Files\ObjectExtensions.cs" />
     <Compile Include="Renderers\ImageButtonRenderer.cs" />
+    <Compile Include="Files\MapManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -157,7 +158,6 @@
     <AndroidResource Include="Resources\drawable\buildingCodeIcon.png" />
     <AndroidResource Include="Resources\drawable\splashscreen.xml" />
     <AndroidResource Include="Resources\drawable\splash.png" />
-    <AndroidResource Include="Resources\drawable\CarWashMapIcon.png" />
     <AndroidResource Include="Resources\drawable\concordia_logo.png" />
     <AndroidResource Include="Resources\drawable\driving.png" />
     <AndroidResource Include="Resources\drawable\hasaccessibility.png" />
@@ -230,6 +230,8 @@
     <AndroidResource Include="Resources\drawable\building_h.jpeg" />
     <AndroidResource Include="Resources\drawable\button_buildings_toggle.png" />
     <AndroidResource Include="Resources\drawable\button_directions_toggle.png" />
+    <AndroidResource Include="Resources\drawable\map_end_icon.png" />
+    <AndroidResource Include="Resources\drawable\map_start_icon.png" />
   </ItemGroup>
   <Import Project="..\CocoMaps.Shared\CocoMaps.Shared.projitems" Label="Shared" Condition="Exists('..\CocoMaps.Shared\CocoMaps.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
@@ -241,9 +243,6 @@
     <Folder Include="Renderers\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
     <Folder Include="Files\" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\CarWashMapIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamarin.auth">

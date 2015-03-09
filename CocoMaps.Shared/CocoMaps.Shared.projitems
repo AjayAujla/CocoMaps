@@ -58,6 +58,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\NavigationModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ImageButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Settings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Maps\IMapManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
