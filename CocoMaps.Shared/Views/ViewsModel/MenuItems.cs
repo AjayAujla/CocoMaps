@@ -15,7 +15,7 @@ namespace CocoMaps.Models
 		public override string Icon { get { return "locationIcon.png"; } }
 
 		public override int MenuNum { get { return 1; } }
-	} 
+	}
 
 	public class Campus_MenuOption : IMenuOptions
 	{
@@ -61,7 +61,7 @@ namespace CocoMaps.Models
 		public override string Icon { get { return "buildingIcon.png"; } }
 
 		public override int MenuNum { get { return 6; } }
-	} 
+	}
 
 	public class iDirections_MenuOption : IMenuOptions
 	{
@@ -115,4 +115,3 @@ namespace CocoMaps.Models
 	}
 		
 }
-

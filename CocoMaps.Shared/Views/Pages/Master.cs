@@ -17,14 +17,6 @@ namespace CocoMaps.Shared
 			TextColor = Color.White
 		};
 
-		Dictionary<string, TravelMode> travelMode = new Dictionary<string, TravelMode> {
-			{ "Walking", TravelMode.walking },
-			{ "Bicycling", TravelMode.bicycling },
-			{ "Shuttle", TravelMode.shuttle },
-			{ "Transit", TravelMode.transit },
-			{ "Driving", TravelMode.driving }
-		};
-
 		public MasterPage (IMenuOptions menuItem)
 		{
 			var viewModel = new MasterViewModel ();
@@ -34,11 +26,8 @@ namespace CocoMaps.Shared
 			SetValue (Page.TitleProperty, "CocoMaps");
 			SetValue (Page.IconProperty, menuItem.Icon);
 
-			map = new ConcordiaMap {
-				IsShowingUser = true,
-				HeightRequest = App.ScreenSize.Height - App.StatusBarHeight - 48,  // 48 is maroon top bar's height
-				WidthRequest = App.ScreenSize.Width
-			};
+			map = ConcordiaMap.getInstance;
+			map.IsShowingUser = true;
 
 			var SGWButton = new Button {
 				Text = "SGW",
@@ -126,7 +115,12 @@ namespace CocoMaps.Shared
 
 			Console.WriteLine (mainLayout.Width + " x " + mainLayout.Height + ", " + mainLayout.WidthRequest + " x " + mainLayout.HeightRequest);
 
-			mainLayout.Children.Add (map, Constraint.Constant (0));
+			mainLayout.Children.Add (map, 
+				Constraint.Constant (0), 
+				Constraint.Constant (0), 
+				Constraint.RelativeToParent (parent => Width),
+				Constraint.RelativeToParent (parent => Height)
+			);
 			mainLayout.Children.Add (searchBar, Constraint.Constant (0));
 			mainLayout.Children.Add (loader, Constraint.RelativeToParent ((parent) => Width / 2 - loader.Width / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loader.Height / 2));
 			mainLayout.Children.Add (SGWButton, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 54));
@@ -139,7 +133,7 @@ namespace CocoMaps.Shared
 
 			//mainLayout.Children.Add (picker, Constraint.Constant (100), Constraint.Constant (100));
 
-			map.MoveToRegion (MapSpan.FromCenterAndRadius (Campus.SGWPosition, Xamarin.Forms.Maps.Distance.FromKilometers (0.2)));
+			map.MoveToRegion (MapSpan.FromCenterAndRadius (Campus.SGWPosition, Xamarin.Forms.Maps.Distance.FromKilometers (0.1)));
 
 			Content = mainLayout;
 
@@ -169,9 +163,9 @@ namespace CocoMaps.Shared
 			}
 		}
 
-		void TestStuff (object sender, EventArgs e)
+		async void TestStuff (object sender, EventArgs e)
 		{
-			DisplayAlert ("Network Status:", App.isConnected ().ToString (), "Dismiss");
+			await DisplayAlert ("Network Status:", App.isConnected ().ToString (), "Whatever");
 		}
 
 		void HandleCampusRegionButton (object sender, EventArgs e)
@@ -188,4 +182,5 @@ namespace CocoMaps.Shared
 		}
 
 	}
+
 }

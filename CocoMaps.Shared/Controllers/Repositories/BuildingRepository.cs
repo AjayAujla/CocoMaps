@@ -2,6 +2,7 @@
 using CocoMaps.Shared;
 using System.Collections.Generic;
 using Xamarin.Forms.Maps;
+using Android.Gms.Maps.Model;
 
 namespace CocoMaps.Shared
 {
@@ -18,7 +19,7 @@ namespace CocoMaps.Shared
 			}
 		}
 
-		private BuildingRepository ()
+		BuildingRepository ()
 		{
 			Campus SGW = new Campus () {
 				Code = "SGW",
@@ -49,7 +50,7 @@ namespace CocoMaps.Shared
 				Name = "B",
 				Campus = SGW,
 				Address = "2160 Bishop",
-				Position = new Position (45.4978008,-73.57955262),
+				Position = new Position (45.4978008, -73.57955262),
 				HasAtm = false,
 				HasBikeRack = false,
 				HasInfoKiosk = false,
@@ -466,7 +467,7 @@ namespace CocoMaps.Shared
 				Name = "FG",
 				Campus = SGW,
 				Address = "1616 St. Catherine W.",
-				Position = new Position (45.49386382,-73.57871711),
+				Position = new Position (45.49386382, -73.57871711),
 				HasAtm = true,
 				HasBikeRack = false,
 				HasInfoKiosk = false,
@@ -1373,7 +1374,7 @@ namespace CocoMaps.Shared
 				Name = "V",
 				Campus = SGW,
 				Address = "2110 Mackay",
-				Position = new Position (45.49702151,-73.57995696),
+				Position = new Position (45.49702151, -73.57995696),
 				HasAtm = false,
 				HasBikeRack = false,
 				HasInfoKiosk = false,
@@ -2578,7 +2579,7 @@ namespace CocoMaps.Shared
 				Name = "Richard J. Renaud Science Complex",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
-				Position = new Position (45.45777894,-73.64159614),
+				Position = new Position (45.45777894, -73.64159614),
 				HasAtm = false,
 				HasBikeRack = false,
 				HasInfoKiosk = false,
@@ -2839,10 +2840,18 @@ namespace CocoMaps.Shared
 
 		public Campus GetCampusByCode (string code)
 		{
-			foreach (Campus c in CampusList) {
+			foreach (Campus c in CampusList)
 				if (c.Code.Equals (code))
 					return c;
-			}
+			return null;
+		}
+
+		public Building GetBuildingByCode (string code)
+		{
+			foreach (Campus c in CampusList)
+				foreach (Building b in c.Buildings)
+					if (b.Code.Equals (code))
+						return b;
 			return null;
 		}
 	}

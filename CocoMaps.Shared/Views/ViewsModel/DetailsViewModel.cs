@@ -1,16 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
 using CocoMaps.Shared;
-using System.Runtime.InteropServices;
-using Android.Content.Res;
-using Android.Gms.Identity.Intents;
-
-
-using System.ComponentModel.Design.Serialization;
-
-
-using Android.Gms.Drive;
-using Android.Views;
 
 namespace CocoMaps.Shared
 {
@@ -24,6 +14,7 @@ namespace CocoMaps.Shared
 			Hidden
 		}
 
+		ConcordiaMap _concordiaMap = ConcordiaMap.getInstance;
 
 		static DetailsViewModel instance;
 		static ViewState viewState;
@@ -84,6 +75,12 @@ namespace CocoMaps.Shared
 			Spacing = 5
 		};
 
+		StackLayout actionImageButtons = new StackLayout {
+			Orientation = StackOrientation.Horizontal,
+			Spacing = 15,
+			HorizontalOptions = LayoutOptions.CenterAndExpand
+		};
+
 		Image toggleButton = new Image {
 			BackgroundColor = Color.Transparent,
 			Source = ImageSource.FromFile ("button_details_toggle.png"),
@@ -128,6 +125,12 @@ namespace CocoMaps.Shared
 			_minimizedFooterY = _pageHeight - minimizedFooterHeight;
 			_expandedFooterY = _pageHeight - expandedFooterHeight;
 			viewState = ViewState.Hidden;
+
+			var shareImageButton = CreateImageButton ("share_icon.png", "Share", (view, o) => {
+				var selectedbuilding = _concordiaMap.SelectedBuilding;
+				var text = string.Format ("I am playing vball at {0}, {1}.", selectedbuilding.Code, selectedbuilding.Address);
+				DependencyService.Get<IPhoneService> ().ShareText (text);
+			});
 
 			instance.Children.Add (title, 
 				Constraint.Constant (14),
@@ -218,7 +221,7 @@ namespace CocoMaps.Shared
 			toggleButton.Source = ImageSource.FromFile ("button_buildings_toggle.png");
 
 			list.Root.Clear ();
-			if (building.Services != null) {
+			if (building.Services != null && building.Services.Count > 0) {
 				foreach (Service service in building.Services) {
 
 					list.Root.Add (new TableSection {
@@ -286,6 +289,77 @@ namespace CocoMaps.Shared
 			} else if (viewState == ViewState.Expanded) {
 				Minimize ();
 			}
+		}
+
+		ContentView CreateImageButton (string buttonImage, string buttonText, Action<View, Object> tappedCallback)
+		{
+			var grid = new Grid {
+				RowDefinitions = new RowDefinitionCollection {
+					new RowDefinition {
+						Height = new GridLength (0.12, GridUnitType.Star)
+					},
+					new RowDefinition {
+						Height = new GridLength (0.38, GridUnitType.Star)
+					},
+					new RowDefinition {
+						Height = new GridLength (0.4, GridUnitType.Star)
+					},
+					new RowDefinition {
+						Height = new GridLength (0.1, GridUnitType.Star)
+					},
+				},
+				ColumnDefinitions = new ColumnDefinitionCollection {
+					new ColumnDefinition {
+						Width = new GridLength (1, GridUnitType.Star)
+					},
+
+				},
+				BackgroundColor = Color.White,
+				HorizontalOptions = LayoutOptions.Center,
+				RowSpacing = 0
+			};
+
+			var navImageGrid = new Grid {
+				RowDefinitions = new RowDefinitionCollection {
+					new RowDefinition {
+						Height = new GridLength (1, GridUnitType.Star)
+					}
+				},
+				ColumnDefinitions = new ColumnDefinitionCollection {
+					new ColumnDefinition {
+						Width = new GridLength (0.28, GridUnitType.Star)
+					},
+					new ColumnDefinition {
+						Width = new GridLength (0.44, GridUnitType.Star)
+					},
+					new ColumnDefinition {
+						Width = new GridLength (0.28, GridUnitType.Star)
+					},
+
+				}
+			};
+
+			var navImage = new Image () {
+				Source = ImageSource.FromFile (buttonImage),
+				Aspect = Aspect.Fill,
+				HorizontalOptions = LayoutOptions.Center
+			};
+
+			grid.GestureRecognizers.Add (new TapGestureRecognizer (tappedCallback));
+
+			navImageGrid.Children.Add (navImage, 1, 0);
+
+			var label = new Label {
+				Text = buttonText,
+				Font = Font.SystemFontOfSize (16),
+				TextColor = Helpers.Color.DarkBlue.ToFormsColor (),
+				HorizontalOptions = LayoutOptions.Center
+			};
+
+			grid.Children.Add (navImageGrid, 0, 1);
+			grid.Children.Add (label, 0, 2);
+
+			return new ContentView { Content = grid };
 		}
 
 	}

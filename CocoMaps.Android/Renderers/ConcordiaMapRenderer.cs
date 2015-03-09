@@ -5,6 +5,7 @@ using Xamarin.Forms.Maps.Android;
 using CocoMaps.Shared;
 using Android.Graphics;
 using Xamarin.Forms.Maps;
+using System.Runtime.CompilerServices;
 
 #pragma warning disable 618
 
@@ -15,7 +16,7 @@ namespace CocoMapsAndroid
 
 	public class ConcordiaMapRenderer : MapRenderer
 	{
-		bool _isDrawnDone;
+		bool _isDrawnDone = false;
 		string _from = "";
 		string _to = "";
 
@@ -23,24 +24,37 @@ namespace CocoMapsAndroid
 			get { return Element as ConcordiaMap; }
 		}
 
-		static void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
-		{
-			var currentMarker = e.Marker;
+		MapView _androidMapView {
+			get{ return (MapView)Control; }
+		}
 
-			DetailsViewModel.getInstance.UpdateView (e.Marker.Title);
+		BuildingRepository _buildingRepository {
+			get { return BuildingRepository.getInstance; }
+		}
+
+		DetailsViewModel _detailsLayout {
+			get { return DetailsViewModel.getInstance; }
+		}
+
+		void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
+		{
+			using (var currentMarker = e.Marker) {
+				_concordiaMap.SelectedBuilding = _buildingRepository.GetBuildingByCode (currentMarker.Title);
+				DetailsViewModel.getInstance.UpdateView (currentMarker.Title);
+			}
 		}
 
 		BitmapDescriptor GetCustomBitmapDescriptor (string text)
 		{
 			using (var paint = new Paint (PaintFlags.LinearText)) {
-				paint.Color = Android.Graphics.Color.White;
+				paint.SetStyle (Paint.Style.Fill);
+
 				paint.TextSize = 45;
 				paint.SetTypeface (Typeface.DefaultBold);
 
 				using (var bounds = new Rect ()) {
 					using (var baseBitmap = BitmapFactory.DecodeResource (Resources, CocoMaps.Android.Resource.Drawable.buildingCodeIcon)) {
 						Bitmap bitmap = baseBitmap.Copy (Bitmap.Config.Argb8888, true);
-
 						paint.GetTextBounds (text, 0, text.Length, bounds);
 
 						float x = bitmap.Width / 2.0f;
@@ -48,6 +62,9 @@ namespace CocoMapsAndroid
 
 						var canvas = new Canvas (bitmap);
 
+						//paint.Color = Android.Graphics.Color.Maroon;
+						//canvas.DrawCircle (x, y, 50, paint);
+						paint.Color = Android.Graphics.Color.White;
 						canvas.DrawText (text, x, y, paint);
 
 						BitmapDescriptor icon = BitmapDescriptorFactory.FromBitmap (bitmap);
@@ -60,7 +77,6 @@ namespace CocoMapsAndroid
 
 		public void getDirectionsToClass (Directions directions)
 		{
-			var androidMapView = (MapView)Control;
 			DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
 
 
@@ -82,8 +98,7 @@ namespace CocoMapsAndroid
 					}
 
 				}
-				androidMapView.Map.AddPolyline (polyline);
-
+				_androidMapView.Map.AddPolyline (polyline);
 
 				loader.Hide ();
 			}
@@ -93,18 +108,14 @@ namespace CocoMapsAndroid
 		{
 
 			base.OnElementPropertyChanged (sender, e);
-			var androidMapView = (MapView)Control;
-
-			BuildingRepository buildingRepo = BuildingRepository.getInstance;
-			DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
 
 			if (e.PropertyName.Equals ("VisibleRegion") && !_isDrawnDone) {
 
-				androidMapView.Map.Clear ();
-				androidMapView.Map.UiSettings.MyLocationButtonEnabled = true;
-				androidMapView.Map.UiSettings.ZoomControlsEnabled = true;
+				_androidMapView.Map.Clear ();
+				_androidMapView.Map.UiSettings.MyLocationButtonEnabled = true;
+				_androidMapView.Map.UiSettings.ZoomControlsEnabled = true;
 
-				androidMapView.Map.MapClick += (senderr, ee) => detailsLayout.Hide ();
+				_androidMapView.Map.MapClick += (senderr, ee) => _detailsLayout.Hide ();
 
 //				androidMapView.Map.MapLongClick += async (senderr, ee) => {
 //
@@ -163,7 +174,7 @@ namespace CocoMapsAndroid
 //					}
 //				};
 
-				foreach (Campus c in buildingRepo.getCampusList()) {
+				foreach (Campus c in _buildingRepository.getCampusList()) {
 
 					foreach (Building b in c.Buildings) {
 
@@ -174,7 +185,7 @@ namespace CocoMapsAndroid
 									.SetTitle (b.Code)
 									.SetSnippet (b.Name)
 									.InvokeIcon (GetCustomBitmapDescriptor (b.Code)); //BitmapDescriptorFactory.FromAsset ("CarWashMapIcon.png")
-								androidMapView.Map.AddMarker (buildingCodeMarker);
+								_androidMapView.Map.AddMarker (buildingCodeMarker);
 							}
 							polygon.InvokeFillColor (0x3F932439).InvokeStrokeColor (0x00932439).Geodesic (true);
 
@@ -182,13 +193,13 @@ namespace CocoMapsAndroid
 								polygon.Add (new LatLng (p.Latitude, p.Longitude));
 
 
-							androidMapView.Map.AddPolygon (polygon);
+							_androidMapView.Map.AddPolygon (polygon);
 
 						}
 					}
 				}
 
-				androidMapView.Map.MarkerClick += HandleMarkerClick;
+				_androidMapView.Map.MarkerClick += HandleMarkerClick;
 
 				_isDrawnDone = true;
 
@@ -196,19 +207,6 @@ namespace CocoMapsAndroid
 
 		}
 
-		void CenterOnLocation (LatLng location, int yOffset = 100)
-		{
-			var mapView = (MapView)Control;
 
-			var projection = mapView.Map.Projection;
-
-			var screenLocation = projection.ToScreenLocation (location);
-			screenLocation.Y += yOffset;
-
-			var offsetTarget = projection.FromScreenLocation (screenLocation);
-
-			// Animate to the calculated lat/lng
-			mapView.Map.AnimateCamera (CameraUpdateFactory.NewLatLng (offsetTarget));
-		}
 	}
 }
