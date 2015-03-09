@@ -2,7 +2,7 @@
 using System;
 using CocoMaps.Shared;
 
-namespace UnitTest.Shared
+namespace UnitTesting.Shared
 {
 	[TestFixture ()]
 	public class BuildingTest
