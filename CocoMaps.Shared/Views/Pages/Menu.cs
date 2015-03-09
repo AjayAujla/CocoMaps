@@ -1,14 +1,10 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using System.Collections.Generic;
-using System.Diagnostics;
 using CocoMaps.Models;
 using CocoMaps.Shared.CustomViews;
 
-
 namespace CocoMaps.Shared.Pages
 {
-
 	public class MenuPage : ContentPage
 	{
 		readonly List<IMenuOptions> OptionItems = new List<IMenuOptions> ();
@@ -25,6 +21,7 @@ namespace CocoMaps.Shared.Pages
 			OptionItems.Add (new bDirections_MenuOption ());
 			OptionItems.Add (new iDirections_MenuOption ());
 			OptionItems.Add (new Calendar_MenuOption ());
+			OptionItems.Add (new ShuttleBus_MenuOption ());
 			OptionItems.Add (new Settings_MenuOption ());
 
 			BackgroundColor = Helpers.Color.DarkGray.ToFormsColor ();

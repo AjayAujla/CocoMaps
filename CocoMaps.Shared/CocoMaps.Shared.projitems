@@ -26,7 +26,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Maps\ConcordiaMap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Maps\CustomPin.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Database\SQLite.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ConcordiaServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Master.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Menu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Root.cs" />
@@ -54,6 +53,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\NavRootPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\Enums.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\PlacesRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\ShuttleBus\RequestShuttleBussSchedule.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ConcordiaServices\ConcordiaServices.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBus\BaseShuttleBus.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBus\ShuttleBus.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -70,5 +73,8 @@
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Repositories\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\NextClass\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\ShuttleBus\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\ConcordiaServices\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBus\" />
   </ItemGroup>
 </Project>
