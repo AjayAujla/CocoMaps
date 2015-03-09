@@ -13,8 +13,6 @@ namespace CocoMaps.Shared
 		readonly ConcordiaMap map;
 		SearchBar searchBar;
 		RelativeLayout mainLayout;
-		RelativeLayout directionsLayout;
-		bool isDirections;
 		Label networkStatus = new Label {
 			TextColor = Color.White
 		};
@@ -89,7 +87,6 @@ namespace CocoMaps.Shared
 
 				Directions directions = await directionsRequest.getDirections (start, dest, TravelMode.walking);
 
-
 			};
 
 			searchBar.PropertyChanged += HandleFocusChange;
@@ -99,19 +96,6 @@ namespace CocoMaps.Shared
 				BackgroundColor = Color.Transparent,
 				WidthRequest = App.ScreenSize.Width,
 				HeightRequest = App.ScreenSize.Height - 48
-			};
-
-			directionsLayout = new RelativeLayout {
-				BackgroundColor = Helpers.Color.DarkGray.ToFormsColor (),
-				WidthRequest = App.ScreenSize.Width - 64,
-				HeightRequest = 200,
-				TranslationY = -200,
-				HorizontalOptions = LayoutOptions.Center
-			};
-
-			searchBar.PropertyChanged += (sender, e) => {
-				if (e.PropertyName.Equals ("IsFocused") && !IsFocused && isDirections)
-					directionsLayout.TranslateTo (0, -Height, 100);
 			};
 
 			DependencyService.Get<INetwork> ().ReachabilityChanged += obj => {
@@ -126,17 +110,13 @@ namespace CocoMaps.Shared
 			};
 
 			testButton.Clicked += (sender, e) => {
-				var h = directionsLayout.HeightRequest;
-				if (isDirections) {
-
-					directionsLayout.TranslateTo (0, -h, 0);
-					searchBar.Focus ();
-					isDirections = false;
-				} else {
-					directionsLayout.TranslateTo (0, searchBar.Height, 500);
-					searchBar.Focus ();
-					isDirections = true;
-				}
+				DependencyService.Get<IPhoneService> ().LaunchNavigationAsync (
+					new NavigationModel () { 
+						Latitude = Campus.SGWPosition.Latitude,
+						Longitude = Campus.SGWPosition.Longitude,
+						DestinationAddress = "1455 De Maisonneuve Blvd. W.",
+						DestinationName = "SGW Campus"
+					});
 			};
 
 			LoaderViewModel loader = LoaderViewModel.getInstance;
@@ -147,7 +127,6 @@ namespace CocoMaps.Shared
 			Console.WriteLine (mainLayout.Width + " x " + mainLayout.Height + ", " + mainLayout.WidthRequest + " x " + mainLayout.HeightRequest);
 
 			mainLayout.Children.Add (map, Constraint.Constant (0));
-			mainLayout.Children.Add (directionsLayout, Constraint.Constant (0));
 			mainLayout.Children.Add (searchBar, Constraint.Constant (0));
 			mainLayout.Children.Add (loader, Constraint.RelativeToParent ((parent) => Width / 2 - loader.Width / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loader.Height / 2));
 			mainLayout.Children.Add (SGWButton, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 54));
@@ -156,30 +135,14 @@ namespace CocoMaps.Shared
 			mainLayout.Children.Add (networkStatus, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 80));
 			mainLayout.Children.Add (detailsLayout, Constraint.Constant (0), Constraint.RelativeToParent (parent => Height));
 
+			mainLayout.Children.Add (testButton, Constraint.Constant (50), Constraint.Constant (50));
+
 			//mainLayout.Children.Add (picker, Constraint.Constant (100), Constraint.Constant (100));
 
 			map.MoveToRegion (MapSpan.FromCenterAndRadius (Campus.SGWPosition, Xamarin.Forms.Maps.Distance.FromKilometers (0.2)));
 
 			Content = mainLayout;
 
-			Content.SizeChanged += (sender, e) => {
-				// Orientation in Portrait Mode
-				if (mainLayout.Width < mainLayout.Height) {
-					searchBar.WidthRequest = App.ScreenSize.Width - 64;
-					directionsLayout.WidthRequest = App.ScreenSize.Width - 64;
-					DetailsViewModel.getInstance.WidthRequest = App.ScreenSize.Width;
-					map.HeightRequest = App.ScreenSize.Height - App.StatusBarHeight - 48;
-					map.WidthRequest = App.ScreenSize.Width;
-				}
-				// Orientation in Landscape Mode
-				if (mainLayout.Width > mainLayout.Height) {
-					searchBar.WidthRequest = App.ScreenSize.Height - 64;
-					directionsLayout.WidthRequest = App.ScreenSize.Height - 64;
-					DetailsViewModel.getInstance.WidthRequest = App.ScreenSize.Height;
-					map.HeightRequest = App.ScreenSize.Width - App.StatusBarHeight - 40;
-					map.WidthRequest = App.ScreenSize.Height;
-				}
-			};
 		}
 
 

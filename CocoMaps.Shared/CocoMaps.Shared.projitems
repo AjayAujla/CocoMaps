@@ -54,6 +54,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\NavRootPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\Enums.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\PlacesRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\IPhoneService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\NavigationModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ImageButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
