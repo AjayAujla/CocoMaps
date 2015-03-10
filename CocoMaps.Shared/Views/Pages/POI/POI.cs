@@ -1,6 +1,5 @@
 ﻿using System;
 using Xamarin.Forms;
-using CocoMaps.Shared.Pages;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Models;
 using Xamarin.Forms.Maps;
@@ -10,7 +9,7 @@ namespace CocoMaps.Shared
 	public class POI : ContentPage
 	{
 
-		ConcordiaMap map;
+		readonly ConcordiaMap map;
 		Position SGWPosition;
 		Position LOYPosition;
 
@@ -20,23 +19,18 @@ namespace CocoMaps.Shared
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
 
-			this.SetValue (Page.TitleProperty, pageName);
-			this.SetValue (Page.IconProperty, menuItem.Icon);
+			SetValue (Page.TitleProperty, pageName);
+			SetValue (Page.IconProperty, menuItem.Icon);
 
 			// too many common codes from current location - will refactor
-			this.map = new ConcordiaMap () {
-				IsShowingUser = true,
-				HeightRequest = 100,
-				WidthRequest = 960,
-				VerticalOptions = LayoutOptions.FillAndExpand
-			};
+			map = ConcordiaMap.getInstance;
 
 			// Those are the exact coordinates given by Google Maps
 			// When searching for those campuses - DO NOT CHANGE!!!
 			SGWPosition = new Position (45.4971711, -73.5790942);
 			LOYPosition = new Position (45.4585649, -73.6400639);
 
-			this.map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition, Xamarin.Forms.Maps.Distance.FromMiles (0.1)));
+			map.MoveToRegion (MapSpan.FromCenterAndRadius (SGWPosition, Xamarin.Forms.Maps.Distance.FromMiles (0.1)));
 
 
 			var SGWButton = new Button { Text = "SGW" };
@@ -57,7 +51,7 @@ namespace CocoMaps.Shared
 			var stack = new StackLayout { Spacing = 0 };
 			stack.Children.Add (map);
 			stack.Children.Add (POIButtons);
-			this.Content = stack;
+			Content = stack;
 
 		}
 

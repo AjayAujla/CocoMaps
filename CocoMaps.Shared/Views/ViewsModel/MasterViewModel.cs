@@ -5,22 +5,21 @@ using System.Text;
 using Xamarin.Forms;
 using System.Reflection;
 using System.Linq;
-//using CocoMaps.Services;
 using CocoMaps.Models;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 
 namespace CocoMaps.Shared.ViewModels
 {
-	public class MasterViewModel : BaseViewModel 
+	public class MasterViewModel : BaseViewModel
 	{
 
 		const string IconFormat = "{0}.png";
 
-		public MasterViewModel()
+		public MasterViewModel ()
 		{
 			Title = "Title";
-			Icon = "icon.png" ;
+			Icon = "icon.png";
 		}
 	
 	}
@@ -35,10 +34,10 @@ namespace CocoMaps.Shared.ViewModels
 		/// </summary>
 		/// <value>The title.</value>
 		public const string TitlePropertyName = "Title";
-		public string Title
-		{
+
+		public string Title {
 			get { return title; }
-			set { SetProperty(ref title, value, TitlePropertyName); }
+			set { SetProperty (ref title, value, TitlePropertyName); }
 		}
 
 		private string subTitle = string.Empty;
@@ -46,10 +45,10 @@ namespace CocoMaps.Shared.ViewModels
 		/// Gets or sets the "Subtitle" property
 		/// </summary>
 		public const string SubtitlePropertyName = "Subtitle";
-		public string Subtitle
-		{
+
+		public string Subtitle {
 			get { return subTitle; }
-			set { SetProperty(ref subTitle, value, SubtitlePropertyName); }
+			set { SetProperty (ref subTitle, value, SubtitlePropertyName); }
 		}
 
 		private string icon = null;
@@ -57,59 +56,61 @@ namespace CocoMaps.Shared.ViewModels
 		/// Gets or sets the "Icon" of the viewmodel
 		/// </summary>
 		public const string IconPropertyName = "Icon";
-		public string Icon
-		{
+
+		public string Icon {
 			get { return icon; }
-			set { SetProperty(ref icon, value, IconPropertyName); }
+			set { SetProperty (ref icon, value, IconPropertyName); }
 		}
 
-		protected void SetProperty<U>(
+		protected void SetProperty<U> (
 			ref U backingStore, U value,
 			string propertyName,
 			Action onChanged = null,
 			Action<U> onChanging = null)
 		{
-			if (EqualityComparer<U>.Default.Equals(backingStore, value))
+			if (EqualityComparer<U>.Default.Equals (backingStore, value))
 				return;
 
 			if (onChanging != null)
-				onChanging(value);
+				onChanging (value);
 
-			OnPropertyChanging(propertyName);
+			OnPropertyChanging (propertyName);
 
 			backingStore = value;
 
 			if (onChanged != null)
-				onChanged();
+				onChanged ();
 
-			OnPropertyChanged(propertyName);
+			OnPropertyChanged (propertyName);
 		}
 
 		#region INotifyPropertyChanging implementation
-		public event Xamarin.Forms.PropertyChangingEventHandler PropertyChanging ;
+
+		public event Xamarin.Forms.PropertyChangingEventHandler PropertyChanging;
+
 		#endregion
 
-		public void OnPropertyChanging(string propertyName)
+		public void OnPropertyChanging (string propertyName)
 		{
 			if (PropertyChanging == null)
 				return;
 
-			PropertyChanging(this, new Xamarin.Forms.PropertyChangingEventArgs(propertyName));
+			PropertyChanging (this, new Xamarin.Forms.PropertyChangingEventArgs (propertyName));
 		}
 
 
 		#region INotifyPropertyChanged implementation
+
 		public event PropertyChangedEventHandler PropertyChanged;
+
 		#endregion
 
-		public void OnPropertyChanged(string propertyName)
+		public void OnPropertyChanged (string propertyName)
 		{
 			if (PropertyChanged == null)
 				return;
 
-			PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			PropertyChanged (this, new PropertyChangedEventArgs (propertyName));
 		}
 	}
 }
-
-

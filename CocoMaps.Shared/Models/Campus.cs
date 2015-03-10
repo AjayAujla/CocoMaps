@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Xamarin.Forms.Maps;
 
 namespace CocoMaps.Shared
@@ -28,6 +27,11 @@ namespace CocoMaps.Shared
 		}
 
 		public string Address {
+			get;
+			set;
+		}
+
+		public Position Position {
 			get;
 			set;
 		}

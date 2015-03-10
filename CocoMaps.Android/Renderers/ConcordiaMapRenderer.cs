@@ -1,12 +1,21 @@
-﻿using System;
-using Android.Gms.Maps;
+﻿using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps.Android;
 using CocoMaps.Shared;
-using System.Collections.Generic;
 using Android.Graphics;
 using Xamarin.Forms.Maps;
+using System.Runtime.CompilerServices;
+using System.Collections.Generic;
+using Android.Net;
+using Java.IO;
+using System;
+using System.Runtime.InteropServices;
+using Android.App;
+using Android;
+using System.Security.Cryptography;
+
+#pragma warning disable 618
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]
 
@@ -18,32 +27,80 @@ namespace CocoMapsAndroid
 		bool _isDrawnDone;
 		string _from = "";
 		string _to = "";
+		MapView _androidMapView;
+
+		static ConcordiaMapRenderer _concordiaMapRenderer;
+
+		public static ConcordiaMapRenderer getInstance {
+			get {
+				if (_concordiaMapRenderer == null)
+					_concordiaMapRenderer = new ConcordiaMapRenderer ();
+				return _concordiaMapRenderer;
+
+			}
+		}
+
+		ConcordiaMap _concordiaMap {
+			get { return Element as ConcordiaMap; }
+		}
+
+		Button NextClassButton {
+			get {
+				var _mainLayout = (RelativeLayout)Element.Parent;
+				var button = _mainLayout.Children [5] as Button;
+				return button;
+			}
+		}
+
+		public MapView AndroidMapView {
+			get { 
+				if (_androidMapView == null)
+					_androidMapView = Control as MapView;
+				return _androidMapView;
+			}
+		}
+
+		BuildingRepository _buildingRepository {
+			get { return BuildingRepository.getInstance; }
+		}
+
+		PlacesRepository _placesRepository {
+			get { return PlacesRepository.getInstance; }
+		}
+
+		DetailsViewModel _detailsLayout {
+			get { return DetailsViewModel.getInstance; }
+		}
 
 		void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
 		{
-			var myMap = this.Element as ConcordiaMap;
-			DetailsViewModel.getInstance.UpdateView (e.Marker.Title);
-		
+			using (var currentMarker = e.Marker) {
+				_concordiaMap.SelectedBuilding = _buildingRepository.GetBuildingByCode (currentMarker.Title);
+				DetailsViewModel.getInstance.UpdateView (currentMarker.Title);
+			}
 		}
 
 		BitmapDescriptor GetCustomBitmapDescriptor (string text)
 		{
 			using (var paint = new Paint (PaintFlags.LinearText)) {
-				paint.Color = Android.Graphics.Color.White;
+				paint.SetStyle (Paint.Style.Fill);
+
 				paint.TextSize = 45;
 				paint.SetTypeface (Typeface.DefaultBold);
 
 				using (var bounds = new Rect ()) {
 					using (var baseBitmap = BitmapFactory.DecodeResource (Resources, CocoMaps.Android.Resource.Drawable.buildingCodeIcon)) {
 						Bitmap bitmap = baseBitmap.Copy (Bitmap.Config.Argb8888, true);
-
 						paint.GetTextBounds (text, 0, text.Length, bounds);
 
 						float x = bitmap.Width / 2.0f;
 						float y = (bitmap.Height - bounds.Height ()) / 2.0f - bounds.Top;
 
-						Canvas canvas = new Canvas (bitmap);
+						var canvas = new Canvas (bitmap);
 
+						//paint.Color = Android.Graphics.Color.Maroon;
+						//canvas.DrawCircle (x, y, 50, paint);
+						paint.Color = Android.Graphics.Color.White;
 						canvas.DrawText (text, x, y, paint);
 
 						BitmapDescriptor icon = BitmapDescriptorFactory.FromBitmap (bitmap);
@@ -56,7 +113,6 @@ namespace CocoMapsAndroid
 
 		public void getDirectionsToClass (Directions directions)
 		{
-			var androidMapView = (MapView)Control;
 			DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
 
 
@@ -65,7 +121,7 @@ namespace CocoMapsAndroid
 				var loader = LoaderViewModel.getInstance;
 				loader.Show ();
 
-				PolylineOptions polyline = new PolylineOptions ();
+				var polyline = new PolylineOptions ();
 				polyline.InvokeColor (0x7F00768e);
 
 				foreach (Route route in directions.routes) {
@@ -78,8 +134,7 @@ namespace CocoMapsAndroid
 					}
 
 				}
-				androidMapView.Map.AddPolyline (polyline);
-
+				AndroidMapView.Map.AddPolyline (polyline);
 
 				loader.Hide ();
 			}
@@ -89,34 +144,49 @@ namespace CocoMapsAndroid
 		{
 
 			base.OnElementPropertyChanged (sender, e);
-			var androidMapView = (MapView)Control;
-			//var formsMap = (ConcordiaMap)sender;
-			BuildingRepository buildingRepo = BuildingRepository.getInstance;
-			DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
 
 			if (e.PropertyName.Equals ("VisibleRegion") && !_isDrawnDone) {
 
-				androidMapView.Map.UiSettings.MyLocationButtonEnabled = true;
-				androidMapView.Map.UiSettings.CompassEnabled = false;
-				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
-				androidMapView.Map.UiSettings.ZoomControlsEnabled = true;
+				AndroidMapView.Map.Clear ();
+				AndroidMapView.Map.UiSettings.MyLocationButtonEnabled = true;
+				AndroidMapView.Map.UiSettings.ZoomControlsEnabled = true;
 
-				androidMapView.Map.MapClick += (senderr, ee) => detailsLayout.Hide ();
+				AndroidMapView.Map.MapClick += (senderr, ee) => _detailsLayout.Hide ();
 
+				NextClassButton.Clicked += async (senderrr, eee) => {
 
+					DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
+					RequestDirections directionsRequest = RequestDirections.getInstance;
 
-//					Building building = GoogleUtil.PointInBuilding (ee.Point.Latitude, ee.Point.Longitude);
-//					if (building != null) {
-//
-//						detailsLayout.UpdateView (building);
-//
-//						Console.WriteLine ("COORDINATES ARE IN " + building);
-//
-//					}
-//					
-//				};
+					const string start = "7141 Sherbrooke Street W. Montreal QC";
+					const string dest = "1455 De Maisonneuve Blvd. W. Montreal QC";
 
-				androidMapView.Map.MapLongClick += async (senderr, ee) => {
+					Directions directions = await directionsRequest.getDirections (start, dest, TravelMode.walking);
+					if (directions.status.Equals ("OK")) {
+
+						var loader = LoaderViewModel.getInstance;
+						loader.Show ();
+
+						var polyline = new PolylineOptions ();
+						polyline.InvokeColor (0x7F00768e);
+
+						foreach (Route route in directions.routes) {
+
+							detailsLayout.UpdateView (directions);
+
+							route.overview_polyline.decodedPoints = GoogleUtil.Decode (route.overview_polyline.points);
+							foreach (Position point in route.overview_polyline.decodedPoints) {
+								polyline.Add (new LatLng (point.Latitude, point.Longitude));
+							}
+
+						}
+						AndroidMapView.Map.AddPolyline (polyline);
+
+						loader.Hide ();
+					}
+				};
+
+				AndroidMapView.Map.MapLongClick += async (senderr, ee) => {
 
 					if (App.isConnected ()) {
 
@@ -125,16 +195,18 @@ namespace CocoMapsAndroid
 
 							if (_from.Equals ("")) {
 								_from = building.Address;
-								androidMapView.Map.AddMarker (new MarkerOptions ()
-											.SetTitle (building.Code)
-											.SetSnippet (building.Address)
-									.SetPosition (new LatLng (building.ShapeCoords [0].Latitude, building.ShapeCoords [0].Longitude)));
+								AndroidMapView.Map.AddMarker (new MarkerOptions ()
+									.SetTitle (building.Code)
+									.SetSnippet (building.Address)
+									.SetPosition (new LatLng (building.Position.Latitude, building.Position.Longitude))
+									.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.map_start_pin)));
 							} else {
 								_to = building.Address;
-								androidMapView.Map.AddMarker (new MarkerOptions ()
+								AndroidMapView.Map.AddMarker (new MarkerOptions ()
 											.SetTitle (building.Code)
 											.SetSnippet (building.Address)
-									.SetPosition (new LatLng (building.ShapeCoords [0].Latitude, building.ShapeCoords [0].Longitude)));
+									.SetPosition (new LatLng (building.Position.Latitude, building.Position.Longitude))
+									.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.map_end_pin)));
 
 								var loaderViewModel = LoaderViewModel.getInstance;
 								loaderViewModel.Show ();
@@ -145,22 +217,35 @@ namespace CocoMapsAndroid
 
 								if (directions.status.Equals ("OK")) {
 
-									PolylineOptions polyline = new PolylineOptions ();
-									polyline.InvokeColor (0x7F00768e);
+									if (Settings.useDeviceMap) {
 
-									foreach (Route route in directions.routes) {
+										DependencyService.Get<IPhoneService> ().LaunchMap (
+											directions.routes [0].legs [0].end_address);
+//											new NavigationModel () {
+//												Latitude = directions.routes [0].legs [0].end_location.lat,
+//												Longitude = directions.routes [0].legs [0].end_location.lng,
+//												DestinationAddress = directions.routes [0].legs [0].end_address,
+//												DestinationName = directions.routes [0].summary
+//											});
 
-										detailsLayout.UpdateView (directions);
+									} else {
 
-										route.overview_polyline.decodedPoints = GoogleUtil.Decode (route.overview_polyline.points);
-										foreach (Position point in route.overview_polyline.decodedPoints) {
-											polyline.Add (new LatLng (point.Latitude, point.Longitude));
+										var polyline = new PolylineOptions ();
+										polyline.InvokeColor (0x7F00768e);
+
+										foreach (Route route in directions.routes) {
+
+											_detailsLayout.UpdateView (directions);
+
+											route.overview_polyline.decodedPoints = GoogleUtil.Decode (route.overview_polyline.points);
+											foreach (Position point in route.overview_polyline.decodedPoints) {
+												polyline.Add (new LatLng (point.Latitude, point.Longitude));
+											}
+
 										}
+										AndroidMapView.Map.AddPolyline (polyline);
 
 									}
-									androidMapView.Map.AddPolyline (polyline);
-
-
 								}
 
 								loaderViewModel.Hide ();
@@ -173,19 +258,18 @@ namespace CocoMapsAndroid
 					}
 				};
 
-				foreach (Campus c in buildingRepo.getCampusList()) {
+				foreach (Campus c in _buildingRepository.getCampusList()) {
 
 					foreach (Building b in c.Buildings) {
 
-						using (PolygonOptions polygon = new PolygonOptions ()) {
-							using (MarkerOptions buildingCodeMarker = new MarkerOptions ()) {
+						using (var polygon = new PolygonOptions ()) {
+							using (var buildingCodeMarker = new MarkerOptions ()) {
 
 								buildingCodeMarker.SetPosition (new LatLng (b.Position.Latitude, b.Position.Longitude))
 									.SetTitle (b.Code)
 									.SetSnippet (b.Name)
 									.InvokeIcon (GetCustomBitmapDescriptor (b.Code)); //BitmapDescriptorFactory.FromAsset ("CarWashMapIcon.png")
-								buildingCodeMarker.Flat (true);
-								androidMapView.Map.AddMarker (buildingCodeMarker);
+								AndroidMapView.Map.AddMarker (buildingCodeMarker);
 							}
 							polygon.InvokeFillColor (0x3F932439).InvokeStrokeColor (0x00932439).Geodesic (true);
 
@@ -193,19 +277,20 @@ namespace CocoMapsAndroid
 								polygon.Add (new LatLng (p.Latitude, p.Longitude));
 
 
-							androidMapView.Map.AddPolygon (polygon);
+							AndroidMapView.Map.AddPolygon (polygon);
 
 						}
 					}
 				}
 
-				androidMapView.Map.MarkerClick += HandleMarkerClick;
+				AndroidMapView.Map.MarkerClick += HandleMarkerClick;
 
 				_isDrawnDone = true;
 
 			}
 
 		}
+
 
 	}
 }
