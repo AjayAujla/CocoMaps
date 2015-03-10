@@ -18,7 +18,7 @@ namespace CocoMaps.Shared.Pages
 		ConcordiaServices pServices = null;
 		NextClass pNextClass = null;
 		BaseCalendar pCalendar = null;
-
+		BaseShuttleBus pShuttleBus = null;
 		CalendarConnect pConnect = null;
 
 
@@ -47,46 +47,68 @@ namespace CocoMaps.Shared.Pages
 			IsPresented = false;
 		}
 
-		public Page setPage(IMenuOptions menuOption)
+		public Page setPage (IMenuOptions menuOption)
 		{
 
 			int MenuNumber = menuOption.MenuNum;
 
-			switch (MenuNumber)
-			{
-				case 1:
-					if ((pMaster == null)) {pMaster = new MasterPage (menuOption);}
-					return pMaster;
-				case 2:
-					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
-					return pMaster;
-				case 3:
-					if ((pPOI == null)){pPOI = new BasePOI (menuOption);}
-					return pPOI;
-				case 4:
-					if ((pServices == null)){pServices = new ConcordiaServices (menuOption);}
-					return pServices;
-				case 5:
-					if ((pNextClass == null)){pNextClass = new NextClass (menuOption);}
-					return pNextClass;
-				case 6:
-					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
-					return pMaster;
-				case 7:
-					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
-					return pMaster;
-				case 8:
-					if ((pCalendar == null)){pCalendar = new BaseCalendar (menuOption);}
-					return  pCalendar;
-				case 9:
-					if ((pConnect == null)){pConnect = new CalendarConnect (menuOption);}
-					return pConnect;
-				default:
-					if ((pMaster == null)){pMaster = new MasterPage (menuOption);}
-					return pMaster;
+			switch (MenuNumber) {
+			case 1:
+				if ((pMaster == null)) {
+					pMaster = new MasterPage (menuOption);
+				}
+				return pMaster;
+			case 2:
+				if ((pMaster == null)) {
+					pMaster = new MasterPage (menuOption);
+				}
+				return pMaster;
+			case 3:
+				if ((pPOI == null)) {
+					pPOI = new BasePOI (menuOption);
+				}
+				return pPOI;
+			case 4:
+				if ((pServices == null)) {
+					pServices = new ConcordiaServices (menuOption);
+				}
+				return pServices;
+			case 5:
+				if ((pNextClass == null)) {
+					pNextClass = new NextClass (menuOption);
+				}
+				return pNextClass;
+			case 6:
+				if ((pMaster == null)) {
+					pMaster = new MasterPage (menuOption);
+				}
+				return pMaster;
+			case 7:
+				if ((pMaster == null)) {
+					pMaster = new MasterPage (menuOption);
+				}
+				return pMaster;
+			case 8:
+				if ((pCalendar == null)) {
+					pCalendar = new BaseCalendar (menuOption);
+				}
+				return  pCalendar;
+			case 9:
+				if ((pConnect == null)) {
+					pConnect = new CalendarConnect (menuOption);
+				}
+				return pConnect;
+			case 10:
+				if ((pShuttleBus == null)) {
+					pShuttleBus = new BaseShuttleBus (menuOption);
+				}
+				return pShuttleBus;
+			default:
+				if ((pMaster == null)) {
+					pMaster = new MasterPage (menuOption);
+				}
+				return pMaster;
 			}
-
 		}
-			
 	}
 }

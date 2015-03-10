@@ -1,23 +1,10 @@
 ﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.d019c12a" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\OAuthSettings.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.d9ec710004ce18c6" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Controllers\ShuttleBus\RequestShuttleBussSchedule.cs">
     <Files>
-      <File FileName="CocoMaps.Shared\Views\Pages\Master.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\Models\Campus.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\Views\Pages\POI\POI.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\Views\ViewsModel\LoaderViewModel.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\Views\ViewsModel\DetailsViewModel.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\App.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\Models\Building.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\Views\Pages\NextClass\NextClass.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\Controllers\Repositories\BuildingRepository.cs" Line="25" Column="25" />
-      <File FileName="CocoMaps.Shared\Views\ViewsModel\MenuItems.cs" Line="6" Column="6" />
-      <File FileName="CocoMaps.Shared\CocoMaps.cs" Line="7" Column="7" />
-      <File FileName="CocoMaps.Shared\Controllers\Database\SQLite.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\Views\Pages\ConcordiaServices.cs" Line="1" Column="1" />
-      <File FileName="c:\Users\Mridula\Desktop\CocoMaps\COCO-MAPS\cocomaps\CocoMaps.Shared\Views\Pages\Menu.cs" Line="4" Column="4" />
-      <File FileName="CocoMaps.Android\Properties\AndroidManifest.xml" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\OAuthSettings.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Controllers\ShuttleBus\RequestShuttleBussSchedule.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\ShuttleBus\BaseShuttleBus.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\ShuttleBus\ShuttleBus.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

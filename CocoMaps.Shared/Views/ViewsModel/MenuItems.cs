@@ -7,7 +7,6 @@ using System.Linq;
 
 namespace CocoMaps.Models
 {
-
 	public class Location_MenuOption : IMenuOptions
 	{
 		public override string Title { get { return "Current Location"; } }
@@ -15,7 +14,7 @@ namespace CocoMaps.Models
 		public override string Icon { get { return "locationIcon.png"; } }
 
 		public override int MenuNum { get { return 1; } }
-	} 
+	}
 
 	public class Campus_MenuOption : IMenuOptions
 	{
@@ -61,7 +60,7 @@ namespace CocoMaps.Models
 		public override string Icon { get { return "buildingIcon.png"; } }
 
 		public override int MenuNum { get { return 6; } }
-	} 
+	}
 
 	public class iDirections_MenuOption : IMenuOptions
 	{
@@ -89,14 +88,24 @@ namespace CocoMaps.Models
 		public override string Icon { get { return "calendarIcon.png"; } }
 
 		public override int MenuNum { get { return 9; } }
-	} */
+	}*/
+
+	public class ShuttleBus_MenuOption : IMenuOptions
+	{
+		public override string Title { get { return "Shuttle Bus"; } }
+
+		public override string Icon { get { return "calendarIcon.png"; } }
+
+		public override int MenuNum { get { return 10; } }
+	}
+
 	public class Settings_MenuOption : IMenuOptions
 	{
 		public override string Title { get { return "Settings"; } }
 
 		public override string Icon { get { return "settingsIcon.png"; } }
 
-		public override int MenuNum { get { return 9; } }
+		public override int MenuNum { get { return -1; } }
 	}
 
 	public abstract class IMenuOptions
@@ -113,6 +122,4 @@ namespace CocoMaps.Models
 
 		public ImageSource IconSource { get { return ImageSource.FromFile (Icon); } }
 	}
-		
 }
-
