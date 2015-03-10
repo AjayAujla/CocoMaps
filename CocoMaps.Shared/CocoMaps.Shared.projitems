@@ -57,6 +57,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ConcordiaServices\ConcordiaServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBus\BaseShuttleBus.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBus\ShuttleBus.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\IPhoneService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\NavigationModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
