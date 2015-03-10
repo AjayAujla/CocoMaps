@@ -153,7 +153,6 @@
     <AndroidResource Include="Resources\drawable\poiIcon.png" />
     <AndroidResource Include="Resources\drawable\settingsIcon.png" />
     <AndroidResource Include="Resources\drawable\Icon.png" />
-    <AndroidResource Include="Resources\drawable\icon2x.png" />
     <AndroidResource Include="Resources\drawable\buildingCodeIcon.png" />
     <AndroidResource Include="Resources\drawable\splashscreen.xml" />
     <AndroidResource Include="Resources\drawable\splash.png" />
@@ -165,7 +164,6 @@
     <AndroidResource Include="Resources\drawable\hasbikerack.png" />
     <AndroidResource Include="Resources\drawable\hasinfokiosk.png" />
     <AndroidResource Include="Resources\drawable\hasparkinglot.png" />
-    <AndroidResource Include="Resources\drawable\splash2.png" />
     <AndroidResource Include="Resources\drawable\transit.png" />
     <AndroidResource Include="Resources\drawable\walking.png" />
     <AndroidResource Include="Resources\drawable\building_ad.jpeg" />
@@ -230,6 +228,14 @@
     <AndroidResource Include="Resources\drawable\building_h.jpeg" />
     <AndroidResource Include="Resources\drawable\button_buildings_toggle.png" />
     <AndroidResource Include="Resources\drawable\button_directions_toggle.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\settings.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\map_end_pin.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\map_start_pin.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\button_buildings_toggle.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\button_directions_toggle.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\button_poi_toggle.png" />
   </ItemGroup>
   <Import Project="..\CocoMaps.Shared\CocoMaps.Shared.projitems" Label="Shared" Condition="Exists('..\CocoMaps.Shared\CocoMaps.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
@@ -239,7 +245,6 @@
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
     <Folder Include="Renderers\" />
-    <Folder Include="Resources\drawable-xxxhdpi\" />
     <Folder Include="Files\" />
   </ItemGroup>
   <ItemGroup>
