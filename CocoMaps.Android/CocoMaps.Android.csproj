@@ -139,13 +139,9 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
     <AndroidResource Include="Resources\values\Styles.xml" />
     <AndroidResource Include="Resources\values\Colors.xml" />
-    <AndroidResource Include="Resources\drawable-hdpi\filter.png" />
-    <AndroidResource Include="Resources\drawable-mdpi\filter.png" />
     <AndroidResource Include="Resources\drawable\settings.png" />
     <AndroidResource Include="Resources\drawable\zoom_in.png" />
     <AndroidResource Include="Resources\drawable\zoom_out.png" />
-    <AndroidResource Include="Resources\drawable-xhdpi\filter.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\filter.png" />
     <AndroidResource Include="Resources\drawable\buildingIcon.png" />
     <AndroidResource Include="Resources\drawable\calendarIcon.png" />
     <AndroidResource Include="Resources\drawable\campusIcon.png" />
@@ -228,10 +224,11 @@
     <AndroidResource Include="Resources\drawable\building_x.jpeg" />
     <AndroidResource Include="Resources\drawable\building_z.jpeg" />
     <AndroidResource Include="Resources\drawable\building_h.jpeg" />
-    <AndroidResource Include="Resources\drawable\button_buildings_toggle.png" />
-    <AndroidResource Include="Resources\drawable\button_directions_toggle.png" />
-    <AndroidResource Include="Resources\drawable\map_end_icon.png" />
-    <AndroidResource Include="Resources\drawable\map_start_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\button_poi_toggle.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\button_directions_toggle.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\button_buildings_toggle.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\map_start_pin.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\map_end_pin.png" />
   </ItemGroup>
   <Import Project="..\CocoMaps.Shared\CocoMaps.Shared.projitems" Label="Shared" Condition="Exists('..\CocoMaps.Shared\CocoMaps.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
@@ -241,8 +238,11 @@
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
     <Folder Include="Renderers\" />
-    <Folder Include="Resources\drawable-xxxhdpi\" />
     <Folder Include="Files\" />
+    <Folder Include="Resources\drawable-xxhdpi\" />
+    <Folder Include="Resources\drawable-xhdpi\" />
+    <Folder Include="Resources\drawable-mdpi\" />
+    <Folder Include="Resources\drawable-hdpi\" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamarin.auth">

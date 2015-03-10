@@ -199,14 +199,14 @@ namespace CocoMapsAndroid
 									.SetTitle (building.Code)
 									.SetSnippet (building.Address)
 									.SetPosition (new LatLng (building.Position.Latitude, building.Position.Longitude))
-									.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.map_start_icon)));
+									.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.map_start_pin)));
 							} else {
 								_to = building.Address;
 								AndroidMapView.Map.AddMarker (new MarkerOptions ()
 											.SetTitle (building.Code)
 											.SetSnippet (building.Address)
 									.SetPosition (new LatLng (building.Position.Latitude, building.Position.Longitude))
-									.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.map_end_icon)));
+									.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.map_end_pin)));
 
 								var loaderViewModel = LoaderViewModel.getInstance;
 								loaderViewModel.Show ();
