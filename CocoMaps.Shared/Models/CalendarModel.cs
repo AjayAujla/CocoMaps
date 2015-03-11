@@ -2,7 +2,6 @@
 using Xamarin.Forms;
 using CocoMaps.Shared.Pages;
 using CocoMaps.Shared.ViewModels;
-using CocoMaps.Models;
 using Xamarin.Forms.Maps;
 using System.Diagnostics;
 using System.Collections.Generic;
@@ -12,7 +11,7 @@ namespace CocoMaps.Shared
 {
 	public class CalendarItems
 	{
-		public CalendarItems(string eventName , String type, String day ,String room, String startTime, String endTime, Color bcolor)
+		public CalendarItems (string eventName, String type, String day, String room, String startTime, String endTime, Color bcolor)
 		{
 			this.EventName = eventName;
 			this.Room = room;

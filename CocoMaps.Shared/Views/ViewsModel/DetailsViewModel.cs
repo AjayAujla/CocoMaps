@@ -1,16 +1,5 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using CocoMaps.Shared;
-using System.Runtime.InteropServices;
-using Android.Content.Res;
-using Android.Gms.Identity.Intents;
-
-
-using System.ComponentModel.Design.Serialization;
-
-
-using Android.Gms.Drive;
-using Android.Views;
 
 namespace CocoMaps.Shared
 {

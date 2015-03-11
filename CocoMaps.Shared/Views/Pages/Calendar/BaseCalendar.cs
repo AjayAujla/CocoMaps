@@ -2,7 +2,6 @@
 using Xamarin.Forms;
 using CocoMaps.Shared.Pages;
 using CocoMaps.Shared.ViewModels;
-using CocoMaps.Models;
 using Xamarin.Forms.Maps;
 using System.Diagnostics;
 using System.Collections.Generic;
@@ -56,17 +55,17 @@ namespace CocoMaps.Shared
 
 				#if __ANDROID__
 
-				var MonCal = new Calendar (menuItem,"Mon",testList(MondayCalItems));
-				var TueCal = new Calendar (menuItem,"Tue",testList(TuesdayCalItems));
-				var WedCal = new Calendar (menuItem,"Wed",testList(WednesdayCalItems));
-				var ThuCal = new Calendar (menuItem,"Thu",testList(ThursdayCalItems));
-				var FriCal = new Calendar (menuItem,"Fri",testList(FridayCalItems));
+				var MonCal = new Calendar (menuItem, "Mon", testList (MondayCalItems));
+				var TueCal = new Calendar (menuItem, "Tue", testList (TuesdayCalItems));
+				var WedCal = new Calendar (menuItem, "Wed", testList (WednesdayCalItems));
+				var ThuCal = new Calendar (menuItem, "Thu", testList (ThursdayCalItems));
+				var FriCal = new Calendar (menuItem, "Fri", testList (FridayCalItems));
 
-				this.Children.Add(MonCal);
-				this.Children.Add(TueCal);
-				this.Children.Add(WedCal);
-				this.Children.Add(ThuCal);
-				this.Children.Add(FriCal);
+				this.Children.Add (MonCal);
+				this.Children.Add (TueCal);
+				this.Children.Add (WedCal);
+				this.Children.Add (ThuCal);
+				this.Children.Add (FriCal);
 
 				#endif
 

@@ -38,7 +38,7 @@ namespace CocoMaps.Android
 			Forms.Init (this, savedInstanceState);
 			FormsMaps.Init (this, savedInstanceState);
 
-			SetPage(App.Instance.GetMainPage ());
+			SetPage (App.Instance.GetMainPage ());
 
 		}
 

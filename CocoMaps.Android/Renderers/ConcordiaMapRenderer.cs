@@ -7,6 +7,7 @@ using CocoMaps.Shared;
 using System.Collections.Generic;
 using Android.Graphics;
 using Xamarin.Forms.Maps;
+using Android.OS;
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]
 
@@ -18,12 +19,27 @@ namespace CocoMapsAndroid
 		bool _isDrawnDone;
 		string _from = "";
 		string _to = "";
+		PlacesRepository placesRepo = PlacesRepository.getInstance;
+
+		Dictionary<String, Building> MarkerBuilding = new Dictionary<String, Building> ();
+		Dictionary<Marker, Result> MarkerPOI = new Dictionary<Marker, Result> ();
+
+
+		Element MainLayout {
+			get {
+				return this.Element.Parent;
+			}
+		}
+
 
 		void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
 		{
-			var myMap = this.Element as ConcordiaMap;
-			DetailsViewModel.getInstance.UpdateView (e.Marker.Title);
-		
+			Building building;
+			if (MarkerBuilding.TryGetValue (e.Marker.Id, out building))
+				DetailsViewModel.getInstance.UpdateView (building);
+			else {
+				e.Marker.ShowInfoWindow ();
+			}
 		}
 
 		BitmapDescriptor GetCustomBitmapDescriptor (string text)
@@ -34,7 +50,7 @@ namespace CocoMapsAndroid
 				paint.SetTypeface (Typeface.DefaultBold);
 
 				using (var bounds = new Rect ()) {
-					using (var baseBitmap = BitmapFactory.DecodeResource (Resources, CocoMaps.Android.Resource.Drawable.buildingCodeIcon)) {
+					using (var baseBitmap = BitmapFactory.DecodeResource (Resources, CocoMaps.Android.Resource.Drawable.ic_buildingcode_transparent)) {
 						Bitmap bitmap = baseBitmap.Copy (Bitmap.Config.Argb8888, true);
 
 						paint.GetTextBounds (text, 0, text.Length, bounds);
@@ -103,19 +119,6 @@ namespace CocoMapsAndroid
 
 				androidMapView.Map.MapClick += (senderr, ee) => detailsLayout.Hide ();
 
-
-
-//					Building building = GoogleUtil.PointInBuilding (ee.Point.Latitude, ee.Point.Longitude);
-//					if (building != null) {
-//
-//						detailsLayout.UpdateView (building);
-//
-//						Console.WriteLine ("COORDINATES ARE IN " + building);
-//
-//					}
-//					
-//				};
-
 				androidMapView.Map.MapLongClick += async (senderr, ee) => {
 
 					if (App.isConnected ()) {
@@ -126,15 +129,17 @@ namespace CocoMapsAndroid
 							if (_from.Equals ("")) {
 								_from = building.Address;
 								androidMapView.Map.AddMarker (new MarkerOptions ()
-											.SetTitle (building.Code)
-											.SetSnippet (building.Address)
-									.SetPosition (new LatLng (building.ShapeCoords [0].Latitude, building.ShapeCoords [0].Longitude)));
+									.SetTitle (building.Code)
+									.SetSnippet (building.Address)
+									.SetPosition (new LatLng (building.Position.Latitude, building.Position.Longitude))
+									.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_start)));
 							} else {
 								_to = building.Address;
 								androidMapView.Map.AddMarker (new MarkerOptions ()
-											.SetTitle (building.Code)
-											.SetSnippet (building.Address)
-									.SetPosition (new LatLng (building.ShapeCoords [0].Latitude, building.ShapeCoords [0].Longitude)));
+									.SetTitle (building.Code)
+									.SetSnippet (building.Address)
+									.SetPosition (new LatLng (building.Position.Latitude, building.Position.Longitude))
+									.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_end)));
 
 								var loaderViewModel = LoaderViewModel.getInstance;
 								loaderViewModel.Show ();
@@ -173,19 +178,25 @@ namespace CocoMapsAndroid
 					}
 				};
 
+				Marker marker;
+
+				// Adding all Buildings' Icons and Buildings' Polygons
 				foreach (Campus c in buildingRepo.getCampusList()) {
-
 					foreach (Building b in c.Buildings) {
-
 						using (PolygonOptions polygon = new PolygonOptions ()) {
 							using (MarkerOptions buildingCodeMarker = new MarkerOptions ()) {
 
-								buildingCodeMarker.SetPosition (new LatLng (b.Position.Latitude, b.Position.Longitude))
-									.SetTitle (b.Code)
+								buildingCodeMarker.SetTitle (b.Code)
 									.SetSnippet (b.Name)
+									.SetPosition (new LatLng (b.Position.Latitude, b.Position.Longitude))
 									.InvokeIcon (GetCustomBitmapDescriptor (b.Code)); //BitmapDescriptorFactory.FromAsset ("CarWashMapIcon.png")
 								buildingCodeMarker.Flat (true);
-								androidMapView.Map.AddMarker (buildingCodeMarker);
+								buildingCodeMarker.GetHashCode ();
+								marker = androidMapView.Map.AddMarker (buildingCodeMarker);
+
+								// Creating an association between the marker and the building object
+								MarkerBuilding.Add (marker.Id, b);
+
 							}
 							polygon.InvokeFillColor (0x3F932439).InvokeStrokeColor (0x00932439).Geodesic (true);
 
@@ -199,6 +210,65 @@ namespace CocoMapsAndroid
 					}
 				}
 
+				RelativeLayout rl = MainLayout as RelativeLayout;
+				Button but = rl.Children [3] as Button;
+				bool isPOIAdded = false;
+				bool isPOIVisible = false;
+
+				Button bb =	MasterPage.POIButton;
+
+				bb.Clicked += async (send, ev) => {
+
+					if (App.isConnected ()) {
+
+						// Adding all POIs' Icons
+						if (!isPOIAdded) {
+							foreach (Result result in placesRepo.POIs) {
+								using (MarkerOptions poiMarker = new MarkerOptions ()) {
+									poiMarker.SetTitle (result.name)
+										.SetSnippet (result.vicinity)
+										.SetPosition (new LatLng (result.geometry.location.lat, result.geometry.location.lng));
+
+									// Tried to get resources dynamically (e.g. CocoMaps.Android.Resource.Drawable + result.type[0] or FromAsset())
+									// But failed miserably
+									if (result.types.Contains ("cafe"))
+										poiMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_cafe));
+									else if (result.types.Contains ("bar"))
+										poiMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_bar));
+									else if (result.types.Contains ("food"))
+										poiMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_food));
+									else if (result.types.Contains ("bank"))
+										poiMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_bank));
+									else if (result.types.Contains ("atm"))
+										poiMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_atm));
+									else if (result.types.Contains ("gaz_station"))
+										poiMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_gaz_station));
+									else if (result.types.Contains ("library"))
+										poiMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_library));
+									else
+										poiMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_default));
+									
+									marker = androidMapView.Map.AddMarker (poiMarker);
+
+									MarkerPOI.Add (marker, result);
+
+								}
+							}
+							isPOIAdded = true;
+						} else {
+
+							// toggling markers visibility
+							foreach (Marker m in MarkerPOI.Keys) {
+								m.Visible = !m.Visible;
+							}
+					
+						}
+					}
+
+
+
+
+				};
 				androidMapView.Map.MarkerClick += HandleMarkerClick;
 
 				_isDrawnDone = true;

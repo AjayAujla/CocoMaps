@@ -32,6 +32,11 @@ namespace CocoMaps.Shared
 			set;
 		}
 
+		public Position Position {
+			get;
+			set;
+		}
+
 		public List<Building> Buildings {
 			get;
 			set;

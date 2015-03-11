@@ -59,6 +59,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBus\ShuttleBus.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\IPhoneService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\NavigationModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Settings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ImageDownload.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />

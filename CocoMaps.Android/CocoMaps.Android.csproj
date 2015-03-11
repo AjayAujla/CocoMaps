@@ -143,31 +143,21 @@
     <AndroidResource Include="Resources\drawable-hdpi\filter.png" />
     <AndroidResource Include="Resources\drawable-mdpi\filter.png" />
     <AndroidResource Include="Resources\drawable\settings.png" />
-    <AndroidResource Include="Resources\drawable\zoom_in.png" />
-    <AndroidResource Include="Resources\drawable\zoom_out.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\filter.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\filter.png" />
     <AndroidResource Include="Resources\drawable\buildingIcon.png" />
     <AndroidResource Include="Resources\drawable\calendarIcon.png" />
     <AndroidResource Include="Resources\drawable\campusIcon.png" />
     <AndroidResource Include="Resources\drawable\classIcon.png" />
-    <AndroidResource Include="Resources\drawable\locationIcon.png" />
     <AndroidResource Include="Resources\drawable\poiIcon.png" />
     <AndroidResource Include="Resources\drawable\settingsIcon.png" />
-    <AndroidResource Include="Resources\drawable\Icon.png" />
-    <AndroidResource Include="Resources\drawable\buildingCodeIcon.png" />
     <AndroidResource Include="Resources\drawable\splashscreen.xml" />
     <AndroidResource Include="Resources\drawable\splash.png" />
-    <AndroidResource Include="Resources\drawable\CarWashMapIcon.png" />
     <AndroidResource Include="Resources\drawable\concordia_logo.png" />
-    <AndroidResource Include="Resources\drawable\driving.png" />
     <AndroidResource Include="Resources\drawable\hasaccessibility.png" />
     <AndroidResource Include="Resources\drawable\hasatm.png" />
     <AndroidResource Include="Resources\drawable\hasbikerack.png" />
     <AndroidResource Include="Resources\drawable\hasinfokiosk.png" />
     <AndroidResource Include="Resources\drawable\hasparkinglot.png" />
-    <AndroidResource Include="Resources\drawable\transit.png" />
-    <AndroidResource Include="Resources\drawable\walking.png" />
     <AndroidResource Include="Resources\drawable\building_ad.jpeg" />
     <AndroidResource Include="Resources\drawable\building_b.jpeg" />
     <AndroidResource Include="Resources\drawable\building_bb.jpeg" />
@@ -231,13 +221,28 @@
     <AndroidResource Include="Resources\drawable\button_buildings_toggle.png" />
     <AndroidResource Include="Resources\drawable\button_directions_toggle.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\settings.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\splash.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\map_end_pin.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\map_start_pin.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\button_buildings_toggle.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\button_directions_toggle.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\button_poi_toggle.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_filter.png" />
+    <AndroidResource Include="Resources\drawable\ic_travelmode_transit.png" />
+    <AndroidResource Include="Resources\drawable\ic_travelmode_walking.png" />
+    <AndroidResource Include="Resources\drawable\ic_travelmode_driving.png" />
+    <AndroidResource Include="Resources\drawable\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable\ic_buildingcode_transparent.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_pin_atm.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_pin_bar.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_pin_cafe.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_pin_gaz_station.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_pin_library.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_pin_start.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_pin_end.png" />
+    <AndroidResource Include="Resources\drawable\locationIcon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_pin_bank.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_pin_default.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_pin_food.png" />
   </ItemGroup>
   <Import Project="..\CocoMaps.Shared\CocoMaps.Shared.projitems" Label="Shared" Condition="Exists('..\CocoMaps.Shared\CocoMaps.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
@@ -248,9 +253,6 @@
     <Folder Include="Resources\drawable\" />
     <Folder Include="Renderers\" />
     <Folder Include="Files\" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\CarWashMapIcon.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamarin.auth">

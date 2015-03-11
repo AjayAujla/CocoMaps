@@ -2,11 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-
 using Xamarin.Forms;
-
-using CocoMaps.Shared.Helpers;
-using CocoMaps.Models;
+using CocoMaps.Shared;
 
 //using Android.Net;
 

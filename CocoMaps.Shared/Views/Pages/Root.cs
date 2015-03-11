@@ -1,25 +1,22 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Xamarin.Forms;
 using CocoMaps.Shared.Pages;
-using CocoMaps.Models;
 
-
-namespace CocoMaps.Shared.Pages
+namespace CocoMaps.Shared
 {
 	public class RootPage : MasterDetailPage
 	{
 		IMenuOptions previousItem;
 
 		// Initialize Pages
-		MasterPage pMaster = null;
-		BasePOI pPOI = null;
-		ConcordiaServices pServices = null;
-		NextClass pNextClass = null;
-		BaseCalendar pCalendar = null;
-		BaseShuttleBus pShuttleBus = null;
-		CalendarConnect pConnect = null;
+		MasterPage pMaster;
+		BasePOI pPOI;
+		ConcordiaServices pServices;
+		NextClass pNextClass;
+		BaseCalendar pCalendar;
+		BaseShuttleBus pShuttleBus;
+		CalendarConnect pConnect;
+		Settings pSettings;
 
 
 		public RootPage ()
@@ -58,11 +55,6 @@ namespace CocoMaps.Shared.Pages
 					pMaster = new MasterPage (menuOption);
 				}
 				return pMaster;
-			case 2:
-				if ((pMaster == null)) {
-					pMaster = new MasterPage (menuOption);
-				}
-				return pMaster;
 			case 3:
 				if ((pPOI == null)) {
 					pPOI = new BasePOI (menuOption);
@@ -78,16 +70,6 @@ namespace CocoMaps.Shared.Pages
 					pNextClass = new NextClass (menuOption);
 				}
 				return pNextClass;
-			case 6:
-				if ((pMaster == null)) {
-					pMaster = new MasterPage (menuOption);
-				}
-				return pMaster;
-			case 7:
-				if ((pMaster == null)) {
-					pMaster = new MasterPage (menuOption);
-				}
-				return pMaster;
 			case 8:
 				if ((pCalendar == null)) {
 					pCalendar = new BaseCalendar (menuOption);
@@ -103,6 +85,11 @@ namespace CocoMaps.Shared.Pages
 					pShuttleBus = new BaseShuttleBus (menuOption);
 				}
 				return pShuttleBus;
+			case 11:
+				if ((pSettings == null)) {
+					pSettings = new Settings (menuOption);
+				}
+				return pSettings;
 			default:
 				if ((pMaster == null)) {
 					pMaster = new MasterPage (menuOption);
