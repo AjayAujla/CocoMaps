@@ -1,11 +1,6 @@
-﻿using System;
-using Xamarin.Forms;
-using System.Collections.ObjectModel;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Xamarin.Forms;
 
-namespace CocoMaps.Models
+namespace CocoMaps.Shared
 {
 	public class Location_MenuOption : IMenuOptions
 	{
@@ -105,7 +100,7 @@ namespace CocoMaps.Models
 
 		public override string Icon { get { return "settingsIcon.png"; } }
 
-		public override int MenuNum { get { return -1; } }
+		public override int MenuNum { get { return 11; } }
 	}
 
 	public abstract class IMenuOptions
@@ -122,4 +117,5 @@ namespace CocoMaps.Models
 
 		public ImageSource IconSource { get { return ImageSource.FromFile (Icon); } }
 	}
+
 }

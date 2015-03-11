@@ -6,12 +6,12 @@ using Android.App;
 // Change them to the values specific to your project.
 
 [assembly: AssemblyTitle ("CocoMaps.Android")]
-[assembly: AssemblyDescription ("")]
+[assembly: AssemblyDescription ("Concordia Maps to help us navigate through school")]
 [assembly: AssemblyConfiguration ("")]
-[assembly: AssemblyCompany ("")]
-[assembly: AssemblyProduct ("")]
-[assembly: AssemblyCopyright ("Abhi")]
-[assembly: AssemblyTrademark ("")]
+[assembly: AssemblyCompany ("Concordia University")]
+[assembly: AssemblyProduct ("Concordia Maps")]
+[assembly: AssemblyCopyright ("Charlie")]
+[assembly: AssemblyTrademark ("Charlie")]
 [assembly: AssemblyCulture ("")]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".

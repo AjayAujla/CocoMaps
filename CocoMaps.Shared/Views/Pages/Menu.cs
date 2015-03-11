@@ -1,9 +1,8 @@
 ﻿using Xamarin.Forms;
 using System.Collections.Generic;
-using CocoMaps.Models;
 using CocoMaps.Shared.CustomViews;
 
-namespace CocoMaps.Shared.Pages
+namespace CocoMaps.Shared
 {
 	public class MenuPage : ContentPage
 	{
@@ -30,7 +29,7 @@ namespace CocoMaps.Shared.Pages
 
 			var label = new ContentView {
 				Padding = new Thickness (10, 36, 0, 5),
-				Content = new Xamarin.Forms.Label {
+				Content = new Label {
 					TextColor = Color.FromHex ("AAAAAA"),
 					Text = "MENU",
 				}

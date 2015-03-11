@@ -2,11 +2,9 @@
 using Xamarin.Forms;
 using CocoMaps.Shared.Pages;
 using CocoMaps.Shared.ViewModels;
-using CocoMaps.Models;
 using System.Threading.Tasks;
 using System.IO;
 using System.Threading;
-
 using Google.Apis.Calendar.v3;
 using Google.Apis.Calendar.v3.Data;
 using Google.Apis.Auth.OAuth2;
@@ -38,30 +36,25 @@ namespace CocoMaps.Shared
 
 			string tok = App.Instance.Token;
 
-			Label label1 = new Label
-			{
+			Label label1 = new Label {
 				FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
 				FontAttributes = FontAttributes.Bold,
 				Text = "Token : "
 			};
 
-			Label label2 = new Label
-			{
+			Label label2 = new Label {
 				Text = tok + "\r\n \r\n",
 
-				Font = Font.SystemFontOfSize(NamedSize.Large)
+				Font = Font.SystemFontOfSize (NamedSize.Large)
 			};
 
-			this.Content = new StackLayout
-			{
-				Children =
-				{
+			this.Content = new StackLayout {
+				Children = {
 					label1,
 					label2,
 				}
-				};
+			};
 
 		}
 	}
 }
-

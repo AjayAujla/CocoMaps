@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using Xamarin.Forms;
-
-using CocoMaps.Models;
 using CocoMaps.Shared.ViewModels;
 
 namespace CocoMaps.Shared

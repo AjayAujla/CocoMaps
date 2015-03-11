@@ -2,9 +2,9 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using CocoMaps.Shared.ViewModels;
-using CocoMaps.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Java.Security;
 
 namespace CocoMaps.Shared
 {
@@ -14,10 +14,12 @@ namespace CocoMaps.Shared
 		SearchBar searchBar;
 		RelativeLayout mainLayout;
 		RelativeLayout directionsLayout;
-		bool isDirections;
+
 		Label networkStatus = new Label {
 			TextColor = Color.White
 		};
+
+		PlacesRepository placesRepo = PlacesRepository.getInstance;
 
 		Dictionary<string, TravelMode> travelMode = new Dictionary<string, TravelMode> {
 			{ "Walking", TravelMode.walking },
@@ -26,6 +28,22 @@ namespace CocoMaps.Shared
 			{ "Transit", TravelMode.transit },
 			{ "Driving", TravelMode.driving }
 		};
+
+		Button testButton = new Button { Text = "Directions", HeightRequest = 50, BackgroundColor = Color.Maroon };
+
+		static Button _POIButton = new Button { 
+			Text = "POI", 
+			HeightRequest = 40,
+			BackgroundColor = Color.White,
+			Opacity = 0.7,
+			BorderRadius = 0
+		};
+
+		public static Button POIButton {
+			get {
+				return _POIButton;
+			}
+		}
 
 		public MasterPage (IMenuOptions menuItem)
 		{
@@ -37,10 +55,10 @@ namespace CocoMaps.Shared
 			SetValue (Page.IconProperty, menuItem.Icon);
 
 			map = new ConcordiaMap {
-				IsShowingUser = true,
-				HeightRequest = App.ScreenSize.Height - App.StatusBarHeight - 48,  // 48 is maroon top bar's height
-				WidthRequest = App.ScreenSize.Width
+				IsShowingUser = true
 			};
+
+			map.MoveToRegion (MapSpan.FromCenterAndRadius (Campus.SGWPosition, Xamarin.Forms.Maps.Distance.FromKilometers (0.2)));
 
 			var SGWButton = new Button {
 				Text = "SGW",
@@ -62,14 +80,8 @@ namespace CocoMaps.Shared
 				BorderRadius = 0
 			};
 
-			var checkNetworkButton = new Button { Text = "Check Connection", 
-				HeightRequest = 40,
-				BackgroundColor = Color.Aqua,
-				Opacity = 0.7,
-				BorderRadius = 0
-			};
 
-			var testButton = new Button { Text = "Directions", HeightRequest = 50, BackgroundColor = Color.Maroon };
+
 
 			searchBar = new SearchBar {
 				Placeholder = "search buildings...",
@@ -79,7 +91,6 @@ namespace CocoMaps.Shared
 
 			SGWButton.Clicked += HandleCampusRegionButton;
 			LOYButton.Clicked += HandleCampusRegionButton;
-			checkNetworkButton.Clicked += TestStuff;
 
 			NextButton.Clicked += async (sender, e) => {
 				string start = "7141 Sherbrooke Street W. Montreal QC";
@@ -92,7 +103,6 @@ namespace CocoMaps.Shared
 
 			};
 
-			searchBar.PropertyChanged += HandleFocusChange;
 			searchBar.TextChanged += HandleTextChanged;
 
 			mainLayout = new RelativeLayout {
@@ -110,7 +120,7 @@ namespace CocoMaps.Shared
 			};
 
 			searchBar.PropertyChanged += (sender, e) => {
-				if (e.PropertyName.Equals ("IsFocused") && !IsFocused && isDirections)
+				if (e.PropertyName.Equals ("IsFocused") && !IsFocused)
 					directionsLayout.TranslateTo (0, -Height, 100);
 			};
 
@@ -125,61 +135,38 @@ namespace CocoMaps.Shared
 				}
 			};
 
-			testButton.Clicked += (sender, e) => {
-				var h = directionsLayout.HeightRequest;
-				if (isDirections) {
-
-					directionsLayout.TranslateTo (0, -h, 0);
-					searchBar.Focus ();
-					isDirections = false;
-				} else {
-					directionsLayout.TranslateTo (0, searchBar.Height, 500);
-					searchBar.Focus ();
-					isDirections = true;
-				}
+			testButton.Clicked += async (sender, e) => {
+				bool r = await DependencyService.Get<INetwork> ().IsReachable ("google.ca", new TimeSpan (5));
+				await DisplayAlert ("Network Connection:", r ? "Connected :)" : "Not Connected :(", "Whatever");
 			};
 
-			LoaderViewModel loader = LoaderViewModel.getInstance;
-			//loader.Show ();
+			LoaderViewModel loaderView = LoaderViewModel.getInstance;
 
 			DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
 
 			Console.WriteLine (mainLayout.Width + " x " + mainLayout.Height + ", " + mainLayout.WidthRequest + " x " + mainLayout.HeightRequest);
 
-			mainLayout.Children.Add (map, Constraint.Constant (0));
+			mainLayout.Children.Add (map,
+				Constraint.Constant (0),
+				Constraint.Constant (0),
+				Constraint.RelativeToParent (parent => Width),
+				Constraint.RelativeToParent (parent => Height));
+				
 			mainLayout.Children.Add (directionsLayout, Constraint.Constant (0));
-			mainLayout.Children.Add (searchBar, Constraint.Constant (0));
-			mainLayout.Children.Add (loader, Constraint.RelativeToParent ((parent) => Width / 2 - loader.Width / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loader.Height / 2));
+			mainLayout.Children.Add (_POIButton, Constraint.Constant (150), Constraint.RelativeToParent (parent => Height - 54));
+			mainLayout.Children.Add (testButton, Constraint.Constant (50), Constraint.Constant (50));
+			//mainLayout.Children.Add (searchBar, Constraint.Constant (0));
 			mainLayout.Children.Add (SGWButton, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 54));
 			mainLayout.Children.Add (LOYButton, Constraint.Constant (80), Constraint.RelativeToParent (parent => Height - 54));
-			mainLayout.Children.Add (NextButton, Constraint.Constant (145), Constraint.RelativeToParent (parent => Height - 54));
+			mainLayout.Children.Add (NextButton, Constraint.RelativeToParent (parent => Width - 160), Constraint.Constant (10));
 			mainLayout.Children.Add (networkStatus, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 80));
 			mainLayout.Children.Add (detailsLayout, Constraint.Constant (0), Constraint.RelativeToParent (parent => Height));
+			mainLayout.Children.Add (loaderView, Constraint.RelativeToParent (parent => Width / 2 - loaderView.WidthRequest / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loaderView.HeightRequest / 2));
 
 			//mainLayout.Children.Add (picker, Constraint.Constant (100), Constraint.Constant (100));
 
-			map.MoveToRegion (MapSpan.FromCenterAndRadius (Campus.SGWPosition, Xamarin.Forms.Maps.Distance.FromKilometers (0.2)));
-
 			Content = mainLayout;
 
-			Content.SizeChanged += (sender, e) => {
-				// Orientation in Portrait Mode
-				if (mainLayout.Width < mainLayout.Height) {
-					searchBar.WidthRequest = App.ScreenSize.Width - 64;
-					directionsLayout.WidthRequest = App.ScreenSize.Width - 64;
-					DetailsViewModel.getInstance.WidthRequest = App.ScreenSize.Width;
-					map.HeightRequest = App.ScreenSize.Height - App.StatusBarHeight - 48;
-					map.WidthRequest = App.ScreenSize.Width;
-				}
-				// Orientation in Landscape Mode
-				if (mainLayout.Width > mainLayout.Height) {
-					searchBar.WidthRequest = App.ScreenSize.Height - 64;
-					directionsLayout.WidthRequest = App.ScreenSize.Height - 64;
-					DetailsViewModel.getInstance.WidthRequest = App.ScreenSize.Height;
-					map.HeightRequest = App.ScreenSize.Width - App.StatusBarHeight - 40;
-					map.WidthRequest = App.ScreenSize.Height;
-				}
-			};
 		}
 
 
@@ -192,23 +179,6 @@ namespace CocoMaps.Shared
 		void HandleNextButton (object sender, TextChangedEventArgs e)
 		{
 
-		}
-
-		void HandleFocusChange (object sender, System.ComponentModel.PropertyChangedEventArgs e)
-		{
-			var s = sender as SearchBar;
-			if (s.IsFocused) {
-				s.Opacity = 1;
-				s.BackgroundColor = Helpers.Color.DarkGray.ToFormsColor ();
-			} else {
-				s.Opacity = 0.5;
-				s.BackgroundColor = Color.White;
-			}
-		}
-
-		void TestStuff (object sender, EventArgs e)
-		{
-			DisplayAlert ("Network Status:", App.isConnected ().ToString (), "Dismiss");
 		}
 
 		void HandleCampusRegionButton (object sender, EventArgs e)

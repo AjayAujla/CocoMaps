@@ -4,7 +4,6 @@ using System.Runtime.CompilerServices;
 using System.Resources;
 using System.IO;
 using System.Collections.Generic;
-using CocoMaps.Models;
 using Xamarin.Forms;
 using System.Linq;
 
