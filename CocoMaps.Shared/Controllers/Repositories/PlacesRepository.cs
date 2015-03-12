@@ -1,10 +1,8 @@
 ﻿using System;
 using CocoMaps.Shared;
+using Xamarin.Forms;
 using System.Collections.Generic;
-using Xamarin.Forms.Maps;
-using Java.Util;
 using System.Threading.Tasks;
-using Android.Gms.Fitness.Data;
 
 namespace CocoMaps.Shared
 {
@@ -29,7 +27,7 @@ namespace CocoMaps.Shared
 			get {
 				if (repository == null) {
 					repository = new PlacesRepository ();
-					repository.Init ();
+					repository.FetchPlaces ();
 				}
 				return repository;
 			}
@@ -49,31 +47,41 @@ namespace CocoMaps.Shared
 		
 		}
 
-		async void Init ()
+		async public void FetchPlaces ()
 		{
+
 			var placesRequest = RequestPlaces.getInstance;
 			Places places;
 			POIs = new List<Result> ();
 
-			// concatenating all POI queries into one string to make a single request to Google's API
-			String pois = "";
 			foreach (String poi in POIsQuery) {
-				pois += poi + "|";
-			}
 
-			foreach (Campus campus in BuildingRepository.getInstance.getCampusList()) {
 
-				Console.WriteLine ("SEARCHING NEARBY: " + campus.Name);
-				places = await placesRequest.getPlaces (pois, campus.Position);
+				foreach (Campus campus in BuildingRepository.getInstance.getCampusList()) {
+				
+					String _next_page_token = "";
+					int i = 0;
 
-				if (places.status == "OK") {
+					do {
 
-					foreach (Result place in places.results)
-						POIs.Add (place);
+						Console.WriteLine ("SEARCHING NEARBY: " + campus.Name + " #" + i++);
 
+						places = await placesRequest.getPlaces (poi, campus.Position, _next_page_token);
+
+						if (places.status == "OK") {
+					
+							foreach (Result place in places.results)
+								POIs.Add (place);
+
+							if (places.next_page_token != null) {
+								_next_page_token = places.next_page_token;
+							}
+						}
+					} while(places.next_page_token != null);
 				}
-
 			}
+			MasterPage.POIButton.IsEnabled = true;
+			MasterPage.POIButton.BackgroundColor = Color.White;
 
 		}
 

@@ -5,6 +5,7 @@ using CocoMaps.Shared.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Java.Security;
+using CocoMaps.Shared;
 
 namespace CocoMaps.Shared
 {
@@ -19,24 +20,15 @@ namespace CocoMaps.Shared
 			TextColor = Color.White
 		};
 
-		PlacesRepository placesRepo = PlacesRepository.getInstance;
-
-		Dictionary<string, TravelMode> travelMode = new Dictionary<string, TravelMode> {
-			{ "Walking", TravelMode.walking },
-			{ "Bicycling", TravelMode.bicycling },
-			{ "Shuttle", TravelMode.shuttle },
-			{ "Transit", TravelMode.transit },
-			{ "Driving", TravelMode.driving }
-		};
-
 		Button testButton = new Button { Text = "Directions", HeightRequest = 50, BackgroundColor = Color.Maroon };
 
 		static Button _POIButton = new Button { 
 			Text = "POI", 
 			HeightRequest = 40,
-			BackgroundColor = Color.White,
+			BackgroundColor = Color.Gray,
 			Opacity = 0.7,
-			BorderRadius = 0
+			BorderRadius = 0,
+			IsEnabled = false
 		};
 
 		public static Button POIButton {
@@ -47,9 +39,9 @@ namespace CocoMaps.Shared
 
 		public MasterPage (IMenuOptions menuItem)
 		{
+
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
-
 
 			SetValue (Page.TitleProperty, "CocoMaps");
 			SetValue (Page.IconProperty, menuItem.Icon);
@@ -112,11 +104,7 @@ namespace CocoMaps.Shared
 			};
 
 			directionsLayout = new RelativeLayout {
-				BackgroundColor = Helpers.Color.DarkGray.ToFormsColor (),
-				WidthRequest = App.ScreenSize.Width - 64,
-				HeightRequest = 200,
-				TranslationY = -200,
-				HorizontalOptions = LayoutOptions.Center
+				BackgroundColor = Helpers.Color.DarkGray.ToFormsColor ()
 			};
 
 			searchBar.PropertyChanged += (sender, e) => {
@@ -130,13 +118,16 @@ namespace CocoMaps.Shared
 					networkStatus.Text = "Offline";
 				} else {
 					// Network is connected
+					if (App.isHostReachable ("googleapis.com")) {
+						PlacesRepository placesRepo = PlacesRepository.getInstance;
+					}
 					networkStatus.BackgroundColor = Color.Green;
 					networkStatus.Text = "Online";
 				}
 			};
 
 			testButton.Clicked += async (sender, e) => {
-				bool r = await DependencyService.Get<INetwork> ().IsReachable ("google.ca", new TimeSpan (5));
+				bool r = await DependencyService.Get<INetwork> ().IsReachable ("google.com", new TimeSpan (5));
 				await DisplayAlert ("Network Connection:", r ? "Connected :)" : "Not Connected :(", "Whatever");
 			};
 
@@ -162,8 +153,6 @@ namespace CocoMaps.Shared
 			mainLayout.Children.Add (networkStatus, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 80));
 			mainLayout.Children.Add (detailsLayout, Constraint.Constant (0), Constraint.RelativeToParent (parent => Height));
 			mainLayout.Children.Add (loaderView, Constraint.RelativeToParent (parent => Width / 2 - loaderView.WidthRequest / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loaderView.HeightRequest / 2));
-
-			//mainLayout.Children.Add (picker, Constraint.Constant (100), Constraint.Constant (100));
 
 			Content = mainLayout;
 

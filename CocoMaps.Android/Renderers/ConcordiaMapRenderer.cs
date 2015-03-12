@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Android.Graphics;
 using Xamarin.Forms.Maps;
 using Android.OS;
+using System.ComponentModel.Design;
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]
 
@@ -19,17 +20,16 @@ namespace CocoMapsAndroid
 		bool _isDrawnDone;
 		string _from = "";
 		string _to = "";
-		PlacesRepository placesRepo = PlacesRepository.getInstance;
+		MapView androidMapView;
+
+		PlacesRepository placesRepo;
+		ShuttleBusPolyline shuttleBusPolyline = ShuttleBusPolyline.getInstance;
+		BuildingRepository buildingRepo = BuildingRepository.getInstance;
+		DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
 
 		Dictionary<String, Building> MarkerBuilding = new Dictionary<String, Building> ();
 		Dictionary<Marker, Result> MarkerPOI = new Dictionary<Marker, Result> ();
 
-
-		Element MainLayout {
-			get {
-				return this.Element.Parent;
-			}
-		}
 
 
 		void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
@@ -105,11 +105,14 @@ namespace CocoMapsAndroid
 		{
 
 			base.OnElementPropertyChanged (sender, e);
-			var androidMapView = (MapView)Control;
+			androidMapView = (MapView)Control;
 			//var formsMap = (ConcordiaMap)sender;
-			BuildingRepository buildingRepo = BuildingRepository.getInstance;
-			DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
 
+
+			if (App.isConnected () && App.isHostReachable ("googleapis.com")) {
+				placesRepo = PlacesRepository.getInstance;
+			}
+				
 			if (e.PropertyName.Equals ("VisibleRegion") && !_isDrawnDone) {
 
 				androidMapView.Map.UiSettings.MyLocationButtonEnabled = true;
@@ -158,12 +161,15 @@ namespace CocoMapsAndroid
 										detailsLayout.UpdateView (directions);
 
 										route.overview_polyline.decodedPoints = GoogleUtil.Decode (route.overview_polyline.points);
-										foreach (Position point in route.overview_polyline.decodedPoints) {
+
+										foreach (Position point in route.overview_polyline.decodedPoints)
 											polyline.Add (new LatLng (point.Latitude, point.Longitude));
-										}
+										
+										androidMapView.Map.AddPolyline (polyline);
+										
 
 									}
-									androidMapView.Map.AddPolyline (polyline);
+
 
 
 								}
@@ -210,19 +216,22 @@ namespace CocoMapsAndroid
 					}
 				}
 
-				RelativeLayout rl = MainLayout as RelativeLayout;
-				Button but = rl.Children [3] as Button;
+
 				bool isPOIAdded = false;
-				bool isPOIVisible = false;
 
-				Button bb =	MasterPage.POIButton;
+				Button poiButton =	MasterPage.POIButton;
 
-				bb.Clicked += async (send, ev) => {
+				poiButton.Clicked += async (send, ev) => {
 
-					if (App.isConnected ()) {
+					// Adding all POIs' Icons
+					if (!isPOIAdded) {
+						if (App.isConnected () && App.isHostReachable ("googleapis.com")) {
 
-						// Adding all POIs' Icons
-						if (!isPOIAdded) {
+							LoaderViewModel.getInstance.Show ();
+
+							// in case it did not fetch places yet
+							placesRepo = PlacesRepository.getInstance;
+
 							foreach (Result result in placesRepo.POIs) {
 								using (MarkerOptions poiMarker = new MarkerOptions ()) {
 									poiMarker.SetTitle (result.name)
@@ -254,15 +263,21 @@ namespace CocoMapsAndroid
 
 								}
 							}
-							isPOIAdded = true;
-						} else {
 
-							// toggling markers visibility
-							foreach (Marker m in MarkerPOI.Keys) {
-								m.Visible = !m.Visible;
-							}
-					
+							isPOIAdded = true;
+							poiButton.IsEnabled = true;
+							poiButton.BackgroundColor = Xamarin.Forms.Color.White;
+							LoaderViewModel.getInstance.Hide ();
+
 						}
+					} else {
+
+						// toggling markers visibility
+						foreach (Marker m in MarkerPOI.Keys) {
+							m.Visible = !m.Visible;
+						}
+					
+
 					}
 
 
@@ -277,5 +292,55 @@ namespace CocoMapsAndroid
 
 		}
 
+		void DrawShuttlePins ()
+		{
+			List<MarkerOptions> markers = new List<MarkerOptions> ();
+			MarkerOptions marker = new MarkerOptions ();
+
+			// SGW Shuttle Bus Marker
+			marker.SetTitle ("SGW Shuttle Bus");
+			marker.SetSnippet ("3 next passages...");
+			marker.SetPosition (
+				new LatLng (shuttleBusPolyline.ShuttleBusPoints [0].Latitude, 
+					shuttleBusPolyline.ShuttleBusPoints [0].Longitude)
+			);
+			marker.InvokeIcon (
+				BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_shuttle)
+			);
+			androidMapView.Map.AddMarker (marker);
+
+			marker = new MarkerOptions ();
+
+			// LOY Shuttle Bus Marker
+			int lastPoint = shuttleBusPolyline.ShuttleBusPoints.Count;
+			marker.SetTitle ("LOY Shuttle Bus");
+			marker.SetSnippet ("3 next passages...");
+			marker.SetPosition (
+				new LatLng (shuttleBusPolyline.ShuttleBusPoints [lastPoint - 1].Latitude, 
+					shuttleBusPolyline.ShuttleBusPoints [lastPoint - 1].Longitude)
+			);
+			marker.InvokeIcon (
+				BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_shuttle)
+			);
+			androidMapView.Map.AddMarker (marker);
+
+		}
+
+
+		void DrawShuttlePolyline ()
+		{
+			PolylineOptions shuttlePolyline = new PolylineOptions ();
+			shuttlePolyline.InvokeColor (0x7F932439);
+
+			foreach (Position point in shuttleBusPolyline.ShuttleBusPoints) {
+				shuttlePolyline.Add (new LatLng (point.Latitude, point.Longitude));
+				Console.WriteLine (point.Latitude + ", " + point.Longitude + " ADDED");
+			}
+			androidMapView.Map.AddPolyline (shuttlePolyline);
+			// Drawing pins at each end of Shuttle Bus polyline
+			DrawShuttlePins ();
+		}
+
 	}
+
 }

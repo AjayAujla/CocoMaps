@@ -61,6 +61,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\NavigationModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ImageDownload.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Directions\ShuttleBusPolyline.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />

@@ -2,7 +2,6 @@
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Json;
-using Xamarin.Forms;
 
 namespace CocoMaps.Shared
 {
@@ -10,6 +9,9 @@ namespace CocoMaps.Shared
 	{
 		static RequestDirections requestDirections;
 		static TravelMode travelMode = TravelMode.walking;
+
+		public static String SGWShuttlePosition = "1455 De Maisonneuve Blvd. W.";
+		public static String LOYShuttlePosition = "7137 Sherbrooke St West";
 
 		RequestDirections ()
 		{
@@ -25,11 +27,14 @@ namespace CocoMaps.Shared
 
 		public async Task<Directions> getDirections (string origin, string destination, TravelMode mode)
 		{
-			// Create a request for the URL.
-			var requestUrl = string.Format ("https://maps.google.com/maps/api/directions/json?origin={0}+Montreal&destination={1}+Montreal&mode={2}&sensor=true", origin, destination, mode);
-			JsonValue json = await JsonUtil.FetchJsonAsync (requestUrl);
-
-			return JsonConvert.DeserializeObject<Directions> (json.ToString ());
+			if (App.isConnected ()) {
+				// Create a request for the URL.
+				var requestUrl = string.Format ("https://maps.google.com/maps/api/directions/json?origin={0}+Montreal&destination={1}+Montreal&mode={2}&sensor=true", origin, destination, mode);
+				JsonValue json = await JsonUtil.FetchJsonAsync (requestUrl);
+			
+				return JsonConvert.DeserializeObject<Directions> (json.ToString ());
+			}
+			return null;
 		}
 
 	}
