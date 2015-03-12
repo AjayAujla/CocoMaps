@@ -115,6 +115,8 @@ namespace CocoMapsAndroid
 				
 			if (e.PropertyName.Equals ("VisibleRegion") && !_isDrawnDone) {
 
+				DrawShuttlePolyline ();
+
 				androidMapView.Map.UiSettings.MyLocationButtonEnabled = true;
 				androidMapView.Map.UiSettings.CompassEnabled = false;
 				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
@@ -123,7 +125,7 @@ namespace CocoMapsAndroid
 				androidMapView.Map.MapClick += (senderr, ee) => detailsLayout.Hide ();
 
 				androidMapView.Map.MapLongClick += async (senderr, ee) => {
-
+					
 					if (App.isConnected ()) {
 
 						Building building = GoogleUtil.PointInBuilding (ee.Point.Latitude, ee.Point.Longitude);
@@ -299,7 +301,7 @@ namespace CocoMapsAndroid
 
 			// SGW Shuttle Bus Marker
 			marker.SetTitle ("SGW Shuttle Bus");
-			marker.SetSnippet ("3 next passages...");
+			//marker.SetSnippet ("3 next passages...");
 			marker.SetPosition (
 				new LatLng (shuttleBusPolyline.ShuttleBusPoints [0].Latitude, 
 					shuttleBusPolyline.ShuttleBusPoints [0].Longitude)
@@ -314,7 +316,7 @@ namespace CocoMapsAndroid
 			// LOY Shuttle Bus Marker
 			int lastPoint = shuttleBusPolyline.ShuttleBusPoints.Count;
 			marker.SetTitle ("LOY Shuttle Bus");
-			marker.SetSnippet ("3 next passages...");
+			//marker.SetSnippet ("3 next passages...");
 			marker.SetPosition (
 				new LatLng (shuttleBusPolyline.ShuttleBusPoints [lastPoint - 1].Latitude, 
 					shuttleBusPolyline.ShuttleBusPoints [lastPoint - 1].Longitude)
@@ -336,6 +338,7 @@ namespace CocoMapsAndroid
 				shuttlePolyline.Add (new LatLng (point.Latitude, point.Longitude));
 				Console.WriteLine (point.Latitude + ", " + point.Longitude + " ADDED");
 			}
+
 			androidMapView.Map.AddPolyline (shuttlePolyline);
 			// Drawing pins at each end of Shuttle Bus polyline
 			DrawShuttlePins ();

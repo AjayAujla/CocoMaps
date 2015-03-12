@@ -1658,7 +1658,7 @@ namespace CocoMaps.Shared
 				Name = "Central",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
-				Position = new Position (45.45824177, -73.63936186),
+				Position = new Position (45.45823236, -73.64041328),
 				HasAtm = false,
 				HasBikeRack = false,
 				HasInfoKiosk = false,

@@ -34,7 +34,7 @@ namespace CocoMaps.Shared
 			
 			//SHUTTLE BUS POLYLINE POINTS
 
-			_points.Add (new Position (45.49738, -73.57816));
+			_points.Add (new Position (45.49712, -73.57840));
 			_points.Add (new Position (45.4967, -73.57881));
 			_points.Add (new Position (45.49652, -73.57889));
 			_points.Add (new Position (45.49627, -73.57902));
