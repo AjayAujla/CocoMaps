@@ -2,10 +2,8 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using CocoMaps.Shared.ViewModels;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Java.Security;
 using CocoMaps.Shared;
+using Android.Media.Audiofx;
 
 namespace CocoMaps.Shared
 {
@@ -14,13 +12,14 @@ namespace CocoMaps.Shared
 		readonly ConcordiaMap map;
 		SearchBar searchBar;
 		RelativeLayout mainLayout;
-		RelativeLayout directionsLayout;
 
 		Label networkStatus = new Label {
 			TextColor = Color.White
 		};
 
-		Button testButton = new Button { Text = "Directions", HeightRequest = 50, BackgroundColor = Color.Maroon };
+		BuildingRepository buildingRepo = BuildingRepository.getInstance;
+
+		Button testButton = new Button { Text = "TestButton", HeightRequest = 50, BackgroundColor = Color.Maroon };
 
 		static Button _POIButton = new Button { 
 			Text = "POI", 
@@ -103,15 +102,6 @@ namespace CocoMaps.Shared
 				HeightRequest = App.ScreenSize.Height - 48
 			};
 
-			directionsLayout = new RelativeLayout {
-				BackgroundColor = Helpers.Color.DarkGray.ToFormsColor ()
-			};
-
-			searchBar.PropertyChanged += (sender, e) => {
-				if (e.PropertyName.Equals ("IsFocused") && !IsFocused)
-					directionsLayout.TranslateTo (0, -Height, 100);
-			};
-
 			DependencyService.Get<INetwork> ().ReachabilityChanged += obj => {
 				if (obj == NetworkStatus.NotReachable) {
 					networkStatus.BackgroundColor = Color.Red;
@@ -132,8 +122,8 @@ namespace CocoMaps.Shared
 			};
 
 			LoaderViewModel loaderView = LoaderViewModel.getInstance;
-
 			DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
+			SearchViewModel searchViewModel = SearchViewModel.getInstance;
 
 			Console.WriteLine (mainLayout.Width + " x " + mainLayout.Height + ", " + mainLayout.WidthRequest + " x " + mainLayout.HeightRequest);
 
@@ -142,8 +132,7 @@ namespace CocoMaps.Shared
 				Constraint.Constant (0),
 				Constraint.RelativeToParent (parent => Width),
 				Constraint.RelativeToParent (parent => Height));
-				
-			mainLayout.Children.Add (directionsLayout, Constraint.Constant (0));
+
 			mainLayout.Children.Add (_POIButton, Constraint.Constant (150), Constraint.RelativeToParent (parent => Height - 54));
 			mainLayout.Children.Add (testButton, Constraint.Constant (50), Constraint.Constant (50));
 			//mainLayout.Children.Add (searchBar, Constraint.Constant (0));
@@ -154,6 +143,12 @@ namespace CocoMaps.Shared
 			mainLayout.Children.Add (detailsLayout, Constraint.Constant (0), Constraint.RelativeToParent (parent => Height));
 			mainLayout.Children.Add (loaderView, Constraint.RelativeToParent (parent => Width / 2 - loaderView.WidthRequest / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loaderView.HeightRequest / 2));
 
+			mainLayout.Children.Add (searchViewModel,
+				Constraint.Constant (200),
+				Constraint.Constant (200),
+				Constraint.RelativeToParent (parent => Width / 2),
+				Constraint.RelativeToParent (parent => Height / 2));
+			
 			Content = mainLayout;
 
 		}

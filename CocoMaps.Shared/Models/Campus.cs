@@ -37,19 +37,19 @@ namespace CocoMaps.Shared
 			set;
 		}
 
-		public List<Building> Buildings {
-			get;
-			set;
-		}
+		//		public List<Building> Buildings {
+		//			get;
+		//			set;
+		//		}
 
-		public Building GetBuildingByCode (string code)
-		{
-			foreach (Building building in Buildings) {
-				if (building.Code.Equals (code))
-					return building;
-			}
-			return null;
-		}
+		//		public Building GetBuildingByCode (string code)
+		//		{
+		//			foreach (Building building in Buildings) {
+		//				if (building.Code.Equals (code))
+		//					return building;
+		//			}
+		//			return null;
+		//		}
 
 	}
 }

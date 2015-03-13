@@ -231,13 +231,8 @@ namespace CocoMaps.Shared
 		public void UpdateView (string buildingCode)
 		{
 			Building building;
-			foreach (Campus campus in BuildingRepository.getInstance.getCampusList()) {
-				building = campus.GetBuildingByCode (buildingCode);
-				if (building != null) {
-					UpdateView (building);
-					break;
-				}
-			}
+			if (BuildingRepository.getInstance.BuildingList.TryGetValue (buildingCode, out building))
+				UpdateView (building);
 
 		}
 

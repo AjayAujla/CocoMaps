@@ -2,6 +2,7 @@
 using CocoMaps.Shared;
 using System.Collections.Generic;
 using Xamarin.Forms.Maps;
+using Java.Util;
 
 namespace CocoMaps.Shared
 {
@@ -10,22 +11,31 @@ namespace CocoMaps.Shared
 		static BuildingRepository repository;
 		readonly List<Campus> CampusList = new List<Campus> ();
 
+		// holding buildings with their code being their 'ID' (e.g. <"H", [H-Building]> )
+		// so we can easily iterate through the whole building list
+		// and easily retrieve a building by its code.
+		public Dictionary<String, Building> BuildingList = new Dictionary<String, Building> ();
+
+
 		public static BuildingRepository getInstance {
 			get {
-				if (repository == null)
+				if (repository == null) {
 					repository = new BuildingRepository ();
+					foreach (Building b in repository.BuildingList.Values)
+						Console.WriteLine ("Building: " + b);
+					Console.WriteLine (repository.BuildingList.Count);
+				}
 				return repository;
 			}
 		}
 
-		private BuildingRepository ()
+		BuildingRepository ()
 		{
 			Campus SGW = new Campus () {
 				Code = "SGW",
 				Name = "Sir George Williams",
 				Address = "1455 De Maisonneuve Blvd. W.",
-				Position = Campus.SGWPosition,
-				Buildings = new List<Building> ()
+				Position = Campus.SGWPosition
 			};
 			CampusList.Add (SGW);
 
@@ -33,8 +43,7 @@ namespace CocoMaps.Shared
 				Code = "LOY",
 				Name = "Loyola",
 				Address = "7141 Sherbrooke Street W.",
-				Position = Campus.LOYPosition,
-				Buildings = new List<Building> ()
+				Position = Campus.LOYPosition
 			};
 			CampusList.Add (LOY);
 
@@ -77,7 +86,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (B);
+			BuildingList.Add (B.Code, B);
 
 			Building CB = new Building () {
 				Code = "CB",
@@ -125,7 +134,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (CB);
+			BuildingList.Add (CB.Code, CB);
 
 			Building CI = new Building () {
 				Code = "CI",
@@ -159,7 +168,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (CI);
+			BuildingList.Add (CI.Code, CI);
 
 			Building CL = new Building () {
 				Code = "CL",
@@ -197,7 +206,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (CL);
+			BuildingList.Add (CL.Code, CL);
 
 			Building D = new Building () {
 				Code = "D",
@@ -231,7 +240,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (D);
+			BuildingList.Add (D.Code, D);
 
 			Building EN = new Building () {
 				Code = "EN",
@@ -275,7 +284,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (EN);
+			BuildingList.Add (EN.Code, EN);
 
 			Building EV = new Building () {
 				Code = "EV",
@@ -371,7 +380,7 @@ namespace CocoMaps.Shared
 
 				}
 			};
-			SGW.Buildings.Add (EV);
+			BuildingList.Add (EV.Code, EV);
 
 			Building FA = new Building () {
 				Code = "FA",
@@ -405,7 +414,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (FA);
+			BuildingList.Add (FA.Code, FA);
 
 
 			Building FB = new Building () {
@@ -460,7 +469,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (FB);
+			BuildingList.Add (FB.Code, FB);
 
 			Building FG = new Building () {
 				Code = "FG",
@@ -512,7 +521,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (FG);
+			BuildingList.Add (FG.Code, FG);
 
 			Building GM = new Building () {
 				Code = "GM",
@@ -627,7 +636,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (GM);
+			BuildingList.Add (GM.Code, GM);
 
 			Building H = new Building () {
 				Code = "H",
@@ -726,7 +735,7 @@ namespace CocoMaps.Shared
 				}
 
 			};
-			SGW.Buildings.Add (H);
+			BuildingList.Add (H.Code, H);
 
 			Building K = new Building () {
 				Code = "K",
@@ -762,7 +771,7 @@ namespace CocoMaps.Shared
 
 				}
 			};
-			SGW.Buildings.Add (K);
+			BuildingList.Add (K.Code, K);
 
 			Building LB = new Building () {
 				Code = "LB",
@@ -908,7 +917,7 @@ namespace CocoMaps.Shared
 
 				}
 			};
-			SGW.Buildings.Add (LB);
+			BuildingList.Add (LB.Code, LB);
 
 			Building M = new Building () {
 				Code = "M",
@@ -942,7 +951,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (M);
+			BuildingList.Add (M.Code, M);
 
 			Building MB = new Building () {
 				Code = "MB",
@@ -1025,7 +1034,7 @@ namespace CocoMaps.Shared
 					},
 				}
 			};
-			SGW.Buildings.Add (MB);
+			BuildingList.Add (MB.Code, MB);
 
 			Building MI = new Building () {
 				Code = "MI",
@@ -1089,7 +1098,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (MI);
+			BuildingList.Add (MI.Code, MI);
 
 			Building MU = new Building () {
 				Code = "MU",
@@ -1123,7 +1132,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (MU);
+			BuildingList.Add (MU.Code, MU);
 
 			Building P = new Building () {
 				Code = "P",
@@ -1157,7 +1166,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (P);
+			BuildingList.Add (P.Code, P);
 
 			Building PR = new Building () {
 				Code = "PR",
@@ -1195,7 +1204,7 @@ namespace CocoMaps.Shared
 					},
 				}
 			};
-			SGW.Buildings.Add (PR);
+			BuildingList.Add (PR.Code, PR);
 
 			Building Q = new Building () {
 				Code = "Q",
@@ -1229,7 +1238,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (Q);
+			BuildingList.Add (Q.Code, Q);
 
 			Building R = new Building () {
 				Code = "R",
@@ -1263,7 +1272,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (R);
+			BuildingList.Add (R.Code, R);
 
 			Building RR = new Building () {
 				Code = "RR",
@@ -1297,7 +1306,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (RR);
+			BuildingList.Add (RR.Code, RR);
 
 			Building S = new Building () {
 				Code = "S",
@@ -1333,7 +1342,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (S);
+			BuildingList.Add (S.Code, S);
 
 			Building T = new Building () {
 				Code = "T",
@@ -1367,7 +1376,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (T);
+			BuildingList.Add (T.Code, T);
 
 			Building V = new Building () {
 				Code = "V",
@@ -1403,7 +1412,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (V);
+			BuildingList.Add (V.Code, V);
 
 			Building X = new Building () {
 				Code = "X",
@@ -1437,7 +1446,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (X);
+			BuildingList.Add (X.Code, X);
 
 			Building Z = new Building () {
 				Code = "Z",
@@ -1476,7 +1485,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			SGW.Buildings.Add (Z);
+			BuildingList.Add (Z.Code, Z);
 
 
 
@@ -1581,7 +1590,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (AD);
+			BuildingList.Add (AD.Code, AD);
 
 			Building BB = new Building () {
 				Code = "BB",
@@ -1616,7 +1625,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (BB);
+			BuildingList.Add (BB.Code, BB);
 
 			Building BH = new Building () {
 				Code = "BH",
@@ -1651,7 +1660,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (BH);
+			BuildingList.Add (BH.Code, BH);
 
 			Building CC = new Building () {
 				Code = "CC",
@@ -1689,7 +1698,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (CC);
+			BuildingList.Add (CC.Code, CC);
 
 			Building CJ = new Building () {
 				Code = "CJ",
@@ -1759,7 +1768,7 @@ namespace CocoMaps.Shared
 
 				}
 			};
-			LOY.Buildings.Add (CJ);
+			BuildingList.Add (CJ.Code, CJ);
 
 			Building DO = new Building () {
 				Code = "DO",
@@ -1793,7 +1802,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (DO);
+			BuildingList.Add (DO.Code, DO);
 
 			Building FC = new Building () {
 				Code = "FC",
@@ -1864,7 +1873,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (FC);
+			BuildingList.Add (FC.Code, FC);
 
 			Building GE = new Building () {
 				Code = "GE",
@@ -1898,7 +1907,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (GE);
+			BuildingList.Add (GE.Code, GE);
 
 			Building HA = new Building () {
 				Code = "HA",
@@ -1945,7 +1954,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (HA);
+			BuildingList.Add (HA.Code, HA);
 
 
 			Building HB = new Building () {
@@ -2011,7 +2020,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (HB);
+			BuildingList.Add (HB.Code, HB);
 
 			Building HC = new Building () {
 				Code = "HC",
@@ -2049,7 +2058,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (HC);
+			BuildingList.Add (HC.Code, HC);
 
 			Building JR = new Building () {
 				Code = "JR",
@@ -2097,7 +2106,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (JR);
+			BuildingList.Add (JR.Code, JR);
 
 			Building PC = new Building () {
 				Code = "PC",
@@ -2133,7 +2142,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (PC);
+			BuildingList.Add (PC.Code, PC);
 
 			Building PS = new Building () {
 				Code = "PS",
@@ -2182,7 +2191,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (PS);
+			BuildingList.Add (PS.Code, PS);
 
 			Building PT = new Building () {
 				Code = "PT",
@@ -2228,7 +2237,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (PT);
+			BuildingList.Add (PT.Code, PT);
 
 			Building PY = new Building () {
 				Code = "PY",
@@ -2289,7 +2298,7 @@ namespace CocoMaps.Shared
 				}
 
 			};
-			LOY.Buildings.Add (PY);
+			BuildingList.Add (PY.Code, PY);
 			Building RA = new Building () {
 				Code = "RA",
 				Name = "Recreational and Athletic Complex",
@@ -2355,7 +2364,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (RA);
+			BuildingList.Add (RA.Code, RA);
 
 			Building RF = new Building () {
 				Code = "RF",
@@ -2419,7 +2428,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (RF);
+			BuildingList.Add (RF.Code, RF);
 
 			Building SC = new Building () {
 				Code = "SC",
@@ -2476,7 +2485,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (SC);
+			BuildingList.Add (SC.Code, SC);
 
 			Building SH = new Building () {
 				Code = "SH",
@@ -2510,7 +2519,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (SH);
+			BuildingList.Add (SH.Code, SH);
 
 			Building SI = new Building () {
 				Code = "SI",
@@ -2572,7 +2581,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (SI);
+			BuildingList.Add (SI.Code, SI);
 
 			Building SP = new Building () {
 				Code = "SP",
@@ -2691,7 +2700,7 @@ namespace CocoMaps.Shared
 					},
 				}
 			};
-			LOY.Buildings.Add (SP);
+			BuildingList.Add (SP.Code, SP);
 
 			Building TA = new Building () {
 				Code = "TA",
@@ -2725,7 +2734,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (TA);
+			BuildingList.Add (TA.Code, TA);
 
 			Building VE = new Building () {
 				Code = "VE",
@@ -2775,7 +2784,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (VE);
+			BuildingList.Add (VE.Code, VE);
 
 			Building VL = new Building () {
 				Code = "VL",
@@ -2829,7 +2838,7 @@ namespace CocoMaps.Shared
 					}
 				}
 			};
-			LOY.Buildings.Add (VL);
+			BuildingList.Add (VL.Code, VL);
 
 		}
 
@@ -2846,5 +2855,13 @@ namespace CocoMaps.Shared
 			}
 			return null;
 		}
+
+		public Building GetBuildingByCode (String code)
+		{
+			Building building;
+			return BuildingList.TryGetValue (code, out building) ? building : null;
+		}
+
+
 	}
 }

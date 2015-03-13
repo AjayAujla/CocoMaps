@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Threading.Tasks;
 using System.Json;
+using Xamarin.Forms.Maps;
 
 namespace CocoMaps.Shared
 {
@@ -37,5 +38,13 @@ namespace CocoMaps.Shared
 			return null;
 		}
 
+		// To be able to get directions based on Position attributes
+		public async Task<Directions> getDirections (Position origin, Position destination, TravelMode mode)
+		{
+			String _origin = origin.Latitude + "," + origin.Latitude;
+			String _destination = destination.Latitude + "," + destination.Longitude;
+
+			return await getDirections (_origin, _destination, mode);
+		}
 	}
 }

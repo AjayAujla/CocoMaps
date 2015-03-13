@@ -91,13 +91,11 @@ namespace CocoMaps.Shared.Pages
 			BuildingRepository code is simply for testing purposes.
 			******************************************************/
 			BuildingRepository buildingRepo = BuildingRepository.getInstance;
-			List<Campus> campuses = buildingRepo.getCampusList ();
-
 
 
 			// Check for a matching query to the search criteria
 			//foreach (Campus campus in campuses) {
-			foreach (Building building in campuses.ElementAt(0).Buildings) {
+			foreach (Building building in buildingRepo.BuildingList.Values) {
 				if (building.Services != null) {
 					foreach (Service service in building.Services) {
 						if (!resultsList.Contains (service) && service.Name.IndexOf (searchText, StringComparison.OrdinalIgnoreCase) >= 0) {

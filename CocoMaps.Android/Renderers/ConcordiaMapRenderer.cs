@@ -115,7 +115,7 @@ namespace CocoMapsAndroid
 				
 			if (e.PropertyName.Equals ("VisibleRegion") && !_isDrawnDone) {
 
-				DrawShuttlePolyline ();
+				//DrawShuttlePolyline ();
 
 				androidMapView.Map.UiSettings.MyLocationButtonEnabled = true;
 				androidMapView.Map.UiSettings.CompassEnabled = false;
@@ -189,32 +189,30 @@ namespace CocoMapsAndroid
 				Marker marker;
 
 				// Adding all Buildings' Icons and Buildings' Polygons
-				foreach (Campus c in buildingRepo.getCampusList()) {
-					foreach (Building b in c.Buildings) {
-						using (PolygonOptions polygon = new PolygonOptions ()) {
-							using (MarkerOptions buildingCodeMarker = new MarkerOptions ()) {
+				foreach (Building b in buildingRepo.BuildingList.Values) {
+					using (PolygonOptions polygon = new PolygonOptions ()) {
+						using (MarkerOptions buildingCodeMarker = new MarkerOptions ()) {
 
-								buildingCodeMarker.SetTitle (b.Code)
+							buildingCodeMarker.SetTitle (b.Code)
 									.SetSnippet (b.Name)
 									.SetPosition (new LatLng (b.Position.Latitude, b.Position.Longitude))
 									.InvokeIcon (GetCustomBitmapDescriptor (b.Code)); //BitmapDescriptorFactory.FromAsset ("CarWashMapIcon.png")
-								buildingCodeMarker.Flat (true);
-								buildingCodeMarker.GetHashCode ();
-								marker = androidMapView.Map.AddMarker (buildingCodeMarker);
+							buildingCodeMarker.Flat (true);
+							buildingCodeMarker.GetHashCode ();
+							marker = androidMapView.Map.AddMarker (buildingCodeMarker);
 
-								// Creating an association between the marker and the building object
-								MarkerBuilding.Add (marker.Id, b);
-
-							}
-							polygon.InvokeFillColor (0x3F932439).InvokeStrokeColor (0x00932439).Geodesic (true);
-
-							foreach (Position p in b.ShapeCoords)
-								polygon.Add (new LatLng (p.Latitude, p.Longitude));
-
-
-							androidMapView.Map.AddPolygon (polygon);
+							// Creating an association between the marker and the building object
+							MarkerBuilding.Add (marker.Id, b);
 
 						}
+						polygon.InvokeFillColor (0x3F932439).InvokeStrokeColor (0x00932439).Geodesic (true);
+
+						foreach (Position p in b.ShapeCoords)
+							polygon.Add (new LatLng (p.Latitude, p.Longitude));
+
+
+						androidMapView.Map.AddPolygon (polygon);
+
 					}
 				}
 

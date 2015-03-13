@@ -13,25 +13,25 @@ public static class GoogleUtil
 	public static Building PointInBuilding (double testX, double testY)
 	{
 		int i, j;
+		BuildingRepository buildingRepo = BuildingRepository.getInstance;
 
-		foreach (Campus campus in BuildingRepository.getInstance.getCampusList()) {
-			foreach (Building building in campus.Buildings) {
+		foreach (Building building in buildingRepo.BuildingList.Values) {
 
-				var latlnglist = new List<Position> ();
-				bool c = false;
+			var latlnglist = new List<Position> ();
+			bool c = false;
 
-				foreach (Position point in building.ShapeCoords)
-					latlnglist.Add (new Position (point.Latitude, point.Longitude));
+			foreach (Position point in building.ShapeCoords)
+				latlnglist.Add (new Position (point.Latitude, point.Longitude));
 
-				for (i = 0, j = latlnglist.Count - 1; i < latlnglist.Count - 1; j = i++) {
-					if ((latlnglist [i].Longitude > testY) != (latlnglist [j].Longitude > testY) &&
-					    (testX < (latlnglist [j].Latitude - latlnglist [i].Latitude) * (testY - latlnglist [i].Longitude) / (latlnglist [j].Longitude - latlnglist [i].Longitude) + latlnglist [i].Latitude))
-						c = !c;
-				}
-				if (c)
-					return building;
-
+			for (i = 0, j = latlnglist.Count - 1; i < latlnglist.Count - 1; j = i++) {
+				if ((latlnglist [i].Longitude > testY) != (latlnglist [j].Longitude > testY) &&
+				    (testX < (latlnglist [j].Latitude - latlnglist [i].Latitude) * (testY - latlnglist [i].Longitude) / (latlnglist [j].Longitude - latlnglist [i].Longitude) + latlnglist [i].Latitude))
+					c = !c;
 			}
+			if (c)
+				return building;
+
+
 		}
 		return null;
 

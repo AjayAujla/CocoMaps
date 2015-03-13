@@ -18,7 +18,7 @@ namespace CocoMaps.Shared
 		// TIP: Supported POIs here -> https://developers.google.com/places/documentation/supported_types
 		public String[] POIsQuery {
 			get {
-				return new [] {"cafe", "food", "bar", "atm", "bank", "gaz_station", "library"
+				return new [] {"cafe", "food", "bar", "atm|bank|library"
 				};
 			}
 		}
@@ -77,7 +77,7 @@ namespace CocoMaps.Shared
 								_next_page_token = places.next_page_token;
 							}
 						}
-					} while(places.next_page_token != null);
+					} while(false); // places.next_page_token != null
 				}
 			}
 			MasterPage.POIButton.IsEnabled = true;
