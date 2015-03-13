@@ -1,15 +1,38 @@
-﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus6V" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared/Views/ViewsModel/SearchViewModel.cs">
+﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.d019c12a" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Views\Pages\Settings.cs">
     <Files>
-      <File FileName="CocoMaps.Shared/Views/ViewsModel/DetailsViewModel.cs" Line="24" Column="24" />
-      <File FileName="CocoMaps.Shared/Views/Pages/Settings.cs" Line="17" Column="34" />
-      <File FileName="CocoMaps.Shared/Views/ViewsModel/LoaderViewModel.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Views/Pages/Master.cs" Line="80" Column="23" />
-      <File FileName="CocoMaps.Android/Renderers/ConcordiaMapRenderer.cs" Line="118" Column="7" />
-      <File FileName="CocoMaps.Shared/Controllers/Repositories/PlacesRepository.cs" Line="76" Column="8" />
-      <File FileName="CocoMaps.Shared/Models/NavigationModel.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Views/ViewsModel/SearchViewModel.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Menu.cs" Line="52" Column="52" />
+      <File FileName="CocoMaps.Shared\Views\Pages\POI\POI.cs" Line="43" Column="43" />
+      <File FileName="CocoMaps.Shared\Models\Building.cs" Line="3" Column="3" />
+      <File FileName="CocoMaps.Shared\Models\CalendarModel.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Models\Campus.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Models\Department.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Models\NavigationModel.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Models\Service.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\App.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\CocoMaps.cs" Line="62" Column="62" />
+      <File FileName="CocoMaps.Shared\OAuthSettings.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\CustomViews\DarkTextCell.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\CustomViews\ListTextCell.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\CustomViews\StripedListView.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\CustomViews\StripedViewCell.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\AuthPages\NavRootBasePage.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\AuthPages\NavRootPage.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\AuthPages\AuthBasePage.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\AuthPages\AuthLoginPage.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\POI\BasePOI.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Root.cs" Line="5" Column="5" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Master.cs" Line="35" Column="35" />
+      <File FileName="CocoMaps.Shared\Views\ViewsModel\MenuItems.cs" Line="36" Column="36" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Settings.cs" Line="6" Column="6" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Calendar\BaseCalendar.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Calendar\Calendar.cs" Line="43" Column="43" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Calendar\CalendarConnect.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Android\MainActivity.cs" Line="4" Column="4" />
+      <File FileName="CocoMaps.Shared\Views\ViewsModel\MasterViewModel.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Bookmark.cs" Line="3" Column="3" />
+      <File FileName="CocoMaps.Shared\Views\Pages\NextClass\NextClass.cs" Line="34" Column="34" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -20,4 +43,5 @@
     <String>CocoMaps.Services/CocoMaps.Services.csproj</String>
     <String>CocoMaps.iOS\CocoMaps.iOS.csproj</String>
   </DisabledProjects>
+  <MonoDevelop.Ide.ItemProperties.CocoMaps.Android MonoForAntroid.PreferredDevice="Nexus 4" />
 </Properties>

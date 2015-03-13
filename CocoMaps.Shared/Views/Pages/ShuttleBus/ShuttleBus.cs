@@ -118,7 +118,7 @@ namespace CocoMaps.Shared
 			for (int i = 0; i < maximumRows; ++i) {
 
 				DateTime LOYtime = Convert.ToDateTime (LOYdepartures [i]);
-				DateTime SGWtime = Convert.ToDateTime (LOYdepartures [i]);
+				DateTime SGWtime = Convert.ToDateTime (SGWdepartures [i]);
 				TimeSpan now = DateTime.Now.TimeOfDay;
 
 				// Skipping this iteration to display the departure time if departure time has already passed current time
