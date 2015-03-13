@@ -26,12 +26,16 @@ namespace CocoMaps.Shared
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
 
-			SetValue (Page.TitleProperty, menuItem.Title);
+			SetValue (Page.TitleProperty, "Settings");
 			SetValue (Page.IconProperty, menuItem.Icon);
 
 
 			var useGoogleMapsCell = new SwitchCell {
 				Text = "Use Google Maps App"
+			};
+
+			var eventNotificationCell = new SwitchCell {
+				Text = "Even Notifications"
 			};
 
 			useGoogleMapsCell.OnChanged += (sender, e) => {
@@ -68,6 +72,8 @@ namespace CocoMaps.Shared
 					new TableSection ("Map Settings") {
 
 						useGoogleMapsCell,
+
+						eventNotificationCell,
 
 						poiRadiusCell
 					}

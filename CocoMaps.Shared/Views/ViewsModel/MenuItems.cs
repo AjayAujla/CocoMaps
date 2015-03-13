@@ -2,14 +2,14 @@
 
 namespace CocoMaps.Shared
 {
-	public class Location_MenuOption : IMenuOptions
+	/*public class Location_MenuOption : IMenuOptions
 	{
 		public override string Title { get { return "Current Location"; } }
 
 		public override string Icon { get { return "locationIcon.png"; } }
 
 		public override int MenuNum { get { return 1; } }
-	}
+	} */
 
 	public class Campus_MenuOption : IMenuOptions
 	{
@@ -20,14 +20,14 @@ namespace CocoMaps.Shared
 		public override int MenuNum { get { return 2; } }
 	}
 
-	public class pInterest_MenuOption : IMenuOptions
+	/*public class pInterest_MenuOption : IMenuOptions
 	{
 		public override string Title { get { return "Points of Interest"; } }
 
 		public override string Icon { get { return "poiIcon.png"; } }
 
 		public override int MenuNum { get { return 3; } }
-	}
+	}*/
 
 	public class ConcordiaServices_MenuOption : IMenuOptions
 	{
@@ -48,14 +48,14 @@ namespace CocoMaps.Shared
 		public override int MenuNum { get { return 5; } }
 	}
 
-	public class bDirections_MenuOption : IMenuOptions
+	/*public class bDirections_MenuOption : IMenuOptions
 	{
 		public override string Title { get { return "Building Directions"; } }
 
 		public override string Icon { get { return "buildingIcon.png"; } }
 
 		public override int MenuNum { get { return 6; } }
-	}
+	}*/
 
 	public class iDirections_MenuOption : IMenuOptions
 	{
@@ -76,14 +76,14 @@ namespace CocoMaps.Shared
 		public override int MenuNum { get { return 8; } }
 	}
 
-	/*public class Bookmark_MenuOption : IMenuOptions
+	public class Bookmark_MenuOption : IMenuOptions
 	{
 		public override string Title { get { return "Bookmarks"; } }
 
 		public override string Icon { get { return "calendarIcon.png"; } }
 
 		public override int MenuNum { get { return 9; } }
-	}*/
+	}
 
 	public class ShuttleBus_MenuOption : IMenuOptions
 	{
