@@ -10,7 +10,7 @@ namespace CocoMaps.Shared
 
 		// Initialize Pages
 		MasterPage pMaster;
-		BasePOI pPOI;
+		//BasePOI pPOI;
 		ConcordiaServices pServices;
 		NextClass pNextClass;
 		BaseCalendar pCalendar;
@@ -55,11 +55,11 @@ namespace CocoMaps.Shared
 					pMaster = new MasterPage (menuOption);
 				}
 				return pMaster;
-			case 3:
+			/*case 3:
 				if ((pPOI == null)) {
 					pPOI = new BasePOI (menuOption);
 				}
-				return pPOI;
+				return pPOI; */
 			case 4:
 				if ((pServices == null)) {
 					pServices = new ConcordiaServices (menuOption);
