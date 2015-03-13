@@ -82,7 +82,7 @@ namespace CocoMaps.Shared
 
 		public override string Icon { get { return "calendarIcon.png"; } }
 
-		public override int MenuNum { get { return 9; } }
+		public override int MenuNum { get { return 12; } }
 	}
 
 	public class ShuttleBus_MenuOption : IMenuOptions

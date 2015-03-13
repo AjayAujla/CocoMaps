@@ -17,6 +17,7 @@ namespace CocoMaps.Shared
 		BaseShuttleBus pShuttleBus;
 		CalendarConnect pConnect;
 		Settings pSettings;
+		Bookmark pBookmark;
 
 
 		public RootPage ()
@@ -90,6 +91,11 @@ namespace CocoMaps.Shared
 					pSettings = new Settings (menuOption);
 				}
 				return pSettings;
+			case 12:
+				if ((pBookmark == null)) {
+					pBookmark = new Bookmark (menuOption);
+				}
+				return pBookmark;
 			default:
 				if ((pMaster == null)) {
 					pMaster = new MasterPage (menuOption);

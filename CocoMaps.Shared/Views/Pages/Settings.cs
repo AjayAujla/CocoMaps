@@ -35,7 +35,7 @@ namespace CocoMaps.Shared
 			};
 
 			var eventNotificationCell = new SwitchCell {
-				Text = "Even Notifications"
+				Text = "Event Notifications"
 			};
 
 			useGoogleMapsCell.OnChanged += (sender, e) => {
