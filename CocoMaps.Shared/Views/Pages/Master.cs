@@ -4,13 +4,14 @@ using Xamarin.Forms.Maps;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Shared;
 using Android.Media.Audiofx;
+using System.Diagnostics;
+using Android.Views;
 
 namespace CocoMaps.Shared
 {
 	public class MasterPage : ContentPage
 	{
 		readonly ConcordiaMap map;
-		SearchBar searchBar;
 		RelativeLayout mainLayout;
 
 		Label networkStatus = new Label {
@@ -30,6 +31,7 @@ namespace CocoMaps.Shared
 			IsEnabled = false
 		};
 
+		// Needed to access this button from ConcordiaMapRenderer.cs
 		public static Button POIButton {
 			get {
 				return _POIButton;
@@ -64,6 +66,21 @@ namespace CocoMaps.Shared
 				Opacity = 0.7,
 				BorderRadius = 0
 			};
+
+			var SearchButton = new Button {
+				Image = (FileImageSource)ImageSource.FromFile ("ic_map_search.png"),
+				HeightRequest = 40,
+				WidthRequest = 40,
+				BackgroundColor = Color.White,
+				Opacity = 0.7,
+				BorderRadius = 0
+			};
+
+			var SearchPicker = new Picker {
+				BackgroundColor = Helpers.Color.DarkGray.ToFormsColor (),
+				IsVisible = false
+			};
+
 			var NextButton = new Button { Text = "Next Class", 
 				HeightRequest = 40,
 				BackgroundColor = Color.White,
@@ -74,14 +91,24 @@ namespace CocoMaps.Shared
 
 
 
-			searchBar = new SearchBar {
-				Placeholder = "search buildings...",
-				WidthRequest = App.ScreenSize.Width - 64,
-				HeightRequest = 50
-			};
+
+			foreach (Building building in buildingRepo.BuildingList.Values)
+				SearchPicker.Items.Add (building.Code);
 
 			SGWButton.Clicked += HandleCampusRegionButton;
 			LOYButton.Clicked += HandleCampusRegionButton;
+
+			SearchButton.Clicked += (sender, e) => SearchPicker.Focus ();
+
+			SearchPicker.SelectedIndexChanged += (sender, e) => {
+
+				Picker picker = sender as Picker;
+				Building building;
+
+				if (buildingRepo.BuildingList.TryGetValue (picker.Items [picker.SelectedIndex], out building))
+					map.MoveToRegion (MapSpan.FromCenterAndRadius (building.Position, Xamarin.Forms.Maps.Distance.FromKilometers (0.05)));
+			};
+
 
 			NextButton.Clicked += async (sender, e) => {
 				string start = "7141 Sherbrooke Street W. Montreal QC";
@@ -93,8 +120,6 @@ namespace CocoMaps.Shared
 
 
 			};
-
-			searchBar.TextChanged += HandleTextChanged;
 
 			mainLayout = new RelativeLayout {
 				BackgroundColor = Color.Transparent,
@@ -134,14 +159,18 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToParent (parent => Height));
 
 			mainLayout.Children.Add (_POIButton, Constraint.Constant (150), Constraint.RelativeToParent (parent => Height - 54));
-			mainLayout.Children.Add (testButton, Constraint.Constant (50), Constraint.Constant (50));
+			//mainLayout.Children.Add (testButton, Constraint.Constant (50), Constraint.Constant (50));
 			//mainLayout.Children.Add (searchBar, Constraint.Constant (0));
 			mainLayout.Children.Add (SGWButton, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 54));
 			mainLayout.Children.Add (LOYButton, Constraint.Constant (80), Constraint.RelativeToParent (parent => Height - 54));
-			mainLayout.Children.Add (NextButton, Constraint.RelativeToParent (parent => Width - 160), Constraint.Constant (10));
+			mainLayout.Children.Add (SearchButton, Constraint.Constant (14), Constraint.Constant (14));
+			mainLayout.Children.Add (SearchPicker, Constraint.Constant (0), Constraint.Constant (0));
+
+			//mainLayout.Children.Add (NextButton, Constraint.RelativeToParent (parent => Width - 160), Constraint.Constant (10));
 			mainLayout.Children.Add (networkStatus, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 80));
 			mainLayout.Children.Add (detailsLayout, Constraint.Constant (0), Constraint.RelativeToParent (parent => Height));
 			mainLayout.Children.Add (loaderView, Constraint.RelativeToParent (parent => Width / 2 - loaderView.WidthRequest / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loaderView.HeightRequest / 2));
+
 
 			mainLayout.Children.Add (searchViewModel,
 				Constraint.Constant (200),

@@ -14,7 +14,7 @@ namespace CocoMaps.Shared
 		// holding buildings with their code being their 'ID' (e.g. <"H", [H-Building]> )
 		// so we can easily iterate through the whole building list
 		// and easily retrieve a building by its code.
-		public Dictionary<String, Building> BuildingList = new Dictionary<String, Building> ();
+		public SortedDictionary<String, Building> BuildingList = new SortedDictionary<String, Building> ();
 
 
 		public static BuildingRepository getInstance {
@@ -31,6 +31,7 @@ namespace CocoMaps.Shared
 
 		BuildingRepository ()
 		{
+			
 			Campus SGW = new Campus () {
 				Code = "SGW",
 				Name = "Sir George Williams",

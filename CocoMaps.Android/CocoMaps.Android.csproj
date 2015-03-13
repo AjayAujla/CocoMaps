@@ -244,6 +244,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_pin_default.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_pin_food.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_pin_shuttle.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_map_search.png" />
   </ItemGroup>
   <Import Project="..\CocoMaps.Shared\CocoMaps.Shared.projitems" Label="Shared" Condition="Exists('..\CocoMaps.Shared\CocoMaps.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

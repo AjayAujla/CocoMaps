@@ -21,7 +21,7 @@ namespace CocoMaps.Shared
 		BuildingRepository buildingRepo = BuildingRepository.getInstance;
 
 
-		public Picker FromSearchPicker {
+		public Picker FromPicker {
 			get;
 			set;
 		}
@@ -50,13 +50,15 @@ namespace CocoMaps.Shared
 
 		public void Init ()
 		{
-			FromSearchPicker = new Picker ();
+			FromPicker = new Picker ();
 			ToPicker = new Picker ();
+
 			foreach (Building building in buildingRepo.BuildingList.Values) {
-				FromSearchPicker.Items.Add (building.Code);
+				FromPicker.Items.Add (building.Code);
 				ToPicker.Items.Add (building.Code);
 			}
-
+			FromPicker.SelectedIndex = 1;
+			ToPicker.SelectedIndex = 1;
 		}
 
 
