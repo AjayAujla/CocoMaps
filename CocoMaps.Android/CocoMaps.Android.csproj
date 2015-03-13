@@ -245,6 +245,12 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_pin_food.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_pin_shuttle.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_map_search.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_dir_sign.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_dir_swap.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_travel_driving.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_travel_shuttle.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_travel_transit.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_travel_walking.png" />
   </ItemGroup>
   <Import Project="..\CocoMaps.Shared\CocoMaps.Shared.projitems" Label="Shared" Condition="Exists('..\CocoMaps.Shared\CocoMaps.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

@@ -19,6 +19,9 @@ namespace CocoMaps.Shared
 		};
 
 		BuildingRepository buildingRepo = BuildingRepository.getInstance;
+		LoaderViewModel loaderView = LoaderViewModel.getInstance;
+		DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
+		DirectionsViewModel searchViewModel = DirectionsViewModel.getInstance;
 
 		Button testButton = new Button { Text = "TestButton", HeightRequest = 50, BackgroundColor = Color.Maroon };
 
@@ -31,10 +34,28 @@ namespace CocoMaps.Shared
 			IsEnabled = false
 		};
 
+		Button _SearchButton;
+
 		// Needed to access this button from ConcordiaMapRenderer.cs
 		public static Button POIButton {
 			get {
 				return _POIButton;
+			}
+		}
+
+		public Button SearchButton {
+			get {
+				if (_SearchButton == null) {
+					_SearchButton = new Button {
+						Image = (FileImageSource)ImageSource.FromFile ("ic_map_search.png"),
+						HeightRequest = 40,
+						WidthRequest = 40,
+						BackgroundColor = Color.White,
+						Opacity = 0.7,
+						BorderRadius = 0
+					};
+				}
+				return _SearchButton;
 			}
 		}
 
@@ -67,15 +88,6 @@ namespace CocoMaps.Shared
 				BorderRadius = 0
 			};
 
-			var SearchButton = new Button {
-				Image = (FileImageSource)ImageSource.FromFile ("ic_map_search.png"),
-				HeightRequest = 40,
-				WidthRequest = 40,
-				BackgroundColor = Color.White,
-				Opacity = 0.7,
-				BorderRadius = 0
-			};
-
 			var SearchPicker = new Picker {
 				BackgroundColor = Helpers.Color.DarkGray.ToFormsColor (),
 				IsVisible = false
@@ -88,25 +100,28 @@ namespace CocoMaps.Shared
 				BorderRadius = 0
 			};
 
-
-
-
-
 			foreach (Building building in buildingRepo.BuildingList.Values)
 				SearchPicker.Items.Add (building.Code);
 
 			SGWButton.Clicked += HandleCampusRegionButton;
 			LOYButton.Clicked += HandleCampusRegionButton;
 
-			SearchButton.Clicked += (sender, e) => SearchPicker.Focus ();
+			SearchButton.Clicked += (sender, e) => {
+				// if() fixes a problem where the SearchPicker would not show anymore due to Events conflicts
+				if (SearchPicker.IsFocused)
+					SearchPicker.Unfocus ();
+				SearchPicker.Focus ();
+			};
 
 			SearchPicker.SelectedIndexChanged += (sender, e) => {
 
 				Picker picker = sender as Picker;
 				Building building;
 
-				if (buildingRepo.BuildingList.TryGetValue (picker.Items [picker.SelectedIndex], out building))
+				if (buildingRepo.BuildingList.TryGetValue (picker.Items [picker.SelectedIndex], out building)) {
 					map.MoveToRegion (MapSpan.FromCenterAndRadius (building.Position, Xamarin.Forms.Maps.Distance.FromKilometers (0.05)));
+					detailsLayout.UpdateView (building);
+				}
 			};
 
 
@@ -146,12 +161,6 @@ namespace CocoMaps.Shared
 				await DisplayAlert ("Network Connection:", r ? "Connected :)" : "Not Connected :(", "Whatever");
 			};
 
-			LoaderViewModel loaderView = LoaderViewModel.getInstance;
-			DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
-			SearchViewModel searchViewModel = SearchViewModel.getInstance;
-
-			Console.WriteLine (mainLayout.Width + " x " + mainLayout.Height + ", " + mainLayout.WidthRequest + " x " + mainLayout.HeightRequest);
-
 			mainLayout.Children.Add (map,
 				Constraint.Constant (0),
 				Constraint.Constant (0),
@@ -168,15 +177,19 @@ namespace CocoMaps.Shared
 
 			//mainLayout.Children.Add (NextButton, Constraint.RelativeToParent (parent => Width - 160), Constraint.Constant (10));
 			mainLayout.Children.Add (networkStatus, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 80));
-			mainLayout.Children.Add (detailsLayout, Constraint.Constant (0), Constraint.RelativeToParent (parent => Height));
+			mainLayout.Children.Add (detailsLayout,
+				Constraint.Constant (0),
+				Constraint.RelativeToParent (parent => Height),
+				Constraint.RelativeToParent (parent => Width),
+				null
+			);
 			mainLayout.Children.Add (loaderView, Constraint.RelativeToParent (parent => Width / 2 - loaderView.WidthRequest / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loaderView.HeightRequest / 2));
 
 
-			mainLayout.Children.Add (searchViewModel,
-				Constraint.Constant (200),
-				Constraint.Constant (200),
-				Constraint.RelativeToParent (parent => Width / 2),
-				Constraint.RelativeToParent (parent => Height / 2));
+//			mainLayout.Children.Add (searchViewModel,
+//				Constraint.Constant (0),
+//				Constraint.Constant (0),
+//				Constraint.RelativeToParent (parent => Width), null);
 			
 			Content = mainLayout;
 

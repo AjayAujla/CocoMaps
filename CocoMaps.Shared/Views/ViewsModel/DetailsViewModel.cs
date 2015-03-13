@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using CocoMaps.Shared;
+using Java.Lang;
 
 namespace CocoMaps.Shared
 {
@@ -15,6 +16,24 @@ namespace CocoMaps.Shared
 
 
 		static DetailsViewModel instance;
+
+		public static DetailsViewModel getInstance {
+			get {
+				if (instance == null) {
+					instance = new DetailsViewModel {
+						BackgroundColor = Helpers.Color.LightGray.ToFormsColor ()
+					};
+					instance.Init ();
+
+				}
+				return instance;
+			}
+		}
+
+		DetailsViewModel ()
+		{
+		}
+
 		static ViewState viewState;
 
 		double _pageHeight;
@@ -94,24 +113,7 @@ namespace CocoMaps.Shared
 			}
 		};
 
-		public static DetailsViewModel getInstance {
-			get {
-				if (instance == null) {
-					instance = new DetailsViewModel {
-						BackgroundColor = Helpers.Color.LightGray.ToFormsColor ()
-					};
-					instance.Init ();
-
-				}
-				return instance;
-			}
-		}
-
-		DetailsViewModel ()
-		{
-		}
-
-		public void Init ()
+		void Init ()
 		{
 			_pageHeight = App.ScreenSize.Height;
 			_minimizedFooterY = _pageHeight - minimizedFooterHeight;
@@ -209,11 +211,13 @@ namespace CocoMaps.Shared
 			list.Root.Clear ();
 			if (building.Services != null) {
 				foreach (Service service in building.Services) {
-
 					list.Root.Add (new TableSection {
 						new TextCell {
 							Text = service.Name,
-							Detail = service.RoomNumber
+							Detail = 
+								!service.RoomNumber.ToLower ().Equals ("room") 
+								? service.RoomNumber 
+								: "Room Unavailable"
 						}
 					});
 

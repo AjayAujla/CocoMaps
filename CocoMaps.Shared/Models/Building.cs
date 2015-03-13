@@ -7,7 +7,7 @@ namespace CocoMaps.Shared
 
 	public class Building
 	{
-
+		
 		public string Code {
 			get;
 			set;

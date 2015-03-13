@@ -2,7 +2,6 @@
 using CocoMaps.Shared;
 using System.Collections.Generic;
 using Xamarin.Forms.Maps;
-using Java.Util;
 
 namespace CocoMaps.Shared
 {
@@ -17,20 +16,18 @@ namespace CocoMaps.Shared
 		public SortedDictionary<String, Building> BuildingList = new SortedDictionary<String, Building> ();
 
 
+
 		public static BuildingRepository getInstance {
 			get {
-				if (repository == null) {
+				if (repository == null)
 					repository = new BuildingRepository ();
-					foreach (Building b in repository.BuildingList.Values)
-						Console.WriteLine ("Building: " + b);
-					Console.WriteLine (repository.BuildingList.Count);
-				}
 				return repository;
 			}
 		}
 
 		BuildingRepository ()
 		{
+			
 			
 			Campus SGW = new Campus () {
 				Code = "SGW",
