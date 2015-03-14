@@ -1,6 +1,5 @@
 ﻿using Xamarin.Forms;
 using CocoMaps.Shared;
-using Java.Lang;
 
 namespace CocoMaps.Shared
 {
@@ -35,13 +34,6 @@ namespace CocoMaps.Shared
 		}
 
 		static ViewState viewState;
-
-		double _pageHeight;
-		const double minimizedFooterHeight = 100;
-		const double expandedFooterHeight = 400;
-
-		double _minimizedFooterY;
-		double _expandedFooterY;
 
 		Label title = new Label {
 			Text = "Title",
@@ -109,15 +101,12 @@ namespace CocoMaps.Shared
 			Intent = TableIntent.Form,
 			HasUnevenRows = true,
 			Root = new TableRoot {
-
+				
 			}
 		};
 
 		void Init ()
 		{
-			_pageHeight = App.ScreenSize.Height;
-			_minimizedFooterY = _pageHeight - minimizedFooterHeight;
-			_expandedFooterY = _pageHeight - expandedFooterHeight;
 			viewState = ViewState.Hidden;
 
 			instance.Children.Add (title, 
@@ -158,7 +147,12 @@ namespace CocoMaps.Shared
 
 			toggleButton.GestureRecognizers.Add (toggleButtonTap);
 
-			instance.Children.Add (list, Constraint.Constant (14), Constraint.Constant (100));
+			instance.Children.Add (list, 
+				Constraint.Constant (0), 
+				Constraint.RelativeToView (image, (parent, sibling) => sibling.Y + sibling.Height + 5),
+				Constraint.RelativeToParent (Parent => Width),
+				null
+			);
 		
 		}
 
@@ -211,19 +205,28 @@ namespace CocoMaps.Shared
 			toggleButton.Source = ImageSource.FromFile ("button_buildings_toggle.png");
 
 			list.Root.Clear ();
-			if (building.Services != null) {
-				foreach (Service service in building.Services) {
-					list.Root.Add (new TableSection {
-						new TextCell {
-							Text = service.Name,
-							Detail = 
-								!service.RoomNumber.ToLower ().Equals ("room") 
-								? service.RoomNumber 
-								: "Room Unavailable"
-						}
-					});
+			list.HasUnevenRows = true;
 
+			if (building.Services != null) {
+				
+				TableSection tableSection = new TableSection { Title = building.Code + " Services:" };
+				list.Root.Add (tableSection);
+				TextCell textCell;
+
+				foreach (Service service in building.Services) {
+					
+					textCell = new TextCell ();
+
+					textCell.Text = service.Name;
+					if (service.RoomNumber != null)
+						textCell.Detail = service.RoomNumber;
+
+					tableSection.Add (
+						textCell
+					);
 				}
+
+				
 			} else {
 				list.Root.Add (new TableSection {
 					new TextCell {
@@ -231,6 +234,7 @@ namespace CocoMaps.Shared
 					}
 				});
 			}
+
 			Minimize ();
 		}
 
