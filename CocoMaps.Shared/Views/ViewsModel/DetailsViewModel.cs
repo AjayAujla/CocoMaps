@@ -1,16 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using CocoMaps.Shared;
-using System.Runtime.InteropServices;
-using Android.Content.Res;
-using Android.Gms.Identity.Intents;
-
-
-using System.ComponentModel.Design.Serialization;
-
-
-using Android.Gms.Drive;
-using Android.Views;
+﻿using Xamarin.Forms;
 
 namespace CocoMaps.Shared
 {
@@ -26,14 +14,25 @@ namespace CocoMaps.Shared
 
 
 		static DetailsViewModel instance;
-		static ViewState viewState;
 
-		double _pageHeight;
-		const double minimizedFooterHeight = 100;
-		const double expandedFooterHeight = 400;
+		public static DetailsViewModel getInstance {
+			get {
+				if (instance == null) {
+					instance = new DetailsViewModel {
+						BackgroundColor = Helpers.Color.LightGray.ToFormsColor ()
+					};
+					instance.Init ();
 
-		double _minimizedFooterY;
-		double _expandedFooterY;
+				}
+				return instance;
+			}
+		}
+
+		DetailsViewModel ()
+		{
+		}
+
+		ViewState viewState;
 
 		Label title = new Label {
 			Text = "Title",
@@ -101,32 +100,12 @@ namespace CocoMaps.Shared
 			Intent = TableIntent.Form,
 			HasUnevenRows = true,
 			Root = new TableRoot {
-
+				
 			}
 		};
 
-		public static DetailsViewModel getInstance {
-			get {
-				if (instance == null) {
-					instance = new DetailsViewModel {
-						BackgroundColor = Helpers.Color.LightGray.ToFormsColor ()
-					};
-					instance.Init ();
-
-				}
-				return instance;
-			}
-		}
-
-		DetailsViewModel ()
+		void Init ()
 		{
-		}
-
-		public void Init ()
-		{
-			_pageHeight = App.ScreenSize.Height;
-			_minimizedFooterY = _pageHeight - minimizedFooterHeight;
-			_expandedFooterY = _pageHeight - expandedFooterHeight;
 			viewState = ViewState.Hidden;
 
 			instance.Children.Add (title, 
@@ -167,18 +146,31 @@ namespace CocoMaps.Shared
 
 			toggleButton.GestureRecognizers.Add (toggleButtonTap);
 
-			instance.Children.Add (list, Constraint.Constant (14), Constraint.Constant (100));
+			instance.Children.Add (list, 
+				Constraint.Constant (0), 
+				Constraint.RelativeToView (image, (parent, sibling) => sibling.Y + sibling.Height + 5),
+				Constraint.RelativeToParent (Parent => Width),
+				null
+			);
 		
+			// For fixing the layout's view when changing
+			// the device orientation while layout is expanded
+			instance.SizeChanged += (sender, e) => {
+				if (instance.viewState == ViewState.Expanded)
+					instance.Expand ();
+			};
+
 		}
 
 		public void UpdateView (Directions direction)
 		{
-		
+
 			title.Text = direction.routes [0].legs [0].distance.text + " (" + direction.routes [0].legs [0].duration.text + ")";
 			title.TextColor = Helpers.Color.Navy.ToFormsColor ();
 
 			details.Text = "To " + direction.routes [0].legs [0].end_address;
 
+			image.IsVisible = false;
 			featuresImages.IsVisible = false;
 
 			toggleButton.Source = ImageSource.FromFile ("button_directions_toggle.png");
@@ -205,6 +197,7 @@ namespace CocoMaps.Shared
 
 			details.Text = building.Address;
 
+			image.IsVisible = true;
 			featuresImages.IsVisible = true;
 
 			atm.IsVisible = building.HasAtm;
@@ -218,37 +211,54 @@ namespace CocoMaps.Shared
 			toggleButton.Source = ImageSource.FromFile ("button_buildings_toggle.png");
 
 			list.Root.Clear ();
-			if (building.Services != null) {
-				foreach (Service service in building.Services) {
 
-					list.Root.Add (new TableSection {
-						new TextCell {
-							Text = service.Name,
-							Detail = service.RoomNumber
-						}
-					});
+			TableSection tableSection = new TableSection { Title = building.Code + " SERVICES:" };
+			list.Root.Add (tableSection);
+
+			if (building.Services != null) {
+				
+				TextCell textCell;
+
+				foreach (Service service in building.Services) {
+					
+					textCell = new TextCell ();
+
+					textCell.Text = service.Name;
+					textCell.TextColor = Color.Black;
+					textCell.DetailColor = Color.Gray;
+
+					if (service.RoomNumber != null)
+						textCell.Detail = service.RoomNumber;
+					
+					if (service.URI != null) {
+						textCell.TextColor = Helpers.Color.Navy.ToFormsColor ();
+						textCell.Tapped += (sender, e) => DependencyService.Get<IPhoneService> ().OpenBrowser (service.URI);
+					}
+
+					tableSection.Add (
+						textCell
+					);
 
 				}
 			} else {
-				list.Root.Add (new TableSection {
+				
+				tableSection.Add (
 					new TextCell {
-						Text = building.Code + " Building has no services"
+						Text = building.Code + " Building has no services",
+						TextColor = Color.Gray
 					}
-				});
+				);
+
 			}
+
 			Minimize ();
 		}
 
 		public void UpdateView (string buildingCode)
 		{
 			Building building;
-			foreach (Campus campus in BuildingRepository.getInstance.getCampusList()) {
-				building = campus.GetBuildingByCode (buildingCode);
-				if (building != null) {
-					UpdateView (building);
-					break;
-				}
-			}
+			if (BuildingRepository.getInstance.BuildingList.TryGetValue (buildingCode, out building))
+				UpdateView (building);
 
 		}
 
@@ -264,7 +274,7 @@ namespace CocoMaps.Shared
 		public void Expand ()
 		{
 			double currentPos = instance.Y;
-			double desiredPos = ParentView.Bounds.Height / 3;
+			double desiredPos = ParentView.Bounds.Height / 5;
 			instance.TranslateTo (0, desiredPos - currentPos);
 			toggleButton.RotateTo (180);
 			viewState = ViewState.Expanded;
@@ -289,4 +299,5 @@ namespace CocoMaps.Shared
 		}
 
 	}
+
 }

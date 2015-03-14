@@ -2,7 +2,6 @@
 using Xamarin.Forms;
 using CocoMaps.Shared.Pages;
 using CocoMaps.Shared.ViewModels;
-using CocoMaps.Models;
 using Xamarin.Forms.Maps;
 using System.Diagnostics;
 using System.Collections.Generic;

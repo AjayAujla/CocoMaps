@@ -52,4 +52,7 @@ Global
 		{C188D2AB-5317-4B5F-A391-17686A12BDAD}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{C188D2AB-5317-4B5F-A391-17686A12BDAD}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(NDepend) = preSolution
+		Project = ".\CocoMaps1.ndproj"
+	EndGlobalSection
 EndGlobal

@@ -1,9 +1,5 @@
-﻿using System;
-using Xamarin.Forms;
-using CocoMaps.Shared.Pages;
+﻿using Xamarin.Forms;
 using CocoMaps.Shared.ViewModels;
-using CocoMaps.Models;
-using System.Threading.Tasks;
 
 namespace CocoMaps.Shared
 {
@@ -14,8 +10,8 @@ namespace CocoMaps.Shared
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
 
-			this.SetValue (Page.TitleProperty, "Next Class");
-			this.SetValue (Page.IconProperty, menuItem.Icon);
+			SetValue (Page.TitleProperty, "Next Class");
+			SetValue (Page.IconProperty, menuItem.Icon);
 
 
 			string startLocation;
@@ -32,38 +28,38 @@ namespace CocoMaps.Shared
 			destination = destination + " Montreal QC";
 
 
-			Label label0 = new Label {
+			var label0 = new Label {
 				FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
 				FontAttributes = FontAttributes.Bold,
 				Text = "Next Class : "
 			};
 
 
-			Label label1 = new Label {
+			var label1 = new Label {
 				Text = testClass,
 
 				Font = Font.SystemFontOfSize (NamedSize.Large) 
 			};
 
-			Label label2 = new Label {
+			var label2 = new Label {
 				FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
 				FontAttributes = FontAttributes.Bold,
 				Text = "Destination : "
 			};
 
-			Label label3 = new Label {
+			var label3 = new Label {
 				Text = destination,
 
 				Font = Font.SystemFontOfSize (NamedSize.Large)
 			};
 
-			Label label4 = new Label {
+			var label4 = new Label {
 				FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
 				FontAttributes = FontAttributes.Bold,
 				Text = "Current Location : "
 			};
 
-			Label label5 = new Label {
+			var label5 = new Label {
 				Text = startLocation + "\r\n \r\n",
 
 				Font = Font.SystemFontOfSize (NamedSize.Large)
@@ -90,7 +86,7 @@ namespace CocoMaps.Shared
 
 			//NextClassButton.Clicked += HandleNextClassButton(startLocation , destination);
 
-			this.Content = new StackLayout {
+			Content = new StackLayout {
 				Children = {
 					label0,
 					label1,
@@ -122,14 +118,13 @@ namespace CocoMaps.Shared
 
 			Campus campus = BR.GetCampusByCode (campusLoc);
 
-			Building building = campus.GetBuildingByCode (roomLoc);
-
-
+			Building building;
+			BR.BuildingList.TryGetValue (roomLoc, out building);
 			return building.Address;
 
 		}
 
-		void HandleNextClassButton (string start, string end)
+		static void HandleNextClassButton (string start, string end)
 		{
 			RequestDirections RD;
 
@@ -137,8 +132,6 @@ namespace CocoMaps.Shared
 
 		}
 
-
-
 	}
-}
 
+}

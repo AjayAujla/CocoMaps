@@ -1,14 +1,9 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using System.Collections.Generic;
-using System.Diagnostics;
-using CocoMaps.Models;
 using CocoMaps.Shared.CustomViews;
 
-
-namespace CocoMaps.Shared.Pages
+namespace CocoMaps.Shared
 {
-
 	public class MenuPage : ContentPage
 	{
 		readonly List<IMenuOptions> OptionItems = new List<IMenuOptions> ();
@@ -17,14 +12,16 @@ namespace CocoMaps.Shared.Pages
 
 		public MenuPage ()
 		{
-			OptionItems.Add (new Location_MenuOption ());
+			//OptionItems.Add (new Location_MenuOption ());
 			OptionItems.Add (new Campus_MenuOption ());
-			OptionItems.Add (new pInterest_MenuOption ());
+			//OptionItems.Add (new pInterest_MenuOption ());
 			OptionItems.Add (new NextClass_MenuOption ());
 			OptionItems.Add (new ConcordiaServices_MenuOption ());
-			OptionItems.Add (new bDirections_MenuOption ());
+			//OptionItems.Add (new bDirections_MenuOption ());
+			OptionItems.Add (new Bookmark_MenuOption ());
 			OptionItems.Add (new iDirections_MenuOption ());
 			OptionItems.Add (new Calendar_MenuOption ());
+			OptionItems.Add (new ShuttleBus_MenuOption ());
 			OptionItems.Add (new Settings_MenuOption ());
 
 			BackgroundColor = Helpers.Color.DarkGray.ToFormsColor ();
@@ -33,7 +30,7 @@ namespace CocoMaps.Shared.Pages
 
 			var label = new ContentView {
 				Padding = new Thickness (10, 36, 0, 5),
-				Content = new Xamarin.Forms.Label {
+				Content = new Label {
 					TextColor = Color.FromHex ("AAAAAA"),
 					Text = "MENU",
 				}
