@@ -30,7 +30,7 @@ namespace CocoMaps.Shared
 		{
 			if (App.isConnected ()) {
 				// Create a request for the URL.
-				var requestUrl = string.Format ("https://maps.google.com/maps/api/directions/json?origin={0}+Montreal&destination={1}+Montreal&mode={2}&sensor=true", origin, destination, mode);
+				var requestUrl = string.Format ("https://maps.google.com/maps/api/directions/json?origin={0}&destination={1}&mode={2}&sensor=true", origin, destination, mode);
 				JsonValue json = await JsonUtil.FetchJsonAsync (requestUrl);
 			
 				return JsonConvert.DeserializeObject<Directions> (json.ToString ());
@@ -41,7 +41,7 @@ namespace CocoMaps.Shared
 		// To be able to get directions based on Position attributes
 		public async Task<Directions> getDirections (Position origin, Position destination, TravelMode mode)
 		{
-			String _origin = origin.Latitude + "," + origin.Latitude;
+			String _origin = origin.Latitude + "," + origin.Longitude;
 			String _destination = destination.Latitude + "," + destination.Longitude;
 
 			return await getDirections (_origin, _destination, mode);

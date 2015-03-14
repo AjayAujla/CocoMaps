@@ -23,7 +23,7 @@ namespace CocoMaps.Shared
 		DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
 		DirectionsViewModel searchViewModel = DirectionsViewModel.getInstance;
 
-		Button testButton = new Button { Text = "TestButton", HeightRequest = 50, BackgroundColor = Color.Maroon };
+		static Button _testButton = new Button { Text = "TestButton", HeightRequest = 50, BackgroundColor = Color.Maroon };
 
 		static Button _POIButton = new Button { 
 			Text = "POI", 
@@ -40,6 +40,12 @@ namespace CocoMaps.Shared
 		public static Button POIButton {
 			get {
 				return _POIButton;
+			}
+		}
+		// Needed to access this button from ConcordiaMapRenderer.cs
+		public static Button TestButton {
+			get {
+				return _testButton;
 			}
 		}
 
@@ -149,17 +155,17 @@ namespace CocoMaps.Shared
 				} else {
 					// Network is connected
 					if (App.isHostReachable ("googleapis.com")) {
-						PlacesRepository placesRepo = PlacesRepository.getInstance;
+						//PlacesRepository placesRepo = PlacesRepository.getInstance;
 					}
 					networkStatus.BackgroundColor = Color.Green;
 					networkStatus.Text = "Online";
 				}
 			};
 
-			testButton.Clicked += async (sender, e) => {
-				bool r = await DependencyService.Get<INetwork> ().IsReachable ("google.com", new TimeSpan (5));
-				await DisplayAlert ("Network Connection:", r ? "Connected :)" : "Not Connected :(", "Whatever");
-			};
+//			TestButton.Clicked += async (sender, e) => {
+//				bool r = await DependencyService.Get<INetwork> ().IsReachable ("googleapis.com", new TimeSpan (5));
+//				await DisplayAlert ("Network Connection:", r ? "Connected :)" : "Not Connected :(", "Whatever");
+//			};
 
 			mainLayout.Children.Add (map,
 				Constraint.Constant (0),
@@ -168,7 +174,7 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToParent (parent => Height));
 
 			mainLayout.Children.Add (_POIButton, Constraint.Constant (150), Constraint.RelativeToParent (parent => Height - 54));
-			//mainLayout.Children.Add (testButton, Constraint.Constant (50), Constraint.Constant (50));
+			mainLayout.Children.Add (TestButton, Constraint.Constant (50), Constraint.Constant (50));
 			//mainLayout.Children.Add (searchBar, Constraint.Constant (0));
 			mainLayout.Children.Add (SGWButton, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 54));
 			mainLayout.Children.Add (LOYButton, Constraint.Constant (80), Constraint.RelativeToParent (parent => Height - 54));

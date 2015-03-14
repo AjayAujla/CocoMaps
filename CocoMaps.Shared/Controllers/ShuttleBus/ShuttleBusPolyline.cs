@@ -9,6 +9,8 @@ namespace CocoMaps.Shared
 
 		static ShuttleBusPolyline shuttleBusPolyline;
 
+		//		public bool
+
 		public static ShuttleBusPolyline getInstance {
 			get {
 				if (shuttleBusPolyline == null) {

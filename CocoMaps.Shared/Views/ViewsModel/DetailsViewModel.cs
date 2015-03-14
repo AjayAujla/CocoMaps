@@ -170,6 +170,7 @@ namespace CocoMaps.Shared
 
 			details.Text = "To " + direction.routes [0].legs [0].end_address;
 
+			image.IsVisible = false;
 			featuresImages.IsVisible = false;
 
 			toggleButton.Source = ImageSource.FromFile ("button_directions_toggle.png");
@@ -196,6 +197,7 @@ namespace CocoMaps.Shared
 
 			details.Text = building.Address;
 
+			image.IsVisible = true;
 			featuresImages.IsVisible = true;
 
 			atm.IsVisible = building.HasAtm;
