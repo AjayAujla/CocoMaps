@@ -34,7 +34,7 @@ namespace CocoMaps.Shared
 		 */
 		public void InitializeTabOnCurrentWeekday ()
 		{
-			int dayOfWeek = (int)DateTime.Today.DayOfWeek;
+			int dayOfWeek = (int)DateTime.Now.DayOfWeek;
 
 			// Checks if the current day falls on the weekend and changes it to Monday.
 			if (dayOfWeek == 6 || dayOfWeek == 7)

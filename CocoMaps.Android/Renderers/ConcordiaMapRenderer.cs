@@ -229,7 +229,7 @@ namespace CocoMapsAndroid
 
 				//var formsMap = (ConcordiaMap)sender;
 
-				DrawShuttlePolyline ();
+				DrawShuttlePins ();
 
 				androidMapView.Map.UiSettings.MyLocationButtonEnabled = true;
 				androidMapView.Map.UiSettings.CompassEnabled = false;
@@ -334,8 +334,6 @@ namespace CocoMapsAndroid
 					}
 
 
-
-
 				};
 				androidMapView.Map.MarkerClick += HandleMarkerClick;
 
@@ -348,13 +346,20 @@ namespace CocoMapsAndroid
 		void DrawShuttlePins ()
 		{
 			RequestShuttleBusSchedule requestShuttleBusSchedule = RequestShuttleBusSchedule.getInstance;
-			requestShuttleBusSchedule.GetSGWNextPassages (5);
+			List<String> nextDepartures = requestShuttleBusSchedule.GetNextPassages (3, "SGW");
+			String nextDeparturesString = "";
 
 			MarkerOptions marker = new MarkerOptions ();
 
+			if (nextDepartures == null || nextDepartures.Count == 0)
+				nextDeparturesString = "no passages";
+			else
+				foreach (String departure in nextDepartures)
+					nextDeparturesString += departure + " ";
+
 			// SGW Shuttle Bus Marker
 			marker.SetTitle ("SGW Shuttle Bus");
-			//marker.SetSnippet ("3 next passages...");
+			marker.SetSnippet ("Next Departures: " + nextDeparturesString);
 			marker.SetPosition (
 				new LatLng (shuttleBusPolylinePoints.ShuttleBusPoints [0].Latitude, 
 					shuttleBusPolylinePoints.ShuttleBusPoints [0].Longitude)
@@ -366,10 +371,20 @@ namespace CocoMapsAndroid
 
 			marker = new MarkerOptions ();
 
+			nextDepartures = requestShuttleBusSchedule.GetNextPassages (3, "LOY");
+			nextDeparturesString = "";
+
+			if (nextDepartures == null || nextDepartures.Count == 0)
+				nextDeparturesString = "no passages";
+			else
+				foreach (String departure in nextDepartures)
+					nextDeparturesString += departure + " ";
+			
 			// LOY Shuttle Bus Marker
 			int lastPoint = shuttleBusPolylinePoints.ShuttleBusPoints.Count;
+
 			marker.SetTitle ("LOY Shuttle Bus");
-			//marker.SetSnippet ("3 next passages...");
+			marker.SetSnippet ("Next Departures: " + nextDeparturesString);
 			marker.SetPosition (
 				new LatLng (shuttleBusPolylinePoints.ShuttleBusPoints [lastPoint - 1].Latitude, 
 					shuttleBusPolylinePoints.ShuttleBusPoints [lastPoint - 1].Longitude)
@@ -395,8 +410,6 @@ namespace CocoMapsAndroid
 			
 				androidMapView.Map.AddPolyline (shuttleBusPolyline);
 
-				// Drawing pins at each end of Shuttle Bus polyline
-				DrawShuttlePins ();
 			}
 		}
 

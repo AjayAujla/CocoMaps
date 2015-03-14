@@ -121,7 +121,7 @@ namespace CocoMaps.Shared
 				DateTime SGWtime = Convert.ToDateTime (SGWdepartures [i]);
 				TimeSpan now = DateTime.Now.TimeOfDay;
 
-				// Skipping this iteration to display the departure time if departure time has already passed current time
+				// Skips departure times which have already passed
 				if (LOYtime.TimeOfDay < now && SGWtime.TimeOfDay < now) {
 					continue;
 				}

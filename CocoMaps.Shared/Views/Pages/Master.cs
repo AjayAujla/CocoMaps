@@ -155,7 +155,7 @@ namespace CocoMaps.Shared
 				} else {
 					// Network is connected
 					if (App.isHostReachable ("googleapis.com")) {
-						PlacesRepository placesRepo = PlacesRepository.getInstance;
+						//PlacesRepository placesRepo = PlacesRepository.getInstance;
 					}
 					networkStatus.BackgroundColor = Color.Green;
 					networkStatus.Text = "Online";
