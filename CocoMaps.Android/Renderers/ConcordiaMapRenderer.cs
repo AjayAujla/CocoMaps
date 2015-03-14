@@ -36,7 +36,7 @@ namespace CocoMapsAndroid
 
 		// used to map Markers' ID (a string) to their representative object
 		Dictionary<String, Building> MarkerBuilding = new Dictionary<String, Building> ();
-		Dictionary<String, Result> MarkerPOI = new Dictionary<String, Result> ();
+		Dictionary<Marker, Result> MarkerPOI = new Dictionary<Marker, Result> ();
 		Dictionary<String, Directions> MarkerDirections = new Dictionary<String, Directions> ();
 
 
@@ -229,7 +229,7 @@ namespace CocoMapsAndroid
 
 				//var formsMap = (ConcordiaMap)sender;
 
-				//DrawShuttlePolyline ();
+				DrawShuttlePolyline ();
 
 				androidMapView.Map.UiSettings.MyLocationButtonEnabled = true;
 				androidMapView.Map.UiSettings.CompassEnabled = false;
@@ -312,7 +312,7 @@ namespace CocoMapsAndroid
 									
 									marker = androidMapView.Map.AddMarker (poiMarker);
 
-									MarkerPOI.Add (marker.Id, result);
+									MarkerPOI.Add (marker, result);
 
 								}
 							}
@@ -347,7 +347,9 @@ namespace CocoMapsAndroid
 
 		void DrawShuttlePins ()
 		{
-			var markers = new List<MarkerOptions> ();
+			RequestShuttleBusSchedule requestShuttleBusSchedule = RequestShuttleBusSchedule.getInstance;
+			requestShuttleBusSchedule.GetSGWNextPassages (5);
+
 			MarkerOptions marker = new MarkerOptions ();
 
 			// SGW Shuttle Bus Marker
