@@ -1,7 +1,5 @@
-﻿using Xamarin.Forms;
-using Xamarin;
-using CocoMaps.Shared.Pages;
-using System;
+﻿using System;
+using Xamarin.Forms;
 
 namespace CocoMaps.Shared
 {
@@ -13,29 +11,24 @@ namespace CocoMaps.Shared
 
 		static volatile App appInstance;
 
-		static object syncApp = new Object();
+		static object syncApp = new Object ();
 
 		NavigationPage NavPage;
 		string _Token;
 
-		public static App Instance
-		{
-			get 
-			{
-				if (appInstance == null) 
-				{
-					lock (syncApp) 
-					{
-						if (appInstance == null) 
-						{
+		public static App Instance {
+			get {
+				if (appInstance == null) {
+					lock (syncApp) {
+						if (appInstance == null) {
 							appInstance = new App ();
 
 							appInstance.OAuthSettings = 
 								new OAuthSettings (
-									clientId: "189708382965-8e2o6rtnvihkd40fn54elflfdrmrpemf.apps.googleusercontent.com", 
-									scope: "https://www.googleapis.com/auth/calendar",  		
-									authorizeUrl: "https://accounts.google.com/o/oauth2/auth",  	
-									redirectUrl: "https://www.google.com/oauth2callback");   
+								clientId: "189708382965-8e2o6rtnvihkd40fn54elflfdrmrpemf.apps.googleusercontent.com", 
+								scope: "https://www.googleapis.com/auth/calendar",  		
+								authorizeUrl: "https://accounts.google.com/o/oauth2/auth",  	
+								redirectUrl: "https://www.google.com/oauth2callback");   
 						}
 					}
 				}
@@ -50,30 +43,29 @@ namespace CocoMaps.Shared
 		public Page GetMainPage ()
 		{
 
-			var MainPage = new NavRootPage();
+			var MainPage = new NavRootPage ();
 
-			NavPage = new NavigationPage(MainPage);
+			NavPage = new NavigationPage (MainPage);
 
 			return NavPage;
 		}
 
 		public bool IsAuthenticated {
-			get { return !string.IsNullOrWhiteSpace(_Token); }
+			get { return !string.IsNullOrWhiteSpace (_Token); }
 		}
 
 		public string Token {
 			get { return _Token; }
 		}
 
-		public void SaveToken(string token)
+		public void SaveToken (string token)
 		{
 			_Token = token;
 
 			MessagingCenter.Send<App> (this, "Authenticated");
 		}
 
-		public Action SuccessfulLoginAction
-		{
+		public Action SuccessfulLoginAction {
 			get {
 				return new Action (() => NavPage.Navigation.PopModalAsync ());
 			}
@@ -81,9 +73,12 @@ namespace CocoMaps.Shared
 
 		public static bool isConnected ()
 		{
-			if (DependencyService.Get<INetwork> ().InternetConnectionStatus () == NetworkStatus.NotReachable)
-				return false;
-			return true;
+			return DependencyService.Get<INetwork> ().InternetConnectionStatus () != NetworkStatus.NotReachable;
+		}
+
+		public static bool isHostReachable (String host)
+		{
+			return DependencyService.Get<INetwork> ().IsReachable (host, new TimeSpan (5)).Result;
 		}
 
 	}

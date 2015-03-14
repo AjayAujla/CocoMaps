@@ -61,6 +61,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\NavigationModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ImageDownload.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\ShuttleBus\ShuttleBusPolyline.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\DirectionsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Bookmark.cs" />
   </ItemGroup>
   <ItemGroup>
