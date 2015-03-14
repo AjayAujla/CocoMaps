@@ -5,8 +5,10 @@ using Xamarin.Forms.Maps;
 
 namespace CocoMaps.Shared
 {
+	
 	public class BuildingRepository
 	{
+		
 		static BuildingRepository repository;
 		readonly List<Campus> CampusList = new List<Campus> ();
 
@@ -14,8 +16,6 @@ namespace CocoMaps.Shared
 		// so we can easily iterate through the whole building list
 		// and easily retrieve a building by its code.
 		public SortedDictionary<String, Building> BuildingList = new SortedDictionary<String, Building> ();
-
-
 
 		public static BuildingRepository getInstance {
 			get {
@@ -27,8 +27,7 @@ namespace CocoMaps.Shared
 
 		BuildingRepository ()
 		{
-
-
+			
 			Campus SGW = new Campus {
 				Code = "SGW",
 				Name = "Sir George Williams",
@@ -2407,4 +2406,5 @@ namespace CocoMaps.Shared
 
 
 	}
+
 }

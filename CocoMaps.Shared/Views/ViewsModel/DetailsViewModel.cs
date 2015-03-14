@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 using CocoMaps.Shared;
 
 namespace CocoMaps.Shared
@@ -158,7 +159,7 @@ namespace CocoMaps.Shared
 
 		public void UpdateView (Directions direction)
 		{
-		
+
 			title.Text = direction.routes [0].legs [0].distance.text + " (" + direction.routes [0].legs [0].duration.text + ")";
 			title.TextColor = Helpers.Color.Navy.ToFormsColor ();
 
@@ -205,12 +206,12 @@ namespace CocoMaps.Shared
 			toggleButton.Source = ImageSource.FromFile ("button_buildings_toggle.png");
 
 			list.Root.Clear ();
-			list.HasUnevenRows = true;
+
+			TableSection tableSection = new TableSection { Title = building.Code + " SERVICES:" };
+			list.Root.Add (tableSection);
 
 			if (building.Services != null) {
 				
-				TableSection tableSection = new TableSection { Title = building.Code + " Services:" };
-				list.Root.Add (tableSection);
 				TextCell textCell;
 
 				foreach (Service service in building.Services) {
@@ -218,21 +219,31 @@ namespace CocoMaps.Shared
 					textCell = new TextCell ();
 
 					textCell.Text = service.Name;
+					textCell.TextColor = Color.Black;
+					textCell.DetailColor = Color.Gray;
+
 					if (service.RoomNumber != null)
 						textCell.Detail = service.RoomNumber;
+					
+					if (service.URI != null) {
+						textCell.TextColor = Helpers.Color.Navy.ToFormsColor ();
+						textCell.Tapped += (sender, e) => DependencyService.Get<IPhoneService> ().OpenBrowser (service.URI);
+					}
 
 					tableSection.Add (
 						textCell
 					);
-				}
 
-				
+				}
 			} else {
-				list.Root.Add (new TableSection {
+				
+				tableSection.Add (
 					new TextCell {
-						Text = building.Code + " Building has no services"
+						Text = building.Code + " Building has no services",
+						TextColor = Color.Gray
 					}
-				});
+				);
+
 			}
 
 			Minimize ();
