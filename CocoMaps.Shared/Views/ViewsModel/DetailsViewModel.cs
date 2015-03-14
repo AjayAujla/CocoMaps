@@ -1,6 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using CocoMaps.Shared;
+﻿using Xamarin.Forms;
 
 namespace CocoMaps.Shared
 {
@@ -34,7 +32,7 @@ namespace CocoMaps.Shared
 		{
 		}
 
-		static ViewState viewState;
+		ViewState viewState;
 
 		Label title = new Label {
 			Text = "Title",
@@ -155,6 +153,13 @@ namespace CocoMaps.Shared
 				null
 			);
 		
+			// For fixing the layout's view when changing
+			// the device orientation while layout is expanded
+			instance.SizeChanged += (sender, e) => {
+				if (instance.viewState == ViewState.Expanded)
+					instance.Expand ();
+			};
+
 		}
 
 		public void UpdateView (Directions direction)
@@ -269,7 +274,7 @@ namespace CocoMaps.Shared
 		public void Expand ()
 		{
 			double currentPos = instance.Y;
-			double desiredPos = ParentView.Bounds.Height / 3;
+			double desiredPos = ParentView.Bounds.Height / 5;
 			instance.TranslateTo (0, desiredPos - currentPos);
 			toggleButton.RotateTo (180);
 			viewState = ViewState.Expanded;
@@ -294,4 +299,5 @@ namespace CocoMaps.Shared
 		}
 
 	}
+
 }

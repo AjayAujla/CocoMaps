@@ -1,22 +1,26 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
-using System.Windows;
 using System.Collections.Generic;
-using System.Net;
-using System.Text;
-
-using Newtonsoft.Json;
-using System.Threading.Tasks;
-using System.Json;
-using HtmlAgilityPack;
-using System.Net.Http;
+using Java.Sql;
 
 namespace CocoMaps.Shared
 {
 	public class RequestShuttleBusSchedule
 	{
-		private static RequestShuttleBusSchedule requestShuttleBusSchedule;
+		static RequestShuttleBusSchedule requestShuttleBusSchedule;
+
+		public static RequestShuttleBusSchedule getInstance {
+			get {
+				if (requestShuttleBusSchedule == null) {
+					requestShuttleBusSchedule = new RequestShuttleBusSchedule ();
+				}
+				return requestShuttleBusSchedule;
+			}
+		}
+
+		RequestShuttleBusSchedule ()
+		{
+
+		}
 
 		public List<String> NonFridayLOYDepartures = new List<String> {
 			"7:45",
@@ -170,18 +174,33 @@ namespace CocoMaps.Shared
 			"19:45"
 		};
 
-		RequestShuttleBusSchedule ()
+		public String[] GetSGWNextPassages (int numberOfNextPassages)
 		{
 
+			// No passages during weekend
+//			if (DateTime.Today.DayOfWeek == DayOfWeek.Saturday
+//			    || DateTime.Today.DayOfWeek || DayOfWeek.Sunday)
+//				return null;
+
+
+			for (int i = 0; i < numberOfNextPassages; ++i) {
+
+
+
+
+			}
+
+
+			return null;
+
 		}
 
-		public static RequestShuttleBusSchedule getInstance {
-			get {
-				if (requestShuttleBusSchedule == null) {
-					requestShuttleBusSchedule = new RequestShuttleBusSchedule ();
-				}
-				return requestShuttleBusSchedule;
-			}
+		public String[] GetLOYNextPassages (int numberOfNextPassages)
+		{
+
+
+			return null;
 		}
+
 	}
 }
