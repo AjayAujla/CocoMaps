@@ -46,5 +46,7 @@ namespace CocoMaps.Shared
 
 			return await getDirections (_origin, _destination, mode);
 		}
+
 	}
+
 }
