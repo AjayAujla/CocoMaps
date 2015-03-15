@@ -12,6 +12,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using System.Json;
 using CocoMaps.Android;
+using System.Linq;
 
 namespace CocoMaps.Shared
 {
@@ -20,10 +21,10 @@ namespace CocoMaps.Shared
 
 		Boolean UseOnlineCalendar = false;
 
-		CalendarListRootObject CalListObj = null;
+		public CalendarListRootObject CalListObj = null;
 
-		CalendarRootObject LocalCalObj = null;
-		CalendarRootObject OnlineCalObj = null;
+		public CalendarRootObject LocalCalObj = null;
+		public CalendarRootObject OnlineCalObj = null;
 
 		public List<CalendarItems> MondayCalItems = new List<CalendarItems>{};
 		public List<CalendarItems> TuesdayCalItems = new List<CalendarItems>{};
@@ -47,6 +48,9 @@ namespace CocoMaps.Shared
 
 				setCalendarList();
 
+				sortCalendarList();
+
+
 				#if __ANDROID__
 
 				AndroidReminderService a = new AndroidReminderService();
@@ -62,6 +66,8 @@ namespace CocoMaps.Shared
 				this.Children.Add (WedCal);
 				this.Children.Add (ThuCal);
 				this.Children.Add (FriCal);
+
+				InitializeTabOnCurrentWeekday ();
 
 				var dateNow = DateTime.Now;
 				var today = dateNow.DayOfWeek;
@@ -131,6 +137,15 @@ namespace CocoMaps.Shared
 				#endif
 
 			});
+		}
+
+		public void sortCalendarList()
+		{
+			MondayCalItems = MondayCalItems.OrderBy(o=>o.StartTime).ToList();
+			TuesdayCalItems = TuesdayCalItems.OrderBy(o=>o.StartTime).ToList();
+			WednesdayCalItems = WednesdayCalItems.OrderBy(o=>o.StartTime).ToList();
+			ThursdayCalItems = ThursdayCalItems.OrderBy(o=>o.StartTime).ToList();
+			FridayCalItems = FridayCalItems.OrderBy(o=>o.StartTime).ToList();
 		}
 
 		public void setCalendarList()
@@ -335,6 +350,17 @@ namespace CocoMaps.Shared
 
 		}
 
+		public void InitializeTabOnCurrentWeekday ()
+		{
+			int dayOfWeek = (int)DateTime.Today.DayOfWeek;
+
+			// Checks if the current day falls on the weekend and changes it to Monday.
+			if (dayOfWeek <= 0 || dayOfWeek >= 6) {dayOfWeek = 1;}
+
+			// Starts the page with the tab corresponding to the current day
+			this.CurrentPage = this.Children [dayOfWeek-1];
+		}
+
 		public async Task<CalendarListRootObject> requestCalendarList()
 		{
 			string token = App.Instance.Token;
@@ -347,6 +373,36 @@ namespace CocoMaps.Shared
 
 			return CalListObj;
 
+		}
+
+		public List<CalendarItems> getMondayList()
+		{
+			if ((MondayCalItems == null)) {setCalendarList();sortCalendarList ();}
+			return MondayCalItems;
+		}
+
+		public List<CalendarItems> getTuesdayList()
+		{
+			if ((TuesdayCalItems == null)) {setCalendarList();sortCalendarList ();}
+			return TuesdayCalItems;
+		}
+
+		public List<CalendarItems> getWednesdayList()
+		{
+			if ((WednesdayCalItems == null)) {setCalendarList();sortCalendarList ();}
+			return WednesdayCalItems;
+		}
+
+		public List<CalendarItems> getThursdayList()
+		{
+			if ((ThursdayCalItems == null)) {setCalendarList();sortCalendarList ();}
+			return ThursdayCalItems;
+		}
+
+		public List<CalendarItems> getFridayList()
+		{
+			if ((FridayCalItems == null)) {setCalendarList();sortCalendarList ();}
+			return FridayCalItems;
 		}
 
 	}

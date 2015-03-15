@@ -66,7 +66,7 @@ namespace CocoMaps.Shared
 				return pServices;
 			case 5:
 				if ((pNextClass == null)) {
-					pNextClass = new NextClass (menuOption);
+					pNextClass = new NextClass (menuOption,pCalendar);
 				}
 				return pNextClass;
 			case 8:
