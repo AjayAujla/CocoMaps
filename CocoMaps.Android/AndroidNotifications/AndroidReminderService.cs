@@ -32,8 +32,7 @@ namespace CocoMaps.Android
 
 			var dateNow = DateTime.Now;
 
-			if (dateTime < dateNow)
-				break;
+			if (dateTime < dateNow);
 			else
 				alarmManager.Set(AlarmType.ElapsedRealtime, SystemClock.ElapsedRealtime () + 5 * 1000, pendingIntent);
 	
