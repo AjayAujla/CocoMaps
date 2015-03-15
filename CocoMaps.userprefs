@@ -1,6 +1,33 @@
 ﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.62604414" />
+  <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="CocoMaps.Shared\Controllers\Places\RequestPlaces.cs" Line="3" Column="3" />
+      <File FileName="UnitTesting.Android\MainActivity.cs" Line="1" Column="1" />
+      <File FileName="UnitTesting.Android\TestsSample.cs" Line="9" Column="9" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="CocoMaps.Android" expanded="True">
+            <Node name="ComponentReferenceFolder" expanded="True" />
+          </Node>
+          <Node name="CocoMaps.Shared" expanded="True">
+            <Node name="Controllers" expanded="True">
+              <Node name="Helpers" expanded="True" />
+            </Node>
+            <Node name="Models" expanded="True" />
+          </Node>
+          <Node name="UnitTesting.Android" expanded="True" selected="True">
+            <Node name="References" expanded="True" />
+            <Node name="ComponentReferenceFolder" expanded="True" />
+            <Node name="Properties" expanded="True" />
+          </Node>
+          <Node name="UnitTesting.Shared" expanded="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
