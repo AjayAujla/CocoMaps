@@ -27,6 +27,7 @@ namespace CocoMaps.Android
 							.SetContentText(message)
 							.SetWhen(Java.Lang.JavaSystem.CurrentTimeMillis())
 							.SetAutoCancel(true);
+	
 			
 			
 						var notification = builder.Build();
