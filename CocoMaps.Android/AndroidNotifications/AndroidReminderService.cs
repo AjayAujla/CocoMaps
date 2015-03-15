@@ -25,8 +25,17 @@ namespace CocoMaps.Android
 			PendingIntent pendingIntent = PendingIntent.GetBroadcast(Forms.Context, 0, alarmIntent, PendingIntentFlags.UpdateCurrent);
 			AlarmManager alarmManager = (AlarmManager) Forms.Context.GetSystemService(Context.AlarmService);
 
-			//TODO: For demo set after 5 seconds.
-			alarmManager.Set(AlarmType.ElapsedRealtime, SystemClock.ElapsedRealtime () + 5 * 1000, pendingIntent);
+			var dateTimeHour = (long)dateTime.Hour;
+			var dateTimeMinute = (long)dateTime.Minute;
+			var dateTimeTotalMinutes = dateTimeHour * 60 + dateTimeMinute;
+			var dateTimeTrigger = dateTimeTotalMinutes * 100000;
+
+			var dateNow = DateTime.Now;
+
+			if (dateTime < dateNow)
+				break;
+			else
+				alarmManager.Set(AlarmType.ElapsedRealtime, SystemClock.ElapsedRealtime () + 5 * 1000, pendingIntent);
 	
 
 		}
