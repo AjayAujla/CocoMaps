@@ -187,7 +187,7 @@ namespace CocoMaps.Shared
 				Constraint.Constant (0),
 				Constraint.RelativeToParent (parent => Height),
 				Constraint.RelativeToParent (parent => Width),
-				null
+				Constraint.RelativeToParent (parent => Height - 30)
 			);
 			mainLayout.Children.Add (loaderView, Constraint.RelativeToParent (parent => Width / 2 - loaderView.WidthRequest / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loaderView.HeightRequest / 2));
 

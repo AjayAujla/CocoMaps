@@ -1,4 +1,8 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
+using Android.Service.Voice;
+using Android.Content;
+using System.Runtime.Remoting.Messaging;
 
 namespace CocoMaps.Shared
 {
@@ -12,6 +16,11 @@ namespace CocoMaps.Shared
 			Hidden
 		}
 
+		enum Infos
+		{
+			OnServices,
+			OnDepartments
+		}
 
 		static DetailsViewModel instance;
 
@@ -33,6 +42,7 @@ namespace CocoMaps.Shared
 		}
 
 		ViewState viewState;
+		Infos infos;
 
 		Label title = new Label {
 			Text = "Title",
@@ -96,7 +106,9 @@ namespace CocoMaps.Shared
 			TextColor = Helpers.Color.Navy.ToFormsColor (),
 			BackgroundColor = Color.Transparent
 		};
-		TableView list = new TableView {
+
+
+		TableView directionsList = new TableView {
 			Intent = TableIntent.Form,
 			HasUnevenRows = true,
 			Root = new TableRoot {
@@ -104,9 +116,39 @@ namespace CocoMaps.Shared
 			}
 		};
 
+		TableView servicesList = new TableView {
+			HasUnevenRows = true,
+			Root = new TableRoot ()
+		};
+
+		TableView departmentsList = new TableView {
+			HasUnevenRows = true,
+			Root = new TableRoot ()
+		};
+
+		RelativeLayout listsHolder = new RelativeLayout ();
+
+		Button servicesButton = new Button {
+			Text = "Services",
+			TextColor = Helpers.Color.Navy.ToFormsColor (),
+			BackgroundColor = Helpers.Color.LightGray.ToFormsColor (),
+			BorderRadius = 0
+		};
+
+		Button departmentsButton = new Button {
+			Text = "Departments",
+			TextColor = Helpers.Color.Navy.ToFormsColor (),
+			BackgroundColor = Helpers.Color.LightGray.ToFormsColor (),
+			BorderRadius = 0
+		};
+
 		void Init ()
 		{
 			viewState = ViewState.Hidden;
+			infos = Infos.OnServices;
+
+			// starting on services
+			servicesButton.Focus ();
 
 			instance.Children.Add (title, 
 				Constraint.Constant (14),
@@ -127,6 +169,20 @@ namespace CocoMaps.Shared
 				Constraint.Constant (0)
 			);
 
+			instance.Children.Add (servicesButton, 
+				Constraint.Constant (0),
+				Constraint.RelativeToView (image, (parent, sibling) => sibling.Y + sibling.Height + 5),
+				Constraint.RelativeToParent (Parent => Width / 2),
+				null
+			);
+
+			instance.Children.Add (departmentsButton, 
+				Constraint.RelativeToView (servicesButton, (parent, sibling) => sibling.X + sibling.Width),
+				Constraint.RelativeToView (servicesButton, (parent, sibling) => sibling.Y),
+				Constraint.RelativeToParent (Parent => Width / 2),
+				null
+			);
+
 			featuresImages.Children.Add (atm);
 			featuresImages.Children.Add (accessibility);
 			featuresImages.Children.Add (bikerack);
@@ -141,23 +197,55 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToParent (Parent => Width / 2 - toggleButton.Width / 2),
 				Constraint.RelativeToParent (Parent => -toggleButton.Height / 2)
 			);
+
 			var toggleButtonTap = new TapGestureRecognizer ();
 			toggleButtonTap.Tapped += (sender, e) => Toggle ();
-
 			toggleButton.GestureRecognizers.Add (toggleButtonTap);
 
-			instance.Children.Add (list, 
+			instance.Children.Add (directionsList, 
 				Constraint.Constant (0), 
 				Constraint.RelativeToView (image, (parent, sibling) => sibling.Y + sibling.Height + 5),
 				Constraint.RelativeToParent (Parent => Width),
 				null
 			);
-		
-			// For fixing the layout's view when changing
+
+			instance.Children.Add (listsHolder,
+				Constraint.Constant (0), 
+				// for hiding the TableSection which was causing a blank space
+				Constraint.RelativeToView (servicesButton, (parent, sibling) => sibling.Y + 3),
+				Constraint.RelativeToParent (Parent => Width * 2),
+				Constraint.RelativeToView (servicesButton, (parent, sibling) => parent.Height - sibling.Y)
+			);
+
+			listsHolder.Children.Add (servicesList,
+				Constraint.Constant (0),
+				Constraint.Constant (0),
+				Constraint.RelativeToParent (Parent => Width),
+				Constraint.RelativeToParent (Parent => Height - servicesButton.Height * 2 - 10)
+			);
+
+			listsHolder.Children.Add (departmentsList,
+				Constraint.RelativeToView (servicesList, (parent, sibling) => sibling.X + sibling.Width),
+				Constraint.Constant (0),
+				Constraint.RelativeToParent (Parent => Width),
+				Constraint.RelativeToParent (Parent => Height - departmentsButton.Height * 2 - 10)
+			);
+
+			instance.RaiseChild (servicesButton);
+			instance.RaiseChild (departmentsButton);
+
+			servicesButton.Clicked += (sender, e) => ShowServices ();
+			departmentsButton.Clicked += (sender, e) => ShowDepartments ();
+
+			// For fixing the layout's heights and widths when changing
 			// the device orientation while layout is expanded
 			instance.SizeChanged += (sender, e) => {
 				if (instance.viewState == ViewState.Expanded)
 					instance.Expand ();
+				if (instance.infos == Infos.OnServices)
+					instance.ShowServices ();
+				else
+					instance.ShowDepartments ();
 			};
 
 		}
@@ -170,15 +258,22 @@ namespace CocoMaps.Shared
 
 			details.Text = "To " + direction.routes [0].legs [0].end_address;
 
+			directionsList.IsVisible = true;
+
+			// Hiding building details stuff
 			image.IsVisible = false;
 			featuresImages.IsVisible = false;
+			servicesList.IsVisible = false;
+			departmentsList.IsVisible = false;
+			servicesButton.IsVisible = false;
+			departmentsButton.IsVisible = false;
 
 			toggleButton.Source = ImageSource.FromFile ("button_directions_toggle.png");
 
-			list.Root.Clear ();
+			directionsList.Root.Clear ();
 			foreach (Leg leg in direction.routes[0].legs) {
 				foreach (Step step in leg.steps) {
-					list.Root.Add (new TableSection {
+					directionsList.Root.Add (new TableSection {
 						new TextCell {
 							Text = step.html_instructions_nohtml,
 							Detail = step.distance.text + " (" + step.duration.text + ")"
@@ -197,25 +292,30 @@ namespace CocoMaps.Shared
 
 			details.Text = building.Address;
 
+			instance.ShowServices ();
+
 			image.IsVisible = true;
 			featuresImages.IsVisible = true;
 
+			directionsList.IsVisible = false;
+
 			atm.IsVisible = building.HasAtm;
-			atm.IsVisible = building.HasAccessibility;
-			atm.IsVisible = building.HasBikeRack;
-			atm.IsVisible = building.HasParkingLot;
-			atm.IsVisible = building.HasInfoKiosk;
+			accessibility.IsVisible = building.HasAccessibility;
+			bikerack.IsVisible = building.HasBikeRack;
+			parkinglot.IsVisible = building.HasParkingLot;
+			infokiosk.IsVisible = building.HasInfoKiosk;
 
 			image.Source = ImageSource.FromFile ("building_" + building.Code.ToLower () + ".jpg");
 
 			toggleButton.Source = ImageSource.FromFile ("button_buildings_toggle.png");
 
-			list.Root.Clear ();
+			servicesList.Root.Clear ();
 
-			TableSection tableSection = new TableSection { Title = building.Code + " SERVICES:" };
-			list.Root.Add (tableSection);
+			TableSection servicesSection = new TableSection ();
 
-			if (building.Services != null) {
+			servicesList.Root.Add (servicesSection);
+
+			if (building.Services != null && building.Services.Count > 0) {
 				
 				TextCell textCell;
 
@@ -235,16 +335,54 @@ namespace CocoMaps.Shared
 						textCell.Tapped += (sender, e) => DependencyService.Get<IPhoneService> ().OpenBrowser (service.URI);
 					}
 
-					tableSection.Add (
+					servicesSection.Add (
 						textCell
 					);
 
 				}
 			} else {
 				
-				tableSection.Add (
+				servicesSection.Add (
 					new TextCell {
 						Text = building.Code + " Building has no services",
+						TextColor = Color.Gray
+					}
+				);
+
+			}
+
+			departmentsList.Root.Clear ();
+
+			TableSection departmentsSection = new TableSection ();
+
+			departmentsList.Root.Add (departmentsSection);
+
+			if (building.Departments != null && building.Departments.Count > 0) {
+
+				TextCell textCell;
+				foreach (Department department in building.Departments) {
+					
+					textCell = new TextCell ();
+
+					textCell.Text = department.Name;
+					textCell.TextColor = Color.Black;
+					textCell.DetailColor = Color.Gray;
+
+					if (department.URI != null) {
+						textCell.TextColor = Helpers.Color.Navy.ToFormsColor ();
+						textCell.Tapped += (sender, e) => DependencyService.Get<IPhoneService> ().OpenBrowser (department.URI);
+					}
+
+					departmentsSection.Add (
+						textCell
+					);
+				}
+
+			} else {
+
+				departmentsSection.Add (
+					new TextCell {
+						Text = building.Code + " Building has no departments",
 						TextColor = Color.Gray
 					}
 				);
@@ -259,7 +397,34 @@ namespace CocoMaps.Shared
 			Building building;
 			if (BuildingRepository.getInstance.BuildingList.TryGetValue (buildingCode, out building))
 				UpdateView (building);
+		}
 
+		public void ShowServices ()
+		{
+			double currentPos = listsHolder.X;
+			double desiredPos = 0;
+			listsHolder.TranslateTo (desiredPos - currentPos, 0, 150);
+			infos = Infos.OnServices;
+
+			servicesButton.TextColor = Color.White;
+			servicesButton.BackgroundColor = Helpers.Color.Navy.ToFormsColor ();
+
+			departmentsButton.TextColor = Helpers.Color.Navy.ToFormsColor ();
+			departmentsButton.BackgroundColor = Helpers.Color.FromHex (0xd2d2d2).ToFormsColor ();
+		}
+
+		public void ShowDepartments ()
+		{
+			double currentPos = listsHolder.X;
+			double desiredPos = -listsHolder.Bounds.Width / 2;
+			listsHolder.TranslateTo (desiredPos - currentPos, 0, 150);
+			infos = Infos.OnDepartments;
+
+			servicesButton.TextColor = Helpers.Color.Navy.ToFormsColor ();
+			servicesButton.BackgroundColor = Helpers.Color.FromHex (0xd2d2d2).ToFormsColor ();
+
+			departmentsButton.TextColor = Color.White;
+			departmentsButton.BackgroundColor = Helpers.Color.Navy.ToFormsColor ();
 		}
 
 		public void Minimize ()
@@ -274,7 +439,7 @@ namespace CocoMaps.Shared
 		public void Expand ()
 		{
 			double currentPos = instance.Y;
-			double desiredPos = ParentView.Bounds.Height / 5;
+			double desiredPos = ParentView.Bounds.Height - instance.Height;
 			instance.TranslateTo (0, desiredPos - currentPos);
 			toggleButton.RotateTo (180);
 			viewState = ViewState.Expanded;

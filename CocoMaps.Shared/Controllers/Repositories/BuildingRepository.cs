@@ -548,7 +548,7 @@ namespace CocoMaps.Shared
 				Position = new Position (45.4972443, -73.57890487),
 				HasAtm = true,
 				HasBikeRack = true,
-				HasInfoKiosk = false,
+				HasInfoKiosk = true,
 				HasParkingLot = false,
 				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
@@ -611,7 +611,7 @@ namespace CocoMaps.Shared
 						URI = "http://retail.concordia.ca/ccs/"
 					},
 					new Service {
-						Name = "D. B. Clarke Theatre\\",
+						Name = "D. B. Clarke Theatre",
 						URI = "http://concordia.ca/content/concordia/en/arts/venues/db-clarke-theatre"
 					}
 				},
@@ -1578,11 +1578,14 @@ namespace CocoMaps.Shared
 				HasParkingLot = false,
 				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
-					new Position (45.456970879305665, -73.6404401063919),
-					new Position (45.45696053148731, -73.64037171006203),
-					new Position (45.45693607300003, -73.64037975668907),
-					new Position (45.45694359868957, -73.64043742418289),
-					new Position (45.456970879305665, -73.6404401063919)
+					new Position (45.45715808041875, -73.64059567451477),
+					new Position (45.45698875280561, -73.64014506340027),
+					new Position (45.4567799147158, -73.64033281803131),
+					new Position (45.4568796302966, -73.64059299230576),
+					new Position (45.4568514089237, -73.64061444997787),
+					new Position (45.4568796302966, -73.6406734585762),
+					new Position (45.456903148096565, -73.6406560242176),
+					new Position (45.45694265797844, -73.64076599478722)
 				},
 				Services = new List<Service> {
 					new Service {
@@ -1767,20 +1770,17 @@ namespace CocoMaps.Shared
 				Name = "PERFORM Center",
 				Campus = LOY,
 				Address = "7200 Sherbrooke St. W.",
-				Position = new Position (45.45706025, -73.63715708),
+				Position = new Position (45.457048958237415, -73.6374306678772),
 				HasAtm = false,
 				HasBikeRack = false,
-				HasInfoKiosk = false,
-				HasParkingLot = false,
+				HasInfoKiosk = true,
+				HasParkingLot = true,
 				HasAccessibility = true,
 				ShapeCoords = new List<Position> {
-					new Position (45.457082823764566, -73.63702297210693),
-					new Position (45.45703014404687, -73.63684058189392),
-					new Position (45.456962412908965, -73.63687813282013),
-					new Position (45.45698122712211, -73.637033700943),
-					new Position (45.45698122712211, -73.637033700943),
-					new Position (45.45698122712211, -73.637033700943),
-					new Position (45.457082823764566, -73.63702297210693)
+					new Position (45.45672535328563, -73.63711148500443),
+					new Position (45.45702826262748, -73.63787323236465),
+					new Position (45.45724838827118, -73.63767206668854),
+					new Position (45.45698875280561, -73.63689690828323)
 				},
 				Services = new List<Service> {
 					new Service {
@@ -2097,11 +2097,10 @@ namespace CocoMaps.Shared
 				HasParkingLot = false,
 				HasAccessibility = false,
 				ShapeCoords = new List<Position> {
-					new Position (45.45961515500344, -73.64266633987427),
-					new Position (45.4595737656597, -73.64253222942352),
-					new Position (45.459509800250494, -73.64258050918579),
-					new Position (45.4595436642997, -73.64267706871033),
-					new Position (45.45961515500344, -73.64266633987427)
+					new Position (45.45923324308737, -73.64233374595642),
+					new Position (45.459253937888015, -73.64263415336609),
+					new Position (45.45936493714375, -73.64262074232101),
+					new Position (45.459349886410024, -73.64232301712036)
 				}
 			};
 			BuildingList.Add (SH.Code, SH);

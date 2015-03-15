@@ -48,9 +48,10 @@ namespace CocoMapsAndroid
 
 			if (MarkerBuilding.TryGetValue (e.Marker.Id, out building))
 				DetailsViewModel.getInstance.UpdateView (building);
-			else if (MarkerDirections.TryGetValue (e.Marker.Id, out directions))
-				DetailsViewModel.getInstance.UpdateView (directions);
-			else
+			else if (MarkerDirections.TryGetValue (e.Marker.Id, out directions)) {
+				if (directions != null)
+					DetailsViewModel.getInstance.UpdateView (directions);
+			} else
 				e.Marker.ShowInfoWindow ();
 		
 		}
@@ -155,6 +156,9 @@ namespace CocoMapsAndroid
 						Building building = GoogleUtil.PointInBuilding (ee.Point.Latitude, ee.Point.Longitude);
 						if (building != null) {
 
+							// For displaying the pins just above the building's code pin
+							double pinOffsetY = 0.0001;
+							Directions directions = null;
 
 							if (_from.Latitude == 0 && _from.Longitude == 0) {
 							
@@ -164,6 +168,7 @@ namespace CocoMapsAndroid
 									polyline.Remove ();
 									polylineOptions.Points.Clear ();
 									MarkerDirections.Clear ();
+									_endPin.Position = new LatLng (0, 0);
 								}
 
 								_from = building.Position;
@@ -171,24 +176,26 @@ namespace CocoMapsAndroid
 								// defining the origin pin
 								_startPin.Title = building.Code;
 								_startPin.Snippet = building.Address;
-								_startPin.Position = new LatLng (building.Position.Latitude, building.Position.Longitude);
+								_startPin.Position = new LatLng (building.Position.Latitude + pinOffsetY, building.Position.Longitude);
 
 								// linking _startPin to path
 								polylineOptions.Add (new LatLng (building.Position.Latitude, building.Position.Longitude));
 
+								MarkerDirections.Add (_startPin.Id, directions);
+
 							} else {
 								
 								_to = building.Position;
-
+								MarkerDirections.Clear ();
 								// defining the destination pin
 								_endPin.Title = building.Code;
 								_endPin.Snippet = building.Address;
-								_endPin.Position = new LatLng (building.Position.Latitude, building.Position.Longitude);
+								_endPin.Position = new LatLng (building.Position.Latitude + pinOffsetY, building.Position.Longitude);
 
 								loaderViewModel.Show ();
 
 								RequestDirections directionsRequest = RequestDirections.getInstance;
-								Directions directions = await directionsRequest.getDirections (_from, _to, TravelMode.walking);
+								directions = await directionsRequest.getDirections (_from, _to, TravelMode.walking);
 
 								if (directions.status.Equals ("OK")) {
 

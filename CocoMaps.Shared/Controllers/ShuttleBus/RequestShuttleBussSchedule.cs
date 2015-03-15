@@ -17,9 +17,11 @@ namespace CocoMaps.Shared
 			}
 		}
 
+
+
 		RequestShuttleBusSchedule ()
 		{
-
+			
 		}
 
 		public List<String> NonFridayLOYDepartures = new List<String> {
