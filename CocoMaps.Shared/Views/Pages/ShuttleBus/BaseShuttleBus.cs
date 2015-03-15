@@ -34,13 +34,14 @@ namespace CocoMaps.Shared
 		 */
 		public void InitializeTabOnCurrentWeekday ()
 		{
-			int dayOfWeek = (int)DateTime.Now.DayOfWeek - 1;
+			int dayOfWeek = (int)DateTime.Now.DayOfWeek;
+
 			// Checks if the current day falls on the weekend and changes it to Monday.
 			if (dayOfWeek == 6 || dayOfWeek == 7)
 				dayOfWeek = 1;
-
+			
 			// Starts the page with the tab corresponding to the current day
-			this.CurrentPage = this.Children [dayOfWeek];
+			this.CurrentPage = this.Children [dayOfWeek - 1];
 		}
 	}
 }

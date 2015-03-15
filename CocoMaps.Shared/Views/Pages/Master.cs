@@ -2,34 +2,31 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using CocoMaps.Shared.ViewModels;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Java.Security;
+using CocoMaps.Shared;
 
 namespace CocoMaps.Shared
 {
 	public class MasterPage : ContentPage
 	{
 		readonly ConcordiaMap map;
-		SearchBar searchBar;
 		RelativeLayout mainLayout;
-		RelativeLayout directionsLayout;
 
 		Label networkStatus = new Label {
 			TextColor = Color.White
 		};
 
-		PlacesRepository placesRepo = PlacesRepository.getInstance;
+		BuildingRepository buildingRepo = BuildingRepository.getInstance;
+		LoaderViewModel loaderView = LoaderViewModel.getInstance;
+		DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
+		DirectionsViewModel directionsViewModel = DirectionsViewModel.getInstance;
 
-		Dictionary<string, TravelMode> travelMode = new Dictionary<string, TravelMode> {
-			{ "Walking", TravelMode.walking },
-			{ "Bicycling", TravelMode.bicycling },
-			{ "Shuttle", TravelMode.shuttle },
-			{ "Transit", TravelMode.transit },
-			{ "Driving", TravelMode.driving }
+		static Button _testButton = new Button {
+			Text = "TestButton",
+			HeightRequest = 40,
+			BackgroundColor = Color.Maroon,
+			TextColor = Color.White,
+			BorderRadius = 0
 		};
-
-		Button testButton = new Button { Text = "Directions", HeightRequest = 50, BackgroundColor = Color.Maroon };
 
 		static Button _POIButton = new Button { 
 			Text = "POI", 
@@ -39,17 +36,42 @@ namespace CocoMaps.Shared
 			BorderRadius = 0
 		};
 
+		Button _SearchButton;
+
+		// Needed to access this button from ConcordiaMapRenderer.cs
 		public static Button POIButton {
 			get {
 				return _POIButton;
 			}
 		}
+		// Needed to access this button from ConcordiaMapRenderer.cs
+		public static Button TestButton {
+			get {
+				return _testButton;
+			}
+		}
+
+		public Button SearchButton {
+			get {
+				if (_SearchButton == null) {
+					_SearchButton = new Button {
+						Image = (FileImageSource)ImageSource.FromFile ("ic_map_search.png"),
+						HeightRequest = 40,
+						WidthRequest = 40,
+						BackgroundColor = Color.White,
+						Opacity = 0.7,
+						BorderRadius = 0
+					};
+				}
+				return _SearchButton;
+			}
+		}
 
 		public MasterPage (IMenuOptions menuItem)
 		{
+
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
-
 
 			SetValue (Page.TitleProperty, "CocoMaps");
 			SetValue (Page.IconProperty, menuItem.Icon);
@@ -73,6 +95,12 @@ namespace CocoMaps.Shared
 				Opacity = 0.7,
 				BorderRadius = 0
 			};
+
+			var SearchPicker = new Picker {
+				BackgroundColor = Helpers.Color.DarkGray.ToFormsColor (),
+				IsVisible = false
+			};
+
 			var NextButton = new Button { Text = "Next Class", 
 				HeightRequest = 40,
 				BackgroundColor = Color.White,
@@ -80,17 +108,30 @@ namespace CocoMaps.Shared
 				BorderRadius = 0
 			};
 
-
-
-
-			searchBar = new SearchBar {
-				Placeholder = "search buildings...",
-				WidthRequest = App.ScreenSize.Width - 64,
-				HeightRequest = 50
-			};
+			foreach (Building building in buildingRepo.BuildingList.Values)
+				SearchPicker.Items.Add (building.Code);
 
 			SGWButton.Clicked += HandleCampusRegionButton;
 			LOYButton.Clicked += HandleCampusRegionButton;
+
+			SearchButton.Clicked += (sender, e) => {
+				// if() fixes a problem where the SearchPicker would not show anymore due to Events conflicts
+				if (SearchPicker.IsFocused)
+					SearchPicker.Unfocus ();
+				SearchPicker.Focus ();
+			};
+
+			SearchPicker.SelectedIndexChanged += (sender, e) => {
+
+				Picker picker = sender as Picker;
+				Building building;
+
+				if (buildingRepo.BuildingList.TryGetValue (picker.Items [picker.SelectedIndex], out building)) {
+					map.MoveToRegion (MapSpan.FromCenterAndRadius (building.Position, Xamarin.Forms.Maps.Distance.FromKilometers (0.05)));
+					detailsLayout.UpdateView (building);
+				}
+			};
+
 
 			NextButton.Clicked += async (sender, e) => {
 				string start = "7141 Sherbrooke Street W. Montreal QC";
@@ -103,25 +144,10 @@ namespace CocoMaps.Shared
 
 			};
 
-			searchBar.TextChanged += HandleTextChanged;
-
 			mainLayout = new RelativeLayout {
 				BackgroundColor = Color.Transparent,
 				WidthRequest = App.ScreenSize.Width,
 				HeightRequest = App.ScreenSize.Height - 48
-			};
-
-			directionsLayout = new RelativeLayout {
-				BackgroundColor = Helpers.Color.DarkGray.ToFormsColor (),
-				WidthRequest = App.ScreenSize.Width - 64,
-				HeightRequest = 200,
-				TranslationY = -200,
-				HorizontalOptions = LayoutOptions.Center
-			};
-
-			searchBar.PropertyChanged += (sender, e) => {
-				if (e.PropertyName.Equals ("IsFocused") && !IsFocused)
-					directionsLayout.TranslateTo (0, -Height, 100);
 			};
 
 			DependencyService.Get<INetwork> ().ReachabilityChanged += obj => {
@@ -135,40 +161,45 @@ namespace CocoMaps.Shared
 				}
 			};
 
-			testButton.Clicked += async (sender, e) => {
-				bool r = await DependencyService.Get<INetwork> ().IsReachable ("google.ca", new TimeSpan (5));
+			TestButton.Clicked += async (sender, e) => {
+				bool r = await DependencyService.Get<INetwork> ().IsReachable ("googleapis.com", new TimeSpan (5));
 				await DisplayAlert ("Network Connection:", r ? "Connected :)" : "Not Connected :(", "Whatever");
 			};
-
-			LoaderViewModel loaderView = LoaderViewModel.getInstance;
-
-			DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
-
-			Console.WriteLine (mainLayout.Width + " x " + mainLayout.Height + ", " + mainLayout.WidthRequest + " x " + mainLayout.HeightRequest);
 
 			mainLayout.Children.Add (map,
 				Constraint.Constant (0),
 				Constraint.Constant (0),
 				Constraint.RelativeToParent (parent => Width),
 				Constraint.RelativeToParent (parent => Height));
-				
-			mainLayout.Children.Add (directionsLayout, Constraint.Constant (0));
+
 			mainLayout.Children.Add (_POIButton, Constraint.Constant (150), Constraint.RelativeToParent (parent => Height - 54));
-			mainLayout.Children.Add (testButton, Constraint.Constant (50), Constraint.Constant (50));
+			mainLayout.Children.Add (TestButton, Constraint.Constant (64), Constraint.Constant (14));
 			//mainLayout.Children.Add (searchBar, Constraint.Constant (0));
 			mainLayout.Children.Add (SGWButton, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 54));
 			mainLayout.Children.Add (LOYButton, Constraint.Constant (80), Constraint.RelativeToParent (parent => Height - 54));
-			mainLayout.Children.Add (NextButton, Constraint.RelativeToParent (parent => Width - 160), Constraint.Constant (10));
-			mainLayout.Children.Add (networkStatus, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 80));
-			mainLayout.Children.Add (detailsLayout, Constraint.Constant (0), Constraint.RelativeToParent (parent => Height));
+
 			mainLayout.Children.Add (loaderView, Constraint.RelativeToParent (parent => Width / 2 - loaderView.WidthRequest / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loaderView.HeightRequest / 2));
 
-			//mainLayout.Children.Add (picker, Constraint.Constant (100), Constraint.Constant (100));
+			mainLayout.Children.Add (SearchButton, Constraint.Constant (14), Constraint.Constant (14));
+			mainLayout.Children.Add (SearchPicker, Constraint.Constant (0), Constraint.Constant (0));
 
+			//mainLayout.Children.Add (NextButton, Constraint.RelativeToParent (parent => Width - 160), Constraint.Constant (10));
+			mainLayout.Children.Add (networkStatus, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 80));
+			mainLayout.Children.Add (detailsLayout,
+				Constraint.Constant (0),
+				Constraint.RelativeToParent (parent => Height),
+				Constraint.RelativeToParent (parent => Width),
+				Constraint.RelativeToParent (parent => Height - 30)
+			);
+
+			mainLayout.Children.Add (directionsViewModel,
+				Constraint.Constant (0),
+				Constraint.Constant (0),
+				Constraint.RelativeToParent (parent => Width), null);
+			
 			Content = mainLayout;
 
 		}
-
 
 		void HandleTextChanged (object sender, TextChangedEventArgs e)
 		{

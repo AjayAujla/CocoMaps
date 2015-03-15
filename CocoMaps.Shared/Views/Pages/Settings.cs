@@ -14,7 +14,7 @@ namespace CocoMaps.Shared
 
 		static public bool useDeviceMap;
 
-		static public int poiRadius = 300;
+		static public int poiRadius = 1000;
 
 		// Google's API Radius Limit is 50,000 meters
 		// We restrict our app to 5,000 meters

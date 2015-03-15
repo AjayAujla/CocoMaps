@@ -1,10 +1,8 @@
-﻿using System;
-
-namespace CocoMaps.Shared
+﻿namespace CocoMaps.Shared
 {
 	public class OAuthSettings
 	{
-		public OAuthSettings(
+		public OAuthSettings (
 			string clientId,
 			string scope,
 			string authorizeUrl,
@@ -16,10 +14,13 @@ namespace CocoMaps.Shared
 			RedirectUrl = redirectUrl;
 		}
 
-		public string ClientId {get; private set;}
-		public string Scope {get; private set;}
-		public string AuthorizeUrl {get; private set;}
-		public string RedirectUrl {get; private set;}
+		public string ClientId { get; private set; }
+
+		public string Scope { get; private set; }
+
+		public string AuthorizeUrl { get; private set; }
+
+		public string RedirectUrl { get; private set; }
 	}
 }
 

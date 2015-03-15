@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Xamarin.Forms.Maps;
 
 namespace CocoMaps.Shared
@@ -11,11 +10,6 @@ namespace CocoMaps.Shared
 		// When searching for those campuses - DO NOT CHANGE!!!
 		public static Position SGWPosition = new Position (45.4971711, -73.5790942);
 		public static Position LOYPosition = new Position (45.4585649, -73.6400639);
-
-		public int ID {
-			get;
-			set;
-		}
 
 		public string Code {
 			get;
@@ -35,20 +29,6 @@ namespace CocoMaps.Shared
 		public Position Position {
 			get;
 			set;
-		}
-
-		public List<Building> Buildings {
-			get;
-			set;
-		}
-
-		public Building GetBuildingByCode (string code)
-		{
-			foreach (Building building in Buildings) {
-				if (building.Code.Equals (code))
-					return building;
-			}
-			return null;
 		}
 
 	}

@@ -1,12 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Text;
-using Xamarin.Forms;
-using System.Reflection;
-using System.Linq;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 
 namespace CocoMaps.Shared.ViewModels
 {

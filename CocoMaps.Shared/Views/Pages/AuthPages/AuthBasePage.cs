@@ -1,8 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using CocoMaps.Shared.ViewModels;
-using CocoMaps.Shared.Pages;
-
+﻿using Xamarin.Forms;
 
 namespace CocoMaps.Shared
 {
@@ -12,8 +8,7 @@ namespace CocoMaps.Shared
 		{
 			base.OnAppearing ();
 
-			if (!App.Instance.IsAuthenticated)
-			{
+			if (!App.Instance.IsAuthenticated) {
 				Navigation.PushModalAsync (new AuthLoginPage ());
 			}
 

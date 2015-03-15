@@ -1,22 +1,27 @@
 ﻿using System;
-using System.IO;
-using System.Linq;
-using System.Windows;
 using System.Collections.Generic;
-using System.Net;
-using System.Text;
-
-using Newtonsoft.Json;
-using System.Threading.Tasks;
-using System.Json;
-using HtmlAgilityPack;
-using System.Net.Http;
 
 namespace CocoMaps.Shared
 {
 	public class RequestShuttleBusSchedule
 	{
-		private static RequestShuttleBusSchedule requestShuttleBusSchedule;
+		static RequestShuttleBusSchedule requestShuttleBusSchedule;
+
+		public static RequestShuttleBusSchedule getInstance {
+			get {
+				if (requestShuttleBusSchedule == null) {
+					requestShuttleBusSchedule = new RequestShuttleBusSchedule ();
+				}
+				return requestShuttleBusSchedule;
+			}
+		}
+
+
+
+		RequestShuttleBusSchedule ()
+		{
+			
+		}
 
 		public List<String> NonFridayLOYDepartures = new List<String> {
 			"7:45",
@@ -170,18 +175,46 @@ namespace CocoMaps.Shared
 			"19:45"
 		};
 
-		RequestShuttleBusSchedule ()
+		public List<String> GetNextPassages (int numberOfNextPassages, String campus)
 		{
 
+			// No passages during weekend
+			if (DateTime.Today.DayOfWeek == DayOfWeek.Saturday
+			    || DateTime.Today.DayOfWeek == DayOfWeek.Sunday)
+				return null;
+
+			List<String> departures;
+			List<String> nextDepartures = new List<String> ();
+			int counter = 0;
+
+			if (DateTime.Today.DayOfWeek == DayOfWeek.Friday && campus.Equals ("SGW"))
+				departures = FridaySGWDepartures;
+			else if (DateTime.Today.DayOfWeek == DayOfWeek.Friday && campus.Equals ("LOY"))
+				departures = FridayLOYDepartures;
+			else if (DateTime.Today.DayOfWeek != DayOfWeek.Friday && campus.Equals ("SGW"))
+				departures = NonFridaySGWDepartures;
+			else if (DateTime.Today.DayOfWeek != DayOfWeek.Friday && campus.Equals ("LOY"))
+				departures = NonFridayLOYDepartures;
+			else
+				return null;
+
+			foreach (String departure in departures) {
+				
+				DateTime departureDateTime = Convert.ToDateTime (departure);
+
+				if (departureDateTime >= DateTime.Now) {
+					nextDepartures.Add (departure);
+					counter++;
+				}
+
+				if (counter == numberOfNextPassages)
+					break;
+				
+			}
+
+			return nextDepartures;
+
 		}
 
-		public static RequestShuttleBusSchedule getInstance {
-			get {
-				if (requestShuttleBusSchedule == null) {
-					requestShuttleBusSchedule = new RequestShuttleBusSchedule ();
-				}
-				return requestShuttleBusSchedule;
-			}
-		}
 	}
 }

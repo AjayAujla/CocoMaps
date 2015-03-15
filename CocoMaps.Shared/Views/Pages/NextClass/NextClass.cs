@@ -118,9 +118,8 @@ namespace CocoMaps.Shared
 
 			Campus campus = BR.GetCampusByCode (campusLoc);
 
-			Building building = campus.GetBuildingByCode (roomLoc);
-
-
+			Building building;
+			BR.BuildingList.TryGetValue (roomLoc, out building);
 			return building.Address;
 
 		}

@@ -1,9 +1,5 @@
-﻿using System;
-using Xamarin.Forms;
-using CocoMaps.Shared.Pages;
+﻿using Xamarin.Forms;
 using CocoMaps.Shared.ViewModels;
-using Xamarin.Forms.Maps;
-using System.Diagnostics;
 using System.Collections.Generic;
 
 namespace CocoMaps.Shared
