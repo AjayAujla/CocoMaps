@@ -24,6 +24,7 @@ namespace CocoMapsAndroid
 
 		Marker _startPin;
 		Marker _endPin;
+		Marker _toiletPin;
 
 		Android.Gms.Maps.Model.Polyline polyline;
 		PolylineOptions polylineOptions;
@@ -146,6 +147,17 @@ namespace CocoMapsAndroid
 
 				}
 
+				using (MarkerOptions toilet = new MarkerOptions ()) {
+					toilet.SetPosition (new LatLng (45.4972631, -73.5787094))
+						.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.toilet_male));
+
+					_toiletPin = androidMapView.Map.AddMarker (toilet);
+
+					//toilet.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_end));
+
+					//_endPin = androidMapView.Map.AddMarker (toilet);
+
+				}
 				androidMapView.Map.MapClick += (senderr, ee) => detailsLayout.Hide ();
 
 				androidMapView.Map.MapLongClick += async (senderr, ee) => {
