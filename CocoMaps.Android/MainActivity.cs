@@ -14,7 +14,6 @@ namespace CocoMaps.Android
 		protected override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
-
 			StartActivity (typeof(MainActivity));
 		}
 	}
