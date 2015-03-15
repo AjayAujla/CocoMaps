@@ -45,6 +45,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\LoaderViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\NextClass\NextClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Department.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\CalendarConnect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OAuthSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\AuthBasePage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\AuthLoginPage.cs" />
@@ -52,10 +53,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\NavRootPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\Enums.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\PlacesRepository.cs" />
-<<<<<<< HEAD
-    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Calendar\CalendarJsonClasses.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Calendar\CalendarListJsonClasses.cs" />
-=======
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\ShuttleBus\RequestShuttleBussSchedule.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ConcordiaServices\ConcordiaServices.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBus\BaseShuttleBus.cs" />
@@ -67,7 +64,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\ShuttleBus\ShuttleBusPolyline.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\DirectionsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Bookmark.cs" />
->>>>>>> origin/Abhi3
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -84,15 +80,8 @@
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Repositories\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\NextClass\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\" />
-<<<<<<< HEAD
-    <Folder Include="$(MSBuildThisFileDirectory)Controllers\Calendar\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controllers\Repositories\LocalCalendar.json" />
-=======
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\ShuttleBus\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\ConcordiaServices\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBus\" />
->>>>>>> origin/Abhi3
   </ItemGroup>
 </Project>

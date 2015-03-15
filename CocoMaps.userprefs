@@ -1,13 +1,3 @@
-<<<<<<< HEAD
-﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.13c7772e" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="c:\Users\Abhi\Documents\GitHub\CocoMaps\CocoMaps.Android\Renderers\ConcordiaMapRenderer.cs">
-    <Files>
-      <File FileName="CocoMaps.Shared\Views\Pages\Calendar\BaseCalendar.cs" Line="4" Column="4" />
-      <File FileName="CocoMaps.Shared\Controllers\Repositories\LocalCalendar.json" Line="2" Column="2" />
-      <File FileName="CocoMaps.Shared\Views\Pages\NextClass\NextClass.cs" Line="29" Column="29" />
-      <File FileName="c:\Users\Abhi\Documents\GitHub\CocoMaps\CocoMaps.Android\Renderers\ConcordiaMapRenderer.cs" Line="1" Column="1" />
-=======
 ﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.MonoForAndroid_API_10" />
   <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android/Renderers/ConcordiaMapRenderer.cs">
@@ -21,7 +11,6 @@
       <File FileName="CocoMaps.Android/Properties/AndroidManifest.xml" Line="24" Column="12" />
       <File FileName="CocoMaps.Android/MainActivity.cs" Line="48" Column="2" />
       <File FileName="CocoMaps.Shared/Controllers/ShuttleBus/ShuttleBusPolyline.cs" Line="12" Column="18" />
->>>>>>> origin/Abhi3
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
