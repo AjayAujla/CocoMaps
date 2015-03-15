@@ -128,6 +128,9 @@
     <Compile Include="Files\TextToSpeech.cs" />
     <Compile Include="Files\PhoneService.cs" />
     <Compile Include="Files\ObjectExtensions.cs" />
+    <Compile Include="AndroidNotifications\AlarmReceiver.cs" />
+    <Compile Include="AndroidNotifications\AndroidReminderService.cs" />
+    <Compile Include="AndroidNotifications\Notifications.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -261,6 +264,7 @@
     <Folder Include="Resources\drawable\" />
     <Folder Include="Renderers\" />
     <Folder Include="Files\" />
+    <Folder Include="AndroidNotifications\" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamarin.auth">
