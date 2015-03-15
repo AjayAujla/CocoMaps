@@ -2,6 +2,7 @@
 using CocoMaps.Shared;
 using Xamarin.Forms;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace CocoMaps.Shared
 {
@@ -26,7 +27,6 @@ namespace CocoMaps.Shared
 			get {
 				if (repository == null) {
 					repository = new PlacesRepository ();
-					repository.FetchPlaces ();
 				}
 				return repository;
 			}
@@ -46,7 +46,7 @@ namespace CocoMaps.Shared
 		
 		}
 
-		async public void FetchPlaces ()
+		async public Task<List<Result>> FetchPlaces ()
 		{
 
 			var placesRequest = RequestPlaces.getInstance;
@@ -79,9 +79,8 @@ namespace CocoMaps.Shared
 					} while(false); // places.next_page_token != null
 				}
 			}
-			MasterPage.POIButton.IsEnabled = true;
-			MasterPage.POIButton.BackgroundColor = Color.White;
 
+			return POIs;
 		}
 
 	}

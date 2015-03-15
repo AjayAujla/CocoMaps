@@ -20,12 +20,18 @@ namespace CocoMaps.Shared
 		DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
 		DirectionsViewModel directionsViewModel = DirectionsViewModel.getInstance;
 
-		static Button _testButton = new Button { Text = "TestButton", HeightRequest = 50, BackgroundColor = Color.Maroon };
+		static Button _testButton = new Button {
+			Text = "TestButton",
+			HeightRequest = 40,
+			BackgroundColor = Color.Maroon,
+			TextColor = Color.White,
+			BorderRadius = 0
+		};
 
 		static Button _POIButton = new Button { 
 			Text = "POI", 
 			HeightRequest = 40,
-			BackgroundColor = Color.Gray,
+			BackgroundColor = Color.White,
 			Opacity = 0.7,
 			BorderRadius = 0
 		};
@@ -167,10 +173,13 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToParent (parent => Height));
 
 			mainLayout.Children.Add (_POIButton, Constraint.Constant (150), Constraint.RelativeToParent (parent => Height - 54));
-			mainLayout.Children.Add (TestButton, Constraint.Constant (50), Constraint.Constant (50));
+			mainLayout.Children.Add (TestButton, Constraint.Constant (64), Constraint.Constant (14));
 			//mainLayout.Children.Add (searchBar, Constraint.Constant (0));
 			mainLayout.Children.Add (SGWButton, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 54));
 			mainLayout.Children.Add (LOYButton, Constraint.Constant (80), Constraint.RelativeToParent (parent => Height - 54));
+
+			mainLayout.Children.Add (loaderView, Constraint.RelativeToParent (parent => Width / 2 - loaderView.WidthRequest / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loaderView.HeightRequest / 2));
+
 			mainLayout.Children.Add (SearchButton, Constraint.Constant (14), Constraint.Constant (14));
 			mainLayout.Children.Add (SearchPicker, Constraint.Constant (0), Constraint.Constant (0));
 
@@ -182,8 +191,6 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToParent (parent => Width),
 				Constraint.RelativeToParent (parent => Height - 30)
 			);
-			mainLayout.Children.Add (loaderView, Constraint.RelativeToParent (parent => Width / 2 - loaderView.WidthRequest / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loaderView.HeightRequest / 2));
-
 
 			mainLayout.Children.Add (directionsViewModel,
 				Constraint.Constant (0),

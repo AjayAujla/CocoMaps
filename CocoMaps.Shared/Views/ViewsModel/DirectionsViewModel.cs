@@ -1,5 +1,6 @@
 ﻿using Xamarin.Forms;
 using CocoMaps.Shared;
+using Android.Views.InputMethods;
 
 namespace CocoMaps.Shared
 {
@@ -9,7 +10,6 @@ namespace CocoMaps.Shared
 		enum ViewState
 		{
 			Expanded,
-			Minimized,
 			Hidden
 		}
 
@@ -77,6 +77,21 @@ namespace CocoMaps.Shared
 			BorderRadius = 0
 		};
 
+		Button StartButton = new Button {
+			Text = "Start",
+			TextColor = Color.White,
+			BackgroundColor = Helpers.Color.Navy.ToFormsColor (),
+			BorderRadius = 0,
+			WidthRequest = 100
+		};
+
+		Button CancelButton = new Button {
+			Text = "Cancel",
+			TextColor = Helpers.Color.Gray.ToFormsColor (),
+			BackgroundColor = Color.Transparent,
+			WidthRequest = 100
+		};
+
 		void Init ()
 		{
 
@@ -132,9 +147,20 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToView (TravelTransitModeButton, (parent, sibling) => sibling.Y)
 			);
 
+
+			instance.Children.Add (StartButton,
+				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.X + sibling.Width - StartButton.WidthRequest),
+				Constraint.RelativeToView (TravelWalkingModeButton, (parent, sibling) => sibling.Y + sibling.Height + 5)
+			);
+			instance.Children.Add (CancelButton,
+				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.X),
+				Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y)
+			);
+
 			instance.Padding = 10;
 
 			SwapIcon.Clicked += (sender, e) => SwapFromToValues ();
+			CancelButton.Clicked += (sender, e) => Hide ();
 
 
 		}
@@ -148,15 +174,6 @@ namespace CocoMaps.Shared
 
 		}
 
-
-		public void Minimize ()
-		{
-			double currentPos = instance.Y;
-			double desiredPos = ParentView.Bounds.Height;
-			instance.TranslateTo (0, desiredPos - currentPos);
-			viewState = ViewState.Minimized;
-		}
-
 		public void Expand ()
 		{
 			double currentPos = instance.Y;
@@ -168,19 +185,20 @@ namespace CocoMaps.Shared
 		public void Hide ()
 		{
 			double currentPos = instance.Y;
-			double desiredPos = ParentView.Bounds.Height;
+			double desiredPos = 0 - instance.Height;
 			instance.TranslateTo (0, desiredPos - currentPos);
 			viewState = ViewState.Hidden;
 		}
 
 		public void Toggle ()
 		{
-			if (viewState == ViewState.Minimized) {
+			if (viewState == ViewState.Hidden) {
 				Expand ();
 			} else if (viewState == ViewState.Expanded) {
-				Minimize ();
+				Hide ();
 			}
 		}
 
 	}
+
 }

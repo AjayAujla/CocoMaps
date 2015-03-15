@@ -289,10 +289,10 @@ namespace CocoMapsAndroid
 
 							LoaderViewModel.getInstance.Show ();
 
-							// in case it did not fetch places yet
-							placesRepo = PlacesRepository.getInstance;
+							// fetch places from google
+							List<Result> places = await PlacesRepository.getInstance.FetchPlaces ();
 
-							foreach (Result result in placesRepo.POIs) {
+							foreach (Result result in places) {
 								using (MarkerOptions poiMarker = new MarkerOptions ()) {
 									poiMarker.SetTitle (result.name)
 										.SetSnippet (result.vicinity)
@@ -325,8 +325,6 @@ namespace CocoMapsAndroid
 							}
 
 							isPOIAdded = true;
-							poiButton.IsEnabled = true;
-							poiButton.BackgroundColor = Xamarin.Forms.Color.White;
 							LoaderViewModel.getInstance.Hide ();
 
 						}
@@ -362,7 +360,7 @@ namespace CocoMapsAndroid
 				nextDeparturesString = "no passages";
 			else
 				foreach (String departure in nextDepartures)
-					nextDeparturesString += departure + " ";
+					nextDeparturesString += nextDepartures + " ";
 
 			// SGW Shuttle Bus Marker
 			marker.SetTitle ("SGW Shuttle Bus");
