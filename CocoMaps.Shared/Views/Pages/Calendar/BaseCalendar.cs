@@ -11,6 +11,7 @@ using Newtonsoft.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using System.Json;
+using CocoMaps.Android;
 
 namespace CocoMaps.Shared
 {
@@ -24,11 +25,11 @@ namespace CocoMaps.Shared
 		CalendarRootObject LocalCalObj = null;
 		CalendarRootObject OnlineCalObj = null;
 
-		List<CalendarItems> MondayCalItems = new List<CalendarItems>{};
-		List<CalendarItems> TuesdayCalItems = new List<CalendarItems>{};
-		List<CalendarItems> WednesdayCalItems = new List<CalendarItems>{};
-		List<CalendarItems> ThursdayCalItems = new List<CalendarItems>{};
-		List<CalendarItems> FridayCalItems = new List<CalendarItems>{};
+		public List<CalendarItems> MondayCalItems = new List<CalendarItems>{};
+		public List<CalendarItems> TuesdayCalItems = new List<CalendarItems>{};
+		public List<CalendarItems> WednesdayCalItems = new List<CalendarItems>{};
+		public List<CalendarItems> ThursdayCalItems = new List<CalendarItems>{};
+		public List<CalendarItems> FridayCalItems = new List<CalendarItems>{};
 
 
 		public BaseCalendar (IMenuOptions menuItem)
@@ -43,9 +44,12 @@ namespace CocoMaps.Shared
 				this.SetValue (Page.IconProperty, menuItem.Icon);
 
 
+
 				setCalendarList();
 
 				#if __ANDROID__
+
+				AndroidReminderService a = new AndroidReminderService();
 
 				var MonCal = new Calendar (menuItem, "Mon", testList (MondayCalItems));
 				var TueCal = new Calendar (menuItem, "Tue", testList (TuesdayCalItems));
@@ -58,6 +62,41 @@ namespace CocoMaps.Shared
 				this.Children.Add (WedCal);
 				this.Children.Add (ThuCal);
 				this.Children.Add (FriCal);
+
+				var dateNow = DateTime.Now;
+				var today = dateNow.DayOfWeek;
+
+				switch (today)
+				{
+					case DayOfWeek.Monday:
+						foreach (CalendarItems c in MondayCalItems){
+							var startingTime = TimeSpan.Parse(c.StartTime);
+							var earlyNotice = new TimeSpan(0,15,0);
+							var notificationHourMinute = startingTime - earlyNotice;
+							var notificationTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
+							a.Remind(dateNow, c.EventName, "Is starting soon");
+						}
+						break;
+					case DayOfWeek.Tuesday:
+						break;
+					case DayOfWeek.Wednesday:
+						break;
+					case DayOfWeek.Thursday:
+						break;
+					case DayOfWeek.Friday:
+						break;
+					case DayOfWeek.Saturday:
+						break;
+					case DayOfWeek.Sunday:
+						foreach (CalendarItems c in MondayCalItems){
+							var startingTime = TimeSpan.Parse(c.StartTime);
+							var earlyNotice = new TimeSpan(0,15,0);
+							var notificationHourMinute = startingTime - earlyNotice;
+							var notificationTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
+							a.Remind(dateNow, c.EventName, "Is starting soon");
+						}
+						break;
+				}
 
 				#endif
 
@@ -93,6 +132,7 @@ namespace CocoMaps.Shared
 						if (day == "monday")
 						{
 							MondayCalItems.Add(new CalendarItems(course, courseType, courseDay , courseLocation, courseStartTime, courseEndTime, Color.Maroon));
+
 						}
 						else if (day == "tuesday")
 						{

@@ -10,6 +10,10 @@ namespace CocoMaps.Android
 {
 	public class AndroidReminderService 
 	{
+		public AndroidReminderService ()
+		{
+		}
+			
 
 		public void Remind (DateTime dateTime, string title, string message)
 		{

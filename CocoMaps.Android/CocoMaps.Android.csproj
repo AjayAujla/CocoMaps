@@ -131,6 +131,7 @@
     <Compile Include="AndroidNotifications\AlarmReceiver.cs" />
     <Compile Include="AndroidNotifications\AndroidReminderService.cs" />
     <Compile Include="AndroidNotifications\Notifications.cs" />
+    <Compile Include="AndroidNotifications\IReminderService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

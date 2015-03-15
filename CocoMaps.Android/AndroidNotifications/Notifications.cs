@@ -1,4 +1,4 @@
-﻿using System;
+﻿/*using System;
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -64,8 +64,8 @@ namespace CocoMaps.Android
 
 			PendingIntent notificationPendingIntent = notificationBuilder.GetPendingIntent(0, PendingIntentFlags.UpdateCurrent);
 
-			AlarmManager alarmManager = (AlarmManager)GetSystemService (Context.AlarmService);
-			alarmManager.SetExact(AlarmType.RtcWakeup, CalendarStartTime - 15, notificationPendingIntent);
+			//AlarmManager alarmManager = (AlarmManager)GetSystemService (Context.AlarmService);
+			//alarmManager.SetExact(AlarmType.RtcWakeup, CalendarStartTime - 15, notificationPendingIntent);
 
 		}
 
@@ -73,3 +73,4 @@ namespace CocoMaps.Android
 		
 }
 
+*/
