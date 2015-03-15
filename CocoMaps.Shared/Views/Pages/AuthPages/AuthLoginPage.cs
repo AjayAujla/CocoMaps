@@ -1,12 +1,11 @@
-﻿using System;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using CocoMaps.Shared.ViewModels;
 
 namespace CocoMaps.Shared
 {
 	public class AuthLoginPage : ContentPage
 	{
-		public AuthLoginPage()
+		public AuthLoginPage ()
 		{
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;

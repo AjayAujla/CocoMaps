@@ -2090,7 +2090,7 @@ namespace CocoMaps.Shared
 				Name = "Solar House",
 				Campus = LOY,
 				Address = "7141 Sherbrooke W.",
-				Position = new Position (45.45955871, -73.6425671),
+				Position = new Position (45.45929909, -73.64247322),
 				HasAtm = false,
 				HasBikeRack = false,
 				HasInfoKiosk = false,

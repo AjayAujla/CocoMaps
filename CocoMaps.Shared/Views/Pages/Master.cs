@@ -3,9 +3,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Shared;
-using Android.Media.Audiofx;
-using System.Diagnostics;
-using Android.Views;
 
 namespace CocoMaps.Shared
 {
@@ -21,7 +18,7 @@ namespace CocoMaps.Shared
 		BuildingRepository buildingRepo = BuildingRepository.getInstance;
 		LoaderViewModel loaderView = LoaderViewModel.getInstance;
 		DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
-		DirectionsViewModel searchViewModel = DirectionsViewModel.getInstance;
+		DirectionsViewModel directionsViewModel = DirectionsViewModel.getInstance;
 
 		static Button _testButton = new Button { Text = "TestButton", HeightRequest = 50, BackgroundColor = Color.Maroon };
 
@@ -30,8 +27,7 @@ namespace CocoMaps.Shared
 			HeightRequest = 40,
 			BackgroundColor = Color.Gray,
 			Opacity = 0.7,
-			BorderRadius = 0,
-			IsEnabled = false
+			BorderRadius = 0
 		};
 
 		Button _SearchButton;
@@ -154,18 +150,15 @@ namespace CocoMaps.Shared
 					networkStatus.Text = "Offline";
 				} else {
 					// Network is connected
-					if (App.isHostReachable ("googleapis.com")) {
-						//PlacesRepository placesRepo = PlacesRepository.getInstance;
-					}
 					networkStatus.BackgroundColor = Color.Green;
 					networkStatus.Text = "Online";
 				}
 			};
 
-//			TestButton.Clicked += async (sender, e) => {
-//				bool r = await DependencyService.Get<INetwork> ().IsReachable ("googleapis.com", new TimeSpan (5));
-//				await DisplayAlert ("Network Connection:", r ? "Connected :)" : "Not Connected :(", "Whatever");
-//			};
+			TestButton.Clicked += async (sender, e) => {
+				bool r = await DependencyService.Get<INetwork> ().IsReachable ("googleapis.com", new TimeSpan (5));
+				await DisplayAlert ("Network Connection:", r ? "Connected :)" : "Not Connected :(", "Whatever");
+			};
 
 			mainLayout.Children.Add (map,
 				Constraint.Constant (0),
@@ -192,15 +185,14 @@ namespace CocoMaps.Shared
 			mainLayout.Children.Add (loaderView, Constraint.RelativeToParent (parent => Width / 2 - loaderView.WidthRequest / 2), Constraint.RelativeToParent ((parent) => Height / 2 - loaderView.HeightRequest / 2));
 
 
-//			mainLayout.Children.Add (searchViewModel,
-//				Constraint.Constant (0),
-//				Constraint.Constant (0),
-//				Constraint.RelativeToParent (parent => Width), null);
+			mainLayout.Children.Add (directionsViewModel,
+				Constraint.Constant (0),
+				Constraint.Constant (0),
+				Constraint.RelativeToParent (parent => Width), null);
 			
 			Content = mainLayout;
 
 		}
-
 
 		void HandleTextChanged (object sender, TextChangedEventArgs e)
 		{

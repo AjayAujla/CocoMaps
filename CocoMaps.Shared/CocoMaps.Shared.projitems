@@ -24,8 +24,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\Colors.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ITextToSpeech.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Maps\ConcordiaMap.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Maps\CustomPin.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Database\SQLite.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Master.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Menu.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Root.cs" />
@@ -36,8 +34,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\FetchJsonAsync.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\BaseCalendar.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\Calendar.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\POI\BasePOI.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\POI\POI.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\INetwork.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\DetailsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\BuildingRepository.cs" />
@@ -73,10 +69,8 @@
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Helpers\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Directions\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Maps\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Controllers\Database\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Places\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\POI\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Repositories\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\NextClass\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\" />

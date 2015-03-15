@@ -2,7 +2,6 @@
 using CocoMaps.Shared;
 using Xamarin.Forms;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace CocoMaps.Shared
 {

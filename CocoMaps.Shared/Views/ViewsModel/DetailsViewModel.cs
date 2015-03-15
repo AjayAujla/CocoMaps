@@ -1,8 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using Android.Service.Voice;
-using Android.Content;
-using System.Runtime.Remoting.Messaging;
+﻿using Xamarin.Forms;
 
 namespace CocoMaps.Shared
 {
@@ -147,9 +143,6 @@ namespace CocoMaps.Shared
 			viewState = ViewState.Hidden;
 			infos = Infos.OnServices;
 
-			// starting on services
-			servicesButton.Focus ();
-
 			instance.Children.Add (title, 
 				Constraint.Constant (14),
 				Constraint.Constant (0),
@@ -173,14 +166,14 @@ namespace CocoMaps.Shared
 				Constraint.Constant (0),
 				Constraint.RelativeToView (image, (parent, sibling) => sibling.Y + sibling.Height + 5),
 				Constraint.RelativeToParent (Parent => Width / 2),
-				null
+				Constraint.Constant (50)
 			);
 
 			instance.Children.Add (departmentsButton, 
 				Constraint.RelativeToView (servicesButton, (parent, sibling) => sibling.X + sibling.Width),
 				Constraint.RelativeToView (servicesButton, (parent, sibling) => sibling.Y),
 				Constraint.RelativeToParent (Parent => Width / 2),
-				null
+				Constraint.Constant (50)
 			);
 
 			featuresImages.Children.Add (atm);
@@ -230,7 +223,7 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToParent (Parent => Width),
 				Constraint.RelativeToParent (Parent => Height - departmentsButton.Height * 2 - 10)
 			);
-
+			
 			instance.RaiseChild (servicesButton);
 			instance.RaiseChild (departmentsButton);
 
@@ -344,7 +337,7 @@ namespace CocoMaps.Shared
 				
 				servicesSection.Add (
 					new TextCell {
-						Text = building.Code + " Building has no services",
+						Text = "No services",
 						TextColor = Color.Gray
 					}
 				);
@@ -382,7 +375,7 @@ namespace CocoMaps.Shared
 
 				departmentsSection.Add (
 					new TextCell {
-						Text = building.Code + " Building has no departments",
+						Text = "No departments",
 						TextColor = Color.Gray
 					}
 				);

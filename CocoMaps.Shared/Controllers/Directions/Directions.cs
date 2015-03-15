@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using Xamarin.Forms.Maps;
 using System.Text.RegularExpressions;
-using System;
 
 namespace CocoMaps.Shared
 {

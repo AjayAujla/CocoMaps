@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Java.Sql;
 
 namespace CocoMaps.Shared
 {

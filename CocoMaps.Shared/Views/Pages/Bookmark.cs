@@ -1,9 +1,4 @@
-﻿using System;
-
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using CocoMaps.Shared;
 
 namespace CocoMaps.Shared.Pages

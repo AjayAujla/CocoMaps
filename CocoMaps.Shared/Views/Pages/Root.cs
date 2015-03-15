@@ -10,7 +10,6 @@ namespace CocoMaps.Shared
 
 		// Initialize Pages
 		MasterPage pMaster;
-		//BasePOI pPOI;
 		ConcordiaServices pServices;
 		NextClass pNextClass;
 		BaseCalendar pCalendar;
