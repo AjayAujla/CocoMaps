@@ -143,9 +143,14 @@ namespace CocoMaps.Shared
 
 				var NextClassInput = await DisplayAlert ("Get Directions To Next Class", ClassDetails , "Cancel", "Proceed");
 
+				string ClassDestination = NCF.getClassLocation(CI.Room);
+
+				string start = "1515 St. Catherine W.";
+
 				if(NextClassInput.ToString().ToLower() == "proceed")
 				{
-					Debug.WriteLine("Answer: " + NextClassInput);
+					RequestDirections directionsRequest = RequestDirections.getInstance;
+					Directions directions = await directionsRequest.getDirections (start, ClassDestination, TravelMode.walking);
 				}
 				else
 				{
@@ -185,7 +190,7 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToParent (parent => Height));
 
 			mainLayout.Children.Add (_POIButton, Constraint.Constant (150), Constraint.RelativeToParent (parent => Height - 54));
-			mainLayout.Children.Add (TestButton, Constraint.Constant (50), Constraint.Constant (50));
+			//mainLayout.Children.Add (TestButton, Constraint.Constant (50), Constraint.Constant (50));
 			//mainLayout.Children.Add (searchBar, Constraint.Constant (0));
 			mainLayout.Children.Add (SGWButton, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 54));
 			mainLayout.Children.Add (LOYButton, Constraint.Constant (80), Constraint.RelativeToParent (parent => Height - 54));
