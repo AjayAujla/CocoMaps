@@ -1,19 +1,18 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 using CocoMaps.Shared;
-using CocoMaps.Shared.Pages;
 using CocoMaps.Shared.ViewModels;
 using Newtonsoft.Json;
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
 using System.Json;
-using CocoMaps.Android;
 using System.Linq;
 
+#if __ANDROID__
+using CocoMaps.Android;
+#endif
 namespace CocoMaps.Shared
 {
 	public class BaseCalendar : AuthBasePage
@@ -26,11 +25,11 @@ namespace CocoMaps.Shared
 		public CalendarRootObject LocalCalObj = null;
 		public CalendarRootObject OnlineCalObj = null;
 
-		public List<CalendarItems> MondayCalItems = new List<CalendarItems>{};
-		public List<CalendarItems> TuesdayCalItems = new List<CalendarItems>{};
-		public List<CalendarItems> WednesdayCalItems = new List<CalendarItems>{};
-		public List<CalendarItems> ThursdayCalItems = new List<CalendarItems>{};
-		public List<CalendarItems> FridayCalItems = new List<CalendarItems>{};
+		public List<CalendarItems> MondayCalItems = new List<CalendarItems>{ };
+		public List<CalendarItems> TuesdayCalItems = new List<CalendarItems>{ };
+		public List<CalendarItems> WednesdayCalItems = new List<CalendarItems>{ };
+		public List<CalendarItems> ThursdayCalItems = new List<CalendarItems>{ };
+		public List<CalendarItems> FridayCalItems = new List<CalendarItems>{ };
 
 
 		public BaseCalendar (IMenuOptions menuItem)
@@ -44,15 +43,14 @@ namespace CocoMaps.Shared
 				this.SetValue (Page.TitleProperty, "Calendar");
 				this.SetValue (Page.IconProperty, menuItem.Icon);
 
+				setCalendarList ();
 
-				setCalendarList();
-
-				sortCalendarList();
+				sortCalendarList ();
 
 
 				#if __ANDROID__
 
-				AndroidReminderService a = new AndroidReminderService();
+				AndroidReminderService a = new AndroidReminderService ();
 
 				var MonCal = new Calendar (menuItem, "Mon", testList (MondayCalItems));
 				var TueCal = new Calendar (menuItem, "Tue", testList (TuesdayCalItems));
@@ -70,65 +68,64 @@ namespace CocoMaps.Shared
 
 				var dateNow = DateTime.Now;
 				var today = dateNow.DayOfWeek;
-				var earlyNotice = new TimeSpan(0,15,0);
+				var earlyNotice = new TimeSpan (0, 15, 0);
 
-				switch (today)
-				{
+				switch (today) {
 				case DayOfWeek.Monday:
-					foreach (CalendarItems c in MondayCalItems){
-						var startingTime = TimeSpan.Parse(c.StartTime);
+					foreach (CalendarItems c in MondayCalItems) {
+						var startingTime = TimeSpan.Parse (c.StartTime);
 
 						var notificationHourMinute = startingTime - earlyNotice;
-						var notificationTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-						a.Remind(dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
+						a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
 					}
 					break;
 				case DayOfWeek.Tuesday:
-					foreach (CalendarItems c in TuesdayCalItems){
-						var startingTime = TimeSpan.Parse(c.StartTime);
+					foreach (CalendarItems c in TuesdayCalItems) {
+						var startingTime = TimeSpan.Parse (c.StartTime);
 						var notificationHourMinute = startingTime - earlyNotice;
-						var notificationTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-						a.Remind(dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
+						a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
 					}
 					break;
 				case DayOfWeek.Wednesday:
-					foreach (CalendarItems c in WednesdayCalItems){
-						var startingTime = TimeSpan.Parse(c.StartTime);
+					foreach (CalendarItems c in WednesdayCalItems) {
+						var startingTime = TimeSpan.Parse (c.StartTime);
 						var notificationHourMinute = startingTime - earlyNotice;
-						var notificationTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-						a.Remind(dateNow, c.EventName, "Is starting soon");
+						var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
+						a.Remind (dateNow, c.EventName, "Is starting soon");
 					}
 					break;
 				case DayOfWeek.Thursday:
-					foreach (CalendarItems c in ThursdayCalItems){
-						var startingTime = TimeSpan.Parse(c.StartTime);
+					foreach (CalendarItems c in ThursdayCalItems) {
+						var startingTime = TimeSpan.Parse (c.StartTime);
 						var notificationHourMinute = startingTime - earlyNotice;
-						var notificationTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-						a.Remind(dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
+						a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
 					}
 					break;
 				case DayOfWeek.Friday:
-					foreach (CalendarItems c in FridayCalItems){
-						var startingTime = TimeSpan.Parse(c.StartTime);
+					foreach (CalendarItems c in FridayCalItems) {
+						var startingTime = TimeSpan.Parse (c.StartTime);
 						var notificationHourMinute = startingTime - earlyNotice;
-						var notificationTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-						a.Remind(dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
+						a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
 					}
 					break;
 				case DayOfWeek.Saturday:
-					foreach (CalendarItems c in MondayCalItems){
-						var startingTime = TimeSpan.Parse(c.StartTime);
+					foreach (CalendarItems c in MondayCalItems) {
+						var startingTime = TimeSpan.Parse (c.StartTime);
 						var notificationHourMinute = startingTime - earlyNotice;
-						var notificationTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-						a.Remind(dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
+						a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
 					}
 					break;
 				case DayOfWeek.Sunday:
-					foreach (CalendarItems c in MondayCalItems){
-						var startingTime = TimeSpan.Parse(c.StartTime);
+					foreach (CalendarItems c in MondayCalItems) {
+						var startingTime = TimeSpan.Parse (c.StartTime);
 						var notificationHourMinute = startingTime - earlyNotice;
-						var notificationTime = new DateTime(dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-						a.Remind(dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
+						a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
 					}
 					break;
 				}
@@ -138,61 +135,49 @@ namespace CocoMaps.Shared
 			});
 		}
 
-		public void sortCalendarList()
+		public void sortCalendarList ()
 		{
-			MondayCalItems = MondayCalItems.OrderBy(o=>o.StartTime).ToList();
-			TuesdayCalItems = TuesdayCalItems.OrderBy(o=>o.StartTime).ToList();
-			WednesdayCalItems = WednesdayCalItems.OrderBy(o=>o.StartTime).ToList();
-			ThursdayCalItems = ThursdayCalItems.OrderBy(o=>o.StartTime).ToList();
-			FridayCalItems = FridayCalItems.OrderBy(o=>o.StartTime).ToList();
+			MondayCalItems = MondayCalItems.OrderBy (o => o.StartTime).ToList ();
+			TuesdayCalItems = TuesdayCalItems.OrderBy (o => o.StartTime).ToList ();
+			WednesdayCalItems = WednesdayCalItems.OrderBy (o => o.StartTime).ToList ();
+			ThursdayCalItems = ThursdayCalItems.OrderBy (o => o.StartTime).ToList ();
+			FridayCalItems = FridayCalItems.OrderBy (o => o.StartTime).ToList ();
 		}
 
-		public void setCalendarList()
+		public void setCalendarList ()
 		{
 			CalendarRootObject CRO = getCalendarObj ();
 
-			foreach(CalendarItem CI in CRO.items)
-			{
-				string[] CalSummary = CI.summary.ToLower().Split ('-');
+			foreach (CalendarItem CI in CRO.items) {
+				string[] CalSummary = CI.summary.ToLower ().Split ('-');
 
-				if(CalSummary[0] == "concordia")
-				{
-					string[] days = CI.description.ToLower().Split (',');
+				if (CalSummary [0] == "concordia") {
+					string[] days = CI.description.ToLower ().Split (',');
 
-					string course = getCourseID(CalSummary[CalSummary.Length-1]);
+					string course = getCourseID (CalSummary [CalSummary.Length - 1]);
 
-					string courseType = getCourseType(CalSummary[1]) + "-" + CalSummary[2].ToUpper();
+					string courseType = getCourseType (CalSummary [1]) + "-" + CalSummary [2].ToUpper ();
 
 					string courseLocation = CI.location;
 
-					string courseStartTime = getCourseTime(CI.start.dateTime);
+					string courseStartTime = getCourseTime (CI.start.dateTime);
 
-					string courseEndTime = getCourseTime(CI.end.dateTime);
+					string courseEndTime = getCourseTime (CI.end.dateTime);
 
-					foreach(string day in days)
-					{
-						string courseDay = char.ToUpper(day[0]) + day.Substring(1);
+					foreach (string day in days) {
+						string courseDay = char.ToUpper (day [0]) + day.Substring (1);
 
-						if (day == "monday")
-						{
-							MondayCalItems.Add(new CalendarItems(course, courseType, courseDay , courseLocation, courseStartTime, courseEndTime, Color.Maroon));
+						if (day == "monday") {
+							MondayCalItems.Add (new CalendarItems (course, courseType, courseDay, courseLocation, courseStartTime, courseEndTime, Color.Maroon));
 
-						}
-						else if (day == "tuesday")
-						{
-							TuesdayCalItems.Add(new CalendarItems(course, courseType, courseDay , courseLocation, courseStartTime, courseEndTime, Color.Maroon));
-						}
-						else if (day == "wednesday")
-						{
-							WednesdayCalItems.Add(new CalendarItems(course, courseType, courseDay , courseLocation, courseStartTime, courseEndTime, Color.Maroon));
-						}
-						else if (day == "thursday")
-						{
-							ThursdayCalItems.Add(new CalendarItems(course, courseType, courseDay , courseLocation, courseStartTime, courseEndTime, Color.Maroon));
-						}
-						else if (day == "friday")
-						{
-							FridayCalItems.Add(new CalendarItems(course, courseType, courseDay , courseLocation, courseStartTime, courseEndTime, Color.Maroon));
+						} else if (day == "tuesday") {
+							TuesdayCalItems.Add (new CalendarItems (course, courseType, courseDay, courseLocation, courseStartTime, courseEndTime, Color.Maroon));
+						} else if (day == "wednesday") {
+							WednesdayCalItems.Add (new CalendarItems (course, courseType, courseDay, courseLocation, courseStartTime, courseEndTime, Color.Maroon));
+						} else if (day == "thursday") {
+							ThursdayCalItems.Add (new CalendarItems (course, courseType, courseDay, courseLocation, courseStartTime, courseEndTime, Color.Maroon));
+						} else if (day == "friday") {
+							FridayCalItems.Add (new CalendarItems (course, courseType, courseDay, courseLocation, courseStartTime, courseEndTime, Color.Maroon));
 						}
 					}
 				}
@@ -201,48 +186,38 @@ namespace CocoMaps.Shared
 
 		}
 
-		public string getCourseTime(string Time)
+		public string getCourseTime (string Time)
 		{
-			return Time.Substring(11,5);
+			return Time.Substring (11, 5);
 		}
 
-		public string getCourseType(string ct)
+		public string getCourseType (string ct)
 		{
-			if(ct =="lec")
-			{
+			if (ct == "lec") {
 				return "Lecture";
-			}
-			else if(ct =="tut")
-			{
+			} else if (ct == "tut") {
 				return "Tutorial";
-			}
-			else if(ct =="lab")
-			{
+			} else if (ct == "lab") {
 				return "Tutorial";
-			}
-			else
-			{
+			} else {
 				return ct;
 			}
 
 		}
 
-		public string getCourseID(string course)
+		public string getCourseID (string course)
 		{
-			if (course.Length == 7) 
-			{
-				char[] C = course.ToCharArray();
+			if (course.Length == 7) {
+				char[] C = course.ToCharArray ();
 
-				string courseName = C [0].ToString() + C [1].ToString() + C [2].ToString() + C [3].ToString();
-				string courseID = C [4].ToString() + C [5].ToString() + C [6].ToString();
+				string courseName = C [0].ToString () + C [1].ToString () + C [2].ToString () + C [3].ToString ();
+				string courseID = C [4].ToString () + C [5].ToString () + C [6].ToString ();
 
-				string nCourse = courseName.ToUpper() + "-" + courseID;
+				string nCourse = courseName.ToUpper () + "-" + courseID;
 
 				return nCourse;
 
-			}
-			else 
-			{
+			} else {
 				return course;
 			}
 		}
@@ -263,20 +238,17 @@ namespace CocoMaps.Shared
 
 		}
 
-		public string GetLocalCalendar()
+		public string GetLocalCalendar ()
 		{
 			string CalJsonText = "";
 
-			Assembly assembly = Assembly.GetExecutingAssembly();
-			string[] resources = assembly.GetManifestResourceNames();
+			Assembly assembly = Assembly.GetExecutingAssembly ();
+			string[] resources = assembly.GetManifestResourceNames ();
 
-			foreach (string resource in resources)
-			{
-				if(resource.Equals("CocoMaps.Android.LocalCalendar.json"))
-				{
-					Stream stream = assembly.GetManifestResourceStream(resource);
-					if (stream != null)
-					{
+			foreach (string resource in resources) {
+				if (resource.Equals ("CocoMaps.Android.LocalCalendar.json")) {
+					Stream stream = assembly.GetManifestResourceStream (resource);
+					if (stream != null) {
 						using (var reader = new System.IO.StreamReader (stream)) {
 							CalJsonText = reader.ReadToEnd ();
 						}
@@ -288,46 +260,47 @@ namespace CocoMaps.Shared
 		}
 
 
-		public void ProcessCalendarJson()
+		public void ProcessCalendarJson ()
 		{
-			LocalCalObj =  JsonConvert.DeserializeObject<CalendarRootObject> (GetLocalCalendar ());
+			LocalCalObj = JsonConvert.DeserializeObject<CalendarRootObject> (GetLocalCalendar ());
 		}
 
 
-		public CalendarRootObject getCalendarObj()
+		public CalendarRootObject getCalendarObj ()
 		{
 			var CLO1 = getCalendarListObj ();
 
-			if(UseOnlineCalendar)
-			{
-				if ((OnlineCalObj == null)) {processCalendarList ();}
+			if (UseOnlineCalendar) {
+				if ((OnlineCalObj == null)) {
+					processCalendarList ();
+				}
 				return OnlineCalObj;
-			}
-			else
-			{
-				if ((LocalCalObj == null)) {ProcessCalendarJson ();}
+			} else {
+				if ((LocalCalObj == null)) {
+					ProcessCalendarJson ();
+				}
 				return LocalCalObj;
 			}
 
 		}
 
-		public CalendarListRootObject getCalendarListObj()
+		public CalendarListRootObject getCalendarListObj ()
 		{
-			if ((CalListObj == null)) {requestCalendarList();}
+			if ((CalListObj == null)) {
+				requestCalendarList ();
+			}
 
 			return CalListObj;
 		}
 
-		public void processCalendarList()
+		public void processCalendarList ()
 		{
 			var CLO = getCalendarListObj ();
 
-			foreach(CalendarListItem OCI in CLO.items)
-			{
-				string[] CalListSummary = OCI.summary.ToLower().Split ('-');
+			foreach (CalendarListItem OCI in CLO.items) {
+				string[] CalListSummary = OCI.summary.ToLower ().Split ('-');
 
-				if (CalListSummary [0] == "@ConcordiaCalendar") 
-				{
+				if (CalListSummary [0] == "@ConcordiaCalendar") {
 					RequestOnlineCalendar (OCI.id);
 
 					UseOnlineCalendar = true;
@@ -335,11 +308,11 @@ namespace CocoMaps.Shared
 			}
 		}
 
-		public async Task<CalendarRootObject> RequestOnlineCalendar(string CalID)
+		public async Task<CalendarRootObject> RequestOnlineCalendar (string CalID)
 		{
 			string token = App.Instance.Token;
 
-			var requestUrl = string.Format ("https://www.googleapis.com/calendar/v3/calendars/{0}/events?alwaysIncludeEmail=false&singleEvents=false&fields=description%2Citems(description%2Cend%2Cid%2Clocation)%2Csummary&key={1}", CalID , token);
+			var requestUrl = string.Format ("https://www.googleapis.com/calendar/v3/calendars/{0}/events?alwaysIncludeEmail=false&singleEvents=false&fields=description%2Citems(description%2Cend%2Cid%2Clocation)%2Csummary&key={1}", CalID, token);
 
 			JsonValue OnlineCalJson = await JsonUtil.FetchJsonAsync (requestUrl);
 
@@ -354,17 +327,19 @@ namespace CocoMaps.Shared
 			int dayOfWeek = (int)DateTime.Today.DayOfWeek;
 
 			// Checks if the current day falls on the weekend and changes it to Monday.
-			if (dayOfWeek <= 0 || dayOfWeek >= 6) {dayOfWeek = 1;}
+			if (dayOfWeek <= 0 || dayOfWeek >= 6) {
+				dayOfWeek = 1;
+			}
 
 			// Starts the page with the tab corresponding to the current day
-			this.CurrentPage = this.Children [dayOfWeek-1];
+			this.CurrentPage = this.Children [dayOfWeek - 1];
 		}
 
-		public async Task<CalendarListRootObject> requestCalendarList()
+		public async Task<CalendarListRootObject> requestCalendarList ()
 		{
 			string token = App.Instance.Token;
 
-			var requestUrl = string.Format ("https://www.googleapis.com/calendar/v3/users/me/calendarList?key={0}" , token);
+			var requestUrl = string.Format ("https://www.googleapis.com/calendar/v3/users/me/calendarList?key={0}", token);
 
 			JsonValue CalListJson = await JsonUtil.FetchJsonAsync (requestUrl);
 
@@ -374,33 +349,48 @@ namespace CocoMaps.Shared
 
 		}
 
-		public List<CalendarItems> getMondayList()
+		public List<CalendarItems> getMondayList ()
 		{
-			if ((MondayCalItems == null)) {setCalendarList();sortCalendarList ();}
+			if ((MondayCalItems == null)) {
+				setCalendarList ();
+				sortCalendarList ();
+			}
 			return MondayCalItems;
 		}
 
-		public List<CalendarItems> getTuesdayList()
+		public List<CalendarItems> getTuesdayList ()
 		{
-			if ((TuesdayCalItems == null)) {setCalendarList();sortCalendarList ();}
+			if ((TuesdayCalItems == null)) {
+				setCalendarList ();
+				sortCalendarList ();
+			}
 			return TuesdayCalItems;
 		}
 
-		public List<CalendarItems> getWednesdayList()
+		public List<CalendarItems> getWednesdayList ()
 		{
-			if ((WednesdayCalItems == null)) {setCalendarList();sortCalendarList ();}
+			if ((WednesdayCalItems == null)) {
+				setCalendarList ();
+				sortCalendarList ();
+			}
 			return WednesdayCalItems;
 		}
 
-		public List<CalendarItems> getThursdayList()
+		public List<CalendarItems> getThursdayList ()
 		{
-			if ((ThursdayCalItems == null)) {setCalendarList();sortCalendarList ();}
+			if ((ThursdayCalItems == null)) {
+				setCalendarList ();
+				sortCalendarList ();
+			}
 			return ThursdayCalItems;
 		}
 
-		public List<CalendarItems> getFridayList()
+		public List<CalendarItems> getFridayList ()
 		{
-			if ((FridayCalItems == null)) {setCalendarList();sortCalendarList ();}
+			if ((FridayCalItems == null)) {
+				setCalendarList ();
+				sortCalendarList ();
+			}
 			return FridayCalItems;
 		}
 

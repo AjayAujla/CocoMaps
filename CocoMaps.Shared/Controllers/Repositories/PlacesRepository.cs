@@ -18,6 +18,8 @@ namespace CocoMaps.Shared
 		// TIP: Supported POIs here -> https://developers.google.com/places/documentation/supported_types
 		public String[] POIsQuery {
 			get {
+				// sending single request for cafe, food and bar since there is a lot of them
+				// sending atm|bank|library togheter to minimize requests
 				return new [] {"cafe", "food", "bar", "atm|bank|library"
 				};
 			}
@@ -27,7 +29,6 @@ namespace CocoMaps.Shared
 			get {
 				if (repository == null) {
 					repository = new PlacesRepository ();
-					repository.FetchPlaces ();
 				}
 				return repository;
 			}
@@ -47,7 +48,7 @@ namespace CocoMaps.Shared
 		
 		}
 
-		async public void FetchPlaces ()
+		async public Task<List<Result>> FetchPlaces ()
 		{
 
 			var placesRequest = RequestPlaces.getInstance;
@@ -73,16 +74,15 @@ namespace CocoMaps.Shared
 							foreach (Result place in places.results)
 								POIs.Add (place);
 
-							if (places.next_page_token != null) {
+							if (places.next_page_token != null)
 								_next_page_token = places.next_page_token;
-							}
+							
 						}
-					} while(false); // places.next_page_token != null
+					} while(places.next_page_token != null);
 				}
 			}
-			MasterPage.POIButton.IsEnabled = true;
-			MasterPage.POIButton.BackgroundColor = Color.White;
 
+			return POIs;
 		}
 
 	}

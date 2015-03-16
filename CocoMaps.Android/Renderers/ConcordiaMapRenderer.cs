@@ -15,6 +15,7 @@ namespace CocoMapsAndroid
 
 	public class ConcordiaMapRenderer : MapRenderer
 	{
+		
 		bool _isDrawnDone;
 
 		Position _from = new Position (0, 0);
@@ -26,10 +27,9 @@ namespace CocoMapsAndroid
 		Marker _endPin;
 
 		Android.Gms.Maps.Model.Polyline polyline;
+		Android.Gms.Maps.Model.Polyline shuttleBusPolyline;
 		PolylineOptions polylineOptions;
-		PolylineOptions shuttleBusPolyline;
 
-		PlacesRepository placesRepo;
 		ShuttleBusPolyline shuttleBusPolylinePoints = ShuttleBusPolyline.getInstance;
 		BuildingRepository buildingRepo = BuildingRepository.getInstance;
 		DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
@@ -48,9 +48,10 @@ namespace CocoMapsAndroid
 
 			if (MarkerBuilding.TryGetValue (e.Marker.Id, out building))
 				DetailsViewModel.getInstance.UpdateView (building);
-			else if (MarkerDirections.TryGetValue (e.Marker.Id, out directions))
-				DetailsViewModel.getInstance.UpdateView (directions);
-			else
+			else if (MarkerDirections.TryGetValue (e.Marker.Id, out directions)) {
+				if (directions != null)
+					DetailsViewModel.getInstance.UpdateView (directions);
+			} else
 				e.Marker.ShowInfoWindow ();
 		
 		}
@@ -155,6 +156,9 @@ namespace CocoMapsAndroid
 						Building building = GoogleUtil.PointInBuilding (ee.Point.Latitude, ee.Point.Longitude);
 						if (building != null) {
 
+							// For displaying the pins just above the building's code pin
+							double pinOffsetY = 0.0001;
+							Directions directions = null;
 
 							if (_from.Latitude == 0 && _from.Longitude == 0) {
 							
@@ -164,6 +168,9 @@ namespace CocoMapsAndroid
 									polyline.Remove ();
 									polylineOptions.Points.Clear ();
 									MarkerDirections.Clear ();
+									_endPin.Position = new LatLng (0, 0);
+									if (shuttleBusPolyline != null)
+										shuttleBusPolyline.Visible = false;
 								}
 
 								_from = building.Position;
@@ -171,24 +178,26 @@ namespace CocoMapsAndroid
 								// defining the origin pin
 								_startPin.Title = building.Code;
 								_startPin.Snippet = building.Address;
-								_startPin.Position = new LatLng (building.Position.Latitude, building.Position.Longitude);
+								_startPin.Position = new LatLng (building.Position.Latitude + pinOffsetY, building.Position.Longitude);
 
 								// linking _startPin to path
 								polylineOptions.Add (new LatLng (building.Position.Latitude, building.Position.Longitude));
 
+								MarkerDirections.Add (_startPin.Id, directions);
+
 							} else {
 								
 								_to = building.Position;
-
+								MarkerDirections.Clear ();
 								// defining the destination pin
 								_endPin.Title = building.Code;
 								_endPin.Snippet = building.Address;
-								_endPin.Position = new LatLng (building.Position.Latitude, building.Position.Longitude);
+								_endPin.Position = new LatLng (building.Position.Latitude + pinOffsetY, building.Position.Longitude);
 
 								loaderViewModel.Show ();
 
 								RequestDirections directionsRequest = RequestDirections.getInstance;
-								Directions directions = await directionsRequest.getDirections (_from, _to, TravelMode.walking);
+								directions = await directionsRequest.getDirections (_from, _to, TravelMode.walking);
 
 								if (directions.status.Equals ("OK")) {
 
@@ -229,7 +238,7 @@ namespace CocoMapsAndroid
 
 				//var formsMap = (ConcordiaMap)sender;
 
-				DrawShuttlePolyline ();
+				DrawShuttlePins ();
 
 				androidMapView.Map.UiSettings.MyLocationButtonEnabled = true;
 				androidMapView.Map.UiSettings.CompassEnabled = false;
@@ -282,10 +291,10 @@ namespace CocoMapsAndroid
 
 							LoaderViewModel.getInstance.Show ();
 
-							// in case it did not fetch places yet
-							placesRepo = PlacesRepository.getInstance;
+							// fetch places from google
+							List<Result> places = await PlacesRepository.getInstance.FetchPlaces ();
 
-							foreach (Result result in placesRepo.POIs) {
+							foreach (Result result in places) {
 								using (MarkerOptions poiMarker = new MarkerOptions ()) {
 									poiMarker.SetTitle (result.name)
 										.SetSnippet (result.vicinity)
@@ -318,8 +327,6 @@ namespace CocoMapsAndroid
 							}
 
 							isPOIAdded = true;
-							poiButton.IsEnabled = true;
-							poiButton.BackgroundColor = Xamarin.Forms.Color.White;
 							LoaderViewModel.getInstance.Hide ();
 
 						}
@@ -334,8 +341,6 @@ namespace CocoMapsAndroid
 					}
 
 
-
-
 				};
 				androidMapView.Map.MarkerClick += HandleMarkerClick;
 
@@ -348,13 +353,20 @@ namespace CocoMapsAndroid
 		void DrawShuttlePins ()
 		{
 			RequestShuttleBusSchedule requestShuttleBusSchedule = RequestShuttleBusSchedule.getInstance;
-			requestShuttleBusSchedule.GetSGWNextPassages (5);
+			List<String> nextDepartures = requestShuttleBusSchedule.GetNextPassages (3, "SGW");
+			String nextDeparturesString = "";
 
 			MarkerOptions marker = new MarkerOptions ();
 
+			if (nextDepartures == null || nextDepartures.Count == 0)
+				nextDeparturesString = "no passages";
+			else
+				foreach (String departure in nextDepartures)
+					nextDeparturesString += departure + "  ";
+
 			// SGW Shuttle Bus Marker
 			marker.SetTitle ("SGW Shuttle Bus");
-			//marker.SetSnippet ("3 next passages...");
+			marker.SetSnippet ("Next Departures: " + nextDeparturesString);
 			marker.SetPosition (
 				new LatLng (shuttleBusPolylinePoints.ShuttleBusPoints [0].Latitude, 
 					shuttleBusPolylinePoints.ShuttleBusPoints [0].Longitude)
@@ -366,10 +378,20 @@ namespace CocoMapsAndroid
 
 			marker = new MarkerOptions ();
 
+			nextDepartures = requestShuttleBusSchedule.GetNextPassages (3, "LOY");
+			nextDeparturesString = "";
+
+			if (nextDepartures == null || nextDepartures.Count == 0)
+				nextDeparturesString = "no passages";
+			else
+				foreach (String departure in nextDepartures)
+					nextDeparturesString += departure + "  ";
+			
 			// LOY Shuttle Bus Marker
 			int lastPoint = shuttleBusPolylinePoints.ShuttleBusPoints.Count;
+
 			marker.SetTitle ("LOY Shuttle Bus");
-			//marker.SetSnippet ("3 next passages...");
+			marker.SetSnippet ("Next Departures: " + nextDeparturesString);
 			marker.SetPosition (
 				new LatLng (shuttleBusPolylinePoints.ShuttleBusPoints [lastPoint - 1].Latitude, 
 					shuttleBusPolylinePoints.ShuttleBusPoints [lastPoint - 1].Longitude)
@@ -387,17 +409,16 @@ namespace CocoMapsAndroid
 			// For drawing Shuttle bus only once
 			if (shuttleBusPolyline == null) {
 				
-				shuttleBusPolyline = new PolylineOptions ();
-				shuttleBusPolyline.InvokeColor (0x7F932439).InvokeWidth (20);
+				PolylineOptions shuttleBusPolylineOptions = new PolylineOptions ();
+				shuttleBusPolylineOptions.InvokeColor (0x7F932439).InvokeWidth (20);
 
 				foreach (Position point in shuttleBusPolylinePoints.ShuttleBusPoints)
-					shuttleBusPolyline.Add (new LatLng (point.Latitude, point.Longitude));
+					shuttleBusPolylineOptions.Add (new LatLng (point.Latitude, point.Longitude));
 			
-				androidMapView.Map.AddPolyline (shuttleBusPolyline);
+				shuttleBusPolyline = androidMapView.Map.AddPolyline (shuttleBusPolylineOptions);
 
-				// Drawing pins at each end of Shuttle Bus polyline
-				DrawShuttlePins ();
-			}
+			} else
+				shuttleBusPolyline.Visible = true;
 		}
 
 	}

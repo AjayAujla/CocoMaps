@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Java.Sql;
 
 namespace CocoMaps.Shared
 {
@@ -17,9 +16,11 @@ namespace CocoMaps.Shared
 			}
 		}
 
+
+
 		RequestShuttleBusSchedule ()
 		{
-
+			
 		}
 
 		public List<String> NonFridayLOYDepartures = new List<String> {
@@ -174,32 +175,45 @@ namespace CocoMaps.Shared
 			"19:45"
 		};
 
-		public String[] GetSGWNextPassages (int numberOfNextPassages)
+		public List<String> GetNextPassages (int numberOfNextPassages, String campus)
 		{
 
 			// No passages during weekend
-//			if (DateTime.Today.DayOfWeek == DayOfWeek.Saturday
-//			    || DateTime.Today.DayOfWeek || DayOfWeek.Sunday)
-//				return null;
+			if (DateTime.Today.DayOfWeek == DayOfWeek.Saturday
+			    || DateTime.Today.DayOfWeek == DayOfWeek.Sunday)
+				return null;
 
+			List<String> departures;
+			List<String> nextDepartures = new List<String> ();
+			int counter = 0;
 
-			for (int i = 0; i < numberOfNextPassages; ++i) {
+			if (DateTime.Today.DayOfWeek == DayOfWeek.Friday && campus.Equals ("SGW"))
+				departures = FridaySGWDepartures;
+			else if (DateTime.Today.DayOfWeek == DayOfWeek.Friday && campus.Equals ("LOY"))
+				departures = FridayLOYDepartures;
+			else if (DateTime.Today.DayOfWeek != DayOfWeek.Friday && campus.Equals ("SGW"))
+				departures = NonFridaySGWDepartures;
+			else if (DateTime.Today.DayOfWeek != DayOfWeek.Friday && campus.Equals ("LOY"))
+				departures = NonFridayLOYDepartures;
+			else
+				return null;
 
+			foreach (String departure in departures) {
+				
+				DateTime departureDateTime = Convert.ToDateTime (departure);
 
+				if (departureDateTime >= DateTime.Now) {
+					nextDepartures.Add (departure);
+					counter++;
+				}
 
-
+				if (counter == numberOfNextPassages)
+					break;
+				
 			}
 
+			return nextDepartures;
 
-			return null;
-
-		}
-
-		public String[] GetLOYNextPassages (int numberOfNextPassages)
-		{
-
-
-			return null;
 		}
 
 	}

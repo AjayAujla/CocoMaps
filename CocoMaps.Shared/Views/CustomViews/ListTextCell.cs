@@ -1,11 +1,9 @@
-﻿using System;
-using Xamarin.Forms;
-using System.Collections.ObjectModel;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Xamarin.Forms;
 
 namespace CocoMaps.Shared.CustomViews
 {
-	public class ListTextCell : ImageCell { }
+	public class ListTextCell : ImageCell
+	{
+
+	}
 }

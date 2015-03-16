@@ -5,7 +5,6 @@ using Xamarin;
 using Android.Content.PM;
 using CocoMaps.Shared;
 
-
 namespace CocoMaps.Android
 {
 	[Activity (Label = "CocoMaps", MainLauncher = true, NoHistory = true, Theme = "@style/Theme.Splash", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]

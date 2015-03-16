@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Xamarin.Forms.Maps;
-using Java.IO;
 
 namespace CocoMaps.Shared
 {
@@ -8,8 +7,6 @@ namespace CocoMaps.Shared
 	{
 
 		static ShuttleBusPolyline shuttleBusPolyline;
-
-		//		public bool
 
 		public static ShuttleBusPolyline getInstance {
 			get {

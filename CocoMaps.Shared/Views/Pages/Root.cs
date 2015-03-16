@@ -10,13 +10,11 @@ namespace CocoMaps.Shared
 
 		// Initialize Pages
 		MasterPage pMaster;
-		//BasePOI pPOI;
 		ConcordiaServices pServices;
 		NextClass pNextClass;
 		BaseCalendar pCalendar;
 		BaseShuttleBus pShuttleBus;
 		Settings pSettings;
-
 
 		public RootPage ()
 		{
@@ -46,13 +44,21 @@ namespace CocoMaps.Shared
 		public Page setPage (IMenuOptions menuOption)
 		{
 
+			// put back top bar for all pages
+			#if __ANDROID__
+			Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Default);
+			#endif
+
 			int MenuNumber = menuOption.MenuNum;
 
 			switch (MenuNumber) {
 			case 1:
-				if ((pMaster == null)) {
+				if ((pMaster == null))
 					pMaster = new MasterPage (menuOption);
-				}
+				// Hide top bar for map page only
+				#if __ANDROID__
+				Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Never);
+				#endif
 				return pMaster;
 			/*case 3:
 				if ((pPOI == null)) {
@@ -65,7 +71,9 @@ namespace CocoMaps.Shared
 				}
 				return pServices;
 			case 5:
-				pNextClass = new NextClass (menuOption, pCalendar);
+				if ((pNextClass == null)) {
+					pNextClass = new NextClass (menuOption, pCalendar);
+				}
 				return pNextClass;
 			case 8:
 				if ((pCalendar == null)) {
@@ -91,6 +99,10 @@ namespace CocoMaps.Shared
 				if ((pMaster == null)) {
 					pMaster = new MasterPage (menuOption);
 				}
+				// Hide top bar for map page only
+				#if __ANDROID__
+				Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Never);
+				#endif
 				return pMaster;
 			}
 		}

@@ -3,7 +3,6 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using System.Json;
-using Xamarin.Forms;
 
 namespace CocoMaps.Shared
 {
