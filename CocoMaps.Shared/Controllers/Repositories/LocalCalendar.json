@@ -8,7 +8,7 @@
 "id": "jveedhl1aum6o200kfo9l836s0",
 "summary": "Concordia-Tut-SA-SOEN357",
 "description": "FRIDAY",
-"location": "H-561",
+"location": "SGW-H-561",
 "start": {
 "dateTime": "2015-03-13T11:45:00-04:00",
 "timeZone": "America/Toronto"
@@ -23,7 +23,7 @@
 "id": "fqe6in4eh9qi65rd0lskn4ohjo",
 "summary": "Concordia-Lec-S-SOEN390",
 "description": "MONDAY",
-"location": "FG-B050",
+"location": "SGW-FG-B050",
 "start": {
 "dateTime": "2015-03-09T16:15:00-04:00",
 "timeZone": "America/Toronto"
@@ -38,7 +38,7 @@
 "id": "g9h07ptiafh8b3q2u9oiaq4jqo",
 "summary": "Concordia-Lec-S-SOEN345",
 "description": "MONDAY,WEDNESDAY",
-"location": "H-431",
+"location": "SGW-H-431",
 "start": {
 "dateTime": "2015-03-09T14:45:00-04:00",
 "timeZone": "America/Toronto"
@@ -53,7 +53,7 @@
 "id": "14kjeu62m7cgib249nam05oqp8",
 "summary": "Concordia-Lec-S-SOEN344",
 "description": "TUESDAY,THURSDAY",
-"location": "H-431",
+"location": "SGW-H-431",
 "start": {
 "dateTime": "2015-03-10T13:15:00-04:00",
 "timeZone": "America/Toronto"
@@ -68,7 +68,7 @@
 "id": "5qf9uvhevmlgoh6bnsighrvo98",
 "summary": "Concordia-Lec-S-SOEN357",
 "description": "WEDNESDAY,FRIDAY",
-"location": "H-431",
+"location": "SGW-H-431",
 "start": {
 "dateTime": "2015-03-11T10:15:00-04:00",
 "timeZone": "America/Toronto"
@@ -83,7 +83,7 @@
 "id": "0uqhm6fhu9sfjv0138nt1rpgsc",
 "summary": "Concordia-Tut-SB-SOEN345",
 "description": "WEDNESDAY",
-"location": "H-929",
+"location": "SGW-H-929",
 "start": {
 "dateTime": "2015-03-11T17:45:00-04:00",
 "timeZone": "America/Toronto"
@@ -98,7 +98,7 @@
 "id": "asr6he885v0dptqiovvuglq4go",
 "summary": "Concordia-Tut-SA-SOEN344",
 "description": "THURSDAY",
-"location": "H-920",
+"location": "SGW-H-920",
 "start": {
 "dateTime": "2015-03-12T14:45:00-04:00",
 "timeZone": "America/Toronto"
@@ -113,7 +113,7 @@
 "id": "tp2ifddb5lv1k1m9og43qq90uk",
 "summary": "Concordia-Lab-SI-SOEN390",
 "description": "THURSDAY",
-"location": "H-837",
+"location": "SGW-H-837",
 "start": {
 "dateTime": "2015-03-12T15:45:00-04:00",
 "timeZone": "America/Toronto"
