@@ -14,7 +14,6 @@ namespace CocoMaps.Shared
 		NextClass pNextClass;
 		BaseCalendar pCalendar;
 		BaseShuttleBus pShuttleBus;
-		CalendarConnect pConnect;
 		Settings pSettings;
 
 
@@ -66,7 +65,7 @@ namespace CocoMaps.Shared
 				return pServices;
 			case 5:
 				if ((pNextClass == null)) {
-					pNextClass = new NextClass (menuOption);
+					pNextClass = new NextClass (menuOption,pCalendar);
 				}
 				return pNextClass;
 			case 8:
@@ -75,10 +74,10 @@ namespace CocoMaps.Shared
 				}
 				return  pCalendar;
 			case 9:
-				if ((pConnect == null)) {
-					pConnect = new CalendarConnect (menuOption);
+				if ((pMaster == null)) {
+					pMaster = new MasterPage (menuOption);
 				}
-				return pConnect;
+				return pMaster;
 			case 10:
 				if ((pShuttleBus == null)) {
 					pShuttleBus = new BaseShuttleBus (menuOption);

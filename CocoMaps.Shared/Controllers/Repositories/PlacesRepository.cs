@@ -72,11 +72,11 @@ namespace CocoMaps.Shared
 							foreach (Result place in places.results)
 								POIs.Add (place);
 
-							if (places.next_page_token != null) {
+							if (places.next_page_token != null)
 								_next_page_token = places.next_page_token;
-							}
+							
 						}
-					} while(false); // places.next_page_token != null
+					} while(places.next_page_token != null); // places.next_page_token != null
 				}
 			}
 

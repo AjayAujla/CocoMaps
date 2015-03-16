@@ -1,16 +1,13 @@
-﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.MonoForAndroid_API_10" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android/Renderers/ConcordiaMapRenderer.cs">
+﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus 4 (Jelly Bean)" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Views\Pages\Calendar\BaseCalendar.cs">
     <Files>
-      <File FileName="CocoMaps.Shared/Views/Pages/Settings.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Views/ViewsModel/LoaderViewModel.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Views/Pages/Master.cs" Line="168" Column="8" />
-      <File FileName="CocoMaps.Android/Renderers/ConcordiaMapRenderer.cs" Line="34" Column="3" />
-      <File FileName="CocoMaps.Shared/Controllers/Repositories/PlacesRepository.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Models/NavigationModel.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Android/Properties/AndroidManifest.xml" Line="24" Column="12" />
-      <File FileName="CocoMaps.Android/MainActivity.cs" Line="48" Column="2" />
-      <File FileName="CocoMaps.Shared/Controllers/ShuttleBus/ShuttleBusPolyline.cs" Line="12" Column="18" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Calendar\BaseCalendar.cs" Line="35" Column="35" />
+      <File FileName="CocoMaps.Shared\Models\CalendarModel.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Android\MainActivity.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Android\AndroidNotifications\Notifications.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Android\AndroidNotifications\AlarmReceiver.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Android\AndroidNotifications\AndroidReminderService.cs" Line="56" Column="56" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
