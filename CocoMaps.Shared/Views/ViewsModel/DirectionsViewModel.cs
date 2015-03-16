@@ -2,6 +2,7 @@
 using CocoMaps.Shared;
 using System;
 using System.Runtime.Remoting.Channels;
+using Xamarin.Forms.Maps;
 
 namespace CocoMaps.Shared
 {
@@ -51,15 +52,29 @@ namespace CocoMaps.Shared
 
 		BuildingRepository buildingRepo = BuildingRepository.getInstance;
 
+		Picker _fromPicker;
 
 		public Picker FromPicker {
-			get;
-			set;
+			get {
+				if (_fromPicker == null)
+					_fromPicker = new Picker { HeightRequest = 50 };
+				return _fromPicker;
+			}
+			set {
+			}
 		}
 
+		Picker _toPicker;
+
 		public Picker ToPicker {
-			get;
-			set;
+			get { 
+				if (_toPicker == null)
+					_toPicker = new Picker { HeightRequest = 50 };
+				return _toPicker;
+			}
+			
+			set {
+			}
 		}
 
 		Image DirectionsIcon = new Image {
@@ -93,7 +108,7 @@ namespace CocoMaps.Shared
 			BorderRadius = 50,
 		};
 
-		Button StartButton = new Button {
+		public Button StartButton = new Button {
 			Text = "Start",
 			TextColor = Color.White,
 			BackgroundColor = Helpers.Color.Blue.ToFormsColor (),
@@ -110,10 +125,7 @@ namespace CocoMaps.Shared
 
 		void Init ()
 		{
-
-			FromPicker = new Picker { HeightRequest = 50 };
-			ToPicker = new Picker { HeightRequest = 50 };
-
+			
 			foreach (Building building in buildingRepo.BuildingList.Values) {
 				FromPicker.Items.Add (building.Code);
 				ToPicker.Items.Add (building.Code);

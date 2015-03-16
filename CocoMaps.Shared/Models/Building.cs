@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Xamarin.Forms.Maps;
 
 namespace CocoMaps.Shared
@@ -18,7 +17,7 @@ namespace CocoMaps.Shared
 			set;
 		}
 
-		public Campus Campus {
+		public string Campus {
 			get;
 			set;
 		}

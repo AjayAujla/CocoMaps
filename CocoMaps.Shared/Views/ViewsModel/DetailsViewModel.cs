@@ -183,7 +183,7 @@ namespace CocoMaps.Shared
 			);
 
 			instance.Children.Add (directionsButton,
-				Constraint.RelativeToView (featuresImages, (parent, sibling) => sibling.X),
+				Constraint.RelativeToView (featuresImages, (parent, sibling) => sibling.X - 10),
 				Constraint.RelativeToView (featuresImages, (parent, sibling) => sibling.Y + sibling.Height - 5)
 			);
 
@@ -330,6 +330,8 @@ namespace CocoMaps.Shared
 			int buildingIndex = BuildingRepository.getInstance.GetBuildingIndex (building);
 
 			directionsButton.Clicked += (sender, e) => {
+				instance.Minimize ();
+
 				// Open directions with Google Maps app
 				if (Settings.useDeviceMap) {
 					DependencyService.Get<IPhoneService> ().LaunchMap (building.Address);
@@ -344,13 +346,6 @@ namespace CocoMaps.Shared
 					else
 						directionsViewModel.ToPicker.SelectedIndex = buildingIndex;
 
-					// If Start and Destination are within the same campus, 
-					//disable Shuttle Bus TravelMode option
-					if (directionsViewModel.FromPicker.SelectedIndex != -1
-					    && directionsViewModel.ToPicker.SelectedIndex != -1 &&
-					    directionsViewModel.FromPicker.SelectedIndex == directionsViewModel.ToPicker.SelectedIndex) {
-						directionsViewModel.TravelShuttleModeButton.IsEnabled = false;
-					}
 
 					directionsViewModel.Expand ();
 				}
@@ -485,6 +480,9 @@ namespace CocoMaps.Shared
 
 		public void Expand ()
 		{
+			// Hide the top DirectionsView if we expand building details
+			directionsViewModel.Hide ();
+
 			double currentPos = instance.Y;
 			double desiredPos = ParentView.Bounds.Height - instance.Height;
 			instance.TranslateTo (0, desiredPos - currentPos);

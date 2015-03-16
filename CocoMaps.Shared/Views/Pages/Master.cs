@@ -184,8 +184,10 @@ namespace CocoMaps.Shared
 			};
 
 			TestButton.Clicked += async (sender, e) => {
-				bool r = await DependencyService.Get<INetwork> ().IsReachable ("googleapis.com", new TimeSpan (5));
-				await DisplayAlert ("Network Connection:", r ? "Connected :)" : "Not Connected :(", "Whatever");
+				DirectionsViewModel d = DirectionsViewModel.getInstance;
+				d.Expand ();
+//				bool r = await DependencyService.Get<INetwork> ().IsReachable ("googleapis.com", new TimeSpan (5));
+//				await DisplayAlert ("Network Connection:", r ? "Connected :)" : "Not Connected :(", "Whatever");
 			};
 
 			mainLayout.Children.Add (map,
