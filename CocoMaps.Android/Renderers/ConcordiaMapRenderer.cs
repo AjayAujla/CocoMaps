@@ -275,21 +275,14 @@ namespace CocoMapsAndroid
 					}
 				}
 
-				bool NextClass = false;
 
-				Button NextClassButton = MasterPage.NextButtonAlert;
+				Button NextClassButton = MasterPage.NextClassAlertEventButton;
 
-				NextClassButton.Clicked += async (send, ev) => {
+				NextClassButton.PropertyChanged += async (send, ev) => {
 
 					NextClassFunc NCF = new NextClassFunc();
 
 					CalendarItems CI = NCF.getNextClassItem();
-
-					//string ClassDetails = "Class : " + CI.Title1 + "\r\n" + "Time : " + CI.Day + " " + "(" + CI.StartTime + " - " + CI.EndTime + ")" + "\r\n" + "Location : " + CI.Room+ "\r\n" + "Destination : " + NCF.getClassLocation(CI.Room);
-
-					string ClassDetails = "Class : " + CI.Title1 + "\r\n" + "Time : " + CI.Day + " " + "(" + CI.StartTime + " - " + CI.EndTime + ")" + "\r\n" + "Location : " + CI.Room+ "\r\n";
-
-					//var NextClassInput = await DisplayAlert ("Get Directions To Next Class", ClassDetails , "Cancel", "Proceed");
 
 					string ClassDestination = NCF.getClassLocation(CI.Room);
 
@@ -301,15 +294,6 @@ namespace CocoMapsAndroid
 
 					getDirectionsToClass(directions);
 
-					/*if(NextClassInput.ToString().ToLower() == "proceed")
-						{
-						RequestDirections directionsRequest = RequestDirections.getInstance;
-						Directions directions = await directionsRequest.getDirections (start, ClassDestination, TravelMode.walking);
-						}
-						else
-						{
-						// Cancel- Do Nothing
-						}*/
 				}; 
 
 
