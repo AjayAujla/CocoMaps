@@ -18,6 +18,8 @@ namespace CocoMaps.Shared
 			OnDepartments
 		}
 
+		DirectionsViewModel directionsViewModel = DirectionsViewModel.getInstance;
+
 		static DetailsViewModel instance;
 
 		public static DetailsViewModel getInstance {
@@ -102,7 +104,7 @@ namespace CocoMaps.Shared
 			Intent = TableIntent.Form,
 			HasUnevenRows = true,
 			Root = new TableRoot {
-				
+
 			}
 		};
 
@@ -130,6 +132,13 @@ namespace CocoMaps.Shared
 			TextColor = Helpers.Color.Navy.ToFormsColor (),
 			BackgroundColor = Helpers.Color.LightGray.ToFormsColor (),
 			BorderRadius = 0
+		};
+
+		Button directionsButton = new Button {
+			Text = "Directions",
+			TextColor = Helpers.Color.Blue.ToFormsColor (),
+			Image = (FileImageSource)ImageSource.FromFile ("ic_dir_buildings.png"),
+			BackgroundColor = Color.Transparent
 		};
 
 		void Init ()
@@ -173,6 +182,11 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToView (image, (parent, sibling) => sibling.Height)
 			);
 
+			instance.Children.Add (directionsButton,
+				Constraint.RelativeToView (featuresImages, (parent, sibling) => sibling.X),
+				Constraint.RelativeToView (featuresImages, (parent, sibling) => sibling.Y + sibling.Height - 5)
+			);
+
 			instance.Children.Add (servicesButton, 
 				Constraint.Constant (0),
 				Constraint.RelativeToView (image, (parent, sibling) => sibling.Y + sibling.Height + 5),
@@ -186,6 +200,8 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToParent (Parent => Width / 2),
 				Constraint.Constant (50)
 			);
+
+
 
 			instance.Children.Add (toggleButton,
 				Constraint.RelativeToParent (Parent => Width / 2 - toggleButton.Width / 2),
@@ -225,7 +241,7 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToParent (Parent => Width),
 				Constraint.RelativeToParent (Parent => Height - departmentsButton.Height * 2 - 10)
 			);
-			
+
 			instance.RaiseChild (servicesButton);
 			instance.RaiseChild (departmentsButton);
 
@@ -262,6 +278,7 @@ namespace CocoMaps.Shared
 			departmentsList.IsVisible = false;
 			servicesButton.IsVisible = false;
 			departmentsButton.IsVisible = false;
+			directionsButton.IsVisible = false;
 
 			toggleButton.Source = ImageSource.FromFile ("button_directions_toggle.png");
 
@@ -296,6 +313,7 @@ namespace CocoMaps.Shared
 			departmentsList.IsVisible = true;
 			servicesButton.IsVisible = true;
 			departmentsButton.IsVisible = true;
+			directionsButton.IsVisible = true;
 
 			directionsList.IsVisible = false;
 
@@ -309,6 +327,26 @@ namespace CocoMaps.Shared
 
 			toggleButton.Source = ImageSource.FromFile ("button_buildings_toggle.png");
 
+			int buildingIndex = BuildingRepository.getInstance.GetBuildingIndex (building);
+
+			directionsButton.Clicked += (sender, e) => {
+				// Open directions with Google Maps app
+				if (Settings.useDeviceMap) {
+					DependencyService.Get<IPhoneService> ().LaunchMap (building.Address);
+				} else {
+					// Open directions within CocoMaps app
+
+					if (directionsViewModel.FromPicker.SelectedIndex == -1)
+						directionsViewModel.FromPicker.SelectedIndex = buildingIndex;
+					else if (directionsViewModel.ToPicker.SelectedIndex == -1)
+						directionsViewModel.ToPicker.SelectedIndex = buildingIndex;
+					else
+						directionsViewModel.ToPicker.SelectedIndex = buildingIndex;
+				
+					directionsViewModel.Expand ();
+				}
+			};
+
 			servicesList.Root.Clear ();
 
 			TableSection servicesSection = new TableSection ();
@@ -316,11 +354,11 @@ namespace CocoMaps.Shared
 			servicesList.Root.Add (servicesSection);
 
 			if (building.Services != null && building.Services.Count > 0) {
-				
+
 				TextCell textCell;
 
 				foreach (Service service in building.Services) {
-					
+
 					textCell = new TextCell ();
 
 					textCell.Text = service.Name;
@@ -329,7 +367,7 @@ namespace CocoMaps.Shared
 
 					if (service.RoomNumber != null)
 						textCell.Detail = service.RoomNumber;
-					
+
 					if (service.URI != null) {
 						textCell.TextColor = Helpers.Color.Navy.ToFormsColor ();
 						textCell.Tapped += (sender, e) => DependencyService.Get<IPhoneService> ().OpenBrowser (service.URI);
@@ -341,7 +379,7 @@ namespace CocoMaps.Shared
 
 				}
 			} else {
-				
+
 				servicesSection.Add (
 					new TextCell {
 						Text = "No services",
@@ -361,7 +399,7 @@ namespace CocoMaps.Shared
 
 				TextCell textCell;
 				foreach (Department department in building.Departments) {
-					
+
 					textCell = new TextCell ();
 
 					textCell.Text = department.Name;

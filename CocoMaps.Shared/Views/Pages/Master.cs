@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Shared;
+using System.Threading.Tasks;
 
 namespace CocoMaps.Shared
 {
@@ -228,6 +229,15 @@ namespace CocoMaps.Shared
 		{
 
 		}
+
+		// Makes the app crash for some reason...
+		//		public async static Task<bool> DisplayAlert (String Title, String message, String accept, String cancel)
+		//		{
+		//			Page p = new Page ();
+		//			var action = await p.DisplayAlert (Title, message, accept, cancel);
+		//			Console.WriteLine ("DisplayAlert: " + action);
+		//			return action;
+		//		}
 
 		void HandleCampusRegionButton (object sender, EventArgs e)
 		{

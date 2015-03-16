@@ -52,12 +52,12 @@ namespace CocoMaps.Shared
 		BuildingRepository buildingRepo = BuildingRepository.getInstance;
 
 
-		Picker FromPicker {
+		public Picker FromPicker {
 			get;
 			set;
 		}
 
-		Picker ToPicker {
+		public Picker ToPicker {
 			get;
 			set;
 		}
@@ -229,7 +229,7 @@ namespace CocoMaps.Shared
 		public void Expand ()
 		{
 			double currentPos = instance.Y;
-			double desiredPos = ParentView.Bounds.Height / 3;
+			double desiredPos = 0;
 			instance.TranslateTo (0, desiredPos - currentPos);
 			viewState = ViewState.Expanded;
 		}

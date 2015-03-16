@@ -253,6 +253,7 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_travel_transit.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_travel_walking.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\sidebar_slide.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_dir_buildings.png" />
   </ItemGroup>
   <Import Project="..\CocoMaps.Shared\CocoMaps.Shared.projitems" Label="Shared" Condition="Exists('..\CocoMaps.Shared\CocoMaps.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

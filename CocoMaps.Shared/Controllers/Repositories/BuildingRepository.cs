@@ -2400,6 +2400,16 @@ namespace CocoMaps.Shared
 			return BuildingList.TryGetValue (code, out building) ? building : null;
 		}
 
+		public int GetBuildingIndex (Building building)
+		{
+			int counter = 0;
+			foreach (Building b in BuildingList.Values) {
+				if (b == building)
+					return counter;
+				counter++;
+			}
+			return -1;
+		}
 
 	}
 

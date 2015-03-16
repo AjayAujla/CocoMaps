@@ -1618,166 +1618,169 @@ namespace CocoMaps.Android
 			public const int ic_buildingcode_transparent = 2130837655;
 			
 			// aapt resource value: 0x7f020098
-			public const int ic_dir_sign = 2130837656;
+			public const int ic_dir_buildings = 2130837656;
 			
 			// aapt resource value: 0x7f020099
-			public const int ic_dir_swap = 2130837657;
+			public const int ic_dir_sign = 2130837657;
 			
 			// aapt resource value: 0x7f02009a
-			public const int ic_filter = 2130837658;
+			public const int ic_dir_swap = 2130837658;
 			
 			// aapt resource value: 0x7f02009b
-			public const int ic_launcher = 2130837659;
+			public const int ic_filter = 2130837659;
 			
 			// aapt resource value: 0x7f02009c
-			public const int ic_map_search = 2130837660;
+			public const int ic_launcher = 2130837660;
 			
 			// aapt resource value: 0x7f02009d
-			public const int ic_pin_atm = 2130837661;
+			public const int ic_map_search = 2130837661;
 			
 			// aapt resource value: 0x7f02009e
-			public const int ic_pin_bank = 2130837662;
+			public const int ic_pin_atm = 2130837662;
 			
 			// aapt resource value: 0x7f02009f
-			public const int ic_pin_bar = 2130837663;
+			public const int ic_pin_bank = 2130837663;
 			
 			// aapt resource value: 0x7f0200a0
-			public const int ic_pin_cafe = 2130837664;
+			public const int ic_pin_bar = 2130837664;
 			
 			// aapt resource value: 0x7f0200a1
-			public const int ic_pin_default = 2130837665;
+			public const int ic_pin_cafe = 2130837665;
 			
 			// aapt resource value: 0x7f0200a2
-			public const int ic_pin_end = 2130837666;
+			public const int ic_pin_default = 2130837666;
 			
 			// aapt resource value: 0x7f0200a3
-			public const int ic_pin_food = 2130837667;
+			public const int ic_pin_end = 2130837667;
 			
 			// aapt resource value: 0x7f0200a4
-			public const int ic_pin_gaz_station = 2130837668;
+			public const int ic_pin_food = 2130837668;
 			
 			// aapt resource value: 0x7f0200a5
-			public const int ic_pin_library = 2130837669;
+			public const int ic_pin_gaz_station = 2130837669;
 			
 			// aapt resource value: 0x7f0200a6
-			public const int ic_pin_shuttle = 2130837670;
+			public const int ic_pin_library = 2130837670;
 			
 			// aapt resource value: 0x7f0200a7
-			public const int ic_pin_start = 2130837671;
+			public const int ic_pin_shuttle = 2130837671;
 			
 			// aapt resource value: 0x7f0200a8
-			public const int ic_plusone_medium_off_client = 2130837672;
+			public const int ic_pin_start = 2130837672;
 			
 			// aapt resource value: 0x7f0200a9
-			public const int ic_plusone_small_off_client = 2130837673;
+			public const int ic_plusone_medium_off_client = 2130837673;
 			
 			// aapt resource value: 0x7f0200aa
-			public const int ic_plusone_standard_off_client = 2130837674;
+			public const int ic_plusone_small_off_client = 2130837674;
 			
 			// aapt resource value: 0x7f0200ab
-			public const int ic_plusone_tall_off_client = 2130837675;
+			public const int ic_plusone_standard_off_client = 2130837675;
 			
 			// aapt resource value: 0x7f0200ac
-			public const int ic_travel_driving = 2130837676;
+			public const int ic_plusone_tall_off_client = 2130837676;
 			
 			// aapt resource value: 0x7f0200ad
-			public const int ic_travel_shuttle = 2130837677;
+			public const int ic_travel_driving = 2130837677;
 			
 			// aapt resource value: 0x7f0200ae
-			public const int ic_travel_transit = 2130837678;
+			public const int ic_travel_shuttle = 2130837678;
 			
 			// aapt resource value: 0x7f0200af
-			public const int ic_travel_walking = 2130837679;
+			public const int ic_travel_transit = 2130837679;
 			
 			// aapt resource value: 0x7f0200b0
-			public const int ic_travelmode_driving = 2130837680;
+			public const int ic_travel_walking = 2130837680;
 			
 			// aapt resource value: 0x7f0200b1
-			public const int ic_travelmode_transit = 2130837681;
+			public const int ic_travelmode_driving = 2130837681;
 			
 			// aapt resource value: 0x7f0200b2
-			public const int ic_travelmode_walking = 2130837682;
+			public const int ic_travelmode_transit = 2130837682;
 			
 			// aapt resource value: 0x7f0200b3
-			public const int locationIcon = 2130837683;
+			public const int ic_travelmode_walking = 2130837683;
 			
 			// aapt resource value: 0x7f0200b4
-			public const int monoandroidsplash = 2130837684;
+			public const int locationIcon = 2130837684;
 			
 			// aapt resource value: 0x7f0200b5
-			public const int mr_ic_audio_vol = 2130837685;
+			public const int monoandroidsplash = 2130837685;
 			
 			// aapt resource value: 0x7f0200b6
-			public const int mr_ic_media_route_connecting_holo_dark = 2130837686;
+			public const int mr_ic_audio_vol = 2130837686;
 			
 			// aapt resource value: 0x7f0200b7
-			public const int mr_ic_media_route_connecting_holo_light = 2130837687;
+			public const int mr_ic_media_route_connecting_holo_dark = 2130837687;
 			
 			// aapt resource value: 0x7f0200b8
-			public const int mr_ic_media_route_disabled_holo_dark = 2130837688;
+			public const int mr_ic_media_route_connecting_holo_light = 2130837688;
 			
 			// aapt resource value: 0x7f0200b9
-			public const int mr_ic_media_route_disabled_holo_light = 2130837689;
+			public const int mr_ic_media_route_disabled_holo_dark = 2130837689;
 			
 			// aapt resource value: 0x7f0200ba
-			public const int mr_ic_media_route_holo_dark = 2130837690;
+			public const int mr_ic_media_route_disabled_holo_light = 2130837690;
 			
 			// aapt resource value: 0x7f0200bb
-			public const int mr_ic_media_route_holo_light = 2130837691;
+			public const int mr_ic_media_route_holo_dark = 2130837691;
 			
 			// aapt resource value: 0x7f0200bc
-			public const int mr_ic_media_route_off_holo_dark = 2130837692;
+			public const int mr_ic_media_route_holo_light = 2130837692;
 			
 			// aapt resource value: 0x7f0200bd
-			public const int mr_ic_media_route_off_holo_light = 2130837693;
+			public const int mr_ic_media_route_off_holo_dark = 2130837693;
 			
 			// aapt resource value: 0x7f0200be
-			public const int mr_ic_media_route_on_0_holo_dark = 2130837694;
+			public const int mr_ic_media_route_off_holo_light = 2130837694;
 			
 			// aapt resource value: 0x7f0200bf
-			public const int mr_ic_media_route_on_0_holo_light = 2130837695;
+			public const int mr_ic_media_route_on_0_holo_dark = 2130837695;
 			
 			// aapt resource value: 0x7f0200c0
-			public const int mr_ic_media_route_on_1_holo_dark = 2130837696;
+			public const int mr_ic_media_route_on_0_holo_light = 2130837696;
 			
 			// aapt resource value: 0x7f0200c1
-			public const int mr_ic_media_route_on_1_holo_light = 2130837697;
+			public const int mr_ic_media_route_on_1_holo_dark = 2130837697;
 			
 			// aapt resource value: 0x7f0200c2
-			public const int mr_ic_media_route_on_2_holo_dark = 2130837698;
+			public const int mr_ic_media_route_on_1_holo_light = 2130837698;
 			
 			// aapt resource value: 0x7f0200c3
-			public const int mr_ic_media_route_on_2_holo_light = 2130837699;
+			public const int mr_ic_media_route_on_2_holo_dark = 2130837699;
 			
 			// aapt resource value: 0x7f0200c4
-			public const int mr_ic_media_route_on_holo_dark = 2130837700;
+			public const int mr_ic_media_route_on_2_holo_light = 2130837700;
 			
 			// aapt resource value: 0x7f0200c5
-			public const int mr_ic_media_route_on_holo_light = 2130837701;
+			public const int mr_ic_media_route_on_holo_dark = 2130837701;
 			
 			// aapt resource value: 0x7f0200c6
-			public const int poiIcon = 2130837702;
+			public const int mr_ic_media_route_on_holo_light = 2130837702;
 			
 			// aapt resource value: 0x7f0200c7
-			public const int powered_by_google_dark = 2130837703;
+			public const int poiIcon = 2130837703;
 			
 			// aapt resource value: 0x7f0200c8
-			public const int powered_by_google_light = 2130837704;
+			public const int powered_by_google_dark = 2130837704;
 			
 			// aapt resource value: 0x7f0200c9
-			public const int settings = 2130837705;
+			public const int powered_by_google_light = 2130837705;
 			
 			// aapt resource value: 0x7f0200ca
-			public const int settingsIcon = 2130837706;
+			public const int settings = 2130837706;
 			
 			// aapt resource value: 0x7f0200cb
-			public const int sidebar_slide = 2130837707;
+			public const int settingsIcon = 2130837707;
 			
 			// aapt resource value: 0x7f0200cc
-			public const int splash = 2130837708;
+			public const int sidebar_slide = 2130837708;
 			
 			// aapt resource value: 0x7f0200cd
-			public const int splashscreen = 2130837709;
+			public const int splash = 2130837709;
+			
+			// aapt resource value: 0x7f0200ce
+			public const int splashscreen = 2130837710;
 			
 			static Drawable()
 			{
