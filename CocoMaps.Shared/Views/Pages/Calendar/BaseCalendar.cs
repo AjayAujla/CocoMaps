@@ -45,7 +45,6 @@ namespace CocoMaps.Shared
 				this.SetValue (Page.IconProperty, menuItem.Icon);
 
 
-
 				setCalendarList();
 
 				sortCalendarList();
