@@ -9,8 +9,10 @@ using Newtonsoft.Json;
 using Xamarin.Forms;
 using System.Json;
 using System.Linq;
-using CocoMaps.Android;
 
+#if __ANDROID__
+using CocoMaps.Android;
+#endif
 namespace CocoMaps.Shared
 {
 	public class BaseCalendar : AuthBasePage

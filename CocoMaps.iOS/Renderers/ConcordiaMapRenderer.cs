@@ -68,19 +68,17 @@ namespace CocoMaps.iOS
 				BuildingRepository br = BuildingRepository.getInstance;
 				MKPolygon pol;
 
-				foreach (Campus campus in br.getCampusList()) {
 
-					foreach (Building building in campus.Buildings) {
+				foreach (Building building in br.BuildingList.Values) {
 
-						CLLocationCoordinate2D[] coordinates = new CLLocationCoordinate2D[building.ShapeCoords.Count];
+					CLLocationCoordinate2D[] coordinates = new CLLocationCoordinate2D[building.ShapeCoords.Count];
 
-						int i = 0;
-						foreach (Position coordinate in building.ShapeCoords)
-							coordinates [i++] = new CLLocationCoordinate2D (coordinate.Latitude, coordinate.Longitude);
+					int i = 0;
+					foreach (Position coordinate in building.ShapeCoords)
+						coordinates [i++] = new CLLocationCoordinate2D (coordinate.Latitude, coordinate.Longitude);
 
-						pol = MKPolygon.FromCoordinates (coordinates);
-						//iOSMapView.AddOverlay (pol);
-					}
+					pol = MKPolygon.FromCoordinates (coordinates);
+					//iOSMapView.AddOverlay (pol);
 				}
 
 //				iOSMapView.OverlayRenderer = (m, o) => {

@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+
+#if __ANDROID__
 using Android.Graphics;
 using System.Net.Http;
 
@@ -24,3 +26,5 @@ namespace CocoMaps.Shared
 	}
 
 }
+
+#endif

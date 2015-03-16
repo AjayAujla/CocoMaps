@@ -1,6 +1,5 @@
 ﻿using Xamarin.Forms;
 using CocoMaps.Shared;
-using Android.Views.InputMethods;
 
 namespace CocoMaps.Shared
 {

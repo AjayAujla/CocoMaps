@@ -96,6 +96,8 @@ namespace CocoMaps.Shared
 			HeightRequest = 50
 		};
 
+		RelativeLayout toggleLayout = new RelativeLayout ();
+
 		Button showDetailsButton = new Button {
 			Text = "Show More",
 			FontSize = 8,
@@ -162,6 +164,23 @@ namespace CocoMaps.Shared
 				Constraint.Constant (0)
 			);
 
+			featuresImages.Children.Add (atm);
+			featuresImages.Children.Add (accessibility);
+			featuresImages.Children.Add (bikerack);
+			featuresImages.Children.Add (parkinglot);
+			featuresImages.Children.Add (infokiosk);
+
+			instance.Children.Add (featuresImages, 
+				Constraint.Constant (14),
+				Constraint.RelativeToView (details, (parent, sibling) => sibling.Y + sibling.Height + 5));
+
+			instance.Children.Add (toggleLayout,
+				Constraint.Constant (0),
+				Constraint.Constant (0),
+				Constraint.RelativeToParent (Parent => Width),
+				Constraint.RelativeToView (image, (parent, sibling) => sibling.Height)
+			);
+
 			instance.Children.Add (servicesButton, 
 				Constraint.Constant (0),
 				Constraint.RelativeToView (image, (parent, sibling) => sibling.Y + sibling.Height + 5),
@@ -176,24 +195,15 @@ namespace CocoMaps.Shared
 				Constraint.Constant (50)
 			);
 
-			featuresImages.Children.Add (atm);
-			featuresImages.Children.Add (accessibility);
-			featuresImages.Children.Add (bikerack);
-			featuresImages.Children.Add (parkinglot);
-			featuresImages.Children.Add (infokiosk);
-
-			instance.Children.Add (featuresImages, 
-				Constraint.Constant (14),
-				Constraint.RelativeToView (details, (parent, sibling) => sibling.Y + sibling.Height + 5));
-
 			instance.Children.Add (toggleButton,
 				Constraint.RelativeToParent (Parent => Width / 2 - toggleButton.Width / 2),
 				Constraint.RelativeToParent (Parent => -toggleButton.Height / 2)
 			);
 
-			var toggleButtonTap = new TapGestureRecognizer ();
-			toggleButtonTap.Tapped += (sender, e) => Toggle ();
-			toggleButton.GestureRecognizers.Add (toggleButtonTap);
+			var toggleTap = new TapGestureRecognizer ();
+			toggleTap.Tapped += (sender, e) => Toggle ();
+			toggleButton.GestureRecognizers.Add (toggleTap);
+			toggleLayout.GestureRecognizers.Add (toggleTap);
 
 			instance.Children.Add (directionsList, 
 				Constraint.Constant (0), 
