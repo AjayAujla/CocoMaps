@@ -70,6 +70,13 @@ namespace CocoMaps.Shared
 		public MasterPage (IMenuOptions menuItem)
 		{
 
+			RelativeLayout test = new RelativeLayout {
+				BackgroundColor = Color.Blue,
+				HeightRequest = 100,
+				WidthRequest = 100
+			};
+
+
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
 
@@ -172,6 +179,14 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToParent (parent => Width),
 				Constraint.RelativeToParent (parent => Height));
 
+			Image sidebarSlideImage = new Image {
+				Source = ImageSource.FromFile ("sidebar_slide.png")
+			};
+
+			mainLayout.Children.Add (sidebarSlideImage, 
+				Constraint.Constant (0), 
+				Constraint.RelativeToParent (parent => Height / 2 - 50));
+
 			mainLayout.Children.Add (_POIButton, Constraint.Constant (150), Constraint.RelativeToParent (parent => Height - 54));
 			mainLayout.Children.Add (TestButton, Constraint.Constant (64), Constraint.Constant (14));
 			//mainLayout.Children.Add (searchBar, Constraint.Constant (0));
@@ -195,8 +210,10 @@ namespace CocoMaps.Shared
 			mainLayout.Children.Add (directionsViewModel,
 				Constraint.Constant (0),
 				Constraint.Constant (0),
-				Constraint.RelativeToParent (parent => Width), null);
+				Constraint.RelativeToParent (parent => Width),
+				null);
 			
+
 			Content = mainLayout;
 
 		}

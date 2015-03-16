@@ -607,10 +607,6 @@ namespace CocoMaps.Shared
 						URI = "http://csu.concordia.ca"
 					},
 					new Service {
-						Name = "Computer Store",
-						URI = "http://retail.concordia.ca/ccs/"
-					},
-					new Service {
 						Name = "D. B. Clarke Theatre",
 						URI = "http://concordia.ca/content/concordia/en/arts/venues/db-clarke-theatre"
 					}
@@ -730,7 +726,8 @@ namespace CocoMaps.Shared
 					},
 					new Service {
 						Name = "Computer Store",
-						RoomNumber = "LB-103"
+						RoomNumber = "LB-103",
+						URI = "http://retail.concordia.ca/ccs/"
 					},
 					new Service {
 						Name = "Campus Corner",

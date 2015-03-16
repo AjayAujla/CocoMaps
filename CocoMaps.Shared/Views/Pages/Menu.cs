@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 using System.Collections.Generic;
 using CocoMaps.Shared.CustomViews;
 
@@ -10,8 +11,12 @@ namespace CocoMaps.Shared
 
 		public ListView Menu { get; set; }
 
+		public RelativeLayout layout = new RelativeLayout ();
+
 		public MenuPage ()
 		{
+
+
 			//OptionItems.Add (new Location_MenuOption ());
 			OptionItems.Add (new Campus_MenuOption ());
 			//OptionItems.Add (new pInterest_MenuOption ());
@@ -26,7 +31,12 @@ namespace CocoMaps.Shared
 
 			BackgroundColor = Helpers.Color.DarkGray.ToFormsColor ();
 
-			var layout = new StackLayout { Spacing = 0, VerticalOptions = LayoutOptions.FillAndExpand };
+
+			Image sidebarSlideImage = new Image {
+				Source = ImageSource.FromFile ("sidebar_slide.png")
+			};
+
+			//var menuLayout = new StackLayout { Spacing = 0, VerticalOptions = LayoutOptions.FillAndExpand };
 
 			var label = new ContentView {
 				Padding = new Thickness (10, 36, 0, 5),
@@ -36,11 +46,12 @@ namespace CocoMaps.Shared
 				}
 			};
 
-			layout.Children.Add (label);
+			layout.Children.Add (label, 
+				Constraint.Constant (0), 
+				Constraint.Constant (0));
 
 			Menu = new ListView {
 				ItemsSource = OptionItems,
-				VerticalOptions = LayoutOptions.FillAndExpand,
 				BackgroundColor = Color.Transparent,
 			};
 
@@ -52,7 +63,18 @@ namespace CocoMaps.Shared
 
 			Menu.ItemTemplate = cell;
 
-			layout.Children.Add (Menu);
+			sidebarSlideImage.Rotation = 180;
+			layout.Children.Add (sidebarSlideImage,
+				Constraint.RelativeToParent (parent => Width - 25),
+				Constraint.RelativeToParent (parent => Height / 2 - 50)
+			);
+
+			layout.Children.Add (Menu, 
+				Constraint.Constant (0), 
+				Constraint.RelativeToView (label, (parent, sibling) => sibling.Y + sibling.Height + 5),
+				Constraint.RelativeToParent (parent => Width), 
+				Constraint.RelativeToParent (parent => Height - label.Y - 100));
+
 
 			Content = layout;
 		}

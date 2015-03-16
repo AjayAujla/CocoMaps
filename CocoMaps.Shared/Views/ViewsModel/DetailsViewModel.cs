@@ -98,14 +98,6 @@ namespace CocoMaps.Shared
 
 		RelativeLayout toggleLayout = new RelativeLayout ();
 
-		Button showDetailsButton = new Button {
-			Text = "Show More",
-			FontSize = 8,
-			TextColor = Helpers.Color.Navy.ToFormsColor (),
-			BackgroundColor = Color.Transparent
-		};
-
-
 		TableView directionsList = new TableView {
 			Intent = TableIntent.Form,
 			HasUnevenRows = true,
@@ -299,6 +291,11 @@ namespace CocoMaps.Shared
 
 			image.IsVisible = true;
 			featuresImages.IsVisible = true;
+
+			servicesList.IsVisible = true;
+			departmentsList.IsVisible = true;
+			servicesButton.IsVisible = true;
+			departmentsButton.IsVisible = true;
 
 			directionsList.IsVisible = false;
 

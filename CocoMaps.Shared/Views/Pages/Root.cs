@@ -16,7 +16,6 @@ namespace CocoMaps.Shared
 		BaseShuttleBus pShuttleBus;
 		Settings pSettings;
 
-
 		public RootPage ()
 		{
 			var optionsPage = new MenuPage { Icon = "settings.png", Title = "menu" };
@@ -45,13 +44,21 @@ namespace CocoMaps.Shared
 		public Page setPage (IMenuOptions menuOption)
 		{
 
+			// put back top bar for all pages
+			#if __ANDROID__
+			Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Default);
+			#endif
+
 			int MenuNumber = menuOption.MenuNum;
 
 			switch (MenuNumber) {
 			case 1:
-				if ((pMaster == null)) {
+				if ((pMaster == null))
 					pMaster = new MasterPage (menuOption);
-				}
+				// Hide top bar for map page only
+				#if __ANDROID__
+				Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Never);
+				#endif
 				return pMaster;
 			/*case 3:
 				if ((pPOI == null)) {
@@ -65,7 +72,7 @@ namespace CocoMaps.Shared
 				return pServices;
 			case 5:
 				if ((pNextClass == null)) {
-					pNextClass = new NextClass (menuOption,pCalendar);
+					pNextClass = new NextClass (menuOption, pCalendar);
 				}
 				return pNextClass;
 			case 8:
@@ -92,6 +99,10 @@ namespace CocoMaps.Shared
 				if ((pMaster == null)) {
 					pMaster = new MasterPage (menuOption);
 				}
+				// Hide top bar for map page only
+				#if __ANDROID__
+				Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Never);
+				#endif
 				return pMaster;
 			}
 		}

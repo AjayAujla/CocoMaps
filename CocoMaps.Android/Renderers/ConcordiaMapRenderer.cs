@@ -26,10 +26,9 @@ namespace CocoMapsAndroid
 		Marker _endPin;
 
 		Android.Gms.Maps.Model.Polyline polyline;
+		Android.Gms.Maps.Model.Polyline shuttleBusPolyline;
 		PolylineOptions polylineOptions;
-		PolylineOptions shuttleBusPolyline;
 
-		PlacesRepository placesRepo;
 		ShuttleBusPolyline shuttleBusPolylinePoints = ShuttleBusPolyline.getInstance;
 		BuildingRepository buildingRepo = BuildingRepository.getInstance;
 		DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
@@ -169,6 +168,8 @@ namespace CocoMapsAndroid
 									polylineOptions.Points.Clear ();
 									MarkerDirections.Clear ();
 									_endPin.Position = new LatLng (0, 0);
+									if (shuttleBusPolyline != null)
+										shuttleBusPolyline.Visible = false;
 								}
 
 								_from = building.Position;
@@ -360,7 +361,7 @@ namespace CocoMapsAndroid
 				nextDeparturesString = "no passages";
 			else
 				foreach (String departure in nextDepartures)
-					nextDeparturesString += nextDepartures + " ";
+					nextDeparturesString += departure + "  ";
 
 			// SGW Shuttle Bus Marker
 			marker.SetTitle ("SGW Shuttle Bus");
@@ -383,7 +384,7 @@ namespace CocoMapsAndroid
 				nextDeparturesString = "no passages";
 			else
 				foreach (String departure in nextDepartures)
-					nextDeparturesString += departure + " ";
+					nextDeparturesString += departure + "  ";
 			
 			// LOY Shuttle Bus Marker
 			int lastPoint = shuttleBusPolylinePoints.ShuttleBusPoints.Count;
@@ -407,15 +408,16 @@ namespace CocoMapsAndroid
 			// For drawing Shuttle bus only once
 			if (shuttleBusPolyline == null) {
 				
-				shuttleBusPolyline = new PolylineOptions ();
-				shuttleBusPolyline.InvokeColor (0x7F932439).InvokeWidth (20);
+				PolylineOptions shuttleBusPolylineOptions = new PolylineOptions ();
+				shuttleBusPolylineOptions.InvokeColor (0x7F932439).InvokeWidth (20);
 
 				foreach (Position point in shuttleBusPolylinePoints.ShuttleBusPoints)
-					shuttleBusPolyline.Add (new LatLng (point.Latitude, point.Longitude));
+					shuttleBusPolylineOptions.Add (new LatLng (point.Latitude, point.Longitude));
 			
-				androidMapView.Map.AddPolyline (shuttleBusPolyline);
+				shuttleBusPolyline = androidMapView.Map.AddPolyline (shuttleBusPolylineOptions);
 
-			}
+			} else
+				shuttleBusPolyline.Visible = true;
 		}
 
 	}

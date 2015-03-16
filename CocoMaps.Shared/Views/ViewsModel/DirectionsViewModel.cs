@@ -1,5 +1,7 @@
 ﻿using Xamarin.Forms;
 using CocoMaps.Shared;
+using System;
+using System.Runtime.Remoting.Channels;
 
 namespace CocoMaps.Shared
 {
@@ -32,6 +34,21 @@ namespace CocoMaps.Shared
 
 		static ViewState viewState;
 
+		public String Start {
+			get;
+			set;
+		}
+
+		public String End {
+			get;
+			set;
+		}
+
+		public TravelMode TravelMode {
+			get;
+			set;
+		}
+
 		BuildingRepository buildingRepo = BuildingRepository.getInstance;
 
 
@@ -57,29 +74,29 @@ namespace CocoMaps.Shared
 
 		Button TravelWalkingModeButton = new Button {
 			Image = (FileImageSource)ImageSource.FromFile ("ic_travel_walking.png"),
-			BackgroundColor = Color.Transparent,
-			BorderRadius = 0
+			BackgroundColor = Helpers.Color.Blue.ToFormsColor (),
+			BorderRadius = 50,
 		};
 		Button TravelShuttleModeButton = new Button {
 			Image = (FileImageSource)ImageSource.FromFile ("ic_travel_shuttle.png"),
 			BackgroundColor = Color.Transparent,
-			BorderRadius = 0
+			BorderRadius = 50,
 		};
 		Button TravelTransitModeButton = new Button {
 			Image = (FileImageSource)ImageSource.FromFile ("ic_travel_transit.png"),
 			BackgroundColor = Color.Transparent,
-			BorderRadius = 0
+			BorderRadius = 50,
 		};
 		Button TravelDrivingModeButton = new Button {
 			Image = (FileImageSource)ImageSource.FromFile ("ic_travel_driving.png"),
 			BackgroundColor = Color.Transparent,
-			BorderRadius = 0
+			BorderRadius = 50,
 		};
 
 		Button StartButton = new Button {
 			Text = "Start",
 			TextColor = Color.White,
-			BackgroundColor = Helpers.Color.Navy.ToFormsColor (),
+			BackgroundColor = Helpers.Color.Blue.ToFormsColor (),
 			BorderRadius = 0,
 			WidthRequest = 100
 		};
@@ -104,7 +121,7 @@ namespace CocoMaps.Shared
 
 			FromPicker.Title = "search from here...";
 			ToPicker.Title = "...all the way there!";
-
+			TravelMode = TravelMode.walking;
 
 			instance.Children.Add (FromPicker,
 				Constraint.Constant (68),
@@ -112,7 +129,6 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToParent (parent => Width - 68 * 2),
 				null
 			);
-
 			instance.Children.Add (ToPicker,
 				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.X),
 				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.Height),
@@ -158,9 +174,22 @@ namespace CocoMaps.Shared
 
 			instance.Padding = 10;
 
+			FromPicker.SelectedIndexChanged += (sender, e) => {
+				if (FromPicker.SelectedIndex >= 0)
+					Start = FromPicker.Items [FromPicker.SelectedIndex];
+			};
+			ToPicker.SelectedIndexChanged += (sender, e) => {
+				if (ToPicker.SelectedIndex >= 0)
+					End = ToPicker.Items [ToPicker.SelectedIndex];
+			};
+
 			SwapIcon.Clicked += (sender, e) => SwapFromToValues ();
 			CancelButton.Clicked += (sender, e) => Hide ();
 
+			TravelWalkingModeButton.Clicked += HandleTravelModeButtons;
+			TravelShuttleModeButton.Clicked += HandleTravelModeButtons;
+			TravelTransitModeButton.Clicked += HandleTravelModeButtons;
+			TravelDrivingModeButton.Clicked += HandleTravelModeButtons;
 
 		}
 
@@ -170,6 +199,30 @@ namespace CocoMaps.Shared
 			int temp = FromPicker.SelectedIndex;
 			FromPicker.SelectedIndex = ToPicker.SelectedIndex;
 			ToPicker.SelectedIndex = temp;
+
+		}
+
+		// Xamarin.Forms XLabs has a class classed ButtonGroup
+		void HandleTravelModeButtons (object sender, EventArgs e)
+		{
+			Button b = sender as Button;
+			TravelWalkingModeButton.BackgroundColor = Color.Transparent;
+			TravelShuttleModeButton.BackgroundColor = Color.Transparent;
+			TravelTransitModeButton.BackgroundColor = Color.Transparent;
+			TravelDrivingModeButton.BackgroundColor = Color.Transparent;
+
+			if (b.Image.File.Contains ("walking"))
+				TravelMode = TravelMode.walking;
+			if (b.Image.File.Contains ("shuttle"))
+				TravelMode = TravelMode.shuttle;
+			if (b.Image.File.Contains ("transit"))
+				TravelMode = TravelMode.transit;
+			if (b.Image.File.Contains ("driving"))
+				TravelMode = TravelMode.driving;
+			
+			b.BackgroundColor = Helpers.Color.Blue.ToFormsColor ();
+
+			Console.WriteLine ("TravelMode: " + TravelMode);
 
 		}
 
