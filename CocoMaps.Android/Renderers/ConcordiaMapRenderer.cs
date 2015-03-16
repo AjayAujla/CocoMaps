@@ -15,6 +15,7 @@ namespace CocoMapsAndroid
 
 	public class ConcordiaMapRenderer : MapRenderer
 	{
+		
 		bool _isDrawnDone;
 
 		Position _from = new Position (0, 0);
