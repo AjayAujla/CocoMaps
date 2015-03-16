@@ -1,12 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
-using Xamarin.Forms;
-using Xamarin.Forms.Maps.Android;
-using CocoMaps.Shared;
-using System.Collections.Generic;
 using Android.Graphics;
+using Android.Media.Audiofx;
+using Android.Views;
+using CocoMaps.Shared;
+using CocoMaps.Shared.ViewModels;
+using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using Xamarin.Forms.Maps.Android;
+
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]
 
@@ -54,6 +59,7 @@ namespace CocoMapsAndroid
 				e.Marker.ShowInfoWindow ();
 		
 		}
+
 
 		BitmapDescriptor GetCustomBitmapDescriptor (string text)
 		{
@@ -261,8 +267,43 @@ namespace CocoMapsAndroid
 
 					}
 				}
-				
 
+				bool NextClass = false;
+
+				Button NextClassButton = MasterPage.NextButtonAlert;
+				
+				NextClassButton.Clicked += async (send, ev) => {
+
+					NextClassFunc NCF = new NextClassFunc();
+
+					CalendarItems CI = NCF.getNextClassItem();
+
+					//string ClassDetails = "Class : " + CI.Title1 + "\r\n" + "Time : " + CI.Day + " " + "(" + CI.StartTime + " - " + CI.EndTime + ")" + "\r\n" + "Location : " + CI.Room+ "\r\n" + "Destination : " + NCF.getClassLocation(CI.Room);
+
+					string ClassDetails = "Class : " + CI.Title1 + "\r\n" + "Time : " + CI.Day + " " + "(" + CI.StartTime + " - " + CI.EndTime + ")" + "\r\n" + "Location : " + CI.Room+ "\r\n";
+
+					//var NextClassInput = await DisplayAlert ("Get Directions To Next Class", ClassDetails , "Cancel", "Proceed");
+
+					string ClassDestination = NCF.getClassLocation(CI.Room);
+
+					string start = "1515 St. Catherine W.";
+
+					RequestDirections directionsRequest = RequestDirections.getInstance;
+					Directions directions = await directionsRequest.getDirections (start, ClassDestination, TravelMode.walking);
+
+					getDirectionsToClass(directions);
+
+					/*if(NextClassInput.ToString().ToLower() == "proceed")
+					{
+						RequestDirections directionsRequest = RequestDirections.getInstance;
+						Directions directions = await directionsRequest.getDirections (start, ClassDestination, TravelMode.walking);
+
+					}
+					else
+					{
+						// Cancel- Do Nothing
+					}*/
+				}; 
 
 				bool isPOIAdded = false;
 

@@ -42,6 +42,15 @@ namespace CocoMaps.Shared
 				return _POIButton;
 			}
 		}
+
+		// Needed to access this button from ConcordiaMapRenderer.cs
+		public static Button NextButtonAlert = new Button { Text = "Next Class", 
+			HeightRequest = 40,
+			BackgroundColor = Color.White,
+			Opacity = 0.7,
+			BorderRadius = 0
+		};
+
 		// Needed to access this button from ConcordiaMapRenderer.cs
 		public static Button TestButton {
 			get {
@@ -99,13 +108,6 @@ namespace CocoMaps.Shared
 				IsVisible = false
 			};
 
-			var NextButtonAlert = new Button { Text = "Next Class", 
-				HeightRequest = 40,
-				BackgroundColor = Color.White,
-				Opacity = 0.7,
-				BorderRadius = 0
-			};
-
 			foreach (Building building in buildingRepo.BuildingList.Values)
 				SearchPicker.Items.Add (building.Code);
 
@@ -151,6 +153,7 @@ namespace CocoMaps.Shared
 				{
 					RequestDirections directionsRequest = RequestDirections.getInstance;
 					Directions directions = await directionsRequest.getDirections (start, ClassDestination, TravelMode.walking);
+
 				}
 				else
 				{
@@ -222,11 +225,6 @@ namespace CocoMaps.Shared
 		{
 			var s = sender as SearchBar;
 			Console.WriteLine (s.Text);
-		}
-
-		void HandleNextButton (object sender, TextChangedEventArgs e)
-		{
-
 		}
 
 		void HandleCampusRegionButton (object sender, EventArgs e)
