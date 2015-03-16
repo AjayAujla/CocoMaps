@@ -8,12 +8,6 @@ namespace CocoMaps.Shared
 {
 	public class NextClass : ContentPage
 	{
-
-		protected override void OnAppearing ()
-		{
-			base.OnAppearing ();
-		}
-
 		DateTime DateNow = DateTime.Now;
 
 		Boolean NextClassFound = false;
@@ -28,6 +22,7 @@ namespace CocoMaps.Shared
 
 		public NextClass (IMenuOptions menuItem ,BaseCalendar BC)
 		{
+
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
 
