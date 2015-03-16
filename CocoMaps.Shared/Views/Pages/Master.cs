@@ -155,9 +155,14 @@ namespace CocoMaps.Shared
 
 				var NextClassInput = await DisplayAlert ("Get Directions To Next Class", ClassDetails , "Cancel", "Proceed");
 
+				string ClassDestination = NCF.getClassLocation(CI.Room);
+
+				string start = "1515 St. Catherine W.";
+
 				if(NextClassInput.ToString().ToLower() == "proceed")
 				{
-					Debug.WriteLine("Answer: " + NextClassInput);
+					RequestDirections directionsRequest = RequestDirections.getInstance;
+					Directions directions = await directionsRequest.getDirections (start, ClassDestination, TravelMode.walking);
 				}
 				else
 				{

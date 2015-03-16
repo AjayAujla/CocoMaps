@@ -110,18 +110,12 @@ namespace CocoMapsAndroid
 				}
 				androidMapView.Map.AddPolyline (polyline);
 
-
 				loader.Hide ();
 			}
 		}
 
 		protected override void OnElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
-			
-
-
-
-
 
 			if (e.PropertyName.Equals ("VisibleRegion") && !_isDrawnDone) {
 				
