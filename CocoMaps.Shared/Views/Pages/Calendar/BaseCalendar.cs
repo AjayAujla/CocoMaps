@@ -327,7 +327,7 @@ namespace CocoMaps.Shared
 			int dayOfWeek = (int)DateTime.Today.DayOfWeek;
 
 			// Checks if the current day falls on the weekend and changes it to Monday.
-			if (dayOfWeek <= 0 || dayOfWeek >= 6) {
+			if (dayOfWeek == 0 || dayOfWeek == 6) {
 				dayOfWeek = 1;
 			}
 
