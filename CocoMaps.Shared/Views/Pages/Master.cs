@@ -31,13 +31,6 @@ namespace CocoMaps.Shared
 			BorderRadius = 0
 		};
 
-		public static Button NextButtonAlert = new Button { Text = "Next Class", 
-			HeightRequest = 40,
-			BackgroundColor = Color.White,
-			Opacity = 0.7,
-			BorderRadius = 0
-		};
-
 		static Button _POIButton = new Button { 
 			Text = "POI", 
 			HeightRequest = 40,
@@ -60,6 +53,20 @@ namespace CocoMaps.Shared
 				return _testButton;
 			}
 		}
+
+		public static Button NextButtonAlert = new Button { Text = "Next Class", 
+			HeightRequest = 40,
+			BackgroundColor = Color.White,
+			Opacity = 0.7,
+			BorderRadius = 0
+		};
+
+		public static Button NextClassAlertEventButton = new Button { Text = "NextClassEvent", 
+			HeightRequest = 30,
+			BackgroundColor = Color.White,
+			Opacity = 0.7,
+			BorderRadius = 0
+		};
 
 		public Button SearchButton {
 			get {
@@ -149,20 +156,15 @@ namespace CocoMaps.Shared
 
 				CalendarItems CI = NCF.getNextClassItem();
 
-				//string ClassDetails = "Class : " + CI.Title1 + "\r\n" + "Time : " + CI.Day + " " + "(" + CI.StartTime + " - " + CI.EndTime + ")" + "\r\n" + "Location : " + CI.Room+ "\r\n" + "Destination : " + NCF.getClassLocation(CI.Room);
-
 				string ClassDetails = "Class : " + CI.Title1 + "\r\n" + "Time : " + CI.Day + " " + "(" + CI.StartTime + " - " + CI.EndTime + ")" + "\r\n" + "Location : " + CI.Room+ "\r\n";
 
 				var NextClassInput = await DisplayAlert ("Get Directions To Next Class", ClassDetails , "Cancel", "Proceed");
 
-				string ClassDestination = NCF.getClassLocation(CI.Room);
 
-				string start = "1515 St. Catherine W.";
-
-				if(NextClassInput.ToString().ToLower() == "proceed")
+				if(NextClassInput.ToString().ToLower() == "false")
 				{
-					RequestDirections directionsRequest = RequestDirections.getInstance;
-					Directions directions = await directionsRequest.getDirections (start, ClassDestination, TravelMode.walking);
+					// Make a property change to trigger event
+					NextClassAlertEventButton.BackgroundColor = Color.Black;
 				}
 				else
 				{
