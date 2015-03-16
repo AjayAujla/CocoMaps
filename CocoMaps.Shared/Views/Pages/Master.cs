@@ -31,6 +31,13 @@ namespace CocoMaps.Shared
 			BorderRadius = 0
 		};
 
+		public static Button NextButtonAlert = new Button { Text = "Next Class", 
+			HeightRequest = 40,
+			BackgroundColor = Color.White,
+			Opacity = 0.7,
+			BorderRadius = 0
+		};
+
 		static Button _POIButton = new Button { 
 			Text = "POI", 
 			HeightRequest = 40,
@@ -109,13 +116,6 @@ namespace CocoMaps.Shared
 			var SearchPicker = new Picker {
 				BackgroundColor = Helpers.Color.DarkGray.ToFormsColor (),
 				IsVisible = false
-			};
-
-			var NextButtonAlert = new Button { Text = "Next Class",
-				HeightRequest = 40,
-				BackgroundColor = Color.White,
-				Opacity = 0.7,
-				BorderRadius = 0
 			};
 
 			foreach (Building building in buildingRepo.BuildingList.Values)
@@ -243,10 +243,6 @@ namespace CocoMaps.Shared
 			Console.WriteLine (s.Text);
 		}
 
-		void HandleNextButton (object sender, TextChangedEventArgs e)
-		{
-
-		}
 
 		void HandleCampusRegionButton (object sender, EventArgs e)
 		{
