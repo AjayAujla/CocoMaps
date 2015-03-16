@@ -3,7 +3,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Shared;
-using System.Threading.Tasks;
 
 namespace CocoMaps.Shared
 {
@@ -22,10 +21,10 @@ namespace CocoMaps.Shared
 		DirectionsViewModel directionsViewModel = DirectionsViewModel.getInstance;
 
 		static Button _testButton = new Button {
-			Text = "TestButton",
+			Text = "Directions",
 			HeightRequest = 40,
-			BackgroundColor = Color.Maroon,
-			TextColor = Color.White,
+			BackgroundColor = Color.White,
+			Opacity = 0.7,
 			BorderRadius = 0
 		};
 
@@ -51,6 +50,20 @@ namespace CocoMaps.Shared
 				return _testButton;
 			}
 		}
+
+		public static Button NextButtonAlert = new Button { Text = "Next Class", 
+			HeightRequest = 40,
+			BackgroundColor = Color.White,
+			Opacity = 0.7,
+			BorderRadius = 0
+		};
+
+		public static Button NextClassAlertEventButton = new Button { Text = "NextClassEvent", 
+			HeightRequest = 30,
+			BackgroundColor = Color.White,
+			Opacity = 0.7,
+			BorderRadius = 0
+		};
 
 		public Button SearchButton {
 			get {
@@ -109,13 +122,6 @@ namespace CocoMaps.Shared
 				IsVisible = false
 			};
 
-			var NextButton = new Button { Text = "Next Class", 
-				HeightRequest = 40,
-				BackgroundColor = Color.White,
-				Opacity = 0.7,
-				BorderRadius = 0
-			};
-
 			foreach (Building building in buildingRepo.BuildingList.Values)
 				SearchPicker.Items.Add (building.Code);
 
@@ -141,15 +147,23 @@ namespace CocoMaps.Shared
 			};
 
 
-			NextButton.Clicked += async (sender, e) => {
-				string start = "7141 Sherbrooke Street W. Montreal QC";
-				string dest = "1455 De Maisonneuve Blvd. W. Montreal QC";
+			NextButtonAlert.Clicked += async (sender, e) => {
 
-				RequestDirections directionsRequest = RequestDirections.getInstance;
+				NextClassFunc NCF = new NextClassFunc ();
 
-				Directions directions = await directionsRequest.getDirections (start, dest, TravelMode.walking);
+				CalendarItems CI = NCF.getNextClassItem ();
+
+				string ClassDetails = "Class : " + CI.Title1 + "\r\n" + "Time : " + CI.Day + " " + "(" + CI.StartTime + " - " + CI.EndTime + ")" + "\r\n" + "Location : " + CI.Room + "\r\n";
+
+				var NextClassInput = await DisplayAlert ("Get Directions To Next Class", ClassDetails, "Cancel", "Proceed");
 
 
+				if (NextClassInput.ToString ().ToLower () == "false") {
+					// Make a property change to trigger event
+					NextClassAlertEventButton.BackgroundColor = Color.Black;
+				} else {
+					// Cancel- Do Nothing
+				}
 			};
 
 			mainLayout = new RelativeLayout {
@@ -199,7 +213,7 @@ namespace CocoMaps.Shared
 			mainLayout.Children.Add (SearchButton, Constraint.Constant (14), Constraint.Constant (14));
 			mainLayout.Children.Add (SearchPicker, Constraint.Constant (0), Constraint.Constant (0));
 
-			//mainLayout.Children.Add (NextButton, Constraint.RelativeToParent (parent => Width - 160), Constraint.Constant (10));
+			mainLayout.Children.Add (NextButtonAlert, Constraint.RelativeToParent (parent => Width - 160), Constraint.Constant (10));
 			mainLayout.Children.Add (networkStatus, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 80));
 			mainLayout.Children.Add (detailsLayout,
 				Constraint.Constant (0),
@@ -225,10 +239,6 @@ namespace CocoMaps.Shared
 			Console.WriteLine (s.Text);
 		}
 
-		void HandleNextButton (object sender, TextChangedEventArgs e)
-		{
-
-		}
 
 		// Makes the app crash for some reason...
 		//		public async static Task<bool> DisplayAlert (String Title, String message, String accept, String cancel)

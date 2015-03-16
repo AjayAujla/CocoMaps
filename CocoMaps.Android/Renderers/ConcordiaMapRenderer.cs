@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
-using Xamarin.Forms;
-using Xamarin.Forms.Maps.Android;
-using CocoMaps.Shared;
-using System.Collections.Generic;
 using Android.Graphics;
+using Android.Media.Audiofx;
+using Android.Views;
+using CocoMaps.Shared;
+using CocoMaps.Shared.ViewModels;
+using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using Xamarin.Forms.Maps.Android;
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]
 
@@ -110,18 +114,12 @@ namespace CocoMapsAndroid
 				}
 				androidMapView.Map.AddPolyline (polyline);
 
-
 				loader.Hide ();
 			}
 		}
 
 		protected override void OnElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
-			
-
-
-
-
 
 			if (e.PropertyName.Equals ("VisibleRegion") && !_isDrawnDone) {
 				
@@ -276,7 +274,27 @@ namespace CocoMapsAndroid
 
 					}
 				}
-				
+
+
+				Button NextClassButton = MasterPage.NextClassAlertEventButton;
+
+				NextClassButton.PropertyChanged += async (send, ev) => {
+
+					NextClassFunc NCF = new NextClassFunc();
+
+					CalendarItems CI = NCF.getNextClassItem();
+
+					string ClassDestination = NCF.getClassLocation(CI.Room);
+
+					string start = "1515 St. Catherine W.";
+
+					RequestDirections directionsRequest = RequestDirections.getInstance;
+
+					Directions directions = await directionsRequest.getDirections (start, ClassDestination, TravelMode.walking);
+
+					getDirectionsToClass(directions);
+
+				}; 
 
 
 				bool isPOIAdded = false;

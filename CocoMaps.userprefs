@@ -1,11 +1,13 @@
-﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.dca08503" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared/Views/ViewsModel/DetailsViewModel.cs">
+﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.62604414" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Views\Pages\ConcordiaServices\ConcordiaServices.cs">
     <Files>
-      <File FileName="CocoMaps.Android/Renderers/ConcordiaMapRenderer.cs" Line="18" Column="3" />
-      <File FileName="CocoMaps.Shared/Views/ViewsModel/DetailsViewModel.cs" Line="142" Column="5" />
-      <File FileName="CocoMaps.Shared/Views/ViewsModel/DirectionsViewModel.cs" Line="60" Column="10" />
-      <File FileName="CocoMaps.Shared/Controllers/Repositories/BuildingRepository.cs" Line="2406" Column="46" />
+      <File FileName="CocoMaps.Shared\Views\Pages\NextClass\NextClass.cs" Line="7" Column="7" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Calendar\BaseCalendar.cs" Line="54" Column="54" />
+      <File FileName="CocoMaps.Shared\Models\CalendarModel.cs" Line="2" Column="2" />
+      <File FileName="CocoMaps.Shared\Views\Pages\ShuttleBus\BaseShuttleBus.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Controllers\Repositories\BuildingRepository.cs" Line="30" Column="30" />
+      <File FileName="CocoMaps.Shared\Views\Pages\ConcordiaServices\ConcordiaServices.cs" Line="110" Column="110" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

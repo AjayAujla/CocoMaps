@@ -71,9 +71,8 @@ namespace CocoMaps.Shared
 				}
 				return pServices;
 			case 5:
-				if ((pNextClass == null)) {
-					pNextClass = new NextClass (menuOption, pCalendar);
-				}
+				// To Refresh Page After Calendar Authenticated
+				pNextClass = new NextClass (menuOption, pCalendar);
 				return pNextClass;
 			case 8:
 				if ((pCalendar == null)) {

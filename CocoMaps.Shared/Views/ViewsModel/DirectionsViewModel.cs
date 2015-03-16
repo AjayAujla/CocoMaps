@@ -77,7 +77,7 @@ namespace CocoMaps.Shared
 			BackgroundColor = Helpers.Color.Blue.ToFormsColor (),
 			BorderRadius = 50,
 		};
-		Button TravelShuttleModeButton = new Button {
+		public Button TravelShuttleModeButton = new Button {
 			Image = (FileImageSource)ImageSource.FromFile ("ic_travel_shuttle.png"),
 			BackgroundColor = Color.Transparent,
 			BorderRadius = 50,

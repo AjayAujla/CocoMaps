@@ -335,6 +335,7 @@ namespace CocoMaps.Shared
 					DependencyService.Get<IPhoneService> ().LaunchMap (building.Address);
 				} else {
 					// Open directions within CocoMaps app
+					directionsViewModel.TravelShuttleModeButton.IsEnabled = true;
 
 					if (directionsViewModel.FromPicker.SelectedIndex == -1)
 						directionsViewModel.FromPicker.SelectedIndex = buildingIndex;
@@ -342,7 +343,15 @@ namespace CocoMaps.Shared
 						directionsViewModel.ToPicker.SelectedIndex = buildingIndex;
 					else
 						directionsViewModel.ToPicker.SelectedIndex = buildingIndex;
-				
+
+					// If Start and Destination are within the same campus, 
+					//disable Shuttle Bus TravelMode option
+					if (directionsViewModel.FromPicker.SelectedIndex != -1
+					    && directionsViewModel.ToPicker.SelectedIndex != -1 &&
+					    directionsViewModel.FromPicker.SelectedIndex == directionsViewModel.ToPicker.SelectedIndex) {
+						directionsViewModel.TravelShuttleModeButton.IsEnabled = false;
+					}
+
 					directionsViewModel.Expand ();
 				}
 			};
