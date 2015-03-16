@@ -42,6 +42,15 @@ namespace CocoMaps.Shared
 				return _POIButton;
 			}
 		}
+
+		// Needed to access this button from ConcordiaMapRenderer.cs
+		public static Button NextButtonAlert = new Button { Text = "Next Class", 
+			HeightRequest = 40,
+			BackgroundColor = Color.White,
+			Opacity = 0.7,
+			BorderRadius = 0
+		};
+
 		// Needed to access this button from ConcordiaMapRenderer.cs
 		public static Button TestButton {
 			get {
@@ -99,13 +108,6 @@ namespace CocoMaps.Shared
 				IsVisible = false
 			};
 
-			var NextButton = new Button { Text = "Next Class", 
-				HeightRequest = 40,
-				BackgroundColor = Color.White,
-				Opacity = 0.7,
-				BorderRadius = 0
-			};
-
 			foreach (Building building in buildingRepo.BuildingList.Values)
 				SearchPicker.Items.Add (building.Code);
 
@@ -131,15 +133,32 @@ namespace CocoMaps.Shared
 			};
 
 
-			NextButton.Clicked += async (sender, e) => {
-				string start = "7141 Sherbrooke Street W. Montreal QC";
-				string dest = "1455 De Maisonneuve Blvd. W. Montreal QC";
+			NextButtonAlert.Clicked += async (sender, e) => {
 
-				RequestDirections directionsRequest = RequestDirections.getInstance;
+				NextClassFunc NCF = new NextClassFunc();
 
-				Directions directions = await directionsRequest.getDirections (start, dest, TravelMode.walking);
+				CalendarItems CI = NCF.getNextClassItem();
 
+				//string ClassDetails = "Class : " + CI.Title1 + "\r\n" + "Time : " + CI.Day + " " + "(" + CI.StartTime + " - " + CI.EndTime + ")" + "\r\n" + "Location : " + CI.Room+ "\r\n" + "Destination : " + NCF.getClassLocation(CI.Room);
 
+				string ClassDetails = "Class : " + CI.Title1 + "\r\n" + "Time : " + CI.Day + " " + "(" + CI.StartTime + " - " + CI.EndTime + ")" + "\r\n" + "Location : " + CI.Room+ "\r\n";
+
+				var NextClassInput = await DisplayAlert ("Get Directions To Next Class", ClassDetails , "Cancel", "Proceed");
+
+				string ClassDestination = NCF.getClassLocation(CI.Room);
+
+				string start = "1515 St. Catherine W.";
+
+				if(NextClassInput.ToString().ToLower() == "proceed")
+				{
+					RequestDirections directionsRequest = RequestDirections.getInstance;
+					Directions directions = await directionsRequest.getDirections (start, ClassDestination, TravelMode.walking);
+
+				}
+				else
+				{
+					// Cancel- Do Nothing
+				}
 			};
 
 			mainLayout = new RelativeLayout {
@@ -174,14 +193,14 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToParent (parent => Height));
 
 			mainLayout.Children.Add (_POIButton, Constraint.Constant (150), Constraint.RelativeToParent (parent => Height - 54));
-			mainLayout.Children.Add (TestButton, Constraint.Constant (50), Constraint.Constant (50));
+			//mainLayout.Children.Add (TestButton, Constraint.Constant (50), Constraint.Constant (50));
 			//mainLayout.Children.Add (searchBar, Constraint.Constant (0));
 			mainLayout.Children.Add (SGWButton, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 54));
 			mainLayout.Children.Add (LOYButton, Constraint.Constant (80), Constraint.RelativeToParent (parent => Height - 54));
 			mainLayout.Children.Add (SearchButton, Constraint.Constant (14), Constraint.Constant (14));
 			mainLayout.Children.Add (SearchPicker, Constraint.Constant (0), Constraint.Constant (0));
 
-			//mainLayout.Children.Add (NextButton, Constraint.RelativeToParent (parent => Width - 160), Constraint.Constant (10));
+			mainLayout.Children.Add (NextButtonAlert, Constraint.RelativeToParent (parent => Width - 160), Constraint.Constant (10));
 			mainLayout.Children.Add (networkStatus, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 80));
 			mainLayout.Children.Add (detailsLayout,
 				Constraint.Constant (0),
@@ -206,11 +225,6 @@ namespace CocoMaps.Shared
 		{
 			var s = sender as SearchBar;
 			Console.WriteLine (s.Text);
-		}
-
-		void HandleNextButton (object sender, TextChangedEventArgs e)
-		{
-
 		}
 
 		void HandleCampusRegionButton (object sender, EventArgs e)
