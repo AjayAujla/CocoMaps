@@ -75,7 +75,6 @@ namespace CocoMaps.Shared.Pages
 					}
 					Device.OpenUri (uri);
 				}
-
 				((ListView)sender).SelectedItem = null; // de-select the row
 			};
 
