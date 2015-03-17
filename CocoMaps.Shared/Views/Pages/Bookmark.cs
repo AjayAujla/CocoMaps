@@ -1,4 +1,4 @@
-﻿using Xamarin.Forms;
+﻿﻿using Xamarin.Forms;
 using CocoMaps.Shared;
 
 namespace CocoMaps.Shared
@@ -11,11 +11,11 @@ namespace CocoMaps.Shared
 
 		public Bookmark (IMenuOptions menuItem)
 		{
-		
+
 			this.SetValue (Page.TitleProperty, "Bookmark");
 			this.SetValue (Page.IconProperty, menuItem.Icon);
-		
-	
+
+
 
 			// Buttons
 			/*this.directionButton = new Button {
@@ -25,7 +25,6 @@ namespace CocoMaps.Shared
 				//HorizontalOptions = LayoutOptions.Start,
 			};
 	
-
 			this.deleteButton = new Button {
 				Text = "Website",
 				BorderWidth = 0,
@@ -57,17 +56,17 @@ namespace CocoMaps.Shared
 				Text = "Peel Pub"
 			};
 
-		
-
-		Content = new StackLayout {
-			Children = {
-				label0,
-				pushClass0,
-				pushClass1
 
 
-			}
-		};
+			Content = new StackLayout {
+				Children = {
+					label0,
+					pushClass0,
+					pushClass1
+
+
+				}
+			};
 
 
 		}

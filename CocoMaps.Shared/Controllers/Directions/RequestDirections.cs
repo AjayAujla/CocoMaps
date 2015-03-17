@@ -9,7 +9,6 @@ namespace CocoMaps.Shared
 	public class RequestDirections
 	{
 		static RequestDirections requestDirections;
-		static TravelMode travelMode = TravelMode.walking;
 
 		public static String SGWShuttlePosition = "1455 De Maisonneuve Blvd. W.";
 		public static String LOYShuttlePosition = "7137 Sherbrooke St West";

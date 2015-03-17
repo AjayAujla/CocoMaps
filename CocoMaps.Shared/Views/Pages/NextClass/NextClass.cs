@@ -1,105 +1,233 @@
 ﻿using Xamarin.Forms;
 using CocoMaps.Shared.ViewModels;
+using System.Collections.Generic;
+using System;
+using System.Linq;
 
 namespace CocoMaps.Shared
 {
 	public class NextClass : ContentPage
 	{
-		public NextClass (IMenuOptions menuItem)
+		DateTime DateNow = DateTime.Now;
+
+		Boolean NextClassFound = false;
+
+		CalendarItems NextClassItem = null;
+
+		List<CalendarItems> Mon_CL = new List<CalendarItems>{};
+		List<CalendarItems> Tue_CL = new List<CalendarItems>{};
+		List<CalendarItems> Wed_CL = new List<CalendarItems>{};
+		List<CalendarItems> Thu_CL = new List<CalendarItems>{};
+		List<CalendarItems> Fri_CL = new List<CalendarItems>{};
+
+		public NextClass (IMenuOptions menuItem ,BaseCalendar BC)
 		{
+
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
 
 			SetValue (Page.TitleProperty, "Next Class");
 			SetValue (Page.IconProperty, menuItem.Icon);
 
+			if(BC == null)
+			{
+				var label0 = new Label {
+					FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
+					FontAttributes = FontAttributes.Bold,
+					Text = "\r\n" + "CALENDAR NEEDS TO BE AUTHENTICATED FIRST" + "\r\n"
+				};
 
-			string startLocation;
-			string destination;
+				Content = new StackLayout {
+					Children = {
+						label0
+					}
+				};
+			}
+			else
+			{
+				Mon_CL = BC.getMondayList ();
+				Tue_CL = BC.getTuesdayList ();
+				Wed_CL = BC.getWednesdayList ();
+				Thu_CL = BC.getThursdayList ();
+				Fri_CL = BC.getFridayList ();
 
-			// Test
+				var DateTodayInt = getDateTodayInt ();
 
-			string testClass = "SGW-FG-965";
-			startLocation = "7141 Sherbrooke Street W.";
-
-			destination = getClassLocation (testClass);
-
-			startLocation = startLocation + " Montreal QC";
-			destination = destination + " Montreal QC";
-
-
-			var label0 = new Label {
-				FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
-				FontAttributes = FontAttributes.Bold,
-				Text = "Next Class : "
-			};
+				setNextClass(DateTodayInt);
 
 
-			var label1 = new Label {
-				Text = testClass,
 
-				Font = Font.SystemFontOfSize (NamedSize.Large) 
-			};
+				var label0 = new Label {
+					FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
+					FontAttributes = FontAttributes.Bold,
+					Text = "\r\n" + "Time Now : "
+				};
 
-			var label2 = new Label {
-				FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
-				FontAttributes = FontAttributes.Bold,
-				Text = "Destination : "
-			};
 
-			var label3 = new Label {
-				Text = destination,
+				var label1 = new Label {
+					Text = DateNow.DayOfWeek.ToString() + " " + DateNow.ToString() + "\r\n",
 
-				Font = Font.SystemFontOfSize (NamedSize.Large)
-			};
+					Font = Font.SystemFontOfSize (NamedSize.Large) 
+				};
 
-			var label4 = new Label {
-				FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
-				FontAttributes = FontAttributes.Bold,
-				Text = "Current Location : "
-			};
 
-			var label5 = new Label {
-				Text = startLocation + "\r\n \r\n",
+				var label2 = new Label {
+					FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
+					FontAttributes = FontAttributes.Bold,
+					Text = "Your Next Class : "
+				};
 
-				Font = Font.SystemFontOfSize (NamedSize.Large)
-			};
 
-			/*var NextClassButton = new Button {
-				Text = "Get Directions to Next Class",
-				HeightRequest = 50,
-				WidthRequest = 100,
-				BackgroundColor = Color.Black,
-				TextColor = Color.White,
-				Opacity = 0.7,
-				BorderRadius = 0
-			};*/
+				var label3 = new Label {
+					Text = "Class : " + NextClassItem.Title1,
 
-			var NextClassButton = new Button { Text = "Get Directions to Next Class" };
+					Font = Font.SystemFontOfSize (NamedSize.Large) 
+				};
 
-			var pushClass = new StackLayout {
-				Spacing = 5,
-				HorizontalOptions = LayoutOptions.CenterAndExpand,
-				Orientation = StackOrientation.Horizontal, 
-				Children = { NextClassButton }
-			};
+				var label4 = new Label {
+					Text = "Details : " + NextClassItem.Title2 + "\r\n",
 
-			//NextClassButton.Clicked += HandleNextClassButton(startLocation , destination);
+					Font = Font.SystemFontOfSize (NamedSize.Large) 
+				};
 
-			Content = new StackLayout {
-				Children = {
-					label0,
-					label1,
-					label2,
-					label3,
-					label4,
-					label5,
-					pushClass
+				var label5 = new Label {
+					FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
+					FontAttributes = FontAttributes.Bold,
+					Text = "Class Destination : "
+				};
+
+
+				var label6 = new Label {
+					Text = getClassLocation(NextClassItem.Room) + "\r\n",
+
+					Font = Font.SystemFontOfSize (NamedSize.Large) 
+				};
+
+
+
+				var NextClassButton = new Button { Text = "Get Directions to Next Class" };
+
+				var pushClass = new StackLayout {
+					Spacing = 5,
+					HorizontalOptions = LayoutOptions.CenterAndExpand,
+					Orientation = StackOrientation.Horizontal, 
+					Children = { NextClassButton }
+				};
+
+				//NextClassButton.Clicked += HandleNextClassButton(startLocation , destination);
+
+				Content = new StackLayout {
+					Children = {
+						label0,
+						label1,
+						label2,
+						label3,
+						label4,
+						label5,
+						label6,
+						pushClass
+					}
+				};
+			}
+
+		}
+
+		public void processNextClass(int dayInt,List<CalendarItems> CurrentDayList)
+		{
+			string TimeNow = getTodayTime();
+
+			if(CurrentDayList != null || CurrentDayList.Any())
+			{
+				foreach(CalendarItems CI in CurrentDayList)
+				{
+
+					string sTime = CI.StartTime.Replace(":", "");
+					string tNow = TimeNow.Replace(":", "");
+
+					int sTimeInt = int.Parse (sTime);
+					int tNowInt = int.Parse (tNow);
+
+					if(sTimeInt > tNowInt)
+					{
+						NextClassFound = true;
+
+						NextClassItem =  CI;
+
+						break;
+					}
 				}
-			};
+
+				if(!NextClassFound)
+				{
+					setNextClass(dayInt + 1);
+				}
+			}
+			else
+			{
+				setNextClass(dayInt + 1);
+			}
 
 
 
+
+		}
+
+		public void getFirstClass(List<CalendarItems> CurrentDayList)
+		{
+			if (CurrentDayList != null) 
+			{
+				NextClassFound = true;
+
+				NextClassItem =  CurrentDayList[0];
+			}
+		}
+
+		public void setNextClass(int dayInt)
+		{
+			switch (dayInt) 
+			{
+			case 1:
+				processNextClass (dayInt , Mon_CL);
+				break;
+			case 2:
+				processNextClass (dayInt , Tue_CL);
+				break;
+			case 3:
+				processNextClass (dayInt , Wed_CL);
+				break;
+			case 4:
+				processNextClass (dayInt , Thu_CL);
+				break;
+			case 5:
+				processNextClass (dayInt , Fri_CL);
+				break;
+			default:
+				getFirstClass (Mon_CL);
+				break;
+			}
+		}
+
+
+		public string getDateToday()
+		{
+			string  DateToday = (DateNow.DayOfWeek).ToString().ToLower();
+			return DateToday;
+		}
+
+		public int getDateTodayInt()
+		{
+			int DateTodayInt = (int)DateTime.Today.DayOfWeek;
+
+			if (DateTodayInt <= 0 || DateTodayInt >= 6) {DateTodayInt = 1;}
+
+			return DateTodayInt;
+		}
+
+		public string getTodayTime()
+		{
+			string TodayTime =(DateNow.TimeOfDay).ToString().Substring(0,5);
+
+			return TodayTime;
 		}
 
 

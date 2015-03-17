@@ -41,7 +41,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\LoaderViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\NextClass\NextClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Department.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\CalendarConnect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OAuthSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\AuthBasePage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\AuthLoginPage.cs" />
@@ -60,6 +59,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\ShuttleBus\ShuttleBusPolyline.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\DirectionsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Bookmark.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Calendar\CalendarListJsonClasses.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Calendar\CalendarJsonClasses.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\NextClass\NextClassFunc.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -77,5 +79,9 @@
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\ShuttleBus\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\ConcordiaServices\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBus\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\Calendar\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controllers\Repositories\LocalCalendar.json" />
   </ItemGroup>
 </Project>

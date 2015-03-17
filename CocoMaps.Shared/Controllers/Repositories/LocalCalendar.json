@@ -1,0 +1,127 @@
+{
+"etag": "\"1426060724528000\"",
+"summary": "LocalCalendar",
+"description": "",
+"items": [
+{
+"etag": "\"2851686743246000\"",
+"id": "jveedhl1aum6o200kfo9l836s0",
+"summary": "Concordia-Tut-SA-SOEN357",
+"description": "FRIDAY",
+"location": "SGW-H-561",
+"start": {
+"dateTime": "2015-03-13T11:45:00-04:00",
+"timeZone": "America/Toronto"
+},
+"end": {
+"dateTime": "2015-03-14T12:35:00-04:00",
+"timeZone": "America/Toronto"
+}
+},
+{
+"etag": "\"2851688474686000\"",
+"id": "fqe6in4eh9qi65rd0lskn4ohjo",
+"summary": "Concordia-Lec-S-SOEN390",
+"description": "MONDAY",
+"location": "SGW-FG-B050",
+"start": {
+"dateTime": "2015-03-09T16:15:00-04:00",
+"timeZone": "America/Toronto"
+},
+"end": {
+"dateTime": "2015-03-09T17:55:00-04:00",
+"timeZone": "America/Toronto"
+}
+},
+{
+"etag": "\"2851688658306000\"",
+"id": "g9h07ptiafh8b3q2u9oiaq4jqo",
+"summary": "Concordia-Lec-S-SOEN345",
+"description": "MONDAY,WEDNESDAY",
+"location": "SGW-H-431",
+"start": {
+"dateTime": "2015-03-09T14:45:00-04:00",
+"timeZone": "America/Toronto"
+},
+"end": {
+"dateTime": "2015-03-09T16:00:00-04:00",
+"timeZone": "America/Toronto"
+}
+},
+{
+"etag": "\"2851688688968000\"",
+"id": "14kjeu62m7cgib249nam05oqp8",
+"summary": "Concordia-Lec-S-SOEN344",
+"description": "TUESDAY,THURSDAY",
+"location": "SGW-H-431",
+"start": {
+"dateTime": "2015-03-10T19:15:00-04:00",
+"timeZone": "America/Toronto"
+},
+"end": {
+"dateTime": "2015-03-10T21:30:00-04:00",
+"timeZone": "America/Toronto"
+}
+},
+{
+"etag": "\"2851688708876000\"",
+"id": "5qf9uvhevmlgoh6bnsighrvo98",
+"summary": "Concordia-Lec-S-SOEN357",
+"description": "WEDNESDAY,FRIDAY",
+"location": "SGW-H-431",
+"start": {
+"dateTime": "2015-03-11T10:15:00-04:00",
+"timeZone": "America/Toronto"
+},
+"end": {
+"dateTime": "2015-03-11T11:30:00-04:00",
+"timeZone": "America/Toronto"
+}
+},
+{
+"etag": "\"2851688765148000\"",
+"id": "0uqhm6fhu9sfjv0138nt1rpgsc",
+"summary": "Concordia-Tut-SB-SOEN345",
+"description": "WEDNESDAY",
+"location": "SGW-H-929",
+"start": {
+"dateTime": "2015-03-11T17:45:00-04:00",
+"timeZone": "America/Toronto"
+},
+"end": {
+"dateTime": "2015-03-11T18:35:00-04:00",
+"timeZone": "America/Toronto"
+}
+},
+{
+"etag": "\"2851688787364000\"",
+"id": "asr6he885v0dptqiovvuglq4go",
+"summary": "Concordia-Tut-SA-SOEN344",
+"description": "THURSDAY",
+"location": "SGW-H-920",
+"start": {
+"dateTime": "2015-03-12T14:45:00-04:00",
+"timeZone": "America/Toronto"
+},
+"end": {
+"dateTime": "2015-03-12T15:35:00-04:00",
+"timeZone": "America/Toronto"
+}
+},
+{
+"etag": "\"2851688808014000\"",
+"id": "tp2ifddb5lv1k1m9og43qq90uk",
+"summary": "Concordia-Lab-SI-SOEN390",
+"description": "THURSDAY",
+"location": "SGW-H-837",
+"start": {
+"dateTime": "2015-03-12T15:45:00-04:00",
+"timeZone": "America/Toronto"
+},
+"end": {
+"dateTime": "2015-03-12T18:25:00-04:00",
+"timeZone": "America/Toronto"
+}
+}
+]
+}

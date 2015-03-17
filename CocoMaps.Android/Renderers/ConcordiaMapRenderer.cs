@@ -1,12 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
-using Xamarin.Forms;
-using Xamarin.Forms.Maps.Android;
-using CocoMaps.Shared;
-using System.Collections.Generic;
 using Android.Graphics;
+using Android.Media.Audiofx;
+using Android.Views;
+using CocoMaps.Shared;
+using CocoMaps.Shared.ViewModels;
+using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using Xamarin.Forms.Maps.Android;
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]
 
@@ -15,6 +19,7 @@ namespace CocoMapsAndroid
 
 	public class ConcordiaMapRenderer : MapRenderer
 	{
+		
 		bool _isDrawnDone;
 
 		Position _from = new Position (0, 0);
@@ -24,13 +29,11 @@ namespace CocoMapsAndroid
 
 		Marker _startPin;
 		Marker _endPin;
-		Marker _toiletPin;
 
 		Android.Gms.Maps.Model.Polyline polyline;
+		Android.Gms.Maps.Model.Polyline shuttleBusPolyline;
 		PolylineOptions polylineOptions;
-		PolylineOptions shuttleBusPolyline;
 
-		PlacesRepository placesRepo;
 		ShuttleBusPolyline shuttleBusPolylinePoints = ShuttleBusPolyline.getInstance;
 		BuildingRepository buildingRepo = BuildingRepository.getInstance;
 		DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
@@ -111,18 +114,12 @@ namespace CocoMapsAndroid
 				}
 				androidMapView.Map.AddPolyline (polyline);
 
-
 				loader.Hide ();
 			}
 		}
 
 		protected override void OnElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
-			
-
-
-
-
 
 			if (e.PropertyName.Equals ("VisibleRegion") && !_isDrawnDone) {
 				
@@ -147,17 +144,6 @@ namespace CocoMapsAndroid
 
 				}
 
-				using (MarkerOptions toilet = new MarkerOptions ()) {
-					toilet.SetPosition (new LatLng (45.4972631, -73.5787094))
-						.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.toilet_male));
-
-					_toiletPin = androidMapView.Map.AddMarker (toilet);
-
-					//toilet.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_end));
-
-					//_endPin = androidMapView.Map.AddMarker (toilet);
-
-				}
 				androidMapView.Map.MapClick += (senderr, ee) => detailsLayout.Hide ();
 
 				androidMapView.Map.MapLongClick += async (senderr, ee) => {
@@ -181,6 +167,8 @@ namespace CocoMapsAndroid
 									polylineOptions.Points.Clear ();
 									MarkerDirections.Clear ();
 									_endPin.Position = new LatLng (0, 0);
+									if (shuttleBusPolyline != null)
+										shuttleBusPolyline.Visible = false;
 								}
 
 								_from = building.Position;
@@ -286,7 +274,27 @@ namespace CocoMapsAndroid
 
 					}
 				}
-				
+
+
+				Button NextClassButton = MasterPage.NextClassAlertEventButton;
+
+				NextClassButton.PropertyChanged += async (send, ev) => {
+
+					NextClassFunc NCF = new NextClassFunc();
+
+					CalendarItems CI = NCF.getNextClassItem();
+
+					string ClassDestination = NCF.getClassLocation(CI.Room);
+
+					string start = "1515 St. Catherine W.";
+
+					RequestDirections directionsRequest = RequestDirections.getInstance;
+
+					Directions directions = await directionsRequest.getDirections (start, ClassDestination, TravelMode.walking);
+
+					getDirectionsToClass(directions);
+
+				}; 
 
 
 				bool isPOIAdded = false;
@@ -372,7 +380,7 @@ namespace CocoMapsAndroid
 				nextDeparturesString = "no passages";
 			else
 				foreach (String departure in nextDepartures)
-					nextDeparturesString += nextDepartures + " ";
+					nextDeparturesString += departure + "  ";
 
 			// SGW Shuttle Bus Marker
 			marker.SetTitle ("SGW Shuttle Bus");
@@ -395,7 +403,7 @@ namespace CocoMapsAndroid
 				nextDeparturesString = "no passages";
 			else
 				foreach (String departure in nextDepartures)
-					nextDeparturesString += departure + " ";
+					nextDeparturesString += departure + "  ";
 			
 			// LOY Shuttle Bus Marker
 			int lastPoint = shuttleBusPolylinePoints.ShuttleBusPoints.Count;
@@ -419,15 +427,16 @@ namespace CocoMapsAndroid
 			// For drawing Shuttle bus only once
 			if (shuttleBusPolyline == null) {
 				
-				shuttleBusPolyline = new PolylineOptions ();
-				shuttleBusPolyline.InvokeColor (0x7F932439).InvokeWidth (20);
+				PolylineOptions shuttleBusPolylineOptions = new PolylineOptions ();
+				shuttleBusPolylineOptions.InvokeColor (0x7F932439).InvokeWidth (20);
 
 				foreach (Position point in shuttleBusPolylinePoints.ShuttleBusPoints)
-					shuttleBusPolyline.Add (new LatLng (point.Latitude, point.Longitude));
+					shuttleBusPolylineOptions.Add (new LatLng (point.Latitude, point.Longitude));
 			
-				androidMapView.Map.AddPolyline (shuttleBusPolyline);
+				shuttleBusPolyline = androidMapView.Map.AddPolyline (shuttleBusPolylineOptions);
 
-			}
+			} else
+				shuttleBusPolyline.Visible = true;
 		}
 
 	}

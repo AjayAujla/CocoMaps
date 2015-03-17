@@ -1768,16 +1768,13 @@ namespace CocoMaps.Android
 			public const int settingsIcon = 2130837705;
 			
 			// aapt resource value: 0x7f0200ca
-			public const int splash = 2130837706;
+			public const int sidebar_slide = 2130837706;
 			
 			// aapt resource value: 0x7f0200cb
-			public const int splashscreen = 2130837707;
+			public const int splash = 2130837707;
 			
 			// aapt resource value: 0x7f0200cc
-			public const int toilet_female = 2130837708;
-			
-			// aapt resource value: 0x7f0200cd
-			public const int toilet_male = 2130837709;
+			public const int splashscreen = 2130837708;
 			
 			static Drawable()
 			{

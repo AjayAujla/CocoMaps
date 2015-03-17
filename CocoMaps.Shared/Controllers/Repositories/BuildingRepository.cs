@@ -72,6 +72,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "CPE Les P'tits Profs Daycare",
+						RoomNumber = "B",
 						URI = "http://lesptitsprofs.wordpress.com"
 					}
 				}
@@ -165,6 +166,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "The Centre for Continuing Education",
+						RoomNumber = "CL",
 						URI = "http://cce.concordia.ca"
 					}
 				}
@@ -223,10 +225,12 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Translation Services",
+						RoomNumber = "EN",
 						URI = "http://web2.concordia.ca/translation"
 					},
 					new Service {
 						Name = "Career and Planning Services",
+						RoomNumber = "EN",
 						URI = "http://concordia.ca/content/concordia/en/students/careers/planning.html"
 					}
 				},
@@ -267,11 +271,18 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "LeGym",
+						RoomNumber = "EV-S2.206",
 						URI = "http://concordia.ca/content/concordia/en/campus-life/recreation/facilities/le-gym.html",
 					},
 					new Service {
 						Name = "FOFA Gallery",
+						RoomNumber = "EV-2.781",
 						URI = "http://concordia.ca/content/concordia/en/finearts/facilities/fofa-gallery.html"
+					},
+					new Service {
+						Name = "Performing Arts Facilities",
+						RoomNumber = "EV-2.781",
+						URI = "http://concordia.ca/content/concordia/en/finearts/facilities/performing-arts"
 					}
 				},
 				Departments = new List<Department> {
@@ -389,14 +400,22 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "School of Extended Learning",
+						RoomNumber = "FB-131.1",
 						URI = "http://www.concordia.ca/extended-learning"
 					},
 					new Service {
 						Name = "Student Transition Centre",
+						RoomNumber = "FB-117.3",
+						URI = "http://concordia.ca/content/concordia/en/extended-learning/advising.html"
+					},
+					new Service {
+						Name = "Centre for Teaching and Learning",
+						RoomNumber = "FB-620",
 						URI = "http://concordia.ca/content/concordia/en/extended-learning/advising.html"
 					},
 					new Service {
 						Name = "Human Resources",
+						RoomNumber = "FB-1130",
 						URI = "http://www.concordia.ca/hr"
 					}
 				},
@@ -447,7 +466,8 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "Classrooms"
+						Name = "Classrooms",
+						RoomNumber = "FG"
 					},
 				}
 			};
@@ -474,66 +494,82 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Office of the President",
+						RoomNumber = "GM",
 						URI = "http://concordia.ca/content/concordia/en/about/administration-governance/president.html"
 					},
 					new Service {
 						Name = "Office of the VP, Institutional Relations and Secretary General",
+						RoomNumber = "GM-801",
 						URI = "http://concordia.ca/content/concordia/en/about/administration-governance/office-vp-development-external-relations-secretary-general.html"
 					},
 					new Service {
 						Name = "Office of the Provost",
+						RoomNumber = "GM-806.00",
 						URI = "http://concordia.ca/content/concordia/en/about/administration-governance/office-provost-vp-academic-affairs.html"
 					},
 					new Service {
 						Name = "Office of Rights and Responsibilities",
+						RoomNumber = "GM",
 						URI = "http://concordia.ca/content/concordia/en/students/rights.html"
 					},
 					new Service {
 						Name = "Ombuds Office",
+						RoomNumber = "GM-1005",
 						URI = "http://concordia.ca/content/concordia/en/campus-life/ombuds.html"
 					},
 					new Service {
 						Name = "Institute for Co-operative Education",
+						RoomNumber = "GM-430",
 						URI = "http://concordia.ca/content/concordia/en/academics/co-op.html"
 					},
 					new Service {
 						Name = "Office of the VP, Research & Graduate Studies",
+						RoomNumber = "GM-900.00",
 						URI = "http://concordia.ca/content/concordia/en/about/administration-governance/office-vp-research-graduate-studies.html"
 					},
 					new Service {
 						Name = "Office of the Chief Communications Officer",
+						RoomNumber = "GM-900.00",
 						URI = "http://concordia.ca/content/concordia/en/about/administration-governance/office-vp-research-graduate-studies.html"
 					},
 					new Service {
 						Name = "Financial Aid & Awards Office",
+						RoomNumber = "GM-230.00",
 						URI = "http://concordia.ca/content/concordia/en/offices/faao.html"
 					},
 					new Service {
 						Name = "Health Services",
+						RoomNumber = "GM-200",
 						URI = "http://concordia.ca/content/concordia/en/students/health.html"
 					},
 					new Service {
 						Name = "Environmental Health and Safety",
+						RoomNumber = "GM",
 						URI = "http://concordia.ca/content/concordia/en/campus-life/safety"
 					},
 					new Service {
 						Name = "Facilities Management",
+						RoomNumber = "GM-1100",
 						URI = "http://concordia.ca/content/concordia/en/offices/facilities"
 					},
 					new Service {
 						Name = "Music",
+						RoomNumber = "GM-500.01",
 						URI = "http://concordia.ca/content/concordia/en/finearts/music"
 					},
 					new Service {
 						Name = "Theatre",
+						RoomNumber = "GM-500.01",
 						URI = "http://concordia.ca/content/concordia/en/finearts/theatre"
 					},
 					new Service {
 						Name = "Contemporary Dance",
+						RoomNumber = "GM-500.01",
 						URI = "http://concordia.ca/content/concordia/en/finearts/dance"
 					},
 					new Service {
 						Name = "Graduate Studies",
+						RoomNumber = "GM-930.01",
 						URI = "http://concordia.ca/content/concordia/en/offices/sgs.html"
 					},
 				}
@@ -590,11 +626,8 @@ namespace CocoMaps.Shared
 						URI = "http://concordia.ca/content/concordia/en/offices/cdev.html"
 					},
 					new Service {
-						Name = "Mail Services",
-						URI = "http://concordia.ca/content/concordia/en/offices/facilities.html"
-					},
-					new Service {
 						Name = "Archives",
+						RoomNumber = "H-1015",
 						URI = "http://archives.concordia.ca/"
 					},
 					new Service {
@@ -604,14 +637,17 @@ namespace CocoMaps.Shared
 					},
 					new Service {
 						Name = "Concordia Student Union",
+						RoomNumber = "H-711",
 						URI = "http://csu.concordia.ca"
 					},
 					new Service {
 						Name = "Computer Store",
+						RoomNumber = "H",
 						URI = "http://retail.concordia.ca/ccs/"
 					},
 					new Service {
-						Name = "D. B. Clarke Theatre",
+						Name = "D. B. Clarke Theatre\\",
+						RoomNumber = "H",
 						URI = "http://concordia.ca/content/concordia/en/arts/venues/db-clarke-theatre"
 					}
 				},
@@ -653,6 +689,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Theological Studies",
+						RoomNumber = "K",
 						URI = "http://concordia.ca/content/concordia/en/artsci/theology.html"
 					}
 				}
@@ -730,6 +767,21 @@ namespace CocoMaps.Shared
 					},
 					new Service {
 						Name = "Computer Store",
+						RoomNumber = "LB-103",
+						URI = "http://concordia.ca/content/concordia/en/it/services/cinemas"
+					},
+					new Service {
+						Name = "Birks Student Service Centre",
+						RoomNumber = "LB-185",
+						URI = "http://concordia.ca/content/concordia/en/students/birks"
+					},
+					new Service {
+						Name = "Bookstore",
+						RoomNumber = "LB-103",
+						URI = "http://retail.concordia.ca/"
+					},
+					new Service {
+						Name = "Computer Store",
 						RoomNumber = "LB-103"
 					},
 					new Service {
@@ -752,18 +804,22 @@ namespace CocoMaps.Shared
 					},
 					new Service {
 						Name = "R. Howard Webster Library",
+						RoomNumber = "LB",
 						URI = "http://concordia.ca/content/concordia/en/library"
 					},
 					new Service {
 						Name = "Leonard and Bina Ellen Art Gallery",
+						RoomNumber = "LB",
 						URI = "http://ellengallery.concordia.ca"
 					},
 					new Service {
 						Name = "Birks Student Service Centre",
+						RoomNumber = "LB-185",
 						URI = "http://concordia.ca/content/concordia/en/library"
 					},
 					new Service {
 						Name = "Office of the Registrar",
+						RoomNumber = "LB-700",
 						URI = "http://concordia.ca/content/concordia/en/offices/registrar"
 					}
 				},
@@ -849,16 +905,15 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Career Management Services",
+						RoomNumber = "MB-4.301",
 						URI = "http://concordia.ca/content/concordia/en/jmsb/services/career"
 					},
 					new Service {
 						Name = "John Molson Executive Centre",
+						RoomNumber = "MB-11.115",
 						URI = "http://concordia.ca/content/concordia/en/jmsb/programs/executive-centre"
 					},
-					new Service {
-						Name = "Performing Arts Facilities",
-						URI = "http://concordia.ca/content/concordia/en/finearts/facilities/performing-arts"
-					}
+
 				},
 				Departments = new List<Department> {
 					new Department {
@@ -918,30 +973,37 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "ACUMAE",
+						RoomNumber = "MI",
 						URI = "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#acumae"
 					},
 					new Service {
 						Name = "SCOMM",
+						RoomNumber = "MI",
 						URI = "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#scomm-sgw"
 					},
 					new Service {
 						Name = "CUSSU",
+						RoomNumber = "MI",
 						URI = "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#cussu"
 					},
 					new Service {
 						Name = "CUUSS-TS",
+						RoomNumber = "MI",
 						URI = "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#cuuss-ts"
 					},
 					new Service {
 						Name = "CULEU",
+						RoomNumber = "MI",
 						URI = "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#culeu"
 					},
 					new Service {
 						Name = "CUPEU",
+						RoomNumber = "MI",
 						URI = "http://www.concordia.ca/hr/dept/employee-labour-relations/labour-agreements.html#cupeu"
 					},
 					new Service {
 						Name = "CUCEPTFU",
+						RoomNumber = "MI"
 					}
 				}
 			};
@@ -968,6 +1030,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Simone de Beauvoir Institute",
+						RoomNumber = "MU",
 						URI = "http://concordia.ca/content/concordia/en/artsci/sdbi"
 					}
 				}
@@ -1047,6 +1110,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Ethnic Students' Association",
+						RoomNumber = "Q",
 						URI = "http://www.ieacconcordia.ca/about-us.html"
 					}
 				}
@@ -1151,6 +1215,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "raduate Students Association",
+						RoomNumber = "T",
 						URI = "http://gsaconcordia.ca"
 					}
 				}
@@ -1201,6 +1266,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Concordia International",
+						RoomNumber = "X",
 						URI = "http://concordia.ca/content/concordia/en/offices/ci.html"
 					}
 				}
@@ -1228,10 +1294,12 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Multi-Faith Chaplaincy",
+						RoomNumber = "Z",
 						URI = "http://concordia.ca/content/concordia/en/offices/chaplaincy.html"
 					},
 					new Service {
 						Name = "Sustainable Concordia",
+						RoomNumber = "Z-204.1",
 						URI = "http://sustainableconcordia.ca"
 					}
 				}
@@ -1291,38 +1359,47 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Loyola International College",
+						RoomNumber = "AD-502",
 						URI = "http://loyc.concordia.ca"
 					},
 					new Service {
 						Name = "Centre for Teaching & Learning",
+						RoomNumber = "AD",
 						URI = "http://concordia.ca/content/concordia/en/offices/ctl.html"
 					},
 					new Service {
 						Name = "Provost and Vice-President",
+						RoomNumber = "AD",
 						URI = "http://concordia.ca/content/concordia/en/about/administration-governance/office-provost-vp-academic-affairs.html"
 					},
 					new Service {
 						Name = "Dean of Students",
+						RoomNumber = "AD-121",
 						URI = "http://concordia.ca/content/concordia/en/offices/dean-students.html"
 					},
 					new Service {
 						Name = "Concordia Multi-Faith Chaplaincy",
+						RoomNumber = "AD-103.10",
 						URI = "http://concordia.ca/content/concordia/en/offices/chaplaincy.html"
 					},
 					new Service {
 						Name = "Advocacy & Support Services",
+						RoomNumber = "AD",
 						URI = "http://concordia.ca/content/concordia/en/offices/advocacy.html"
 					},
 					new Service {
 						Name = "Access Centre for Students with Disabilities",
+						RoomNumber = "AD-130",
 						URI = "http://concordia.ca/content/concordia/en/offices/acsd.html"
 					},
 					new Service {
 						Name = "Counselling and Development",
+						RoomNumber = "AD-103",
 						URI = "http://concordia.ca/content/concordia/en/offices/cdev.html"
 					},
 					new Service {
 						Name = "Health Services",
+						RoomNumber = "AD-131",
 						URI = "http://concordia.ca/content/concordia/en/students/health.html"
 					}
 				},
@@ -1379,6 +1456,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "CPE Les P'tits Profs Daycare",
+						RoomNumber = "BH",
 						URI = "http://lesptitsprofs.wordpress.com"
 					}
 				}
@@ -1410,6 +1488,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Concordia Student Union",
+						RoomNumber = "CC-116",
 						URI = "http://csu.concordia.ca"
 					}
 				}
@@ -1468,6 +1547,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Campus Retail Stores",
+						RoomNumber = "CJ",
 						URI = "http://retail.concordia.ca"
 					},
 				},
@@ -1552,14 +1632,12 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "F.C. Smith Auditorium",
+						RoomNumber = "FC",
 						URI = "http://concordia.ca/content/concordia/en/arts/venues/fc-smith-auditorium"
 					},
 					new Service {
-						Name = "Concordia Multi-Faith Chaplaincy",
-						URI = "http://concordia.ca/content/concordia/en/students/multifaith"
-					},
-					new Service {
 						Name = "Cazalet Theater",
+						RoomNumber = "FC",
 						URI = "http://concordia.ca/content/concordia/en/arts/venues/cazalet"
 					}
 				}
@@ -1590,6 +1668,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Genomic Centre",
+						RoomNumber = "GE",
 						URI = "http://concordia.ca/content/concordia/en/research/genomics"
 					}
 				}
@@ -1630,6 +1709,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Student Residence",
+						RoomNumber = "HA",
 						URI = "http://concordia.ca/content/concordia/en/campus-life/residences/hingston-hall.html"
 					}
 				}
@@ -1683,10 +1763,12 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Student Residence",
+						RoomNumber = "HB",
 						URI = "http://concordia.ca/content/concordia/en/campus-life/residences/hingston-hall.html"
 					},
 					new Service {
 						Name = "CUFA",
+						RoomNumber = "HB",
 						URI = "http://www.cufa.net"
 					}
 				}
@@ -1718,6 +1800,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Student Residence",
+						RoomNumber = "HC",
 						URI = "http://concordia.ca/content/concordia/en/campus-life/residences/hingston-hall.html"
 					}
 				}
@@ -1759,6 +1842,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Student Residence",
+						RoomNumber = "JR",
 						URI = "http://concordia.ca/content/concordia/en/campus-life/residences/hingston-hall.html"
 					}
 				}
@@ -1785,6 +1869,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "PERFORM Centre",
+						RoomNumber = "PC",
 						URI = "http://concordia.ca/content/concordia/en/research/perform.html"
 					}
 				}
@@ -1822,10 +1907,12 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Environmental Health and Safety",
+						RoomNumber = "PS",
 						URI = "http://concordia.ca/content/concordia/en/campus-life/safety"
 					},
 					new Service {
 						Name = "Facilities Management",
+						RoomNumber = "PS",
 						URI = "http://concordia.ca/content/concordia/en/offices/facilities"
 					}
 				}
@@ -1865,6 +1952,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Concert Hall",
+						RoomNumber = "PT",
 						URI = "http://concordia.ca/content/concordia/en/arts/venues/oscar-peterson.html"
 					}
 				},
@@ -1968,18 +2056,22 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Ed Meagher Arena",
+						RoomNumber = "RA",
 						URI = "http://athletics.concordia.ca/campus/facilities.shtml"
 					},
 					new Service {
 						Name = "Gymnasium",
+						RoomNumber = "RA",
 						URI = "http://athletics.concordia.ca/campus/facilities.shtml"
 					},
 					new Service {
 						Name = "Indoor running track",
+						RoomNumber = "RA",
 						URI = "http://athletics.concordia.ca/campus/facilities.shtml"
 					},
 					new Service {
-						Name = "Café"
+						Name = "Café",
+						RoomNumber = "RA"
 					}
 				}
 			};
@@ -2031,10 +2123,12 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Loyola Jesuit Hall and Conference Centre",
+						RoomNumber = "RF-120",
 						URI = "http://concordia.ca/content/concordia/en/hospitality/hospitality-venues/loyola-jesuit-hall-conference-centre.html"
 					},
 					new Service {
 						Name = "Conference services",
+						RoomNumber = "RF",
 						URI = "http://concordia.ca/content/concordia/en/hospitality.html"
 					}
 				}
@@ -2069,17 +2163,21 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "Campus Centre"
+						Name = "Campus Centre",
+						RoomNumber = "SC"
 					},
 					new Service {
 						Name = "Food Services",
+						RoomNumber = "SC",
 						URI = "http://concordia.ca/content/concordia/en/campus-life/residences/admissions/meal-plan.html"
 					},
 					new Service {
-						Name = "Cafeteria"
+						Name = "Cafeteria",
+						RoomNumber = "SC"
 					},
 					new Service {
-						Name = "Café"
+						Name = "Café",
+						RoomNumber = "SC"
 					}
 				}
 			};
@@ -2211,20 +2309,25 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Science College",
+						RoomNumber = "SP",
 						URI = "http://concordia.ca/content/concordia/en/artsci/science-college"
 					},
 					new Service {
-						Name = "science Technical Centre",
+						Name = "Technical Centre",
+						RoomNumber = "SP",
 						URI = "http://concordia.ca/content/concordia/en/artsci/services/technical-centre.html"
 					},
 					new Service {
-						Name = "Animal Care Facilities"
+						Name = "Animal Care Facilities",
+						RoomNumber = "SP"
 					},
 					new Service {
-						Name = "Security Office"
+						Name = "Security Office",
+						RoomNumber = "SP"
 					},
 					new Service {
-						Name = "Café"
+						Name = "Café",
+						RoomNumber = "SP"
 					}
 				},
 				Departments = new List<Department> {
@@ -2322,6 +2425,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Library",
+						RoomNumber = "VE",
 						URI = "http://library.concordia.ca/index.php"
 					}
 				},
@@ -2375,6 +2479,7 @@ namespace CocoMaps.Shared
 				Services = new List<Service> {
 					new Service {
 						Name = "Library",
+						RoomNumber = "VL",
 						URI = "http://concordia.ca/content/concordia/en/library"
 					}
 				}
