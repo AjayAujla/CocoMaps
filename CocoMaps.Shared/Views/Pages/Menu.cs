@@ -27,6 +27,7 @@ namespace CocoMaps.Shared
 			OptionItems.Add (new iDirections_MenuOption ());
 			OptionItems.Add (new Calendar_MenuOption ());
 			OptionItems.Add (new ShuttleBus_MenuOption ());
+			OptionItems.Add (new ShuttleBusTracker_MenuOption ());
 			OptionItems.Add (new Settings_MenuOption ());
 
 			BackgroundColor = Helpers.Color.DarkGray.ToFormsColor ();

@@ -3,9 +3,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Shared;
-using Android.Media.Audiofx;
-using System.Diagnostics;
-using Android.Views;
 
 namespace CocoMaps.Shared
 {
@@ -24,10 +21,10 @@ namespace CocoMaps.Shared
 		DirectionsViewModel directionsViewModel = DirectionsViewModel.getInstance;
 
 		static Button _testButton = new Button {
-			Text = "TestButton",
+			Text = "Directions",
 			HeightRequest = 40,
-			BackgroundColor = Color.Maroon,
-			TextColor = Color.White,
+			BackgroundColor = Color.White,
+			Opacity = 0.7,
 			BorderRadius = 0
 		};
 
@@ -152,22 +149,19 @@ namespace CocoMaps.Shared
 
 			NextButtonAlert.Clicked += async (sender, e) => {
 
-				NextClassFunc NCF = new NextClassFunc();
+				NextClassFunc NCF = new NextClassFunc ();
 
-				CalendarItems CI = NCF.getNextClassItem();
+				CalendarItems CI = NCF.getNextClassItem ();
 
-				string ClassDetails = "Class : " + CI.Title1 + "\r\n" + "Time : " + CI.Day + " " + "(" + CI.StartTime + " - " + CI.EndTime + ")" + "\r\n" + "Location : " + CI.Room+ "\r\n";
+				string ClassDetails = "Class : " + CI.Title1 + "\r\n" + "Time : " + CI.Day + " " + "(" + CI.StartTime + " - " + CI.EndTime + ")" + "\r\n" + "Location : " + CI.Room + "\r\n";
 
-				var NextClassInput = await DisplayAlert ("Get Directions To Next Class", ClassDetails , "Cancel", "Proceed");
+				var NextClassInput = await DisplayAlert ("Get Directions To Next Class", ClassDetails, "Cancel", "Proceed");
 
 
-				if(NextClassInput.ToString().ToLower() == "false")
-				{
+				if (NextClassInput.ToString ().ToLower () == "false") {
 					// Make a property change to trigger event
 					NextClassAlertEventButton.BackgroundColor = Color.Black;
-				}
-				else
-				{
+				} else {
 					// Cancel- Do Nothing
 				}
 			};
@@ -190,8 +184,10 @@ namespace CocoMaps.Shared
 			};
 
 			TestButton.Clicked += async (sender, e) => {
-				bool r = await DependencyService.Get<INetwork> ().IsReachable ("googleapis.com", new TimeSpan (5));
-				await DisplayAlert ("Network Connection:", r ? "Connected :)" : "Not Connected :(", "Whatever");
+				DirectionsViewModel d = DirectionsViewModel.getInstance;
+				d.Expand ();
+//				bool r = await DependencyService.Get<INetwork> ().IsReachable ("googleapis.com", new TimeSpan (5));
+//				await DisplayAlert ("Network Connection:", r ? "Connected :)" : "Not Connected :(", "Whatever");
 			};
 
 			mainLayout.Children.Add (map,
@@ -230,7 +226,7 @@ namespace CocoMaps.Shared
 
 			mainLayout.Children.Add (directionsViewModel,
 				Constraint.Constant (0),
-				Constraint.Constant (0),
+				Constraint.RelativeToParent (parent => -Height),
 				Constraint.RelativeToParent (parent => Width),
 				null);
 			
@@ -245,6 +241,15 @@ namespace CocoMaps.Shared
 			Console.WriteLine (s.Text);
 		}
 
+
+		// Makes the app crash for some reason...
+		//		public async static Task<bool> DisplayAlert (String Title, String message, String accept, String cancel)
+		//		{
+		//			Page p = new Page ();
+		//			var action = await p.DisplayAlert (Title, message, accept, cancel);
+		//			Console.WriteLine ("DisplayAlert: " + action);
+		//			return action;
+		//		}
 
 		void HandleCampusRegionButton (object sender, EventArgs e)
 		{

@@ -2,6 +2,7 @@
 using CocoMaps.Shared;
 using System;
 using System.Runtime.Remoting.Channels;
+using Xamarin.Forms.Maps;
 
 namespace CocoMaps.Shared
 {
@@ -51,15 +52,29 @@ namespace CocoMaps.Shared
 
 		BuildingRepository buildingRepo = BuildingRepository.getInstance;
 
+		Picker _fromPicker;
 
-		Picker FromPicker {
-			get;
-			set;
+		public Picker FromPicker {
+			get {
+				if (_fromPicker == null)
+					_fromPicker = new Picker { HeightRequest = 50 };
+				return _fromPicker;
+			}
+			set {
+			}
 		}
 
-		Picker ToPicker {
-			get;
-			set;
+		Picker _toPicker;
+
+		public Picker ToPicker {
+			get { 
+				if (_toPicker == null)
+					_toPicker = new Picker { HeightRequest = 50 };
+				return _toPicker;
+			}
+			
+			set {
+			}
 		}
 
 		Image DirectionsIcon = new Image {
@@ -77,7 +92,7 @@ namespace CocoMaps.Shared
 			BackgroundColor = Helpers.Color.Blue.ToFormsColor (),
 			BorderRadius = 50,
 		};
-		Button TravelShuttleModeButton = new Button {
+		public Button TravelShuttleModeButton = new Button {
 			Image = (FileImageSource)ImageSource.FromFile ("ic_travel_shuttle.png"),
 			BackgroundColor = Color.Transparent,
 			BorderRadius = 50,
@@ -93,7 +108,7 @@ namespace CocoMaps.Shared
 			BorderRadius = 50,
 		};
 
-		Button StartButton = new Button {
+		public Button StartButton = new Button {
 			Text = "Start",
 			TextColor = Color.White,
 			BackgroundColor = Helpers.Color.Blue.ToFormsColor (),
@@ -110,10 +125,7 @@ namespace CocoMaps.Shared
 
 		void Init ()
 		{
-
-			FromPicker = new Picker { HeightRequest = 50 };
-			ToPicker = new Picker { HeightRequest = 50 };
-
+			
 			foreach (Building building in buildingRepo.BuildingList.Values) {
 				FromPicker.Items.Add (building.Code);
 				ToPicker.Items.Add (building.Code);
@@ -229,7 +241,7 @@ namespace CocoMaps.Shared
 		public void Expand ()
 		{
 			double currentPos = instance.Y;
-			double desiredPos = ParentView.Bounds.Height / 3;
+			double desiredPos = 0;
 			instance.TranslateTo (0, desiredPos - currentPos);
 			viewState = ViewState.Expanded;
 		}

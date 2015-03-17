@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.Graphics;
-using Android.Media.Audiofx;
-using Android.Views;
 using CocoMaps.Shared;
-using CocoMaps.Shared.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
+using System.Threading.Tasks;
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]
 
@@ -22,6 +19,16 @@ namespace CocoMapsAndroid
 		
 		bool _isDrawnDone;
 
+		enum CampusDirection
+		{
+			WithinSGW,
+			withinLOY,
+			FromSGWtoLOY,
+			FromLOYtoSGW
+		}
+
+		CampusDirection campusDirection;
+
 		Position _from = new Position (0, 0);
 		Position _to = new Position (0, 0);
 
@@ -30,8 +37,11 @@ namespace CocoMapsAndroid
 		Marker _startPin;
 		Marker _endPin;
 
-		Android.Gms.Maps.Model.Polyline polyline;
+		List<Android.Gms.Maps.Model.Polyline> polylines = new List<Android.Gms.Maps.Model.Polyline> ();
+		List<Directions> directions = new List<Directions> ();
+
 		Android.Gms.Maps.Model.Polyline shuttleBusPolyline;
+
 		PolylineOptions polylineOptions;
 
 		ShuttleBusPolyline shuttleBusPolylinePoints = ShuttleBusPolyline.getInstance;
@@ -126,7 +136,7 @@ namespace CocoMapsAndroid
 				androidMapView = (MapView)Control;
 
 				var loaderViewModel = LoaderViewModel.getInstance;
-
+				androidMapView.Map.UiSettings.SetAllGesturesEnabled (true);
 
 				// Initializing Start and End Markers, and directions' Polyline
 				using (MarkerOptions mo = new MarkerOptions ()) {
@@ -146,90 +156,114 @@ namespace CocoMapsAndroid
 
 				androidMapView.Map.MapClick += (senderr, ee) => detailsLayout.Hide ();
 
-				androidMapView.Map.MapLongClick += async (senderr, ee) => {
+				DirectionsViewModel directionsViewModel = DirectionsViewModel.getInstance;
+				directionsViewModel.StartButton.Clicked += async (startButtonSender, startButtonEvent) => {
 
 					if (App.isConnected ()) {
+						Building _originBuilding;
+						Building _destinationBuilding;
 
+						// If both Start and End are specified, and they are not the same
+						if (directionsViewModel.Start != null && directionsViewModel.End != null
+						    && !directionsViewModel.Start.Equals (directionsViewModel.End)) {
 
-						Building building = GoogleUtil.PointInBuilding (ee.Point.Latitude, ee.Point.Longitude);
-						if (building != null) {
+							_originBuilding = buildingRepo.GetBuildingByCode (directionsViewModel.Start);
+							_destinationBuilding = buildingRepo.GetBuildingByCode (directionsViewModel.End);
 
-							// For displaying the pins just above the building's code pin
-							double pinOffsetY = 0.0001;
-							Directions directions = null;
+							// If buildings are within the same campus and chosen TravelMode was shuttle bus,
+							// switch it to TravelMode.walking
+							if (_originBuilding.Campus.Equals (_destinationBuilding.Campus)) {
 
-							if (_from.Latitude == 0 && _from.Longitude == 0) {
-							
-								// resetting previous polyline
-								if (polyline != null) {
-									polyline.Points.Clear ();
-									polyline.Remove ();
-									polylineOptions.Points.Clear ();
-									MarkerDirections.Clear ();
-									_endPin.Position = new LatLng (0, 0);
-									if (shuttleBusPolyline != null)
-										shuttleBusPolyline.Visible = false;
-								}
-
-								_from = building.Position;
-
-								// defining the origin pin
-								_startPin.Title = building.Code;
-								_startPin.Snippet = building.Address;
-								_startPin.Position = new LatLng (building.Position.Latitude + pinOffsetY, building.Position.Longitude);
-
-								// linking _startPin to path
-								polylineOptions.Add (new LatLng (building.Position.Latitude, building.Position.Longitude));
-
-								MarkerDirections.Add (_startPin.Id, directions);
-
-							} else {
+								// If buildings are within the same campus, set CampusDirection to the right campus
+								if (directionsViewModel.TravelMode == TravelMode.shuttle)
+									directionsViewModel.TravelMode = TravelMode.walking;
 								
-								_to = building.Position;
-								MarkerDirections.Clear ();
-								// defining the destination pin
-								_endPin.Title = building.Code;
-								_endPin.Snippet = building.Address;
-								_endPin.Position = new LatLng (building.Position.Latitude + pinOffsetY, building.Position.Longitude);
+								if (_originBuilding.Campus.Equals ("SGW"))
+									campusDirection = CampusDirection.WithinSGW;
+								else
+									campusDirection = CampusDirection.withinLOY;
+							} else {
+								if (_originBuilding.Campus.Equals ("SGW") && _destinationBuilding.Campus.Equals ("LOY"))
+									campusDirection = CampusDirection.FromSGWtoLOY;
+								else if (_originBuilding.Campus.Equals ("LOY") && _destinationBuilding.Campus.Equals ("SGW"))
+									campusDirection = CampusDirection.FromLOYtoSGW;
 
-								loaderViewModel.Show ();
-
-								RequestDirections directionsRequest = RequestDirections.getInstance;
-								directions = await directionsRequest.getDirections (_from, _to, TravelMode.walking);
-
-								if (directions.status.Equals ("OK")) {
-
-									foreach (Route route in directions.routes) {
-
-										detailsLayout.UpdateView (directions);
-
-										route.overview_polyline.decodedPoints = GoogleUtil.Decode (route.overview_polyline.points);
-
-										foreach (Position point in route.overview_polyline.decodedPoints)
-											polylineOptions.Add (new LatLng (point.Latitude, point.Longitude));
-
-										// linking path to _endPin pin
-										polylineOptions.Add (new LatLng (building.Position.Latitude, building.Position.Longitude));
-
-										polyline = androidMapView.Map.AddPolyline (polylineOptions);
-
-										MarkerDirections.Add (_startPin.Id, directions);
-										MarkerDirections.Add (_endPin.Id, directions);
-
-									}
-
-								}
-
-								loaderViewModel.Hide ();
-
-								_from = new Position (0, 0);
-								_to = new Position (0, 0);
 
 							}
+							
+							// resetting previous polyline
+							if (polylines != null && polylines.Count > 0) {
+								foreach (Android.Gms.Maps.Model.Polyline p in polylines) {
+									p.Points.Clear ();
+									p.Remove ();
+									Console.WriteLine ("Removed Polyline");
+								}
+								polylineOptions.Points.Clear ();
+								MarkerDirections.Clear ();
+								_endPin.Position = new LatLng (0, 0);
+								if (shuttleBusPolyline != null)
+									shuttleBusPolyline.Visible = false;
+							}
+
+							// For displaying the pins just above the building's code pin
+							double pinOffsetY = 0.00015;
+
+							// defining the origin pin
+							_startPin.Title = _originBuilding.Code;
+							_startPin.Snippet = _originBuilding.Address;
+							_startPin.Position = new LatLng (_originBuilding.Position.Latitude + pinOffsetY, _originBuilding.Position.Longitude);
+
+							// linking _startPin to path
+							//polylineOptions.Add (new LatLng (_originBuilding.Position.Latitude, _originBuilding.Position.Longitude));
+
+							// defining the destination pin
+							_endPin.Title = _destinationBuilding.Code;
+							_endPin.Snippet = _destinationBuilding.Address;
+							_endPin.Position = new LatLng (_destinationBuilding.Position.Latitude + pinOffsetY, _destinationBuilding.Position.Longitude);
+//
+//							RequestDirections directionsRequest = RequestDirections.getInstance;
+//							directions = await directionsRequest.getDirections (_originBuilding.Position, _destinationBuilding.Position, TravelMode.walking);
+
+//							if (directions.status.Equals ("OK")) {
+//
+//								foreach (Route route in directions.routes) {
+//
+//									detailsLayout.UpdateView (directions);
+//
+//									route.overview_polyline.decodedPoints = GoogleUtil.Decode (route.overview_polyline.points);
+//
+//									foreach (Position point in route.overview_polyline.decodedPoints)
+//										polylineOptions.Add (new LatLng (point.Latitude, point.Longitude));
+//
+//									// linking path to _endPin pin
+//									polylineOptions.Add (new LatLng (_destinationBuilding.Position.Latitude, _destinationBuilding.Position.Longitude));
+//
+//									polyline = androidMapView.Map.AddPolyline (polylineOptions);
+//
+//									MarkerDirections.Add (_startPin.Id, directions);
+//									MarkerDirections.Add (_endPin.Id, directions);
+//
+//								}
+//							}
+
+							await GetDirectionsPolyline (_originBuilding.Position, _destinationBuilding.Position, directionsViewModel.TravelMode);
+
+							if (directions.Count > 0)
+								DrawPolyline ();
+
+							if (directionsViewModel.TravelMode == TravelMode.shuttle) {
+								DrawShuttlePolyline ();
+								shuttleBusPolyline.Visible = true;
+							}
+
 
 						}
+
+						directionsViewModel.Hide ();
 					}
+
 				};
+
 
 				base.OnElementPropertyChanged (sender, e);
 
@@ -242,9 +276,6 @@ namespace CocoMapsAndroid
 				androidMapView.Map.UiSettings.CompassEnabled = false;
 				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
 				androidMapView.Map.UiSettings.ZoomControlsEnabled = true;
-
-//				androidMapView.Map.MapClick += (senderr, ee) => detailsLayout.Hide ();
-
 
 				Marker marker;
 				// Adding all Buildings' Icons and Buildings' Polygons
@@ -280,11 +311,11 @@ namespace CocoMapsAndroid
 
 				NextClassButton.PropertyChanged += async (send, ev) => {
 
-					NextClassFunc NCF = new NextClassFunc();
+					NextClassFunc NCF = new NextClassFunc ();
 
-					CalendarItems CI = NCF.getNextClassItem();
+					CalendarItems CI = NCF.getNextClassItem ();
 
-					string ClassDestination = NCF.getClassLocation(CI.Room);
+					string ClassDestination = NCF.getClassLocation (CI.Room);
 
 					string start = "1515 St. Catherine W.";
 
@@ -292,7 +323,7 @@ namespace CocoMapsAndroid
 
 					Directions directions = await directionsRequest.getDirections (start, ClassDestination, TravelMode.walking);
 
-					getDirectionsToClass(directions);
+					getDirectionsToClass (directions);
 
 				}; 
 
@@ -386,9 +417,10 @@ namespace CocoMapsAndroid
 			marker.SetTitle ("SGW Shuttle Bus");
 			marker.SetSnippet ("Next Departures: " + nextDeparturesString);
 			marker.SetPosition (
-				new LatLng (shuttleBusPolylinePoints.ShuttleBusPoints [0].Latitude, 
-					shuttleBusPolylinePoints.ShuttleBusPoints [0].Longitude)
+				new LatLng (ShuttleBusPolyline.SGWShuttleBusPosition.Latitude, 
+					ShuttleBusPolyline.SGWShuttleBusPosition.Longitude)
 			);
+
 			marker.InvokeIcon (
 				BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_shuttle)
 			);
@@ -405,15 +437,13 @@ namespace CocoMapsAndroid
 				foreach (String departure in nextDepartures)
 					nextDeparturesString += departure + "  ";
 			
-			// LOY Shuttle Bus Marker
-			int lastPoint = shuttleBusPolylinePoints.ShuttleBusPoints.Count;
-
 			marker.SetTitle ("LOY Shuttle Bus");
 			marker.SetSnippet ("Next Departures: " + nextDeparturesString);
 			marker.SetPosition (
-				new LatLng (shuttleBusPolylinePoints.ShuttleBusPoints [lastPoint - 1].Latitude, 
-					shuttleBusPolylinePoints.ShuttleBusPoints [lastPoint - 1].Longitude)
+				new LatLng (ShuttleBusPolyline.LOYShuttleBusPosition.Latitude, 
+					ShuttleBusPolyline.LOYShuttleBusPosition.Longitude)
 			);
+
 			marker.InvokeIcon (
 				BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_shuttle)
 			);
@@ -438,6 +468,67 @@ namespace CocoMapsAndroid
 			} else
 				shuttleBusPolyline.Visible = true;
 		}
+
+		// Allows us to draw 2 separated polylines at once, if needed
+		// Using Object = null, because Position can't be initialized to null
+		async Task GetDirectionsPolyline (Position _start, Position _end, TravelMode mode)
+		{
+
+
+			if (mode == TravelMode.shuttle) {
+
+				if (campusDirection == CampusDirection.FromSGWtoLOY) {
+					await GetDirectionsPolyline (_start, ShuttleBusPolyline.SGWShuttleBusPosition, TravelMode.walking);
+					await GetDirectionsPolyline (ShuttleBusPolyline.LOYShuttleBusPosition, _end, TravelMode.walking);
+				} else if (campusDirection == CampusDirection.FromLOYtoSGW) {
+					await GetDirectionsPolyline (_start, ShuttleBusPolyline.LOYShuttleBusPosition, TravelMode.walking);
+					await GetDirectionsPolyline (ShuttleBusPolyline.SGWShuttleBusPosition, _end, TravelMode.walking);
+					
+				}
+
+			} else {
+				
+				LoaderViewModel loaderViewModel = LoaderViewModel.getInstance;
+				loaderViewModel.Show ();
+
+				directions.Add (await RequestDirections.getInstance.getDirections (_start, _end, mode));
+
+				loaderViewModel.Hide ();
+
+			}
+
+		}
+
+		void DrawPolyline ()
+		{
+			Console.WriteLine ("SUMMARY: " + directions [0].routes [0].summary);
+
+			foreach (Directions direction in directions) {
+				
+				Console.WriteLine ("Direction Status: " + direction.status);
+
+				if (direction.status.Equals ("OK")) {
+					
+					foreach (Route route in direction.routes) {
+
+						Console.WriteLine ("Direction Route: " + route.summary);
+
+						route.overview_polyline.decodedPoints = GoogleUtil.Decode (route.overview_polyline.points);
+
+						polylineOptions.Points.Clear ();
+						foreach (Position point in route.overview_polyline.decodedPoints)
+							polylineOptions.Add (new LatLng (point.Latitude, point.Longitude));
+
+						polylines.Add (androidMapView.Map.AddPolyline (polylineOptions));
+
+					}
+				}
+
+			}
+
+		}
+
+
 
 	}
 

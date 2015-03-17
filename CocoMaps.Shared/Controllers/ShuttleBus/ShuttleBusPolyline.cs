@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Xamarin.Forms.Maps;
+using Xamarin.Forms;
 
 namespace CocoMaps.Shared
 {
@@ -7,6 +8,9 @@ namespace CocoMaps.Shared
 	{
 
 		static ShuttleBusPolyline shuttleBusPolyline;
+
+		public static Position SGWShuttleBusPosition = new Position (45.49712, -73.5784);
+		public static Position LOYShuttleBusPosition = new Position (45.45834, -73.63826);
 
 		public static ShuttleBusPolyline getInstance {
 			get {
