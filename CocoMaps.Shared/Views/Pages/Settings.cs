@@ -14,11 +14,11 @@ namespace CocoMaps.Shared
 
 		static public bool useDeviceMap;
 
-		static public int poiRadius = 1000;
+		//static public int poiRadius = 1000;
 
 		// Google's API Radius Limit is 50,000 meters
 		// We restrict our app to 5,000 meters
-		const int POI_RADIUS_LIMIT = 5000;
+		//const int POI_RADIUS_LIMIT = 5000;
 
 		public Settings (IMenuOptions menuItem)
 		{
@@ -35,7 +35,7 @@ namespace CocoMaps.Shared
 			};
 
 			var eventNotificationCell = new SwitchCell {
-				Text = "Even Notifications"
+				Text = "Event Notifications"
 			};
 
 			useGoogleMapsCell.OnChanged += (sender, e) => {
@@ -45,7 +45,7 @@ namespace CocoMaps.Shared
 			};
 
 
-			var poiRadiusCell = new EntryCell {
+			/*var poiRadiusCell = new EntryCell {
 				Label = "Points of Interest Radius:",
 				Placeholder = "meters",
 				Text = poiRadius.ToString (),
@@ -64,7 +64,7 @@ namespace CocoMaps.Shared
 				}
 				poiRadiusCell.Text = poiRadius.ToString ();
 				Console.WriteLine ("Points of Interest Radius: " + poiRadius);
-			};
+			};*/
 
 
 			Content = new TableView {
@@ -75,7 +75,7 @@ namespace CocoMaps.Shared
 
 						eventNotificationCell,
 
-						poiRadiusCell
+
 					}
 				}
 			};
