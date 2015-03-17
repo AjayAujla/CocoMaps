@@ -4,8 +4,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;
 using CocoMaps.Shared;
-using CocoMaps.Shared.CustomViews;
-using Java.Net;
 
 namespace CocoMaps.Shared.Pages
 {

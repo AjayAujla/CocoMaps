@@ -14,16 +14,10 @@ namespace CocoMaps.Shared
 
 		public RequestWeather ()
 		{
-
 		}
 
 		private async Task<JsonValue> FetchWeatherAsync (string uri)
 		{
-
-
-			// Fetch the weather information asynchronously, 
-			//JsonValue json = await FetchWeatherAsync (uri);
-
 			// Create an HTTP web request using the URI:
 			HttpWebRequest request = (HttpWebRequest)HttpWebRequest.Create (new Uri (uri));
 			request.ContentType = "application/json";
@@ -50,7 +44,6 @@ namespace CocoMaps.Shared
 
 			JsonValue weatherInformation = json ["main"];
 			double temperature = weatherInformation ["temp"];
-
 
 			Image weatherConditionIcon = new Image {
 				Source = ImageSource.FromFile ("WeatherMap\\WeatherIcons\\Sunny.png"/*conditionIconPath*/),
