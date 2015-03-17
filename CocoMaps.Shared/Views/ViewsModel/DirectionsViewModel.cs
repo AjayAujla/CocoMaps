@@ -134,8 +134,8 @@ namespace CocoMaps.Shared
 		{
 			
 			foreach (Building building in buildingRepo.BuildingList.Values) {
-				FromPicker.Items.Add (building.Code);
-				ToPicker.Items.Add (building.Code);
+				FromPicker.Items.Add (building.Campus + " - " + building.Code);
+				ToPicker.Items.Add (building.Campus + " - " + building.Code);
 			}
 
 			FromPicker.Title = "Search from here ...";
