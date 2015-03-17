@@ -108,6 +108,13 @@ namespace CocoMaps.Shared
 			WidthRequest = 100
 		};
 
+		Button TestWeatherButton = new Button {
+			Text = "Weather",
+			TextColor = Helpers.Color.Maroon.ToFormsColor (),
+			BackgroundColor = Color.Transparent,
+			WidthRequest = 100,
+		};
+
 		void Init ()
 		{
 
@@ -119,8 +126,8 @@ namespace CocoMaps.Shared
 				ToPicker.Items.Add (building.Code);
 			}
 
-			FromPicker.Title = "search from here...";
-			ToPicker.Title = "...all the way there!";
+			FromPicker.Title = "Search from here ...";
+			ToPicker.Title = "... All the way there!";
 			TravelMode = TravelMode.walking;
 
 			instance.Children.Add (FromPicker,
@@ -135,11 +142,11 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToParent (parent => Width - 68 * 2),
 				null
 			);
-
 			instance.Children.Add (DirectionsIcon,
 				Constraint.Constant (12),
 				Constraint.Constant (17)
 			);
+
 			instance.Children.Add (SwapIcon,
 				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.X + sibling.Width),
 				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.Height - sibling.Height / 2)
@@ -171,6 +178,10 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.X),
 				Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y)
 			);
+			instance.Children.Add (TestWeatherButton,
+				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.X + 100),
+				Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y)
+			);
 
 			instance.Padding = 10;
 
@@ -185,6 +196,7 @@ namespace CocoMaps.Shared
 
 			SwapIcon.Clicked += (sender, e) => SwapFromToValues ();
 			CancelButton.Clicked += (sender, e) => Hide ();
+			TestWeatherButton.Clicked += async (sender, e) => AddWeatherInfo ();
 
 			TravelWalkingModeButton.Clicked += HandleTravelModeButtons;
 			TravelShuttleModeButton.Clicked += HandleTravelModeButtons;
@@ -251,6 +263,15 @@ namespace CocoMaps.Shared
 			}
 		}
 
-	}
+		public async void AddWeatherInfo ()
+		{
+			RequestWeather weather = new RequestWeather ();
+			Image image = await weather.FetchWeatherAndParse ("LOY");
 
+			instance.Children.Add (image,
+				Constraint.Constant (12),
+				Constraint.Constant (17)
+			);
+		}
+	}
 }
