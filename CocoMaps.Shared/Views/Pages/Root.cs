@@ -11,10 +11,11 @@ namespace CocoMaps.Shared
 		// Initialize Pages
 		MasterPage pMaster;
 		ConcordiaServices pServices;
-		NextClass pNextClass;
+		//NextClass pNextClass;
 		BaseCalendar pCalendar;
 		BaseShuttleBus pShuttleBus;
 		Settings pSettings;
+		//Bookmark pBookmark;
 
 		public RootPage ()
 		{
@@ -70,10 +71,10 @@ namespace CocoMaps.Shared
 					pServices = new ConcordiaServices (menuOption);
 				}
 				return pServices;
-			case 5:
+			/*case 5:
 				// To Refresh Page After Calendar Authenticated
 				pNextClass = new NextClass (menuOption, pCalendar);
-				return pNextClass;
+				return pNextClass;*/
 			case 8:
 				if ((pCalendar == null)) {
 					pCalendar = new BaseCalendar (menuOption);
@@ -94,6 +95,11 @@ namespace CocoMaps.Shared
 					pSettings = new Settings (menuOption);
 				}
 				return pSettings;
+			/*case 12:
+				if ((pBookmark == null)) {
+					pBookmark = new Bookmark (menuOption);
+					}
+					return pBookmark;*/
 			default:
 				if ((pMaster == null)) {
 					pMaster = new MasterPage (menuOption);
