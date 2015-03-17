@@ -226,7 +226,7 @@ namespace CocoMaps.Shared
 
 			mainLayout.Children.Add (directionsViewModel,
 				Constraint.Constant (0),
-				Constraint.Constant (0),
+				Constraint.RelativeToParent (parent => -Height),
 				Constraint.RelativeToParent (parent => Width),
 				null);
 			

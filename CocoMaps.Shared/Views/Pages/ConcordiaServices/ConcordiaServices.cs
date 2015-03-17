@@ -1,158 +1,82 @@
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;
 using CocoMaps.Shared;
-
-//using Android.Net;
+using CocoMaps.Shared.CustomViews;
 
 namespace CocoMaps.Shared.Pages
 {
 	public class ConcordiaServices : ContentPage
 	{
+
+		// Refactoring inspired by: http://www.trsneed.com/using-xamarin-forms-to-create-a-sortable-list-view/
+
 		SearchBar searchBar;
-		Label resultsLabel;
-		Label serviceLabel;
-		Label indoorAddressLabel;
-		Button directionsButton;
-		Button toServiceWebsiteButton;
+		readonly List<Service> AllServices = new List<Service> ();
+		ObservableCollection<Service> _services = new ObservableCollection<Service> ();
+
+		public ObservableCollection<Service> Services {
+			get { return _services; }
+			set {
+				_services = value;
+				OnPropertyChanged ("Servicess");
+			}
+		}
 
 		public ConcordiaServices (IMenuOptions menuItem)
 		{
-			this.SetValue (Page.TitleProperty, menuItem.Title);
-			this.SetValue (Page.IconProperty, menuItem.Icon);
+			SetValue (Page.TitleProperty, menuItem.Title);
+			SetValue (Page.IconProperty, menuItem.Icon);
+
+			BuildingRepository buildingRepo = BuildingRepository.getInstance;
+
+			// Populating the whole service list
+			foreach (Building building in buildingRepo.BuildingList.Values)
+				if (building.Services != null && building.Services.Count > 0)
+					foreach (Service service in building.Services.OrderBy(s=>s.Name))
+						Services.Add (service);
+			AllServices = Services.ToList ();
 
 
 			// Search bar
-			this.searchBar = new SearchBar {
-				Placeholder = "Search for a Concordia Service",
+			searchBar = new SearchBar {
+				Placeholder = "Search for a Concordia Service..."
 			};
-			//this.searchBar.SearchButtonPressed += HandleSearchButtonPressed;
-			this.searchBar.TextChanged += HandleTextChanged;
-			//this.searchBar.Unfocused += HandleUnfocused;
+			searchBar.TextChanged += (sender, e) => FilterServices (searchBar.Text);
 
-			// Service information labels
-			this.resultsLabel = new Label ();
-			this.serviceLabel = new Label {
-				FontAttributes = FontAttributes.Bold,
+			// TO-DO: Use a custom ViewCell to display icons for Directions and for Visit Website, if any,
+			// As well as support binding of Details under the text
+			ListView servicesListView = new ListView ();
+			servicesListView.ItemsSource = Services;
+			var cell = new DataTemplate (typeof(TextCell));
+
+			// Binding the cell's "Text" property with its Service "Name" property
+			cell.SetBinding (TextCell.TextProperty, "Name");
+			servicesListView.ItemTemplate = cell;
+
+			servicesListView.ItemTapped += async (sender, e) => {
+				((ListView)sender).SelectedItem = null; // de-select the row
 			};
-			this.indoorAddressLabel = new Label ();
 
-
-			// Buttons
-			this.directionsButton = new Button {
-				Text = "Directions",
-				BorderWidth = 0,
-				WidthRequest = 50,
-				//HorizontalOptions = LayoutOptions.Start,
-			};
-			this.directionsButton.Clicked += HandleDirectionsClicked;
-
-			this.toServiceWebsiteButton = new Button {
-				Text = "Website",
-				BorderWidth = 0,
-				WidthRequest = 50,
-				//HorizontalOptions = LayoutOptions.End,
-			};
-			this.toServiceWebsiteButton.Clicked += HandleServiceWebsiteClicked;
-
-
-			// Building the interface
-			this.Padding = new Thickness (10, Device.OnPlatform (20, 20, 0), 10, 5);
-
-			this.Content = new StackLayout { 
+			Content = new StackLayout {
 				Children = {
-					this.searchBar, 
-					new ScrollView { Content = this.resultsLabel,
+					searchBar, 
+					new ScrollView { Content = servicesListView,
 						VerticalOptions = LayoutOptions.FillAndExpand,
 					},
 				}
 			};
+
 		}
 
-		/**
-		 * Extracts query from search box
-		 * Searches against Concordia Services
-		 * Returns a list of matches, if any.
-		 */
-		void SearchQuery (object sender, EventArgs e)
+		public void FilterServices (string text)
 		{
-			SearchBar searchBar = (SearchBar)sender;
-			string searchText = searchBar.Text;
-
-			var resultsList = new List<Service> ();
-			this.resultsLabel.Text = "";
-			this.serviceLabel.Text = "";
-			this.indoorAddressLabel.Text = "";
-
-
-			/******************************************************
-			BuildingRepository code is simply for testing purposes.
-			******************************************************/
-			BuildingRepository buildingRepo = BuildingRepository.getInstance;
-
-
-			// Check for a matching query to the search criteria
-			//foreach (Campus campus in campuses) {
-			foreach (Building building in buildingRepo.BuildingList.Values) {
-				if (building.Services != null) {
-					foreach (Service service in building.Services) {
-						if (!resultsList.Contains (service) && service.Name.IndexOf (searchText, StringComparison.OrdinalIgnoreCase) >= 0) {
-							resultsList.Add (service);
-						}
-					}
-				}
-			}
-			//}
-
-
-			// Displaying the results, if any
-			if (resultsList.Count == 0) {
-				this.resultsLabel.Text = String.Format ("\"" + searchText + "\" was not found at Concordia University.");
-			} else {
-				foreach (Service service in resultsList) {
-					this.resultsLabel.Text += String.Format (service.Name + "\n");
-					this.resultsLabel.Text += String.Format (service.RoomNumber + "\n");
-					if(service.URI != null)
-						this.resultsLabel.Text += String.Format (service.URI);
-
-					if (service != resultsList.Last ()) {
-						this.resultsLabel.Text += "\n\n";
-					}
-				}
-			}
+			Services.Clear ();
+			AllServices.Where (s => s.Name.ToLower ().Contains (text.ToLower ())).ToList ().ForEach (Services.Add);
 		}
 
-
-		void HandleSearchButtonPressed (object sender, EventArgs e)
-		{
-			SearchQuery (sender, e);
-		}
-
-		void HandleTextChanged (object sender, TextChangedEventArgs e)
-		{
-			SearchQuery (sender, e);
-		}
-
-		void HandleUnfocused (object sender, FocusEventArgs e)
-		{
-			SearchQuery (sender, e);
-		}
-
-		void HandleDirectionsClicked (object sender, EventArgs e)
-		{
-
-		}
-
-		void HandleServiceWebsiteClicked (object sender, EventArgs e)
-		{
-			// Supposedly only works for Android. 
-			Device.OpenUri (new Uri ("https://www.xamarin.com"));
-		}
-
-		void PopulateResultsInList (ref List<Building> resultsList)
-		{
-
-		}
 	}
+
 }

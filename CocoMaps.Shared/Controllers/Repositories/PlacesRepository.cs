@@ -3,6 +3,7 @@ using CocoMaps.Shared;
 using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Android.Gms.Maps.Model;
 
 namespace CocoMaps.Shared
 {
@@ -78,6 +79,11 @@ namespace CocoMaps.Shared
 								_next_page_token = places.next_page_token;
 							
 						}
+						// TO-DO:  As per Google's API, we must wait some time (~1sec) for the next_page_token
+						// to become active, else we might receive an INVALID_REQUEST response.
+						// Solution: Make it wait for 1 sec before looping again?
+						// Store every POIs offline in a JSON file? And let user update results
+						// from settings page when he wants to
 					} while(places.next_page_token != null);
 				}
 			}

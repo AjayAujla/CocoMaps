@@ -134,7 +134,7 @@ namespace CocoMapsAndroid
 				androidMapView = (MapView)Control;
 
 				var loaderViewModel = LoaderViewModel.getInstance;
-
+				androidMapView.Map.UiSettings.SetAllGesturesEnabled (true);
 
 				// Initializing Start and End Markers, and directions' Polyline
 				using (MarkerOptions mo = new MarkerOptions ()) {
@@ -186,13 +186,8 @@ namespace CocoMapsAndroid
 								else if (_originBuilding.Campus.Equals ("LOY") && _destinationBuilding.Campus.Equals ("SGW"))
 									campusDirection = CampusDirection.FromLOYtoSGW;
 
-								if (directionsViewModel.TravelMode == TravelMode.shuttle) {
-									DrawShuttlePolyline ();
-									shuttleBusPolyline.Visible = true;
-								}
+
 							}
-
-
 							
 							// resetting previous polyline
 							if (polyline != null) {
@@ -221,8 +216,6 @@ namespace CocoMapsAndroid
 							_endPin.Title = _destinationBuilding.Code;
 							_endPin.Snippet = _destinationBuilding.Address;
 							_endPin.Position = new LatLng (_destinationBuilding.Position.Latitude + pinOffsetY, _destinationBuilding.Position.Longitude);
-
-							loaderViewModel.Show ();
 //
 //							RequestDirections directionsRequest = RequestDirections.getInstance;
 //							directions = await directionsRequest.getDirections (_originBuilding.Position, _destinationBuilding.Position, TravelMode.walking);
@@ -251,9 +244,10 @@ namespace CocoMapsAndroid
 
 							DrawDirectionsPolyline (_originBuilding.Position, _destinationBuilding.Position, directionsViewModel.TravelMode);
 
-
-							directionsViewModel.Hide ();
-							loaderViewModel.Hide ();
+							if (directionsViewModel.TravelMode == TravelMode.shuttle) {
+								DrawShuttlePolyline ();
+								shuttleBusPolyline.Visible = true;
+							}
 
 
 						}
@@ -359,9 +353,6 @@ namespace CocoMapsAndroid
 				androidMapView.Map.UiSettings.CompassEnabled = false;
 				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
 				androidMapView.Map.UiSettings.ZoomControlsEnabled = true;
-
-//				androidMapView.Map.MapClick += (senderr, ee) => detailsLayout.Hide ();
-
 
 				Marker marker;
 				// Adding all Buildings' Icons and Buildings' Polygons
@@ -503,11 +494,9 @@ namespace CocoMapsAndroid
 			marker.SetTitle ("SGW Shuttle Bus");
 			marker.SetSnippet ("Next Departures: " + nextDeparturesString);
 			marker.SetPosition (
-				new LatLng (shuttleBusPolylinePoints.ShuttleBusPoints [0].Latitude, 
-					shuttleBusPolylinePoints.ShuttleBusPoints [0].Longitude)
+				new LatLng (ShuttleBusPolyline.SGWShuttleBusPosition.Latitude, 
+					ShuttleBusPolyline.SGWShuttleBusPosition.Longitude)
 			);
-			Console.WriteLine ("SGWS: " + shuttleBusPolylinePoints.ShuttleBusPoints [0].Latitude + " " +
-			shuttleBusPolylinePoints.ShuttleBusPoints [0].Longitude);
 
 			marker.InvokeIcon (
 				BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_shuttle)
@@ -525,17 +514,13 @@ namespace CocoMapsAndroid
 				foreach (String departure in nextDepartures)
 					nextDeparturesString += departure + "  ";
 			
-			// LOY Shuttle Bus Marker
-			int lastPoint = shuttleBusPolylinePoints.ShuttleBusPoints.Count;
-
 			marker.SetTitle ("LOY Shuttle Bus");
 			marker.SetSnippet ("Next Departures: " + nextDeparturesString);
 			marker.SetPosition (
-				new LatLng (shuttleBusPolylinePoints.ShuttleBusPoints [lastPoint - 1].Latitude, 
-					shuttleBusPolylinePoints.ShuttleBusPoints [lastPoint - 1].Longitude)
+				new LatLng (ShuttleBusPolyline.LOYShuttleBusPosition.Latitude, 
+					ShuttleBusPolyline.LOYShuttleBusPosition.Longitude)
 			);
-			Console.WriteLine ("SGWS: " + shuttleBusPolylinePoints.ShuttleBusPoints [lastPoint - 1].Latitude + " " +
-			shuttleBusPolylinePoints.ShuttleBusPoints [lastPoint - 1].Longitude);
+
 			marker.InvokeIcon (
 				BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_shuttle)
 			);
@@ -565,54 +550,30 @@ namespace CocoMapsAndroid
 		// Using Object = null, because Position can't be initialized to null
 		async Task<Directions> DrawDirectionsPolyline (Position _start, Position _end, TravelMode mode)
 		{
-			if (campusDirection != null)
-				Console.WriteLine (campusDirection);
-			Console.WriteLine (DirectionsViewModel.getInstance.TravelMode);
 
-//			// resetting previous polylines
-//			if (polyline != null) {
-//				polyline.Points.Clear ();
-//				polyline.Remove ();
-//				if (polyline2 != null) {
-//					polyline2.Points.Clear ();
-//					polyline2.Remove ();
-//				}
-//				polylineOptions.Points.Clear ();
-//				MarkerDirections.Clear ();
-//				_endPin.Position = new LatLng (0, 0);
-//				if (shuttleBusPolyline != null)
-//					shuttleBusPolyline.Visible = false;
-//			}
+			Directions directions = new Directions ();
 
-			Directions directions;
+			if (mode == TravelMode.shuttle) {
 
-			if (mode != TravelMode.shuttle) {
-
-				directions = await RequestDirections.getInstance.getDirections (_start, _end, mode);
-
-			} else {
-
-				if (campusDirection == CampusDirection.FromSGWtoLOY
-				    && DirectionsViewModel.getInstance.TravelMode == TravelMode.shuttle) {
+				if (campusDirection == CampusDirection.FromSGWtoLOY) {
 					directions = await DrawDirectionsPolyline (_start, ShuttleBusPolyline.SGWShuttleBusPosition, TravelMode.walking);
 					directions = await DrawDirectionsPolyline (ShuttleBusPolyline.LOYShuttleBusPosition, _end, TravelMode.walking);
-				} else if (campusDirection == CampusDirection.FromLOYtoSGW
-				           && DirectionsViewModel.getInstance.TravelMode == TravelMode.shuttle) {
+				} else if (campusDirection == CampusDirection.FromLOYtoSGW) {
 					directions = await DrawDirectionsPolyline (_start, ShuttleBusPolyline.LOYShuttleBusPosition, TravelMode.walking);
 					directions = await DrawDirectionsPolyline (ShuttleBusPolyline.SGWShuttleBusPosition, _end, TravelMode.walking);
 					
-				} else
-					directions = null;
-				// Shuttle bus travel time is approximately 20 minutes
-				//directions.routes [0].legs [0].duration.value += 20;
+				}
 
-
-				//directions = 
-
+			} else {
+				LoaderViewModel loaderViewModel = LoaderViewModel.getInstance;
+				loaderViewModel.Show ();
+				directions = await RequestDirections.getInstance.getDirections (_start, _end, mode);
+				loaderViewModel.Hide ();
 			}
+			
 
 
-			if (directions != null && directions.status.Equals ("OK")) {
+			if (directions.status.Equals ("OK")) {
 
 				foreach (Route route in directions.routes) {
 
@@ -624,7 +585,6 @@ namespace CocoMapsAndroid
 						polylineOptions.Add (new LatLng (point.Latitude, point.Longitude));
 
 					polyline = androidMapView.Map.AddPolyline (polylineOptions);
-
 
 				}
 			}

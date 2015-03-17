@@ -330,23 +330,23 @@ namespace CocoMaps.Shared
 			int buildingIndex = BuildingRepository.getInstance.GetBuildingIndex (building);
 
 			directionsButton.Clicked += (sender, e) => {
-				instance.Minimize ();
 
 				// Open directions with Google Maps app
 				if (Settings.useDeviceMap) {
+					
 					DependencyService.Get<IPhoneService> ().LaunchMap (building.Address);
-				} else {
-					// Open directions within CocoMaps app
-					directionsViewModel.TravelShuttleModeButton.IsEnabled = true;
 
+				} else {
+					
+					// Open directions within CocoMaps app
 					if (directionsViewModel.FromPicker.SelectedIndex == -1)
 						directionsViewModel.FromPicker.SelectedIndex = buildingIndex;
 					else if (directionsViewModel.ToPicker.SelectedIndex == -1)
 						directionsViewModel.ToPicker.SelectedIndex = buildingIndex;
 					else
 						directionsViewModel.ToPicker.SelectedIndex = buildingIndex;
-
-
+					
+					instance.Minimize ();
 					directionsViewModel.Expand ();
 				}
 			};
