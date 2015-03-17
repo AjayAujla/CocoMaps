@@ -2514,7 +2514,7 @@ namespace CocoMaps.Shared
 			foreach (Building b in BuildingList.Values) {
 				if (b == building)
 					return counter;
-				counter++;
+				++counter;
 			}
 			return -1;
 		}

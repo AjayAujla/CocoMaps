@@ -103,6 +103,15 @@ namespace CocoMaps.Shared
 		public override int MenuNum { get { return 11; } }
 	}
 
+	public class ShuttleBusTracker_MenuOption : IMenuOptions
+	{
+		public override string Title { get { return "Shuttle Bus Tracker"; } }
+
+		public override string Icon { get { return "calendarIcon.png"; } }
+
+		public override int MenuNum { get { return 12; } }
+	}
+
 	public abstract class IMenuOptions
 	{
 		public virtual string Title { get { return Title; } }

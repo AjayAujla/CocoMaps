@@ -5,6 +5,7 @@ using System.Linq;
 using Xamarin.Forms;
 using CocoMaps.Shared;
 using CocoMaps.Shared.CustomViews;
+using Java.Net;
 
 namespace CocoMaps.Shared.Pages
 {
@@ -52,8 +53,13 @@ namespace CocoMaps.Shared.Pages
 			servicesListView.ItemsSource = Services;
 			var cell = new DataTemplate (typeof(TextCell));
 
-			// Binding the cell's "Text" property with its Service "Name" property
+			// Binding the cell's "Text" property with its Service "Name" property, etc
 			cell.SetBinding (TextCell.TextProperty, "Name");
+			cell.SetValue (TextCell.TextColorProperty, Helpers.Color.Navy.ToFormsColor ());
+			cell.SetBinding (TextCell.DetailProperty, "RoomNumber");
+			cell.SetValue (TextCell.DetailColorProperty, Color.Gray);
+			cell.SetBinding (TextCell.CommandParameterProperty, "URI");
+
 			servicesListView.ItemTemplate = cell;
 
 			servicesListView.ItemTapped += async (sender, e) => {

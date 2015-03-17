@@ -62,6 +62,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Calendar\CalendarListJsonClasses.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Calendar\CalendarJsonClasses.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\NextClass\NextClassFunc.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBusTracker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
