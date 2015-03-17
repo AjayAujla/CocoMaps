@@ -22,13 +22,11 @@ namespace CocoMaps.Shared
 
 		public Settings (IMenuOptions menuItem)
 		{
-
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
 
 			SetValue (Page.TitleProperty, "Settings");
 			SetValue (Page.IconProperty, menuItem.Icon);
-
 
 			var useGoogleMapsCell = new SwitchCell {
 				Text = "Use Google Maps App"
@@ -46,7 +44,7 @@ namespace CocoMaps.Shared
 
 
 			var poiRadiusCell = new EntryCell {
-				Label = "Points of Interest Radius:",
+				Label = "Points of Interest Radius in Meters:",
 				Placeholder = "meters",
 				Text = poiRadius.ToString (),
 				Keyboard = Keyboard.Numeric
@@ -63,25 +61,17 @@ namespace CocoMaps.Shared
 						DisplayAlert ("Heads Up!", "Maximum radius is " + POI_RADIUS_LIMIT + " meters", "OK");
 				}
 				poiRadiusCell.Text = poiRadius.ToString ();
-				Console.WriteLine ("Points of Interest Radius: " + poiRadius);
 			};
-
 
 			Content = new TableView {
 				Root = new TableRoot ("Settings") {
 					new TableSection ("Map Settings") {
-
 						useGoogleMapsCell,
-
 						eventNotificationCell,
-
 						poiRadiusCell
 					}
 				}
 			};
-
 		}
-
 	}
-
 }
