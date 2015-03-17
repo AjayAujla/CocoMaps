@@ -10,6 +10,8 @@ namespace CocoMaps.Shared
 {
 	public class RequestWeather
 	{
+		private string OPEN_WEATHER_MAP_API_KEY = "e29a8df99de1c58be0e4260575e6e25b";
+
 		public RequestWeather ()
 		{
 
@@ -77,7 +79,8 @@ namespace CocoMaps.Shared
 			             campusPosition.Latitude.ToString () +
 			             "&lon=" +
 			             campusPosition.Longitude.ToString () +
-			             "&units=metric";
+			             "&units=metric" +
+			             "&APIID" + OPEN_WEATHER_MAP_API_KEY;
 
 			JsonValue json = await FetchWeatherAsync (uri);
 			return Parse (json);
