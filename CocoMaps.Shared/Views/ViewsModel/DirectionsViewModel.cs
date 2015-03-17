@@ -208,7 +208,7 @@ namespace CocoMaps.Shared
 
 			SwapIcon.Clicked += (sender, e) => SwapFromToValues ();
 			CancelButton.Clicked += (sender, e) => Hide ();
-			TestWeatherButton.Clicked += async (sender, e) => AddWeatherInfo ();
+			//TestWeatherButton.Clicked += async (sender, e) => AddWeatherInfo ();
 
 			TravelWalkingModeButton.Clicked += HandleTravelModeButtons;
 			TravelShuttleModeButton.Clicked += HandleTravelModeButtons;
