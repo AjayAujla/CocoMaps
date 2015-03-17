@@ -1214,7 +1214,7 @@ namespace CocoMaps.Shared
 				},
 				Services = new List<Service> {
 					new Service {
-						Name = "raduate Students Association",
+						Name = "Graduate Students Association",
 						RoomNumber = "T",
 						URI = "http://gsaconcordia.ca"
 					}

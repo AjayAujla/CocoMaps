@@ -15,8 +15,6 @@ namespace CocoMaps.Shared
 
 		public MenuPage ()
 		{
-
-
 			//OptionItems.Add (new Location_MenuOption ());
 			OptionItems.Add (new Campus_MenuOption ());
 			//OptionItems.Add (new pInterest_MenuOption ());
@@ -75,7 +73,6 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToView (label, (parent, sibling) => sibling.Y + sibling.Height + 5),
 				Constraint.RelativeToParent (parent => Width), 
 				Constraint.RelativeToParent (parent => Height - label.Y - 100));
-
 
 			Content = layout;
 		}
