@@ -28,7 +28,8 @@ namespace CocoMaps.Shared
 					loader = new ActivityIndicator {
 						IsRunning = false,
 						WidthRequest = 50,
-						HeightRequest = 50
+						HeightRequest = 50,
+
 					};
 
 					loaderViewModel.Children.Add (loader,

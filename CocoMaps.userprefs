@@ -1,14 +1,17 @@
 ﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.CocoMaps" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Controllers\Weather\RequestWeather.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Views\Pages\Menu.cs">
     <Files>
-      <File FileName="CocoMaps.Shared\Controllers\Places\RequestPlaces.cs" Line="4" Column="4" />
+      <File FileName="CocoMaps.Shared\Controllers\Places\RequestPlaces.cs" Line="2" Column="2" />
       <File FileName="CocoMaps.Shared\Controllers\Repositories\PlacesRepository.cs" Line="1" Column="1" />
       <File FileName="CocoMaps.Android\Renderers\ConcordiaMapRenderer.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\Controllers\Weather\RequestWeather.cs" Line="4" Column="4" NotebookId="1" />
+      <File FileName="CocoMaps.Shared\Controllers\Weather\RequestWeather.cs" Line="3" Column="3" NotebookId="1" />
       <File FileName="CocoMaps.Shared\Models\Weather.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="CocoMaps.Shared\Views\ViewsModel\DirectionsViewModel.cs" Line="1" Column="1" NotebookId="1" />
       <File FileName="CocoMaps.Shared\Models\Campus.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="c:\Users\Ajayveer Singh Aujla\Desktop\cocomaps\CocoMaps.Shared\Views\Pages\Settings.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="CocoMaps.Shared\Views\ViewsModel\MenuItems.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Menu.cs" Line="1" Column="1" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

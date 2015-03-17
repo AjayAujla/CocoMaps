@@ -5,10 +5,10 @@ using Xamarin.Forms.Maps;
 
 namespace CocoMaps.Shared
 {
-	
+
 	public class BuildingRepository
 	{
-		
+
 		static BuildingRepository repository;
 		readonly List<Campus> CampusList = new List<Campus> ();
 
@@ -27,7 +27,7 @@ namespace CocoMaps.Shared
 
 		BuildingRepository ()
 		{
-			
+
 			Campus SGW = new Campus {
 				Code = "SGW",
 				Name = "Sir George Williams",
@@ -54,7 +54,7 @@ namespace CocoMaps.Shared
 			Building B = new Building {
 				Code = "B",
 				Name = "B",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2160 Bishop",
 				Position = new Position (45.4978008, -73.57955262),
 				HasAtm = false,
@@ -82,7 +82,7 @@ namespace CocoMaps.Shared
 			Building CB = new Building {
 				Code = "CB",
 				Name = "CB",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "1425 René Lévesque W.",
 				Position = new Position (45.49519498, -73.57429147),
 				HasAtm = false,
@@ -117,7 +117,7 @@ namespace CocoMaps.Shared
 			Building CI = new Building {
 				Code = "CI",
 				Name = "CI",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2149 Mackay",
 				Position = new Position (45.49744312, -73.57994959),
 				HasAtm = false,
@@ -144,7 +144,7 @@ namespace CocoMaps.Shared
 			Building CL = new Building {
 				Code = "CL",
 				Name = "CL",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "1665 St. Catherine W.",
 				Position = new Position (45.4942173, -73.57929111),
 				HasAtm = true,
@@ -176,7 +176,7 @@ namespace CocoMaps.Shared
 			Building D = new Building {
 				Code = "D",
 				Name = "D",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2140 Bishop",
 				Position = new Position (45.49773641, -73.57939035),
 				HasAtm = false,
@@ -203,7 +203,7 @@ namespace CocoMaps.Shared
 			Building EN = new Building {
 				Code = "EN",
 				Name = "EN",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2070 Mackay",
 				Position = new Position (45.49684385, -73.57963711),
 				HasAtm = false,
@@ -246,7 +246,7 @@ namespace CocoMaps.Shared
 			Building EV = new Building {
 				Code = "EV",
 				Name = "Computer Science, Engineering and Visual Arts Integrated Complex",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "1515 St. Catherine W.",
 				Position = new Position (45.49561989, -73.5783577),
 				HasAtm = true,
@@ -345,7 +345,7 @@ namespace CocoMaps.Shared
 			Building FA = new Building {
 				Code = "FA",
 				Name = "FA",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2060 Mackay",
 				Position = new Position (45.49679496, -73.57951775),
 				HasAtm = false,
@@ -372,7 +372,7 @@ namespace CocoMaps.Shared
 			Building FB = new Building {
 				Code = "FB",
 				Name = "Faubourg Tower",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "1250 Guy",
 				Position = new Position (45.49458957, -73.57759595),
 				HasAtm = false,
@@ -431,7 +431,7 @@ namespace CocoMaps.Shared
 			Building FG = new Building {
 				Code = "FG",
 				Name = "FG",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "1616 St. Catherine W.",
 				Position = new Position (45.49386382, -73.57871711),
 				HasAtm = true,
@@ -476,7 +476,7 @@ namespace CocoMaps.Shared
 			Building GM = new Building {
 				Code = "GM",
 				Name = "Guy-Metro",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "1550 De Maisonneuve W.",
 				Position = new Position (45.49586619, -73.57887805),
 				HasAtm = false,
@@ -579,7 +579,7 @@ namespace CocoMaps.Shared
 			Building H = new Building {
 				Code = "H",
 				Name = "Henry F. Hall",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "1455 De Maisonneuve W.",
 				Position = new Position (45.4972443, -73.57890487),
 				HasAtm = true,
@@ -671,7 +671,7 @@ namespace CocoMaps.Shared
 			Building K = new Building {
 				Code = "K",
 				Name = "K",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2150 Bishop",
 				Position = new Position (45.49776837, -73.57947282),
 				HasAtm = false,
@@ -699,7 +699,7 @@ namespace CocoMaps.Shared
 			Building LB = new Building {
 				Code = "LB",
 				Name = "McConnel Library",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "1400 De Maisonneuve W.",
 				Position = new Position (45.49674232, -73.57807606),
 				HasAtm = true,
@@ -855,7 +855,7 @@ namespace CocoMaps.Shared
 			Building M = new Building {
 				Code = "M",
 				Name = "M",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2135 Mackay",
 				Position = new Position (45.49735382, -73.57977659),
 				HasAtm = false,
@@ -876,7 +876,7 @@ namespace CocoMaps.Shared
 			Building MB = new Building {
 				Code = "MB",
 				Name = "John Molson School of Business",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "1450 Guy",
 				Position = new Position (45.49527019, -73.57901216),
 				HasAtm = false,
@@ -955,7 +955,7 @@ namespace CocoMaps.Shared
 			Building MI = new Building {
 				Code = "MI",
 				Name = "MI",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2130 Bishop",
 				Position = new Position (45.49769458, -73.57930586),
 				HasAtm = false,
@@ -1012,7 +1012,7 @@ namespace CocoMaps.Shared
 			Building MU = new Building {
 				Code = "MU",
 				Name = "MU",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2170 Bishop",
 				Position = new Position (45.49786379, -73.57961833),
 				HasAtm = false,
@@ -1040,7 +1040,7 @@ namespace CocoMaps.Shared
 			Building P = new Building {
 				Code = "P",
 				Name = "P",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2020 Mackay",
 				Position = new Position (45.49664738, -73.57920662),
 				HasAtm = false,
@@ -1061,7 +1061,7 @@ namespace CocoMaps.Shared
 			Building PR = new Building {
 				Code = "PR",
 				Name = "PR",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2100 Mackay",
 				Position = new Position (45.49690025, -73.57993349),
 				HasAtm = false,
@@ -1092,7 +1092,7 @@ namespace CocoMaps.Shared
 			Building Q = new Building {
 				Code = "Q",
 				Name = "Q",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2010 Mackay",
 				Position = new Position (45.49661118, -73.57913285),
 				HasAtm = false,
@@ -1120,7 +1120,7 @@ namespace CocoMaps.Shared
 			Building R = new Building {
 				Code = "R",
 				Name = "R",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2050 Mackay",
 				Position = new Position (45.49675877, -73.57944332),
 				HasAtm = false,
@@ -1147,7 +1147,7 @@ namespace CocoMaps.Shared
 			Building RR = new Building {
 				Code = "RR",
 				Name = "RR",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2040 Mackay",
 				Position = new Position (45.49670284, -73.57937157),
 				HasAtm = false,
@@ -1174,7 +1174,7 @@ namespace CocoMaps.Shared
 			Building S = new Building {
 				Code = "S",
 				Name = "S",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2145 Mackay",
 				Position = new Position (45.49740176, -73.57986242),
 				HasAtm = false,
@@ -1197,7 +1197,7 @@ namespace CocoMaps.Shared
 			Building T = new Building {
 				Code = "T",
 				Name = "T",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2030 Mackay",
 				Position = new Position (45.4966784, -73.57928306),
 				HasAtm = false,
@@ -1225,7 +1225,7 @@ namespace CocoMaps.Shared
 			Building V = new Building {
 				Code = "V",
 				Name = "V",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2110 Mackay",
 				Position = new Position (45.49702151, -73.57995696),
 				HasAtm = false,
@@ -1248,7 +1248,7 @@ namespace CocoMaps.Shared
 			Building X = new Building {
 				Code = "X",
 				Name = "X",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2080 Mackay",
 				Position = new Position (45.49687957, -73.57969075),
 				HasAtm = false,
@@ -1276,7 +1276,7 @@ namespace CocoMaps.Shared
 			Building Z = new Building {
 				Code = "Z",
 				Name = "Z",
-				Campus = SGW,
+				Campus = "SGW",
 				Address = "2090 Mackay",
 				Position = new Position (45.49691717, -73.57978061),
 				HasAtm = false,
@@ -1320,7 +1320,7 @@ namespace CocoMaps.Shared
 			Building AD = new Building {
 				Code = "AD",
 				Name = "Administration",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.4580762, -73.63981247),
 				HasAtm = false,
@@ -1415,7 +1415,7 @@ namespace CocoMaps.Shared
 			Building BB = new Building {
 				Code = "BB",
 				Name = "BB",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "3502 Belmore",
 				Position = new Position (45.45984844, -73.63939941),
 				HasAtm = false,
@@ -1437,7 +1437,7 @@ namespace CocoMaps.Shared
 			Building BH = new Building {
 				Code = "BH",
 				Name = "BH",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "3500 Belmore",
 				Position = new Position (45.45971675, -73.63914192),
 				HasAtm = false,
@@ -1466,7 +1466,7 @@ namespace CocoMaps.Shared
 			Building CC = new Building {
 				Code = "CC",
 				Name = "Central",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45823236, -73.64041328),
 				HasAtm = false,
@@ -1498,7 +1498,7 @@ namespace CocoMaps.Shared
 			Building CJ = new Building {
 				Code = "CJ",
 				Name = "Communication and Journalism",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45745911, -73.64041328),
 				HasAtm = false,
@@ -1567,7 +1567,7 @@ namespace CocoMaps.Shared
 			Building DO = new Building {
 				Code = "DO",
 				Name = "Stinger Dome",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45792569, -73.63487184),
 				HasAtm = false,
@@ -1588,7 +1588,7 @@ namespace CocoMaps.Shared
 			Building FC = new Building {
 				Code = "FC",
 				Name = "F.C. Smith",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45847506, -73.63938332),
 				HasAtm = false,
@@ -1647,7 +1647,7 @@ namespace CocoMaps.Shared
 			Building GE = new Building {
 				Code = "GE",
 				Name = "Centre for Structural and Functional Genomics",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45690973, -73.64037037),
 				HasAtm = false,
@@ -1678,7 +1678,7 @@ namespace CocoMaps.Shared
 			Building HA = new Building {
 				Code = "HA",
 				Name = "Hingston Wing A",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45944395, -73.64125818),
 				HasAtm = false,
@@ -1720,7 +1720,7 @@ namespace CocoMaps.Shared
 			Building HB = new Building {
 				Code = "HB",
 				Name = "Hingston Wing B",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45915987, -73.64200652),
 				HasAtm = false,
@@ -1778,7 +1778,7 @@ namespace CocoMaps.Shared
 			Building HC = new Building {
 				Code = "HC",
 				Name = "Hingston Wing C",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45965278, -73.64208162),
 				HasAtm = false,
@@ -1810,7 +1810,7 @@ namespace CocoMaps.Shared
 			Building JR = new Building {
 				Code = "JR",
 				Name = "Jesuit Residence",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45846, -73.64318132),
 				HasAtm = false,
@@ -1852,7 +1852,7 @@ namespace CocoMaps.Shared
 			Building PC = new Building {
 				Code = "PC",
 				Name = "PERFORM Center",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7200 Sherbrooke St. W.",
 				Position = new Position (45.457048958237415, -73.6374306678772),
 				HasAtm = false,
@@ -1879,7 +1879,7 @@ namespace CocoMaps.Shared
 			Building PS = new Building {
 				Code = "PS",
 				Name = "Physical Services",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45962644, -73.63981247),
 				HasAtm = false,
@@ -1922,7 +1922,7 @@ namespace CocoMaps.Shared
 			Building PT = new Building {
 				Code = "PT",
 				Name = "Oscar Peterson Concert Hall",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45933295, -73.63897026),
 				HasAtm = false,
@@ -1968,7 +1968,7 @@ namespace CocoMaps.Shared
 			Building PY = new Building {
 				Code = "PY",
 				Name = "Psychology",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45886638, -73.64049911),
 				HasAtm = false,
@@ -2020,7 +2020,7 @@ namespace CocoMaps.Shared
 			Building RA = new Building {
 				Code = "RA",
 				Name = "Recreational and Athletic Complex",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7200 Sherbrooke W.",
 				Position = new Position (45.45670278, -73.63763452),
 				HasAtm = false,
@@ -2080,7 +2080,7 @@ namespace CocoMaps.Shared
 			Building RF = new Building {
 				Code = "RF",
 				Name = "Loyola Jesuit Hall and Conference Centre",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45846753, -73.64106774),
 				HasAtm = false,
@@ -2138,7 +2138,7 @@ namespace CocoMaps.Shared
 			Building SC = new Building {
 				Code = "SC",
 				Name = "Student Center",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45910719, -73.63915265),
 				HasAtm = false,
@@ -2186,7 +2186,7 @@ namespace CocoMaps.Shared
 			Building SH = new Building {
 				Code = "SH",
 				Name = "Solar House",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45929909, -73.64247322),
 				HasAtm = false,
@@ -2206,7 +2206,7 @@ namespace CocoMaps.Shared
 			Building SI = new Building {
 				Code = "SI",
 				Name = "Saint-Ignatius of Loyola Church",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "4455 BroadWay",
 				Position = new Position (45.45779776, -73.64239812),
 				HasAtm = false,
@@ -2255,7 +2255,7 @@ namespace CocoMaps.Shared
 			Building SP = new Building {
 				Code = "SP",
 				Name = "Richard J. Renaud Science Complex",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45777894, -73.64159614),
 				HasAtm = false,
@@ -2370,7 +2370,7 @@ namespace CocoMaps.Shared
 			Building TA = new Building {
 				Code = "TA",
 				Name = "Terrebonne",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7079 Terrebonne",
 				Position = new Position (45.45999895, -73.64088535),
 				HasAtm = false,
@@ -2391,7 +2391,7 @@ namespace CocoMaps.Shared
 			Building VE = new Building {
 				Code = "VE",
 				Name = "Vanier Extension",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45880618, -73.63862693),
 				HasAtm = false,
@@ -2441,7 +2441,7 @@ namespace CocoMaps.Shared
 			Building VL = new Building {
 				Code = "VL",
 				Name = "Vanier Library",
-				Campus = LOY,
+				Campus = "LOY",
 				Address = "7141 Sherbrooke W.",
 				Position = new Position (45.45904699, -73.6383909),
 				HasAtm = false,
@@ -2508,6 +2508,16 @@ namespace CocoMaps.Shared
 			return BuildingList.TryGetValue (code, out building) ? building : null;
 		}
 
+		public int GetBuildingIndex (Building building)
+		{
+			int counter = 0;
+			foreach (Building b in BuildingList.Values) {
+				if (b == building)
+					return counter;
+				++counter;
+			}
+			return -1;
+		}
 
 	}
 
