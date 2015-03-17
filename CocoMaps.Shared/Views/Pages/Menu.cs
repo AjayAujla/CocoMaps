@@ -20,10 +20,10 @@ namespace CocoMaps.Shared
 			//OptionItems.Add (new Location_MenuOption ());
 			OptionItems.Add (new Campus_MenuOption ());
 			//OptionItems.Add (new pInterest_MenuOption ());
-			OptionItems.Add (new NextClass_MenuOption ());
+			//OptionItems.Add (new NextClass_MenuOption ());
 			OptionItems.Add (new ConcordiaServices_MenuOption ());
 			//OptionItems.Add (new bDirections_MenuOption ());
-			OptionItems.Add (new Bookmark_MenuOption ());
+			//OptionItems.Add (new Bookmark_MenuOption ());
 			OptionItems.Add (new iDirections_MenuOption ());
 			OptionItems.Add (new Calendar_MenuOption ());
 			OptionItems.Add (new ShuttleBus_MenuOption ());

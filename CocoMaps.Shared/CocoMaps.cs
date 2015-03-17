@@ -25,7 +25,7 @@ namespace CocoMaps.Shared
 				//{ typeof(bDirections_MenuOption), typeof(bDirections_MenuOption) },
 				{ typeof(iDirections_MenuOption), typeof(iDirections_MenuOption) },
 				{ typeof(Calendar_MenuOption), typeof(Calendar_MenuOption) },
-				{ typeof(Bookmark_MenuOption), typeof(Bookmark_MenuOption) },
+				//{ typeof(Bookmark_MenuOption), typeof(Bookmark_MenuOption) },
 				{ typeof(Settings_MenuOption), typeof(Settings_MenuOption) },
 			};
 

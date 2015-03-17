@@ -1,4 +1,4 @@
-﻿﻿using Xamarin.Forms;
+﻿/*using Xamarin.Forms;
 using CocoMaps.Shared;
 
 namespace CocoMaps.Shared
@@ -32,9 +32,9 @@ namespace CocoMaps.Shared
 				//HorizontalOptions = LayoutOptions.End,
 			}; */
 
-			var GetDirectionButton = new Button { Text = "Direction" };
+		//	var GetDirectionButton = new Button { Text = "Direction" };
 
-			var pushClass0 = new StackLayout {
+			/*var pushClass0 = new StackLayout {
 				Spacing = 5,
 				HorizontalOptions = LayoutOptions.Center,
 				Orientation = StackOrientation.Horizontal, 
@@ -71,4 +71,4 @@ namespace CocoMaps.Shared
 
 		}
 	}
-}
+}*/

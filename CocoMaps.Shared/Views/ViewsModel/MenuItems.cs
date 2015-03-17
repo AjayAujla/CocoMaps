@@ -39,14 +39,14 @@ namespace CocoMaps.Shared
 
 	}
 
-	public class NextClass_MenuOption : IMenuOptions
+	/*public class NextClass_MenuOption : IMenuOptions
 	{
 		public override string Title { get { return "Next Class"; } }
 
 		public override string Icon { get { return "classIcon.png"; } }
 
 		public override int MenuNum { get { return 5; } }
-	}
+	}*/
 
 	/*public class bDirections_MenuOption : IMenuOptions
 	{
@@ -76,14 +76,14 @@ namespace CocoMaps.Shared
 		public override int MenuNum { get { return 8; } }
 	}
 
-	public class Bookmark_MenuOption : IMenuOptions
+	/*public class Bookmark_MenuOption : IMenuOptions
 	{
 		public override string Title { get { return "Bookmarks"; } }
 
 		public override string Icon { get { return "calendarIcon.png"; } }
 
 		public override int MenuNum { get { return 12; } }
-	}
+	}*/
 
 	public class ShuttleBus_MenuOption : IMenuOptions
 	{
