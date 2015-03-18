@@ -15,7 +15,7 @@ namespace CocoMaps.Shared
 	{
 		public override string Title { get { return "Campus Maps"; } }
 
-		public override string Icon { get { return "campusIcon.png"; } }
+		public override string Icon { get { return "ic_menu_maps.png"; } }
 
 		public override int MenuNum { get { return 2; } }
 	}
@@ -33,7 +33,7 @@ namespace CocoMaps.Shared
 	{
 		public override string Title { get { return "Concordia Services"; } }
 
-		public override string Icon { get { return "poiIcon.png"; } }
+		public override string Icon { get { return "ic_menu_services.png"; } }
 
 		public override int MenuNum { get { return 4; } }
 
@@ -61,7 +61,7 @@ namespace CocoMaps.Shared
 	{
 		public override string Title { get { return "Indoor Directions"; } }
 
-		public override string Icon { get { return "classIcon.png"; } }
+		public override string Icon { get { return "ic_menu_indoor.png"; } }
 
 		public override int MenuNum { get { return 7; } }
 
@@ -71,7 +71,7 @@ namespace CocoMaps.Shared
 	{
 		public override string Title { get { return "Calendar"; } }
 
-		public override string Icon { get { return "calendarIcon.png"; } }
+		public override string Icon { get { return "ic_menu_calendar.png"; } }
 
 		public override int MenuNum { get { return 8; } }
 	}
@@ -89,7 +89,7 @@ namespace CocoMaps.Shared
 	{
 		public override string Title { get { return "Shuttle Bus"; } }
 
-		public override string Icon { get { return "calendarIcon.png"; } }
+		public override string Icon { get { return "ic_menu_shuttleschedule.png"; } }
 
 		public override int MenuNum { get { return 10; } }
 	}
@@ -98,7 +98,7 @@ namespace CocoMaps.Shared
 	{
 		public override string Title { get { return "Settings"; } }
 
-		public override string Icon { get { return "settingsIcon.png"; } }
+		public override string Icon { get { return "ic_menu_settings.png"; } }
 
 		public override int MenuNum { get { return 11; } }
 	}
@@ -107,7 +107,7 @@ namespace CocoMaps.Shared
 	{
 		public override string Title { get { return "Shuttle Bus Tracker"; } }
 
-		public override string Icon { get { return "calendarIcon.png"; } }
+		public override string Icon { get { return "ic_menu_shuttletracker.png"; } }
 
 		public override int MenuNum { get { return 12; } }
 	}
