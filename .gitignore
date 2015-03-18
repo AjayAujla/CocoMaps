@@ -15,7 +15,6 @@ UpgradeLog.*
 *.sln.cache
 *.suo
 *.userprefs
-CocoMaps.userprefs
 *.usertasks
 *.user
 

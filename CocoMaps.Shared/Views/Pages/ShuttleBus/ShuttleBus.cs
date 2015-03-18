@@ -42,7 +42,7 @@ namespace CocoMaps.Shared
 			this.headers.Children.Add (new Label {
 				Text = pageName + " Shuttle Bus Schedule",
 				FontAttributes = FontAttributes.Bold,
-				FontSize = Device.GetNamedSize (NamedSize.Large, typeof(Label)),
+				FontSize = 30,
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
 			}, 0, 2, 0, 1);
@@ -50,7 +50,7 @@ namespace CocoMaps.Shared
 			this.headers.Children.Add (new Label {
 				Text = "Departures from LOY",
 				FontAttributes = FontAttributes.Bold,
-				FontSize = Device.GetNamedSize (NamedSize.Medium, typeof(Label)),
+				FontSize = 20,
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
 			}, 0, 1);
@@ -58,7 +58,7 @@ namespace CocoMaps.Shared
 			this.headers.Children.Add (new Label {
 				Text = "Departures from SGW",
 				FontAttributes = FontAttributes.Bold,
-				FontSize = Device.GetNamedSize (NamedSize.Medium, typeof(Label)),
+				FontSize = 20,
 				HorizontalOptions = LayoutOptions.Center,
 				VerticalOptions = LayoutOptions.Center,
 			}, 1, 1);
@@ -112,22 +112,18 @@ namespace CocoMaps.Shared
 		 */
 		public void PopulateDayDepartures (String pageName, List<String> LOYdepartures, List<String> SGWdepartures)
 		{
-			int maximumRows = Math.Min (LOYdepartures.Count, SGWdepartures.Count);
-			int nextAvailableRow = 0;
+			int maximumRows = LOYdepartures.Count > SGWdepartures.Count ? LOYdepartures.Count : SGWdepartures.Count;
+			int row = 0;
 
 			for (int i = 0; i < maximumRows; ++i) {
 
 				DateTime LOYtime = Convert.ToDateTime (LOYdepartures [i]);
 				DateTime SGWtime = Convert.ToDateTime (SGWdepartures [i]);
-				DateTime now = DateTime.Now;
-				TimeSpan currentTime = now.TimeOfDay;
-				DayOfWeek currentWeekday = now.DayOfWeek;
+				TimeSpan now = DateTime.Now.TimeOfDay;
 
 				// Skips departure times which have already passed
-				if (pageName == currentWeekday.ToString ()) {
-					if (LOYtime.TimeOfDay < currentTime && SGWtime.TimeOfDay < currentTime) {
-						continue;
-					}
+				if (LOYtime.TimeOfDay < now && SGWtime.TimeOfDay < now) {
+					continue;
 				}
 
 				this.schedule.RowDefinitions.Add (
@@ -150,26 +146,27 @@ namespace CocoMaps.Shared
 					VerticalOptions = LayoutOptions.Center,
 				};
 
-				// Highlighting next upcoming departures between current time and end time
-				TimeSpan end = new TimeSpan (currentTime.Hours + 1, currentTime.Minutes, 0);
-				if (pageName == currentWeekday.ToString ()) {
-					if (LOYtime.TimeOfDay >= currentTime && LOYtime.TimeOfDay < end) {
+				TimeSpan end = new TimeSpan (now.Hours + 1, now.Minutes, 0);
+
+				// Highlighting next upcoming departures within the hour
+				if (pageName == DateTime.Now.DayOfWeek.ToString ()) {
+					if (LOYtime.TimeOfDay >= now && LOYtime.TimeOfDay < end) {
 						LOYTimeLabel.TextColor = Color.Blue;
 					}
-					if (SGWtime.TimeOfDay >= currentTime && SGWtime.TimeOfDay < end) {
+					if (SGWtime.TimeOfDay >= now && SGWtime.TimeOfDay < end) {
 						SGWTimeLabel.TextColor = Color.Blue;
 					}
 				}
 
-				LOYTimeLabel.SetValue (Grid.RowProperty, nextAvailableRow);
+				LOYTimeLabel.SetValue (Grid.RowProperty, row);
 				LOYTimeLabel.SetValue (Grid.ColumnProperty, 0);
 				this.schedule.Children.Add (LOYTimeLabel);
 
-				SGWTimeLabel.SetValue (Grid.RowProperty, nextAvailableRow);
+				SGWTimeLabel.SetValue (Grid.RowProperty, row);
 				SGWTimeLabel.SetValue (Grid.ColumnProperty, 1);
 				this.schedule.Children.Add (SGWTimeLabel);
 
-				++nextAvailableRow;
+				++row;
 			}
 		}
 	}
