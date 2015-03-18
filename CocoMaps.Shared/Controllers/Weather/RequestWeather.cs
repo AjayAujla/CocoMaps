@@ -2,6 +2,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Json;
 using Xamarin.Forms.Maps;
 
 namespace CocoMaps.Shared
@@ -20,22 +21,27 @@ namespace CocoMaps.Shared
 			if (campus.Equals ("SGW")) {
 				campusPosition = Campus.SGWPosition;
 			}
-			/*string uri = "api.openweathermap.org/data/2.5/weather?lat=" +
-			             campusPosition.Latitude.ToString () +
+
+			string uri = "api.openweathermap.org/data/2.5/weather?lat=" +
+			             campusPosition.Latitude +
 			             "&lon=" +
-			             campusPosition.Longitude.ToString () +
+			             campusPosition.Longitude +
 			             "&units=metric" +
 			             "&APIID" + OPEN_WEATHER_MAP_API_KEY;
-*/
-			string uri = "http://api.openweathermap.org/data/2.5/weather?q=London&units=metric";
 
-			var client = new HttpClient ();
-			var json = await client.GetStringAsync (uri);
+			//string uri = "api.openweathermap.org/data/2.5/weather?q=London&units=metric";
+
+			JsonValue json = await JsonUtil.FetchJsonAsync (uri);//client.GetStringAsync (uri);
 
 			if (string.IsNullOrWhiteSpace (json))
 				return null;
 
-			return JsonConvert.DeserializeObject<WeatherRoot> (json);
+			WeatherRoot wr = JsonConvert.DeserializeObject<WeatherRoot> (json.ToString ());
+			Console.WriteLine ("Temp " + (int)wr.MainWeather.Temp);
+			Console.WriteLine ("Main " + wr.Weather [0].Main);
+			Console.WriteLine ("Description " + wr.Weather [0].Description);
+		
+			return wr;
 		}
 	}
 }

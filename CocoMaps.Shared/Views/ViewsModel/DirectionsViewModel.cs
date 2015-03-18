@@ -8,7 +8,6 @@ namespace CocoMaps.Shared
 {
 	public class DirectionsViewModel : RelativeLayout
 	{
-
 		enum ViewState
 		{
 			Expanded,
@@ -72,7 +71,6 @@ namespace CocoMaps.Shared
 					_toPicker = new Picker { HeightRequest = 50 };
 				return _toPicker;
 			}
-			
 			set {
 			}
 		}
@@ -132,10 +130,9 @@ namespace CocoMaps.Shared
 
 		void Init ()
 		{
-			
 			foreach (Building building in buildingRepo.BuildingList.Values) {
-				FromPicker.Items.Add (building.Campus + " - " + building.Code);
-				ToPicker.Items.Add (building.Campus + " - " + building.Code);
+				FromPicker.Items.Add (building.Code + " - " + building.Campus);
+				ToPicker.Items.Add (building.Code + " - " + building.Campus);
 			}
 
 			FromPicker.Title = "Search from here ...";
@@ -192,7 +189,7 @@ namespace CocoMaps.Shared
 			);
 			instance.Children.Add (TestWeatherButton,
 				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.X + 100),
-				Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y)
+				Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y + 100)
 			);
 
 			instance.Padding = 10;
@@ -214,7 +211,6 @@ namespace CocoMaps.Shared
 			TravelShuttleModeButton.Clicked += HandleTravelModeButtons;
 			TravelTransitModeButton.Clicked += HandleTravelModeButtons;
 			TravelDrivingModeButton.Clicked += HandleTravelModeButtons;
-
 		}
 
 
@@ -223,7 +219,6 @@ namespace CocoMaps.Shared
 			int temp = FromPicker.SelectedIndex;
 			FromPicker.SelectedIndex = ToPicker.SelectedIndex;
 			ToPicker.SelectedIndex = temp;
-
 		}
 
 		// Xamarin.Forms XLabs has a class classed ButtonGroup
@@ -247,7 +242,6 @@ namespace CocoMaps.Shared
 			b.BackgroundColor = Helpers.Color.Blue.ToFormsColor ();
 
 			Console.WriteLine ("TravelMode: " + TravelMode);
-
 		}
 
 		public void Expand ()
@@ -291,20 +285,14 @@ namespace CocoMaps.Shared
 
 				Console.WriteLine ("Unable to retrieve weather data. " + ex.ToString ());
 
-				if (App.isHostReachable ("https://api.openweathermap.org"))
+				if (App.isHostReachable ("https://openweathermap.org"))
 					Console.WriteLine ("isHostReachable1");
 
-				if (App.isHostReachable ("api.openweathermap.org/data/2.5/weather?"))
+				if (App.isHostReachable ("openweathermap.org"))
 					Console.WriteLine ("isHostReachable2");
 
 				if (App.isHostReachable ("googleapis.com"))
 					Console.WriteLine ("isHostReachable3");
-
-				if (DependencyService.Get<INetwork> ().IsReachable ("https://api.openweathermap.org", new TimeSpan (5)).Result)
-					Console.WriteLine ("isReachable4");
-
-				if (DependencyService.Get<INetwork> ().IsReachable ("openweathermap.org", new TimeSpan (5)).Result)
-					Console.WriteLine ("isReachable5");
 
 				if (App.isConnected ())
 					Console.WriteLine ("isConnected");
