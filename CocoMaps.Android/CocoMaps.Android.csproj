@@ -264,6 +264,14 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_weather_moonlight.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_weather_partlycloudy_day.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_weather_partlycloudy_night.png" />
+    <AndroidResource Include="Resources\drawable\ic_menu_calendar.png" />
+    <AndroidResource Include="Resources\drawable\ic_menu_campus.png" />
+    <AndroidResource Include="Resources\drawable\ic_menu_indoor.png" />
+    <AndroidResource Include="Resources\drawable\ic_menu_maps.png" />
+    <AndroidResource Include="Resources\drawable\ic_menu_services.png" />
+    <AndroidResource Include="Resources\drawable\ic_menu_settings.png" />
+    <AndroidResource Include="Resources\drawable\ic_menu_shuttleschedule.png" />
+    <AndroidResource Include="Resources\drawable\ic_menu_shuttletracker.png" />
   </ItemGroup>
   <Import Project="..\CocoMaps.Shared\CocoMaps.Shared.projitems" Label="Shared" Condition="Exists('..\CocoMaps.Shared\CocoMaps.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
