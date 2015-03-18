@@ -208,7 +208,7 @@ namespace CocoMaps.Shared
 
 			SwapIcon.Clicked += (sender, e) => SwapFromToValues ();
 			CancelButton.Clicked += (sender, e) => Hide ();
-			//TestWeatherButton.Clicked += async (sender, e) => AddWeatherInfo ();
+			TestWeatherButton.Clicked += async (sender, e) => AddWeatherInfo ();
 
 			TravelWalkingModeButton.Clicked += HandleTravelModeButtons;
 			TravelShuttleModeButton.Clicked += HandleTravelModeButtons;
@@ -277,13 +277,38 @@ namespace CocoMaps.Shared
 
 		public async void AddWeatherInfo ()
 		{
-			RequestWeather weather = new RequestWeather ();
-			Image image = await weather.FetchWeatherAndParse ("LOY");
+			OpenWeatherMapService owms = new OpenWeatherMapService ();
 
-			instance.Children.Add (image,
-				Constraint.Constant (12),
-				Constraint.Constant (17)
-			);
+			try {
+				var wr = await owms.GetWeather ("LOY");
+				if (wr != null) {
+					Console.WriteLine ("Temp " + (int)wr.MainWeather.Temp);
+					Console.WriteLine ("Main " + wr.Weather [0].Main);
+					Console.WriteLine ("Description " + wr.Weather [0].Description);
+				}
+
+			} catch (Exception ex) {
+
+				Console.WriteLine ("Unable to retrieve weather data. " + ex.ToString ());
+
+				if (App.isHostReachable ("https://api.openweathermap.org"))
+					Console.WriteLine ("isHostReachable1");
+
+				if (App.isHostReachable ("api.openweathermap.org/data/2.5/weather?"))
+					Console.WriteLine ("isHostReachable2");
+
+				if (App.isHostReachable ("googleapis.com"))
+					Console.WriteLine ("isHostReachable3");
+
+				if (DependencyService.Get<INetwork> ().IsReachable ("https://api.openweathermap.org", new TimeSpan (5)).Result)
+					Console.WriteLine ("isReachable4");
+
+				if (DependencyService.Get<INetwork> ().IsReachable ("openweathermap.org", new TimeSpan (5)).Result)
+					Console.WriteLine ("isReachable5");
+
+				if (App.isConnected ())
+					Console.WriteLine ("isConnected");
+			}
 		}
 	}
 }
