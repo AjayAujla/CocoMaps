@@ -1,5 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
+using Android.OS;
 
 namespace CocoMaps.Shared
 {
@@ -80,6 +81,12 @@ namespace CocoMaps.Shared
 		{
 			return DependencyService.Get<INetwork> ().IsReachable (host, new TimeSpan (5)).Result;
 		}
+
+		public static void CloseApp()
+		{
+			System.Environment.Exit(0);
+		}
+
 
 	}
 }

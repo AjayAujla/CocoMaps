@@ -10,7 +10,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CocoMaps.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Building.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Campus.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Service.cs" />
@@ -64,6 +63,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\Weather.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Weather\RequestWeather.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBusTracker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ICloseApp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
