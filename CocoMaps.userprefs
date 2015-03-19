@@ -1,21 +1,12 @@
 ﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.62604414" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Views\Pages\ConcordiaServices\ConcordiaServices.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Views\ViewsModel\DirectionsViewModel.cs">
     <Files>
-      <File FileName="CocoMaps.Shared\Views\Pages\NextClass\NextClass.cs" Line="7" Column="7" />
-      <File FileName="CocoMaps.Shared\Views\Pages\Calendar\BaseCalendar.cs" Line="54" Column="54" />
-      <File FileName="CocoMaps.Shared\Models\CalendarModel.cs" Line="2" Column="2" />
-      <File FileName="CocoMaps.Shared\Views\Pages\ShuttleBus\BaseShuttleBus.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\Controllers\Repositories\BuildingRepository.cs" Line="30" Column="30" />
-      <File FileName="CocoMaps.Shared\Views\Pages\ConcordiaServices\ConcordiaServices.cs" Line="110" Column="110" />
+      <File FileName="CocoMaps.Shared\Views\ViewsModel\DirectionsViewModel.cs" Line="4" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <DisabledProjects>
-    <String>CocoMaps.Services/CocoMaps.Services.csproj</String>
-    <String>CocoMaps.iOS\CocoMaps.iOS.csproj</String>
-  </DisabledProjects>
 </Properties>

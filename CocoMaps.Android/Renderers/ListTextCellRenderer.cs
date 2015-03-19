@@ -32,7 +32,6 @@ namespace CocoMaps
 				((ListView)parent).DividerHeight = 1;
 			}
 
-
 			var label = (TextView)((LinearLayout)cell.GetChildAt (1)).GetChildAt (0);
 			label.SetTextColor (Color.FromHex ("000000").ToAndroid ());
 			label.TextSize = Font.SystemFontOfSize (NamedSize.Large).ToScaledPixel ();

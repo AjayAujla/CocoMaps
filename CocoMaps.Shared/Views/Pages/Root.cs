@@ -11,27 +11,26 @@ namespace CocoMaps.Shared
 		// Initialize Pages
 		MasterPage pMaster;
 		ConcordiaServices pServices;
-		NextClass pNextClass;
+		//IndoorDirections pIndoorDirections;
 		BaseCalendar pCalendar;
 		BaseShuttleBus pShuttleBus;
+		ShuttleBusTracker pShuttleBusTracker;
 		Settings pSettings;
 
 		public RootPage ()
 		{
 			var optionsPage = new MenuPage { Icon = "settings.png", Title = "menu" };
-
 			optionsPage.Menu.ItemSelected += (sender, e) => NavigateTo (e.SelectedItem as IMenuOptions);
-
 			Master = optionsPage;
 
 			NavigateTo (optionsPage.Menu.ItemsSource.Cast<IMenuOptions> ().First ());
-
 		}
 
 		void NavigateTo (IMenuOptions menuOption)
 		{
-			if (previousItem != null)
+			if (previousItem != null) {
 				previousItem.Selected = false;
+			}
 
 			menuOption.Selected = true;
 			previousItem = menuOption;
@@ -43,65 +42,52 @@ namespace CocoMaps.Shared
 
 		public Page setPage (IMenuOptions menuOption)
 		{
-
-			// put back top bar for all pages
+			// Restore the top bar for all pages
 			#if __ANDROID__
 			Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Default);
 			#endif
 
-			int MenuNumber = menuOption.MenuNum;
+			string pageTitle = menuOption.Title;
 
-			switch (MenuNumber) {
-			case 1:
-				if ((pMaster == null))
-					pMaster = new MasterPage (menuOption);
-				// Hide top bar for map page only
-				#if __ANDROID__
-				Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Never);
-				#endif
-				return pMaster;
-			/*case 3:
-				if ((pPOI == null)) {
-					pPOI = new BasePOI (menuOption);
-				}
-				return pPOI; */
-			case 4:
+			if (pageTitle.Equals ("Concordia Services")) {
 				if ((pServices == null)) {
 					pServices = new ConcordiaServices (menuOption);
 				}
 				return pServices;
-			case 5:
-				// To Refresh Page After Calendar Authenticated
-				pNextClass = new NextClass (menuOption, pCalendar);
-				return pNextClass;
-			case 8:
+			} else if (pageTitle.Equals ("Calendar")) {
 				if ((pCalendar == null)) {
 					pCalendar = new BaseCalendar (menuOption);
 				}
 				return  pCalendar;
-			case 9:
-				if ((pMaster == null)) {
-					pMaster = new MasterPage (menuOption);
-				}
-				return pMaster;
-			case 10:
+			} else if (pageTitle.Equals ("Shuttle Bus")) {
 				if ((pShuttleBus == null)) {
 					pShuttleBus = new BaseShuttleBus (menuOption);
 				}
 				return pShuttleBus;
-			case 11:
+			} else if (pageTitle.Equals ("Shuttle Bus Tracker")) {
+				if ((pShuttleBusTracker == null)) {
+					pShuttleBusTracker = new ShuttleBusTracker (menuOption);
+				}
+				return pShuttleBusTracker;
+			} else if (pageTitle.Equals ("Settings")) {
 				if ((pSettings == null)) {
 					pSettings = new Settings (menuOption);
 				}
 				return pSettings;
-			default:
+			} else { 
+				// return the main map page if no other option is found
+				/*if (string.IsNullOrEmpty (pageTitle) || pageTitle.Equals ("Campus Maps"))*/
 				if ((pMaster == null)) {
 					pMaster = new MasterPage (menuOption);
 				}
+
 				// Hide top bar for map page only
 				#if __ANDROID__
 				Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Never);
 				#endif
+
+				//pMaster.SetValue (TitleProperty, pMaster.Title);
+
 				return pMaster;
 			}
 		}
