@@ -1,8 +1,8 @@
 ﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.c080817bf614321" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
   <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Views\ViewsModel\DirectionsViewModel.cs">
     <Files>
-      <File FileName="CocoMaps.Shared\Views\ViewsModel\DirectionsViewModel.cs" Line="30" Column="30" />
+      <File FileName="CocoMaps.Shared\Views\ViewsModel\DirectionsViewModel.cs" Line="4" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
