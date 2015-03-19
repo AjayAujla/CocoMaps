@@ -188,8 +188,8 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y)
 			);
 			instance.Children.Add (TestWeatherButton,
-				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.X + 100),
-				Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y + 100)
+				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.X),
+				Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y + 50)
 			);
 
 			instance.Padding = 10;
@@ -269,34 +269,107 @@ namespace CocoMaps.Shared
 			}
 		}
 
+		/*
+		 * Fetches and displays current weather information in the Directions pane
+		 */
 		public async void AddWeatherInfo ()
 		{
 			OpenWeatherMapService owms = new OpenWeatherMapService ();
 
 			try {
-				var wr = await owms.GetWeather ("LOY");
-				if (wr != null) {
-					Console.WriteLine ("Temp " + (int)wr.MainWeather.Temp);
-					Console.WriteLine ("Main " + wr.Weather [0].Main);
-					Console.WriteLine ("Description " + wr.Weather [0].Description);
+				var weatherRequest = await owms.GetWeather ("LOY");
+				if (weatherRequest != null) {
+		
+					instance.Children.Add (
+						new Label () {
+							Text = String.Format ("{0:F1}", weatherRequest.main.temp) + " °C",
+							TextColor = Helpers.Color.Gray.ToFormsColor (),
+						}, 
+						Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.X - 150),
+						Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y + 15)
+					);
+
+					string imagePath = GetImagePath (weatherRequest.weather [0].icon);
+					if (!String.IsNullOrWhiteSpace (imagePath)) {
+						instance.Children.Add (
+							new Image () {
+								Source = ImageSource.FromFile (imagePath),
+							}, 
+							Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.X - 225),
+							Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y)
+						);
+					}
 				}
-
 			} catch (Exception ex) {
-
-				Console.WriteLine ("Unable to retrieve weather data. " + ex.ToString ());
-
-				if (App.isHostReachable ("https://openweathermap.org"))
-					Console.WriteLine ("isHostReachable1");
-
-				if (App.isHostReachable ("openweathermap.org"))
-					Console.WriteLine ("isHostReachable2");
-
-				if (App.isHostReachable ("googleapis.com"))
-					Console.WriteLine ("isHostReachable3");
-
-				if (App.isConnected ())
-					Console.WriteLine ("isConnected");
+				Console.WriteLine ("Unable to retrieve weather data." + ex.ToString ());
 			}
+		}
+
+		/*
+		 * XXd: weather code for day time icon
+		 * XXn: weather code for night time icon
+		 * Selects corresponding image based on weather icon code from OpenWeatherMap query
+		 */
+		private string GetImagePath (string weatherCode)
+		{
+			string imagePath = "";
+
+			//Clear Sky Day
+			if (weatherCode.Equals ("01d")) { 
+				imagePath = "ic_weather_sunny.png";
+			}
+
+			//Clear Sky Night
+			if (weatherCode.Equals ("01n")) { 
+				imagePath = "ic_weather_moonlight.png"; 
+			}
+
+			//Few Clouds Day
+			if (weatherCode.Equals ("02d")) {
+				imagePath = "ic_weather_partlycloudy_day.png"; 
+			}
+
+			//Few Clouds Night
+			if (weatherCode.Equals ("02n")) {
+				imagePath = "ic_weather_partlycloudy_night.png"; 
+			}
+
+			//Scattered Clouds
+			if (weatherCode.Equals ("03d") || weatherCode.Equals ("03n")) { 
+				imagePath = "ic_weather_cloudy.png";
+			}
+
+			//Broken Clouds
+			if (weatherCode.Equals ("04d") || weatherCode.Equals ("04n")) { 
+				imagePath = "ic_weather_cloudy.png";
+			}
+
+			//Shower Rain
+			if (weatherCode.Equals ("09d") || weatherCode.Equals ("09n")) { 
+				imagePath = "ic_weather_showers.png";
+			}
+
+			//Rain
+			if (weatherCode.Equals ("10d") || weatherCode.Equals ("10n")) { 
+				imagePath = "ic_weather_showers.png";
+			}
+
+			//Thunderstorm
+			if (weatherCode.Equals ("11d") || weatherCode.Equals ("11n")) { 
+				imagePath = "ic_weather_thunderstorms.png";
+			}
+
+			//Snow
+			if (weatherCode.Equals ("13d") || weatherCode.Equals ("13n")) { 
+				imagePath = "ic_weather_snow.png";
+			}
+
+			//Mist
+			if (weatherCode.Equals ("50d") || weatherCode.Equals ("50n")) { 
+				imagePath = "ic_weather_mist.png";
+			}
+
+			return imagePath;
 		}
 	}
 }

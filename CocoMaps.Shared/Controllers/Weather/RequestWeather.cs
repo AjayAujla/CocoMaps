@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using System.Json;
@@ -9,9 +8,10 @@ namespace CocoMaps.Shared
 {
 	class OpenWeatherMapService
 	{
+		// Free user API key for 3000 API calls per min
 		private string OPEN_WEATHER_MAP_API_KEY = "e29a8df99de1c58be0e4260575e6e25b";
 
-		public async Task<WeatherRoot> GetWeather (string campus)
+		private string InitializeUriBasedOnCampus (string campus)
 		{
 			Position campusPosition = Campus.SGWPosition;
 
@@ -22,26 +22,29 @@ namespace CocoMaps.Shared
 				campusPosition = Campus.SGWPosition;
 			}
 
-			string uri = "api.openweathermap.org/data/2.5/weather?lat=" +
-			             campusPosition.Latitude +
-			             "&lon=" +
-			             campusPosition.Longitude +
-			             "&units=metric" +
-			             "&APIID" + OPEN_WEATHER_MAP_API_KEY;
+			// Returns URI containing specific campus latitude and longitude in the query
+			return "http://api.openweathermap.org/data/2.5/weather?lat=" +
+			campusPosition.Latitude +
+			"&lon=" +
+			campusPosition.Longitude +
+			"&units=metric" +
+			"&APIID" + OPEN_WEATHER_MAP_API_KEY;
+		}
 
-			//string uri = "api.openweathermap.org/data/2.5/weather?q=London&units=metric";
+		/*
+		 *	Query for weather based on campus	 
+		 */
+		public async Task<RootObject> GetWeather (string campus)
+		{
+			JsonValue json = await JsonUtil.FetchJsonAsync (InitializeUriBasedOnCampus (campus));
 
-			JsonValue json = await JsonUtil.FetchJsonAsync (uri);//client.GetStringAsync (uri);
-
-			if (string.IsNullOrWhiteSpace (json))
+			// Returns null if the fetch failed
+			if (string.IsNullOrWhiteSpace (json.ToString ())) {
 				return null;
+			}
 
-			WeatherRoot wr = JsonConvert.DeserializeObject<WeatherRoot> (json.ToString ());
-			Console.WriteLine ("Temp " + (int)wr.MainWeather.Temp);
-			Console.WriteLine ("Main " + wr.Weather [0].Main);
-			Console.WriteLine ("Description " + wr.Weather [0].Description);
-		
-			return wr;
+			// Returns root of deserialized JSON containing all weather information
+			return JsonConvert.DeserializeObject<RootObject> (json.ToString ());
 		}
 	}
 }

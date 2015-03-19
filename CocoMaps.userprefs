@@ -1,18 +1,24 @@
 ﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.CocoMaps" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Views\Pages\Menu.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.c080817bf614321" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Views\ViewsModel\DirectionsViewModel.cs">
     <Files>
-      <File FileName="CocoMaps.Shared\Controllers\Places\RequestPlaces.cs" Line="2" Column="2" />
-      <File FileName="CocoMaps.Shared\Controllers\Repositories\PlacesRepository.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Android\Renderers\ConcordiaMapRenderer.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\Controllers\Weather\RequestWeather.cs" Line="3" Column="3" NotebookId="1" />
-      <File FileName="CocoMaps.Shared\Models\Weather.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="CocoMaps.Shared\Views\ViewsModel\DirectionsViewModel.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="CocoMaps.Shared\Models\Campus.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="c:\Users\Ajayveer Singh Aujla\Desktop\cocomaps\CocoMaps.Shared\Views\Pages\Settings.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="CocoMaps.Shared\Views\ViewsModel\MenuItems.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="CocoMaps.Shared\Views\Pages\Menu.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="CocoMaps.Shared\Views\ViewsModel\DirectionsViewModel.cs" Line="21" Column="21" />
+      <File FileName="CocoMaps.Shared\Controllers\Weather\RequestWeather.cs" Line="6" Column="6" />
+      <File FileName="CocoMaps.Shared\Models\Weather.cs" Line="2" Column="2" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True">
+          <Node name="CocoMaps.Android" expanded="True">
+            <Node name="Resources" expanded="True">
+              <Node name="drawable-xxhdpi" expanded="True">
+                <Node name="ic_weather_partlycloudy_night.png" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
