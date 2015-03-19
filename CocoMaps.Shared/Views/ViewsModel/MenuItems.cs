@@ -51,6 +51,13 @@ namespace CocoMaps.Shared
 		public override string Icon { get { return "ic_menu_settings.png"; } }
 	}
 
+	public class Exit_MenuOption : IMenuOptions
+	{
+		public override string Title { get { return "Exit Application"; } }
+
+		public override string Icon { get { return "ic_menu_settings.png"; } }
+	}
+
 	public abstract class IMenuOptions
 	{
 		public virtual string Title { get { return Title; } }
