@@ -121,13 +121,6 @@ namespace CocoMaps.Shared
 			WidthRequest = 100
 		};
 
-		Button TestWeatherButton = new Button {
-			Text = "Weather",
-			TextColor = Helpers.Color.Maroon.ToFormsColor (),
-			BackgroundColor = Color.Transparent,
-			WidthRequest = 100,
-		};
-
 		Label temperatureLabel;
 		Image weatherConditionIcon;
 
@@ -190,10 +183,6 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.X),
 				Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y)
 			);
-			instance.Children.Add (TestWeatherButton,
-				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.X),
-				Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y + 50)
-			);
 
 			instance.Padding = 10;
 
@@ -208,14 +197,12 @@ namespace CocoMaps.Shared
 
 			SwapIcon.Clicked += (sender, e) => SwapFromToValues ();
 			CancelButton.Clicked += (sender, e) => Hide ();
-			TestWeatherButton.Clicked += async (sender, e) => AddWeatherInfo ();
 
 			TravelWalkingModeButton.Clicked += HandleTravelModeButtons;
 			TravelShuttleModeButton.Clicked += HandleTravelModeButtons;
 			TravelTransitModeButton.Clicked += HandleTravelModeButtons;
 			TravelDrivingModeButton.Clicked += HandleTravelModeButtons;
 		}
-
 
 		void SwapFromToValues ()
 		{
