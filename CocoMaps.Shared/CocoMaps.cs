@@ -19,13 +19,9 @@ namespace CocoMaps.Shared
 		static CocoMapsApp ()
 		{
 			TypeMap = new Dictionary<Type, Type> {
-				//{ typeof(Location_MenuOption), typeof(Location_MenuOption) },
 				{ typeof(Campus_MenuOption), typeof(Campus_MenuOption) },
-				//{ typeof(pInterest_MenuOption), typeof(pInterest_MenuOption) },
-				//{ typeof(bDirections_MenuOption), typeof(bDirections_MenuOption) },
-				{ typeof(iDirections_MenuOption), typeof(iDirections_MenuOption) },
+				{ typeof(IndoorDirections_MenuOption), typeof(IndoorDirections_MenuOption) },
 				{ typeof(Calendar_MenuOption), typeof(Calendar_MenuOption) },
-				//{ typeof(Bookmark_MenuOption), typeof(Bookmark_MenuOption) },
 				{ typeof(Settings_MenuOption), typeof(Settings_MenuOption) },
 			};
 

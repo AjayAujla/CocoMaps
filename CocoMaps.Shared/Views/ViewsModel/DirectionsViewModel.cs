@@ -8,7 +8,6 @@ namespace CocoMaps.Shared
 {
 	public class DirectionsViewModel : RelativeLayout
 	{
-
 		enum ViewState
 		{
 			Expanded,
@@ -72,7 +71,6 @@ namespace CocoMaps.Shared
 					_toPicker = new Picker { HeightRequest = 50 };
 				return _toPicker;
 			}
-			
 			set {
 			}
 		}
@@ -123,16 +121,18 @@ namespace CocoMaps.Shared
 			WidthRequest = 100
 		};
 
+		Label temperatureLabel;
+		Image weatherConditionIcon;
+
 		void Init ()
 		{
-			
 			foreach (Building building in buildingRepo.BuildingList.Values) {
 				FromPicker.Items.Add (building.Code);
 				ToPicker.Items.Add (building.Code);
 			}
 
-			FromPicker.Title = "search from here...";
-			ToPicker.Title = "...all the way there!";
+			FromPicker.Title = "Search from here ...";
+			ToPicker.Title = "... All the way there!";
 			TravelMode = TravelMode.walking;
 
 			instance.Children.Add (FromPicker,
@@ -147,11 +147,11 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToParent (parent => Width - 68 * 2),
 				null
 			);
-
 			instance.Children.Add (DirectionsIcon,
 				Constraint.Constant (12),
 				Constraint.Constant (17)
 			);
+
 			instance.Children.Add (SwapIcon,
 				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.X + sibling.Width),
 				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.Height - sibling.Height / 2)
@@ -202,16 +202,13 @@ namespace CocoMaps.Shared
 			TravelShuttleModeButton.Clicked += HandleTravelModeButtons;
 			TravelTransitModeButton.Clicked += HandleTravelModeButtons;
 			TravelDrivingModeButton.Clicked += HandleTravelModeButtons;
-
 		}
-
 
 		void SwapFromToValues ()
 		{
 			int temp = FromPicker.SelectedIndex;
 			FromPicker.SelectedIndex = ToPicker.SelectedIndex;
 			ToPicker.SelectedIndex = temp;
-
 		}
 
 		// Xamarin.Forms XLabs has a class classed ButtonGroup
@@ -235,7 +232,6 @@ namespace CocoMaps.Shared
 			b.BackgroundColor = Helpers.Color.Blue.ToFormsColor ();
 
 			Console.WriteLine ("TravelMode: " + TravelMode);
-
 		}
 
 		public void Expand ()
@@ -244,6 +240,8 @@ namespace CocoMaps.Shared
 			double desiredPos = 0;
 			instance.TranslateTo (0, desiredPos - currentPos);
 			viewState = ViewState.Expanded;
+
+			AddWeatherInfo ();
 		}
 
 		public void Hide ()
@@ -263,6 +261,119 @@ namespace CocoMaps.Shared
 			}
 		}
 
-	}
+		/*
+		 * Fetches and displays current weather information in the Directions pane
+		 */
+		public async void AddWeatherInfo ()
+		{
+			if (App.isConnected () && App.isHostReachable ("openweathermap.org")) {
+				RequestWeather requestWeather = new RequestWeather ();
 
+				try {
+					var weatherRequest = await requestWeather.GetWeather ("LOY");
+					if (weatherRequest != null) {
+
+						// Display temperature
+						if (temperatureLabel == null) {
+							temperatureLabel = new Label () {
+								Text = Math.Round (weatherRequest.main.temp, 0) + " °C",
+								TextColor = Helpers.Color.Gray.ToFormsColor (),
+							};
+
+							instance.Children.Add (temperatureLabel,
+								Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.X - 150),
+								Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y + 15)
+							);
+						}
+
+						// Display weather condition icon
+						if (weatherConditionIcon == null) {
+							string imagePath = GetImagePath (weatherRequest.weather [0].icon);
+							if (!String.IsNullOrWhiteSpace (imagePath)) {
+								weatherConditionIcon = new Image () {
+									Source = ImageSource.FromFile (imagePath),
+								};
+
+								instance.Children.Add (weatherConditionIcon, 
+									Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.X - 225),
+									Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y)
+								);
+							}
+						}
+					}
+				} catch (Exception ex) {
+					Console.WriteLine ("Unable to retrieve weather data.\n" + ex.ToString ());
+				}
+			} else {
+				Console.WriteLine ("The application cannot access the network for finding current weather information.");
+			}
+		}
+
+		/*
+		 * XXd: weather code for day time icon
+		 * XXn: weather code for night time icon
+		 * Selects corresponding image based on weather icon code from OpenWeatherMap query
+		 */
+		private string GetImagePath (string weatherCode)
+		{
+			string imagePath = "";
+
+			//Clear Sky Day
+			if (weatherCode.Equals ("01d")) { 
+				imagePath = "ic_weather_sunny.png";
+			}
+
+			//Clear Sky Night
+			if (weatherCode.Equals ("01n")) { 
+				imagePath = "ic_weather_moonlight.png"; 
+			}
+
+			//Few Clouds Day
+			if (weatherCode.Equals ("02d")) {
+				imagePath = "ic_weather_partlycloudy_day.png"; 
+			}
+
+			//Few Clouds Night
+			if (weatherCode.Equals ("02n")) {
+				imagePath = "ic_weather_partlycloudy_night.png"; 
+			}
+
+			//Scattered Clouds
+			if (weatherCode.Equals ("03d") || weatherCode.Equals ("03n")) { 
+				imagePath = "ic_weather_cloudy.png";
+			}
+
+			//Broken Clouds
+			if (weatherCode.Equals ("04d") || weatherCode.Equals ("04n")) { 
+				imagePath = "ic_weather_cloudy.png";
+			}
+
+			//Shower Rain
+			if (weatherCode.Equals ("09d") || weatherCode.Equals ("09n")) { 
+				imagePath = "ic_weather_showers.png";
+			}
+
+			//Rain
+			if (weatherCode.Equals ("10d") || weatherCode.Equals ("10n")) { 
+				imagePath = "ic_weather_showers.png";
+			}
+
+			//Thunderstorm
+			if (weatherCode.Equals ("11d") || weatherCode.Equals ("11n")) { 
+				imagePath = "ic_weather_thunderstorms.png";
+			}
+
+			//Snow
+			if (weatherCode.Equals ("13d") || weatherCode.Equals ("13n")) { 
+				imagePath = "ic_weather_snow.png";
+			}
+
+			//Mist
+			if (weatherCode.Equals ("50d") || weatherCode.Equals ("50n")) { 
+				imagePath = "ic_weather_mist.png";
+			}
+
+			return imagePath;
+		}
+	}
 }

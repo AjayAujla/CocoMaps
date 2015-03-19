@@ -254,6 +254,16 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_travel_walking.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\sidebar_slide.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_dir_buildings.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_weather_cloudy.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_weather_scatteredshowers.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_weather_showers.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_weather_snow.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_weather_sunny.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_weather_thunderstorms.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_weather_mist.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_weather_moonlight.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_weather_partlycloudy_day.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_weather_partlycloudy_night.png" />
     <AndroidResource Include="Resources\drawable\ic_menu_calendar.png" />
     <AndroidResource Include="Resources\drawable\ic_menu_campus.png" />
     <AndroidResource Include="Resources\drawable\ic_menu_indoor.png" />

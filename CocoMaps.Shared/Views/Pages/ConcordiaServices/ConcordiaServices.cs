@@ -4,14 +4,11 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;
 using CocoMaps.Shared;
-using CocoMaps.Shared.CustomViews;
-using Java.Net;
 
 namespace CocoMaps.Shared.Pages
 {
 	public class ConcordiaServices : ContentPage
 	{
-
 		// Refactoring inspired by: http://www.trsneed.com/using-xamarin-forms-to-create-a-sortable-list-view/
 
 		SearchBar searchBar;
@@ -40,7 +37,6 @@ namespace CocoMaps.Shared.Pages
 						Services.Add (service);
 			AllServices = Services.ToList ();
 
-
 			// Search bar
 			searchBar = new SearchBar {
 				Placeholder = "Search for a Concordia Service..."
@@ -62,7 +58,21 @@ namespace CocoMaps.Shared.Pages
 
 			servicesListView.ItemTemplate = cell;
 
-			servicesListView.ItemTapped += async (sender, e) => {
+			// Open service website on click
+			servicesListView.ItemSelected += (sender, e) => {
+				Service selectedItem = (Service)((ListView)sender).SelectedItem as Service;
+			
+				if (selectedItem != null) {
+					Uri uri;
+					if (!String.IsNullOrEmpty (selectedItem.URI)) {
+						// Service's URI
+						uri = new Uri (selectedItem.URI);
+					} else {
+						// Concordia Services Web Page
+						uri = new Uri ("http://www.concordia.ca/students/campus-services.html");
+					}
+					Device.OpenUri (uri);
+				}
 				((ListView)sender).SelectedItem = null; // de-select the row
 			};
 
@@ -74,7 +84,6 @@ namespace CocoMaps.Shared.Pages
 					},
 				}
 			};
-
 		}
 
 		public void FilterServices (string text)
@@ -82,7 +91,5 @@ namespace CocoMaps.Shared.Pages
 			Services.Clear ();
 			AllServices.Where (s => s.Name.ToLower ().Contains (text.ToLower ())).ToList ().ForEach (Services.Add);
 		}
-
 	}
-
 }
