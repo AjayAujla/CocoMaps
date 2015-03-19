@@ -20,7 +20,8 @@ namespace CocoMaps.Shared
 			get {
 				if (instance == null) {
 					instance = new DirectionsViewModel {
-						BackgroundColor = Helpers.Color.LightGray.ToFormsColor ()
+						BackgroundColor = Helpers.Color.LightGray.ToFormsColor (),
+						HeightRequest = 250
 					};
 					instance.Init ();
 				}
@@ -111,15 +112,18 @@ namespace CocoMaps.Shared
 			TextColor = Color.White,
 			BackgroundColor = Helpers.Color.Blue.ToFormsColor (),
 			BorderRadius = 0,
-			WidthRequest = 100
+			WidthRequest = 100,
+			HeightRequest = 50
 		};
 
-		Button CancelButton = new Button {
-			Text = "Cancel",
-			TextColor = Helpers.Color.Gray.ToFormsColor (),
+		Image toggleButton = new Image {
 			BackgroundColor = Color.Transparent,
-			WidthRequest = 100
+			Source = ImageSource.FromFile ("button_details_toggle.png"),
+			WidthRequest = 50,
+			HeightRequest = 50,
 		};
+
+		RelativeLayout toggleLayout = new RelativeLayout ();
 
 		Label temperatureLabel;
 		Image weatherConditionIcon;
@@ -133,6 +137,7 @@ namespace CocoMaps.Shared
 
 			FromPicker.Title = "Search from here ...";
 			ToPicker.Title = "... All the way there!";
+
 			TravelMode = TravelMode.walking;
 
 			instance.Children.Add (FromPicker,
@@ -151,12 +156,10 @@ namespace CocoMaps.Shared
 				Constraint.Constant (12),
 				Constraint.Constant (17)
 			);
-
 			instance.Children.Add (SwapIcon,
 				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.X + sibling.Width),
 				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.Height - sibling.Height / 2)
 			);
-
 			instance.Children.Add (TravelWalkingModeButton,
 				Constraint.RelativeToView (ToPicker, (parent, sibling) => sibling.X - 20),
 				Constraint.RelativeToView (ToPicker, (parent, sibling) => sibling.Y + sibling.Height + 10)
@@ -173,18 +176,20 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToView (TravelTransitModeButton, (parent, sibling) => sibling.X + sibling.Width + 5),
 				Constraint.RelativeToView (TravelTransitModeButton, (parent, sibling) => sibling.Y)
 			);
-
-
 			instance.Children.Add (StartButton,
 				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.X + sibling.Width - StartButton.WidthRequest),
 				Constraint.RelativeToView (TravelWalkingModeButton, (parent, sibling) => sibling.Y + sibling.Height + 5)
 			);
-			instance.Children.Add (CancelButton,
-				Constraint.RelativeToView (FromPicker, (parent, sibling) => sibling.X),
-				Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y)
+			instance.Children.Add (toggleButton,
+				Constraint.RelativeToParent (Parent => Width / 2 - toggleButton.Width / 2),
+				Constraint.RelativeToParent (Parent => instance.Height - toggleButton.Height / 2)
 			);
 
-			instance.Padding = 10;
+			var toggleTap = new TapGestureRecognizer ();
+			toggleTap.Tapped += (sender, e) => Toggle ();
+			toggleButton.GestureRecognizers.Add (toggleTap);
+			toggleLayout.GestureRecognizers.Add (toggleTap);
+
 
 			FromPicker.SelectedIndexChanged += (sender, e) => {
 				if (FromPicker.SelectedIndex >= 0)
@@ -196,12 +201,13 @@ namespace CocoMaps.Shared
 			};
 
 			SwapIcon.Clicked += (sender, e) => SwapFromToValues ();
-			CancelButton.Clicked += (sender, e) => Hide ();
 
 			TravelWalkingModeButton.Clicked += HandleTravelModeButtons;
 			TravelShuttleModeButton.Clicked += HandleTravelModeButtons;
 			TravelTransitModeButton.Clicked += HandleTravelModeButtons;
 			TravelDrivingModeButton.Clicked += HandleTravelModeButtons;
+
+			instance.Padding = 10;
 		}
 
 		void SwapFromToValues ()
@@ -241,15 +247,19 @@ namespace CocoMaps.Shared
 			instance.TranslateTo (0, desiredPos - currentPos);
 			viewState = ViewState.Expanded;
 
+			toggleButton.Source = ImageSource.FromFile ("button_directions_toggle.png");
+
 			AddWeatherInfo ();
 		}
 
 		public void Hide ()
 		{
 			double currentPos = instance.Y;
-			double desiredPos = 0 - instance.Height;
+			double desiredPos = 0 - instance.Height - 25;
 			instance.TranslateTo (0, desiredPos - currentPos);
 			viewState = ViewState.Hidden;
+
+			toggleButton.Source = ImageSource.FromFile ("button_directions_toggle.png");
 		}
 
 		public void Toggle ()
@@ -281,21 +291,21 @@ namespace CocoMaps.Shared
 							};
 
 							instance.Children.Add (temperatureLabel,
-								Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.X - 150),
+								Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.X - 60),
 								Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y + 15)
 							);
 						}
 
 						// Display weather condition icon
 						if (weatherConditionIcon == null) {
-							string imagePath = GetImagePath (weatherRequest.weather [0].icon);
+							string imagePath = requestWeather.GetImagePath (weatherRequest.weather [0].icon);
 							if (!String.IsNullOrWhiteSpace (imagePath)) {
 								weatherConditionIcon = new Image () {
 									Source = ImageSource.FromFile (imagePath),
 								};
 
 								instance.Children.Add (weatherConditionIcon, 
-									Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.X - 225),
+									Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.X - 125),
 									Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y)
 								);
 							}
@@ -307,73 +317,6 @@ namespace CocoMaps.Shared
 			} else {
 				Console.WriteLine ("The application cannot access the network for finding current weather information.");
 			}
-		}
-
-		/*
-		 * XXd: weather code for day time icon
-		 * XXn: weather code for night time icon
-		 * Selects corresponding image based on weather icon code from OpenWeatherMap query
-		 */
-		private string GetImagePath (string weatherCode)
-		{
-			string imagePath = "";
-
-			//Clear Sky Day
-			if (weatherCode.Equals ("01d")) { 
-				imagePath = "ic_weather_sunny.png";
-			}
-
-			//Clear Sky Night
-			if (weatherCode.Equals ("01n")) { 
-				imagePath = "ic_weather_moonlight.png"; 
-			}
-
-			//Few Clouds Day
-			if (weatherCode.Equals ("02d")) {
-				imagePath = "ic_weather_partlycloudy_day.png"; 
-			}
-
-			//Few Clouds Night
-			if (weatherCode.Equals ("02n")) {
-				imagePath = "ic_weather_partlycloudy_night.png"; 
-			}
-
-			//Scattered Clouds
-			if (weatherCode.Equals ("03d") || weatherCode.Equals ("03n")) { 
-				imagePath = "ic_weather_cloudy.png";
-			}
-
-			//Broken Clouds
-			if (weatherCode.Equals ("04d") || weatherCode.Equals ("04n")) { 
-				imagePath = "ic_weather_cloudy.png";
-			}
-
-			//Shower Rain
-			if (weatherCode.Equals ("09d") || weatherCode.Equals ("09n")) { 
-				imagePath = "ic_weather_showers.png";
-			}
-
-			//Rain
-			if (weatherCode.Equals ("10d") || weatherCode.Equals ("10n")) { 
-				imagePath = "ic_weather_showers.png";
-			}
-
-			//Thunderstorm
-			if (weatherCode.Equals ("11d") || weatherCode.Equals ("11n")) { 
-				imagePath = "ic_weather_thunderstorms.png";
-			}
-
-			//Snow
-			if (weatherCode.Equals ("13d") || weatherCode.Equals ("13n")) { 
-				imagePath = "ic_weather_snow.png";
-			}
-
-			//Mist
-			if (weatherCode.Equals ("50d") || weatherCode.Equals ("50n")) { 
-				imagePath = "ic_weather_mist.png";
-			}
-
-			return imagePath;
 		}
 	}
 }
