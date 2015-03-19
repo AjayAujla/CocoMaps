@@ -1,10 +1,21 @@
 ﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.13c7772e" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Views\Pages\NextClass\NextClassFunc.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Views\ViewsModel\DirectionsViewModel.cs">
     <Files>
-      <File FileName="CocoMaps.Shared\Views\Pages\NextClass\NextClassFunc.cs" Line="17" Column="17" />
-      <File FileName="CocoMaps.Shared\Views\Pages\NextClass\NextClass.cs" Line="17" Column="17" />
+      <File FileName="CocoMaps.Shared\Views\Pages\NextClass\NextClassFunc.cs" Line="30" Column="30" />
+      <File FileName="CocoMaps.Shared\Views\ViewsModel\DirectionsViewModel.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Master.cs" Line="68" Column="68" />
+      <File FileName="CocoMaps.Shared\Controllers\Weather\RequestWeather.cs" Line="9" Column="9" />
+      <File FileName="CocoMaps.Shared\Views\ViewsModel\DetailsViewModel.cs" Line="16" Column="16" NotebookId="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+      <Pad Id="MonoDevelop.NUnit.TestPad">
+        <State expanded="True" selected="True" />
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
