@@ -312,35 +312,52 @@ namespace CocoMaps.Shared
 		{
 			string TimeNow = getTodayTime();
 
-			if(CurrentDayList != null || CurrentDayList.Any())
+			int DayToday = getDateTodayInt();
+
+			if (dayInt == DayToday) 
 			{
-				foreach(CalendarItems CI in CurrentDayList)
+				if (CurrentDayList != null || CurrentDayList.Any ())
 				{
-
-					string sTime = CI.StartTime.Replace(":", "");
-					string tNow = TimeNow.Replace(":", "");
-
-					int sTimeInt = int.Parse (sTime);
-					int tNowInt = int.Parse (tNow);
-
-					if(sTimeInt > tNowInt)
+					foreach (CalendarItems CI in CurrentDayList)
 					{
-						NextClassFound = true;
+						string sTime = CI.StartTime.Replace (":", "");
+						string tNow = TimeNow.Replace (":", "");
 
-						NextClassItem =  CI;
+						int sTimeInt = int.Parse (sTime);
+						int tNowInt = int.Parse (tNow);
 
-						break;
+						if (sTimeInt > tNowInt) 
+						{
+							NextClassFound = true;
+
+							NextClassItem = CI;
+
+							break;
+						}
 					}
+
+					if (!NextClassFound)
+					{
+						setNextClass (dayInt + 1);
+					}
+
+				} 
+				else 
+				{
+					setNextClass (dayInt + 1);
 				}
 
-				if(!NextClassFound)
-				{
-					setNextClass(dayInt + 1);
-				}
-			}
-			else
+			} 
+			else 
 			{
-				setNextClass(dayInt + 1);
+				if(CurrentDayList != null || CurrentDayList.Any ())
+				{
+					getFirstClass (CurrentDayList);
+				}
+				else
+				{
+					setNextClass (dayInt + 1);
+				}
 			}
 
 		}

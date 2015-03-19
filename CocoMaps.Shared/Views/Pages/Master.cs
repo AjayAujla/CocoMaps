@@ -145,17 +145,23 @@ namespace CocoMaps.Shared
 			};
 
 			NextButtonAlert.Clicked += async (sender, e) => {
+
 				NextClassFunc NCF = new NextClassFunc ();
+
 				CalendarItems CI = NCF.getNextClassItem ();
 
 				string ClassDetails = "Class : " + CI.Title1 + "\r\n" + "Time : " + CI.Day + " " + "(" + CI.StartTime + " - " + CI.EndTime + ")" + "\r\n" + "Location : " + CI.Room + "\r\n";
 
 				var NextClassInput = await DisplayAlert ("Get Directions To Next Class", ClassDetails, "Cancel", "Proceed");
 
-				if (NextClassInput.ToString ().ToLower () == "false") {
+				if (NextClassInput.ToString ().ToLower () == "false") 
+				{
 					// Make a property change to trigger event
 					NextClassAlertEventButton.BackgroundColor = Color.Black;
-				} else {
+
+				} 
+				else 
+				{
 					// Cancel- Do Nothing
 				}
 			};
