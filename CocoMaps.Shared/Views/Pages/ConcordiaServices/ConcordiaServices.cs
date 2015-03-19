@@ -61,7 +61,7 @@ namespace CocoMaps.Shared.Pages
 			// Open service website on click
 			servicesListView.ItemSelected += (sender, e) => {
 				Service selectedItem = (Service)((ListView)sender).SelectedItem as Service;
-
+			
 				if (selectedItem != null) {
 					Uri uri;
 					if (!String.IsNullOrEmpty (selectedItem.URI)) {

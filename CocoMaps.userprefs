@@ -1,12 +1,8 @@
 ﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.c080817bf614321" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <DisabledProjects>
-    <String>CocoMaps.Services/CocoMaps.Services.csproj</String>
-    <String>CocoMaps.iOS\CocoMaps.iOS.csproj</String>
-  </DisabledProjects>
 </Properties>
