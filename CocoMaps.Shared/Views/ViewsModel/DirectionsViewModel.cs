@@ -127,8 +127,8 @@ namespace CocoMaps.Shared
 		void Init ()
 		{
 			foreach (Building building in buildingRepo.BuildingList.Values) {
-				FromPicker.Items.Add (building.Code + " - " + building.Campus);
-				ToPicker.Items.Add (building.Code + " - " + building.Campus);
+				FromPicker.Items.Add (building.Code);
+				ToPicker.Items.Add (building.Code);
 			}
 
 			FromPicker.Title = "Search from here ...";
@@ -272,13 +272,13 @@ namespace CocoMaps.Shared
 				try {
 					var weatherRequest = await requestWeather.GetWeather ("LOY");
 					if (weatherRequest != null) {
-
+						// Display temperature
 						if (temperatureLabel == null) {
 							temperatureLabel = new Label () {
 								Text = Math.Round (weatherRequest.main.temp, 0) + " °C",
 								TextColor = Helpers.Color.Gray.ToFormsColor (),
 							};
-							// Display temperature
+
 							instance.Children.Add (temperatureLabel,
 								Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.X - 150),
 								Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y + 15)
@@ -289,7 +289,6 @@ namespace CocoMaps.Shared
 							// Display weather condition icon
 							string imagePath = GetImagePath (weatherRequest.weather [0].icon);
 							if (!String.IsNullOrWhiteSpace (imagePath)) {
-
 								weatherConditionIcon = new Image () {
 									Source = ImageSource.FromFile (imagePath),
 								};
