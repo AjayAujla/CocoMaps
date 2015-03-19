@@ -9,7 +9,7 @@ namespace CocoMaps.Android
 	[BroadcastReceiver]
 	public class AlarmReceiver : BroadcastReceiver 
 	{
-		public static bool notificationFlag = true;
+		public static bool notificationFlag = false;
 
 		public override void OnReceive (Context context, Intent intent)
 		{
