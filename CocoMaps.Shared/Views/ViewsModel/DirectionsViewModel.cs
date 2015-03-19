@@ -128,6 +128,9 @@ namespace CocoMaps.Shared
 			WidthRequest = 100,
 		};
 
+		Label temperatureLabel;
+		Image weatherConditionIcon;
+
 		void Init ()
 		{
 			foreach (Building building in buildingRepo.BuildingList.Values) {
@@ -250,6 +253,8 @@ namespace CocoMaps.Shared
 			double desiredPos = 0;
 			instance.TranslateTo (0, desiredPos - currentPos);
 			viewState = ViewState.Expanded;
+
+			AddWeatherInfo ();
 		}
 
 		public void Hide ()
@@ -274,34 +279,46 @@ namespace CocoMaps.Shared
 		 */
 		public async void AddWeatherInfo ()
 		{
-			RequestWeather requestWeather = new RequestWeather ();
+			if (App.isConnected () && App.isHostReachable ("openweathermap.org")) {
+				RequestWeather requestWeather = new RequestWeather ();
 
-			try {
-				var weatherRequest = await requestWeather.GetWeather ("LOY");
-				if (weatherRequest != null) {
-		
-					instance.Children.Add (
-						new Label () {
-							Text = Math.Round (weatherRequest.main.temp, 0) + " °C",
-							TextColor = Helpers.Color.Gray.ToFormsColor (),
-						}, 
-						Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.X - 150),
-						Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y + 15)
-					);
+				try {
+					var weatherRequest = await requestWeather.GetWeather ("LOY");
+					if (weatherRequest != null) {
 
-					string imagePath = GetImagePath (weatherRequest.weather [0].icon);
-					if (!String.IsNullOrWhiteSpace (imagePath)) {
-						instance.Children.Add (
-							new Image () {
-								Source = ImageSource.FromFile (imagePath),
-							}, 
-							Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.X - 225),
-							Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y)
-						);
+						if (temperatureLabel == null) {
+							temperatureLabel = new Label () {
+								Text = Math.Round (weatherRequest.main.temp, 0) + " °C",
+								TextColor = Helpers.Color.Gray.ToFormsColor (),
+							};
+							// Display temperature
+							instance.Children.Add (temperatureLabel,
+								Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.X - 150),
+								Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y + 15)
+							);
+						}
+
+						if (weatherConditionIcon == null) {
+							// Display weather condition icon
+							string imagePath = GetImagePath (weatherRequest.weather [0].icon);
+							if (!String.IsNullOrWhiteSpace (imagePath)) {
+
+								weatherConditionIcon = new Image () {
+									Source = ImageSource.FromFile (imagePath),
+								};
+
+								instance.Children.Add (weatherConditionIcon, 
+									Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.X - 225),
+									Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.Y)
+								);
+							}
+						}
 					}
+				} catch (Exception ex) {
+					Console.WriteLine ("Unable to retrieve weather data.\n" + ex.ToString ());
 				}
-			} catch (Exception ex) {
-				Console.WriteLine ("Unable to retrieve weather data." + ex.ToString ());
+			} else {
+				Console.WriteLine ("The application cannot access the network for finding current weather information.");
 			}
 		}
 

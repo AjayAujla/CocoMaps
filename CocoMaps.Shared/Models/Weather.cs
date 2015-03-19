@@ -12,7 +12,7 @@ namespace CocoMaps.Shared
 		public double temp { get; set; }
 	}
 
-	public class RootObject
+	public class WeatherRootObject
 	{
 		public List<Weather> weather { get; set; }
 
