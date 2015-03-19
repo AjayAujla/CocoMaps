@@ -272,6 +272,7 @@ namespace CocoMaps.Shared
 				try {
 					var weatherRequest = await requestWeather.GetWeather ("LOY");
 					if (weatherRequest != null) {
+
 						// Display temperature
 						if (temperatureLabel == null) {
 							temperatureLabel = new Label () {
@@ -285,8 +286,8 @@ namespace CocoMaps.Shared
 							);
 						}
 
+						// Display weather condition icon
 						if (weatherConditionIcon == null) {
-							// Display weather condition icon
 							string imagePath = GetImagePath (weatherRequest.weather [0].icon);
 							if (!String.IsNullOrWhiteSpace (imagePath)) {
 								weatherConditionIcon = new Image () {
