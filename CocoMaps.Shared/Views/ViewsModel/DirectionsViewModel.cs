@@ -274,15 +274,15 @@ namespace CocoMaps.Shared
 		 */
 		public async void AddWeatherInfo ()
 		{
-			OpenWeatherMapService owms = new OpenWeatherMapService ();
+			RequestWeather requestWeather = new RequestWeather ();
 
 			try {
-				var weatherRequest = await owms.GetWeather ("LOY");
+				var weatherRequest = await requestWeather.GetWeather ("LOY");
 				if (weatherRequest != null) {
 		
 					instance.Children.Add (
 						new Label () {
-							Text = String.Format ("{0:F1}", weatherRequest.main.temp) + " °C",
+							Text = Math.Round (weatherRequest.main.temp, 0) + " °C",
 							TextColor = Helpers.Color.Gray.ToFormsColor (),
 						}, 
 						Constraint.RelativeToView (StartButton, (parent, sibling) => sibling.X - 150),
