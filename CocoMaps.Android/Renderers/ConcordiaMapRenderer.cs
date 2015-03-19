@@ -287,6 +287,7 @@ namespace CocoMapsAndroid
 				Button NextClassButton = MasterPage.NextClassAlertEventButton;
 
 				NextClassButton.PropertyChanged += async (send, ev) => {
+
 					NextClassFunc NCF = new NextClassFunc ();
 					CalendarItems CI = NCF.getNextClassItem ();
 
