@@ -126,8 +126,6 @@
     <Compile Include="Files\ObjectExtensions.cs" />
     <Compile Include="AndroidNotifications\AlarmReceiver.cs" />
     <Compile Include="AndroidNotifications\AndroidReminderService.cs" />
-    <Compile Include="AndroidNotifications\Notifications.cs" />
-    <Compile Include="AndroidNotifications\IReminderService.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
   </ItemGroup>
   <ItemGroup>

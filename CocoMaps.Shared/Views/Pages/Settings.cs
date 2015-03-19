@@ -1,6 +1,7 @@
 ﻿using System;
 using CocoMaps.Shared.ViewModels;
 using Xamarin.Forms;
+using CocoMaps.Android;
 
 namespace CocoMaps.Shared
 {
@@ -34,6 +35,10 @@ namespace CocoMaps.Shared
 				// toggle bool
 				useDeviceMap = !useDeviceMap;
 				Console.WriteLine ("Use Google Maps? " + useDeviceMap);
+			};
+
+			eventNotificationCell.OnChanged += (sender, e) => {
+				AlarmReceiver.notificationFlag = !AlarmReceiver.notificationFlag;
 			};
 
 			Content = new TableView {
