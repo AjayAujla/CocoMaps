@@ -18,6 +18,7 @@ namespace CocoMaps.Shared
 			OptionItems.Add (new Campus_MenuOption ());
 			OptionItems.Add (new IndoorDirections_MenuOption ());
 			OptionItems.Add (new ConcordiaServices_MenuOption ());
+			OptionItems.Add (new Bookmarks_MenuOption ());
 			OptionItems.Add (new Calendar_MenuOption ());
 			OptionItems.Add (new ShuttleBus_MenuOption ());
 			OptionItems.Add (new ShuttleBusTracker_MenuOption ());

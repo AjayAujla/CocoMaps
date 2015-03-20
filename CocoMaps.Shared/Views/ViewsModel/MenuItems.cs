@@ -15,6 +15,12 @@ namespace CocoMaps.Shared
 
 		public override string Icon { get { return "ic_menu_services.png"; } }
 	}
+	public class Bookmarks_MenuOption : IMenuOptions
+	{
+		public override string Title { get { return "Bookmarks"; } }
+
+		public override string Icon { get { return "ic_menu_services.png"; } }
+	}
 
 	public class IndoorDirections_MenuOption : IMenuOptions
 	{
@@ -50,6 +56,8 @@ namespace CocoMaps.Shared
 
 		public override string Icon { get { return "ic_menu_settings.png"; } }
 	}
+
+
 
 	public class Exit_MenuOption : IMenuOptions
 	{

@@ -32,10 +32,10 @@ namespace CocoMaps.Shared
 				Text = "Event Notifications"
 			};
 			var soundCell = new SwitchCell {
-				Text = "Event Notifications"
+				Text = "Sound"
 			};
 			var vibrationCell = new SwitchCell {
-				Text = "Event Notifications"
+				Text = "Vibration"
 			};
 
 			useGoogleMapsCell.OnChanged += (sender, e) => {

@@ -51,6 +51,8 @@ namespace CocoMapsAndroid
 		Dictionary<Marker, Result> MarkerPOI = new Dictionary<Marker, Result> ();
 		Dictionary<String, Directions> MarkerDirections = new Dictionary<String, Directions> ();
 
+		Dictionary<Marker, Result> BookmarksMarker = new Dictionary<Marker, Result> ();
+
 		void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
 		{
 			Building building;
@@ -283,6 +285,47 @@ namespace CocoMapsAndroid
 						androidMapView.Map.AddPolygon (polygon);
 					}
 				}
+
+				Button BookmarksButton = MasterPage._BookmarksButton;
+
+				bool bookmarksBool = false;
+
+				BookmarksButton.Clicked += async (send, ev) => {
+
+					// Adding all POIs' Icons
+					if (!bookmarksBool) {
+
+						if (App.isConnected ()) {
+
+							LoaderViewModel.getInstance.Show ();
+
+							BookmarkItems BI = new BookmarkItems ("Test", "This is my address" ,45.501689, -73.567256);
+
+							MarkerOptions bMarker = new MarkerOptions ();
+
+							bMarker.SetTitle (BI.bName);
+							bMarker.SetSnippet (BI.bAddress);
+							bMarker.SetPosition (new LatLng (BI.bLat, BI.bLon));
+
+							bMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.fav_icon));
+
+							marker = androidMapView.Map.AddMarker (bMarker);
+
+							BookmarksMarker.Add (marker, null);
+					
+						} 
+						bookmarksBool = true;
+						LoaderViewModel.getInstance.Hide ();
+
+					} else {
+
+						// toggling markers visibility
+						foreach (Marker m in BookmarksMarker.Keys) {
+							m.Visible = !m.Visible;
+						}
+					}
+				};
+
 
 				Button NextClassButton = MasterPage.NextClassAlertEventButton;
 
