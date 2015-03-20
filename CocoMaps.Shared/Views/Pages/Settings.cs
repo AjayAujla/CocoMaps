@@ -31,6 +31,12 @@ namespace CocoMaps.Shared
 			var eventNotificationCell = new SwitchCell {
 				Text = "Event Notifications"
 			};
+			var soundCell = new SwitchCell {
+				Text = "Event Notifications"
+			};
+			var vibrationCell = new SwitchCell {
+				Text = "Event Notifications"
+			};
 
 			useGoogleMapsCell.OnChanged += (sender, e) => {
 				// toggle bool
@@ -130,10 +136,11 @@ namespace CocoMaps.Shared
 						useGoogleMapsCell,
 						eventNotificationCell,
 					},
-					new TableSection("Alerts and Notifications") {
-						new SwitchCell { Text = "Vibration" },
-						new SwitchCell { Text = "Sound" }
-					}
+					new TableSection ("Alerts and Notifications") {
+							vibrationCell,
+							soundCell,
+						},
+
 
 				}
 			};
