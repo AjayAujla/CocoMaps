@@ -25,11 +25,11 @@ namespace CocoMaps.Shared
 		public CalendarRootObject LocalCalObj = null;
 		public CalendarRootObject OnlineCalObj = null;
 
-		public List<CalendarItems> MondayCalItems = new List<CalendarItems>{ };
-		public List<CalendarItems> TuesdayCalItems = new List<CalendarItems>{ };
-		public List<CalendarItems> WednesdayCalItems = new List<CalendarItems>{ };
-		public List<CalendarItems> ThursdayCalItems = new List<CalendarItems>{ };
-		public List<CalendarItems> FridayCalItems = new List<CalendarItems>{ };
+		public static List<CalendarItems> MondayCalItems = new List<CalendarItems>{ };
+		public static List<CalendarItems> TuesdayCalItems = new List<CalendarItems>{ };
+		public static List<CalendarItems> WednesdayCalItems = new List<CalendarItems>{ };
+		public static List<CalendarItems> ThursdayCalItems = new List<CalendarItems>{ };
+		public static List<CalendarItems> FridayCalItems = new List<CalendarItems>{ };
 
 
 		public BaseCalendar (IMenuOptions menuItem)
@@ -73,59 +73,72 @@ namespace CocoMaps.Shared
 				switch (today) {
 				case DayOfWeek.Monday:
 					foreach (CalendarItems c in MondayCalItems) {
-						var startingTime = TimeSpan.Parse (c.StartTime);
-
-						var notificationHourMinute = startingTime - earlyNotice;
-						var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-						a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						if(MondayCalItems != null){
+							var startingTime = TimeSpan.Parse (c.StartTime);
+							var notificationHourMinute = startingTime - earlyNotice;
+							var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
+							a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						}
 					}
 					break;
 				case DayOfWeek.Tuesday:
 					foreach (CalendarItems c in TuesdayCalItems) {
-						var startingTime = TimeSpan.Parse (c.StartTime);
-						var notificationHourMinute = startingTime - earlyNotice;
-						var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-						a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						if(TuesdayCalItems != null){
+							var startingTime = TimeSpan.Parse (c.StartTime);
+							var notificationHourMinute = startingTime - earlyNotice;
+							var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
+							a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						}
 					}
 					break;
 				case DayOfWeek.Wednesday:
 					foreach (CalendarItems c in WednesdayCalItems) {
-						var startingTime = TimeSpan.Parse (c.StartTime);
-						var notificationHourMinute = startingTime - earlyNotice;
-						var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-						a.Remind (dateNow, c.EventName, "Is starting soon");
+						if(WednesdayCalItems != null){
+							var startingTime = TimeSpan.Parse (c.StartTime);
+							var notificationHourMinute = startingTime - earlyNotice;
+							var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
+							a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						}
 					}
 					break;
 				case DayOfWeek.Thursday:
 					foreach (CalendarItems c in ThursdayCalItems) {
-						var startingTime = TimeSpan.Parse (c.StartTime);
-						var notificationHourMinute = startingTime - earlyNotice;
-						var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-						a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						if(ThursdayCalItems != null){
+							var startingTime = TimeSpan.Parse (c.StartTime);
+							var notificationHourMinute = startingTime - earlyNotice;
+							var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
+							a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						}
 					}
 					break;
 				case DayOfWeek.Friday:
 					foreach (CalendarItems c in FridayCalItems) {
-						var startingTime = TimeSpan.Parse (c.StartTime);
-						var notificationHourMinute = startingTime - earlyNotice;
-						var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-						a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						if(FridayCalItems != null){
+							var startingTime = TimeSpan.Parse (c.StartTime);
+							var notificationHourMinute = startingTime - earlyNotice;
+							var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
+							a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						}
 					}
 					break;
 				case DayOfWeek.Saturday:
 					foreach (CalendarItems c in MondayCalItems) {
-						var startingTime = TimeSpan.Parse (c.StartTime);
-						var notificationHourMinute = startingTime - earlyNotice;
-						var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-						a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						if(MondayCalItems != null){
+							var startingTime = TimeSpan.Parse (c.StartTime);
+							var notificationHourMinute = startingTime - earlyNotice;
+							var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
+							a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						}
 					}
 					break;
 				case DayOfWeek.Sunday:
 					foreach (CalendarItems c in MondayCalItems) {
-						var startingTime = TimeSpan.Parse (c.StartTime);
-						var notificationHourMinute = startingTime - earlyNotice;
-						var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-						a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						if(MondayCalItems != null){
+							var startingTime = TimeSpan.Parse (c.StartTime);
+							var notificationHourMinute = startingTime - earlyNotice;
+							var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
+							a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
+						}
 					}
 					break;
 				}
