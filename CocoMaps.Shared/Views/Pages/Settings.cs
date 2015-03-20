@@ -38,6 +38,8 @@ namespace CocoMaps.Shared
 				Console.WriteLine ("Use Google Maps? " + useDeviceMap);
 			};
 
+		
+
 			eventNotificationCell.OnChanged += (sender, e) => {
 				AlarmReceiver.notificationFlag = !AlarmReceiver.notificationFlag;
 
@@ -129,7 +131,15 @@ namespace CocoMaps.Shared
 					new TableSection ("Map Settings") {
 						useGoogleMapsCell,
 						eventNotificationCell,
+					},
+
+
+
+					new TableSection("Alerts and Notifications") {
+						new SwitchCell { Text = "Vibration" },
+						new SwitchCell { Text = "Sound" }
 					}
+
 				}
 			};
 		}
