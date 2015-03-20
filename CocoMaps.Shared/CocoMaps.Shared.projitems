@@ -64,6 +64,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ICloseApp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBus\ShuttleBusTracker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Settings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\Indoor\Indoor_H.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Indoor\Edge.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Indoor\Vertex.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\Dijkstra.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GeoLocation\IGeoLocator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GeoLocation\Position.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GeoLocation\PositionExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -82,6 +89,9 @@
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\ConcordiaServices\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBus\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Calendar\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\Repositories\Indoor\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Models\Indoor\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GeoLocation\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controllers\Repositories\LocalCalendar.json" />
