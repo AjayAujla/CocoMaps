@@ -449,16 +449,19 @@ namespace CocoMaps.Shared
 			image.IsVisible = true;
 			featuresImages.IsVisible = true;
 
+			//bool tempUseMap = Settings.getSettingsUseMap();
+
+			bool tempUseMap = Settings.useDeviceMap;
+
 			directionsButton.Clicked += (sender, e) => {
 
 			DependencyService.Get<IPhoneService> ().LaunchMap (bookm.bAddress);
 
 			};
-
-			Settings.useDeviceMap = false;
+				
 			vMinimize ();
 
-
+			//Settings.setSettingsUseMap(tempUseMap);
 		}
 
 		public void UpdateView (string buildingCode)

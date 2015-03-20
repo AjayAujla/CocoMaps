@@ -14,7 +14,17 @@ namespace CocoMaps.Shared
 
 		static public TravelMode TravelMode = TravelMode.walking;
 
-		static public bool useDeviceMap;
+		static public bool useDeviceMap = false;
+
+		public bool getSettingsUseMap()
+		{
+			return useDeviceMap;
+		}
+
+		public void setSettingsUseMap(bool umap)
+		{
+			useDeviceMap = umap;
+		}
 
 		public Settings (IMenuOptions menuItem)
 		{
