@@ -313,7 +313,7 @@ namespace CocoMaps.Shared
 			foreach (CalendarListItem OCI in CLO.items) {
 				string[] CalListSummary = OCI.summary.ToLower ().Split ('-');
 
-				if (CalListSummary [0] == "@ConcordiaCalendar") {
+				if (CalListSummary [0] == (("@ConcordiaCalendar").ToLower())) {
 					RequestOnlineCalendar (OCI.id);
 
 					UseOnlineCalendar = true;
@@ -325,7 +325,7 @@ namespace CocoMaps.Shared
 		{
 			string token = App.Instance.Token;
 
-			var requestUrl = string.Format ("https://www.googleapis.com/calendar/v3/calendars/{0}/events?alwaysIncludeEmail=false&singleEvents=false&fields=description%2Citems(description%2Cend%2Cid%2Clocation)%2Csummary&key={1}", CalID, token);
+			var requestUrl = string.Format ("https://www.googleapis.com/calendar/v3/calendars/{0}/events?alwaysIncludeEmail=false&singleEvents=false&fields=description%2Citems(description%2Cend%2Cid%2Clocation)%2Csummary&access_token={1}", CalID, token);
 
 			JsonValue OnlineCalJson = await JsonUtil.FetchJsonAsync (requestUrl);
 
@@ -352,7 +352,7 @@ namespace CocoMaps.Shared
 		{
 			string token = App.Instance.Token;
 
-			var requestUrl = string.Format ("https://www.googleapis.com/calendar/v3/users/me/calendarList?key={0}", token);
+			var requestUrl = string.Format ("https://www.googleapis.com/calendar/v3/users/me/calendarList?access_token={0}", token);
 
 			JsonValue CalListJson = await JsonUtil.FetchJsonAsync (requestUrl);
 
