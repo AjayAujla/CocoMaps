@@ -62,8 +62,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\NextClass\NextClassFunc.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Weather.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Weather\RequestWeather.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBusTracker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ICloseApp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBus\ShuttleBusTracker.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
