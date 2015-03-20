@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
+<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SH456WM07905" />
   <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android\AndroidNotifications\AndroidReminderService.cs">
     <Files>
