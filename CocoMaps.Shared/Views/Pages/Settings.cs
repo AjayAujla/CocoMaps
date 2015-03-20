@@ -129,7 +129,12 @@ namespace CocoMaps.Shared
 					new TableSection ("Map Settings") {
 						useGoogleMapsCell,
 						eventNotificationCell,
+					},
+					new TableSection("Alerts and Notifications") {
+						new SwitchCell { Text = "Vibration" },
+						new SwitchCell { Text = "Sound" }
 					}
+
 				}
 			};
 		}
