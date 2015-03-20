@@ -63,8 +63,12 @@ namespace CocoMapsAndroid
 			else if (MarkerDirections.TryGetValue (e.Marker.Id, out directions)) {
 				if (directions != null)
 					DetailsViewModel.getInstance.UpdateView (directions);
-			} else
-				e.Marker.ShowInfoWindow ();
+			} else {
+
+				BookmarkItems BI = new BookmarkItems ("Test", "This is my address", 45.496426, -73.577896);
+
+				DetailsViewModel.getInstance.UpdateView (BI);
+			}
 		}
 
 		BitmapDescriptor GetCustomBitmapDescriptor (string text)
@@ -299,7 +303,7 @@ namespace CocoMapsAndroid
 
 							LoaderViewModel.getInstance.Show ();
 
-							BookmarkItems BI = new BookmarkItems ("Test", "This is my address" ,45.501689, -73.567256);
+							BookmarkItems BI = new BookmarkItems ("Test", "This is my address", 45.496426, -73.577896);
 
 							MarkerOptions bMarker = new MarkerOptions ();
 
