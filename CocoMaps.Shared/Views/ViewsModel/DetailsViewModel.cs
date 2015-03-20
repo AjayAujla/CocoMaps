@@ -104,7 +104,6 @@ namespace CocoMaps.Shared
 			Intent = TableIntent.Form,
 			HasUnevenRows = true,
 			Root = new TableRoot {
-
 			}
 		};
 
@@ -298,7 +297,6 @@ namespace CocoMaps.Shared
 
 		public void UpdateView (Building building)
 		{
-
 			title.Text = building.Code + " Building";
 			title.TextColor = Helpers.Color.Maroon.ToFormsColor ();
 
@@ -333,7 +331,6 @@ namespace CocoMaps.Shared
 
 				// Open directions with Google Maps app
 				if (Settings.useDeviceMap) {
-					
 					DependencyService.Get<IPhoneService> ().LaunchMap (building.Address);
 
 				} else {
@@ -481,7 +478,7 @@ namespace CocoMaps.Shared
 		public void Expand ()
 		{
 			// Hide the top DirectionsView if we expand building details
-			directionsViewModel.Hide ();
+			//directionsViewModel.Hide ();
 
 			double currentPos = instance.Y;
 			double desiredPos = ParentView.Bounds.Height - instance.Height;
@@ -507,7 +504,5 @@ namespace CocoMaps.Shared
 				Minimize ();
 			}
 		}
-
 	}
-
 }
