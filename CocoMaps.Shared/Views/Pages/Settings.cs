@@ -69,6 +69,14 @@ namespace CocoMaps.Shared
 				}
 			};
 
+			vibrationCell.OnChanged += (sender, e) => {
+				AlarmReceiver.notificationVibrateFlag = !AlarmReceiver.notificationVibrateFlag;
+			};
+
+			soundCell.OnChanged += (sender, e) => {
+				AlarmReceiver.notificationSoundFlag = !AlarmReceiver.notificationSoundFlag;
+			};
+
 			Content = new TableView {
 				Root = new TableRoot ("Settings") {
 					new TableSection ("Map Settings") {

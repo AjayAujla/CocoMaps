@@ -29,7 +29,7 @@ namespace CocoMaps.Android
 
 			var dateNow = DateTime.Now;
 
-			alarmManager.Set (AlarmType.ElapsedRealtime, SystemClock.ElapsedRealtime () + 5 * 1000, pendingIntent);
+			alarmManager.Set (AlarmType.ElapsedRealtime, SystemClock.ElapsedRealtime () + 2 * 1000, pendingIntent);
 		}
 
 		public static void alarmManagerCreationForNotificationOfCurrentDay (AndroidReminderService a, DateTime dateNow, DayOfWeek today, TimeSpan earlyNotice)

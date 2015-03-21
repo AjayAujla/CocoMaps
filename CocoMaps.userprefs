@@ -1,16 +1,11 @@
 ﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.d019c12a" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Views\Pages\Settings.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SH456WM07905" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android\AndroidNotifications\AlarmReceiver.cs">
     <Files>
-      <File FileName="CocoMaps.Shared\Views\Pages\Master.cs" Line="10" Column="10" />
-      <File FileName="CocoMaps.Android\Renderers\ConcordiaMapRenderer.cs" Line="99" Column="99" />
-      <File FileName="CocoMaps.Shared\Models\BoomarksModel.cs" Line="3" Column="3" />
-      <File FileName="CocoMaps.Shared\Models\CalendarModel.cs" Line="4" Column="4" />
-      <File FileName="CocoMaps.Shared\Controllers\Places\Places.cs" Line="2" Column="2" />
-      <File FileName="CocoMaps.Shared\Views\Pages\Calendar\Calendar.cs" Line="10" Column="10" />
-      <File FileName="CocoMaps.Shared\Views\ViewsModel\DetailsViewModel.cs" Line="9" Column="9" />
-      <File FileName="CocoMaps.Shared\Views\Pages\Settings.cs" Line="3" Column="3" />
-      <File FileName="CocoMaps.Shared\Views\Pages\Root.cs" Line="42" Column="42" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Settings.cs" Line="29" Column="29" />
+      <File FileName="CocoMaps.Android\AndroidNotifications\AndroidReminderService.cs" Line="83" Column="83" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Calendar\BaseCalendar.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Android\AndroidNotifications\AlarmReceiver.cs" Line="47" Column="47" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
