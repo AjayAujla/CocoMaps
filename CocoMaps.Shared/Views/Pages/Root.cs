@@ -11,6 +11,7 @@ namespace CocoMaps.Shared
 		// Initialize Pages
 		MasterPage pMaster;
 		ConcordiaServices pServices;
+		Bookmark pBookmark;
 		//IndoorDirections pIndoorDirections;
 		BaseCalendar pCalendar;
 		BaseShuttleBus pShuttleBus;
@@ -57,6 +58,15 @@ namespace CocoMaps.Shared
 				}
 				return pServices;
 			} 
+
+			if (pageTitle.Equals ("Bookmarks")) {
+				if ((pBookmark == null)) {
+
+					pBookmark = new Bookmark (menuOption);
+				}
+				return pBookmark;
+			}
+
 			else if (pageTitle.Equals ("Calendar")) 
 			{
 				if ((pCalendar == null)) 

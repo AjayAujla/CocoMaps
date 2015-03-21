@@ -140,6 +140,13 @@ namespace CocoMaps.Shared
 			BackgroundColor = Color.Transparent
 		};
 
+		Button DelBookButton = new Button {
+			Text = "Delete Bookmark",
+			TextColor = Helpers.Color.Blue.ToFormsColor (),
+			Image = (FileImageSource)ImageSource.FromFile ("ic_dir_buildings.png"),
+			BackgroundColor = Color.Transparent
+		};
+
 		void Init ()
 		{
 			viewState = ViewState.Hidden;
@@ -431,6 +438,32 @@ namespace CocoMaps.Shared
 			Minimize ();
 		}
 
+		public void UpdateView (BookmarkItems bookm)
+		{
+			title.Text = "Bookmark : " + bookm.bName;
+			title.TextColor = Helpers.Color.Maroon.ToFormsColor ();
+
+			details.Text = bookm.bAddress;
+
+
+			image.IsVisible = true;
+			featuresImages.IsVisible = true;
+
+			//bool tempUseMap = Settings.getSettingsUseMap();
+
+			bool tempUseMap = Settings.useDeviceMap;
+
+			directionsButton.Clicked += (sender, e) => {
+
+			DependencyService.Get<IPhoneService> ().LaunchMap (bookm.bAddress);
+
+			};
+				
+			vMinimize ();
+
+			//Settings.setSettingsUseMap(tempUseMap);
+		}
+
 		public void UpdateView (string buildingCode)
 		{
 			Building building;
@@ -473,6 +506,15 @@ namespace CocoMaps.Shared
 			instance.TranslateTo (0, desiredPos - currentPos);
 			toggleButton.RotateTo (0);
 			viewState = ViewState.Minimized;
+		}
+
+		public void vMinimize ()
+		{
+			double currentPos = instance.Y;
+			double desiredPos = ParentView.Bounds.Height - image.Height;
+			instance.TranslateTo (0, desiredPos - currentPos);
+			//toggleButton.RotateTo (0);
+			//viewState = ViewState.Minimized;
 		}
 
 		public void Expand ()
