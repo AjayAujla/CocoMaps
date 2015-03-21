@@ -14,7 +14,18 @@ namespace CocoMaps.Shared
 
 		static public TravelMode TravelMode = TravelMode.walking;
 
-		static public bool useDeviceMap;
+		static public bool useDeviceMap = false;
+
+		public bool getSettingsUseMap()
+		{
+			return useDeviceMap;
+		}
+
+		public void setSettingsUseMap(bool umap)
+		{
+			useDeviceMap = umap;
+		}
+			
 
 		public Settings (IMenuOptions menuItem)
 		{
@@ -30,6 +41,12 @@ namespace CocoMaps.Shared
 
 			var eventNotificationCell = new SwitchCell {
 				Text = "Event Notifications"
+			};
+			var soundCell = new SwitchCell {
+				Text = "Sound"
+			};
+			var vibrationCell = new SwitchCell {
+				Text = "Vibration"
 			};
 
 			useGoogleMapsCell.OnChanged += (sender, e) => {
@@ -48,80 +65,16 @@ namespace CocoMaps.Shared
 					var today = dateNow.DayOfWeek;
 					var earlyNotice = new TimeSpan (0, 15, 0);
 
-
-					switch (today) {
-					case DayOfWeek.Monday:
-						foreach (CalendarItems c in BaseCalendar.MondayCalItems) {
-							if(BaseCalendar.MondayCalItems != null){
-								var startingTime = TimeSpan.Parse (c.StartTime);
-								var notificationHourMinute = startingTime - earlyNotice;
-								var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-								a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-							}
-						}
-						break;
-					case DayOfWeek.Tuesday:
-						foreach (CalendarItems c in BaseCalendar.TuesdayCalItems) {
-							if(BaseCalendar.TuesdayCalItems != null){
-								var startingTime = TimeSpan.Parse (c.StartTime);
-								var notificationHourMinute = startingTime - earlyNotice;
-								var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-								a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-							}
-						}
-						break;
-					case DayOfWeek.Wednesday:
-						foreach (CalendarItems c in BaseCalendar.WednesdayCalItems) {
-							if(BaseCalendar.WednesdayCalItems != null){
-								var startingTime = TimeSpan.Parse (c.StartTime);
-								var notificationHourMinute = startingTime - earlyNotice;
-								var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-								a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-							}
-						}
-						break;
-					case DayOfWeek.Thursday:
-						foreach (CalendarItems c in BaseCalendar.ThursdayCalItems) {
-							if(BaseCalendar.ThursdayCalItems != null){
-								var startingTime = TimeSpan.Parse (c.StartTime);
-								var notificationHourMinute = startingTime - earlyNotice;
-								var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-								a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-							}
-						}
-						break;
-					case DayOfWeek.Friday:
-						foreach (CalendarItems c in BaseCalendar.FridayCalItems) {
-							if(BaseCalendar.FridayCalItems != null){
-								var startingTime = TimeSpan.Parse (c.StartTime);
-								var notificationHourMinute = startingTime - earlyNotice;
-								var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-								a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-							}
-						}
-						break;
-					case DayOfWeek.Saturday:
-						foreach (CalendarItems c in BaseCalendar.MondayCalItems) {
-							if(BaseCalendar.MondayCalItems != null){
-								var startingTime = TimeSpan.Parse (c.StartTime);
-								var notificationHourMinute = startingTime - earlyNotice;
-								var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-								a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-							}
-						}
-						break;
-					case DayOfWeek.Sunday:
-						foreach (CalendarItems c in BaseCalendar.MondayCalItems) {
-							if(BaseCalendar.MondayCalItems != null){
-								var startingTime = TimeSpan.Parse (c.StartTime);
-								var notificationHourMinute = startingTime - earlyNotice;
-								var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-								a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-							}
-						}
-						break;
-					}
+					AndroidReminderService.alarmManagerCreationForNotificationOfCurrentDay (a, dateNow, today, earlyNotice);
 				}
+			};
+
+			vibrationCell.OnChanged += (sender, e) => {
+				AlarmReceiver.notificationVibrateFlag = !AlarmReceiver.notificationVibrateFlag;
+			};
+
+			soundCell.OnChanged += (sender, e) => {
+				AlarmReceiver.notificationSoundFlag = !AlarmReceiver.notificationSoundFlag;
 			};
 
 			Content = new TableView {
@@ -129,7 +82,13 @@ namespace CocoMaps.Shared
 					new TableSection ("Map Settings") {
 						useGoogleMapsCell,
 						eventNotificationCell,
-					}
+					},
+					new TableSection ("Alerts and Notifications") {
+							vibrationCell,
+							soundCell,
+						},
+
+
 				}
 			};
 		}

@@ -55,6 +55,7 @@ namespace CocoMaps.Shared
 					BoxView boxView = new BoxView ();
 					boxView.SetBinding (BoxView.ColorProperty, "BoxColor");
 
+
 					// Return an assembled ViewCell.
 					return new ViewCell {
 						View = new StackLayout {

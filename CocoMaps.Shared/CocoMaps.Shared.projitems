@@ -52,7 +52,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBus\ShuttleBus.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\IPhoneService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\NavigationModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ImageDownload.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\ShuttleBus\ShuttleBusPolyline.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\DirectionsViewModel.cs" />
@@ -62,8 +61,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\NextClass\NextClassFunc.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Weather.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Weather\RequestWeather.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBusTracker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ICloseApp.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBus\ShuttleBusTracker.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Settings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\BoomarksModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />

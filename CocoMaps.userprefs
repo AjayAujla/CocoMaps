@@ -1,11 +1,11 @@
-<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SH456WM07905" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android\AndroidNotifications\AndroidReminderService.cs">
+﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android\AndroidNotifications\AlarmReceiver.cs">
     <Files>
-      <File FileName="CocoMaps.Shared\Views\Pages\Settings.cs" Line="35" Column="35" />
-      <File FileName="CocoMaps.Android\AndroidNotifications\AlarmReceiver.cs" Line="46" Column="46" />
+      <File FileName="CocoMaps.Shared\Views\Pages\Settings.cs" Line="1" Column="1" />
       <File FileName="CocoMaps.Android\AndroidNotifications\AndroidReminderService.cs" Line="1" Column="1" />
       <File FileName="CocoMaps.Shared\Views\Pages\Calendar\BaseCalendar.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Android\AndroidNotifications\AlarmReceiver.cs" Line="4" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

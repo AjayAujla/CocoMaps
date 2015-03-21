@@ -70,78 +70,7 @@ namespace CocoMaps.Shared
 				var today = dateNow.DayOfWeek;
 				var earlyNotice = new TimeSpan (0, 15, 0);
 
-				switch (today) {
-				case DayOfWeek.Monday:
-					foreach (CalendarItems c in MondayCalItems) {
-						if(MondayCalItems != null){
-							var startingTime = TimeSpan.Parse (c.StartTime);
-							var notificationHourMinute = startingTime - earlyNotice;
-							var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-							a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-						}
-					}
-					break;
-				case DayOfWeek.Tuesday:
-					foreach (CalendarItems c in TuesdayCalItems) {
-						if(TuesdayCalItems != null){
-							var startingTime = TimeSpan.Parse (c.StartTime);
-							var notificationHourMinute = startingTime - earlyNotice;
-							var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-							a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-						}
-					}
-					break;
-				case DayOfWeek.Wednesday:
-					foreach (CalendarItems c in WednesdayCalItems) {
-						if(WednesdayCalItems != null){
-							var startingTime = TimeSpan.Parse (c.StartTime);
-							var notificationHourMinute = startingTime - earlyNotice;
-							var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-							a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-						}
-					}
-					break;
-				case DayOfWeek.Thursday:
-					foreach (CalendarItems c in ThursdayCalItems) {
-						if(ThursdayCalItems != null){
-							var startingTime = TimeSpan.Parse (c.StartTime);
-							var notificationHourMinute = startingTime - earlyNotice;
-							var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-							a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-						}
-					}
-					break;
-				case DayOfWeek.Friday:
-					foreach (CalendarItems c in FridayCalItems) {
-						if(FridayCalItems != null){
-							var startingTime = TimeSpan.Parse (c.StartTime);
-							var notificationHourMinute = startingTime - earlyNotice;
-							var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-							a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-						}
-					}
-					break;
-				case DayOfWeek.Saturday:
-					foreach (CalendarItems c in MondayCalItems) {
-						if(MondayCalItems != null){
-							var startingTime = TimeSpan.Parse (c.StartTime);
-							var notificationHourMinute = startingTime - earlyNotice;
-							var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-							a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-						}
-					}
-					break;
-				case DayOfWeek.Sunday:
-					foreach (CalendarItems c in MondayCalItems) {
-						if(MondayCalItems != null){
-							var startingTime = TimeSpan.Parse (c.StartTime);
-							var notificationHourMinute = startingTime - earlyNotice;
-							var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-							a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-						}
-					}
-					break;
-				}
+				AndroidReminderService.alarmManagerCreationForNotificationOfCurrentDay (a, dateNow, today, earlyNotice);
 
 				#endif
 
@@ -313,7 +242,7 @@ namespace CocoMaps.Shared
 			foreach (CalendarListItem OCI in CLO.items) {
 				string[] CalListSummary = OCI.summary.ToLower ().Split ('-');
 
-				if (CalListSummary [0] == "@ConcordiaCalendar") {
+				if (CalListSummary [0] == (("@ConcordiaCalendar").ToLower())) {
 					RequestOnlineCalendar (OCI.id);
 
 					UseOnlineCalendar = true;
@@ -325,7 +254,7 @@ namespace CocoMaps.Shared
 		{
 			string token = App.Instance.Token;
 
-			var requestUrl = string.Format ("https://www.googleapis.com/calendar/v3/calendars/{0}/events?alwaysIncludeEmail=false&singleEvents=false&fields=description%2Citems(description%2Cend%2Cid%2Clocation)%2Csummary&key={1}", CalID, token);
+			var requestUrl = string.Format ("https://www.googleapis.com/calendar/v3/calendars/{0}/events?alwaysIncludeEmail=false&singleEvents=false&fields=description%2Citems(description%2Cend%2Cid%2Clocation)%2Csummary&access_token={1}", CalID, token);
 
 			JsonValue OnlineCalJson = await JsonUtil.FetchJsonAsync (requestUrl);
 
@@ -352,7 +281,7 @@ namespace CocoMaps.Shared
 		{
 			string token = App.Instance.Token;
 
-			var requestUrl = string.Format ("https://www.googleapis.com/calendar/v3/users/me/calendarList?key={0}", token);
+			var requestUrl = string.Format ("https://www.googleapis.com/calendar/v3/users/me/calendarList?access_token={0}", token);
 
 			JsonValue CalListJson = await JsonUtil.FetchJsonAsync (requestUrl);
 
