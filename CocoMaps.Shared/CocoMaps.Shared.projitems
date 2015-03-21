@@ -36,7 +36,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\INetwork.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\DetailsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\BuildingRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GooglePointsDecoder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\LoaderViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Department.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OAuthSettings.cs" />
@@ -71,6 +70,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GeoLocation\IGeoLocator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GeoLocation\Position.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GeoLocation\PositionExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\BoomarksModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GoogleUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />

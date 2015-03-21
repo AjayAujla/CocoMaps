@@ -36,6 +36,14 @@ namespace CocoMaps.Shared
 			BorderRadius = 0
 		};
 
+		public static Button _BookmarksButton = new Button { 
+			Text = "BM", 
+			HeightRequest = 40,
+			BackgroundColor = Color.White,
+			Opacity = 0.7,
+			BorderRadius = 0
+		};
+
 		Button _SearchButton;
 
 		// Needed to access this button from ConcordiaMapRenderer.cs
@@ -205,6 +213,7 @@ namespace CocoMaps.Shared
 				Constraint.RelativeToParent (parent => Height / 2 - 50));
 
 			mainLayout.Children.Add (_POIButton, Constraint.Constant (150), Constraint.RelativeToParent (parent => Height - 54));
+			mainLayout.Children.Add (_BookmarksButton, Constraint.Constant (220), Constraint.RelativeToParent (parent => Height - 54));
 			mainLayout.Children.Add (TestButton, Constraint.Constant (64), Constraint.Constant (14));
 			//mainLayout.Children.Add (searchBar, Constraint.Constant (0));
 			mainLayout.Children.Add (SGWButton, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 54));
