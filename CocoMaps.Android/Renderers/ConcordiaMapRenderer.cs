@@ -311,7 +311,7 @@ namespace CocoMapsAndroid
 							bMarker.SetSnippet (BI.bAddress);
 							bMarker.SetPosition (new LatLng (BI.bLat, BI.bLon));
 
-							bMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.fav_icon));
+							bMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_bookmark));
 
 							marker = androidMapView.Map.AddMarker (bMarker);
 
