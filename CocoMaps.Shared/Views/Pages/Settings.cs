@@ -25,6 +25,7 @@ namespace CocoMaps.Shared
 		{
 			useDeviceMap = umap;
 		}
+			
 
 		public Settings (IMenuOptions menuItem)
 		{
@@ -64,79 +65,7 @@ namespace CocoMaps.Shared
 					var today = dateNow.DayOfWeek;
 					var earlyNotice = new TimeSpan (0, 15, 0);
 
-
-					switch (today) {
-					case DayOfWeek.Monday:
-						foreach (CalendarItems c in BaseCalendar.MondayCalItems) {
-							if(BaseCalendar.MondayCalItems != null){
-								var startingTime = TimeSpan.Parse (c.StartTime);
-								var notificationHourMinute = startingTime - earlyNotice;
-								var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-								a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-							}
-						}
-						break;
-					case DayOfWeek.Tuesday:
-						foreach (CalendarItems c in BaseCalendar.TuesdayCalItems) {
-							if(BaseCalendar.TuesdayCalItems != null){
-								var startingTime = TimeSpan.Parse (c.StartTime);
-								var notificationHourMinute = startingTime - earlyNotice;
-								var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-								a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-							}
-						}
-						break;
-					case DayOfWeek.Wednesday:
-						foreach (CalendarItems c in BaseCalendar.WednesdayCalItems) {
-							if(BaseCalendar.WednesdayCalItems != null){
-								var startingTime = TimeSpan.Parse (c.StartTime);
-								var notificationHourMinute = startingTime - earlyNotice;
-								var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-								a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-							}
-						}
-						break;
-					case DayOfWeek.Thursday:
-						foreach (CalendarItems c in BaseCalendar.ThursdayCalItems) {
-							if(BaseCalendar.ThursdayCalItems != null){
-								var startingTime = TimeSpan.Parse (c.StartTime);
-								var notificationHourMinute = startingTime - earlyNotice;
-								var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-								a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-							}
-						}
-						break;
-					case DayOfWeek.Friday:
-						foreach (CalendarItems c in BaseCalendar.FridayCalItems) {
-							if(BaseCalendar.FridayCalItems != null){
-								var startingTime = TimeSpan.Parse (c.StartTime);
-								var notificationHourMinute = startingTime - earlyNotice;
-								var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-								a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-							}
-						}
-						break;
-					case DayOfWeek.Saturday:
-						foreach (CalendarItems c in BaseCalendar.MondayCalItems) {
-							if(BaseCalendar.MondayCalItems != null){
-								var startingTime = TimeSpan.Parse (c.StartTime);
-								var notificationHourMinute = startingTime - earlyNotice;
-								var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-								a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-							}
-						}
-						break;
-					case DayOfWeek.Sunday:
-						foreach (CalendarItems c in BaseCalendar.MondayCalItems) {
-							if(BaseCalendar.MondayCalItems != null){
-								var startingTime = TimeSpan.Parse (c.StartTime);
-								var notificationHourMinute = startingTime - earlyNotice;
-								var notificationTime = new DateTime (dateNow.Year, dateNow.Month, dateNow.Day, notificationHourMinute.Hours, notificationHourMinute.Minutes, 0);
-								a.Remind (dateNow, c.EventName, "Is starting soon at the following location " + c.Room);
-							}
-						}
-						break;
-					}
+					AndroidReminderService.alarmManagerCreationForNotificationOfCurrentDay (a, dateNow, today, earlyNotice);
 				}
 			};
 
