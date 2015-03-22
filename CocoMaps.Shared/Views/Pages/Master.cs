@@ -37,7 +37,8 @@ namespace CocoMaps.Shared
 		};
 
 		public static Button _BookmarksButton = new Button { 
-			Text = "BM", 
+			//Text = "BM", 
+			Image= "ic_map_bookmark.png",
 			HeightRequest = 40,
 			BackgroundColor = Color.White,
 			Opacity = 0.7,
