@@ -28,11 +28,11 @@ namespace CocoMaps.Shared
 			// Sets Temporary List
 
 			BookMitems = new List<BookmarkItems> {
-				new BookmarkItems ("Bookmark 1", "This is my address 1", 45.496426, -73.577896, "fav_icon"),
-				new BookmarkItems ("Bookmark 2", "This is my address 2", 45.496426, -73.577896, "fav_icon"),
-				new BookmarkItems ("Bookmark 3", "This is my address 3", 45.496426, -73.577896, "fav_icon"),
-				new BookmarkItems ("Bookmark 4", "This is my address 4", 45.496426, -73.577896, "fav_icon"),
-				new BookmarkItems ("Bookmark 5", "This is my address 5", 45.496426, -73.577896, "fav_icon"),
+				new BookmarkItems ("SGW-EV", "1515 St. Catherine W., Montreal", 45.496426, -73.577896, "fav_icon"),
+				new BookmarkItems ("SGW-FG", "1616 Rue Sainte-Catherine Ouest, Montreal", 45.496426, -73.577896, "fav_icon"),
+				new BookmarkItems ("SGW-CB", "1425 René Lévesque W., Montreal", 45.496426, -73.577896, "fav_icon"),
+				new BookmarkItems ("LOY-GE", "7141 Sherbrooke W., Montreal", 45.496426, -73.577896, "fav_icon"),
+				new BookmarkItems ("LOY-RF", "7141 Sherbrooke W., Montreal", 45.496426, -73.577896, "fav_icon"),
 				// ...etc.,...
 			};
 
@@ -89,6 +89,27 @@ namespace CocoMaps.Shared
 				}
 			};
 
+			listView.ItemSelected += async (sender, e) => 
+			{
+				if (e.SelectedItem == null) return;
+
+				BookmarkItems eBookmark = e.SelectedItem as BookmarkItems;
+
+				string BookmarkDetails = "Bookmark : " + "\r\n\r\n" + eBookmark.bName + "\r\n\r\n" + "Destination : " + "\r\n\r\n" + eBookmark.bAddress + "\r\n";
+
+				var BookmarksInput = await DisplayAlert ("Get Directions To Bookmark", BookmarkDetails, "Cancel", "Proceed");
+
+				if (BookmarksInput.ToString ().ToLower () == "false") 
+				{
+					DependencyService.Get<IPhoneService> ().LaunchMap (eBookmark.bAddress);
+				} 
+				else 
+				{
+					// Cancel- Do Nothing
+				}
+
+				((ListView)sender).SelectedItem = null; 
+			};
 
 		}
 	}
