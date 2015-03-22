@@ -52,24 +52,22 @@ namespace CocoMapsAndroid
 		Dictionary<Marker, Result> MarkerPOI = new Dictionary<Marker, Result> ();
 		Dictionary<String, Directions> MarkerDirections = new Dictionary<String, Directions> ();
 
-		Dictionary<Marker, Result> BookmarksMarker = new Dictionary<Marker, Result> ();
+		Dictionary<Marker, BookmarkItems> MarkerBookmarks = new Dictionary<Marker, BookmarkItems> ();
 
 		void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
 		{
 			Building building;
 			Directions directions;
+			BookmarkItems bookmark;
 
 			if (MarkerBuilding.TryGetValue (e.Marker.Id, out building))
 				DetailsViewModel.getInstance.UpdateView (building);
 			else if (MarkerDirections.TryGetValue (e.Marker.Id, out totalDirections)) {
 				if (totalDirections != null)
 					DetailsViewModel.getInstance.UpdateView (totalDirections);
-			} else {
-
-				BookmarkItems BI = new BookmarkItems ("Test", "This is my address", 45.496426, -73.577896);
-
-				DetailsViewModel.getInstance.UpdateView (BI);
-			}
+			} else
+				e.Marker.ShowInfoWindow ();
+			
 		}
 
 		BitmapDescriptor GetCustomBitmapDescriptor (string text)
@@ -232,11 +230,6 @@ namespace CocoMapsAndroid
 
 							totalDirections = GoogleUtil.SumDirections (directions);
 
-							Console.WriteLine (totalDirections.routes [0].summary);
-							Console.WriteLine (totalDirections.routes [0].legs [0].distance.value);
-							Console.WriteLine (totalDirections.routes [0].legs [0].duration.value);
-
-
 							MarkerDirections.Add (_startPin.Id, totalDirections);
 							MarkerDirections.Add (_endPin.Id, totalDirections);
 
@@ -310,8 +303,8 @@ namespace CocoMapsAndroid
 
 							bMarker = androidMapView.Map.AddMarker (bMarkerOptions);
 
-							BookmarksMarker.Add (bMarker, null);
-					
+							MarkerBookmarks.Add (bMarker, BI);
+
 						} 
 						bookmarksBool = true;
 						LoaderViewModel.getInstance.Hide ();
@@ -319,7 +312,7 @@ namespace CocoMapsAndroid
 					} else {
 
 						// toggling markers visibility
-						foreach (Marker m in BookmarksMarker.Keys) {
+						foreach (Marker m in MarkerBookmarks.Keys) {
 							m.Visible = !m.Visible;
 						}
 					}
@@ -391,6 +384,7 @@ namespace CocoMapsAndroid
 
 						// toggling markers visibility
 						foreach (Marker m in MarkerPOI.Keys) {
+							
 							m.Visible = !m.Visible;
 						}
 					}
