@@ -97,16 +97,34 @@ namespace CocoMaps.Shared
 
 				string BookmarkDetails = "Bookmark : " + "\r\n\r\n" + eBookmark.bName + "\r\n\r\n" + "Destination : " + "\r\n\r\n" + eBookmark.bAddress + "\r\n";
 
-				var BookmarksInput = await DisplayAlert ("Get Directions To Bookmark", BookmarkDetails, "Cancel", "Proceed");
+				var BookmarksClickedInput = await DisplayActionSheet (eBookmark.bName, "Cancel", null, "Delete Bookmark", "Get Directions");
 
-				if (BookmarksInput.ToString ().ToLower () == "false") 
+				if (BookmarksClickedInput.Equals ("Cancel")) 
 				{
-					DependencyService.Get<IPhoneService> ().LaunchMap (eBookmark.bAddress);
-				} 
-				else 
-				{
-					// Cancel- Do Nothing
+					// Do Nothing
 				}
+				else if(BookmarksClickedInput.Equals ("Delete Bookmark"))
+				{
+					//Delete Bookmark code
+				}
+				else if(BookmarksClickedInput.Equals ("Get Directions"))
+				{
+					var BookmarksInput = await DisplayAlert ("Get Directions To Bookmark", BookmarkDetails, "Cancel", "Proceed");
+
+					if (BookmarksInput.ToString ().ToLower () == "false") 
+					{
+						DependencyService.Get<IPhoneService> ().LaunchMap (eBookmark.bAddress);
+					} 
+					else 
+					{
+						// Cancel- Do Nothing
+					}
+				}
+				else
+				{
+					//Do Nothing
+				}
+
 
 				((ListView)sender).SelectedItem = null; 
 			};
