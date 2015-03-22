@@ -5,7 +5,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "CocoMaps.Shared", "CocoMaps
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoMaps.Android", "CocoMaps.Android\CocoMaps.Android.csproj", "{C188D2AB-5317-4B5F-A391-17686A12BDAD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CocoMaps.iOS", "CocoMaps.iOS\CocoMaps.iOS.csproj", "{6A02ABA0-EE87-4C04-A065-BEF98D7F4E53}"
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "CocoMaps.iOS", "CocoMaps.iOS\CocoMaps.iOS.csproj", "{6A02ABA0-EE87-4C04-A065-BEF98D7F4E53}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTesting.Android", "UnitTesting.Android\UnitTesting.Android.csproj", "{B292DB62-3102-47F3-9234-105FD328E6CC}"
 EndProject
