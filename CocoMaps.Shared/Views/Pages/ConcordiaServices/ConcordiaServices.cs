@@ -59,22 +59,7 @@ namespace CocoMaps.Shared.Pages
 			servicesListView.ItemTemplate = cell;
 
 			// Open service website on click
-			servicesListView.ItemSelected += (sender, e) => {
-				Service selectedItem = (Service)((ListView)sender).SelectedItem as Service;
-			
-				if (selectedItem != null) {
-					Uri uri;
-					if (!String.IsNullOrEmpty (selectedItem.URI)) {
-						// Service's URI
-						uri = new Uri (selectedItem.URI);
-					} else {
-						// Concordia Services Web Page
-						uri = new Uri ("http://www.concordia.ca/students/campus-services.html");
-					}
-					Device.OpenUri (uri);
-				}
-				((ListView)sender).SelectedItem = null; // de-select the row
-			};
+			servicesListView.ItemSelected += HandleItemSelected;
 
 			Content = new StackLayout {
 				Children = {
@@ -90,6 +75,51 @@ namespace CocoMaps.Shared.Pages
 		{
 			Services.Clear ();
 			AllServices.Where (s => s.Name.ToLower ().Contains (text.ToLower ())).ToList ().ForEach (Services.Add);
+		}
+
+		private async void HandleItemSelected (object sender, SelectedItemChangedEventArgs e)
+		{
+			Service selectedItem = (Service)((ListView)sender).SelectedItem as Service;
+
+			if (selectedItem != null) {
+				Uri uri;
+				if (!String.IsNullOrEmpty (selectedItem.URI)) {
+					// Service's URI
+					uri = new Uri (selectedItem.URI);
+				} else {
+					// Concordia Services Web Page
+					uri = new Uri ("http://www.concordia.ca/students/campus-services.html");
+				}
+
+				// Display alert to let user decide to open the Service's web page on Concordia's website, to retrieve directions, or to cancel operation.
+				var serviceClickedInput = await DisplayActionSheet (selectedItem.Name, "Cancel", null, "Go to Web Page", "Get Directions");
+				if (serviceClickedInput.Equals ("Go to Web Page")) {
+					Device.OpenUri (uri);
+				}
+				if (serviceClickedInput.Equals ("Get Directions")) {
+					/*
+
+					// Failing for "H ", "H-".
+					// Can easily make a function to get the right building info, but not important right now.
+					string selectedServiceBuildingCode = selectedItem.RoomNumber.Substring(0, 2);
+					Building selectedServiceBuilding = BuildingRepository.getInstance.GetBuildingByCode (selectedServiceBuildingCode);
+
+					Console.WriteLine (selectedServiceBuilding.ToString ());*/
+
+					// TODO: Optimized once completed COCO-55: Explore solution to push and pop different pages on the app on a stack.
+					/*RootPage menu = this.Parent as RootPage;
+
+						DirectionsViewModel directionsViewModel = DirectionsViewModel.getInstance;
+						directionsViewModel.Expand ();
+
+						Navigation.PushModalAsync (menu.pMaster);
+
+						//MenuPage.campusMenuOption.Selected = true;
+						//menu.NavigateTo (MenuPage.campusMenuOption);*/
+				}
+			}
+			// de-select the item
+			((ListView)sender).SelectedItem = null; 
 		}
 	}
 }
