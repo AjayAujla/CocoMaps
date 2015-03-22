@@ -65,7 +65,7 @@ namespace CocoMapsAndroid
 					DetailsViewModel.getInstance.UpdateView (directions);
 			} else {
 
-				BookmarkItems BI = new BookmarkItems ("Test", "This is my address", 45.496426, -73.577896, "fav_icon");
+				BookmarkItems BI = new BookmarkItems ("Test", "This is my address", 45.496426, -73.577896, "ic_pin_bookmark");
 
 				DetailsViewModel.getInstance.UpdateView (BI);
 			}
@@ -311,7 +311,7 @@ namespace CocoMapsAndroid
 							bMarker.SetSnippet (BI.bAddress);
 							bMarker.SetPosition (new LatLng (BI.bLat, BI.bLon));
 
-							bMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.fav_icon));
+							bMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_bookmark));
 
 							marker = androidMapView.Map.AddMarker (bMarker);
 
