@@ -2,6 +2,8 @@
 using Xamarin.Forms;
 using CocoMaps.Shared.ViewModels;
 using System.Collections.Generic;
+using Xamarin.Forms.Maps;
+using System.Collections;
 
 #if __ANDROID__
 using Android.Provider;
@@ -10,11 +12,10 @@ namespace CocoMaps.Shared
 {
 	public class Bookmark : ContentPage
 	{
-		// TEST - will have to be updated with the actual bokmarks list after
+		ListView listView;
 
-		public static List<BookmarkItems> BookMitems = new List<BookmarkItems>{ };
-
-		// public Bookmark (IMenuOptions menuItem, List<BookmarkItems> BookMitems)
+		BookmarksRepository bookmarksRepository = new BookmarksRepository ();
+		static IEnumerable<BookmarkItems> BookMitems = new List<BookmarkItems> ();
 
 		public Bookmark (IMenuOptions menuItem)
 		{
@@ -24,40 +25,27 @@ namespace CocoMaps.Shared
 			this.SetValue (Page.TitleProperty, "Bookmarks");
 			this.SetValue (Page.IconProperty, menuItem.Icon);
 
+			BookMitems = PopulateDatabase ();
 
-			// Sets Temporary List
+			listView = new ListView {
 
-			BookMitems = new List<BookmarkItems> {
-				new BookmarkItems ("SGW-EV", "1515 St. Catherine W., Montreal", 45.496426, -73.577896, "ic_menu_bookmark"),
-				new BookmarkItems ("SGW-FG", "1616 Rue Sainte-Catherine Ouest, Montreal", 45.496426, -73.577896, "ic_menu_bookmark"),
-				new BookmarkItems ("SGW-CB", "1425 René Lévesque W., Montreal", 45.496426, -73.577896, "fav_icon"),
-				new BookmarkItems ("LOY-GE", "7141 Sherbrooke W., Montreal", 45.496426, -73.577896, "fav_icon"),
-				new BookmarkItems ("LOY-RF", "7141 Sherbrooke W., Montreal", 45.496426, -73.577896, "fav_icon"),
-				// ...etc.,...
-			};
-
-
-			// Create the ListView.
-			ListView listView = new ListView {
 				// Source of data items.
 				ItemsSource = BookMitems,
 
 				// Define template for displaying each item.
-				// (Argument of DataTemplate constructor is called for 
-				//      each item; it must return a Cell derivative.)
+				// (Argument of DataTemplate constructor is called for each item; it must return a Cell derivative.)
 				ItemTemplate = new DataTemplate (() => {
+
 					// Create views with bindings for displaying each property.
-					Label t1Label = new Label ();
-					t1Label.SetBinding (Label.TextProperty, "bName");
+					Label nameLabel = new Label ();
+					nameLabel.SetBinding (Label.TextProperty, "bName");
 
-					Label t2Label = new Label ();
-					t2Label.SetBinding (Label.TextProperty, "bAddress");
+					Label addressLabel = new Label ();
+					addressLabel.SetBinding (Label.TextProperty, "bAddress");
 
-					Image icon = new Image();
-					icon.SetBinding(Image.SourceProperty, "IconSource");
+					Image icon = new Image ();
+					icon.SetBinding (Image.SourceProperty, "IconSource");
 
-
-					// Return an assembled ViewCell.
 					return new ViewCell {
 						View = new StackLayout {
 							Padding = new Thickness (0, 5),
@@ -68,9 +56,8 @@ namespace CocoMaps.Shared
 									VerticalOptions = LayoutOptions.Center,
 									Spacing = 0,
 									Children = {
-										t1Label,
-										t2Label,
-
+										nameLabel,
+										addressLabel,
 									}
 								}
 							}
@@ -79,7 +66,6 @@ namespace CocoMaps.Shared
 				})
 			};
 
-			// Accomodate iPhone status bar.
 			this.Padding = new Thickness (10, Device.OnPlatform (20, 0, 0), 10, 5);
 
 			// Build the page.
@@ -88,52 +74,67 @@ namespace CocoMaps.Shared
 					listView
 				}
 			};
+			listView.ItemSelected += HandleItemSelected;
+		}
 
-			listView.ItemSelected += async (sender, e) => 
-			{
-				if (e.SelectedItem == null) return;
-
+		async void HandleItemSelected (object sender, SelectedItemChangedEventArgs e)
+		{
+			if (e.SelectedItem != null) {
 				BookmarkItems eBookmark = e.SelectedItem as BookmarkItems;
+				int totalNumberOfBookmarks = bookmarksRepository.NumberOfBookmarks ();
 
-				var BookmarksClickedInput = await DisplayActionSheet (eBookmark.bName, "Cancel", null, "Delete Bookmark", "Get Directions");
+				var BookmarksClickedInput = await DisplayActionSheet (eBookmark.bName, "Cancel", null, "Get Directions", "Update Bookmark", "Delete Bookmark", "Delete All Bookmarks");
 
-				if (BookmarksClickedInput.Equals ("Cancel")) 
-				{
-					// Do Nothing
-				}
-				else if(BookmarksClickedInput.Equals ("Delete Bookmark"))
-				{
-					//Delete Bookmark code
-				}
-				else if(BookmarksClickedInput.Equals ("Get Directions"))
-				{
+				if (BookmarksClickedInput.Equals ("Get Directions")) {
 
 					var BookmarksNameInput = "Get Directions To : " + eBookmark.bName;
-
 					string BookmarkDetails = "Destination : " + "\r\n\r\n" + eBookmark.bAddress + "\r\n";
+					var BookmarksInput = await DisplayAlert (BookmarksNameInput, BookmarkDetails, "Proceed", "Cancel");
 
-					var BookmarksInput = await DisplayAlert (BookmarksNameInput , BookmarkDetails, "Cancel", "Proceed");
-
-					if (BookmarksInput.ToString ().ToLower () == "false") 
-					{
+					if (BookmarksInput) {
 						DependencyService.Get<IPhoneService> ().LaunchMap (eBookmark.bAddress);
-					} 
-					else 
-					{
-						// Cancel- Do Nothing
 					}
 				}
-				else
-				{
-					//Do Nothing
+				if (BookmarksClickedInput.Equals ("Update Bookmark")) {
+					/*eBookmark.bName = "abc";
+					eBookmark.bAddress = "def";*/
+					bookmarksRepository.SaveBookmark (eBookmark);
+					await DisplayAlert (eBookmark.bName + " Deleted.", "", "Proceed");
 				}
+				if (BookmarksClickedInput.Equals ("Delete Bookmark")) {
+					var BookmarksInput = await DisplayAlert ("Delete " + eBookmark.bName + " at " + eBookmark.bAddress + "?", "", "Proceed", "Cancel");
 
+					if (BookmarksInput) {
+						bookmarksRepository.DeleteBookmark (eBookmark);
+						await DisplayAlert (eBookmark.bName + " Deleted.", "", "Proceed");
+					}
+				} 
+				if (BookmarksClickedInput.Equals ("Delete All Bookmarks")) {
+					var BookmarksInput = await DisplayAlert ("Delete All Bookmarks?", "All " + totalNumberOfBookmarks + " Bookmarks will be Deleted", "Proceed", "Cancel");
 
+					if (BookmarksInput) {
+						bookmarksRepository.DeleteAllBookmarks ();
+						await DisplayAlert ("Deleted all bookmarks", "", "Proceed");
+					}
+				}
+				this.listView.ItemsSource = bookmarksRepository.GetAllBookmarks ();
+				// de-select the item
 				((ListView)sender).SelectedItem = null; 
-			};
+			}
+		}
 
+		IEnumerable<BookmarkItems> PopulateDatabase ()
+		{
+			bookmarksRepository.CreateTable ();
+
+			/*bookmarksRepository.SaveBookmark (new BookmarkItems ("SGW-EV", "1515 St. Catherine W., Montreal", new Position (45.48939, -73.57788), "ic_menu_bookmark"));
+			bookmarksRepository.SaveBookmark (new BookmarkItems ("SGW-FG", "1616 Rue Sainte-Catherine Ouest, Montreal", new Position (45.46945, -73.60376), "ic_menu_bookmark"));
+			bookmarksRepository.SaveBookmark (new BookmarkItems ("SGW-CB", "1425 René Lévesque W., Montreal", new Position (45.496426, -73.577896), "fav_icon"));
+			bookmarksRepository.SaveBookmark (new BookmarkItems ("LOY-GE", "7141 Sherbrooke W., Montreal", new Position (45.45837, -73.63822), "fav_icon"));
+			bookmarksRepository.SaveBookmark (new BookmarkItems ("LOY-RF", "7141 Sherbrooke W., Montreal", new Position (45.4688, -73.60512), "fav_icon"));*/
+
+			return bookmarksRepository.GetAllBookmarks ();
 		}
 	}
 }
-
 #endif
