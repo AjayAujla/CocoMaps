@@ -58,7 +58,7 @@ namespace CocoMaps.Shared
 
 		public override string ToString ()
 		{
-			return string.Format ("[BookmarkItems: ID={0}, Address={1}", ID, bAddress);
+			return string.Format ("[BookmarkItems: ID={0}, Address={1}, Latitude={2}, Longitude={3}", ID, bAddress, bLatitude, bLongitude);
 		}
 	}
 }

@@ -51,12 +51,13 @@ namespace CocoMapsAndroid
 		Dictionary<Marker, Result> MarkerPOI = new Dictionary<Marker, Result> ();
 		Dictionary<String, Directions> MarkerDirections = new Dictionary<String, Directions> ();
 
-		Dictionary<Marker, Result> BookmarksMarker = new Dictionary<Marker, Result> ();
+		Dictionary<Marker, BookmarkItems> BookmarksMarker = new Dictionary<Marker, BookmarkItems> ();
 
 		void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
 		{
 			Building building;
 			Directions directions;
+			BookmarkItems bookmark;
 
 			if (MarkerBuilding.TryGetValue (e.Marker.Id, out building))
 				DetailsViewModel.getInstance.UpdateView (building);
@@ -64,9 +65,9 @@ namespace CocoMapsAndroid
 				if (directions != null)
 					DetailsViewModel.getInstance.UpdateView (directions);
 			} else {
-
+				/*if (BookmarksMarker.TryGetValue (e.Marker, out bookmark))
+					DetailsViewModel.getInstance.UpdateView (bookmark);*/
 				BookmarkItems BI = new BookmarkItems ("Test", "This is my address", new Position (45.496426, -73.577896), "ic_pin_bookmark");
-
 				DetailsViewModel.getInstance.UpdateView (BI);
 			}
 		}

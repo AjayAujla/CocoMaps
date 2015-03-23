@@ -1,10 +1,9 @@
-﻿using SQLite;
-using System;
+﻿using System;
 using System.IO;
-using Xamarin.Forms.Maps;
-using System.Collections.Generic;
 using System.Linq;
 using CocoMaps.Shared;
+using SQLite;
+using System.Collections.Generic;
 
 namespace CocoMaps.Shared
 {
@@ -59,7 +58,7 @@ namespace CocoMaps.Shared
 				var table = BookmarksTable.Table<BookmarkItems> ();
 
 				foreach (var bookmark in table) {
-					Console.WriteLine (bookmark);
+					//Console.WriteLine (bookmark);
 				}
 
 				return (from i in table
@@ -114,6 +113,11 @@ namespace CocoMaps.Shared
 				foreach (var bookmark in table) {
 					BookmarksTable.Delete (bookmark);
 				}
+				/*//Reset primary keys
+				string resetPrimaryKey1 = "delete from BookmarksTable;";   
+				string resetPrimaryKey2 = "delete from sqlite_sequence where name='BookmarksTable';";
+				BookmarksTable.Execute (resetPrimaryKey1, primaryKeys);
+				BookmarksTable.Execute (resetPrimaryKey2, primaryKeys);*/
 			}
 		}
 
@@ -126,6 +130,17 @@ namespace CocoMaps.Shared
 				} catch (SQLiteException ex) {
 					return -1;
 				}
+			}
+		}
+
+		public void SearchBookmarks ()
+		{
+			lock (locker) {
+				var table = BookmarksTable.Table<BookmarkItems> ();
+
+				var result = from s in table
+				             where s.bName.StartsWith ("A")
+				             select s;
 			}
 		}
 	}

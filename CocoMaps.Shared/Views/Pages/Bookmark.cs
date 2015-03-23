@@ -25,11 +25,11 @@ namespace CocoMaps.Shared
 
 			// Sets Temporary List
 			BookMitems = new List<BookmarkItems> {
-				new BookmarkItems ("SGW-EV", "1515 St. Catherine W., Montreal", new Position (45.496426, -73.577896), "ic_menu_bookmark"),
-				new BookmarkItems ("SGW-FG", "1616 Rue Sainte-Catherine Ouest, Montreal", new Position (45.496426, -73.577896), "ic_menu_bookmark"),
+				new BookmarkItems ("SGW-EV", "1515 St. Catherine W., Montreal", new Position (45.48939, -73.57788), "ic_menu_bookmark"),
+				new BookmarkItems ("SGW-FG", "1616 Rue Sainte-Catherine Ouest, Montreal", new Position (45.46945, -73.60376), "ic_menu_bookmark"),
 				new BookmarkItems ("SGW-CB", "1425 René Lévesque W., Montreal", new Position (45.496426, -73.577896), "fav_icon"),
-				new BookmarkItems ("LOY-GE", "7141 Sherbrooke W., Montreal", new Position (45.496426, -73.577896), "fav_icon"),
-				new BookmarkItems ("LOY-RF", "7141 Sherbrooke W., Montreal", new Position (45.496426, -73.577896), "fav_icon"),
+				new BookmarkItems ("LOY-GE", "7141 Sherbrooke W., Montreal", new Position (45.45837, -73.63822), "fav_icon"),
+				new BookmarkItems ("LOY-RF", "7141 Sherbrooke W., Montreal", new Position (45.4688, -73.60512), "fav_icon"),
 			};
 
 			ListView listView = new ListView {
@@ -130,9 +130,9 @@ namespace CocoMaps.Shared
 			Console.WriteLine ("Before deleting 5 bookmarks " + bookmarksRepository.NumberOfBookmarks ());
 
 
-			bookmarksRepository.DeleteAllBookmarks ();
+			//bookmarksRepository.DeleteAllBookmarks ();
 
-			Console.WriteLine ("After deleting 5 bookmarks " + bookmarksRepository.NumberOfBookmarks ());
+			Console.WriteLine ("After deleting 5 bookmarks ");
 
 			bookmarksRepository.GetAllBookmarks ();
 
