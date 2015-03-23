@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="3d7bb2ef-b6ea-4454-aa74-69f35cd3888f"
+  name="Android"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="2712b17c-224e-4c8d-9cd8-4bcda5695404"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DXamarin.Forms.Maps.Android"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="40dd6789-6a78-4fc0-b6c2-2c6373872939"
+        name="MapRenderer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="d655e2f1-a680-4d98-bb90-afa0b10275f8"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2Fpackages%2FXamarin.Forms.Maps.1.4.0.6341%2Flib%2FMonoAndroid10%2FXamarin.Forms.Maps.Android.dll Namespace%3DXamarin.Forms.Maps.Android Type%3DMapRenderer"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="61857ec0-c94c-485a-9402-7eb4d4401677"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fab83881-59d8-42a9-b82f-99853153c466">
+                <propertyInstance
+                  Id="f182d9e8-a4b1-4984-b32d-79f36d24a930"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e110babb-5c98-4e27-9522-112c49f43c38">
+                <propertyInstance
+                  Id="2f528765-cd0c-4fb9-9ab5-8a33b4e220c3"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b84a94b7-bf97-4a09-9e4f-c0e265f49a3c">
+                <propertyInstance
+                  Id="262dda95-6ce8-4995-b876-c6c646699534"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7c3df02b-fe32-46ee-a407-47aaa99243f4">
+                <propertyInstance
+                  Id="490f3762-2313-4b61-a913-04c0fe952977"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ae87b948-609b-4a00-946e-2ffaf9d61d49">
+                <propertyInstance
+                  Id="b5bc9636-1371-4a6b-916c-4de8563b3b92"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

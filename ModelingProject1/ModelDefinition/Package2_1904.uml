@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="529e944b-8b0d-4582-8d92-57d633199894"
+  name="Model"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="1d8137f1-85d0-4aef-b1dc-a4083ee25636"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DAndroid.Gms.Maps.Model"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="7a9e20b3-da48-4695-afbf-5099bc39422b"
+        name="BitmapDescriptor"
+        isAbstract="false"
+        isLeaf="true"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="b05a89ee-b320-46f5-8938-3f54e66302e2"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2Fpackages%2FXamarin.GooglePlayServices.22.0.0.2%2Flib%2FMonoAndroid41%2FGooglePlayServicesLib.dll Namespace%3DAndroid.Gms.Maps.Model Type%3DBitmapDescriptor"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="985ed830-18ce-4637-8b39-c73414deb153"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6a045c1a-ffec-4a48-a06a-8915e3b50b28">
+                <propertyInstance
+                  Id="7726dfe3-1b70-4d9b-8e19-f785d00a07c0"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c36f6f8a-45d0-425d-8b02-790bd7baf61d">
+                <propertyInstance
+                  Id="69efc340-560e-4fe0-94a7-50dccc008b59"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ff0941a8-4228-4aef-86c3-6d508faa5937">
+                <propertyInstance
+                  Id="29b76069-7245-4a6d-98c8-48f6e7abe422"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9d03d82e-e2c7-4b4d-97e1-7689730548aa">
+                <propertyInstance
+                  Id="d105a8c4-f19f-425e-a95e-a703523a5939"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="46da8535-14df-4846-824e-043615a8de18">
+                <propertyInstance
+                  Id="aff3e03d-9e20-4f29-a41a-bede881ebd35"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="bd5b624a-bf4e-4aa3-b8f8-4eb0f46620b7"
+        name="Marker"
+        isAbstract="false"
+        isLeaf="true"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="a77da73a-6d12-4589-89f9-20c22b3103ae"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2Fpackages%2FXamarin.GooglePlayServices.22.0.0.2%2Flib%2FMonoAndroid41%2FGooglePlayServicesLib.dll Namespace%3DAndroid.Gms.Maps.Model Type%3DMarker"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="994316dd-e107-436a-9e8a-3c9cdd7cd3f0"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="043098b7-ed3b-443e-98ed-593e78b6f86c">
+                <propertyInstance
+                  Id="3656fb20-d140-4336-b59e-fa0ac6e6ca0d"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4521099b-0716-4deb-bb49-d19e37caad65">
+                <propertyInstance
+                  Id="79addfce-4b9e-4c2e-9e9d-23db6fd16fd8"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b6d26d9a-f51a-4c4e-8d6b-0b55abe3d1cf">
+                <propertyInstance
+                  Id="33775f44-8e02-473c-8c90-a220e1a152e8"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6be85c2a-5790-44e9-b3b0-6fb4bccc81cf">
+                <propertyInstance
+                  Id="493d75c7-e784-446b-9fc1-fe1d01b65c6d"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1e8aaf48-d3ce-4c76-b273-4ae9269d6c92">
+                <propertyInstance
+                  Id="cfcbe383-c87d-457e-b006-770e0656fae6"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="a849b547-6b71-4f08-9c12-10fd582225a5"
+        name="Polyline"
+        isAbstract="false"
+        isLeaf="true"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="31a0d014-bbd9-4123-9239-d109c2d41dcc"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2Fpackages%2FXamarin.GooglePlayServices.22.0.0.2%2Flib%2FMonoAndroid41%2FGooglePlayServicesLib.dll Namespace%3DAndroid.Gms.Maps.Model Type%3DPolyline"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="20dfce01-8682-4844-9e7c-b7c7883d16e8"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="701a971b-a7db-4c19-8898-73374d9f1294">
+                <propertyInstance
+                  Id="14abe343-61e8-479d-b685-6360ca4a625d"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="245733f8-ee07-43d4-81bc-201f1a00b9cf">
+                <propertyInstance
+                  Id="4b26cb56-dbae-456a-b975-0c192c6dc4ab"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9c097655-281b-43db-9997-69053840f0d3">
+                <propertyInstance
+                  Id="5e98e942-cfce-432a-a56f-9e3485181cb7"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9700bafb-ed25-4c31-8438-328c853ff707">
+                <propertyInstance
+                  Id="dd08b89e-53bb-44cb-bac5-6d2eb816c870"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e0dcd6c5-5f5a-4df9-b63d-bfc093e8efda">
+                <propertyInstance
+                  Id="692f0a57-7d26-4ac7-b544-df1d528263b0"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8d268aaa-07df-4e07-84e0-e5056022c921"
+        name="PolylineOptions"
+        isAbstract="false"
+        isLeaf="true"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="c99d05c7-49ec-4d2a-90f9-47eeebf95a93"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2Fpackages%2FXamarin.GooglePlayServices.22.0.0.2%2Flib%2FMonoAndroid41%2FGooglePlayServicesLib.dll Namespace%3DAndroid.Gms.Maps.Model Type%3DPolylineOptions"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="b5653c60-cabd-4c18-a16b-93fa405f41db"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="abada661-cee5-4302-b2d4-fffac4c1b8c0">
+                <propertyInstance
+                  Id="71d02763-889e-4488-ae07-c6de3fe5a979"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="862cfcbe-2ce5-44a0-a523-b9a50caa76bc">
+                <propertyInstance
+                  Id="b100a75a-f411-4919-9746-a136ed2cbc14"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fddbb17d-da93-43f3-9e90-7f5c92269d63">
+                <propertyInstance
+                  Id="04ef4c6a-7837-4f83-a9cf-6628614bcf1b"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="99f0298b-ed95-4511-bc63-596c33d14478">
+                <propertyInstance
+                  Id="f1abb3ea-f977-44d8-98b8-16304d9c293e"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="07a799af-a933-4ee1-866f-f9f03f9efcd4">
+                <propertyInstance
+                  Id="40af6e3b-95f0-42c7-838c-e7931110ac82"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
