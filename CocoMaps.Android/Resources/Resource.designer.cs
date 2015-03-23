@@ -1774,157 +1774,83 @@ namespace CocoMaps.Android
 			public const int locationIcon = 2130837707;
 			
 			// aapt resource value: 0x7f0200cc
-			public const int mr_ic_audio_vol = 2130837708;
+			public const int monoandroidsplash = 2130837708;
 			
 			// aapt resource value: 0x7f0200cd
-			public const int mr_ic_media_route_connecting_holo_dark = 2130837709;
+			public const int mr_ic_audio_vol = 2130837709;
 			
 			// aapt resource value: 0x7f0200ce
-			public const int mr_ic_media_route_connecting_holo_light = 2130837710;
+			public const int mr_ic_media_route_connecting_holo_dark = 2130837710;
 			
 			// aapt resource value: 0x7f0200cf
-			public const int mr_ic_media_route_disabled_holo_dark = 2130837711;
+			public const int mr_ic_media_route_connecting_holo_light = 2130837711;
 			
 			// aapt resource value: 0x7f0200d0
-			public const int mr_ic_media_route_disabled_holo_light = 2130837712;
+			public const int mr_ic_media_route_disabled_holo_dark = 2130837712;
 			
 			// aapt resource value: 0x7f0200d1
-			public const int mr_ic_media_route_holo_dark = 2130837713;
+			public const int mr_ic_media_route_disabled_holo_light = 2130837713;
 			
 			// aapt resource value: 0x7f0200d2
-			public const int mr_ic_media_route_holo_light = 2130837714;
+			public const int mr_ic_media_route_holo_dark = 2130837714;
 			
 			// aapt resource value: 0x7f0200d3
-			public const int mr_ic_media_route_off_holo_dark = 2130837715;
+			public const int mr_ic_media_route_holo_light = 2130837715;
 			
 			// aapt resource value: 0x7f0200d4
-			public const int mr_ic_media_route_off_holo_light = 2130837716;
+			public const int mr_ic_media_route_off_holo_dark = 2130837716;
 			
 			// aapt resource value: 0x7f0200d5
-			public const int mr_ic_media_route_on_0_holo_dark = 2130837717;
+			public const int mr_ic_media_route_off_holo_light = 2130837717;
 			
 			// aapt resource value: 0x7f0200d6
-			public const int mr_ic_media_route_on_0_holo_light = 2130837718;
+			public const int mr_ic_media_route_on_0_holo_dark = 2130837718;
 			
 			// aapt resource value: 0x7f0200d7
-			public const int mr_ic_media_route_on_1_holo_dark = 2130837719;
+			public const int mr_ic_media_route_on_0_holo_light = 2130837719;
 			
 			// aapt resource value: 0x7f0200d8
-			public const int mr_ic_media_route_on_1_holo_light = 2130837720;
+			public const int mr_ic_media_route_on_1_holo_dark = 2130837720;
 			
 			// aapt resource value: 0x7f0200d9
-			public const int mr_ic_media_route_on_2_holo_dark = 2130837721;
+			public const int mr_ic_media_route_on_1_holo_light = 2130837721;
 			
 			// aapt resource value: 0x7f0200da
-			public const int mr_ic_media_route_on_2_holo_light = 2130837722;
+			public const int mr_ic_media_route_on_2_holo_dark = 2130837722;
 			
 			// aapt resource value: 0x7f0200db
-			public const int mr_ic_media_route_on_holo_dark = 2130837723;
+			public const int mr_ic_media_route_on_2_holo_light = 2130837723;
 			
 			// aapt resource value: 0x7f0200dc
-			public const int mr_ic_media_route_on_holo_light = 2130837724;
+			public const int mr_ic_media_route_on_holo_dark = 2130837724;
 			
 			// aapt resource value: 0x7f0200dd
-			public const int poiIcon = 2130837725;
+			public const int mr_ic_media_route_on_holo_light = 2130837725;
 			
 			// aapt resource value: 0x7f0200de
-			public const int powered_by_google_dark = 2130837726;
+			public const int poiIcon = 2130837726;
 			
 			// aapt resource value: 0x7f0200df
-			public const int powered_by_google_light = 2130837727;
+			public const int powered_by_google_dark = 2130837727;
 			
 			// aapt resource value: 0x7f0200e0
-			public const int settings = 2130837728;
+			public const int powered_by_google_light = 2130837728;
 			
 			// aapt resource value: 0x7f0200e1
-			public const int settingsIcon = 2130837729;
+			public const int settings = 2130837729;
 			
 			// aapt resource value: 0x7f0200e2
-			public const int sidebar_slide = 2130837730;
+			public const int settingsIcon = 2130837730;
 			
 			// aapt resource value: 0x7f0200e3
-			public const int splash = 2130837731;
+			public const int sidebar_slide = 2130837731;
 			
 			// aapt resource value: 0x7f0200e4
-			public const int splashscreen = 2130837732;
-
-			public const int monoandroidsplash = 2130837704;
+			public const int splash = 2130837732;
 			
-			/*// aapt resource value: 0x7f0200c9
-			public const int mr_ic_audio_vol = 2130837705;
+			// aapt resource value: 0x7f0200e5
+			public const int splashscreen = 2130837733;
 			
-			// aapt resource value: 0x7f0200ca
-			public const int mr_ic_media_route_connecting_holo_dark = 2130837706;
-			
-			// aapt resource value: 0x7f0200cb
-			public const int mr_ic_media_route_connecting_holo_light = 2130837707;
-			
-			// aapt resource value: 0x7f0200cc
-			public const int mr_ic_media_route_disabled_holo_dark = 2130837708;
-			
-			// aapt resource value: 0x7f0200cd
-			public const int mr_ic_media_route_disabled_holo_light = 2130837709;
-			
-			// aapt resource value: 0x7f0200ce
-			public const int mr_ic_media_route_holo_dark = 2130837710;
-			
-			// aapt resource value: 0x7f0200cf
-			public const int mr_ic_media_route_holo_light = 2130837711;
-			
-			// aapt resource value: 0x7f0200d0
-			public const int mr_ic_media_route_off_holo_dark = 2130837712;
-			
-			// aapt resource value: 0x7f0200d1
-			public const int mr_ic_media_route_off_holo_light = 2130837713;
-			
-			// aapt resource value: 0x7f0200d2
-			public const int mr_ic_media_route_on_0_holo_dark = 2130837714;
-			
-			// aapt resource value: 0x7f0200d3
-			public const int mr_ic_media_route_on_0_holo_light = 2130837715;
-			
-			// aapt resource value: 0x7f0200d4
-			public const int mr_ic_media_route_on_1_holo_dark = 2130837716;
-			
-			// aapt resource value: 0x7f0200d5
-			public const int mr_ic_media_route_on_1_holo_light = 2130837717;
-			
-			// aapt resource value: 0x7f0200d6
-			public const int mr_ic_media_route_on_2_holo_dark = 2130837718;
-			
-			// aapt resource value: 0x7f0200d7
-			public const int mr_ic_media_route_on_2_holo_light = 2130837719;
-			
-			// aapt resource value: 0x7f0200d8
-			public const int mr_ic_media_route_on_holo_dark = 2130837720;
-			
-			// aapt resource value: 0x7f0200d9
-			public const int mr_ic_media_route_on_holo_light = 2130837721;
-			
-			// aapt resource value: 0x7f0200da
-			public const int poiIcon = 2130837722;
-			
-			// aapt resource value: 0x7f0200db
-			public const int powered_by_google_dark = 2130837723;
-			
-			// aapt resource value: 0x7f0200dc
-			public const int powered_by_google_light = 2130837724;
-			
-			// aapt resource value: 0x7f0200dd
-			public const int settings = 2130837725;
-			
-			// aapt resource value: 0x7f0200de
-			public const int settingsIcon = 2130837726;
-			
-			// aapt resource value: 0x7f0200df
-			public const int sidebar_slide = 2130837727;
-			
-			// aapt resource value: 0x7f0200e0
-			public const int splash = 2130837728;
-			
-			// aapt resource value: 0x7f0200e1
-			public const int splashscreen = 2130837729;
-			*/
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

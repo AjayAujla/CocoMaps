@@ -1,0 +1,420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="ee923343-5e56-4942-a256-abc0f5fff00f"
+  name="Android"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="7f1944c3-db03-48c0-9388-e000a27a3b25"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DXamarin.Forms.Platform.Android"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="34f6665f-28ed-4fd5-8dfb-ee45cf0934d3"
+        name="TextCellRenderer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="531a2063-6f72-4e15-9be4-a85d806a6bcc"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2Fpackages%2FXamarin.Forms.1.4.0.6341%2Flib%2FMonoAndroid10%2FXamarin.Forms.Platform.Android.dll Namespace%3DXamarin.Forms.Platform.Android Type%3DTextCellRenderer"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="c8c0f512-fee7-41f2-8e9b-99041dba8050"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bf45dc72-2650-4d27-989c-2f8c6e9283bc">
+                <propertyInstance
+                  Id="0b8be102-8ec7-4d73-afed-1c65ae7ca77d"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a4950699-36ce-4d01-b11c-bb57a5963b43">
+                <propertyInstance
+                  Id="ba8405e7-4d07-40ef-be96-749fdc796ca2"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="88becc0f-8489-4ab1-a22f-ca1d7b9f6805">
+                <propertyInstance
+                  Id="09d26621-69bb-4a28-8ee9-4ca4dc24a0ea"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e796b6ac-4eab-4efa-adc5-891742c48e95">
+                <propertyInstance
+                  Id="747a27fa-f9f1-43ac-aa55-75d02c60d223"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="967048a4-c9c3-46d1-8052-f21b82972c9d">
+                <propertyInstance
+                  Id="b4640e51-88ec-4d52-8867-11f9c7ae39ad"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="b3a74a8f-4770-473c-bd99-d46b359bfd95"
+        name="ElementChangedEventArgs&lt;Page‎&gt;"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="a3812c69-e603-4840-84ab-f964cc437a56"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="97716152-97a7-4a2a-89fb-3bc984118e70">
+                <propertyInstance
+                  Id="317af224-7c95-4198-8b45-e1b0c4248c33"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f8668c15-4abd-42fa-aefe-0a4c4e50f123">
+                <propertyInstance
+                  Id="de82a751-49b9-4c78-aff1-c9c24386be95"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d25dd5a9-b2cb-4e61-93fc-521ec273d9db">
+                <propertyInstance
+                  Id="caff900b-b9f0-4dc8-9845-3c269f6f278f"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3bec060e-f727-4f8d-86d1-e2f5696b4eed">
+                <propertyInstance
+                  Id="f689be47-e1bb-4f86-8c90-4929b1d95e45"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="94d6f514-3b37-4824-b6aa-679a3949f613">
+                <propertyInstance
+                  Id="4f77bcab-685b-4907-a997-d94aedcf903d"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <signatures>
+          <templateBinding
+            Id="0f036ada-544e-4d03-8021-f078a9cd2143">
+            <redefinableTemplateSignatureMoniker
+              Id="7aa109cd-365c-40fc-b71f-21435d9fe899"
+              LastKnownLocation="Package2_1905.uml" />
+            <relationshipOwnedElementsInternal>
+              <templateBindingHasTemplateParameterSubstitution>
+                <templateParameterSubstitution
+                  Id="fb8a18d3-4731-40a0-96c7-00103446e90e">
+                  <actuals>
+                    <classMoniker
+                      Id="78fb5f4d-64db-4128-8d90-9c18b5906074"
+                      LastKnownName="Page"
+                      LastKnownLocation="Package3_1859.uml" />
+                  </actuals>
+                  <formal>
+                    <classifierTemplateParameterMoniker
+                      Id="b40a7600-29be-401e-96ec-9252610281ec"
+                      LastKnownLocation="Package2_1905.uml" />
+                  </formal>
+                </templateParameterSubstitution>
+              </templateBindingHasTemplateParameterSubstitution>
+            </relationshipOwnedElementsInternal>
+          </templateBinding>
+        </signatures>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="4f51ae48-0e57-423f-ba79-bf99bd45dfe8"
+        name="ElementChangedEventArgs"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="5eb225a2-fb79-4961-899e-0c2a57f45941"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2Fpackages%2FXamarin.Forms.1.4.0.6341%2Flib%2FMonoAndroid10%2FXamarin.Forms.Platform.Android.dll Namespace%3DXamarin.Forms.Platform.Android Type%3D(Name%3DElementChangedEventArgs GenericParameterCount%3D1)"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="ccdfe234-d899-4af0-abd6-827f6b2633b0"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="99120b5a-b382-4d2e-932e-8b3ec1f3ec6b">
+                <propertyInstance
+                  Id="c49705d2-f188-4354-a595-cae1b1470390"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4df2cc88-2e04-4321-b72d-47c76bdebea7">
+                <propertyInstance
+                  Id="ebdd1af9-94c5-4bbe-b14a-26886e4a239a"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="07d967ca-196e-48c1-82c9-167426df1ecc">
+                <propertyInstance
+                  Id="50eb9a11-2fd4-4a41-bc0d-4f268ae46cc4"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ad8212f6-b2fb-4f66-ae6f-0367fa8cb9c1">
+                <propertyInstance
+                  Id="5df308c4-31e9-44d5-b157-509adbe7c4be"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ff2810c4-1238-4989-9ad1-5c13079b7ead">
+                <propertyInstance
+                  Id="0ed79703-d800-4e5e-bb04-6335b7b6a252"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedRedefinableTemplateSignatureInternal>
+          <redefinableTemplateSignature
+            Id="7aa109cd-365c-40fc-b71f-21435d9fe899"
+            parameters=""
+            name="RedefinableTemplateSignature1"
+            isLeaf="false">
+            <ownedParameters>
+              <classifierTemplateParameter
+                Id="b40a7600-29be-401e-96ec-9252610281ec">
+                <referencesInternal>
+                  <reference
+                    Id="c166b655-dd72-4d62-abec-45b2700c453e"
+                    handle="viewcode://./CodeSchema_GenericParameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2Fpackages%2FXamarin.Forms.1.4.0.6341%2Flib%2FMonoAndroid10%2FXamarin.Forms.Platform.Android.dll Namespace%3DXamarin.Forms.Platform.Android Type%3D(Name%3DElementChangedEventArgs GenericParameterCount%3D1) ParameterIdentifier%3D0"
+                    tag="ViewCode" />
+                </referencesInternal>
+                <ownedParameterableElement>
+                  <class
+                    Id="3f0c840e-68aa-41ef-b329-11d9c54efa9e"
+                    name="TElement"
+                    isAbstract="false"
+                    isLeaf="false"
+                    isActiveClass="false" />
+                </ownedParameterableElement>
+              </classifierTemplateParameter>
+            </ownedParameters>
+          </redefinableTemplateSignature>
+        </ownedRedefinableTemplateSignatureInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8cdaa4a6-9380-4730-9d72-322cbafca0c4"
+        name="PageRenderer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="e255be17-8cb8-46da-b7e0-08a21da1a48a"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2Fpackages%2FXamarin.Forms.1.4.0.6341%2Flib%2FMonoAndroid10%2FXamarin.Forms.Platform.Android.dll Namespace%3DXamarin.Forms.Platform.Android Type%3DPageRenderer"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="4c6c1f6a-9e9e-4e20-a232-a92ab32d725c"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d02764bd-42e0-45f3-a7f9-82fffcc83000">
+                <propertyInstance
+                  Id="44ee2a1d-d66c-43fb-bf80-93b4e3ee8e83"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="913edcad-b0f0-4021-9528-8f8f53c9bef1">
+                <propertyInstance
+                  Id="fab6e4b8-77b4-42c9-9c0c-f15621792708"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="67b61722-25e2-4b31-95bf-ecec0f56a990">
+                <propertyInstance
+                  Id="ac05b015-46e1-4342-996b-c6d4ea13b156"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e0fcafac-25cc-46d3-82b4-3ce4e7b9ac58">
+                <propertyInstance
+                  Id="e3e1b619-8493-4681-bde8-c210e557a57b"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a597dc8c-97aa-493a-a17b-a9c4c3340e56">
+                <propertyInstance
+                  Id="046e7474-0c40-4b30-a758-5d5d246c1943"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="ffaab9f7-615c-4ec0-972a-5d8173225aa1"
+        name="ImageCellRenderer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="bf881ca9-bf35-4094-a224-819cc68ab7e7"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2Fpackages%2FXamarin.Forms.1.4.0.6341%2Flib%2FMonoAndroid10%2FXamarin.Forms.Platform.Android.dll Namespace%3DXamarin.Forms.Platform.Android Type%3DImageCellRenderer"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="4423ac54-0ec0-4c6d-8b58-3e76f5865eeb"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3f24f4c6-c7f6-4a87-afaa-c5d89f5bd9fb">
+                <propertyInstance
+                  Id="2fe4ddcc-f5ad-4a92-9997-06b61d20ec3e"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cc420247-c871-4463-b706-0a77b72aee62">
+                <propertyInstance
+                  Id="9be51341-ee7b-4299-bbc0-5b13c69ddd44"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3376144d-8871-4f13-a488-3fa6df944554">
+                <propertyInstance
+                  Id="37e2ef4f-04b0-41ba-9c30-87ed3dd828bb"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="71233758-a9c0-4099-b80f-03667ee1a06b">
+                <propertyInstance
+                  Id="fd90738b-684d-4a9e-9dfc-fdb5e3ba102d"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="47d2d1f4-3224-4066-9700-a638deaf6d55">
+                <propertyInstance
+                  Id="ab232405-a564-471a-b7c5-a27b38e1ba47"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="36d544d3-44a1-4671-9402-550ec1d1d0dd"
+            isSubstitutable="false">
+            <classMoniker
+              Id="34f6665f-28ed-4fd5-8dfb-ee45cf0934d3"
+              LastKnownName="TextCellRenderer"
+              LastKnownLocation="Package2_1905.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="770286c0-cd35-4951-a068-df644b1068e5"
+        name="FormsApplicationActivity"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="764f5854-df2a-4b0a-999f-fb10530a521c"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2Fpackages%2FXamarin.Forms.1.4.0.6341%2Flib%2FMonoAndroid10%2FXamarin.Forms.Platform.Android.dll Namespace%3DXamarin.Forms.Platform.Android Type%3DFormsApplicationActivity"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="62ec5376-e1b1-4015-bcd6-4094a8d306f3"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ccb9c5c5-5d51-485e-9162-56e2f993c67e">
+                <propertyInstance
+                  Id="1387bb3b-a20d-4cdc-b23c-b1bf0979be6c"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1fa016de-3f78-458d-a2a8-5e4985e72672">
+                <propertyInstance
+                  Id="980925fb-2ab6-4ee0-92da-55d52972503c"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9cbf6ad5-3c9d-4be8-91ae-94b770f3ee52">
+                <propertyInstance
+                  Id="83754c2b-589d-4804-913f-1a6751d78976"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="37d3c2ab-535f-460f-a332-3d4480ea7e04">
+                <propertyInstance
+                  Id="fe78dfab-2574-4a19-b649-ec1f779093f6"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="208d8b03-8f62-425c-b07c-1a01dc582443">
+                <propertyInstance
+                  Id="a87d9c0e-796a-44e1-ba1d-8ef63447c07f"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
