@@ -7,17 +7,19 @@ namespace CocoMaps.Shared
 	[Table ("BookmarksTable")]
 	public class BookmarkItems
 	{
+
 		public BookmarkItems ()
 		{
 
 		}
 
-		public BookmarkItems (string name, string address, Position position, string bicon)
+		public BookmarkItems (string name, string address, Position position, string icon)
 		{
 			this.bName = name;
 			this.bAddress = address;
-			this.bPosition = position;
-			this.IconSource = ImageSource.FromFile (bicon);
+			this.bLatitude = position.Latitude;
+			this.bLongitude = position.Longitude;
+			this.IconSource = ImageSource.FromFile (icon);
 		}
 
 		[PrimaryKey, AutoIncrement, Column ("_Id")]
@@ -36,11 +38,17 @@ namespace CocoMaps.Shared
 			set;
 		}
 
-		public Position bPosition {
+		public double bLatitude {
 			get;
 			set;
 		}
 
+		public double bLongitude {
+			get;
+			set;
+		}
+
+		[Ignore]
 		public ImageSource IconSource { 
 			set; 
 			get;

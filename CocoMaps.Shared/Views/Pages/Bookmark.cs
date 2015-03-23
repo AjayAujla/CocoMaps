@@ -82,6 +82,8 @@ namespace CocoMaps.Shared
 				}
 			};
 
+			PopulateAndDisplayDatabase ();
+
 			listView.ItemSelected += HandleItemSelected;
 		}
 
@@ -110,10 +112,32 @@ namespace CocoMaps.Shared
 			((ListView)sender).SelectedItem = null; 
 		}
 
-		void CreateDatabase ()
+		void PopulateAndDisplayDatabase ()
 		{
-			//BookMarksRepository bookmarksRepository = new BookmarksRepository ();
-			//var result = bookmarksRepository.CreateBookmarkDatabase ();
+			Console.WriteLine ("PopulateAndDisplayDatabase");
+			BookmarksRepository bookmarksRepository = new BookmarksRepository ();
+
+
+			bookmarksRepository.CreateTable ();
+
+			foreach (var bookmark in BookMitems) {
+				bookmarksRepository.SaveBookmark (bookmark);
+			}
+			Console.WriteLine ("After saving 5 bookmarks " + bookmarksRepository.NumberOfBookmarks ());
+
+			bookmarksRepository.GetAllBookmarks ();
+
+			Console.WriteLine ("Before deleting 5 bookmarks " + bookmarksRepository.NumberOfBookmarks ());
+
+
+			bookmarksRepository.DeleteAllBookmarks ();
+
+			Console.WriteLine ("After deleting 5 bookmarks " + bookmarksRepository.NumberOfBookmarks ());
+
+			bookmarksRepository.GetAllBookmarks ();
+
+			//bookmarksRepository.BookmarksTable.Close ();
+
 		}
 	}
 }

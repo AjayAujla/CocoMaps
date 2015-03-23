@@ -309,7 +309,7 @@ namespace CocoMapsAndroid
 
 							bMarker.SetTitle (BI.bName);
 							bMarker.SetSnippet (BI.bAddress);
-							bMarker.SetPosition (new LatLng (BI.bPosition.Latitude, BI.bPosition.Longitude));
+							bMarker.SetPosition (new LatLng (BI.bLatitude, BI.bLongitude));
 
 							bMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_bookmark));
 

@@ -129,8 +129,6 @@
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Orm\SQLite.cs" />
     <Compile Include="Orm\SQLiteAsync.cs" />
-    <Compile Include="Orm\BookmarksRepository.cs" />
-    <Compile Include="Orm\BoomarksModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

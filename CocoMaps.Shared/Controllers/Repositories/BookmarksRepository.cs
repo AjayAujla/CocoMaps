@@ -57,8 +57,9 @@ namespace CocoMaps.Shared
 				BookmarksTable = OpenConnection ();
 
 				var table = BookmarksTable.Table<BookmarkItems> ();
+
 				foreach (var bookmark in table) {
-					Console.WriteLine (bookmark.bName + " " + bookmark.bAddress);
+					Console.WriteLine (bookmark);
 				}
 
 				return (from i in table
@@ -98,6 +99,14 @@ namespace CocoMaps.Shared
 			}
 		}
 
+		public void DeleteBookmark (int id)
+		{
+			lock (locker) {
+				BookmarksTable = OpenConnection ();
+				BookmarksTable.Delete<BookmarkItems> (id);
+			}
+		}
+
 		public void DeleteAllBookmarks ()
 		{
 			lock (locker) {
@@ -113,7 +122,7 @@ namespace CocoMaps.Shared
 			lock (locker) {
 				try {
 					BookmarksTable = OpenConnection ();
-					return BookmarksTable.ExecuteScalar<int> ("SELECT Count(*) FROM BookmarkItems"); 
+					return BookmarksTable.ExecuteScalar<int> ("SELECT COUNT(*) FROM BookmarksTable"); 
 				} catch (SQLiteException ex) {
 					return -1;
 				}
