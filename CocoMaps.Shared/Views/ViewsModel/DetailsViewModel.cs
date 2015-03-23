@@ -455,7 +455,7 @@ namespace CocoMaps.Shared
 
 			directionsButton.Clicked += (sender, e) => {
 
-			DependencyService.Get<IPhoneService> ().LaunchMap (bookm.bAddress);
+				DependencyService.Get<IPhoneService> ().LaunchMap (bookm.bAddress);
 
 			};
 				

@@ -1,14 +1,10 @@
-﻿using System;
-using Xamarin.Forms;
-using CocoMaps.Shared.Pages;
-using CocoMaps.Shared.ViewModels;
+﻿using Xamarin.Forms;
+using SQLite;
 using Xamarin.Forms.Maps;
-using System.Diagnostics;
-using System.Collections.Generic;
-
 
 namespace CocoMaps.Shared
 {
+	[Table ("BookmarksTable")]
 	public class BookmarkItems
 	{
 		public BookmarkItems ()
@@ -16,32 +12,40 @@ namespace CocoMaps.Shared
 
 		}
 
-		public BookmarkItems (string name, string address, double lat, double lon, string bicon)
+		public BookmarkItems (string name, string address, Position position, string bicon)
 		{
 			this.bName = name;
 			this.bAddress = address;
-			this.bLat = lat;
-			this.bLon = lon;
+			this.bPosition = position;
 			this.IconSource = ImageSource.FromFile (bicon);
 		}
 
+		[PrimaryKey, AutoIncrement, Column ("_Id")]
 		public int ID {
 			get;
 			set;
 		}
 
-		public string bName { private set; get; }
+		public string bName { 
+			set; 
+			get; 
+		}
 
-		public string bAddress { private set; get; }
+		public string bAddress { 
+			get; 
+			set;
+		}
 
-		public double bLat { private set; get; }
+		public Position bPosition {
+			get;
+			set;
+		}
 
-		public double bLon { private set; get; }
-
-		public ImageSource IconSource { private set; get; }
+		public ImageSource IconSource { 
+			set; 
+			get;
+		}
 
 		//public Color BoxColor { private set; get; }
-
-
 	}
 }

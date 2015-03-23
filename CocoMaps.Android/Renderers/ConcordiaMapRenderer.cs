@@ -65,7 +65,7 @@ namespace CocoMapsAndroid
 					DetailsViewModel.getInstance.UpdateView (directions);
 			} else {
 
-				BookmarkItems BI = new BookmarkItems ("Test", "This is my address", 45.496426, -73.577896, "ic_pin_bookmark");
+				BookmarkItems BI = new BookmarkItems ("Test", "This is my address", new Position (45.496426, -73.577896), "ic_pin_bookmark");
 
 				DetailsViewModel.getInstance.UpdateView (BI);
 			}
@@ -159,7 +159,7 @@ namespace CocoMapsAndroid
 
 						// If both Start and End are specified, and they are not the same
 						if (directionsViewModel.Start != null && directionsViewModel.End != null
-							&& !directionsViewModel.Start.Equals (directionsViewModel.End)) {
+						    && !directionsViewModel.Start.Equals (directionsViewModel.End)) {
 
 							_originBuilding = buildingRepo.GetBuildingByCode (directionsViewModel.Start);
 							_destinationBuilding = buildingRepo.GetBuildingByCode (directionsViewModel.End);
@@ -303,13 +303,13 @@ namespace CocoMapsAndroid
 
 							LoaderViewModel.getInstance.Show ();
 
-							BookmarkItems BI = new BookmarkItems ("Test", "This is my address", 45.496426, -73.577896, "fav_icon");
+							BookmarkItems BI = new BookmarkItems ("Test", "This is my address", new Position (45.496426, -73.577896), "fav_icon");
 
 							MarkerOptions bMarker = new MarkerOptions ();
 
 							bMarker.SetTitle (BI.bName);
 							bMarker.SetSnippet (BI.bAddress);
-							bMarker.SetPosition (new LatLng (BI.bLat, BI.bLon));
+							bMarker.SetPosition (new LatLng (BI.bPosition.Latitude, BI.bPosition.Longitude));
 
 							bMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_bookmark));
 

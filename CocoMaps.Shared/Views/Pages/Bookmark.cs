@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using CocoMaps.Shared.ViewModels;
 using System.Collections.Generic;
+using Xamarin.Forms.Maps;
 
 #if __ANDROID__
 using Android.Provider;
@@ -24,11 +25,11 @@ namespace CocoMaps.Shared
 
 			// Sets Temporary List
 			BookMitems = new List<BookmarkItems> {
-				new BookmarkItems ("SGW-EV", "1515 St. Catherine W., Montreal", 45.496426, -73.577896, "ic_menu_bookmark"),
-				new BookmarkItems ("SGW-FG", "1616 Rue Sainte-Catherine Ouest, Montreal", 45.496426, -73.577896, "ic_menu_bookmark"),
-				new BookmarkItems ("SGW-CB", "1425 René Lévesque W., Montreal", 45.496426, -73.577896, "fav_icon"),
-				new BookmarkItems ("LOY-GE", "7141 Sherbrooke W., Montreal", 45.496426, -73.577896, "fav_icon"),
-				new BookmarkItems ("LOY-RF", "7141 Sherbrooke W., Montreal", 45.496426, -73.577896, "fav_icon"),
+				new BookmarkItems ("SGW-EV", "1515 St. Catherine W., Montreal", new Position (45.496426, -73.577896), "ic_menu_bookmark"),
+				new BookmarkItems ("SGW-FG", "1616 Rue Sainte-Catherine Ouest, Montreal", new Position (45.496426, -73.577896), "ic_menu_bookmark"),
+				new BookmarkItems ("SGW-CB", "1425 René Lévesque W., Montreal", new Position (45.496426, -73.577896), "fav_icon"),
+				new BookmarkItems ("LOY-GE", "7141 Sherbrooke W., Montreal", new Position (45.496426, -73.577896), "fav_icon"),
+				new BookmarkItems ("LOY-RF", "7141 Sherbrooke W., Montreal", new Position (45.496426, -73.577896), "fav_icon"),
 			};
 
 			ListView listView = new ListView {
@@ -107,6 +108,12 @@ namespace CocoMaps.Shared
 				}
 			}
 			((ListView)sender).SelectedItem = null; 
+		}
+
+		void CreateDatabase ()
+		{
+			//BookMarksRepository bookmarksRepository = new BookmarksRepository ();
+			//var result = bookmarksRepository.CreateBookmarkDatabase ();
 		}
 	}
 }
