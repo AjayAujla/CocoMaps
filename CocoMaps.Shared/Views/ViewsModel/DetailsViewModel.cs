@@ -278,13 +278,12 @@ namespace CocoMaps.Shared
 			BookmarksRepository bookmarksRepository = new BookmarksRepository ();
 			bookmarksRepository.CreateTable ();
 
-
 			bookmarksRepository.SaveBookmark (new BookmarkItems (instance.title.Text, instance.details.Text, new Position (45.4592614632682, -73.63853976130486), "fav_icon.png"));
+			bookmarksRepository.BookmarksTable.UpdateAll (bookmarksRepository.GetAllBookmarks ());
 		}
 
 		public void UpdateView (Directions direction)
 		{
-
 			title.Text = direction.routes [0].legs [0].distance.text + " (" + direction.routes [0].legs [0].duration.text + ")";
 			title.TextColor = Helpers.Color.Navy.ToFormsColor ();
 

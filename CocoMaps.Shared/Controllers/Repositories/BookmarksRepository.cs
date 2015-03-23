@@ -57,10 +57,6 @@ namespace CocoMaps.Shared
 
 				var table = BookmarksTable.Table<BookmarkItems> ();
 
-				foreach (var bookmark in table) {
-					//Console.WriteLine (bookmark);
-				}
-
 				return (from i in table
 				        select i).ToList ();
 			}
@@ -133,7 +129,7 @@ namespace CocoMaps.Shared
 			}
 		}
 
-		public void SearchBookmarks ()
+		/*public void SearchBookmarks ()
 		{
 			lock (locker) {
 				var table = BookmarksTable.Table<BookmarkItems> ();
@@ -142,6 +138,6 @@ namespace CocoMaps.Shared
 				             where s.bName.StartsWith ("A")
 				             select s;
 			}
-		}
+		}*/
 	}
 }

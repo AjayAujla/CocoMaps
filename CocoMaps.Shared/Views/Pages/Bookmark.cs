@@ -127,11 +127,11 @@ namespace CocoMaps.Shared
 		{
 			bookmarksRepository.CreateTable ();
 
-			bookmarksRepository.SaveBookmark (new BookmarkItems ("SGW-EV", "1515 St. Catherine W., Montreal", new Position (45.48939, -73.57788), "ic_menu_bookmark"));
+			/*bookmarksRepository.SaveBookmark (new BookmarkItems ("SGW-EV", "1515 St. Catherine W., Montreal", new Position (45.48939, -73.57788), "ic_menu_bookmark"));
 			bookmarksRepository.SaveBookmark (new BookmarkItems ("SGW-FG", "1616 Rue Sainte-Catherine Ouest, Montreal", new Position (45.46945, -73.60376), "ic_menu_bookmark"));
 			bookmarksRepository.SaveBookmark (new BookmarkItems ("SGW-CB", "1425 René Lévesque W., Montreal", new Position (45.496426, -73.577896), "fav_icon"));
 			bookmarksRepository.SaveBookmark (new BookmarkItems ("LOY-GE", "7141 Sherbrooke W., Montreal", new Position (45.45837, -73.63822), "fav_icon"));
-			bookmarksRepository.SaveBookmark (new BookmarkItems ("LOY-RF", "7141 Sherbrooke W., Montreal", new Position (45.4688, -73.60512), "fav_icon"));
+			bookmarksRepository.SaveBookmark (new BookmarkItems ("LOY-RF", "7141 Sherbrooke W., Montreal", new Position (45.4688, -73.60512), "fav_icon"));*/
 
 			return bookmarksRepository.GetAllBookmarks ();
 		}
