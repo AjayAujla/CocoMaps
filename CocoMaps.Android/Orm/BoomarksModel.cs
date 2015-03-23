@@ -47,5 +47,10 @@ namespace CocoMaps.Shared
 		}
 
 		//public Color BoxColor { private set; get; }
+
+		public override string ToString ()
+		{
+			return string.Format ("[BookmarkItems: ID={0}, Address={1}", ID, bAddress);
+		}
 	}
 }
