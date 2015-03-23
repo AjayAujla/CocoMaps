@@ -127,6 +127,8 @@
     <Compile Include="AndroidNotifications\AlarmReceiver.cs" />
     <Compile Include="AndroidNotifications\AndroidReminderService.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Orm\SQLite.cs" />
+    <Compile Include="Orm\SQLiteAsync.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -286,6 +288,7 @@
     <Folder Include="Renderers\" />
     <Folder Include="Files\" />
     <Folder Include="AndroidNotifications\" />
+    <Folder Include="Orm\" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamarin.auth">
