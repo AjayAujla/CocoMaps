@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace CocoMaps.Shared
 {
@@ -140,10 +141,9 @@ namespace CocoMaps.Shared
 			BackgroundColor = Color.Transparent
 		};
 
-		Button DelBookButton = new Button {
-			Text = "Delete Bookmark",
+		Button bookmarkButton = new Button {
 			TextColor = Helpers.Color.Blue.ToFormsColor (),
-			Image = (FileImageSource)ImageSource.FromFile ("ic_dir_buildings.png"),
+			Image = (FileImageSource)ImageSource.FromFile ("ic_pin_bookmark.png"),
 			BackgroundColor = Color.Transparent
 		};
 
@@ -191,6 +191,11 @@ namespace CocoMaps.Shared
 			instance.Children.Add (directionsButton,
 				Constraint.RelativeToView (featuresImages, (parent, sibling) => sibling.X - 10),
 				Constraint.RelativeToView (featuresImages, (parent, sibling) => sibling.Y + sibling.Height - 5)
+			);
+
+			instance.Children.Add (bookmarkButton,
+				Constraint.RelativeToView (directionsButton, (parent, sibling) => sibling.X + 100),
+				Constraint.RelativeToView (directionsButton, (parent, sibling) => sibling.Y)
 			);
 
 			instance.Children.Add (servicesButton, 
@@ -253,6 +258,7 @@ namespace CocoMaps.Shared
 
 			servicesButton.Clicked += (sender, e) => ShowServices ();
 			departmentsButton.Clicked += (sender, e) => ShowDepartments ();
+			bookmarkButton.Clicked += HandleClicked;
 
 			// For fixing the layout's heights and widths when changing
 			// the device orientation while layout is expanded
@@ -265,6 +271,15 @@ namespace CocoMaps.Shared
 					instance.ShowDepartments ();
 			};
 
+		}
+
+		void HandleClicked (object sender, System.EventArgs e)
+		{
+			BookmarksRepository bookmarksRepository = new BookmarksRepository ();
+			bookmarksRepository.CreateTable ();
+
+
+			bookmarksRepository.SaveBookmark (new BookmarkItems (instance.title.Text, instance.details.Text, new Position (45.4592614632682, -73.63853976130486), "fav_icon.png"));
 		}
 
 		public void UpdateView (Directions direction)
