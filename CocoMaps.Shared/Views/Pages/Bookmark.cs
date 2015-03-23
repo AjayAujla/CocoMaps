@@ -12,9 +12,10 @@ namespace CocoMaps.Shared
 {
 	public class Bookmark : ContentPage
 	{
-		public static IEnumerable<BookmarkItems> BookMitems;
+		ListView listView;
 
 		BookmarksRepository bookmarksRepository = new BookmarksRepository ();
+		static IEnumerable<BookmarkItems> BookMitems = new List<BookmarkItems> ();
 
 		public Bookmark (IMenuOptions menuItem)
 		{
@@ -26,7 +27,7 @@ namespace CocoMaps.Shared
 
 			BookMitems = PopulateDatabase ();
 
-			ListView listView = new ListView {
+			listView = new ListView {
 
 				// Source of data items.
 				ItemsSource = BookMitems,
@@ -73,7 +74,6 @@ namespace CocoMaps.Shared
 					listView
 				}
 			};
-
 			listView.ItemSelected += HandleItemSelected;
 		}
 
@@ -99,6 +99,7 @@ namespace CocoMaps.Shared
 					/*eBookmark.bName = "abc";
 					eBookmark.bAddress = "def";*/
 					bookmarksRepository.SaveBookmark (eBookmark);
+					await DisplayAlert (eBookmark.bName + " Deleted.", "", "Proceed");
 				}
 				if (BookmarksClickedInput.Equals ("Delete Bookmark")) {
 					var BookmarksInput = await DisplayAlert ("Delete " + eBookmark.bName + " at " + eBookmark.bAddress + "?", "", "Proceed", "Cancel");
@@ -116,7 +117,7 @@ namespace CocoMaps.Shared
 						await DisplayAlert ("Deleted all bookmarks", "", "Proceed");
 					}
 				}
-				BookMitems = bookmarksRepository.GetAllBookmarks ();
+				this.listView.ItemsSource = bookmarksRepository.GetAllBookmarks ();
 				// de-select the item
 				((ListView)sender).SelectedItem = null; 
 			}
@@ -136,5 +137,4 @@ namespace CocoMaps.Shared
 		}
 	}
 }
-
 #endif

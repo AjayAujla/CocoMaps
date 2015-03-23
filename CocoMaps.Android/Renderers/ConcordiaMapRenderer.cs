@@ -295,30 +295,37 @@ namespace CocoMapsAndroid
 
 				bool bookmarksBool = false;
 
-				BookmarksButton.Clicked += async (send, ev) => {
+				BookmarksButton.Clicked += (send, ev) => {
 
-					// Adding all POIs' Icons
+					// Adding all bookmark icons
 					if (!bookmarksBool) {
 
-						if (App.isConnected ()) {
+						LoaderViewModel.getInstance.Show ();
 
-							LoaderViewModel.getInstance.Show ();
+						BookmarksRepository bookmarksRepository = new BookmarksRepository ();
+						bookmarksRepository.CreateTable ();
+						var bookmarks = bookmarksRepository.GetAllBookmarks ();
 
-							BookmarkItems BI = new BookmarkItems ("Test", "This is my address", new Position (45.496426, -73.577896), "fav_icon");
+						Console.WriteLine ("After get all bookmarks " + bookmarksRepository.NumberOfBookmarks ());
 
-							MarkerOptions bMarker = new MarkerOptions ();
+						foreach (BookmarkItems bookmark in bookmarks) {
 
-							bMarker.SetTitle (BI.bName);
-							bMarker.SetSnippet (BI.bAddress);
-							bMarker.SetPosition (new LatLng (BI.bLatitude, BI.bLongitude));
+							Console.WriteLine ("inside foreach");
 
-							bMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_bookmark));
+							using (MarkerOptions bMarker = new MarkerOptions ()) {
 
-							marker = androidMapView.Map.AddMarker (bMarker);
+								bMarker.SetTitle (bookmark.bName);
+								bMarker.SetSnippet (bookmark.bAddress);
+								bMarker.SetPosition (new LatLng (bookmark.bLatitude, bookmark.bLongitude));
+								bMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_bookmark));
 
-							BookmarksMarker.Add (marker, null);
+								Console.WriteLine (bookmark);
 
-						} 
+								marker = androidMapView.Map.AddMarker (bMarker);
+
+								BookmarksMarker.Add (marker, bookmark);
+							}
+						}
 						bookmarksBool = true;
 						LoaderViewModel.getInstance.Hide ();
 
@@ -369,8 +376,6 @@ namespace CocoMapsAndroid
 										.SetSnippet (result.vicinity)
 										.SetPosition (new LatLng (result.geometry.location.lat, result.geometry.location.lng));
 
-									// Tried to get resources dynamically (e.g. CocoMaps.Android.Resource.Drawable + result.type[0] or FromAsset())
-									// But failed miserably
 									if (result.types.Contains ("cafe"))
 										poiMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_cafe));
 									else if (result.types.Contains ("bar"))
