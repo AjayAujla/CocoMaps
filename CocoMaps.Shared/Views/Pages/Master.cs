@@ -196,6 +196,7 @@ namespace CocoMaps.Shared
 				d.Expand ();
 				string r = Host.PingHost ("googleapis.com");
 				Console.WriteLine ("PingHost Result: " + r);
+
 //				bool r = await DependencyService.Get<INetwork> ().IsReachable ("googleapis.com", new TimeSpan (5));
 //				await DisplayAlert ("Network Connection:", r ? "Connected :)" : "Not Connected :(", "Whatever");
 			};

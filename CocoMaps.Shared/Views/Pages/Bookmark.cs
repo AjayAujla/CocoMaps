@@ -34,6 +34,7 @@ namespace CocoMaps.Shared
 
 				// New as of Xamarin.Forms v1.4
 				IsPullToRefreshEnabled = true,
+				Header = "Pull to Refresh Bookmarks",
 
 				// Define template for displaying each item.
 				// (Argument of DataTemplate constructor is called for each item; it must return a Cell derivative.)
