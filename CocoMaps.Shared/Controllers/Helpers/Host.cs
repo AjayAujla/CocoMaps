@@ -35,7 +35,7 @@ namespace CocoMaps.Shared
 			byte[] buffer = new byte[32];
 
 			//first make sure we actually have an internet connection
-			if (HasConnection ()) {
+			if (App.isConnected ()) {
 				//here we will ping the host 4 times (standard)
 				for (int i = 0; i < 4; i++) {
 					try {

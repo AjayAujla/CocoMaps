@@ -70,9 +70,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GeoLocation\IGeoLocator.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GeoLocation\Position.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GeoLocation\PositionExtensions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Models\BoomarksModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GoogleUtil.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\Host.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\BookmarksRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\BookmarksModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />

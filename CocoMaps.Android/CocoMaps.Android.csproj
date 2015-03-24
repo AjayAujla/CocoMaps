@@ -130,6 +130,8 @@
     <Compile Include="Files\GeoLocation\GeolocationContinuousListener.cs" />
     <Compile Include="Files\GeoLocation\GeolocationSingleListener.cs" />
     <Compile Include="Files\GeoLocation\Geolocator.cs" />
+    <Compile Include="Orm\SQLite.cs" />
+    <Compile Include="Orm\SQLiteAsync.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -290,6 +292,7 @@
     <Folder Include="Files\" />
     <Folder Include="AndroidNotifications\" />
     <Folder Include="Files\GeoLocation\" />
+    <Folder Include="Orm\" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamarin.auth">

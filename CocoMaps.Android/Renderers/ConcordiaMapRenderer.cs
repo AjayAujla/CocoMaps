@@ -52,7 +52,7 @@ namespace CocoMapsAndroid
 		Dictionary<Marker, Result> MarkerPOI = new Dictionary<Marker, Result> ();
 		Dictionary<String, Directions> MarkerDirections = new Dictionary<String, Directions> ();
 
-		Dictionary<Marker, BookmarkItems> MarkerBookmarks = new Dictionary<Marker, BookmarkItems> ();
+		Dictionary<Marker, BookmarkItems> BookmarksMarker = new Dictionary<Marker, BookmarkItems> ();
 
 		void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
 		{
@@ -62,12 +62,11 @@ namespace CocoMapsAndroid
 
 			if (MarkerBuilding.TryGetValue (e.Marker.Id, out building))
 				DetailsViewModel.getInstance.UpdateView (building);
-			else if (MarkerDirections.TryGetValue (e.Marker.Id, out totalDirections)) {
-				if (totalDirections != null)
-					DetailsViewModel.getInstance.UpdateView (totalDirections);
-			} else
+			else if (MarkerDirections.TryGetValue (e.Marker.Id, out totalDirections))
+			if (totalDirections != null)
+				DetailsViewModel.getInstance.UpdateView (totalDirections);
+			else
 				e.Marker.ShowInfoWindow ();
-
 		}
 
 		BitmapDescriptor GetCustomBitmapDescriptor (string text)
@@ -282,39 +281,47 @@ namespace CocoMapsAndroid
 
 				bool bookmarksBool = false;
 
-				BookmarksButton.Clicked += async (send, ev) => {
+				BookmarksButton.Clicked += (send, ev) => {
 
-					// Adding all POIs' Icons
+					// Adding all bookmark icons
 					if (!bookmarksBool) {
 
-						if (App.isConnected ()) {
+						LoaderViewModel.getInstance.Show ();
 
-							Marker bMarker;
-							LoaderViewModel.getInstance.Show ();
+						LoaderViewModel.getInstance.Show ();
 
-							BookmarkItems BI = new BookmarkItems ("Test", "This is my address", 45.496426, -73.577896, "fav_icon");
+						BookmarksRepository bookmarksRepository = new BookmarksRepository ();
+						bookmarksRepository.CreateTable ();
+						var bookmarks = bookmarksRepository.GetAllBookmarks ();
 
-							MarkerOptions bMarkerOptions = new MarkerOptions ();
-
-							bMarkerOptions.SetTitle (BI.bName);
-							bMarkerOptions.SetSnippet (BI.bAddress);
-							bMarkerOptions.SetPosition (new LatLng (BI.bLat, BI.bLon));
-
-							bMarkerOptions.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.fav_icon));
+						Console.WriteLine ("After get all bookmarks " + bookmarksRepository.NumberOfBookmarks ());
 
 
-							bMarker = androidMapView.Map.AddMarker (bMarkerOptions);
+						foreach (BookmarkItems bookmark in bookmarks) {
 
-							MarkerBookmarks.Add (bMarker, BI);
+							Console.WriteLine ("inside foreach");
 
-						} 
+							using (MarkerOptions bMarker = new MarkerOptions ()) {
+
+								bMarker.SetTitle (bookmark.bName);
+								bMarker.SetSnippet (bookmark.bAddress);
+								bMarker.SetPosition (new LatLng (bookmark.bLatitude, bookmark.bLongitude));
+								bMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_bookmark));
+
+								Console.WriteLine (bookmark);
+
+								marker = androidMapView.Map.AddMarker (bMarker);
+
+								BookmarksMarker.Add (marker, bookmark);
+							}
+						}
 						bookmarksBool = true;
 						LoaderViewModel.getInstance.Hide ();
 
 					} else {
 
 						// toggling markers visibility
-						foreach (Marker m in MarkerBookmarks.Keys) {
+						foreach (Marker m in BookmarksMarker.Keys) {
 							m.Visible = !m.Visible;
 						}
 					}
@@ -355,8 +362,6 @@ namespace CocoMapsAndroid
 										.SetSnippet (result.vicinity)
 										.SetPosition (new LatLng (result.geometry.location.lat, result.geometry.location.lng));
 
-									// Tried to get resources dynamically (e.g. CocoMaps.Android.Resource.Drawable + result.type[0] or FromAsset())
-									// But failed miserably
 									if (result.types.Contains ("cafe"))
 										poiMarker.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.ic_pin_cafe));
 									else if (result.types.Contains ("bar"))
