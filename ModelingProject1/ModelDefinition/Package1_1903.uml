@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="13835f57-027d-4297-8101-7fb4fd20f2ac"
+  name="Tts"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="ba0fa6f8-c242-4b3e-b4a7-8f2327ad5581"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DAndroid.Speech.Tts"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <enumeration
+        Id="d6bbb960-2f3f-4a22-a321-4600bf3d38fe"
+        name="OperationResult"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="b5924f3a-4eb1-4cb3-9ad6-5a932a52cd43"
+            handle="viewcode://./CodeSchema_Enum?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Speech.Tts Type%3DOperationResult"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="b03dbfd8-166b-42d0-8398-4f40fe4c8b7b"
+            name="enum"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="960b2611-e751-4e92-98f6-d2e1d68d96a8">
+                <propertyInstance
+                  Id="f5ca4ac4-4b86-4475-95ae-e06e75bd7254"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3af58856-799c-46f3-8186-197de72ea22f">
+                <propertyInstance
+                  Id="46960e2a-fb4a-4be5-bc73-b80fbb63c99e"
+                  name="BaseType"
+                  value="int" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7367a46c-f511-4e2e-8cb5-7027fec03ba8">
+                <propertyInstance
+                  Id="e76565aa-dcab-424f-ad8d-ce5c9b799146"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="36f0e2ac-9351-4d96-a631-d67ca06e014d"
+        name="TextToSpeech"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="a1094130-49b7-446d-8269-7cd29faf2500"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Speech.Tts Type%3DTextToSpeech"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="607d8477-0401-4f0f-9bee-051018d109cc"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="21a54943-c88a-4c5d-8d68-84938f4fddf5">
+                <propertyInstance
+                  Id="18803b67-eaf8-4667-933c-563857a54671"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="47a9789f-d6ed-414f-a280-36f5b6c0b474">
+                <propertyInstance
+                  Id="d4f86e50-8b86-4864-8d47-fb2b1196de5f"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f6057869-68c6-4fa1-8e06-01ec3c89a80a">
+                <propertyInstance
+                  Id="19e5b403-5e17-490c-8999-8067a22a0e60"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="a29e11c7-dee5-4cfa-9194-3c1c8c82184e">
+                <propertyInstance
+                  Id="58a531a4-eeff-41a6-875f-2534fc1a0c76"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="1caaa881-dad8-4fbd-825b-5d6a82545f67">
+                <propertyInstance
+                  Id="7b58a539-9a06-490a-a91d-5c6daa2b8cff"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="4f6d8984-e66b-459b-a3d4-fd963f1deabd"
+            isSubstitutable="false">
+            <classMoniker
+              Id="10570bcb-6675-4323-b7e6-16e36e819fe3"
+              LastKnownName="Object"
+              LastKnownLocation="Package3_1903.uml" />
+          </generalization>
+        </generalsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="23c164fc-3fa8-4863-8570-748d26a03fdd"
+        name="IOnInitListener"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="88cfd2d1-de9a-4111-96a9-b4b53e23d23d"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Speech.Tts Type%3D(Name%3DIOnInitListener ParentType%3DTextToSpeech)"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="c6a4283f-ab79-4a0c-b35f-f3834167a563"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e5574f13-6df9-4fb0-851d-37fda93b0613">
+                <propertyInstance
+                  Id="d5be02d9-03ca-4183-bd20-915191e9fa86"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6d36dbe7-e107-4283-a62c-915713db85b2">
+                <propertyInstance
+                  Id="39926fe3-9a53-4734-99cd-c3f13bc848dd"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="65c26e9e-a6ec-4f8c-ae49-8261b677469f">
+                <propertyInstance
+                  Id="4c1d507f-27bb-4aef-a44e-e211637baf98"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="8f32ff91-d039-40df-b872-e645aa69f0ad">
+                <propertyInstance
+                  Id="9d712783-d12e-4d01-adb0-60d5ec565204"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

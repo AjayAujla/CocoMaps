@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="210eb493-6307-4523-8064-16daef6b2774"
+  name="ComponentModel"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="fcfd7843-8a9f-4a20-896e-fb7eb363256c"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DSystem.ComponentModel"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="cd0c6a5d-39a3-402c-be69-b4930a3af625"
+        name="PropertyChangedEventArgs"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="fb538aea-9016-4447-983f-0fa8545e469b"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2FSystem.dll&quot; Namespace%3DSystem.ComponentModel Type%3DPropertyChangedEventArgs"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="3262450c-d827-49c7-9d62-1f47306f8469"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="b80d81ce-1086-477e-b9dd-e4062d7c7220">
+                <propertyInstance
+                  Id="9426dfac-adfb-437f-b481-a93e35fa96ba"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="dbe5e6cd-99e3-480e-838d-7272d06217f2">
+                <propertyInstance
+                  Id="28e5454e-495e-4041-906a-880145c9ba57"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c7fa74d8-9950-4ec1-b50c-fc49bad020f8">
+                <propertyInstance
+                  Id="9b7e3fc4-055f-41d4-826b-097d0aecfb7f"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e445de44-b566-409e-962b-c7d7f8f2a8e3">
+                <propertyInstance
+                  Id="6a2288ad-57dd-42ba-8739-8feecef6722b"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="44672300-c8b7-4849-a7e2-b79ae7d371cd">
+                <propertyInstance
+                  Id="155105c2-37b1-44d7-be0d-33020cfe3731"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="4d8dcab9-0245-4859-a52f-e824820a6c64"
+        name="PropertyChangedEventHandler"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="001bb2bf-d3f6-436e-8ed8-902f9067d652"
+            handle="viewcode://./CodeSchema_Delegate?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2FSystem.dll&quot; Namespace%3DSystem.ComponentModel Type%3DPropertyChangedEventHandler"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="a984dd9f-a1c9-4c01-b46f-7350652dddc5"
+            name="delegate"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0db5b909-5f17-4b7c-b619-2e50b772a763">
+                <propertyInstance
+                  Id="7d1deaef-f565-4e7f-b9bf-de38f671ce71"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c6a85bbf-2c8d-445c-8e52-93440d8aabd9">
+                <propertyInstance
+                  Id="a86808b8-625c-4445-ac9d-2d4300bd7303"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="183f97ad-4347-4950-9fc8-c37323b26a5f">
+                <propertyInstance
+                  Id="3bf65251-2441-4d3f-a1f2-5a825dbea92d"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="9c386156-6144-4dbf-9a4a-afa1709726bf"
+        name="INotifyPropertyChanged"
+        isAbstract="false"
+        isLeaf="false">
+        <referencesInternal>
+          <reference
+            Id="c8f140d4-40d4-4e19-8fb6-2a063f1160f5"
+            handle="viewcode://./CodeSchema_Interface?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2FSystem.dll&quot; Namespace%3DSystem.ComponentModel Type%3DINotifyPropertyChanged"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="9223ce22-fb24-45b4-a23c-34251e62be0e"
+            name="interface"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="4f8e923e-8fbb-4aee-9ffe-8831446bb9da">
+                <propertyInstance
+                  Id="b7c42c67-0ca2-47be-85c5-a2b213bb9a7a"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d950e2ad-68ee-4d8d-bb18-265eb539b27b">
+                <propertyInstance
+                  Id="7a937966-a2f9-41c6-8ccb-eeca7abed3c0"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="24aed47e-e36b-4618-976a-1ecb590e87de">
+                <propertyInstance
+                  Id="20183ee4-fba9-4562-949d-a0f0187b73d4"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="60c00f16-b07c-431d-8a85-50119ba7501c">
+                <propertyInstance
+                  Id="2bf650e3-21ec-4df0-9abf-b76b79f93945"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </Interface>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

@@ -11,13 +11,13 @@ namespace CocoMaps.Shared
 {
 	public class BookmarkItems
 	{
-		public BookmarkItems (string name , string address, double lat , double lon )
+		public BookmarkItems (string name , string address, double lat , double lon , string bicon )
 		{
 			this.bName = name;
 			this.bAddress = address;
 			this.bLat = lat;
 			this.bLon = lon;
-			//this.BoxColor = bcolor;
+			this.IconSource = ImageSource.FromFile (bicon);
 		}
 
 		public string bName { private set; get; }
@@ -27,6 +27,8 @@ namespace CocoMaps.Shared
 		public double bLat { private set; get; }
 
 		public double bLon { private set; get; }
+
+		public ImageSource IconSource { private set; get; }
 
 		//public Color BoxColor { private set; get; }
 

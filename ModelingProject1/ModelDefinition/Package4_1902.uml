@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="8d17c1c3-3720-45ab-829c-20b27c8a9c6b"
+  name="Telephony"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="0d36803e-1f27-4b27-a0e5-bc4544e94e5d"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DAndroid.Telephony"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="ffc1986d-e9eb-41b2-99bf-50d33894c018"
+        name="TelephonyManager"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="b5e9cb7a-664f-4e04-81c4-aacd18025453"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Telephony Type%3DTelephonyManager"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="9af34f6f-e735-4deb-bcd6-1a636705284f"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="7c73df87-3e38-44be-923b-5a084fff635e">
+                <propertyInstance
+                  Id="23e17f11-a87c-4ccf-ace7-4744b5467a94"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="25fa762c-1fc1-4d69-8152-4a9ce5baa468">
+                <propertyInstance
+                  Id="2f65d495-0a9e-4a32-aa9a-8c86f6f4d9c1"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cd2fde45-5aa8-4b47-8535-db451951c357">
+                <propertyInstance
+                  Id="2a9644ed-f0d1-46c4-9337-6ba31e474974"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="0e296e5c-bb53-465c-a81a-be1667af7ac5">
+                <propertyInstance
+                  Id="7ddbbfe5-8c3a-4b58-b8f1-052ddb6b1f83"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="96cd7893-2ba4-4a47-9c4c-b81ca58e9102">
+                <propertyInstance
+                  Id="ceed27a0-abf8-49bf-ac8a-6819d76e3615"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

@@ -67,7 +67,7 @@ namespace CocoMapsAndroid
 					DetailsViewModel.getInstance.UpdateView (totalDirections);
 			} else
 				e.Marker.ShowInfoWindow ();
-			
+
 		}
 
 		BitmapDescriptor GetCustomBitmapDescriptor (string text)
@@ -224,6 +224,7 @@ namespace CocoMapsAndroid
 							_endPin.Snippet = _destinationBuilding.Address;
 							_endPin.Position = new LatLng (_destinationBuilding.Position.Latitude + pinOffsetY, _destinationBuilding.Position.Longitude);
 
+
 							ResetPolylines ();
 							await GetDirectionsPolyline (_originBuilding.Position, _destinationBuilding.Position, directionsViewModel.TravelMode);
 							DrawPolyline (directions);
@@ -291,7 +292,7 @@ namespace CocoMapsAndroid
 							Marker bMarker;
 							LoaderViewModel.getInstance.Show ();
 
-							BookmarkItems BI = new BookmarkItems ("Test", "This is my address", 45.496426, -73.577896);
+							BookmarkItems BI = new BookmarkItems ("Test", "This is my address", 45.496426, -73.577896, "fav_icon");
 
 							MarkerOptions bMarkerOptions = new MarkerOptions ();
 
@@ -300,6 +301,7 @@ namespace CocoMapsAndroid
 							bMarkerOptions.SetPosition (new LatLng (BI.bLat, BI.bLon));
 
 							bMarkerOptions.InvokeIcon (BitmapDescriptorFactory.FromResource (CocoMaps.Android.Resource.Drawable.fav_icon));
+
 
 							bMarker = androidMapView.Map.AddMarker (bMarkerOptions);
 
@@ -399,6 +401,7 @@ namespace CocoMapsAndroid
 		{
 
 			RequestShuttleBusSchedule requestShuttleBusSchedule = RequestShuttleBusSchedule.getInstance;
+
 			List<String> nextDepartures;
 			String nextDeparturesString;
 			MarkerOptions markerOptions = new MarkerOptions ();
@@ -436,20 +439,21 @@ namespace CocoMapsAndroid
 			}
 		}
 
-		//		void DrawShuttlePolyline ()
-		//		{
-		//			// For drawing Shuttle bus only once
-		//			if (shuttleBusPolyline == null) {
-		//				PolylineOptions shuttleBusPolylineOptions = new PolylineOptions ();
-		//				shuttleBusPolylineOptions.InvokeColor (unchecked((int)0xFF932439)).InvokeWidth (20);
-		//
-		//				foreach (Position point in ShuttleBusPolyline.getInstance.ShuttleBusDirections.routes[0].overview_polyline.decodedPoints)
-		//					shuttleBusPolylineOptions.Add (new LatLng (point.Latitude, point.Longitude));
-		//
-		//				shuttleBusPolyline = androidMapView.Map.AddPolyline (shuttleBusPolylineOptions);
-		//			} else
-		//				shuttleBusPolyline.Visible = true;
-		//		}
+
+		void DrawShuttlePolyline ()
+		{
+			// For drawing Shuttle bus only once
+			if (shuttleBusPolyline == null) {
+				PolylineOptions shuttleBusPolylineOptions = new PolylineOptions ();
+				shuttleBusPolylineOptions.InvokeColor (0x7F932439).InvokeWidth (20);
+
+				foreach (Position point in ShuttleBusPolyline.getInstance.ShuttleBusPoints)
+					shuttleBusPolylineOptions.Add (new LatLng (point.Latitude, point.Longitude));
+
+				shuttleBusPolyline = androidMapView.Map.AddPolyline (shuttleBusPolylineOptions);
+			} else
+				shuttleBusPolyline.Visible = true;
+		}
 
 		// Allows us to draw 2 separated polylines at once, if needed
 		async Task GetDirectionsPolyline (Position _start, Position _end, TravelMode mode)
@@ -476,6 +480,7 @@ namespace CocoMapsAndroid
 
 		void DrawPolyline (IEnumerable<Position> positions, uint color = 0xFF00768E)
 		{
+			
 			using (PolylineOptions polylineOptions = new PolylineOptions ()) {
 				
 				polylineOptions.InvokeWidth (20).InvokeColor (unchecked((int)color));

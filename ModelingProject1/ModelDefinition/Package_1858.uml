@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="0661fdcb-dfc9-4760-a904-3bb17e052ea2"
+  name="CocoMaps"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="ce3cc582-9a89-47bf-ba84-19b495b908a9"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DCocoMaps"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="002c38ab-44fc-42ee-824d-c0b889293f9e"
+        LastKnownName="Android"
+        LastKnownLocation="Package1_1858.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="13c23498-4f3d-4e18-9d0a-0f8397dabc4f"
+        LastKnownName="Shared"
+        LastKnownLocation="Package_1859.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="13069970-a97f-4a39-9eed-accbf9184f7f"
+        name="ListTextCellRenderer"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="552e907d-1675-473d-b05a-adce22195e55"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps Type%3DListTextCellRenderer"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="f1687e09-a1f1-42d5-8e72-eb050c3c7b32"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f14056ef-7e35-470c-87b4-9a855c876a2f">
+                <propertyInstance
+                  Id="0afbc643-d14a-4875-8265-f03f6bc2b835"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d2c88301-ab6e-4b6f-9ead-0bf67fae6c70">
+                <propertyInstance
+                  Id="bc389b74-cc59-401f-a083-9c44fe211f00"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="417079d6-4b65-411f-8f29-b25eac3adf3e">
+                <propertyInstance
+                  Id="6e1b5302-4c29-4512-9dbe-e4951c4f17f5"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f6b04f27-b349-401f-8267-ce5740d6c5a2">
+                <propertyInstance
+                  Id="13871f85-3f3c-4dc7-9ca6-076da9934ed1"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="be93cbd1-28b2-43e2-be1b-6eb13e6cb310">
+                <propertyInstance
+                  Id="6e1c7722-a823-45d8-9988-c39851a9a684"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="8c931fbe-9422-4f62-8da7-4ef309e2ab8b"
+            isSubstitutable="false">
+            <classMoniker
+              Id="34f6665f-28ed-4fd5-8dfb-ee45cf0934d3"
+              LastKnownName="TextCellRenderer"
+              LastKnownLocation="Package2_1905.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="64a43bd8-82d1-45d1-b874-2334b21c2642"
+            name="GetCellCore"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="2293c139-2223-4861-9148-b237fd5b9930"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps Type%3DListTextCellRenderer Member%3D(Name%3DGetCellCore OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2Fpackages%2FXamarin.Forms.1.4.0.6341%2Flib%2FMonoAndroid10%2FXamarin.Forms.Core.dll Namespace%3DXamarin.Forms Type%3DCell)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Views Type%3DView)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Views Type%3DViewGroup)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Content Type%3DContext)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="e12280c3-c21a-4692-ac07-bf57c2140088"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="da85be82-adbf-475e-a389-f82a4f242854">
+                    <propertyInstance
+                      Id="cb639a25-83f1-40a6-82b8-b2131a7674e1"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="da3265b9-5f2e-42d2-88aa-bc3191871fb2">
+                    <propertyInstance
+                      Id="d734611f-a435-4152-a266-043f28f6f912"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5dce5d37-d75a-4ce2-a854-1216339bb29c">
+                    <propertyInstance
+                      Id="139eafce-b045-47c9-ae6e-db15e7a40bf1"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="eab3205b-887f-4468-9bbe-e63815ad1d70">
+                    <propertyInstance
+                      Id="9f34ef69-70a6-45c5-93b5-48d4b91669a6"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b0309fd9-36ea-44ce-b4ef-c4cff523e602">
+                    <propertyInstance
+                      Id="185d2d60-6395-4878-8d28-89e589a9430a"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="24525540-fd1a-4d64-b36a-61ac0d3b655a">
+                    <propertyInstance
+                      Id="a679f556-520d-4eb3-aa47-3ff9a2117465"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2574e2b5-1951-4be9-8b6b-6016160d7aa4"
+                  direction="Return">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="492fc193-aa56-4294-ac93-63b56af9136b"
+                      LastKnownName="View"
+                      LastKnownLocation="Package_1905.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="95888d8d-37bf-4129-8d40-2936ade3e21f"
+                  name="item"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="5c76672a-5d89-4d9f-be74-3950ac8438fd"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps Type%3DListTextCellRenderer Member%3D(Name%3DGetCellCore OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2Fpackages%2FXamarin.Forms.1.4.0.6341%2Flib%2FMonoAndroid10%2FXamarin.Forms.Core.dll Namespace%3DXamarin.Forms Type%3DCell)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Views Type%3DView)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Views Type%3DViewGroup)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Content Type%3DContext)]) ParameterIdentifier%3Ditem"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="f469cf7f-ee7e-4f6d-9de6-614068f63712"
+                      LastKnownName="Cell"
+                      LastKnownLocation="Package3_1859.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="000fba24-1db4-45b9-8870-0975c9e220fb"
+                  name="convertView"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="799e9746-23ae-492e-88de-53d35ff52373"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps Type%3DListTextCellRenderer Member%3D(Name%3DGetCellCore OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2Fpackages%2FXamarin.Forms.1.4.0.6341%2Flib%2FMonoAndroid10%2FXamarin.Forms.Core.dll Namespace%3DXamarin.Forms Type%3DCell)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Views Type%3DView)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Views Type%3DViewGroup)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Content Type%3DContext)]) ParameterIdentifier%3DconvertView"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="492fc193-aa56-4294-ac93-63b56af9136b"
+                      LastKnownName="View"
+                      LastKnownLocation="Package_1905.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f2358020-6eb1-4bc3-aa00-be3706f56833"
+                  name="parent"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="2f9c0785-f7eb-48fa-8c8e-ff4a6a0f617b"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps Type%3DListTextCellRenderer Member%3D(Name%3DGetCellCore OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2Fpackages%2FXamarin.Forms.1.4.0.6341%2Flib%2FMonoAndroid10%2FXamarin.Forms.Core.dll Namespace%3DXamarin.Forms Type%3DCell)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Views Type%3DView)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Views Type%3DViewGroup)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Content Type%3DContext)]) ParameterIdentifier%3Dparent"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="ab862e2d-1033-4c6e-8628-8019007e25b4"
+                      LastKnownName="ViewGroup"
+                      LastKnownLocation="Package_1905.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c8e32e54-b3d5-402b-be93-7208da634646"
+                  name="context"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="3ea17e89-7640-401b-b6a0-ea1e73a80cff"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps Type%3DListTextCellRenderer Member%3D(Name%3DGetCellCore OverloadingParameters%3D[(Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2Fpackages%2FXamarin.Forms.1.4.0.6341%2Flib%2FMonoAndroid10%2FXamarin.Forms.Core.dll Namespace%3DXamarin.Forms Type%3DCell)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Views Type%3DView)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Views Type%3DViewGroup)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv5.0%2FMono.Android.dll&quot; Namespace%3DAndroid.Content Type%3DContext)]) ParameterIdentifier%3Dcontext"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="a4f68ab6-aad4-48f9-891d-7e4a2bc38c1b"
+                      LastKnownName="Context"
+                      LastKnownLocation="Package3_1858.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="9947170f-92d4-4368-9cd7-5333c188e846"
+            name="ListTextCellRenderer"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="d5ab850c-ded4-4d77-85a8-26d5c4a9a895"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps Type%3DListTextCellRenderer Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="71099378-e7c0-4cd3-af18-8c99a48b445a"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8124bd6d-0e1a-441c-9de2-8915513b5ff0">
+                    <propertyInstance
+                      Id="6188a2e0-8fea-4f2d-bde5-9abb801068d7"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7e360242-f78a-4dd4-95d0-0b89aedbefd4">
+                    <propertyInstance
+                      Id="c06009aa-7baa-4fa4-aa73-e9ca36462e0d"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="964517ad-ce70-4a7c-b45f-b1b80159389a">
+                    <propertyInstance
+                      Id="39b215b1-cfe4-4cad-ab3b-692ee61c8f7b"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4b0c1275-91a6-4efc-8056-40149c6a8f24">
+                    <propertyInstance
+                      Id="ade34e75-2771-4d3e-9f1f-085b18a0ef0e"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3ffbf6a8-b0e1-4e69-b81a-08734dd01699">
+                    <propertyInstance
+                      Id="9b9142a2-e43a-4d3b-9acd-95f83f408edf"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1f098ac4-7c9d-4f85-a138-330fd2ed8113">
+                    <propertyInstance
+                      Id="c5f5c47b-cede-4059-9341-dbc3fd8e2fdf"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
