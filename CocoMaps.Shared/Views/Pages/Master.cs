@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Shared;
+using Google;
 
 namespace CocoMaps.Shared
 {
@@ -38,7 +39,7 @@ namespace CocoMaps.Shared
 
 		public static Button _BookmarksButton = new Button { 
 			//Text = "BM", 
-			Image= "ic_map_bookmark.png",
+			Image = "ic_map_bookmark.png",
 			HeightRequest = 40,
 			BackgroundColor = Color.White,
 			Opacity = 0.7,
@@ -163,14 +164,11 @@ namespace CocoMaps.Shared
 
 				var NextClassInput = await DisplayAlert ("Get Directions To Next Class", ClassDetails, "Cancel", "Proceed");
 
-				if (NextClassInput.ToString ().ToLower () == "false") 
-				{
+				if (NextClassInput.ToString ().ToLower () == "false") {
 					// Make a property change to trigger event
 					NextClassAlertEventButton.BackgroundColor = Color.Black;
 
-				} 
-				else 
-				{
+				} else {
 					// Cancel- Do Nothing
 				}
 			};
@@ -187,6 +185,7 @@ namespace CocoMaps.Shared
 					networkStatus.Text = "Offline";
 				} else {
 					// Network is connected
+
 					networkStatus.BackgroundColor = Color.Green;
 					networkStatus.Text = "Online";
 				}
@@ -195,6 +194,9 @@ namespace CocoMaps.Shared
 			TestButton.Clicked += async (sender, e) => {
 				DirectionsViewModel d = DirectionsViewModel.getInstance;
 				d.Expand ();
+				string r = Host.PingHost ("googleapis.com");
+				Console.WriteLine ("PingHost Result: " + r);
+
 //				bool r = await DependencyService.Get<INetwork> ().IsReachable ("googleapis.com", new TimeSpan (5));
 //				await DisplayAlert ("Network Connection:", r ? "Connected :)" : "Not Connected :(", "Whatever");
 			};

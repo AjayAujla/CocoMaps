@@ -36,7 +36,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\INetwork.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\DetailsViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\BuildingRepository.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GooglePointsDecoder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\LoaderViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\Department.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OAuthSettings.cs" />
@@ -64,6 +63,15 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ICloseApp.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBus\ShuttleBusTracker.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Settings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\Indoor\Indoor_H.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Indoor\Edge.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\Indoor\Vertex.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\Dijkstra.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GeoLocation\IGeoLocator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GeoLocation\Position.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GeoLocation\PositionExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GoogleUtil.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\Host.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\BookmarksRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\BookmarksModel.cs" />
   </ItemGroup>
@@ -84,6 +92,9 @@
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\ConcordiaServices\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\ShuttleBus\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Calendar\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\Repositories\Indoor\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Models\Indoor\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GeoLocation\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controllers\Repositories\LocalCalendar.json" />

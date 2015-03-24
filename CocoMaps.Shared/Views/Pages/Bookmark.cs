@@ -32,6 +32,10 @@ namespace CocoMaps.Shared
 				// Source of data items.
 				ItemsSource = BookMitems,
 
+				// New as of Xamarin.Forms v1.4
+				IsPullToRefreshEnabled = true,
+				Header = "Pull to Refresh Bookmarks",
+
 				// Define template for displaying each item.
 				// (Argument of DataTemplate constructor is called for each item; it must return a Cell derivative.)
 				ItemTemplate = new DataTemplate (() => {
@@ -64,6 +68,11 @@ namespace CocoMaps.Shared
 						}
 					};
 				})
+			};
+
+			listView.Refreshing += (sender, e) => {
+				listView.ItemsSource = PopulateDatabase ();
+				listView.EndRefresh ();
 			};
 
 			this.Padding = new Thickness (10, Device.OnPlatform (20, 0, 0), 10, 5);
