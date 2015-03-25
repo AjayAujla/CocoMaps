@@ -57,12 +57,7 @@ namespace CocoMaps.Shared
 			set;
 		}
 
-		public List<Position> ShapeCoords {
-			get;
-			set;
-		}
-
-		public List<Position> HoleShapeCoords {
+		public string ShapeCoords {
 			get;
 			set;
 		}

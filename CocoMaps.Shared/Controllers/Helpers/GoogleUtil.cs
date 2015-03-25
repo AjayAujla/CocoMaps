@@ -14,13 +14,15 @@ public static class GoogleUtil
 	{
 		int i, j;
 		BuildingRepository buildingRepo = BuildingRepository.getInstance;
+		IEnumerable<Position> points;
 
 		foreach (Building building in buildingRepo.BuildingList.Values) {
 
 			var latlnglist = new List<Position> ();
 			bool c = false;
+			points = GoogleUtil.Decode (building.ShapeCoords);
 
-			foreach (Position point in building.ShapeCoords)
+			foreach (Position point in points)
 				latlnglist.Add (new Position (point.Latitude, point.Longitude));
 
 			for (i = 0, j = latlnglist.Count - 1; i < latlnglist.Count - 1; j = i++) {

@@ -133,6 +133,14 @@ namespace CocoMapsAndroid
 				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
 				androidMapView.Map.UiSettings.ZoomControlsEnabled = true;
 
+				List<Position> convert = new List<Position> {
+					new Position (45.4978449847816, -73.57933335006237),
+					new Position (45.49781537387449, -73.57927098870277),
+					new Position (45.49764945850363, -73.57943192124367),
+					new Position (45.49767859948234, -73.57949562370777)
+				};
+
+				Console.WriteLine ("Decoded Points: " + GoogleUtil.Encode (convert));
 
 				androidMapView.Map.IndoorLevelActivated += (lsender, le) => {
 					if (androidMapView.Map.FocusedBuilding != null)
@@ -251,32 +259,6 @@ namespace CocoMapsAndroid
 				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
 				androidMapView.Map.UiSettings.ZoomControlsEnabled = true;
 
-				Marker marker;
-				// Adding all Buildings' Icons and Buildings' Polygons
-				foreach (Building b in buildingRepo.BuildingList.Values) {
-					using (PolygonOptions polygon = new PolygonOptions ()) {
-						using (MarkerOptions buildingCodeMarker = new MarkerOptions ()) {
-
-							buildingCodeMarker.SetTitle (b.Code)
-								.SetSnippet (b.Name)
-								.SetPosition (new LatLng (b.Position.Latitude, b.Position.Longitude))
-								.InvokeIcon (GetCustomBitmapDescriptor (b.Code)); //BitmapDescriptorFactory.FromAsset ("CarWashMapIcon.png")
-							buildingCodeMarker.Flat (true);
-							buildingCodeMarker.GetHashCode ();
-							marker = androidMapView.Map.AddMarker (buildingCodeMarker);
-
-							// Creating an association between the marker and the building object
-							MarkerBuilding.Add (marker.Id, b);
-						}
-						polygon.InvokeFillColor (0x3F932439).InvokeStrokeColor (0x00932439).Geodesic (true);
-
-						foreach (Position p in b.ShapeCoords)
-							polygon.Add (new LatLng (p.Latitude, p.Longitude));
-
-						androidMapView.Map.AddPolygon (polygon);
-					}
-				}
-
 				Button BookmarksButton = MasterPage._BookmarksButton;
 
 				bool bookmarksBool = false;
@@ -288,15 +270,13 @@ namespace CocoMapsAndroid
 
 						LoaderViewModel.getInstance.Show ();
 
-						LoaderViewModel.getInstance.Show ();
-
 						BookmarksRepository bookmarksRepository = new BookmarksRepository ();
 						bookmarksRepository.CreateTable ();
 						var bookmarks = bookmarksRepository.GetAllBookmarks ();
 
 						Console.WriteLine ("After get all bookmarks " + bookmarksRepository.NumberOfBookmarks ());
 
-
+						Marker marker;
 						foreach (BookmarkItems bookmark in bookmarks) {
 
 							Console.WriteLine ("inside foreach");
@@ -355,6 +335,7 @@ namespace CocoMapsAndroid
 
 							// fetch places from google
 							List<Result> places = await PlacesRepository.getInstance.FetchPlaces ();
+							Marker marker;
 
 							foreach (Result result in places) {
 								using (MarkerOptions poiMarker = new MarkerOptions ()) {
@@ -529,29 +510,31 @@ namespace CocoMapsAndroid
 		void DrawBuildingsPolygons ()
 		{
 			Marker marker;
+			IEnumerable<Position> points;
 			// Adding all Buildings' Icons and Buildings' Polygons
 			foreach (Building b in buildingRepo.BuildingList.Values) {
 				using (PolygonOptions polygonOptions = new PolygonOptions ()) {
-					using (MarkerOptions buildingCodeMarker = new MarkerOptions ()) {
 
-						buildingCodeMarker.SetTitle (b.Code)
+					polygonOptions.InvokeFillColor (0x3F932439).InvokeStrokeColor (0x00932439);
+					points = GoogleUtil.Decode (b.ShapeCoords);
+
+					foreach (Position p in points)
+						polygonOptions.Add (new LatLng (p.Latitude, p.Longitude));
+					
+					androidMapView.Map.AddPolygon (polygonOptions);
+
+				}
+				using (MarkerOptions buildingCodeMarker = new MarkerOptions ()) {
+
+					buildingCodeMarker.SetTitle (b.Code)
 							.SetSnippet (b.Name)
 							.SetPosition (new LatLng (b.Position.Latitude, b.Position.Longitude))
 							.InvokeIcon (GetCustomBitmapDescriptor (b.Code));
-						buildingCodeMarker.Flat (true);
-						buildingCodeMarker.GetHashCode ();
-						marker = androidMapView.Map.AddMarker (buildingCodeMarker);
+						
+					marker = androidMapView.Map.AddMarker (buildingCodeMarker);
 
-						// Creating an association between the marker and the building object
-						MarkerBuilding.Add (marker.Id, b);
-
-					}
-					polygonOptions.InvokeFillColor (0x3F932439).InvokeStrokeColor (0x00932439);
-
-					foreach (Position p in b.ShapeCoords)
-						polygonOptions.Add (new LatLng (p.Latitude, p.Longitude));
-
-					androidMapView.Map.AddPolygon (polygonOptions);
+					// Creating an association between the marker and the building object
+					MarkerBuilding.Add (marker.Id, b);
 
 				}
 			}
