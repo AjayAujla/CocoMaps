@@ -195,10 +195,9 @@ namespace CocoMaps.Shared
 				DirectionsViewModel d = DirectionsViewModel.getInstance;
 				d.Expand ();
 				string r = Host.PingHost ("googleapis.com");
-				Console.WriteLine ("PingHost Result: " + r);
 
 //				bool r = await DependencyService.Get<INetwork> ().IsReachable ("googleapis.com", new TimeSpan (5));
-//				await DisplayAlert ("Network Connection:", r ? "Connected :)" : "Not Connected :(", "Whatever");
+				await DisplayAlert ("Network Connection:", r, "Whatever");
 			};
 
 			mainLayout.Children.Add (map,

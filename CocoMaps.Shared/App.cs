@@ -88,13 +88,14 @@ namespace CocoMaps.Shared
 		{
 			IGeolocator geolocator = null;
 			Xamarin.Forms.Maps.Position currentPosition;
+			Position pos = null;
 
 			if (geolocator == null) {
 				geolocator = DependencyService.Get<IGeolocator> ();
 				geolocator.StartListening (100, 100);
+				pos = await geolocator.GetPositionAsync (10);
+				geolocator.StopListening ();
 			}
-
-			var pos = await geolocator.GetPositionAsync (10);
 
 			// Converting current position to Xamarin.Forms' Position, since all our method use this one
 			currentPosition = new Xamarin.Forms.Maps.Position (pos.Latitude, pos.Longitude);
