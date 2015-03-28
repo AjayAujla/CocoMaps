@@ -127,6 +127,11 @@
     <Compile Include="AndroidNotifications\AlarmReceiver.cs" />
     <Compile Include="AndroidNotifications\AndroidReminderService.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Files\GeoLocation\GeolocationContinuousListener.cs" />
+    <Compile Include="Files\GeoLocation\GeolocationSingleListener.cs" />
+    <Compile Include="Files\GeoLocation\Geolocator.cs" />
+    <Compile Include="Orm\SQLite.cs" />
+    <Compile Include="Orm\SQLiteAsync.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -271,6 +276,10 @@
     <AndroidResource Include="Resources\drawable\ic_menu_shuttleschedule.png" />
     <AndroidResource Include="Resources\drawable\ic_menu_shuttletracker.png" />
     <AndroidResource Include="Resources\drawable\fav_icon.png" />
+    <AndroidResource Include="Resources\drawable\ic_map_bookmark.png" />
+    <AndroidResource Include="Resources\drawable\ic_menu_bookmark.png" />
+    <AndroidResource Include="Resources\drawable\ic_menu_exit.png" />
+    <AndroidResource Include="Resources\drawable\ic_pin_bookmark.png" />
   </ItemGroup>
   <Import Project="..\CocoMaps.Shared\CocoMaps.Shared.projitems" Label="Shared" Condition="Exists('..\CocoMaps.Shared\CocoMaps.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
@@ -282,6 +291,8 @@
     <Folder Include="Renderers\" />
     <Folder Include="Files\" />
     <Folder Include="AndroidNotifications\" />
+    <Folder Include="Files\GeoLocation\" />
+    <Folder Include="Orm\" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamarin.auth">

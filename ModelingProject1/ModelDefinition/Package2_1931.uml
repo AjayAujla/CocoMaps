@@ -1,0 +1,1449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="653df2c6-01e0-4498-9a04-b3ec3332cf67"
+  name="ViewModels"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="6d42593b-2f9f-47aa-bd83-c3fab2e0dc31"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DCocoMaps.Shared.ViewModels"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="30559e79-9533-42db-bfd1-669ab4d00400"
+        name="BaseViewModel"
+        isAbstract="true"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="0fbd51d3-da6b-4948-8afa-82d5ea1596f1"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="ff786e22-4861-4115-95c2-9d75325387f4"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="27e4a208-3656-4654-9ffc-81d6fedb8fc1">
+                <propertyInstance
+                  Id="e0d8cd3b-3aef-4e5e-96d0-8d70e1cbf7d2"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="36114c45-8eae-40b9-bba5-acb1c01fbac5">
+                <propertyInstance
+                  Id="6b271b8a-abc3-4f1a-bbe1-a495c28fefe5"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d443d0b1-52cc-4f95-bcea-1a9801f0679f">
+                <propertyInstance
+                  Id="3db64e06-7062-4129-bc92-0cf7f86091d5"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="68396bee-a859-404a-a7f8-4c1f50d45536">
+                <propertyInstance
+                  Id="2d781d2a-bf5c-4342-a271-4ec2286810e3"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="d4240f69-377e-480b-9891-f266ea888d7b">
+                <propertyInstance
+                  Id="b30c2e8b-ea51-46d1-8df3-c21f32783ed3"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <suppliersInternal>
+          <interfaceRealization
+            Id="74606305-7cd8-4886-809e-d1ec1b9a4dff">
+            <interfaceMoniker
+              Id="9c386156-6144-4dbf-9a4a-afa1709726bf"
+              LastKnownName="INotifyPropertyChanged"
+              LastKnownLocation="Package3_1904.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="361e1b12-1994-4a9c-a4e9-5fcdb1375a73"
+            name="Title"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="149ca45b-cf7d-4fd3-8f02-b41c81abafbd"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3DTitle"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3a017f19-f76c-48bd-91c9-6f1ffee992a3"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e4f7e4e3-07fb-4a66-8bdf-4106414b9c18">
+                    <propertyInstance
+                      Id="326599ae-6510-445d-af73-64aa544dd00b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ba0d6526-0654-43bf-b8bb-57afd5e544b0">
+                    <propertyInstance
+                      Id="b2f6bd4e-faba-4812-971e-1943dd4507d6"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6cdd6bf8-3283-4a63-8cb8-bdedfc6b015b">
+                    <propertyInstance
+                      Id="6be434c1-d4b5-45bb-8d63-c04a43c1fb27"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d000d2b2-6f71-4790-9ff3-e4733cca6ddf">
+                    <propertyInstance
+                      Id="46abe719-5d09-4b14-9c44-aa0560cddd09"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5b9a4b08-e496-4c11-aa7c-71108a2e2c83">
+                    <propertyInstance
+                      Id="bbfc330a-abce-42e9-916d-f744024bc115"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6120effa-2753-4673-b58f-905662da0a32">
+                    <propertyInstance
+                      Id="19a2595f-99ec-4984-a417-22b1fe6f9e97"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="49a09142-df83-495c-9b40-59a7aee8b2d4">
+                    <propertyInstance
+                      Id="59d64fb7-7256-44cc-a53e-edb06d37806e"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject1.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="1661e71d-dbe8-487a-b3c1-dd450c231d20"
+            name="Subtitle"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="6f6dce0a-6d3f-43f2-92e7-7756796714f5"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3DSubtitle"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="06cdcacb-bfcb-4e2b-8071-e02eb97ab95a"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="34613676-8700-4c06-9cbb-89c51eb7490b">
+                    <propertyInstance
+                      Id="e6107e0d-9471-4de1-9b60-d4086bb46e9a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="93b259a4-83cb-4f31-8f26-267f8ae18ffb">
+                    <propertyInstance
+                      Id="0f6c2f89-4f13-4c18-aacf-77cad02e88fb"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ab7764c3-615d-4438-920e-c56259138611">
+                    <propertyInstance
+                      Id="50deab74-aea0-4d4f-9858-8e42600a52fb"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="551868d4-6615-4c31-b044-89261b8f3fb2">
+                    <propertyInstance
+                      Id="a1b0b2c0-d960-480e-bdb7-58b568cdecaf"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="57fc1c6b-5cf2-4a98-8f79-a451893b45fe">
+                    <propertyInstance
+                      Id="97d692f6-4a46-45d0-a5e6-677654a9995c"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5b177dc2-057a-4f48-9d88-8f83cc3009b7">
+                    <propertyInstance
+                      Id="0ee54ac4-ecbe-4794-93f6-2022cb477c6e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="10acd009-9ebe-40ab-97b2-9ce12da7d5b6">
+                    <propertyInstance
+                      Id="ee75def0-fc19-48d1-b8b2-2681804700c1"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject1.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="152d8864-0779-4db5-a18c-09975dd4bbd9"
+            name="Icon"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="8ddb0bf9-6f0b-47e6-9737-0b754cfaae28"
+                handle="viewcode://./CodeSchema_Property?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3DIcon"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8d5db321-c386-4c84-999c-70a65b05fa78"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="016364af-95e4-4e4d-a106-8b16467bb1f1">
+                    <propertyInstance
+                      Id="38b12751-448d-42f5-b8cb-5d6dec0ec74d"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cbce7210-116c-4c4e-8e57-67fa768f3f51">
+                    <propertyInstance
+                      Id="af99b50e-fd0b-4b53-8304-28c2627e366d"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4822025a-cb69-443a-bcee-bc0f8acea978">
+                    <propertyInstance
+                      Id="108e5a53-7482-4892-a03f-adf7347cfbc1"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="57f97603-93cb-4d75-8a60-4bdead22a9f1">
+                    <propertyInstance
+                      Id="7f1a81ab-0908-458f-8ec3-4ed9cacc939a"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b143c007-88db-4c50-b5b8-99811286f05d">
+                    <propertyInstance
+                      Id="11afaad9-9205-4220-8b5f-e586a89ba77f"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6287cbde-ed7e-4add-b7b0-fa5aca6a6bab">
+                    <propertyInstance
+                      Id="ff7806bc-faa3-4a42-bb02-d96908ccdc75"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f7516a95-b685-4ec0-9a13-fb0373240bf1">
+                    <propertyInstance
+                      Id="7e9a8110-cf5d-43a8-b420-0297735f9155"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject1.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="1efd28a0-9764-44a1-bb39-c068ea2219e6"
+            name="title"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="439d12a2-811d-462b-86c8-6cf57b06d239"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3Dtitle"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c73e891a-c13c-4a82-9295-68154a08a5b4"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8e90d962-db39-4e26-bff4-8115101b6283">
+                    <propertyInstance
+                      Id="beace838-c1f2-4213-b831-2b0f357ce44a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5dae57a1-b0e0-4e17-aa75-37f4dabad0c0">
+                    <propertyInstance
+                      Id="8b67f611-a137-4097-bd36-b7cf330c57fe"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7f029d67-886d-46b5-8593-b95485b2dba7">
+                    <propertyInstance
+                      Id="c1637bbc-bbbd-40f2-93e4-5cad767dabd0"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9c6667ee-d4f8-4b33-ab31-4f208ed735da">
+                    <propertyInstance
+                      Id="02976fee-8ce0-409b-9eac-92d0f359f702"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="69d24770-f58e-4f9b-80e2-099660f6a01d">
+                    <propertyInstance
+                      Id="2fde131d-066c-40d1-8bc1-e8c5f7f3df19"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject1.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="977c41ca-e41e-49a2-adcf-5c002a969d91"
+            name="TitlePropertyName"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="c60534f3-aed9-4e3f-8f51-078e813086c0"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3DTitlePropertyName"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d02bb92e-c24e-455c-ba7d-6b0bcd838d53"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="71921b0d-7076-48a2-931d-25ae39e84486">
+                    <propertyInstance
+                      Id="8258fb88-7814-4f42-8a3e-901f0e5cc0e2"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1deda27b-9afa-4f31-9534-0fd580a11ece">
+                    <propertyInstance
+                      Id="ef06a293-4080-4294-9a33-c794588bf334"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="19509c42-db34-45d7-9d8e-540c8a99d931">
+                    <propertyInstance
+                      Id="b8850088-fd0a-4be6-802d-d8ed743af0a9"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3abbe6ee-2546-4166-bd6a-6e5c26201604">
+                    <propertyInstance
+                      Id="cac69317-573b-404f-9a8f-2ddce41eb6f9"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a23cd490-d09a-46d0-b863-de2209aff439">
+                    <propertyInstance
+                      Id="15d24468-9c99-4c0e-b205-07ea4f198d24"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </property>
+          <property
+            Id="169af82f-80d1-4c22-83e9-6278486f4486"
+            name="subTitle"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="f2445715-e479-4ffe-8d0a-2cf75311a97e"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3DsubTitle"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="c425738b-89db-479f-9fc4-7e20f654f765"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e787d9c3-82c5-43c5-8d3a-5d2fd6f52428">
+                    <propertyInstance
+                      Id="efb43fae-2b4c-432a-a50c-705649863d9b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e47e1b65-ee6d-4449-8bf3-9a9535bfc2ee">
+                    <propertyInstance
+                      Id="982bdda2-01e8-4d55-a2cf-b54c118f3486"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b6b3031b-a812-4224-b224-d99eb08b572f">
+                    <propertyInstance
+                      Id="a6ebebbc-1f34-4f49-8578-209a04bfc8db"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="687649d3-013d-4004-b499-bf0bab084aca">
+                    <propertyInstance
+                      Id="06f75961-5a5c-4b59-bb1e-9021cb69c8bc"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ae951d9e-ae8c-4729-99c0-1c2e2b9148c3">
+                    <propertyInstance
+                      Id="65f01109-4d32-41ca-a5a9-4e1905325d1e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject1.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="0f8bb930-e9d4-4332-bfea-b2487fe89ca8"
+            name="SubtitlePropertyName"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="fbf1d9c6-eb53-49f4-862a-22238a1c1938"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3DSubtitlePropertyName"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="2266ede5-5f8a-4f41-8df1-37499ccd0745"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="85c2481c-b83d-45c1-ad09-e698599a55e4">
+                    <propertyInstance
+                      Id="045dae9e-c679-483a-b352-4e10f3cf86ad"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d716b823-7ce0-49f7-9a81-26e19f549246">
+                    <propertyInstance
+                      Id="489b46f6-4538-4329-9562-24a764bf29f2"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6a84893c-04ae-4ac3-86bc-38c4abea3e5c">
+                    <propertyInstance
+                      Id="baee7318-4603-4a77-b7af-8e033b786d42"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d2c4f457-f254-4120-bc0c-dc90621c0bf5">
+                    <propertyInstance
+                      Id="d0560532-7b52-4342-b396-f90c1c689b4e"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3248244d-4d69-4e39-a765-06bd0f1f9afc">
+                    <propertyInstance
+                      Id="a4aed984-fb52-48f3-998d-ea3ea4d86bec"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </property>
+          <property
+            Id="949d12b5-c55f-4cfd-aaf7-1299c3299a1b"
+            name="icon"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="ea4f0322-b69b-4f85-b953-52d4985b1a82"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3Dicon"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="b1f00081-67ad-4ea4-9d6e-fcca93cc0f05"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9332f967-b903-44ee-a2b2-e62b20fb73a8">
+                    <propertyInstance
+                      Id="02aaf2fb-edf1-406b-a09a-54f5efa69817"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2de28801-e7fe-4998-b681-1b4c5c3d8297">
+                    <propertyInstance
+                      Id="c455a24b-3c4d-4e00-bdbe-8b681c140ee2"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="330314b1-113f-41c6-9e93-0807a4669791">
+                    <propertyInstance
+                      Id="6ecf0338-e9f4-4520-9cfe-1dca8d98a5dd"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6badf3b4-c71a-410b-8372-ccdd96daebd4">
+                    <propertyInstance
+                      Id="86af29ae-194e-42c8-9830-7545fc20c6f1"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="15ea16f1-cf8b-4ac8-856b-41294ece0802">
+                    <propertyInstance
+                      Id="b97666fa-6568-4376-aaf0-45bcf36d0008"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject1.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="b93937a1-709c-4388-9857-3e3c5c272fab"
+            name="IconPropertyName"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="53ca7133-5018-4e74-b26c-0c457d55c37f"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3DIconPropertyName"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="da118bee-52c3-4e3d-8e9e-0234076eafa9"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e23e2123-0502-4386-b5b0-afcbf36d8707">
+                    <propertyInstance
+                      Id="02d8a39d-2082-4431-bec5-3fc03bc6f53c"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="27817be7-fe00-46e5-a672-663e3bcea12c">
+                    <propertyInstance
+                      Id="70554f02-dea2-4139-9e45-897f490bb380"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0057cb41-3ef2-42a0-8296-de6ffbc55e8a">
+                    <propertyInstance
+                      Id="3341684a-c0c2-4704-bce0-4a1f9753c98a"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="10fa986d-1358-4d47-beb2-3c8f76d8a05c">
+                    <propertyInstance
+                      Id="8498b459-c089-4a65-a510-43aae713f7dd"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e3aaab78-228c-4849-90b1-f8e087432a7e">
+                    <propertyInstance
+                      Id="9671a471-34f5-48e0-84ea-ce53fffdc17b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </property>
+          <property
+            Id="fcd07b1e-625f-4b32-96b4-9760508d4a98"
+            name="PropertyChanging"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="0233f1c2-56ac-4019-82ca-a46fcc26739c"
+                handle="viewcode://./CodeSchema_Event?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3DPropertyChanging"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="017f63ae-5160-4c90-9edd-bd512c490a62"
+                name="event"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="38e91489-3489-472e-83d8-4fc157947a2c">
+                    <propertyInstance
+                      Id="419d503e-093b-44ce-a354-df49136f38e9"
+                      name="Add"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9dc195ef-2a6f-4b65-bb7b-1e1d4af1fb2f">
+                    <propertyInstance
+                      Id="14ef997c-2c60-45ba-b029-8e4c9fd62509"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="22681390-b939-400b-90d1-fd215a9f2330">
+                    <propertyInstance
+                      Id="8daba3a5-abd3-4ca2-8ab6-5d7def069048"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d4ed5a24-2b46-4efa-b4e3-bd2be5c34d17">
+                    <propertyInstance
+                      Id="a320b715-02aa-4eb3-84c8-d3d4a12688c5"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dafdb441-fdf0-4bd8-90ca-41d1f5a100f3">
+                    <propertyInstance
+                      Id="270a1fe8-3686-44e0-9ab9-240728ae9bac"
+                      name="Remove"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="e21507ef-2017-479f-a2f1-98031151f220"
+                LastKnownName="PropertyChangingEventHandler"
+                LastKnownLocation="Package3_1859.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ab693287-dddd-49da-abc1-649897e45477"
+            name="PropertyChanged"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="5d7e3b0b-b5b2-4118-ba1a-3d3667bd8c8f"
+                handle="viewcode://./CodeSchema_Event?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3DPropertyChanged"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="f64ae350-bdd1-40f8-b77e-ae5825a14ce3"
+                name="event"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="74fcc5cd-774e-483e-bb5a-4eb0aa446a87">
+                    <propertyInstance
+                      Id="0412e49a-8bbf-4e33-8e19-e7a3a4238905"
+                      name="Add"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8e23e4ad-bc37-4b2a-8681-4cac789dc8d0">
+                    <propertyInstance
+                      Id="87ff97f4-79e3-484e-b379-603f03b53a14"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="32c39eb1-9402-4e40-a1b6-3b273eb55d4d">
+                    <propertyInstance
+                      Id="34b1e7c7-1418-4d19-b34f-ac71f8be4a73"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a29daeda-a779-410c-9382-ebad28803e66">
+                    <propertyInstance
+                      Id="7ab12742-0782-46f9-aee3-ef42e6863f5a"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1e819f78-c22f-4801-8142-c3473f0be1b5">
+                    <propertyInstance
+                      Id="944a45fe-d754-40d8-90b8-14a96c5f58ce"
+                      name="Remove"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="4d8dcab9-0245-4859-a52f-e824820a6c64"
+                LastKnownName="PropertyChangedEventHandler"
+                LastKnownLocation="Package3_1904.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="99cf30fb-3a55-4337-933c-5ac816ce0750"
+            name="SetProperty‎&lt;U‎&gt;"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="bd5b6486-e13f-4fce-8fa5-9e222225d39d"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3D(Name%3DSetProperty GenericParameterCount%3D1 OverloadingParameters%3D[(ParameterIdentifier%3D0 ParamKind%3DRef)%2C(ParameterIdentifier%3D0)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DAction)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DAction GenericParameterCount%3D1 GenericArguments%3D[(ParameterIdentifier%3D0)]))])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="463ed358-34b0-40eb-afb3-d1d55045e6bf"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6d370b9a-bd5a-444d-8a27-74267f441e3a">
+                    <propertyInstance
+                      Id="4f8b44b5-61a7-4239-b5f2-a3ce5ba793e5"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a10e9782-f892-4291-82e6-3896035985ea">
+                    <propertyInstance
+                      Id="f7d3d2b4-75df-4e63-bb9a-99d8c205a2d6"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="895378b5-612d-4988-89c3-19669961d53b">
+                    <propertyInstance
+                      Id="91ebb720-ef4e-48a4-a7d0-810ba8947027"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="28b19999-dbb9-4922-b4e1-1ad0db2e6203">
+                    <propertyInstance
+                      Id="d4e45f16-f12c-4811-9ff8-269322ef0d25"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c6294203-6f3e-4e20-b30e-a574ea5ab719">
+                    <propertyInstance
+                      Id="e0084470-f229-4f4f-9a28-406491f4b07b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0027e995-cfc6-44e7-bf57-6930dd884c78">
+                    <propertyInstance
+                      Id="928f7a6e-5bb0-455e-a48c-742b27c66460"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="29801ca2-1866-42d8-8ad9-aeb23743d9c5"
+                  name="backingStore"
+                  direction="InOut">
+                  <referencesInternal>
+                    <reference
+                      Id="c6a78dbc-d243-4dcc-b52b-f326026fc254"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3D(Name%3DSetProperty GenericParameterCount%3D1 OverloadingParameters%3D[(ParameterIdentifier%3D0 ParamKind%3DRef)%2C(ParameterIdentifier%3D0)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DAction)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DAction GenericParameterCount%3D1 GenericArguments%3D[(ParameterIdentifier%3D0)]))]) ParameterIdentifier%3DbackingStore"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="6903ef49-b1f6-4c9d-a57a-f7fb2b329554"
+                      LastKnownName="U"
+                      LastKnownLocation="Package2_1931.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d4ed3feb-9aaa-460c-aa3a-c1de08396e2c"
+                  name="value"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="ee210c77-7cc4-4341-8610-6a23992c5f7b"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3D(Name%3DSetProperty GenericParameterCount%3D1 OverloadingParameters%3D[(ParameterIdentifier%3D0 ParamKind%3DRef)%2C(ParameterIdentifier%3D0)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DAction)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DAction GenericParameterCount%3D1 GenericArguments%3D[(ParameterIdentifier%3D0)]))]) ParameterIdentifier%3Dvalue"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="6903ef49-b1f6-4c9d-a57a-f7fb2b329554"
+                      LastKnownName="U"
+                      LastKnownLocation="Package2_1931.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7613ef83-ffa7-4213-89a6-2ad0aa9876aa"
+                  name="propertyName"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="a4a98917-c050-4efb-8e28-9b86cdcd51e4"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3D(Name%3DSetProperty GenericParameterCount%3D1 OverloadingParameters%3D[(ParameterIdentifier%3D0 ParamKind%3DRef)%2C(ParameterIdentifier%3D0)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DAction)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DAction GenericParameterCount%3D1 GenericArguments%3D[(ParameterIdentifier%3D0)]))]) ParameterIdentifier%3DpropertyName"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c6180edd-fdd1-4aad-8ce5-f424fdca69a0"
+                  name="onChanged"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="f8341d5b-cca1-4d1f-bf5f-448c3cfd5041"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3D(Name%3DSetProperty GenericParameterCount%3D1 OverloadingParameters%3D[(ParameterIdentifier%3D0 ParamKind%3DRef)%2C(ParameterIdentifier%3D0)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DAction)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DAction GenericParameterCount%3D1 GenericArguments%3D[(ParameterIdentifier%3D0)]))]) ParameterIdentifier%3DonChanged"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="143491f7-a081-47e3-8b00-8cf2821d19f8"
+                      LastKnownName="Action"
+                      LastKnownLocation="Package_1900.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="49bcf196-10aa-4910-a073-896f2f6b4f3d"
+                  name="onChanging"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="cf9ae9e7-671c-4f44-b339-9d95079e0c22"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3D(Name%3DSetProperty GenericParameterCount%3D1 OverloadingParameters%3D[(ParameterIdentifier%3D0 ParamKind%3DRef)%2C(ParameterIdentifier%3D0)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DAction)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DAction GenericParameterCount%3D1 GenericArguments%3D[(ParameterIdentifier%3D0)]))]) ParameterIdentifier%3DonChanging"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="25c98a68-bfa9-4cc2-9f9b-fd55cd4d8891"
+                      LastKnownName="Action&lt;U‎&gt;"
+                      LastKnownLocation="Package_1900.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a8c299f3-7d1b-42a2-bfaa-449244278f2c"
+            name="OnPropertyChanging"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="efee5eef-db41-438e-b7b4-5dbe2da1b7d6"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3D(Name%3DOnPropertyChanging OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="76c6489a-c6e8-4077-b458-62a61fda3326"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="80114b9f-02b1-4366-99ee-73daa009aca9">
+                    <propertyInstance
+                      Id="4cce4459-d652-4e4c-8e45-b554403271c7"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d4cfc922-d7b1-4f10-b0dd-735388f3eb72">
+                    <propertyInstance
+                      Id="525146d2-d2c1-4269-9c1f-c46d494db591"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0cf33ce5-5242-4df4-b772-c9bb0133e9c3">
+                    <propertyInstance
+                      Id="774c2621-3743-4e38-bfad-9570cc926a37"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f183a1a5-c078-4d07-853d-15426c3aed23">
+                    <propertyInstance
+                      Id="a853eda1-f552-447d-afab-a6583a84754a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="96db93b8-2665-47a6-9897-e1401fc59258">
+                    <propertyInstance
+                      Id="4777c3bb-15c9-40d6-8821-575d7fb0d8ab"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6dd6341f-934a-4343-84bc-a4c603ea1ca2">
+                    <propertyInstance
+                      Id="e2f6cfcd-9f59-49e5-b4a5-7010f76659cf"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="966e40be-0dea-4e83-bc73-5fb0f582b9a4"
+                  name="propertyName"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="e7116ad5-00ee-4464-b42d-c501b75c6b75"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3D(Name%3DOnPropertyChanging OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3DpropertyName"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="13c2c620-d91e-48e3-b0d3-628ccd414451"
+            name="OnPropertyChanged"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="fbdd9830-02a0-483b-9727-a663ba4db1ea"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3D(Name%3DOnPropertyChanged OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d56e1e0b-6c34-4104-a7b3-0ce1244441f8"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="101a216a-21ee-4427-941c-84aa1bcbb2a1">
+                    <propertyInstance
+                      Id="c64e95a6-d323-4d98-adef-b4f66d522398"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="32a72fb6-6547-4eab-b4b0-d42f37779797">
+                    <propertyInstance
+                      Id="87641580-e0ce-4163-a18f-b17da44663be"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e9c2f354-d1fe-4523-9423-16b1a601a020">
+                    <propertyInstance
+                      Id="15b1853d-1232-45d8-a2b2-3f1884d8c3f0"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4fc49573-1e05-4976-947f-bd1b13e07cc1">
+                    <propertyInstance
+                      Id="85b17746-f699-4fbe-a1f7-3fc6ef8bccd8"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3152bcd4-c977-45e6-8676-ef232f681fa8">
+                    <propertyInstance
+                      Id="ec3f4a52-20b9-44bf-8ddd-b4a851da6cf6"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="38139a7e-a4ee-470a-b9e1-3ad12ed12eb5">
+                    <propertyInstance
+                      Id="76dfb14f-f4e3-4705-89f9-f622a36c1fe7"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="dfce7adf-af04-422f-a56a-d7a0abdfdc15"
+                  name="propertyName"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="d2c82f2f-0fb1-4007-98bc-9e8a5d8e3057"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3D(Name%3DOnPropertyChanged OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3DpropertyName"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="447e224a-6d99-47e4-b7da-743208eecc67"
+            name="BaseViewModel"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="a04b2ac5-20d1-42d3-bd5b-ea013f7f3611"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="9c1640db-85ee-4cd6-8628-8968053c29a8"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e5da8bb4-a3ef-4eff-80bb-2a74319968f5">
+                    <propertyInstance
+                      Id="69538993-b348-4c2a-998e-f4f210d2d982"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f62f117f-8c8d-4e6b-a704-63a1198ea8cf">
+                    <propertyInstance
+                      Id="cdfee5a6-aaf4-4881-b0e0-21cbff92797b"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="de37644e-0d16-49ed-ba0e-d9ef51a1af66">
+                    <propertyInstance
+                      Id="d4f4639c-c4ef-4716-a27b-b28a777c9333"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ce0481b6-9775-487f-aee8-e74222d75e05">
+                    <propertyInstance
+                      Id="a41d45e6-01f0-4965-8f6d-fc75e7e7de5a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ed30bfd3-f72d-43cd-b464-b340cae2d013">
+                    <propertyInstance
+                      Id="7c8d1738-e60e-4f8e-8e7a-59560441e525"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="02daa659-48a7-4908-8cf7-2cac86167bb7">
+                    <propertyInstance
+                      Id="d6d09627-806d-4cf6-a486-2cd4d9f02d2d"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="6903ef49-b1f6-4c9d-a57a-f7fb2b329554"
+        name="U">
+        <referencesInternal>
+          <reference
+            Id="3f1c706e-2289-45e0-a705-2fac2be81148"
+            handle="viewcode://./CodeSchema_GenericParameter?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DBaseViewModel Member%3D(Name%3DSetProperty GenericParameterCount%3D1 OverloadingParameters%3D[(ParameterIdentifier%3D0 ParamKind%3DRef)%2C(ParameterIdentifier%3D0)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DAction)%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2FMonoAndroid%2Fv1.0%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DAction GenericParameterCount%3D1 GenericArguments%3D[(ParameterIdentifier%3D0)]))]) ParameterIdentifier%3D0"
+            tag="ViewCode" />
+        </referencesInternal>
+      </undefinedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8906ee33-c9a7-407c-9bdc-9cd900b3cdfe"
+        name="MasterViewModel"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="10d09172-8b6c-496b-8773-450f25656460"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DMasterViewModel"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="4012895e-4659-4365-b605-d0d9242a2afe"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="fbc16825-5f57-40ea-9e98-fdc47bfa57b5">
+                <propertyInstance
+                  Id="ecea82f1-5b11-4b51-872d-49b2eae575a8"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="e98aace7-6c82-441a-9186-1628c3d9f6c5">
+                <propertyInstance
+                  Id="05f4a813-3ba6-4785-b942-dfcd898f25c4"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="8fe65a3a-e8ac-486c-844f-68a066fa7a28">
+                <propertyInstance
+                  Id="c0bb4f06-1faa-4e83-a18c-2beefc28b191"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="321621a6-303e-4af2-ad5b-04c9e5f6b176">
+                <propertyInstance
+                  Id="99b0adf6-7886-4d46-b9b1-798a87d91b6a"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9051f7a3-05c5-47cb-8d93-adc28a213f7b">
+                <propertyInstance
+                  Id="b8fce274-301f-412a-9ff8-d37b510a311a"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <generalsInternal>
+          <generalization
+            Id="2a7054f3-848e-453f-b830-ccc246117c3b"
+            isSubstitutable="false">
+            <classMoniker
+              Id="30559e79-9533-42db-bfd1-669ab4d00400"
+              LastKnownName="BaseViewModel"
+              LastKnownLocation="Package2_1931.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="b6fd8c87-600c-4c73-ad6f-e19ad42839eb"
+            name="IconFormat"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="true"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="39886c6e-eb37-4921-9576-d010855dbe76"
+                handle="viewcode://./CodeSchema_Field?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DMasterViewModel Member%3DIconFormat"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="d2b49c96-e407-4819-904d-3c3a63d50353"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c56b2099-257a-4e17-94dc-b55bbda83093">
+                    <propertyInstance
+                      Id="7314f02a-3ea1-4b5c-998e-85c237033871"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="49db9249-4a8e-46de-b692-e4ef41bc67e2">
+                    <propertyInstance
+                      Id="cc435b9a-9900-4540-98e6-1f0e258dd3c0"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cc9f9b38-127e-44b3-bf34-f93ca3de77db">
+                    <propertyInstance
+                      Id="060f10fa-9154-42cb-8e2b-5fbdbe3e9fa8"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c426022c-3bc5-45be-9809-58e4a2f3e05a">
+                    <propertyInstance
+                      Id="03eb6563-9bff-4fb6-9a67-3f23ea8db9df"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0d8af4ee-7a6c-424b-bd3f-e8b47eb06f1d">
+                    <propertyInstance
+                      Id="0249b024-c4d2-48f7-a0c4-47ad662d5074"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="b2027b74-9699-4ad3-aac9-3bb00968a0d0"
+            name="MasterViewModel"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="e6308cb1-5e59-47fa-a43b-915befc79b85"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FCocoMaps.Android%2Fbin%2FDebug%2FCocoMaps.Android.dll Namespace%3DCocoMaps.Shared.ViewModels Type%3DMasterViewModel Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="9d245222-c3ad-4ded-b8a6-6315e1e18fc4"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="965852dc-d3cb-4910-ab06-ba903a35857d">
+                    <propertyInstance
+                      Id="d5d8f5f0-aa46-4f6c-b161-62e8f0851a50"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="04d3d456-326e-4933-a0db-652da5e3ed6a">
+                    <propertyInstance
+                      Id="f4767d81-35ec-4341-8178-d9dcbf33833f"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e13a56d6-8eea-40a0-b81b-a90a76c10241">
+                    <propertyInstance
+                      Id="1cb38155-f034-4829-aef5-38c3cd97ee86"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="023e0b07-e177-407c-82f9-2abe2e340d22">
+                    <propertyInstance
+                      Id="2e6296e7-93a2-4787-b2f1-24c050b33a28"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bff00544-3150-41f3-ab1a-2f824c859dda">
+                    <propertyInstance
+                      Id="a1e0a466-7373-4fd2-a020-9dde74b1ee98"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a7dc4324-1ff0-48e8-a2f7-8df23c0cc876">
+                    <propertyInstance
+                      Id="482ddd8c-5b98-46bb-9d42-6b3542bb7952"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

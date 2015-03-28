@@ -1,15 +1,23 @@
-﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android\AndroidNotifications\AlarmReceiver.cs">
+﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus6V" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android/Renderers/ConcordiaMapRenderer.cs">
     <Files>
-      <File FileName="CocoMaps.Shared\Views\Pages\Settings.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Android\AndroidNotifications\AndroidReminderService.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared\Views\Pages\Calendar\BaseCalendar.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Android\AndroidNotifications\AlarmReceiver.cs" Line="4" Column="4" />
+      <File FileName="CocoMaps.Shared/Controllers/Helpers/GoogleUtil.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/Controllers/ShuttleBus/ShuttleBusPolyline.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/Views/ViewsModel/DirectionsViewModel.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/Views/ViewsModel/DetailsViewModel.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/Controllers/Helpers/Colors.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Android/Renderers/ConcordiaMapRenderer.cs" Line="450" Column="62" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <DisabledProjects>
+    <String>CocoMaps.iOS\CocoMaps.iOS.csproj</String>
+    <String>UnitTesting.Android\UnitTesting.Android.csproj</String>
+    <String>UnitTesting.Shared\UnitTesting.Shared.csproj</String>
+    <String>ModelingProject1/ClassDiagrams.modelproj</String>
+  </DisabledProjects>
 </Properties>

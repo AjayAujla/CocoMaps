@@ -1,6 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
 using Android.OS;
+using CocoMaps.Services;
+using System.Threading.Tasks;
 
 namespace CocoMaps.Shared
 {
@@ -82,9 +84,29 @@ namespace CocoMaps.Shared
 			return DependencyService.Get<INetwork> ().IsReachable (host, new TimeSpan (5)).Result;
 		}
 
-		public static void CloseApp()
+		async public static Task<Xamarin.Forms.Maps.Position> GetCurrentPosition ()
 		{
-			System.Environment.Exit(0);
+			IGeolocator geolocator = null;
+			Xamarin.Forms.Maps.Position currentPosition;
+			Position pos = null;
+
+			if (geolocator == null) {
+				geolocator = DependencyService.Get<IGeolocator> ();
+				geolocator.StartListening (100, 100);
+				pos = await geolocator.GetPositionAsync (10);
+				geolocator.StopListening ();
+			}
+
+			// Converting current position to Xamarin.Forms' Position, since all our method use this one
+			currentPosition = new Xamarin.Forms.Maps.Position (pos.Latitude, pos.Longitude);
+
+			return currentPosition;
+			
+		}
+
+		public static void CloseApp ()
+		{
+			System.Environment.Exit (0);
 		}
 
 

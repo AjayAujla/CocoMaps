@@ -57,6 +57,10 @@ Supported Android versions:
 
 		5.0    (API level 21)
 
+Xamarin iOS
+
+Version: 8.8
+
 Java Version "1.7.0_71"
 
 Java(TM) SE Runtime Environment (build 1.7.0_71-b14)

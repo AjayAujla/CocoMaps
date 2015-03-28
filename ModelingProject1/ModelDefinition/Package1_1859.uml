@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="495f2b76-2769-4293-b3f4-527e480fe8b5"
+  name="CustomViews"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="38107662-1c93-4397-a7ae-981306e4a5c0"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DCocoMaps.Shared.CustomViews"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="f749a74d-be48-4b03-bd3c-ac27953edb42"
+        name="ListTextCell"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="0da2fb65-2672-4396-9d09-0a538da08441"
+            handle="viewcode://./CodeSchema_Class?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FUnitTesting.Shared%2Fbin%2FDebug%2FUnitTesting.Shared.dll Namespace%3DCocoMaps.Shared.CustomViews Type%3DListTextCell"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="f2c29867-19c5-4f5d-b1f6-f18d6dc76664"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9d18c62d-a66f-42b6-8f4b-3bd27e65ac2a">
+                <propertyInstance
+                  Id="5545991b-0a2d-45be-9d74-9f68161f5e42"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9dba7c1b-8e8f-410e-91d7-3b348ef32496">
+                <propertyInstance
+                  Id="562a0c5e-4a6c-44d9-a8db-ffa01c8eb215"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="87e7070a-cbad-4db8-a41c-8fbc2d754c5a">
+                <propertyInstance
+                  Id="414f1ee2-84d9-4df9-a8c9-2637b12664d2"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="bc85d6b9-a3f8-4c57-b81d-1ae9b7aa41d5">
+                <propertyInstance
+                  Id="8bc0c451-75c9-4abe-bb77-f33d2f0b5cac"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="3786923e-5f5d-44ac-8978-dd7aca08973f">
+                <propertyInstance
+                  Id="fc301d68-d9fa-4616-844f-b9e492c394ff"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="3188e027-8a9b-49f7-a20f-f61260f29903"
+            name="ListTextCell"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="77797800-5b05-4820-b71c-794c26e528db"
+                handle="viewcode://./CodeSchema_Method?Assembly%3Dfile:%2F%2F%2FC:%2FUsers%2FDavid%2FDesktop%2FCocoMaps%2FUnitTesting.Shared%2Fbin%2FDebug%2FUnitTesting.Shared.dll Namespace%3DCocoMaps.Shared.CustomViews Type%3DListTextCell Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8ec330e6-3607-4cb9-a0b5-60f8980823d2"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2614a058-6df7-4efb-bba7-96268a638ccb">
+                    <propertyInstance
+                      Id="6c4e2cb6-b5fc-4edb-8def-853455979ac8"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="da63b48a-71c6-4c94-b710-36c24c639e23">
+                    <propertyInstance
+                      Id="6bf590a8-077e-4a83-ba33-6b3c73a19b76"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1188d18d-0824-4d78-9a64-9fbd9a324754">
+                    <propertyInstance
+                      Id="326fe12b-fb09-4cae-9f81-7a397b0f4f11"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c411d599-c787-4fd8-a27f-fa79f536dc74">
+                    <propertyInstance
+                      Id="f2fa5b27-5c9b-4955-a846-c86a2890348a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5994acb4-ac3b-4789-b336-1df599dd58ee">
+                    <propertyInstance
+                      Id="ef021b9e-1b6e-44fa-a00a-a23f7c31a9af"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="014f8a3c-9083-4ed1-b041-93b373198851">
+                    <propertyInstance
+                      Id="74364c3e-4ae1-4f78-8ea9-c7a17c303a7a"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

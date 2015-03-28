@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="1d3724ba-28a8-4c7f-94c6-435bd49f9f5e"
+  name="Android"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="a79b0582-cf28-4088-8653-60d31330c095"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DAndroid"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="a444db92-f670-49b0-999a-10781c7c7603"
+        LastKnownName="Content"
+        LastKnownLocation="Package3_1858.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="e2edb4f7-fe22-43b3-abc0-21a9fbf677ef"
+        LastKnownName="Net"
+        LastKnownLocation="Package3_1902.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="8d17c1c3-3720-45ab-829c-20b27c8a9c6b"
+        LastKnownName="Telephony"
+        LastKnownLocation="Package4_1902.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="42700271-9539-4f84-bc2e-de0f33f0be55"
+        LastKnownName="Speech"
+        LastKnownLocation="Package_1903.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="8cca5489-efc7-47e9-8965-5bde008a244e"
+        LastKnownName="Gms"
+        LastKnownLocation="Package_1904.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="5cd44f6e-7564-4f40-a970-c8e0898aa6c2"
+        LastKnownName="Views"
+        LastKnownLocation="Package_1905.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="995c9778-0763-4eb3-9dac-3748ccb14129"
+        LastKnownName="OS"
+        LastKnownLocation="Package_1907.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="264be1ed-fec3-41ce-bbf6-43900bab29cd"
+        LastKnownName="App"
+        LastKnownLocation="Package1_1907.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
