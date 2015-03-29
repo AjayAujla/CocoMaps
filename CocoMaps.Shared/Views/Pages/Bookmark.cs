@@ -32,10 +32,6 @@ namespace CocoMaps.Shared
 				// Source of data items.
 				ItemsSource = BookMitems,
 
-				// New as of Xamarin.Forms v1.4
-				IsPullToRefreshEnabled = true,
-				Header = "Pull to Refresh Bookmarks",
-
 				// Define template for displaying each item.
 				// (Argument of DataTemplate constructor is called for each item; it must return a Cell derivative.)
 				ItemTemplate = new DataTemplate (() => {
@@ -70,11 +66,6 @@ namespace CocoMaps.Shared
 				})
 			};
 
-			listView.Refreshing += (sender, e) => {
-				listView.ItemsSource = PopulateDatabase ();
-				listView.EndRefresh ();
-			};
-
 			this.Padding = new Thickness (10, Device.OnPlatform (20, 0, 0), 10, 5);
 
 			// Build the page.
@@ -95,7 +86,6 @@ namespace CocoMaps.Shared
 				var BookmarksClickedInput = await DisplayActionSheet (eBookmark.bName, "Cancel", null, "Get Directions", "Update Bookmark", "Delete Bookmark", "Delete All Bookmarks");
 
 				if (BookmarksClickedInput.Equals ("Get Directions")) {
-
 					var BookmarksNameInput = "Get Directions To : " + eBookmark.bName;
 					string BookmarkDetails = "Destination : " + "\r\n\r\n" + eBookmark.bAddress + "\r\n";
 					var BookmarksInput = await DisplayAlert (BookmarksNameInput, BookmarkDetails, "Proceed", "Cancel");
@@ -103,12 +93,6 @@ namespace CocoMaps.Shared
 					if (BookmarksInput) {
 						DependencyService.Get<IPhoneService> ().LaunchMap (eBookmark.bAddress);
 					}
-				}
-				if (BookmarksClickedInput.Equals ("Update Bookmark")) {
-					/*eBookmark.bName = "abc";
-					eBookmark.bAddress = "def";*/
-					bookmarksRepository.SaveBookmark (eBookmark);
-					await DisplayAlert (eBookmark.bName + " Deleted.", "", "Proceed");
 				}
 				if (BookmarksClickedInput.Equals ("Delete Bookmark")) {
 					var BookmarksInput = await DisplayAlert ("Delete " + eBookmark.bName + " at " + eBookmark.bAddress + "?", "", "Proceed", "Cancel");
@@ -135,13 +119,6 @@ namespace CocoMaps.Shared
 		IEnumerable<BookmarkItems> PopulateDatabase ()
 		{
 			bookmarksRepository.CreateTable ();
-
-			/*bookmarksRepository.SaveBookmark (new BookmarkItems ("SGW-EV", "1515 St. Catherine W., Montreal", new Position (45.48939, -73.57788), "ic_menu_bookmark"));
-			bookmarksRepository.SaveBookmark (new BookmarkItems ("SGW-FG", "1616 Rue Sainte-Catherine Ouest, Montreal", new Position (45.46945, -73.60376), "ic_menu_bookmark"));
-			bookmarksRepository.SaveBookmark (new BookmarkItems ("SGW-CB", "1425 René Lévesque W., Montreal", new Position (45.496426, -73.577896), "fav_icon"));
-			bookmarksRepository.SaveBookmark (new BookmarkItems ("LOY-GE", "7141 Sherbrooke W., Montreal", new Position (45.45837, -73.63822), "fav_icon"));
-			bookmarksRepository.SaveBookmark (new BookmarkItems ("LOY-RF", "7141 Sherbrooke W., Montreal", new Position (45.4688, -73.60512), "fav_icon"));*/
-
 			return bookmarksRepository.GetAllBookmarks ();
 		}
 	}

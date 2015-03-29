@@ -75,17 +75,6 @@ namespace CocoMaps.Shared
 			}
 		}
 
-		/*public void UpdateBookmark (int id, BookmarkItems Bookmark)
-		{
-			lock (locker) {
-				BookmarksTable = OpenConnection ();
-				BookmarkItems savedBookmark = BookmarksTable.GetBookmark (id);
-				savedBookmark = Bookmark;
-				BookmarksTable.Update (bookmark);
-				 bookmark.ID;
-			}
-		}*/
-
 		public void DeleteBookmark (BookmarkItems bookmark)
 		{
 			lock (locker) {
