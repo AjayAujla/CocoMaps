@@ -54,7 +54,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\ImageDownload.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\ShuttleBus\ShuttleBusPolyline.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\DirectionsViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Bookmark.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Calendar\CalendarListJsonClasses.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Calendar\CalendarJsonClasses.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\NextClass\NextClassFunc.cs" />
@@ -74,6 +73,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\Host.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\BookmarksRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\BookmarksModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Bookmarks\Bookmark.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\FAQ\FAQ.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -95,6 +96,8 @@
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Repositories\Indoor\" />
     <Folder Include="$(MSBuildThisFileDirectory)Models\Indoor\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GeoLocation\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\Bookmarks\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\FAQ\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controllers\Repositories\LocalCalendar.json" />
