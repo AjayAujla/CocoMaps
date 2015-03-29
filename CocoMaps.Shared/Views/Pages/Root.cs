@@ -17,6 +17,7 @@ namespace CocoMaps.Shared
 		BaseShuttleBus pShuttleBus;
 		ShuttleBusTracker pShuttleBusTracker;
 		Settings pSettings;
+		FAQ pFAQ;
 
 		public RootPage ()
 		{
@@ -79,6 +80,11 @@ namespace CocoMaps.Shared
 					pSettings = new Settings (menuOption);
 				}
 				return pSettings;
+			} else if (pageTitle.Equals ("FAQ")) {
+				if ((pFAQ == null)) {
+					pFAQ = new FAQ (menuOption);
+				}
+				return pFAQ;
 			} else if (pageTitle.Equals ("Exit Application")) {
 				if (Device.OS == TargetPlatform.Android) {
 					App.CloseApp ();

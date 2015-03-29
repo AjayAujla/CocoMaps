@@ -15,6 +15,7 @@ namespace CocoMaps.Shared
 
 		public override string Icon { get { return "ic_menu_services.png"; } }
 	}
+
 	public class Bookmarks_MenuOption : IMenuOptions
 	{
 		public override string Title { get { return "Bookmarks"; } }
@@ -57,7 +58,12 @@ namespace CocoMaps.Shared
 		public override string Icon { get { return "ic_menu_settings.png"; } }
 	}
 
+	public class FAQ_MenuOption : IMenuOptions
+	{
+		public override string Title { get { return "FAQ"; } }
 
+		public override string Icon { get { return "ic_menu_settings.png"; } }
+	}
 
 	public class Exit_MenuOption : IMenuOptions
 	{
