@@ -23,6 +23,7 @@ namespace CocoMaps.Shared
 			OptionItems.Add (new ShuttleBus_MenuOption ());
 			OptionItems.Add (new ShuttleBusTracker_MenuOption ());
 			OptionItems.Add (new Settings_MenuOption ());
+			OptionItems.Add (new FAQ_MenuOption ());
 			OptionItems.Add (new Exit_MenuOption ());
 
 			BackgroundColor = Helpers.Color.DarkGray.ToFormsColor ();
