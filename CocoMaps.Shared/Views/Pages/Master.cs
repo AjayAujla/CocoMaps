@@ -41,6 +41,7 @@ namespace CocoMaps.Shared
 			//Text = "BM", 
 			Image = "ic_map_bookmark.png",
 			HeightRequest = 40,
+			WidthRequest = 40,
 			BackgroundColor = Color.White,
 			Opacity = 0.7,
 			BorderRadius = 0
@@ -194,10 +195,10 @@ namespace CocoMaps.Shared
 			TestButton.Clicked += async (sender, e) => {
 				DirectionsViewModel d = DirectionsViewModel.getInstance;
 				d.Expand ();
-				string r = Host.PingHost ("googleapis.com");
+				//string r = Host.PingHost ("googleapis.com");
 
 //				bool r = await DependencyService.Get<INetwork> ().IsReachable ("googleapis.com", new TimeSpan (5));
-				await DisplayAlert ("Network Connection:", r, "Whatever");
+				//await DisplayAlert ("Network Connection:", r, "Whatever");
 			};
 
 			mainLayout.Children.Add (map,
