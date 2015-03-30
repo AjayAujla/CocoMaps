@@ -74,6 +74,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\BookmarksModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Bookmarks\Bookmark.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\FAQ\FAQ.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\FAQ\FAQJsonClasses.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\FAQItems.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\FAQ\FAQpage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -97,8 +100,10 @@
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\Helpers\GeoLocation\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\Bookmarks\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\FAQ\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\FAQ\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controllers\Repositories\LocalCalendar.json" />
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controllers\Repositories\FAQ.json" />
   </ItemGroup>
 </Project>

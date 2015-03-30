@@ -19,16 +19,6 @@ namespace CocoMaps.Shared
 			this.SetValue (Page.TitleProperty, pageName);
 			this.SetValue (Page.IconProperty, menuItem.Icon);
 
-			// content://com.android.calendar/calendars
-			var calendarsUri = CalendarContract.Calendars.ContentUri;
-
-			string[] calendarsProjection = {
-				CalendarContract.Calendars.InterfaceConsts.Id,
-				CalendarContract.Calendars.InterfaceConsts.CalendarDisplayName,
-				CalendarContract.Calendars.InterfaceConsts.AccountName
-			};
-
-
 			Label header = new Label {
 				Text = "Classes",
 				FontSize = 30,
