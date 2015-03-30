@@ -19,6 +19,7 @@ namespace CocoMaps.Shared
 			SetValue (Page.IconProperty, "fav_icon");
 
 
+
 			Label question = new Label {
 				Text = "\r\n" + Que,
 				FontSize = 20,
@@ -33,12 +34,25 @@ namespace CocoMaps.Shared
 				HorizontalOptions = LayoutOptions.Center
 			};
 
+			var scrollview = new ScrollView 
+			{
+				Content = new StackLayout 
+				{
+					Padding = new Thickness (20),
+
+					Children = 
+					{
+						question,
+						answer
+					}
+				},
+			};
+
 			this.Content = new StackLayout
 			{
 				Children = 
 				{
-					question,
-					answer
+					scrollview
 				}
 			};
 		}
