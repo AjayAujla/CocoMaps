@@ -1,0 +1,44 @@
+﻿{
+	"summary": "FAQ",
+	"items": 
+	[
+		{
+			"Question": "How do I search for a building?",
+			"Answer": 
+			"
+			STEP 1:\r\n\r\n  Go to the Map page.\r\n
+			STEP 2:\r\n\r\n Click on Search icon (magnifying glass) at the top left of the screen.\r\n
+			STEP 3:\r\n\r\n Scroll through the list of Buildings and select the desired one.\r\n
+			STEP 4:\r\n\r\n Click “Ok”The Map will then focus on the desired building. \r\n\r\n
+			A pane slides up at the bottom of the screen with more details about the building.\r\n
+			"
+		},
+		{
+			"Question": "How do I import my Google Calendar?",
+			"Answer": 
+			"
+			Make sure to create a Google Calendar separately for your Course schedule.\r\n The name of the Google Calendar should be @Concordia and \r\nall the events within this calendar should have a prefix “@Concordia”. 
+			\r\nFor example:\r\n
+			Name of Calendar:\r\n\r\n @Concordia\r\n
+			Event1:\r\n \r\n@Concordia SOEN 390\r\n
+			Location: \r\n\r\nFG-B050\r\n
+			Once you have your calendar ready, you can proceed with the steps below:\r\n\r\n
+			STEP 1: \r\n\r\nSwipe the slider of the screen and select “Calendar” option from Menu\r\n
+			STEP 2:\r\n\r\nLogin to your Google account to import your calendarYou should be now able to see the calendar when the authentication process is over. \r\n\r\n
+			You can toggle between the days to see the schedule for different days of the week
+			"
+		},
+		{
+			"Question": "How do I set Notifications for Next Class?",
+			"Answer": 
+			"
+			Make sure to have your School calendar uploaded from Google. If this is not done, the notification for next class event will not work. \r\n
+			To see the details on how to import Google calendar, refer to FAQ “How doI import my Google Calendar?”\r\n
+			STEP 1: \r\n\r\n Swipe the slider of the screen and select “Settings” option from Menu\r\n
+			STEP 2:  \r\n\r\nTurn on the “Event Notification” option\r\n
+			STEP 3: \r\n\r\nTurn on the different types of alert in section “Events and Notifications” according to your preferences.\r\n
+			You will receive notification on your phone 15 min before your next class.
+			"
+		}
+	]
+}
