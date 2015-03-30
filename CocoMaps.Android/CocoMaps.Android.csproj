@@ -276,10 +276,10 @@
     <AndroidResource Include="Resources\drawable\ic_menu_shuttleschedule.png" />
     <AndroidResource Include="Resources\drawable\ic_menu_shuttletracker.png" />
     <AndroidResource Include="Resources\drawable\fav_icon.png" />
-    <AndroidResource Include="Resources\drawable\ic_map_bookmark.png" />
     <AndroidResource Include="Resources\drawable\ic_menu_bookmark.png" />
     <AndroidResource Include="Resources\drawable\ic_menu_exit.png" />
-    <AndroidResource Include="Resources\drawable\ic_pin_bookmark.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_pin_bookmark.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_map_bookmark.png" />
   </ItemGroup>
   <Import Project="..\CocoMaps.Shared\CocoMaps.Shared.projitems" Label="Shared" Condition="Exists('..\CocoMaps.Shared\CocoMaps.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />

@@ -57,15 +57,14 @@ namespace CocoMapsAndroid
 		void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
 		{
 			Building building;
-			Directions directions;
 			BookmarkItems bookmark;
 
 			if (MarkerBuilding.TryGetValue (e.Marker.Id, out building))
 				DetailsViewModel.getInstance.UpdateView (building);
-			else if (MarkerDirections.TryGetValue (e.Marker.Id, out totalDirections))
-			if (totalDirections != null)
-				DetailsViewModel.getInstance.UpdateView (totalDirections);
-			else
+			else if (MarkerDirections.TryGetValue (e.Marker.Id, out totalDirections)) {
+				if (totalDirections != null)
+					DetailsViewModel.getInstance.UpdateView (totalDirections);
+			} else
 				e.Marker.ShowInfoWindow ();
 		}
 
@@ -157,16 +156,6 @@ namespace CocoMapsAndroid
 					}
 				};
 
-				Indoor_H indoor_H = Indoor_H.getInstance;
-				polylineOptions = new PolylineOptions ();
-				foreach (Vertex v in indoor_H.Vertices)
-					polylineOptions.Add (new LatLng (v.x, v.y));
-
-				polylines.Add (androidMapView.Map.AddPolyline (polylineOptions));
-
-
-				var loaderViewModel = LoaderViewModel.getInstance;
-
 				// Initializing Start and End Markers, and directions' Polyline
 				using (MarkerOptions mo = new MarkerOptions ()) {
 					mo.SetPosition (new LatLng (0, 0))
@@ -196,8 +185,21 @@ namespace CocoMapsAndroid
 						if (directionsViewModel.Start != null && directionsViewModel.End != null
 						    && !directionsViewModel.Start.Equals (directionsViewModel.End)) {
 
-							_originBuilding = buildingRepo.GetBuildingByCode (directionsViewModel.Start);
-							_destinationBuilding = buildingRepo.GetBuildingByCode (directionsViewModel.End);
+							String pickedOption = directionsViewModel.Start;
+							int dashIndex = pickedOption.IndexOf ('-');
+							pickedOption = pickedOption.Substring (0, dashIndex);
+							pickedOption = pickedOption.Trim ();
+
+							Console.WriteLine ("PICKED OPTION:" + pickedOption);
+							_originBuilding = buildingRepo.GetBuildingByCode (pickedOption);
+
+							pickedOption = directionsViewModel.End;
+							dashIndex = pickedOption.IndexOf ('-');
+							pickedOption = pickedOption.Substring (0, dashIndex);
+							pickedOption = pickedOption.Trim ();
+
+							Console.WriteLine ("PICKED OPTION:" + pickedOption);
+							_destinationBuilding = buildingRepo.GetBuildingByCode (pickedOption);
 
 							// If buildings are within the same campus and chosen TravelMode was shuttle bus,
 							// switch it to TravelMode.walking
@@ -236,7 +238,11 @@ namespace CocoMapsAndroid
 							await GetDirectionsPolyline (_originBuilding.Position, _destinationBuilding.Position, directionsViewModel.TravelMode);
 							DrawPolyline (directions);
 
+							androidMapView.Map.AnimateCamera (CameraUpdateFactory.NewLatLng (_startPin.Position));
+
 							totalDirections = GoogleUtil.SumDirections (directions);
+
+							DetailsViewModel.getInstance.UpdateView (totalDirections);
 
 							MarkerDirections.Add (_startPin.Id, totalDirections);
 							MarkerDirections.Add (_endPin.Id, totalDirections);
