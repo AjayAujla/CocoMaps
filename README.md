@@ -32,6 +32,7 @@ Xamarin.Android
 Version: 4.20.0 (Trial Edition)
 
 Supported Android versions:
+	
 		4.0    (API level 14)
 
 		4.0.3  (API level 15)
