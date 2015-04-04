@@ -13,7 +13,7 @@ namespace CocoMaps.Shared
 		ConcordiaServices pServices;
 		Bookmark pBookmark;
 		//IndoorDirections pIndoorDirections;
-		BaseCalendar pCalendar;
+		CalendarConnect pCalendar;
 		BaseShuttleBus pShuttleBus;
 		ShuttleBusTracker pShuttleBusTracker;
 		Settings pSettings;
@@ -62,7 +62,7 @@ namespace CocoMaps.Shared
 				return pBookmark;
 			} else if (pageTitle.Equals ("Calendar")) {
 				if ((pCalendar == null)) {
-					pCalendar = new BaseCalendar (menuOption);
+					pCalendar = new CalendarConnect (menuOption);
 				}
 				return  pCalendar;
 			} else if (pageTitle.Equals ("Shuttle Bus")) {
@@ -86,9 +86,11 @@ namespace CocoMaps.Shared
 				}
 				return pFAQ;
 			} else if (pageTitle.Equals ("Exit Application")) {
-				if (Device.OS == TargetPlatform.Android) {
+				/*if (Device.OS == TargetPlatform.Android) {
 					App.CloseApp ();
 				}
+				return null;*/
+				System.Environment.Exit (0);
 				return null;
 			} else { 
 				// return the main map page if no other option is found

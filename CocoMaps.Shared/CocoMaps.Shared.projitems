@@ -77,6 +77,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\FAQ\FAQJsonClasses.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\FAQItems.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\FAQ\FAQpage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\CalendarConnect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\CalendarViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
