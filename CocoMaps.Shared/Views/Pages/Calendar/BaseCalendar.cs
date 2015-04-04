@@ -13,68 +13,55 @@ using System.Linq;
 #if __ANDROID__
 using CocoMaps.Android;
 #endif
+
 namespace CocoMaps.Shared
 {
-	public class BaseCalendar : AuthBasePage
+	public class BaseCalendar : TabbedPage
 	{
-
-		Boolean UseOnlineCalendar = false;
-
-		public CalendarListRootObject CalListObj = null;
-
-		public CalendarRootObject LocalCalObj = null;
-		public CalendarRootObject OnlineCalObj = null;
-
 		public static List<CalendarItems> MondayCalItems = new List<CalendarItems>{ };
 		public static List<CalendarItems> TuesdayCalItems = new List<CalendarItems>{ };
 		public static List<CalendarItems> WednesdayCalItems = new List<CalendarItems>{ };
 		public static List<CalendarItems> ThursdayCalItems = new List<CalendarItems>{ };
 		public static List<CalendarItems> FridayCalItems = new List<CalendarItems>{ };
 
-
-		public BaseCalendar (IMenuOptions menuItem)
+		public BaseCalendar (IMenuOptions menuItem , CalendarRootObject CRO)
 		{
+			var viewModel = new MasterViewModel ();
+			BindingContext = viewModel;
 
-			MessagingCenter.Subscribe<App> (this, "Authenticated", (senderr) => {
+			this.SetValue (Page.TitleProperty, "Calendar");
+			this.SetValue (Page.IconProperty, menuItem.Icon);
 
-				var viewModel = new MasterViewModel ();
-				BindingContext = viewModel;
+			setCalendarList(CRO);
 
-				this.SetValue (Page.TitleProperty, "Calendar");
-				this.SetValue (Page.IconProperty, menuItem.Icon);
+			sortCalendarList ();
 
-				setCalendarList ();
+			#if __ANDROID__
 
-				sortCalendarList ();
+			AndroidReminderService a = new AndroidReminderService ();
 
+			var MonCal = new Calendar (menuItem, "Mon", testList (MondayCalItems));
+			var TueCal = new Calendar (menuItem, "Tue", testList (TuesdayCalItems));
+			var WedCal = new Calendar (menuItem, "Wed", testList (WednesdayCalItems));
+			var ThuCal = new Calendar (menuItem, "Thu", testList (ThursdayCalItems));
+			var FriCal = new Calendar (menuItem, "Fri", testList (FridayCalItems));
 
-				#if __ANDROID__
+			this.Children.Add (MonCal);
+			this.Children.Add (TueCal);
+			this.Children.Add (WedCal);
+			this.Children.Add (ThuCal);
+			this.Children.Add (FriCal);
 
-				AndroidReminderService a = new AndroidReminderService ();
+			InitializeTabOnCurrentWeekday ();
 
-				var MonCal = new Calendar (menuItem, "Mon", testList (MondayCalItems));
-				var TueCal = new Calendar (menuItem, "Tue", testList (TuesdayCalItems));
-				var WedCal = new Calendar (menuItem, "Wed", testList (WednesdayCalItems));
-				var ThuCal = new Calendar (menuItem, "Thu", testList (ThursdayCalItems));
-				var FriCal = new Calendar (menuItem, "Fri", testList (FridayCalItems));
+			var dateNow = DateTime.Now;
+			var today = dateNow.DayOfWeek;
+			var earlyNotice = new TimeSpan (0, 15, 0);
 
-				this.Children.Add (MonCal);
-				this.Children.Add (TueCal);
-				this.Children.Add (WedCal);
-				this.Children.Add (ThuCal);
-				this.Children.Add (FriCal);
+			AndroidReminderService.alarmManagerCreationForNotificationOfCurrentDay (a, dateNow, today, earlyNotice);
 
-				InitializeTabOnCurrentWeekday ();
+			#endif
 
-				var dateNow = DateTime.Now;
-				var today = dateNow.DayOfWeek;
-				var earlyNotice = new TimeSpan (0, 15, 0);
-
-				AndroidReminderService.alarmManagerCreationForNotificationOfCurrentDay (a, dateNow, today, earlyNotice);
-
-				#endif
-
-			});
 		}
 
 		public void sortCalendarList ()
@@ -86,10 +73,8 @@ namespace CocoMaps.Shared
 			FridayCalItems = FridayCalItems.OrderBy (o => o.StartTime).ToList ();
 		}
 
-		public void setCalendarList ()
+		public void setCalendarList (CalendarRootObject CRO)
 		{
-			CalendarRootObject CRO = getCalendarObj ();
-
 			foreach (CalendarItem CI in CRO.items) {
 				string[] CalSummary = CI.summary.ToLower ().Split ('-');
 
@@ -180,90 +165,6 @@ namespace CocoMaps.Shared
 
 		}
 
-		public string GetLocalCalendar ()
-		{
-			string CalJsonText = "";
-
-			Assembly assembly = Assembly.GetExecutingAssembly ();
-			string[] resources = assembly.GetManifestResourceNames ();
-
-			foreach (string resource in resources) {
-				if (resource.Equals ("CocoMaps.Android.LocalCalendar.json")) {
-					Stream stream = assembly.GetManifestResourceStream (resource);
-					if (stream != null) {
-						using (var reader = new System.IO.StreamReader (stream)) {
-							CalJsonText = reader.ReadToEnd ();
-						}
-					}
-				}
-			}
-
-			return CalJsonText;
-		}
-
-
-		public void ProcessCalendarJson ()
-		{
-			LocalCalObj = JsonConvert.DeserializeObject<CalendarRootObject> (GetLocalCalendar ());
-		}
-
-
-		public CalendarRootObject getCalendarObj ()
-		{
-			var CLO1 = getCalendarListObj ();
-
-			if (UseOnlineCalendar) {
-				if ((OnlineCalObj == null)) {
-					processCalendarList ();
-				}
-				return OnlineCalObj;
-			} else {
-				if ((LocalCalObj == null)) {
-					ProcessCalendarJson ();
-				}
-				return LocalCalObj;
-			}
-
-		}
-
-		public CalendarListRootObject getCalendarListObj ()
-		{
-			if ((CalListObj == null)) {
-				requestCalendarList ();
-			}
-
-			return CalListObj;
-		}
-
-		public void processCalendarList ()
-		{
-			var CLO = getCalendarListObj ();
-
-			foreach (CalendarListItem OCI in CLO.items) {
-				string[] CalListSummary = OCI.summary.ToLower ().Split ('-');
-
-				if (CalListSummary [0] == (("@ConcordiaCalendar").ToLower())) {
-					RequestOnlineCalendar (OCI.id);
-
-					UseOnlineCalendar = true;
-				}
-			}
-		}
-
-		public async Task<CalendarRootObject> RequestOnlineCalendar (string CalID)
-		{
-			string token = App.Instance.Token;
-
-			var requestUrl = string.Format ("https://www.googleapis.com/calendar/v3/calendars/{0}/events?alwaysIncludeEmail=false&singleEvents=false&fields=description%2Citems(description%2Cend%2Cid%2Clocation)%2Csummary&access_token={1}", CalID, token);
-
-			JsonValue OnlineCalJson = await JsonUtil.FetchJsonAsync (requestUrl);
-
-			OnlineCalObj = JsonConvert.DeserializeObject<CalendarRootObject> (OnlineCalJson.ToString ());
-
-			return OnlineCalObj;
-
-		}
-
 		public void InitializeTabOnCurrentWeekday ()
 		{
 			int dayOfWeek = (int)DateTime.Today.DayOfWeek;
@@ -275,65 +176,6 @@ namespace CocoMaps.Shared
 
 			// Starts the page with the tab corresponding to the current day
 			this.CurrentPage = this.Children [dayOfWeek - 1];
-		}
-
-		public async Task<CalendarListRootObject> requestCalendarList ()
-		{
-			string token = App.Instance.Token;
-
-			var requestUrl = string.Format ("https://www.googleapis.com/calendar/v3/users/me/calendarList?access_token={0}", token);
-
-			JsonValue CalListJson = await JsonUtil.FetchJsonAsync (requestUrl);
-
-			CalListObj = JsonConvert.DeserializeObject<CalendarListRootObject> (CalListJson.ToString ());
-
-			return CalListObj;
-
-		}
-
-		public List<CalendarItems> getMondayList ()
-		{
-			if ((MondayCalItems == null)) {
-				setCalendarList ();
-				sortCalendarList ();
-			}
-			return MondayCalItems;
-		}
-
-		public List<CalendarItems> getTuesdayList ()
-		{
-			if ((TuesdayCalItems == null)) {
-				setCalendarList ();
-				sortCalendarList ();
-			}
-			return TuesdayCalItems;
-		}
-
-		public List<CalendarItems> getWednesdayList ()
-		{
-			if ((WednesdayCalItems == null)) {
-				setCalendarList ();
-				sortCalendarList ();
-			}
-			return WednesdayCalItems;
-		}
-
-		public List<CalendarItems> getThursdayList ()
-		{
-			if ((ThursdayCalItems == null)) {
-				setCalendarList ();
-				sortCalendarList ();
-			}
-			return ThursdayCalItems;
-		}
-
-		public List<CalendarItems> getFridayList ()
-		{
-			if ((FridayCalItems == null)) {
-				setCalendarList ();
-				sortCalendarList ();
-			}
-			return FridayCalItems;
 		}
 
 	}
