@@ -194,7 +194,7 @@ namespace CocoMaps.Shared
 			);
 
 			instance.Children.Add (bookmarkButton,
-				Constraint.RelativeToView (directionsButton, (parent, sibling) => sibling.X + 100),
+				Constraint.RelativeToView (directionsButton, (parent, sibling) => sibling.X + sibling.Width),
 				Constraint.RelativeToView (directionsButton, (parent, sibling) => sibling.Y)
 			);
 
@@ -299,6 +299,7 @@ namespace CocoMaps.Shared
 			servicesButton.IsVisible = false;
 			departmentsButton.IsVisible = false;
 			directionsButton.IsVisible = false;
+			bookmarkButton.IsVisible = false;
 
 			toggleButton.Source = ImageSource.FromFile ("button_directions_toggle.png");
 
@@ -333,6 +334,7 @@ namespace CocoMaps.Shared
 			servicesButton.IsVisible = true;
 			departmentsButton.IsVisible = true;
 			directionsButton.IsVisible = true;
+			bookmarkButton.IsVisible = true;
 
 			directionsList.IsVisible = false;
 
@@ -462,6 +464,7 @@ namespace CocoMaps.Shared
 
 			image.IsVisible = true;
 			featuresImages.IsVisible = true;
+			bookmarkButton.IsVisible = true;
 
 			//bool tempUseMap = Settings.getSettingsUseMap();
 

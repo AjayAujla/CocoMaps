@@ -45,7 +45,7 @@ namespace CocoMaps.Shared
 						//2) The timeout value
 						//3) A buffer (our byte array)
 						//4) PingOptions
-						PingReply pingReply = ping.Send (address, 1000, buffer, pingOptions);
+						PingReply pingReply = ping.Send (address, 100, buffer, pingOptions);
 
 						//make sure we dont have a null reply
 						if (pingReply != null) {
