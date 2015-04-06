@@ -92,6 +92,8 @@ namespace CocoMaps.Shared
 			SetValue (Page.IconProperty, menuItem.Icon);
 
 			map = new IndoorMap ();
+			map.IsShowingUser = true;
+
 
 			map.MoveToRegion (MapSpan.FromCenterAndRadius (Campus.SGWPosition, Xamarin.Forms.Maps.Distance.FromKilometers (0.2)));
 

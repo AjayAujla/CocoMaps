@@ -24,7 +24,6 @@
   <DisabledProjects>
     <String>CocoMaps.iOS\CocoMaps.iOS.csproj</String>
     <String>UnitTesting.Android\UnitTesting.Android.csproj</String>
-    <String>UnitTesting.Shared\UnitTesting.Shared.csproj</String>
     <String>ModelingProject1/ClassDiagrams.modelproj</String>
   </DisabledProjects>
 </Properties>

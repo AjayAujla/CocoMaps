@@ -31,10 +31,13 @@ namespace CocoMaps.Shared.Pages
 			BuildingRepository buildingRepo = BuildingRepository.getInstance;
 
 			// Populating the whole service list
-			foreach (Building building in buildingRepo.BuildingList.Values)
-				if (building.Services != null && building.Services.Count > 0)
-					foreach (Service service in building.Services.OrderBy(s=>s.Name))
+			foreach (Building building in buildingRepo.BuildingList.Values) {
+				if (building.Services != null && building.Services.Count > 0) {
+					foreach (Service service in building.Services.OrderBy(s=>s.Name)) {
 						Services.Add (service);
+					}
+				}
+			}
 			AllServices = Services.ToList ();
 
 			// Search bar

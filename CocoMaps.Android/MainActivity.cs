@@ -4,6 +4,7 @@ using Xamarin.Forms;
 using Xamarin;
 using Android.Content.PM;
 using CocoMaps.Shared;
+using Android.Content;
 
 namespace CocoMaps.Android
 {
@@ -40,7 +41,34 @@ namespace CocoMaps.Android
 
 		}
 
-	}
+		public override void OnBackPressed()
+		{
+			AlertDialog.Builder CloseAlert = new AlertDialog.Builder (this);
 
+			CloseAlert.SetTitle ("Close CocoMaps ?");
+
+			CloseAlert.SetPositiveButton ("Yes", OkClicked);
+
+			CloseAlert.SetNegativeButton ("No", CancelClicked);
+
+			RunOnUiThread (() => 
+			{
+				CloseAlert.Show ();
+			});
+
+		}
+
+		
+		private void OkClicked (object sender, DialogClickEventArgs e)
+		{
+			Finish();	
+		}
+
+		private void CancelClicked (object sender, DialogClickEventArgs e)
+		{
+			//Do Nothing
+		}
+
+	}
 
 }

@@ -142,7 +142,7 @@ namespace CocoMapsAndroid
 							_endPin.Position = new LatLng (_destinationClass.lat, _destinationClass.lon);
 
 							// Move map to destination class and zoom in it
-							androidMapView.Map.MoveCamera (CameraUpdateFactory.NewLatLngZoom (new LatLng (_destinationClass.lat, _destinationClass.lon), 45));
+							androidMapView.Map.MoveCamera (CameraUpdateFactory.NewLatLngZoom (new LatLng (_destinationClass.lat, _destinationClass.lon), 18));
 						}
 
 					}
@@ -173,8 +173,9 @@ namespace CocoMapsAndroid
 				androidMapView.Map.MarkerClick += HandleMarkerClick;
 
 				_isDrawnDone = true;
+
 				androidMapView.Map.SetIndoorEnabled (true);
-				Console.WriteLine ("Indoor? " + androidMapView.Map.IsIndoorEnabled.ToString ());
+				Console.WriteLine ("Indoor? " + androidMapView.Map.IsIndoorEnabled);
 			}
 		}
 
