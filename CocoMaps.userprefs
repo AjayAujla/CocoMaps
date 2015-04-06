@@ -1,10 +1,13 @@
 ﻿<Properties StartupItem="CocoMaps.Android\CocoMaps.Android.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.62604414" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Controllers\Repositories\BuildingRepository.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared\Models\Campus.cs">
     <Files>
-      <File FileName="CocoMaps.Shared\Controllers\Repositories\BuildingRepository.cs" Line="4" Column="4" />
-      <File FileName="CocoMaps.Shared\Models\Service.cs" Line="18" Column="18" />
-      <File FileName="CocoMaps.Shared\Models\Department.cs" Line="16" Column="16" />
+      <File FileName="CocoMaps.Shared\Models\Indoor\Vertex.cs" Line="1" Column="1" />
+      <File FileName="UnitTesting.Shared\BuildingTest.cs" Line="49" Column="49" />
+      <File FileName="CocoMaps.Shared\Models\Building.cs" Line="8" Column="8" />
+      <File FileName="UnitTesting.Shared\CalendarModelTest.cs" Line="38" Column="38" />
+      <File FileName="UnitTesting.Shared\CampusTest.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared\Models\Campus.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -14,7 +17,6 @@
   <DisabledProjects>
     <String>CocoMaps.iOS\CocoMaps.iOS.csproj</String>
     <String>UnitTesting.Android\UnitTesting.Android.csproj</String>
-    <String>UnitTesting.Shared\UnitTesting.Shared.csproj</String>
     <String>ModelingProject1/ClassDiagrams.modelproj</String>
   </DisabledProjects>
 </Properties>
