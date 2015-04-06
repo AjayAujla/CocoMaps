@@ -135,4 +135,4 @@ namespace CocoMaps.Shared
 		public string status { get; set; }
 	}
 
-} 
+}
