@@ -79,6 +79,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\FAQ\FAQpage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Maps\IndoorMap.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\IndoorMapPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\CalendarConnect.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\CalendarViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\IndoorLocationViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />

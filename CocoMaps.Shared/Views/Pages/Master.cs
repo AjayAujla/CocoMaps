@@ -106,9 +106,7 @@ namespace CocoMaps.Shared
 			SetValue (Page.TitleProperty, "CocoMaps");
 			SetValue (Page.IconProperty, menuItem.Icon);
 
-			map = new ConcordiaMap {
-				IsShowingUser = true
-			};
+			map = ConcordiaMap.getInstance;
 
 			map.MoveToRegion (MapSpan.FromCenterAndRadius (Campus.SGWPosition, Xamarin.Forms.Maps.Distance.FromKilometers (0.2)));
 

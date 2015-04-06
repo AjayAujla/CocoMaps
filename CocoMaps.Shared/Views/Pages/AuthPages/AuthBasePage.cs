@@ -2,7 +2,7 @@
 
 namespace CocoMaps.Shared
 {
-	public class AuthBasePage : TabbedPage
+	public class AuthBasePage : ContentPage
 	{
 		protected override void OnAppearing ()
 		{

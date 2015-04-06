@@ -7,6 +7,7 @@ using CocoMaps.Shared;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
+using CocoMaps.Indoor;
 
 [assembly: ExportRenderer (typeof(IndoorMap), typeof(CocoMapsAndroid.IndoorMapRenderer))]
 
@@ -39,7 +40,6 @@ namespace CocoMapsAndroid
 		void HandleMarkerClick (object sender, GoogleMap.MarkerClickEventArgs e)
 		{
 			Building building;
-			BookmarkItems bookmark;
 
 			if (MarkerBuilding.TryGetValue (e.Marker.Id, out building))
 				DetailsViewModel.getInstance.UpdateView (building);
@@ -85,23 +85,68 @@ namespace CocoMapsAndroid
 				androidMapView = (MapView)Control;
 
 				androidMapView.Map.UiSettings.MyLocationButtonEnabled = true;
-				androidMapView.Map.UiSettings.CompassEnabled = false;
+				androidMapView.Map.UiSettings.CompassEnabled = true;
 				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
 				androidMapView.Map.UiSettings.ZoomControlsEnabled = true;
+				androidMapView.Map.SetIndoorEnabled (true);
 
-				androidMapView.Map.IndoorLevelActivated += (lsender, le) => {
-					if (androidMapView.Map.FocusedBuilding != null)
-						Console.WriteLine ("IndoorLevelActivated: " + androidMapView.Map.FocusedBuilding.ActiveLevelIndex);
-				};
+//				androidMapView.Map.IndoorLevelActivated += (lsender, le) => {
+//					if (androidMapView.Map.FocusedBuilding != null)
+//						Console.WriteLine ("IndoorLevelActivated: " + androidMapView.Map.FocusedBuilding.ActiveLevelIndex);
+//				};
+//
+//				androidMapView.Map.IndoorBuildingFocused += (lsender, le) => {
+//					if (androidMapView.Map.FocusedBuilding != null) {
+//						Console.WriteLine ("IndoorBuildingFocused: " + androidMapView.Map.FocusedBuilding.Levels);
+//						foreach (IndoorLevel Level in androidMapView.Map.FocusedBuilding.Levels) {
+//							Console.WriteLine (Level.ShortName + " - " + Level.Name);
+//							Level.Activate ();
+//						}
+//					}
+//				};
 
-				androidMapView.Map.IndoorBuildingFocused += (lsender, le) => {
-					if (androidMapView.Map.FocusedBuilding != null) {
-						Console.WriteLine ("IndoorBuildingFocused: " + androidMapView.Map.FocusedBuilding.Levels);
-						foreach (IndoorLevel Level in androidMapView.Map.FocusedBuilding.Levels) {
-							Console.WriteLine (Level.ShortName + " - " + Level.Name);
-							Level.Activate ();
+				IndoorLocationViewModel indoorLocationViewModel = IndoorLocationViewModel.getInstance;
+				indoorLocationViewModel.StartButton.Clicked += async (startButtonSender, startButtonEvent) => {
+
+					Vertex _originClass;
+					Vertex _destinationClass;
+
+
+					// If both Start and End are specified, and they are not the same
+					if (indoorLocationViewModel.Start != null && indoorLocationViewModel.End != null
+					    && !indoorLocationViewModel.Start.Equals (indoorLocationViewModel.End)) {
+
+						String pickedOption = indoorLocationViewModel.Start;
+						int dashIndex = pickedOption.IndexOf ('-');
+						pickedOption = pickedOption.Substring (dashIndex + 1);
+						pickedOption = pickedOption.Trim ();
+
+						Console.WriteLine (pickedOption);
+
+						Console.WriteLine ("PICKED OPTION:" + pickedOption);
+
+						Indoor_H.getInstance.Vertices.TryGetValue (pickedOption, out _originClass);
+
+						pickedOption = indoorLocationViewModel.End;
+						dashIndex = pickedOption.IndexOf ('-');
+						pickedOption = pickedOption.Substring (dashIndex + 1);
+						pickedOption = pickedOption.Trim ();
+
+						Console.WriteLine ("PICKED OPTION:" + pickedOption);
+
+						Indoor_H.getInstance.Vertices.TryGetValue (pickedOption, out _destinationClass);
+
+						if (_originClass != null && _destinationClass != null) {
+
+							_startPin.Position = new LatLng (_originClass.lat, _originClass.lon);
+							_endPin.Position = new LatLng (_destinationClass.lat, _destinationClass.lon);
+
+							// Move map to destination class and zoom in it
+							androidMapView.Map.MoveCamera (CameraUpdateFactory.NewLatLngZoom (new LatLng (_destinationClass.lat, _destinationClass.lon), 45));
 						}
+
 					}
+
 				};
 
 				// Initializing Start and End Markers, and directions' Polyline
@@ -128,6 +173,8 @@ namespace CocoMapsAndroid
 				androidMapView.Map.MarkerClick += HandleMarkerClick;
 
 				_isDrawnDone = true;
+				androidMapView.Map.SetIndoorEnabled (true);
+				Console.WriteLine ("Indoor? " + androidMapView.Map.IsIndoorEnabled.ToString ());
 			}
 		}
 

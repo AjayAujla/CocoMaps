@@ -8,7 +8,6 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
 using System.Threading.Tasks;
-using CocoMaps.Indoor;
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]
 
@@ -131,6 +130,7 @@ namespace CocoMapsAndroid
 				androidMapView.Map.UiSettings.CompassEnabled = false;
 				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
 				androidMapView.Map.UiSettings.ZoomControlsEnabled = true;
+				androidMapView.Map.SetIndoorEnabled (true);
 
 				List<Position> convert = new List<Position> {
 					new Position (45.4978449847816, -73.57933335006237),
@@ -260,11 +260,6 @@ namespace CocoMapsAndroid
 				DrawShuttlePins ();
 				DrawBuildingsPolygons ();
 
-				androidMapView.Map.UiSettings.MyLocationButtonEnabled = true;
-				androidMapView.Map.UiSettings.CompassEnabled = false;
-				androidMapView.Map.UiSettings.MapToolbarEnabled = true;
-				androidMapView.Map.UiSettings.ZoomControlsEnabled = true;
-
 				Button BookmarksButton = MasterPage._BookmarksButton;
 
 				bool bookmarksBool = false;
@@ -385,6 +380,7 @@ namespace CocoMapsAndroid
 				};
 				androidMapView.Map.MarkerClick += HandleMarkerClick;
 
+				androidMapView.Map.SetIndoorEnabled (true);
 				_isDrawnDone = true;
 			}
 		}

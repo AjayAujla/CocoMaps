@@ -1,13 +1,20 @@
 ﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus6V" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android/Renderers/ConcordiaMapRenderer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared/Views/Pages/Menu.cs">
     <Files>
       <File FileName="CocoMaps.Shared/Controllers/Helpers/GoogleUtil.cs" Line="1" Column="1" />
       <File FileName="CocoMaps.Shared/Controllers/ShuttleBus/ShuttleBusPolyline.cs" Line="1" Column="1" />
       <File FileName="CocoMaps.Shared/Views/ViewsModel/DirectionsViewModel.cs" Line="1" Column="1" />
       <File FileName="CocoMaps.Shared/Views/ViewsModel/DetailsViewModel.cs" Line="1" Column="1" />
       <File FileName="CocoMaps.Shared/Controllers/Helpers/Colors.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Android/Renderers/ConcordiaMapRenderer.cs" Line="450" Column="62" />
+      <File FileName="CocoMaps.Android/Renderers/ConcordiaMapRenderer.cs" Line="436" Column="4" />
+      <File FileName="CocoMaps.Shared/Controllers/Maps/IndoorMap.cs" Line="10" Column="4" />
+      <File FileName="CocoMaps.Shared/Controllers/Maps/ConcordiaMap.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Android/Renderers/IndoorMapRenderer.cs" Line="206" Column="5" />
+      <File FileName="CocoMaps.Shared/Views/Pages/IndoorMapPage.cs" Line="236" Column="2" />
+      <File FileName="CocoMaps.Shared/Views/Pages/Master.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/Views/Pages/Menu.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/Views/Pages/Root.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
