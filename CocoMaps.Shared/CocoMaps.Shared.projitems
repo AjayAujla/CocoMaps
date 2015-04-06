@@ -77,6 +77,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\FAQ\FAQJsonClasses.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\FAQItems.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\FAQ\FAQpage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Maps\IndoorMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\IndoorMapPage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
