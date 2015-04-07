@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
 using CocoMaps.Indoor;
+using Dijkstra;
 
 [assembly: ExportRenderer (typeof(IndoorMap), typeof(CocoMapsAndroid.IndoorMapRenderer))]
 
@@ -108,8 +109,8 @@ namespace CocoMapsAndroid
 				IndoorLocationViewModel indoorLocationViewModel = IndoorLocationViewModel.getInstance;
 				indoorLocationViewModel.StartButton.Clicked += async (startButtonSender, startButtonEvent) => {
 
-					Vertex _originClass;
-					Vertex _destinationClass;
+					Node _originClass;
+					Node _destinationClass;
 
 
 					// If both Start and End are specified, and they are not the same
@@ -125,7 +126,7 @@ namespace CocoMapsAndroid
 
 						Console.WriteLine ("PICKED OPTION:" + pickedOption);
 
-						Indoor_H.getInstance.Vertices.TryGetValue (pickedOption, out _originClass);
+						_originClass = H.getInstance.graph.Nodes [pickedOption];
 
 						pickedOption = indoorLocationViewModel.End;
 						dashIndex = pickedOption.IndexOf ('-');
@@ -134,15 +135,22 @@ namespace CocoMapsAndroid
 
 						Console.WriteLine ("PICKED OPTION:" + pickedOption);
 
-						Indoor_H.getInstance.Vertices.TryGetValue (pickedOption, out _destinationClass);
+						_destinationClass = H.getInstance.graph.Nodes [pickedOption];
 
 						if (_originClass != null && _destinationClass != null) {
 
-							_startPin.Position = new LatLng (_originClass.lat, _originClass.lon);
-							_endPin.Position = new LatLng (_destinationClass.lat, _destinationClass.lon);
+							_startPin.Position = new LatLng (_originClass.Lat, _originClass.Lon);
+							_endPin.Position = new LatLng (_destinationClass.Lat, _destinationClass.Lon);
 
 							// Move map to destination class and zoom in it
-							androidMapView.Map.MoveCamera (CameraUpdateFactory.NewLatLngZoom (new LatLng (_destinationClass.lat, _destinationClass.lon), 18));
+							androidMapView.Map.MoveCamera (CameraUpdateFactory.NewLatLngZoom (new LatLng (_destinationClass.Lat, _destinationClass.Lon), 18));
+
+							DistanceCalculator calculator = new DistanceCalculator ();
+							var distances = calculator.CalculateDistances (H.getInstance.graph, _originClass.Name);
+
+							foreach (var d in distances)
+								Console.WriteLine ("{0}, {1}", d.Key, d.Value);
+							
 						}
 
 					}

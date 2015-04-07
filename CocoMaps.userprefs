@@ -1,20 +1,26 @@
 ﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus6V" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared/Views/Pages/Menu.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Shared/Controllers/Helpers/Dijkstra.cs">
     <Files>
       <File FileName="CocoMaps.Shared/Controllers/Helpers/GoogleUtil.cs" Line="1" Column="1" />
       <File FileName="CocoMaps.Shared/Controllers/ShuttleBus/ShuttleBusPolyline.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Views/ViewsModel/DirectionsViewModel.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/Views/ViewsModel/DirectionsViewModel.cs" Line="26" Column="13" />
       <File FileName="CocoMaps.Shared/Views/ViewsModel/DetailsViewModel.cs" Line="1" Column="1" />
       <File FileName="CocoMaps.Shared/Controllers/Helpers/Colors.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Android/Renderers/ConcordiaMapRenderer.cs" Line="436" Column="4" />
-      <File FileName="CocoMaps.Shared/Controllers/Maps/IndoorMap.cs" Line="10" Column="4" />
-      <File FileName="CocoMaps.Shared/Controllers/Maps/ConcordiaMap.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Android/Renderers/IndoorMapRenderer.cs" Line="206" Column="5" />
-      <File FileName="CocoMaps.Shared/Views/Pages/IndoorMapPage.cs" Line="236" Column="2" />
-      <File FileName="CocoMaps.Shared/Views/Pages/Master.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Android/Renderers/ConcordiaMapRenderer.cs" Line="383" Column="48" />
+      <File FileName="CocoMaps.Android/Renderers/IndoorMapRenderer.cs" Line="182" Column="26" />
+      <File FileName="CocoMaps.Shared/Views/Pages/IndoorMapPage.cs" Line="95" Column="29" />
+      <File FileName="CocoMaps.Shared/Views/Pages/Master.cs" Line="111" Column="1" />
+      <File FileName="CocoMaps.Shared/Views/Pages/Root.cs" Line="118" Column="5" />
       <File FileName="CocoMaps.Shared/Views/Pages/Menu.cs" Line="1" Column="1" />
-      <File FileName="CocoMaps.Shared/Views/Pages/Root.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/Views/Pages/Settings.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/Views/ViewsModel/MenuItems.cs" Line="31" Column="3" />
+      <File FileName="CocoMaps.Shared/Views/ViewsModel/IndoorLocationViewModel.cs" Line="109" Column="54" />
+      <File FileName="CocoMaps.Shared/Controllers/Repositories/Indoor/Indoor_H.cs" Line="16" Column="4" />
+      <File FileName="CocoMaps.Shared/Models/Indoor/Vertex.cs" Line="27" Column="3" />
+      <File FileName="CocoMaps.Shared/Controllers/Maps/ConcordiaMap.cs" Line="27" Column="3" />
+      <File FileName="CocoMaps.Android/Resources/Resource.designer.cs" Line="1" Column="1" />
+      <File FileName="CocoMaps.Shared/Controllers/Helpers/Dijkstra.cs" Line="58" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -24,6 +30,7 @@
   <DisabledProjects>
     <String>CocoMaps.iOS\CocoMaps.iOS.csproj</String>
     <String>UnitTesting.Android\UnitTesting.Android.csproj</String>
+    <String>UnitTesting.Shared\UnitTesting.Shared.csproj</String>
     <String>ModelingProject1/ClassDiagrams.modelproj</String>
   </DisabledProjects>
 </Properties>

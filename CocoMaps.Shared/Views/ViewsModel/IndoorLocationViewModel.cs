@@ -106,10 +106,11 @@ namespace CocoMaps.Shared
 
 		void Init ()
 		{
-			foreach (string s in Indoor_H.getInstance.Vertices.Keys) {
+			
+			foreach (string s in H.getInstance.graph.Nodes.Keys) {
 				if (s.Length <= 3) {   // v is a room, not an intersection
-					FromPicker.Items.Add (Indoor_H.getInstance.BuildingCode + " - " + s);
-					ToPicker.Items.Add (Indoor_H.getInstance.BuildingCode + " - " + s);
+					FromPicker.Items.Add ("H - " + s);
+					ToPicker.Items.Add ("H - " + s);
 				}
 			}
 
