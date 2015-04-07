@@ -12,7 +12,7 @@ namespace Dijkstra
 				throw new ArgumentException ("Starting node must be in graph.");
 
 			InitialiseGraph (graph, startingNode);
-			ProcessGraph (graph, startingNode);
+			ProcessGraph (graph);
 			return ExtractDistances (graph);
 		}
 
@@ -23,7 +23,7 @@ namespace Dijkstra
 			graph.Nodes [startingNode].DistanceFromStart = 0;
 		}
 
-		void ProcessGraph (Graph graph, string startingNode)
+		void ProcessGraph (Graph graph)
 		{
 			bool finished = false;
 			var queue = graph.Nodes.Values.ToList ();
@@ -43,8 +43,12 @@ namespace Dijkstra
 			var connections = node.Connections.Where (c => queue.Contains (c.Target));
 			foreach (var connection in connections) {
 				double distance = node.DistanceFromStart + connection.Distance;
-				if (distance < connection.Target.DistanceFromStart)
+
+				if (distance < connection.Target.DistanceFromStart) {
 					connection.Target.DistanceFromStart = distance;
+					connection.Target.PathFromStart = node.PathFromStart;
+					connection.Target.PathFromStart.Add (connection.Target);
+				}
 			}
 		}
 

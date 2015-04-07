@@ -9,7 +9,8 @@ namespace Dijkstra
 	[DebuggerDisplay ("Node {Name} (Connections = {_connections.Count}, Distance = {DistanceFromStart})")]
 	class Node
 	{
-		readonly IList<NodeConnection> _connections;
+		readonly List<NodeConnection> _connections;
+		readonly List<Node> _pathFromStart;
 
 		internal string Name { get; private set; }
 
@@ -19,8 +20,13 @@ namespace Dijkstra
 
 		internal double DistanceFromStart { get; set; }
 
-		internal IEnumerable<NodeConnection> Connections {
+		internal List<NodeConnection> Connections {
 			get { return _connections; }
+		}
+
+		internal List<Node> PathFromStart {
+			get { return _pathFromStart; }
+			set { }
 		}
 
 		internal Node (string name, double lat, double lon)
@@ -29,6 +35,7 @@ namespace Dijkstra
 			Lat = lat;
 			Lon = lon;
 			_connections = new List<NodeConnection> ();
+			_pathFromStart = new List<Node> ();
 		}
 
 		internal void AddConnection (Node targetNode, double distance, bool twoWay)

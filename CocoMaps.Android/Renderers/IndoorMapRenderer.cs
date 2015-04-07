@@ -143,14 +143,17 @@ namespace CocoMapsAndroid
 							_endPin.Position = new LatLng (_destinationClass.Lat, _destinationClass.Lon);
 
 							// Move map to destination class and zoom in it
-							androidMapView.Map.MoveCamera (CameraUpdateFactory.NewLatLngZoom (new LatLng (_destinationClass.Lat, _destinationClass.Lon), 18));
+							androidMapView.Map.AnimateCamera (CameraUpdateFactory.NewLatLngZoom (new LatLng (_destinationClass.Lat, _destinationClass.Lon), 18));
 
 							DistanceCalculator calculator = new DistanceCalculator ();
 							var distances = calculator.CalculateDistances (H.getInstance.graph, _originClass.Name);
 
-							foreach (var d in distances)
-								Console.WriteLine ("{0}, {1}", d.Key, d.Value);
-							
+
+							Console.WriteLine ("DISTANCE TO " + pickedOption + ": " + distances [pickedOption]);
+
+							foreach (Node n in H.getInstance.graph.Nodes[pickedOption].PathFromStart)
+								Console.WriteLine ("Node: " + n.Name);
+
 						}
 
 					}
