@@ -18,9 +18,12 @@ namespace Dijkstra
 
 		void InitialiseGraph (Graph graph, string startingNode)
 		{
-			foreach (Node node in graph.Nodes.Values)
+			foreach (Node node in graph.Nodes.Values) {
 				node.DistanceFromStart = double.PositiveInfinity;
+				node.PathFromStart.Clear ();
+			}
 			graph.Nodes [startingNode].DistanceFromStart = 0;
+			graph.Nodes [startingNode].PathFromStart.Add (graph.Nodes [startingNode]);
 		}
 
 		void ProcessGraph (Graph graph)
@@ -46,8 +49,14 @@ namespace Dijkstra
 
 				if (distance < connection.Target.DistanceFromStart) {
 					connection.Target.DistanceFromStart = distance;
-					connection.Target.PathFromStart = node.PathFromStart;
+
+					connection.Target.PathFromStart.Clear ();
+
+					foreach (Node n in node.PathFromStart)
+						connection.Target.PathFromStart.Add (n);
+
 					connection.Target.PathFromStart.Add (connection.Target);
+
 				}
 			}
 		}

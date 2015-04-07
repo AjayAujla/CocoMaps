@@ -24,9 +24,8 @@ namespace CocoMaps.Shared
 		public H ()
 		{
 
-			Console.WriteLine ("CHECKPOINT 0");
 			graph = new Graph ();
-			Console.WriteLine ("CHECKPOINT 1");
+
 			graph.AddNode ("801", 45.49734395, -73.57855484);
 			graph.AddNode ("803", 45.49729413, -73.57859373);
 			graph.AddNode ("805", 45.4972396, -73.57864469);
@@ -40,17 +39,18 @@ namespace CocoMaps.Shared
 			graph.AddNode ("819", 45.49699049, -73.57891224);
 			graph.AddNode ("821", 45.49701963, -73.57897326);
 			graph.AddNode ("823", 45.49704172, -73.57902322);
-			graph.AddNode ("820_1", 45.49705771, -73.57903797);
-			graph.AddNode ("820_2", 45.49708779, -73.57911609);
+//			graph.AddNode ("820_1", 45.49705771, -73.57903797);
+			graph.AddNode ("820", 45.49705771, -73.57903797); // has 2 doors
+//			graph.AddNode ("820_2", 45.49708779, -73.57911609);
 			graph.AddNode ("825", 45.49709719, -73.57913319);
 			graph.AddNode ("827", 45.49711834, -73.57918046);
 			graph.AddNode ("829", 45.49716158, -73.57927166);
 			graph.AddNode ("831", 45.49719824, -73.57934073);
-			graph.AddNode ("832", 45.49730212, -73.57923612);
+			graph.AddNode ("832", 45.497304, -73.57922774);
 			graph.AddNode ("833", 45.49721845, -73.57931156);
 			graph.AddNode ("835", 45.49725464, -73.57927904);
 			graph.AddNode ("837", 45.49730212, -73.57923612);
-			graph.AddNode ("837_838_841", 45.49735476, -73.57918583);
+			graph.AddNode ("832_838_841", 45.49735476, -73.57918583);
 			graph.AddNode ("838", 45.49732562, -73.57911609);
 			graph.AddNode ("841", 45.49740223, -73.57913688);
 			graph.AddNode ("843", 45.4974544, -73.57908793);
@@ -72,7 +72,6 @@ namespace CocoMaps.Shared
 			graph.AddNode ("867", 45.49734959, -73.57854344);
 			graph.AddNode ("806_838_862", 45.49721046, -73.57888877);
 
-			Console.WriteLine ("CHECKPOINT 2");
 
 			graph.AddConnection ("801", "803");
 			graph.AddConnection ("803", "805");
@@ -86,28 +85,32 @@ namespace CocoMaps.Shared
 			graph.AddConnection ("817", "819");
 			graph.AddConnection ("819", "821");
 			graph.AddConnection ("821", "823");
-			graph.AddConnection ("820_1", "821");
-			graph.AddConnection ("820_1", "823");
-			graph.AddConnection ("820_1", "825");
-			graph.AddConnection ("820_2", "823");
-			graph.AddConnection ("820_2", "825");
+//			graph.AddConnection ("820_1", "821");
+//			graph.AddConnection ("820_1", "823");
+//			graph.AddConnection ("820_1", "825");
+			graph.AddConnection ("820", "821"); // has 2 doors
+			graph.AddConnection ("820", "823"); // has 2 doors
+			graph.AddConnection ("820", "825"); // has 2 doors
+//			graph.AddConnection ("820_2", "823");
+//			graph.AddConnection ("820_2", "825");
 			graph.AddConnection ("823", "825");
 			graph.AddConnection ("825", "827");
 			graph.AddConnection ("827", "829");
 			graph.AddConnection ("829", "831");
 			graph.AddConnection ("831", "833");
-			graph.AddConnection ("832", "835");
+			graph.AddConnection ("832", "837");
 			graph.AddConnection ("833", "835");
 			graph.AddConnection ("835", "837");
-			graph.AddConnection ("837", "837_838_841");
-			graph.AddConnection ("838", "837_838_841");
-			graph.AddConnection ("841", "837_838_841");
+			graph.AddConnection ("832", "832_838_841");
+			graph.AddConnection ("838", "832_838_841");
+			graph.AddConnection ("841", "832_838_841");
 			graph.AddConnection ("841", "843");
 			graph.AddConnection ("843", "845");
 			graph.AddConnection ("845", "847");
 			graph.AddConnection ("847", "849");
 			graph.AddConnection ("849", "851");
 			graph.AddConnection ("851", "853");
+			graph.AddConnection ("852", "853");
 			graph.AddConnection ("852", "854");
 			graph.AddConnection ("854", "855");
 			graph.AddConnection ("855", "857");
@@ -122,8 +125,6 @@ namespace CocoMaps.Shared
 			graph.AddConnection ("806", "806_838_862");
 			graph.AddConnection ("838", "806_838_862");
 			graph.AddConnection ("862", "806_838_862");
-
-			Console.WriteLine ("CHECKPOINT 3");
 
 		}
 	}

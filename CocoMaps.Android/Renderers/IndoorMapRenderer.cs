@@ -7,7 +7,6 @@ using CocoMaps.Shared;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
-using CocoMaps.Indoor;
 using Dijkstra;
 
 [assembly: ExportRenderer (typeof(IndoorMap), typeof(CocoMapsAndroid.IndoorMapRenderer))]
@@ -32,6 +31,8 @@ namespace CocoMapsAndroid
 
 
 		PolylineOptions polylineOptions;
+		Android.Gms.Maps.Model.Polyline polyline;
+
 
 		// used to map Markers' ID (a string) to their representative object
 		Dictionary<String, Building> MarkerBuilding = new Dictionary<String, Building> ();
@@ -124,7 +125,7 @@ namespace CocoMapsAndroid
 
 						Console.WriteLine (pickedOption);
 
-						Console.WriteLine ("PICKED OPTION:" + pickedOption);
+						Console.WriteLine ("Origin Class:" + pickedOption);
 
 						_originClass = H.getInstance.graph.Nodes [pickedOption];
 
@@ -133,7 +134,7 @@ namespace CocoMapsAndroid
 						pickedOption = pickedOption.Substring (dashIndex + 1);
 						pickedOption = pickedOption.Trim ();
 
-						Console.WriteLine ("PICKED OPTION:" + pickedOption);
+						Console.WriteLine ("Destintion Class:" + pickedOption);
 
 						_destinationClass = H.getInstance.graph.Nodes [pickedOption];
 
@@ -151,8 +152,23 @@ namespace CocoMapsAndroid
 
 							Console.WriteLine ("DISTANCE TO " + pickedOption + ": " + distances [pickedOption]);
 
+//							foreach (Node n in H.getInstance.graph.Nodes[pickedOption].PathFromStart)
+//								Console.WriteLine ("Node: " + n.Name);
+
+							if (polylineOptions == null)
+								polylineOptions = new PolylineOptions ();
+							else
+								polylineOptions.Points.Clear ();
+							
+							polylineOptions.InvokeColor (unchecked((int)0xFF932439)).InvokeWidth (10);
+
 							foreach (Node n in H.getInstance.graph.Nodes[pickedOption].PathFromStart)
-								Console.WriteLine ("Node: " + n.Name);
+								polylineOptions.Add (new LatLng (n.Lat, n.Lon));
+
+							if (polyline != null)
+								polyline.Remove ();
+							
+							polyline = androidMapView.Map.AddPolyline (polylineOptions);
 
 						}
 
