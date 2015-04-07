@@ -12,7 +12,7 @@ namespace CocoMaps.Shared
 		MasterPage pMaster;
 		ConcordiaServices pServices;
 		Bookmark pBookmark;
-		//IndoorDirections pIndoorDirections;
+		IndoorMapPage pIndoorMapPage;
 		CalendarConnect pCalendar;
 		BaseShuttleBus pShuttleBus;
 		ShuttleBusTracker pShuttleBusTracker;
@@ -51,13 +51,24 @@ namespace CocoMaps.Shared
 
 			string pageTitle = menuOption.Title;
 
-			if (pageTitle.Equals ("Concordia Services")) {
+			if (pageTitle.Equals ("Indoor Directions")) {
+
+				// Hide top bar for map page only
+				#if __ANDROID__
+				Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Never);
+				#endif
+				if ((pIndoorMapPage == null)) {
+					pIndoorMapPage = new IndoorMapPage (menuOption);
+				}
+				return pIndoorMapPage;
+
+			} else if (pageTitle.Equals ("Concordia Services")) {
 				if ((pServices == null)) {
 					pServices = new ConcordiaServices (menuOption);
 				}
 				return pServices;
-			} 
-			if (pageTitle.Equals ("Bookmarks")) {
+
+			} else if (pageTitle.Equals ("Bookmarks")) {
 				pBookmark = new Bookmark (menuOption);
 				return pBookmark;
 			} else if (pageTitle.Equals ("Calendar")) {
@@ -65,26 +76,31 @@ namespace CocoMaps.Shared
 					pCalendar = new CalendarConnect (menuOption);
 				}
 				return  pCalendar;
+
 			} else if (pageTitle.Equals ("Shuttle Bus")) {
 				if ((pShuttleBus == null)) {
 					pShuttleBus = new BaseShuttleBus (menuOption);
 				}
 				return pShuttleBus;
+
 			} else if (pageTitle.Equals ("Shuttle Bus Tracker")) {
 				if ((pShuttleBusTracker == null)) {
 					pShuttleBusTracker = new ShuttleBusTracker (menuOption);
 				}
 				return pShuttleBusTracker;
+
 			} else if (pageTitle.Equals ("Settings")) {
 				if ((pSettings == null)) {
 					pSettings = new Settings (menuOption);
 				}
 				return pSettings;
+
 			} else if (pageTitle.Equals ("FAQ")) {
 				if ((pFAQ == null)) {
 					pFAQ = new FAQ (menuOption);
 				}
 				return pFAQ;
+
 			} else if (pageTitle.Equals ("Exit Application")) {
 				/*if (Device.OS == TargetPlatform.Android) {
 					App.CloseApp ();
@@ -92,12 +108,13 @@ namespace CocoMaps.Shared
 				return null;*/
 				System.Environment.Exit (0);
 				return null;
+
 			} else { 
 				// return the main map page if no other option is found
 				/*if (string.IsNullOrEmpty (pageTitle) || pageTitle.Equals ("Campus Maps"))*/
-				if ((pMaster == null)) {
+				if ((pMaster == null))
 					pMaster = new MasterPage (menuOption);
-				}
+				
 
 				// Hide top bar for map page only
 				#if __ANDROID__

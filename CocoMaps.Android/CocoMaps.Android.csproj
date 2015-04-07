@@ -132,6 +132,7 @@
     <Compile Include="Files\GeoLocation\Geolocator.cs" />
     <Compile Include="Orm\SQLite.cs" />
     <Compile Include="Orm\SQLiteAsync.cs" />
+    <Compile Include="Renderers\IndoorMapRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
