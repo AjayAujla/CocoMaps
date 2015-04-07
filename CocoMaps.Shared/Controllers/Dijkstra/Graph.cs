@@ -22,11 +22,9 @@ namespace Dijkstra
 
 		public void AddConnection (string fromNode, string toNode, bool twoWay = true)
 		{
-			Console.WriteLine ("GRAPH1");
+			
 			double distance = ConnectionDistance (Nodes [fromNode], Nodes [toNode]);
-			Console.WriteLine ("GRAPH2: " + distance);
 			Nodes [fromNode].AddConnection (Nodes [toNode], distance, twoWay);
-			Console.WriteLine ("GRAPH3");
 		}
 
 		double ConnectionDistance (Node n1, Node n2)
@@ -34,7 +32,6 @@ namespace Dijkstra
 
 			// Using Pythagore to calculate distance between coordinates
 			double XDist = Math.Abs (n1.Lat - n2.Lat);
-			Console.WriteLine (n1.Name + " - " + n2.Name);
 			double YDist = Math.Abs (n1.Lon - n2.Lon);
 			double XDist2 = Math.Pow (XDist, 2);
 			double YDist2 = Math.Pow (YDist, 2);

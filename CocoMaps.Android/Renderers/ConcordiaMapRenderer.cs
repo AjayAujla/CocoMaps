@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Forms.Maps.Android;
 using System.Threading.Tasks;
+using Dijkstra;
 
 [assembly: ExportRenderer (typeof(ConcordiaMap), typeof(CocoMapsAndroid.ConcordiaMapRenderer))]
 
@@ -36,6 +37,7 @@ namespace CocoMapsAndroid
 		Marker _endPin;
 
 		List<Android.Gms.Maps.Model.Polyline> polylines = new List<Android.Gms.Maps.Model.Polyline> ();
+		Android.Gms.Maps.Model.Polyline indoorPolyline;
 		List<Directions> directions = new List<Directions> ();
 		Directions totalDirections;
 
@@ -141,20 +143,20 @@ namespace CocoMapsAndroid
 
 				Console.WriteLine ("Decoded Points: " + GoogleUtil.Encode (convert));
 
-				androidMapView.Map.IndoorLevelActivated += (lsender, le) => {
-					if (androidMapView.Map.FocusedBuilding != null)
-						Console.WriteLine ("IndoorLevelActivated: " + androidMapView.Map.FocusedBuilding.ActiveLevelIndex);
-				};
-
-				androidMapView.Map.IndoorBuildingFocused += (lsender, le) => {
-					if (androidMapView.Map.FocusedBuilding != null) {
-						Console.WriteLine ("IndoorBuildingFocused: " + androidMapView.Map.FocusedBuilding.Levels);
-						foreach (IndoorLevel Level in androidMapView.Map.FocusedBuilding.Levels) {
-							Console.WriteLine (Level.ShortName + " - " + Level.Name);
-							Level.Activate ();
-						}
-					}
-				};
+//				androidMapView.Map.IndoorLevelActivated += (lsender, le) => {
+//					if (androidMapView.Map.FocusedBuilding != null)
+//						Console.WriteLine ("IndoorLevelActivated: " + androidMapView.Map.FocusedBuilding.ActiveLevelIndex);
+//				};
+//
+//				androidMapView.Map.IndoorBuildingFocused += (lsender, le) => {
+//					if (androidMapView.Map.FocusedBuilding != null) {
+//						Console.WriteLine ("IndoorBuildingFocused: " + androidMapView.Map.FocusedBuilding.Levels);
+//						foreach (IndoorLevel Level in androidMapView.Map.FocusedBuilding.Levels) {
+//							Console.WriteLine (Level.ShortName + " - " + Level.Name);
+//							Level.Activate ();
+//						}
+//					}
+//				};
 
 				// Initializing Start and End Markers, and directions' Polyline
 				using (MarkerOptions mo = new MarkerOptions ()) {
@@ -308,6 +310,81 @@ namespace CocoMapsAndroid
 					}
 				};
 
+				IndoorLocationViewModel indoorLocationViewModel = IndoorLocationViewModel.getInstance;
+				indoorLocationViewModel.StartButton.Clicked += async (startButtonSender, startButtonEvent) => {
+
+					Node _originClass;
+					Node _destinationClass;
+
+
+					// If both Start and End are specified, and they are not the same
+					if (indoorLocationViewModel.Start != null && indoorLocationViewModel.End != null
+					    && !indoorLocationViewModel.Start.Equals (indoorLocationViewModel.End)) {
+
+						String pickedOption = indoorLocationViewModel.Start;
+						int dashIndex = pickedOption.IndexOf ('-');
+						pickedOption = pickedOption.Substring (dashIndex + 1);
+						pickedOption = pickedOption.Trim ();
+
+						Console.WriteLine (pickedOption);
+
+						Console.WriteLine ("Origin Class:" + pickedOption);
+
+						_originClass = H.getInstance.graph.Nodes [pickedOption];
+
+						pickedOption = indoorLocationViewModel.End;
+						dashIndex = pickedOption.IndexOf ('-');
+						pickedOption = pickedOption.Substring (dashIndex + 1);
+						pickedOption = pickedOption.Trim ();
+
+						Console.WriteLine ("Destintion Class:" + pickedOption);
+
+						_destinationClass = H.getInstance.graph.Nodes [pickedOption];
+
+						if (_originClass != null && _destinationClass != null) {
+
+							_startPin.Position = new LatLng (_originClass.Lat, _originClass.Lon);
+							_endPin.Position = new LatLng (_destinationClass.Lat, _destinationClass.Lon);
+
+							// Move map to destination class and zoom in it
+							androidMapView.Map.AnimateCamera (CameraUpdateFactory.NewLatLngZoom (new LatLng (_destinationClass.Lat, _destinationClass.Lon), 18));
+
+							DistanceCalculator calculator = new DistanceCalculator ();
+							var distances = calculator.CalculateDistances (H.getInstance.graph, _originClass.Name);
+
+
+							Console.WriteLine ("DISTANCE TO " + pickedOption + ": " + distances [pickedOption]);
+
+							//							foreach (Node n in H.getInstance.graph.Nodes[pickedOption].PathFromStart)
+							//								Console.WriteLine ("Node: " + n.Name);
+
+							if (polylineOptions == null)
+								polylineOptions = new PolylineOptions ();
+							else
+								polylineOptions.Points.Clear ();
+
+							polylineOptions.InvokeColor (unchecked((int)0xFF932439)).InvokeWidth (10);
+
+							foreach (Node n in H.getInstance.graph.Nodes[pickedOption].PathFromStart)
+								polylineOptions.Add (new LatLng (n.Lat, n.Lon));
+
+							ResetPolylines ();
+
+							polylines.Add (androidMapView.Map.AddPolyline (polylineOptions));
+
+							if (androidMapView.Map.FocusedBuilding != null) {
+								Console.WriteLine ("IndoorBuildingFocused: " + androidMapView.Map.FocusedBuilding.Levels);
+								foreach (IndoorLevel Level in androidMapView.Map.FocusedBuilding.Levels) {
+									if (Level.ShortName.Equals ("8"))
+										Level.Activate ();
+								}
+							}
+
+						}
+
+					}
+
+				};
 
 				Button NextClassButton = MasterPage.NextClassAlertEventButton;
 
