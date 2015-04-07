@@ -8,13 +8,22 @@ namespace CocoMaps.Indoor
 	{
 
 		// Label
-		readonly string id;
+		public string id {
+			get;
+			set;
+		}
 
 		// Vertical location on screen
-		double lat;
+		public double lat {
+			get;
+			set;
+		}
 
 		// Horizontal location on screen
-		double lon;
+		public double lon {
+			get;
+			set;
+		}
 
 		// distance it costs to arrive to this vertex, starting from first one
 		public double Cost {
@@ -39,6 +48,8 @@ namespace CocoMaps.Indoor
 			this.lon = lon;
 
 			Cost = -1;
+
+			AdjacentVertices = new List<Vertex> ();
 
 		}
 

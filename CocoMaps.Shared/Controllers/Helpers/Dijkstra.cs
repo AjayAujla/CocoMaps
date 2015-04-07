@@ -7,6 +7,9 @@ namespace CocoMaps.Indoor
 	class Dijkstra
 	{
 
+		public Vertex Start;
+		public Vertex End;
+
 		public List<Vertex> Path;
 
 		// Constructor
@@ -22,6 +25,10 @@ namespace CocoMaps.Indoor
 		// Dijkstra calculation algorithm
 		public void Execute (Vertex start, Vertex end)
 		{
+
+			if (Start == null)
+				Start = start;
+			
 			Console.WriteLine (start);
 
 			foreach (Vertex adjacent in start.AdjacentVertices) {
@@ -31,17 +38,27 @@ namespace CocoMaps.Indoor
 				if (adjacent == end)
 					return;
 
-				double cost = start.Cost + start.DistanceFrom (adjacent);
+				double costFromStart = start.Cost + start.DistanceFrom (adjacent);
 
-				if (adjacent.Cost == -1 || adjacent.Cost > cost)
-					adjacent.Cost = cost;
-				
+				if (adjacent.Cost == -1 || adjacent.Cost > costFromStart)
+					adjacent.Cost = costFromStart;
 
-				Execute (adjacent, end);
-
+				if (!adjacent.id.Equals (End.id))
+					Execute (adjacent, end);
+//				else
+//					GetPath ();
 			}
 
 		}
+
+		//		List<Vertex> GetPath ()
+		//		{
+		//
+		//			foreach (Vertex v in Start.AdjacentVertices) {
+		//
+		//			}
+		//
+		//		}
 
 	}
 

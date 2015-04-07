@@ -3,13 +3,12 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Shared;
-using Google;
 
 namespace CocoMaps.Shared
 {
-	public class MasterPage : ContentPage
+	public class IndoorMapPage : ContentPage
 	{
-		readonly ConcordiaMap map;
+		IndoorMap map;
 		RelativeLayout mainLayout;
 
 		Label networkStatus = new Label {
@@ -19,10 +18,10 @@ namespace CocoMaps.Shared
 		BuildingRepository buildingRepo = BuildingRepository.getInstance;
 		LoaderViewModel loaderView = LoaderViewModel.getInstance;
 		DetailsViewModel detailsLayout = DetailsViewModel.getInstance;
-		DirectionsViewModel directionsViewModel = DirectionsViewModel.getInstance;
+		IndoorLocationViewModel indoorLocationViewModel = IndoorLocationViewModel.getInstance;
 
 		static Button _testButton = new Button {
-			Text = "Directions",
+			Text = "Class Locator",
 			HeightRequest = 40,
 			BackgroundColor = Color.White,
 			Opacity = 0.7,
@@ -62,20 +61,6 @@ namespace CocoMaps.Shared
 			}
 		}
 
-		public static Button NextButtonAlert = new Button { Text = "Next Class", 
-			HeightRequest = 40,
-			BackgroundColor = Color.White,
-			Opacity = 0.7,
-			BorderRadius = 0
-		};
-
-		public static Button NextClassAlertEventButton = new Button { Text = "NextClassEvent", 
-			HeightRequest = 30,
-			BackgroundColor = Color.White,
-			Opacity = 0.7,
-			BorderRadius = 0
-		};
-
 		public Button SearchButton {
 			get {
 				if (_SearchButton == null) {
@@ -92,7 +77,7 @@ namespace CocoMaps.Shared
 			}
 		}
 
-		public MasterPage (IMenuOptions menuItem)
+		public IndoorMapPage (IMenuOptions menuItem)
 		{
 			RelativeLayout test = new RelativeLayout {
 				BackgroundColor = Color.Blue,
@@ -103,11 +88,12 @@ namespace CocoMaps.Shared
 			var viewModel = new MasterViewModel ();
 			BindingContext = viewModel;
 
-			SetValue (Page.TitleProperty, "CocoMaps");
+			SetValue (Page.TitleProperty, "Indoor Directions");
 			SetValue (Page.IconProperty, menuItem.Icon);
 
-			map = ConcordiaMap.getInstance;
+			map = new IndoorMap ();
 			map.IsShowingUser = true;
+
 
 			map.MoveToRegion (MapSpan.FromCenterAndRadius (Campus.SGWPosition, Xamarin.Forms.Maps.Distance.FromKilometers (0.2)));
 
@@ -154,25 +140,6 @@ namespace CocoMaps.Shared
 				}
 			};
 
-			NextButtonAlert.Clicked += async (sender, e) => {
-
-				NextClassFunc NCF = new NextClassFunc ();
-
-				CalendarItems CI = NCF.getNextClassItem ();
-
-				string ClassDetails = "Class : " + CI.Title1 + "\r\n" + "Time : " + CI.Day + " " + "(" + CI.StartTime + " - " + CI.EndTime + ")" + "\r\n" + "Location : " + CI.Room + "\r\n";
-
-				var NextClassInput = await DisplayAlert ("Get Directions To Next Class", ClassDetails, "Cancel", "Proceed");
-
-				if (NextClassInput.ToString ().ToLower () == "false") {
-					// Make a property change to trigger event
-					NextClassAlertEventButton.BackgroundColor = Color.Black;
-
-				} else {
-					// Cancel- Do Nothing
-				}
-			};
-
 			mainLayout = new RelativeLayout {
 				BackgroundColor = Color.Transparent,
 				WidthRequest = App.ScreenSize.Width,
@@ -192,12 +159,7 @@ namespace CocoMaps.Shared
 			};
 
 			TestButton.Clicked += async (sender, e) => {
-				DirectionsViewModel d = DirectionsViewModel.getInstance;
-				d.Expand ();
-				//string r = Host.PingHost ("googleapis.com");
-
-//				bool r = await DependencyService.Get<INetwork> ().IsReachable ("googleapis.com", new TimeSpan (5));
-				//await DisplayAlert ("Network Connection:", r, "Whatever");
+				indoorLocationViewModel.Expand ();
 			};
 
 			mainLayout.Children.Add (map,
@@ -213,9 +175,7 @@ namespace CocoMaps.Shared
 			mainLayout.Children.Add (sidebarSlideImage, 
 				Constraint.Constant (0), 
 				Constraint.RelativeToParent (parent => Height / 2 - 50));
-
-			mainLayout.Children.Add (_POIButton, Constraint.Constant (150), Constraint.RelativeToParent (parent => Height - 54));
-			mainLayout.Children.Add (_BookmarksButton, Constraint.Constant (220), Constraint.RelativeToParent (parent => Height - 54));
+			
 			mainLayout.Children.Add (TestButton, Constraint.Constant (64), Constraint.Constant (14));
 			//mainLayout.Children.Add (searchBar, Constraint.Constant (0));
 			mainLayout.Children.Add (SGWButton, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 54));
@@ -226,16 +186,7 @@ namespace CocoMaps.Shared
 			mainLayout.Children.Add (SearchButton, Constraint.Constant (14), Constraint.Constant (14));
 			mainLayout.Children.Add (SearchPicker, Constraint.Constant (0), Constraint.Constant (0));
 
-			mainLayout.Children.Add (NextButtonAlert, Constraint.RelativeToParent (parent => Width - 160), Constraint.Constant (10));
-			mainLayout.Children.Add (networkStatus, Constraint.Constant (15), Constraint.RelativeToParent (parent => Height - 80));
-			mainLayout.Children.Add (detailsLayout,
-				Constraint.Constant (0),
-				Constraint.RelativeToParent (parent => Height),
-				Constraint.RelativeToParent (parent => Width),
-				Constraint.RelativeToParent (parent => Height - 30)
-			);
-
-			mainLayout.Children.Add (directionsViewModel,
+			mainLayout.Children.Add (indoorLocationViewModel,
 				Constraint.Constant (0),
 				Constraint.RelativeToParent (parent => -Height),
 				Constraint.RelativeToParent (parent => Width),
@@ -243,21 +194,6 @@ namespace CocoMaps.Shared
 
 			Content = mainLayout;
 		}
-
-		void HandleTextChanged (object sender, TextChangedEventArgs e)
-		{
-			var s = sender as SearchBar;
-			Console.WriteLine (s.Text);
-		}
-
-		// Makes the app crash for some reason...
-		//		public async static Task<bool> DisplayAlert (String Title, String message, String accept, String cancel)
-		//		{
-		//			Page p = new Page ();
-		//			var action = await p.DisplayAlert (Title, message, accept, cancel);
-		//			Console.WriteLine ("DisplayAlert: " + action);
-		//			return action;
-		//		}
 
 		void HandleCampusRegionButton (object sender, EventArgs e)
 		{

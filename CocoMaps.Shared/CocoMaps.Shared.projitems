@@ -77,8 +77,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\FAQ\FAQJsonClasses.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\FAQItems.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\FAQ\FAQpage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Maps\IndoorMap.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\IndoorMapPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\CalendarConnect.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\Calendar\CalendarViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Views\ViewsModel\IndoorLocationViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Dijkstra\DistanceCalculator.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Dijkstra\Graph.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Dijkstra\Node.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Dijkstra\NodeConnection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\Indoor\H8.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Views\" />
@@ -103,6 +111,7 @@
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\Bookmarks\" />
     <Folder Include="$(MSBuildThisFileDirectory)Views\Pages\FAQ\" />
     <Folder Include="$(MSBuildThisFileDirectory)Controllers\FAQ\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\Dijkstra\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Controllers\Repositories\LocalCalendar.json" />
