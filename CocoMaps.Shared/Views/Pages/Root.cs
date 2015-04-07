@@ -27,6 +27,8 @@ namespace CocoMaps.Shared
 		Settings pSettings;
 		FAQ pFAQ;
 
+		public bool closeApp = false;
+
 		MenuPage MP_Options = new MenuPage { Icon = "settings.png", Title = "menu" };
 
 		public RootPage()
@@ -47,8 +49,39 @@ namespace CocoMaps.Shared
 			{
 				processRootPage(e.SelectedItem as IMenuOptions);
 			};
+				
 		}
 
+		protected override bool OnBackButtonPressed()
+		{
+
+			DisplayCloseAlert();
+
+			if (closeApp) 
+			{
+				return true;
+			}
+			else 
+			{
+				return false;
+			}
+
+		}
+
+		public async void DisplayCloseAlert()
+		{
+			var CloseAppAlert = await DisplayAlert ("Close CocoMaps?", "", "Cancel", "Proceed");
+
+			if (CloseAppAlert.ToString ().ToLower () == "false") 
+			{
+				closeApp = false;
+
+			} else {
+
+				closeApp =  true;
+			}
+		}
+			
 
 		public void processRootPage(IMenuOptions menuOption)
 		{

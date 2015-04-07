@@ -41,7 +41,7 @@ namespace CocoMaps.Android
 
 		}
 
-		public override void OnBackPressed()
+		/*public override void OnBackPressed()
 		{
 			AlertDialog.Builder CloseAlert = new AlertDialog.Builder (this);
 
@@ -68,6 +68,7 @@ namespace CocoMaps.Android
 		{
 			//Do Nothing
 		}
+		*/
 
 	}
 
