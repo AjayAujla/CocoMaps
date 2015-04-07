@@ -4,7 +4,9 @@
 	{
 		public NavRootPage ()
 		{
-			Navigation.PushModalAsync (new RootPage ());
+			RootPage RP = new RootPage();
+
+			Navigation.PushModalAsync(RP.pushMasterPage());
 		}
 	}
 }

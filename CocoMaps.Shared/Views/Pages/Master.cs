@@ -92,7 +92,7 @@ namespace CocoMaps.Shared
 			}
 		}
 
-		public MasterPage (IMenuOptions menuItem)
+		public MasterPage ()
 		{
 			RelativeLayout test = new RelativeLayout {
 				BackgroundColor = Color.Blue,
@@ -104,7 +104,7 @@ namespace CocoMaps.Shared
 			BindingContext = viewModel;
 
 			SetValue (Page.TitleProperty, "CocoMaps");
-			SetValue (Page.IconProperty, menuItem.Icon);
+			SetValue (Page.IconProperty, "ic_menu_maps.png");
 
 			map = ConcordiaMap.getInstance;
 			map.IsShowingUser = true;
