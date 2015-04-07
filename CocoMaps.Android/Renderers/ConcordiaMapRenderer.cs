@@ -143,20 +143,20 @@ namespace CocoMapsAndroid
 
 				Console.WriteLine ("Decoded Points: " + GoogleUtil.Encode (convert));
 
-				androidMapView.Map.IndoorLevelActivated += (lsender, le) => {
-					if (androidMapView.Map.FocusedBuilding != null)
-						Console.WriteLine ("IndoorLevelActivated: " + androidMapView.Map.FocusedBuilding.ActiveLevelIndex);
-				};
-
-				androidMapView.Map.IndoorBuildingFocused += (lsender, le) => {
-					if (androidMapView.Map.FocusedBuilding != null) {
-						Console.WriteLine ("IndoorBuildingFocused: " + androidMapView.Map.FocusedBuilding.Levels);
-						foreach (IndoorLevel Level in androidMapView.Map.FocusedBuilding.Levels) {
-							Console.WriteLine (Level.ShortName + " - " + Level.Name);
-							Level.Activate ();
-						}
-					}
-				};
+//				androidMapView.Map.IndoorLevelActivated += (lsender, le) => {
+//					if (androidMapView.Map.FocusedBuilding != null)
+//						Console.WriteLine ("IndoorLevelActivated: " + androidMapView.Map.FocusedBuilding.ActiveLevelIndex);
+//				};
+//
+//				androidMapView.Map.IndoorBuildingFocused += (lsender, le) => {
+//					if (androidMapView.Map.FocusedBuilding != null) {
+//						Console.WriteLine ("IndoorBuildingFocused: " + androidMapView.Map.FocusedBuilding.Levels);
+//						foreach (IndoorLevel Level in androidMapView.Map.FocusedBuilding.Levels) {
+//							Console.WriteLine (Level.ShortName + " - " + Level.Name);
+//							Level.Activate ();
+//						}
+//					}
+//				};
 
 				// Initializing Start and End Markers, and directions' Polyline
 				using (MarkerOptions mo = new MarkerOptions ()) {
@@ -371,6 +371,14 @@ namespace CocoMapsAndroid
 							ResetPolylines ();
 
 							polylines.Add (androidMapView.Map.AddPolyline (polylineOptions));
+
+							if (androidMapView.Map.FocusedBuilding != null) {
+								Console.WriteLine ("IndoorBuildingFocused: " + androidMapView.Map.FocusedBuilding.Levels);
+								foreach (IndoorLevel Level in androidMapView.Map.FocusedBuilding.Levels) {
+									if (Level.ShortName.Equals ("8"))
+										Level.Activate ();
+								}
+							}
 
 						}
 
