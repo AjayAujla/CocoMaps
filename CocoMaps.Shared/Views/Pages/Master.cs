@@ -4,6 +4,7 @@ using Xamarin.Forms.Maps;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Shared;
 using Google;
+using System.Threading.Tasks;
 
 namespace CocoMaps.Shared
 {
@@ -246,7 +247,9 @@ namespace CocoMaps.Shared
 
 		protected override bool OnBackButtonPressed()
 		{
-			return false;
+			DisplayAlert ("Close CocoMaps ?", "\r\n Click on the \'Home Menu\' If you wish to close the App \r\n", "OK");
+
+			return true;
 
 		}
 
