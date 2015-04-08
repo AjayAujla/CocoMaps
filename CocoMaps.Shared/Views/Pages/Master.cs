@@ -244,6 +244,12 @@ namespace CocoMaps.Shared
 			Content = mainLayout;
 		}
 
+		protected override bool OnBackButtonPressed()
+		{
+			return false;
+
+		}
+
 		void HandleTextChanged (object sender, TextChangedEventArgs e)
 		{
 			var s = sender as SearchBar;

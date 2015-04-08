@@ -41,8 +41,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)OAuthSettings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\AuthBasePage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\AuthLoginPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\NavRootBasePage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Views\Pages\AuthPages\NavRootPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Helpers\Enums.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\Repositories\PlacesRepository.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\ShuttleBus\RequestShuttleBussSchedule.cs" />

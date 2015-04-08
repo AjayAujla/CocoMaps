@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using CocoMaps.Shared.Pages;
 using CocoMaps.Shared.ViewModels;
+using System.Threading.Tasks;
 
 namespace CocoMaps.Shared
 {
@@ -33,7 +34,7 @@ namespace CocoMaps.Shared
 
 		public RootPage()
 		{
-
+			SetValue (Page.TitleProperty, "CocoMaps");
 		}
 
 		public RootPage(Page MP_Content)
@@ -42,7 +43,7 @@ namespace CocoMaps.Shared
 
 			Detail = MP_Content;
 
-			SetValue (Page.TitleProperty, "Test");
+			SetValue (Page.TitleProperty, "CocoMaps");
 			//SetValue (Page.IconProperty, menuItem.Icon);
 
 			MP_Options.Menu.ItemSelected += (sender, e) => 
@@ -51,40 +52,15 @@ namespace CocoMaps.Shared
 			};
 				
 		}
-
-		protected override bool OnBackButtonPressed()
-		{
-
-			DisplayCloseAlert();
-
-			if (closeApp) 
-			{
-				return true;
-			}
-			else 
-			{
-				return false;
-			}
-
-		}
-
-		public async void DisplayCloseAlert()
-		{
-			var CloseAppAlert = await DisplayAlert ("Close CocoMaps?", "", "Cancel", "Proceed");
-
-			if (CloseAppAlert.ToString ().ToLower () == "false") 
-			{
-				closeApp = false;
-
-			} else {
-
-				closeApp =  true;
-			}
-		}
 			
 
 		public void processRootPage(IMenuOptions menuOption)
 		{
+
+			#if __ANDROID__
+			Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Default);
+			#endif
+
 			string pageTitle = menuOption.Title;
 
 			if (pageTitle.Equals ("Indoor Directions")) 
@@ -228,6 +204,10 @@ namespace CocoMaps.Shared
 
 				RP_Map = new RootPage (pMaster);
 			}
+
+			#if __ANDROID__
+			Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Never);
+			#endif
 
 			return RP_Map;
 		}
