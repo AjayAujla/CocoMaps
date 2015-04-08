@@ -45,8 +45,9 @@ namespace CocoMaps.Shared
 
 		public Page GetMainPage ()
 		{
+			RootPage RP = new RootPage();
 
-			var MainPage = new NavRootPage ();
+			var MainPage = RP.pushMasterPage();
 
 			NavPage = new NavigationPage (MainPage);
 

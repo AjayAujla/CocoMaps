@@ -4,6 +4,7 @@ using Xamarin.Forms.Maps;
 using CocoMaps.Shared.ViewModels;
 using CocoMaps.Shared;
 using Google;
+using System.Threading.Tasks;
 
 namespace CocoMaps.Shared
 {
@@ -92,7 +93,7 @@ namespace CocoMaps.Shared
 			}
 		}
 
-		public MasterPage (IMenuOptions menuItem)
+		public MasterPage ()
 		{
 			RelativeLayout test = new RelativeLayout {
 				BackgroundColor = Color.Blue,
@@ -104,7 +105,7 @@ namespace CocoMaps.Shared
 			BindingContext = viewModel;
 
 			SetValue (Page.TitleProperty, "CocoMaps");
-			SetValue (Page.IconProperty, menuItem.Icon);
+			SetValue (Page.IconProperty, "ic_menu_maps.png");
 
 			map = ConcordiaMap.getInstance;
 			map.IsShowingUser = true;
@@ -242,6 +243,14 @@ namespace CocoMaps.Shared
 				null);
 
 			Content = mainLayout;
+		}
+
+		protected override bool OnBackButtonPressed()
+		{
+			DisplayAlert ("Close CocoMaps ?", "\r\n Click on the \'Home Menu\' If you wish to close the App \r\n", "OK");
+
+			return true;
+
 		}
 
 		void HandleTextChanged (object sender, TextChangedEventArgs e)

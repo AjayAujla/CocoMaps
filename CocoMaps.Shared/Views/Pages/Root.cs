@@ -1,130 +1,216 @@
 ﻿using System.Linq;
 using Xamarin.Forms;
 using CocoMaps.Shared.Pages;
+using CocoMaps.Shared.ViewModels;
+using System.Threading.Tasks;
 
 namespace CocoMaps.Shared
 {
 	public class RootPage : MasterDetailPage
 	{
-		IMenuOptions previousItem;
+		RootPage RP_Map;
+		RootPage RP_IndoorMap;
+		RootPage RP_Services;
+		RootPage RP_Bookmarks;
+		RootPage RP_Calendar;
+		RootPage RP_ShuttleBus;
+		RootPage RP_ShuttleBusTracker;
+		RootPage RP_Settings;
+		RootPage RP_FAQ;
 
-		// Initialize Pages
 		MasterPage pMaster;
+		IndoorMapPage pIndoorMap;
 		ConcordiaServices pServices;
 		Bookmark pBookmark;
-		IndoorMapPage pIndoorMapPage;
 		CalendarConnect pCalendar;
 		BaseShuttleBus pShuttleBus;
 		ShuttleBusTracker pShuttleBusTracker;
 		Settings pSettings;
 		FAQ pFAQ;
 
-		public RootPage ()
-		{
-			var optionsPage = new MenuPage { Icon = "settings.png", Title = "menu" };
-			optionsPage.Menu.ItemSelected += (sender, e) => NavigateTo (e.SelectedItem as IMenuOptions);
-			Master = optionsPage;
+		public bool closeApp = false;
 
-			NavigateTo (optionsPage.Menu.ItemsSource.Cast<IMenuOptions> ().First ());
+		MenuPage MP_Options = new MenuPage { Icon = "settings.png", Title = "menu" };
+
+		public RootPage()
+		{
+			SetValue (Page.TitleProperty, "CocoMaps");
 		}
 
-		void NavigateTo (IMenuOptions menuOption)
+		public RootPage(Page MP_Content)
 		{
-			if (previousItem != null) {
-				previousItem.Selected = false;
-			}
+			Master = MP_Options;
 
-			menuOption.Selected = true;
-			previousItem = menuOption;
+			Detail = MP_Content;
 
-			Detail = setPage (menuOption);
+			SetValue (Page.TitleProperty, "CocoMaps");
+			//SetValue (Page.IconProperty, menuItem.Icon);
 
-			IsPresented = false;
+			MP_Options.Menu.ItemSelected += (sender, e) => 
+			{
+				processRootPage(e.SelectedItem as IMenuOptions);
+			};
+				
 		}
+			
 
-		public Page setPage (IMenuOptions menuOption)
+		public void processRootPage(IMenuOptions menuOption)
 		{
-			// Restore the top bar for all pages
+
 			#if __ANDROID__
 			Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Default);
 			#endif
 
 			string pageTitle = menuOption.Title;
 
-			if (pageTitle.Equals ("Indoor Directions")) {
+			if (pageTitle.Equals ("Indoor Directions")) 
+			{
+				if ((RP_IndoorMap == null)) 
+				{
+					if ((pIndoorMap == null)) 
+					{
+						pIndoorMap = new IndoorMapPage (menuOption);
+					}
 
-				// Hide top bar for map page only
-				#if __ANDROID__
-				Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Never);
-				#endif
-				if ((pIndoorMapPage == null)) {
-					pIndoorMapPage = new IndoorMapPage (menuOption);
+					RP_IndoorMap = new RootPage (pIndoorMap);
 				}
-				return pIndoorMapPage;
 
-			} else if (pageTitle.Equals ("Concordia Services")) {
-				if ((pServices == null)) {
-					pServices = new ConcordiaServices (menuOption);
-				}
-				return pServices;
+				Navigation.PushModalAsync (RP_IndoorMap);
 
-			} else if (pageTitle.Equals ("Bookmarks")) {
-				pBookmark = new Bookmark (menuOption);
-				return pBookmark;
-			} else if (pageTitle.Equals ("Calendar")) {
-				if ((pCalendar == null)) {
-					pCalendar = new CalendarConnect (menuOption);
-				}
-				return  pCalendar;
+			}
+			else if (pageTitle.Equals ("Calendar")) 
+			{
+				if ((RP_Calendar == null)) 
+				{
+					if ((pCalendar == null)) 
+					{
+						pCalendar = new CalendarConnect (menuOption);
+					}
 
-			} else if (pageTitle.Equals ("Shuttle Bus")) {
-				if ((pShuttleBus == null)) {
-					pShuttleBus = new BaseShuttleBus (menuOption);
+					RP_Calendar = new RootPage (pCalendar);
 				}
-				return pShuttleBus;
 
-			} else if (pageTitle.Equals ("Shuttle Bus Tracker")) {
-				if ((pShuttleBusTracker == null)) {
-					pShuttleBusTracker = new ShuttleBusTracker (menuOption);
-				}
-				return pShuttleBusTracker;
+				Navigation.PushModalAsync (RP_Calendar);
 
-			} else if (pageTitle.Equals ("Settings")) {
-				if ((pSettings == null)) {
-					pSettings = new Settings (menuOption);
-				}
-				return pSettings;
+			}
+			else if (pageTitle.Equals ("Settings")) 
+			{
+				if ((RP_Settings == null)) 
+				{
+					if ((pSettings == null)) 
+					{
+						pSettings = new Settings (menuOption);
+					}
 
-			} else if (pageTitle.Equals ("FAQ")) {
-				if ((pFAQ == null)) {
-					pFAQ = new FAQ (menuOption);
+					RP_Settings = new RootPage (pSettings);
 				}
-				return pFAQ;
 
-			} else if (pageTitle.Equals ("Exit Application")) {
-				/*if (Device.OS == TargetPlatform.Android) {
-					App.CloseApp ();
+				Navigation.PushModalAsync (RP_Settings);
+
+			}
+			else if (pageTitle.Equals ("Shuttle Bus Tracker")) 
+			{
+				if ((RP_ShuttleBusTracker == null)) 
+				{
+					if ((pShuttleBusTracker == null)) 
+					{
+						pShuttleBusTracker = new ShuttleBusTracker (menuOption);
+					}
+
+					RP_ShuttleBusTracker = new RootPage (pShuttleBusTracker);
 				}
-				return null;*/
+
+				Navigation.PushModalAsync (RP_ShuttleBusTracker);
+
+			}
+			else if (pageTitle.Equals ("Bookmarks")) 
+			{
+				if ((RP_Bookmarks == null)) 
+				{
+					if (pBookmark ==null) 
+					{
+						pBookmark = new Bookmark (menuOption);
+					}
+
+					RP_Bookmarks = new RootPage (pBookmark);
+				}
+
+				Navigation.PushModalAsync (RP_Bookmarks);
+
+			} 
+			else if (pageTitle.Equals ("Shuttle Bus")) 
+			{
+				if ((RP_ShuttleBus == null)) 
+				{
+					if ((pShuttleBus == null)) 
+					{
+						pShuttleBus = new BaseShuttleBus (menuOption);
+					}
+
+					RP_ShuttleBus = new RootPage (pShuttleBus);
+				}
+
+				Navigation.PushModalAsync (RP_ShuttleBus);
+
+			} 
+			else if (pageTitle.Equals ("FAQ"))
+			{
+				if ((RP_FAQ == null)) 
+				{
+					if ((pFAQ == null)) 
+					{
+						pFAQ = new FAQ (menuOption);
+					}
+
+					RP_FAQ = new RootPage (pFAQ);
+				}
+
+				Navigation.PushModalAsync (RP_FAQ);
+
+			} 
+			else if (pageTitle.Equals ("Concordia Services")) 
+			{
+				if ((RP_Services == null)) 
+				{
+					if ((pServices == null)) 
+					{
+						pServices = new ConcordiaServices (menuOption);
+					}
+
+					RP_Services = new RootPage (pServices);
+				}
+
+				Navigation.PushModalAsync (RP_Services);
+
+			} 
+			else if (pageTitle.Equals ("Exit Application")) 
+			{
 				System.Environment.Exit (0);
-				return null;
-
-			} else { 
-				// return the main map page if no other option is found
-				/*if (string.IsNullOrEmpty (pageTitle) || pageTitle.Equals ("Campus Maps"))*/
-				if ((pMaster == null))
-					pMaster = new MasterPage (menuOption);
-				
-
-				// Hide top bar for map page only
-				#if __ANDROID__
-				Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Never);
-				#endif
-
-				//pMaster.SetValue (TitleProperty, pMaster.Title);
-
-				return pMaster;
+			} 
+			else 
+			{
+				Navigation.PushModalAsync (pushMasterPage());
 			}
 		}
+
+		public Page pushMasterPage()
+		{
+			if ((RP_Map == null)) 
+			{
+				if ((pMaster == null)) 
+				{
+					pMaster = new MasterPage ();
+				}
+
+				RP_Map = new RootPage (pMaster);
+			}
+
+			#if __ANDROID__
+			Forms.SetTitleBarVisibility (AndroidTitleBarVisibility.Never);
+			#endif
+
+			return RP_Map;
+		}
+
 	}
 }
