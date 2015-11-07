@@ -1,17 +1,8 @@
 ﻿<Properties StartupItem="CocoMaps.Android/CocoMaps.Android.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus6V" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="CocoMaps.Android/Renderers/ConcordiaMapRenderer.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="Android.dca08503" />
+  <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="CocoMaps.Android/Renderers/ConcordiaMapRenderer.cs" Line="377" Column="7" />
-      <File FileName="CocoMaps.Android/Renderers/IndoorMapRenderer.cs" Line="109" Column="1" />
-      <File FileName="CocoMaps.Shared/Views/Pages/IndoorMapPage.cs" Line="155" Column="6" />
-      <File FileName="CocoMaps.Shared/Views/ViewsModel/IndoorLocationViewModel.cs" Line="115" Column="5" />
-      <File FileName="CocoMaps.Shared/Controllers/Dijkstra/DistanceCalculator.cs" Line="59" Column="6" />
-      <File FileName="CocoMaps.Shared/Controllers/Dijkstra/Graph.cs" Line="26" Column="1" />
-      <File FileName="CocoMaps.Shared/Controllers/Dijkstra/Node.cs" Line="48" Column="1" />
-      <File FileName="CocoMaps.Shared/Controllers/Dijkstra/NodeConnection.cs" Line="18" Column="2" />
-      <File FileName="CocoMaps.Shared/Controllers/Repositories/Indoor/H8.cs" Line="47" Column="53" />
-      <File FileName="CocoMaps.Shared/Views/Pages/Master.cs" Line="218" Column="4" />
+      <File FileName="CocoMaps.Android/Properties/AndroidManifest.xml" Line="24" Column="12" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -23,5 +14,6 @@
     <String>UnitTesting.Android\UnitTesting.Android.csproj</String>
     <String>UnitTesting.Shared\UnitTesting.Shared.csproj</String>
     <String>ModelingProject1/ClassDiagrams.modelproj</String>
+    <String>CocoMaps.iOS/CocoMaps.iOS.csproj</String>
   </DisabledProjects>
 </Properties>
